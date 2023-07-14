@@ -4,7 +4,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import "bootstrap/dist/css/bootstrap.css";
 
-import * as Icon from "react-bootstrap-icons";
+import * as Icon from "react-bootstrap-icons"; 
 
 const Footer = () => {
   return (
