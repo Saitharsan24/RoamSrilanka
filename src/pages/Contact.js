@@ -8,10 +8,13 @@ import Footer from '../components/footer';
 function Contact() {
     return (
     <div>
-    <div className="mt-5 shadow p-5">
+    <div>
+        <h1>Contact Us</h1>
+    </div>
+    <div className="mt-5 shadow p-5" style={{borderRadius: '100px 100px 0px 0px'}}>
       <h2 className="text-center heading1">We are more than happy </h2>
       <h2 className="text-center heading2">to help you.</h2>
-        <div class="row ">
+        <div className="row ">
             <div className="col-md-4 p-5 text-black info">
                 <div className="d-flex flex-row py-1">
                   <Icon.Envelope color="black" size={30}
@@ -94,12 +97,21 @@ function Contact() {
                             }}/>
                       </Form.Group>
                     </Row>
-                    <Button className='mt-3 d-flex flex-column justify-content-center align-items-center p-4 gap-2 w-249 h-82 bg-danger shadow rounded'>
+                    <Button className='mt-5 d-flex flex-column justify-content-center align-items-center p-4 gap-2 w-249 h-82' 
+                        style={{borderRadius: '18px',background: '#DB163A',boxShadow: '0px 10px 20px rgba(192, 192, 192, 0.35)'}}>
                         Send Now
                     </Button>
                 </Form>
             </div>
         </div>    
+        <div className="row">
+            <div className="col-md-4 p-5 text-black"></div>
+            <div className="col-md-8 p-5"> 
+                <div className="location-text">Location</div>
+                <span className="address-text">14, 3/2, Pereira lane, Colombo 06.</span>
+            </div>
+        </div>
+        
     </div> 
     <Footer />
     </div>
