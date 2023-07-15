@@ -8,73 +8,96 @@ import Footer from '../components/footer';
 function Contact() {
     return (
     <div>
-    <div class="mt-5 shadow p-5">
-      <h2 class="text-center heading1">We are more than happy </h2>
-      <h2 class="text-center heading2">to help you.</h2>
+    <div className="mt-5 shadow p-5">
+      <h2 className="text-center heading1">We are more than happy </h2>
+      <h2 className="text-center heading2">to help you.</h2>
         <div class="row ">
-            <div class="col-md-4 p-5 text-black info">
-                <div className="d-flex flex-row">
-                  <Icon.Envelope color="black" size={25}
+            <div className="col-md-4 p-5 text-black info">
+                <div className="d-flex flex-row py-1">
+                  <Icon.Envelope color="black" size={30}
                     className="mt-3 border rounded-circle p-1 bg-white"
                   ></Icon.Envelope>
                   <p class="mt-3 ms-3">info@yourdomain.com</p>
                 </div>
-                <div className="d-flex flex-row">
-                  <Icon.Telephone color="black" size={25}
+                <div className="d-flex flex-row py-1">
+                  <Icon.Telephone color="black" size={30}
                     className="mt-3 border rounded-circle p-1 bg-white"
                   ></Icon.Telephone>
-                  <p class="mt-3 ms-3">+1 (378) 400-1234</p>
+                  <p className="mt-3 ms-3">+1 (378) 400-1234</p>
                 </div>
-                <div className="d-flex flex-row">
-                  <Icon.GlobeAmericas color="black" size={25}
+                <div className="d-flex flex-row py-1">
+                  <Icon.GlobeAmericas color="black" size={30}
                     className="mt-3 border rounded-circle p-1 bg-white"
                   ></Icon.GlobeAmericas>
-                  <p class="mt-3 ms-3">www:yourdomain.com</p>
+                  <p className="mt-3 ms-3">www:yourdomain.com</p>
                 </div>
                 <div className="d-flex flex-row gap-4 py-4 px-2">
-                  <Icon.Facebook color="black" />
-                  <Icon.Twitter color="white" />
-                  <Icon.Linkedin color="white" />
-                  <Icon.Instagram color="white" />
+                  <Icon.Facebook color="#023047" size={20}/>
+                  <Icon.Twitter color="#023047" size={20}/>
+                  <Icon.Linkedin color="#023047" size={20}/>
+                  <Icon.Instagram color="#023047" size={20}/>
                 </div>
             </div>    
-            <div class="col-md-8 p-5"> 
+            <div className="col-md-8 p-5"> 
                 <Form>
                     <Row>
                       <Col>
                         <Form.Group>
-                          <Form.Label>Name</Form.Label>
-                          <Form.Control type="text" required/>
+                          <Form.Label style={{fontSize: '22px',}}>Name</Form.Label>
+                          <Form.Control type="text" style={{
+                                    border: 'none',
+                                    borderBottom: '1px solid black',
+                                    borderRadius:0,
+                            }} required/>
                         </Form.Group>
                       </Col>
                       <Col>
                         <Form.Group>
-                          <Form.Label>Email</Form.Label>
-                          <Form.Control type="email" required/>
+                          <Form.Label style={{fontSize: '22px',}}>Email</Form.Label>
+                          <Form.Control type="email" style={{
+                                    border: 'none',
+                                    borderBottom: '1px solid black',
+                                    borderRadius:0,
+                            }} required/>
                         </Form.Group>
                       </Col>
                     </Row>
                     <Row>
                       <Col>
                         <Form.Group>
-                          <Form.Label>Subject</Form.Label>
-                          <Form.Control type="text" required/>
+                          <Form.Label style={{fontSize: '22px',}}>Subject</Form.Label>
+                          <Form.Control type="text" style={{
+                                    border: 'none',
+                                    borderBottom: '1px solid black',
+                                    borderRadius:0,
+                            }} required/>
                         </Form.Group>
                       </Col>
                       <Col>
                         <Form.Group>
-                          <Form.Label>Phone</Form.Label>
-                          <Form.Control type="number" required/>
+                          <Form.Label style={{fontSize: '22px',}}>Phone</Form.Label>
+                          <Form.Control type="number" style={{
+                                    border: 'none',
+                                    borderBottom: '1px solid black',
+                                    borderRadius:0,
+                            }} required/>
                         </Form.Group>
                       </Col>
                     </Row>
                     <Row>
                       <Form.Group>
-                        <Form.Label>Hello I'm Intrested in..</Form.Label>
-                        <Form.Control as="textarea"/>
+                        <Form.Label style={{fontSize: '22px',}}>Hello I'm Intrested in..</Form.Label>
+                        <Form.Control as="textarea"style={{
+                                    border: 'none',
+                                    borderBottom: '1px solid black',
+                                    borderRadius:0,
+                            }}/>
                       </Form.Group>
                     </Row>
-                  </Form>
+                    <Button className='mt-3 d-flex flex-column justify-content-center align-items-center p-4 gap-2 w-249 h-82 bg-danger shadow rounded'>
+                        Send Now
+                    </Button>
+                </Form>
             </div>
         </div>    
     </div> 
