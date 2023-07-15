@@ -38,7 +38,45 @@ function Contact() {
                   <Icon.Instagram color="white" />
                 </div>
             </div>    
-        </div>
+            <div class="col-md-8 p-5"> 
+                <Form>
+                    <Row>
+                      <Col>
+                        <Form.Group>
+                          <Form.Label>Name</Form.Label>
+                          <Form.Control type="text" required/>
+                        </Form.Group>
+                      </Col>
+                      <Col>
+                        <Form.Group>
+                          <Form.Label>Email</Form.Label>
+                          <Form.Control type="email" required/>
+                        </Form.Group>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <Form.Group>
+                          <Form.Label>Subject</Form.Label>
+                          <Form.Control type="text" required/>
+                        </Form.Group>
+                      </Col>
+                      <Col>
+                        <Form.Group>
+                          <Form.Label>Phone</Form.Label>
+                          <Form.Control type="number" required/>
+                        </Form.Group>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Form.Group>
+                        <Form.Label>Hello I'm Intrested in..</Form.Label>
+                        <Form.Control as="textarea"/>
+                      </Form.Group>
+                    </Row>
+                  </Form>
+            </div>
+        </div>    
     </div> 
     <Footer />
     </div>

@@ -2,12 +2,31 @@
     width: 100%;
 }
 
-p{
-    font-size: 12px;
-}
-
 h1{
     font-family: Verdana, Geneva, Tahoma, sans-serif!important;
+}
+
+.info {
+    width: 349px; 
+    height: 436.99px; 
+    background: rgba(219, 22, 58, 0.25); 
+    border-radius: 50px; gap: 10px;
+}
+
+.heading1 {
+    font-family: 'Jost'; 
+    font-weight: 500; 
+    font-size: 48px;
+    letter-spacing: 0.01em; 
+    color: #004577;
+}
+
+.heading2 {
+    font-family: 'Jost'; 
+    font-weight: 500; 
+    font-size: 48px; 
+    letter-spacing: 0.01em; 
+    color: #DB163A;
 }
 
 @media only screen and (max-width: 600px) {
@@ -15,27 +34,4 @@ h1{
         width: 100%!important;
         padding-bottom: 207px!important;
     }
-  }
-  
-  .info {
-    width: 349px; 
-    height: 436.99px; 
-    background: rgba(219, 22, 58, 0.25); 
-    border-radius: 50px; gap: 10px;
-  }
-
-  .heading1 {
-    font-family: 'Jost'; 
-    font-weight: 500; 
-    font-size: 48px;
-    letter-spacing: 0.01em; 
-    color: #004577;
-  }
-
-  .heading2 {
-    font-family: 'Jost'; 
-    font-weight: 500; 
-    font-size: 48px; 
-    letter-spacing: 0.01em; 
-    color: #DB163A;
-  }
+}
