@@ -11,10 +11,8 @@ const Blog = () => {
       <div className="blog-bg text-white d-flex flex-column justify-content-center">
         <h1 
           style={{
-            fontFamily:"'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif",
             fontSize: "7rem",
             textAlign: "center" 
-
           }}
         >
           Blog Articles
@@ -22,7 +20,7 @@ const Blog = () => {
       </div>
       <br />
       <div className="blog-full-list" style={{ textAlign: "center" }}>
-        <a href="#link">
+        <a href="#link" style={{color:"#004577"}}>
           Home/Blogs
           <br />
         </a>

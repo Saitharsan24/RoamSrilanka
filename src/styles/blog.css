@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow');
+@import url('https://fonts.googleapis.com/css?family=Jost');
+
 .blog-bg{
     background-image: url("./../assets/img/blog.png");
     object-fit: cover;
