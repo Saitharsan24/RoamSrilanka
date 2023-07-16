@@ -1,0 +1,36 @@
+.main{
+    background-color: #F7F7F7;
+    
+}
+
+.box-head{
+    color: #004577;
+}
+
+.head-blue{
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #004577;  
+}
+
+.head-red{
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #DB163A;  
+}
+
+
+.body{
+    background-image: url(../assets/images/aboutbg.png) ;
+    background-position: center;
+    background-size: cover ;
+    height: 28rem ;
+}
+
+.about-icon{
+    align-items: center ;
+}
+/* ---------------------------------------------- */
+
