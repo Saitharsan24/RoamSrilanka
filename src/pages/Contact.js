@@ -111,7 +111,7 @@ function Contact() {
                     <span className="detail">Location</span>
                     <span className="data">14, 3/2, Pereira lane, Colombo 06.</span>
                 </div>
-                <div>
+                <div className="mt-5">
                     <span className="detail">Working hours</span>
                     <span className="data">Week days 8 a.m to 6 p.m</span>
                     <span className="data">Week-ends 8 a.m to 12 p.m</span>
