@@ -13,7 +13,8 @@ function Contact() {
     <div className='body d-flex justify-content-center align-items-center'>
         <h1 className='text-white' style={{fontSize:"128px",fontWeight:"bold"}}>Contact</h1>
     </div>
-    <div className="shadow p-5" style={{borderRadius: '100px 100px 0px 0px'}}>
+    <div className="shadow p-5">
+    <p className="ser_title text-center">Home / Contact</p>
       <h2 className="text-center heading1">We are more than happy </h2>
       <h2 className="text-center heading2">to help you.</h2>
         <div className="row p-5">

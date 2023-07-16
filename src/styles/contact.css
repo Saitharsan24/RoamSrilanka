@@ -75,3 +75,9 @@ p{
     height: 28rem ;
     border-radius: 10%;
 }
+
+.ser_title{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #004577;
+    padding-top: 1rem;
+}
