@@ -67,3 +67,11 @@ p{
     letter-spacing: 0.02em;
     color: #DB163A;
 }
+
+.location {
+    background-image: url(../assets/img/location.png) ;
+    background-position: center;
+    background-size: cover ;
+    height: 28rem ;
+    border-radius: 10%;
+}

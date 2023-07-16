@@ -16,7 +16,7 @@ function Contact() {
     <div className="shadow p-5" style={{borderRadius: '100px 100px 0px 0px'}}>
       <h2 className="text-center heading1">We are more than happy </h2>
       <h2 className="text-center heading2">to help you.</h2>
-        <div className="row ">
+        <div className="row p-5">
             <div className="col-md-4 p-5 text-black info">
                 <div className="d-flex flex-row py-1">
                   <Icon.Envelope color="black" size={30}
@@ -106,8 +106,8 @@ function Contact() {
                 </Form>
             </div>
         </div>    
-        <div className="row">
-            <div className="col-md-4 p-5 text-black"></div>
+        <div className="row p-5">
+            <div className="location d-flex justify-content-center align-items-center col-md-4 p-5 text-black"></div>
             <div className="col-md-8 p-5">
                 <div>
                     <span className="detail">Location</span>
@@ -118,10 +118,8 @@ function Contact() {
                     <span className="data">Week days 8 a.m to 6 p.m</span>
                     <span className="data">Week-ends 8 a.m to 12 p.m</span>
                 </div>
-                
             </div>
-        </div>
-        
+        </div>     
     </div> 
     <Footer />
     </div>
