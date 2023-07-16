@@ -106,9 +106,17 @@ function Contact() {
         </div>    
         <div className="row">
             <div className="col-md-4 p-5 text-black"></div>
-            <div className="col-md-8 p-5"> 
-                <div className="location-text">Location</div>
-                <span className="address-text">14, 3/2, Pereira lane, Colombo 06.</span>
+            <div className="col-md-8 p-5">
+                <div>
+                    <span className="detail">Location</span>
+                    <span className="data">14, 3/2, Pereira lane, Colombo 06.</span>
+                </div>
+                <div>
+                    <span className="detail">Working hours</span>
+                    <span className="data">Week days 8 a.m to 6 p.m</span>
+                    <span className="data">Week-ends 8 a.m to 12 p.m</span>
+                </div>
+                
             </div>
         </div>
         
