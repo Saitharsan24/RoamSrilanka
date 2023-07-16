@@ -29,6 +29,13 @@ p{
     color: #DB163A;
 }
 
+.body{
+    background-image: url(../assets/img/contact.png) ;
+    background-position: center;
+    background-size: cover ;
+    height: 28rem ;
+}
+
 @media only screen and (max-width: 600px) {
     .container{
         width: 100%!important;

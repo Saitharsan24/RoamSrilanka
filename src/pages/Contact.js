@@ -8,10 +8,10 @@ import Footer from '../components/footer';
 function Contact() {
     return (
     <div>
-    <div>
-        <h1>Contact Us</h1>
+    <div className='body d-flex justify-content-center align-items-center'>
+        <h1 className='text-white' style={{fontSize:"128px",fontWeight:"bold"}}>Contact</h1>
     </div>
-    <div className="mt-5 shadow p-5" style={{borderRadius: '100px 100px 0px 0px'}}>
+    <div className="shadow p-5" style={{borderRadius: '100px 100px 0px 0px'}}>
       <h2 className="text-center heading1">We are more than happy </h2>
       <h2 className="text-center heading2">to help you.</h2>
         <div className="row ">
