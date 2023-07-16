@@ -4,10 +4,12 @@ import "bootstrap/dist/css/bootstrap.css";
 import * as Icon from "react-bootstrap-icons";
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import Footer from '../components/footer';
+import Header from '../components/Header';
 
 function Contact() {
     return (
     <div>
+        <Header/>
     <div className='body d-flex justify-content-center align-items-center'>
         <h1 className='text-white' style={{fontSize:"128px",fontWeight:"bold"}}>Contact</h1>
     </div>
