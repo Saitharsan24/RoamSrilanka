@@ -17,15 +17,8 @@
     color: #004577 !important;
   text-decoration: underline !important;
   text-decoration-color: crimson !important;
-  text-decoration-line:underline !important;
-
-  
+  text-decoration-line:underline !important; 
 }
-
-
-
-
-
 
 .nav-item-list-1{
     display: flex !important;
@@ -35,8 +28,8 @@
 .nav-item-list-2{
     display: flex !important;
     margin-right: 50px !important; 
-
 } 
+
  .nav-item-1{
     width: 5em;
     margin: 10% !important;
@@ -62,8 +55,6 @@
   text-decoration: underline !important;
   text-decoration-color: crimson !important;
   text-decoration-line:underline !important;
-
-  
 }
 
 .reg-btn{
