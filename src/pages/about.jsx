@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import quality from './../assets/images/quality.png';
 import security from './../assets/images/security.png';
 import heart from './../assets/images/heart.png';
+import aboutimg from './../assets/images/aboutimg.png';
 import Header from '../components/Header';
 import Footer from '../components/footer';
 import '../styles/about.css';
@@ -16,16 +17,55 @@ const About=()=>{
  {/* header  */}
        <Header/>
 
-
  {/* body of about        */}
- <div className='body d-flex justify-content-center align-items-center' >
+       <div className='body d-flex justify-content-center align-items-center' >
         <p className='text-white' style={{fontSize:"128px",fontWeight:"bold"}}>About</p> 
        </div>
 
 
+{/* ------------------- */}
+<div className='main-2 container d-lg-flex d-md-flex d-sm-flex flex-sm-column flex-xs-column flex-md-row flex-lg-row align-items-center justify-content-center gap-4' >
+                  <div className='col-lg-5 col-md-5 col-sm-12 d-flex flex-column'>        
+                              <img className=' img-fluid about-icon m-auto object-fit-contain w-auto'  src={aboutimg}  />
+                  </div>
+                  <div className='col-lg-5 col-md-5 col-sm-12 d-flex flex-column '>
+                       <span style={{fontSize:"16px",color:"#DB163A",fontWeight:"bold"}}>About us</span>
+                       <span style={{fontSize:"48px"}}>
+                        <span style={{fontSize:"48px",color:"#004577",fontWeight:"bold"}}>Our tour plan is to<br/> fulfil your </span><span style={{fontSize:"48px",color:"#DB163A",fontWeight:"bold"}}>dream wish</span>
+                        </span>
+                        <div className="ex-1" style={{fontsize:"20px"}}>
+                        Understand to achieve anything requires faith and<br/> belief in yourself, vision, hard work, determination,<br/> and dedication.
+                        </div>
+ 
+                         {/* container for evaluation of pass activity */}
+                             <div className='ex-2 container d-lg-flex d-md-flex d-sm-flex flex-sm-column flex-md-row flex-lg-row gap-5'> 
+                             <div className='d-flex    gap-4'> 
+                                 <div className='col-lg-6 col-md-6 col-sm-6 d-flex flex-column' >
+                                       <div style={{fontsize:"40px",fontWeight:"bold",color:"#DB163A"}}>15</div> 
+                                       <div style={{fontsize:"16px"}}>Years of<br/> Experience</div>  
+                                 </div>
+                                 <div className='col-lg-6 col-md-6 col-sm-6 d-flex flex-column'>
+                                       <div style={{fontsize:"40px",fontWeight:"bold",color:"#DB163A"}}>1K</div> 
+                                       <div style={{fontsize:"16px"}}>Sucessful<br/> Trips</div>                                  
+                                 </div>
+                              </div>
+                              <div className='d-flex  gap-4'> 
+                             <div className='col-lg-6 col-md-6 col-sm-6 d-flex flex-column'>
+                                      <div style={{fontsize:"40px",fontWeight:"bold",color:"#DB163A"}}>20K</div> 
+                                      <div style={{fontsize:"16px"}}>Happy<br/> Customers</div> 
+                             </div>
+                             <div className='col-lg-6 col-md-6 col-sm-6 d-flex flex-column'>
+                                      <div style={{fontsize:"40px",fontWeight:"bold",color:"#DB163A"}}>49</div> 
+                                      <div style={{fontsize:"16px"}}>Overall<br/> Rating</div>
+                               </div>
+                              </div>
+                              </div>     
+
+                        </div>
+            </div>
 
 {/* sub footer of about page */}
-   <div className='main'>
+   <div className='main-1'>
             <div className='text-center '>
                   <span class="head-blue">Why you Roam</span>
                   <span class="head-red"> Sri Lanka?</span>
@@ -69,11 +109,7 @@ const About=()=>{
        </div>
      </div>
 
-     {/* ------------------- */}
-            <div className='container-1'>
-                  <box></box>
-                  <box></box>
-            </div>
+     
 
        {/* Footer  */}
    <Footer/>

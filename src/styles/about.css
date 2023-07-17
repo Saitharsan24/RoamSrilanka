@@ -1,6 +1,9 @@
-.main{
-    background-color: #F7F7F7;
-    
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+
+/* sub footer */
+.main-1{
+    background-color: #F7F7F7; 
+    font-family: "Jost";
 }
 
 .box-head{
@@ -21,6 +24,9 @@
     color: #DB163A;  
 }
 
+/* --------------------------- */
+
+/*image body */
 
 .body{
     background-image: url(../assets/images/aboutbg.png) ;
@@ -30,7 +36,23 @@
 }
 
 .about-icon{
-    align-items: center ;
+       align-items: center ; 
 }
 /* ---------------------------------------------- */
 
+/* round img  */
+
+.main-2{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+
+.ex-1{
+    margin-top: 30px;
+}
+
+.ex-2{
+    margin-top: 30px;
+}
