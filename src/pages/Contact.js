@@ -17,34 +17,34 @@ function Contact() {
     <p className="ser_title text-center">Home / Contact</p>
       <h2 className="text-center heading1">We are more than happy </h2>
       <h2 className="text-center heading2">to help you.</h2>
-        <div className="row p-5">
-            <div className="col-md-4 p-5 text-black info">
-                <div className="d-flex flex-row py-1">
+        <div className="d-flex flex-row p-5 ">
+            <div className="d-flex flex-column p-4 text-black info col-lg-4 col-md-9 col-sm-11">
+                <div className="d-flex flex-row py-1 col-lg-3 col-md-4 col-sm-11">
                   <Icon.Envelope color="black" size={30}
                     className="mt-3 border rounded-circle p-1 bg-white"
                   ></Icon.Envelope>
                   <p class="mt-3 ms-3">info@yourdomain.com</p>
                 </div>
-                <div className="d-flex flex-row py-1">
+                <div className="d-flex flex-row py-1 col-lg-4 col-md-9 col-sm-11">
                   <Icon.Telephone color="black" size={30}
                     className="mt-3 border rounded-circle p-1 bg-white"
                   ></Icon.Telephone>
                   <p className="mt-3 ms-3">+1 (378) 400-1234</p>
                 </div>
-                <div className="d-flex flex-row py-1">
+                <div className="d-flex flex-row py-1 col-lg-4 col-md-9 col-sm-11">
                   <Icon.GlobeAmericas color="black" size={30}
                     className="mt-3 border rounded-circle p-1 bg-white"
                   ></Icon.GlobeAmericas>
                   <p className="mt-3 ms-3">www:yourdomain.com</p>
                 </div>
-                <div className="d-flex flex-row gap-4 py-4 px-2">
+                <div className="d-flex flex-row gap-4 py-4 px-2 col-lg-4 col-md-9 col-sm-11">
                   <Icon.Facebook color="#023047" size={20}/>
                   <Icon.Twitter color="#023047" size={20}/>
                   <Icon.Linkedin color="#023047" size={20}/>
                   <Icon.Instagram color="#023047" size={20}/>
                 </div>
             </div>    
-            <div className="col-md-8 p-5"> 
+            <div className="col-md-8 p-5 col-lg-3 col-md-5 col-sm-11"> 
                 <Form>
                     <Row>
                       <Col>
