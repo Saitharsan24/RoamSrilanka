@@ -8,7 +8,7 @@ import Blog from './pages/blog';
 function App() {
   return (
     <React.Fragment>
-    <About/>
+    <Blog/>
     </React.Fragment>
     )}
 
