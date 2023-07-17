@@ -15,7 +15,7 @@ const Footer = () => {
             <div className="footer-asst" style={{width:"27%"}} >
               <img
                 style={{ width: "200px", height: "100px" }}
-                src={require("./../assets/img/logo.png")}
+                src={require("./../assets/images/footerlogo.png")}
                 alt=""
               />
               <p className="para text-white m-2">
