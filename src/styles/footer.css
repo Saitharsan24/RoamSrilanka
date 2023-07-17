@@ -1,0 +1,11 @@
+.footer{
+    background-color: #004577; 
+    width: auto;  
+    display: flex;
+    flex-direction: column; 
+    padding: 1.5rem;
+}
+
+ul,li{
+    list-style-type: none;
+}
