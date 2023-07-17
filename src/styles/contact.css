@@ -6,11 +6,10 @@ p{
     font-size: 20px;
 }
 
-.info {
-    width:100%; 
-    height: 25rem; 
+.info { 
+    height: 22rem; 
     background: rgba(219, 22, 58, 0.25); 
-    border-radius: 50px; gap: 10px;
+    border-radius: 2rem;
 }
 
 .heading1 {
@@ -41,7 +40,12 @@ p{
         width: 100%!important;
         padding-bottom: 207px!important;
     }
+    .info-text{
+        font-size: unset;
+    }
 }
+
+
 
 .detail {
   font-family: 'Jost';
@@ -81,22 +85,3 @@ p{
     color: #004577;
     padding-top: 1rem;
 }
-
-@media only screen and (max-width: 768px) {
-    /* Adjust the layout for small screens */
-    .info {
-      padding: 3rem 1rem;
-    }
-
-    .info > div {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 1rem;
-    }
-
-    .info > div:last-child {
-      flex-direction: row;
-      justify-content: center;
-    }
-  }
