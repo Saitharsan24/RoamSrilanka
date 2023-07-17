@@ -1,15 +1,13 @@
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/footer';
-import FlashElements from './components/Homepage/flashElement';
-import PackageElement from './components/Homepage/packageElement';
+import FlashPage from './components/flashPage';
 
 function App() {
   return (
     <div>
       <Header />
-      <FlashElements></FlashElements>
-      <PackageElement></PackageElement>
+      <FlashPage></FlashPage>
       <Footer />
       
     </div>

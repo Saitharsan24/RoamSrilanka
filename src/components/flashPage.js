@@ -1,13 +1,13 @@
 import React from "react";
-import "./../../styles/Homepage/flashElement.css";
+import "./../styles/flashElement.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Button from "react-bootstrap/Button";
 
-function FlashElement() {
+function FlashPage() {
   return (
     <div className="main-div">
-      <div className="container mb-6 d-flex-column ">
-        <div className="main-text container-fluid">
+      <div className="container">
+        <div className="container-fluid" style={{fontSize:"64px",fontFamily:"barlow"}}>
           <h1>
             Dare to live <span className="redText">the life</span> <br />
             you've always <br />
@@ -27,4 +27,4 @@ function FlashElement() {
   );
 }
 
-export default FlashElement;
+export default FlashPage;
