@@ -7,7 +7,7 @@ import Header from "../components/Header";
 const Blog = () => {
   return (
     <div>
-      {/* <Header /> */}
+      <Header />
       <div className="blog-bg text-white d-flex flex-column justify-content-center">
         <h1 
           style={{
