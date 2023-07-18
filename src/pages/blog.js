@@ -20,29 +20,56 @@ const Blog = () => {
       </div>
       <br />
       <div className="blog-full-list" style={{ textAlign: "center" }}>
-        <a href="#link" style={{color:"#004577"}}>
+        <a href="#link" style={{color:"#004577",fontSize:"1rem"}}>
           Home/Blogs
           <br />
         </a>
         <br />
-        <h4 style={{ textAlign: "center" }}>
-          What our
+        <h4 style={{ textAlign: "center",fontSize:"3rem" }}>
+          <span style={{color:"#004577"}}>What our</span>
           <span style={{ color: "#DB163A" }}> satisfied clients say</span>
         </h4>
         <br />
         <div className="d-flex  flex-wrap justify-content-evenly gap-3">
           
-            <div className="blog-list col-lg-3 col-md-5 col-sm-11"></div>
-            <div className="blog-list col-lg-3 col-md-5 col-sm-11"></div>
-            <div className="blog-list col-lg-3 col-md-5 col-sm-11"></div>
+            <div className="col-lg-3 col-md-5 col-sm-11 col-11">
+              <div className="blog-list-img"></div>
+              <div className="blog-list-msg"></div>
+            </div>
+            <div className="col-lg-3 col-md-5 col-sm-11 col-11">
+              <div className="blog-list-img"></div>
+              <div className="blog-list-msg"></div>
+            </div>
+            <div className="col-lg-3 col-md-5 col-sm-11 col-11">
+              <div className="blog-list-img"></div>
+              <div className="blog-list-msg"></div>
+            </div>
           
-            <div className="blog-list col-lg-3 col-md-5 col-sm-11"></div>
-            <div className="blog-list col-lg-3 col-md-5 col-sm-11"></div>
-            <div className="blog-list col-lg-3 col-md-5 col-sm-11"></div>
+            <div className="col-lg-3 col-md-5 col-sm-11 col-11">
+              <div className="blog-list-img"></div>
+              <div className="blog-list-msg"></div>
+            </div>
+            <div className="col-lg-3 col-md-5 col-sm-11 col-11">
+              <div className="blog-list-img"></div>
+              <div className="blog-list-msg"></div>
+            </div>
+            <div className="col-lg-3 col-md-5 col-sm-11 col-11">
+              <div className="blog-list-img"></div>
+              <div className="blog-list-msg"></div>
+            </div>
           
-            <div className="blog-list col-lg-3 col-md-5 col-sm-11"></div>
-            <div className="blog-list col-lg-3 col-md-5 col-sm-11"></div>
-            <div className="blog-list col-lg-3 col-md-5 col-sm-11"></div>
+            <div className="col-lg-3 col-md-5 col-sm-11 col-11">
+              <div className="blog-list-img"></div>
+              <div className="blog-list-msg"></div>
+            </div>
+            <div className="col-lg-3 col-md-5 col-sm-11 col-11">
+              <div className="blog-list-img"></div>
+              <div className="blog-list-msg"></div>
+            </div>
+            <div className="col-lg-3 col-md-5 col-sm-11 col-11">
+              <div className="blog-list-img"></div>
+              <div className="blog-list-msg"></div>
+            </div>
           
         </div>
         <br />

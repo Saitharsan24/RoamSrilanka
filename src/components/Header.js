@@ -4,8 +4,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import systemlogo from './../assets/images/systemlogo.png';
 import '../styles/Header.css';
-// import * as Icon from 'react-bootstrap-icons';
+
+import * as Icon from 'react-bootstrap-icons';
 import { Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Header=()=>{
     return(
@@ -18,12 +20,13 @@ const Header=()=>{
               <Navbar.Collapse id="responsive-navbar-nav">
 
             <Nav className="nav-item-list-1 ms-auto ">
-            <Nav.Link className='nav-item-1 text-black m-2 jost-text text-decoration-underline-hover' href="#home">Home</Nav.Link>
-            <Nav.Link className='nav-item-1 text-black m-2 jost-text ' href="#link">About</Nav.Link>
-            <Nav.Link className='nav-item-1 text-black m-2 jost-text ' href="#link">Services</Nav.Link>
+
+            <Nav.Link className='nav-item-1 text-black m-2 jost-text text-decoration-underline-hover'><Link to='/'>Home</Link></Nav.Link>
+            <Nav.Link className='nav-item-1 text-black m-2 jost-text '><Link to='/About'>About</Link></Nav.Link>
+            <Nav.Link className='nav-item-1 text-black m-2 jost-text '><Link to='/Services'>Services</Link></Nav.Link>
             <Nav.Link className='nav-item-1 text-black m-2 jost-text ' href="#link">Explore</Nav.Link>
-            <Nav.Link className='nav-item-1 text-black m-2 jost-text ' href="#link">Blogs</Nav.Link>
-            <Nav.Link className='nav-item-1 text-black m-2 jost-text ' href="#link">Contact</Nav.Link>
+            <Nav.Link className='nav-item-1 text-black m-2 jost-text '><Link to='/Blog'>Blogs</Link></Nav.Link>
+            <Nav.Link className='nav-item-1 text-black m-2 jost-text ' ><Link to='/Contact'>Contact</Link></Nav.Link>
             </Nav>
             <Nav className="nav-item-list-2 ms-auto ">
             
