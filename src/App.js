@@ -8,10 +8,11 @@ import Contact from './pages/Contact';
 import Service from './pages/services';
 import Blog from './pages/blog';
 import Routing from './routes/Routing';
-import Hotel from './components/sidebar';
+import HolidayDashboard from './pages/holidayplanner_dashboard';
+
 function App() {
   return (
-    <Hotel/>
+    <Routing/>
   );
 }
 
