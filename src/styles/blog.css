@@ -1,11 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Barlow');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Jost');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@200&display=swap'); 
 
 .blog-bg{
-    background-image: url("./../assets/img/blog.png");
+    background-image: url("./../assets/images/buddha.jpg");
     object-fit: cover;
     background-size: cover;
+    background-blend-mode: color;
+    background-color: rgba(0, 0, 0, 0.452);
+    background-position: center;
     height: 35rem;
+}
+.blog-bg h1{
+    font-family: Barlow;
+    font-weight: bold;
 }
 .blog-list-img{
     background-color: #004577;
@@ -24,3 +32,7 @@
     margin-top: -5rem;
     background-color: white;
 }
+.blog-full-list h4{
+    font-family: Jost;
+}
+

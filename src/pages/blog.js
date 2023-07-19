@@ -14,15 +14,16 @@ const Blog = () => {
             fontSize: "7rem",
             textAlign: "center" 
           }}
+          className="mb-4"
         >
           Blog Articles
         </h1>
       </div>
-      <br />
       <div className="blog-full-list" style={{ textAlign: "center" }}>
-        <a href="#link" style={{color:"#004577",fontSize:"1rem"}}>
-          Home/Blogs
-          <br />
+        <a href="#link">
+          <p style={{color:"#004577",fontSize:"1.5rem"}} className="mt-4">
+            Home/Blogs
+          </p>
         </a>
         <br />
         <h4 style={{ textAlign: "center",fontSize:"3rem" }}>
