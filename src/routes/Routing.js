@@ -6,6 +6,7 @@ import Contact from '../pages/Contact';
 import Services from '../pages/services';
 import Blog from '../pages/blog';
 import About from '../pages/about';
+import Login from '../pages/login';
 
 function Routing() {
   return (
@@ -16,6 +17,7 @@ function Routing() {
             <Route path='/Services' element={<Services />}></Route>
             <Route path='/Blog' element={<Blog />}></Route>
             <Route path='/About' element={<About />}></Route>
+            <Route path='/Login' element={<Login />}></Route>
         </Routes>
     </BrowserRouter>
   )
