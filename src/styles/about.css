@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+
+/* sub footer */
+.main-1{
+    background-color: #F7F7F7; 
+    font-family: "Jost";
+}
+
+.box-head{
+    color: #004577;
+}
+
+.head-blue{
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #004577;  
+}
+
+.head-red{
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    color: #DB163A;  
+}
+
+/* --------------------------- */
+
+/*image body */
+
+.body{
+    background-image: url(../assets/images/aboutbg.png) ;
+    background-position: center;
+    background-size: cover ;
+    height: 28rem ;
+}
+
+.about-icon{
+       align-items: center ; 
+}
+/* ---------------------------------------------- */
+
+/* round img  */
+
+.main-2{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+
+.ex-1{
+    margin-top: 30px;
+}
+
+.ex-2{
+    margin-top: 30px;
+}
