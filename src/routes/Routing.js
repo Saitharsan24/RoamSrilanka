@@ -1,3 +1,4 @@
+
 import React from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css';
@@ -8,12 +9,14 @@ import Blog from '../pages/blog';
 import About from '../pages/about';
 import Login from '../pages/login';
 import Error from '../pages/error';
-import HolidayDashboard from '../pages/holidayplanner_dashboard';
+import Holidayprofile from "../pages/holidayplanner_profile";
+
 
 
 function Routing() {
   return (
     <BrowserRouter>
+
         <Routes>
             <Route path='/' element={<Header />}></Route>
             <Route path='/Contact' element={<Contact />}></Route>
@@ -23,11 +26,12 @@ function Routing() {
             <Route path='/Login' element={<Login />}></Route>
 
             <Route path='/Error' element={<Error />}></Route>
-            <Route path='/Holidash' element={<HolidayDashboard />}></Route>
+            <Route path="/Holidayprofile" element={<Holidayprofile />}></Route>
 
         </Routes>
+
     </BrowserRouter>
-  )
+  );
 }
 
-export default Routing
+export default Routing;
