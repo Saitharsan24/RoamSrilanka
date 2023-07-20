@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Jost');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@200&display=swap');
 
 .top{
-    background-image: url("../assets/images/Sri-Lanka-Waterfalls-gallery-pop-up-1-min\ 1.png");
+    background-image: url("../assets/images/bg_service.jpg");
     height:35rem;
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,12 +15,19 @@
 }
 
 
+
 .text_1{
     font-size: 7rem;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:'Barlow';
+    font-weight: bold;
     padding-top: 10rem;
 }
 
+.ser-body{
+    border-radius: 4rem 4rem 0 0;
+    background-color: #ffffff;
+    margin-top: -4rem;
+}
 .ser_title{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #004577;
@@ -46,6 +54,7 @@
 
 .element{
     padding-top: 2.5rem;
+    padding-bottom: 2rem;
 }
 
 .img_2{
