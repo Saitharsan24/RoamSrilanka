@@ -1,0 +1,38 @@
+.error-bg{
+    background-image: url("./../assets/img/bg2.png");
+    object-fit: cover;
+    height:85vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    background-attachment: fixed;
+}
+
+.error-bg h2 {
+    font-weight: 700;
+    color: #DB163A;
+    font-size: 150px;
+}
+
+.error-bg h4 {
+    font-weight: 300;
+    color: #004577;
+    font-size: 50px;
+}
+
+.container {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.column {
+    width: 50%;
+    align-items: center;
+    text-align: left;
+    padding: 15px;
+}
