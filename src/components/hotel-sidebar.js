@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as Icon from 'react-bootstrap-icons';
 import './../styles/sidebar.css';
 
-const Hotel = () => {
+const HotelSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -114,4 +114,4 @@ const Hotel = () => {
   );
 };
 
-export default Hotel;
+export default HotelSidebar;

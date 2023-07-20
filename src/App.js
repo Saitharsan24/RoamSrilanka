@@ -7,10 +7,13 @@ import Footer from './components/footer';
 import Contact from './pages/Contact';
 import Service from './pages/services';
 import Routing from './routes/Routing';
-import Hotel from './components/sidebar';
+import HotelSidebar from './components/hotel-sidebar';
+import HotelDashboard from './pages/hotel-dashboard';
+import Blog from './pages/blog';
+
 function App() {
   return (
-    <Hotel/>
+    <Routing/>
   );
 }
 
