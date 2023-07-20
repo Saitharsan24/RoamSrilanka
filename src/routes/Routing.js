@@ -7,6 +7,7 @@ import Services from '../pages/services';
 import Blog from '../pages/blog';
 import About from '../pages/about';
 import Login from '../pages/login';
+import Error from '../pages/error';
 
 function Routing() {
   return (
@@ -18,6 +19,7 @@ function Routing() {
             <Route path='/Blog' element={<Blog />}></Route>
             <Route path='/About' element={<About />}></Route>
             <Route path='/Login' element={<Login />}></Route>
+            <Route path='/Error' element={<Error />}></Route>
         </Routes>
     </BrowserRouter>
   )
