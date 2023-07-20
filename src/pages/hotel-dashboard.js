@@ -4,7 +4,7 @@ import "./../styles/hotel-dashboard.css";
 import Header from "../components/Header";
 import * as Icon from "react-bootstrap-icons";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+//import "react-calendar/dist/Calendar.css";
 import PieChart from "../components/pie-chart";
 
 const HotelDashboard = () => {
