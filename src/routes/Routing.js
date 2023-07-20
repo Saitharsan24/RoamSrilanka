@@ -8,6 +8,8 @@ import Blog from '../pages/blog';
 import About from '../pages/about';
 import Login from '../pages/login';
 import Error from '../pages/error';
+import HolidayDashboard from '../pages/holidayplanner_dashboard';
+
 
 function Routing() {
   return (
@@ -19,7 +21,10 @@ function Routing() {
             <Route path='/Blog' element={<Blog />}></Route>
             <Route path='/About' element={<About />}></Route>
             <Route path='/Login' element={<Login />}></Route>
+
             <Route path='/Error' element={<Error />}></Route>
+            <Route path='/Holidash' element={<HolidayDashboard />}></Route>
+
         </Routes>
     </BrowserRouter>
   )
