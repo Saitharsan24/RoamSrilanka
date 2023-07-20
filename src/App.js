@@ -9,10 +9,11 @@ import Service from './pages/services';
 import Blog from './pages/blog';
 import Routing from './routes/Routing';
 import HolidayDashboard from './pages/holidayplanner_dashboard';
+import Hotelrequest from './pages/Hotelrequest';
 
 function App() {
   return (
-    <Routing/>
+    <Hotelrequest/>
   );
 }
 
