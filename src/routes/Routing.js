@@ -10,8 +10,7 @@ import About from '../pages/about';
 import Login from '../pages/login';
 import Error from '../pages/error';
 import Holidayprofile from "../pages/holidayplanner_profile";
-
-
+import HotelDashboard from '../pages/hotel-dashboard';
 
 function Routing() {
   return (
@@ -23,8 +22,8 @@ function Routing() {
             <Route path='/Services' element={<Services />}></Route>
             <Route path='/Blog' element={<Blog />}></Route>
             <Route path='/About' element={<About />}></Route>
+            <Route path='/dev' element={<HotelDashboard />}></Route>
             <Route path='/Login' element={<Login />}></Route>
-
             <Route path='/Error' element={<Error />}></Route>
             <Route path="/Holidayprofile" element={<Holidayprofile />}></Route>
 
