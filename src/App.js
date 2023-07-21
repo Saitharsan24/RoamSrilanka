@@ -16,6 +16,7 @@ import HotelDashboard from './pages/hotel-dashboard';
 import Holidayprofile from "./pages/holidayplanner_profile";
 import Adminprofile from './pages/admin_profile';
 
+import Holiday_dashboard from "./pages/holidayplanner_dashboard";
 
 function App() {
   return (
