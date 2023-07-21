@@ -14,6 +14,8 @@ import Routing from './routes/Routing';
 import HotelSidebar from './components/hotel-sidebar';
 import HotelDashboard from './pages/hotel-dashboard';
 import Holidayprofile from "./pages/holidayplanner_profile";
+import Adminprofile from './pages/admin_profile';
+
 
 function App() {
   return (

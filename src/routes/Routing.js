@@ -11,6 +11,7 @@ import Login from '../pages/login';
 import Error from '../pages/error';
 import Holidayprofile from "../pages/holidayplanner_profile";
 import HotelDashboard from '../pages/hotel-dashboard';
+import Adminprofile from '../pages/admin_profile';
 
 function Routing() {
   return (
@@ -26,6 +27,7 @@ function Routing() {
             <Route path='/Login' element={<Login />}></Route>
             <Route path='/Error' element={<Error />}></Route>
             <Route path="/Holidayprofile" element={<Holidayprofile />}></Route>
+            <Route path="/Adminprofile" element={<Adminprofile />}></Route>
 
         </Routes>
 
