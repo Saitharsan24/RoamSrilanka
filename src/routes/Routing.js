@@ -12,9 +12,8 @@ import Error from '../pages/error';
 import Holidayprofile from "../pages/holidayplanner_profile";
 import Holiday_dashboard from '../pages/holidayplanner_dashboard';
 import HotelDashboard from '../pages/hotel-dashboard';
+import OurHotel from '../pages/our-hotel';
 import Adminprofile from '../pages/admin_profile';
-
-
 
 function Routing() {
   return (
@@ -26,13 +25,13 @@ function Routing() {
             <Route path='/Services' element={<Services />}></Route>
             <Route path='/Blog' element={<Blog />}></Route>
             <Route path='/About' element={<About />}></Route>
-            <Route path='/dev' element={<HotelDashboard />}></Route>
+            <Route path='/hotelDashboard' element={<HotelDashboard />}></Route>
             <Route path='/Login' element={<Login />}></Route>
             <Route path='/Error' element={<Error />}></Route>
             <Route path="/Holidayprofile" element={<Holidayprofile />}></Route>
+            <Route path='/ourHotel' element={<OurHotel/>}></Route>
             <Route path="/Adminprofile" element={<Adminprofile />}></Route>
             <Route path='/Holidayplanner_dashboard' element={<Holiday_dashboard/>}></Route>
-
         </Routes>
 
     </BrowserRouter>
