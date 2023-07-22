@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="">
             <img
               style={{ width: "45%", height: "5rem", objectFit: "cover" }}
-              src={require("./../assets/img/logo.png")}
+              src={require("./../assets/images/footerlogo.png")}
               alt=""
             />
             <p style={{ width: "60%" }} className="text-white m-2">

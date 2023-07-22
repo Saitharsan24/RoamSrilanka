@@ -1,4 +1,3 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import quality from './../assets/images/quality.png';
 import security from './../assets/images/security.png';
