@@ -3,49 +3,90 @@ import HotelSidebar from "../components/hotel-sidebar";
 import "./../styles/hotel-dashboard.css";
 import Header from "../components/Header";
 import * as Icon from "react-bootstrap-icons";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
-import PieChart from "../components/pie-chart";
+import Chart from 'chart.js/auto';
+import ResponsiveCalendar from "../components/calender";
+import { Bar, Doughnut } from 'react-chartjs-2';
+import {Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title} from 'chart.js';
+
+ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title);
+
+export const data = {
+    labels: ['Occuoancy', 'Vacancy'],
+    datasets: [
+        {
+            label: 'Revenue',
+            data: [2500, 7500],
+            backgroundColor: [
+            '#085D9B',
+            '#6BABD9',
+            ],
+            borderWidth:0,
+    },
+],
+};
+
+export const data1 = {
+  labels: ['Oct 2021', 'Nov 2021', 'Dec 2021', 'Jan 2022', 'Feb 2022'],
+  datasets: [
+      {
+          label: 'Revenue',
+          data: [900, 1200, 1800, 1400, 2500],
+          backgroundColor: [
+          'linear-gradient(180deg, #004577 0%, #81A1DF 100%)',
+          'linear-gradient(180deg, rgba(0, 69, 119, 0.80) 0%, #818ADF 100%)',
+          'linear-gradient(180deg, rgba(0, 69, 119, 0.80) 0%, #9081DF 100%)',
+          'linear-gradient(180deg, rgba(0, 69, 119, 0.80) 0%, #A781DF 100%)',
+          'linear-gradient(180deg, #004577 0%, #81D0DF 100%)'
+          ],
+          borderWidth:0,
+  },
+],
+};
 
 const HotelDashboard = () => {
+
   return (
-    <div style={{width:"-webkit-fill-available", backgroundColor: "#ECECEC" }}>
+    <div>
       <Header />
-      <div className="d-flex flex-row col-12 column-gap-3">
+      <div
+        style={{ backgroundColor: "#ECECEC" }}
+        className="d-flex flex-row column-gap-3 col-12"
+      >
         <HotelSidebar />
-        <div className="d-flex flex-column flex-md-row flex-lg-row align-items-center p-4 justify-content-evenly gap-5">
-          <div className="d-flex flex-column col-6 row-gap-5 mt-2">
-            <div style={{ width: "100%" }}>
+        <div className="d-flex flex-column flex-md-row flex-lg-row p-4 gap-5 justify-content-evenly">
+          <div className="d-flex flex-column col-10 col-md-8 col-lg-6 gap-5 mt-2">
+            <div style={{}}>
               <input
-                style={{ width: "90%", backgroundColor: "#ECECEC" }}
-                className="p-1 occupation"
+                style={{ backgroundColor: "#ECECEC" }}
+                className="p-1 occupation col-6 col-md-6 col-lg-11"
                 type="text"
                 placeholder="Search hotel occupants"
               ></input>
-              <Icon.Search style={{ color: "#087592" }} />
+              <Icon.Search className="col-1" style={{ color: "#087592" }} />
             </div>
             <div className="d-flex flex-column">
               <p style={{ fontSize: "1rem" }}>
                 <b>Incoming requests</b>
               </p>
-              <div className="d-flex flex-column flex-md-row flex-lg-row gap-5 justify-content-evenly">
+              <div className="d-flex flex-column flex-md-row flex-lg-row gap-3 col-12 justify-content-evenly">
                 <div
-                  className="d-flex flex-column flex-md-row flex-lg-row p-2"
-                  style={{width:"-webkit-fill-available", borderRadius: "1rem", backgroundColor: "#24628F" }}
+                  className="d-flex col-12 col-md-8 col-lg-5 column-gap-3 flex-column flex-md-column flex-lg-row p-2 col-12"
+                  style={{ borderRadius: "1rem", backgroundColor: "#24628F" }}
                 >
-                  <div className="d-flex flex-column justify-content-center align-items-center  p-1">
+                  <div className="d-flex col-12 col-md-8 col-lg-3 flex-column justify-content-center align-items-center p-1">
                     <img
+                      className="object-fit-cover img-fluid m-auto"
                       src={require("./../assets/img/DQ.jpeg")}
                       style={{
                         borderRadius: "5rem",
-                        width: "40px",
-                        height: "40px"
+                        // width: "40px",
+                        // height: "40px"
                       }}
                     ></img>
                   </div>
                   <div
                     style={{ color: "white" }}
-                    className="d-flex flex-column col-8 align-items-center justify-content-center "
+                    className="d-flex flex-column col-12 col-md-8 col-lg-7 align-items-center justify-content-center "
                   >
                     <p className="m-0" style={{ fontSize: "1rem" }}>
                       <b>Jonathan D.</b>
@@ -59,25 +100,29 @@ const HotelDashboard = () => {
                   </div>
                 </div>
                 <div
-                  className="d-flex flex-column flex-md-row flex-lg-row"
-                  style={{width:"-webkit-fill-available", borderRadius: "1rem", backgroundColor: "#ffff" }}
+                  className="d-flex col-12 col-md-8 col-lg-5 column-gap-3 flex-column flex-md-column flex-lg-row p-2 col-12"
+                  style={{ borderRadius: "1rem", backgroundColor: "#ffff"}}
                 >
-                  <div className="d-flex flex-column justify-content-center align-items-center  p-1">
+                  <div className="d-flex col-12 col-md-8 col-lg-3 flex-column justify-content-center align-items-center p-1">
                     <img
+                      className="object-fit-cover img-fluid m-auto"
                       src={require("./../assets/img/DQ.jpeg")}
                       style={{
                         borderRadius: "5rem",
-                        width: "40px",
-                        height: "40px"
+                        // width: "40px",
+                        // height: "40px"
                       }}
                     ></img>
                   </div>
-                  <div className="d-flex flex-column col-8 align-items-center justify-content-center">
+                  <div
+                    style={{}}
+                    className="d-flex flex-column col-12 col-md-8 col-lg-7 align-items-center justify-content-center "
+                  >
                     <p className="m-0" style={{ fontSize: "1rem" }}>
                       <b>Jonathan D.</b>
                     </p>
                     <p className="m-0" style={{ fontSize: "0.75rem" }}>
-                      Holiday Planner
+                      Tourist
                     </p>
                     <p className="m-0" style={{ fontSize: "0.75rem" }}>
                       Feb 12 - Feb 14
@@ -90,19 +135,21 @@ const HotelDashboard = () => {
               <p style={{ fontSize: "1rem" }}>
                 <b>Current occupants</b>
               </p>
-              <div className="d-flex flex-column row-gap-3">
-              <div
-                  className="d-flex flex-column flex-md-column flex-lg-row column-gap-6 p-4 justify-content-evenly"
+              <div className="d-flex flex-column row-gap-3 col-12">
+                <div
+                  className="d-flex flex-column flex-md-column flex-lg-row column-gap-6 p-2 justify-content-evenly"
                   style={{ borderRadius: "1rem", backgroundColor: "white" }}
                 >
-                  <img
-                    src={require("./../assets/img/DQ.jpeg")}
-                    style={{
-                      borderRadius: "5rem",
-                      width: "15%",
-                    }}
-                  ></img>
-                  <div className="d-flex flex-column justify-content-evenly ">
+                  <div className="d-flex col-12 col-md-6 col-lg-2">
+                    <img
+                      className="object-fit-cover img-fluid m-auto"
+                      src={require("./../assets/img/DQ.jpeg")}
+                      style={{
+                        borderRadius: "5rem",
+                      }}
+                    ></img>
+                  </div>
+                  <div className="d-flex flex-column justify-content-evenly align-items-center col-12 col-md-6 col-lg-3 ">
                     <p className="m-0" style={{ fontSize: "1rem" }}>
                       <b>Lilliana M.</b>
                     </p>
@@ -111,7 +158,7 @@ const HotelDashboard = () => {
                     </p>
                   </div>
                   <hr style={{ border: "1px solid Black" }} />
-                  <div className="d-flex flex-column justify-content-evenly align-items-center">
+                  <div className="d-flex flex-column col-12 col-md-6 col-lg-3 justify-content-evenly align-items-center">
                     <p className="m-0" style={{ fontSize: "1.5rem" }}>
                       <b>$150</b>
                     </p>
@@ -123,19 +170,20 @@ const HotelDashboard = () => {
                     </p>
                   </div>
                 </div>
-
                 <div
-                  className="d-flex flex-column flex-md-column flex-lg-row column-gap-6 p-4 justify-content-evenly"
+                  className="d-flex flex-column flex-md-column flex-lg-row column-gap-6 p-2 justify-content-evenly"
                   style={{ borderRadius: "1rem", backgroundColor: "white" }}
                 >
-                  <img
-                    src={require("./../assets/img/DQ.jpeg")}
-                    style={{
-                      borderRadius: "5rem",
-                      width: "15%",
-                    }}
-                  ></img>
-                  <div className="d-flex flex-column justify-content-evenly ">
+                  <div className="d-flex col-12 col-md-6 col-lg-2">
+                    <img
+                      className="object-fit-cover img-fluid m-auto"
+                      src={require("./../assets/img/DQ.jpeg")}
+                      style={{
+                        borderRadius: "5rem",
+                      }}
+                    ></img>
+                  </div>
+                  <div className="d-flex flex-column justify-content-evenly align-items-center col-12 col-md-6 col-lg-3 ">
                     <p className="m-0" style={{ fontSize: "1rem" }}>
                       <b>Lilliana M.</b>
                     </p>
@@ -144,7 +192,7 @@ const HotelDashboard = () => {
                     </p>
                   </div>
                   <hr style={{ border: "1px solid Black" }} />
-                  <div className="d-flex flex-column justify-content-evenly align-items-center">
+                  <div className="d-flex flex-column col-12 col-md-6 col-lg-3 justify-content-evenly align-items-center">
                     <p className="m-0" style={{ fontSize: "1.5rem" }}>
                       <b>$150</b>
                     </p>
@@ -159,16 +207,14 @@ const HotelDashboard = () => {
               </div>
             </div>
           </div>
-          <div className="d-flex flex-column col-3 justify-content-evenly gap-4">
-            <div className="d-flex">
-              <Calendar style={{ width: "auto", height: "auto" }} />
-            </div>
+          <div className="d-flex flex-column col-10 col-md-8 col-lg-4 row-gap-3">
+            <div className="d-none d-sm-flex d-md-flex d-lg-flex col-10 col-md-8 col-lg-4"><ResponsiveCalendar/></div>
             <div className="d-flex flex-column">
               <p style={{ fontSize: "1rem" }}>
                 <b>Analytics</b>
               </p>
-              <div className="d-flex flex-row gap-4">
-                {/* <PieChart></PieChart> */}
+              <div className="d-flex flex-column flex-md-row flex-lg-row gap-4">
+                <div className="d-flex row-cols-4"><Doughnut data={data}/></div>
                 <div className="d-flex flex-column justify-content-center">
                   <p className="occup_list" style={{ fontSize: "0.75rem" }}>
                     Occupancy rate: 75%
@@ -179,14 +225,14 @@ const HotelDashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="d-flex flex-column">
+            {/* <div className="d-flex flex-column">
               <p style={{ fontSize: "1rem" }}>
                 <b>Monthly Revenue</b>
               </p>
               <div className="d-flex flex-row gap-4">
-                <img></img>
+                <Bar data={data1}/>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
