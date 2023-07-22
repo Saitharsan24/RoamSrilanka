@@ -76,9 +76,9 @@ function HolidayDashboard() {
                   <p className="user align-self-lg-start">User Information</p>
                   </div>
                   <div className=" d-flex w-100">
-                    <Container>
+                    {/* <Container>
                       <Row className=" d-flex justify-content-center  ">
-                        <Col xs={12} md={6} lg={10}> 
+                        <Col xs={12} md={6} lg={10}>  */}
                           <Form
                             onSubmit={handleSubmit}
                             className="d-flex flex-column gap-4"
@@ -131,9 +131,9 @@ function HolidayDashboard() {
                             </button>
                             </div>
                           </Form>
-                        </Col>
+                        {/* </Col>
                       </Row>
-                    </Container>
+                    </Container> */}
                   </div>
                 </div>
               </div>
