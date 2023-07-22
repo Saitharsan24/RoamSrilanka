@@ -22,7 +22,7 @@ import Holiday_dashboard from "./pages/holidayplanner_dashboard";
 
 function App() {
   return (
-    <HotelRequest/>
+    <Routing/>
   );
 }
 
