@@ -13,7 +13,7 @@ import HotelRequest from './pages/HotelRequest';
 
 function App() {
   return (
-    <Routing/>
+    <HotelRequest/>
   );
 }
 
