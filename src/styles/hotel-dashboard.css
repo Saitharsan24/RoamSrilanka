@@ -1,0 +1,18 @@
+.occupation{
+    border: none;
+    border-bottom: 2px solid #81D0DF;
+}
+
+.occupation::placeholder{
+    color: #8F8F8F;
+}
+
+.occup_list{
+    color: #000;
+font-family: Barlow;
+font-size: 16px;
+font-style: normal;
+font-weight: 800;
+line-height: 143%; /* 22.88px */
+letter-spacing: 0.32px;
+}

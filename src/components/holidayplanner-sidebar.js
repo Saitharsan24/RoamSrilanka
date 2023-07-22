@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as Icon from 'react-bootstrap-icons';
 import './../styles/sidebar.css';
 
-const HotelSidebar = () => {
+const Hotel = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -67,7 +67,7 @@ const HotelSidebar = () => {
             </>
           )}
         </li>
-        <li
+        {/* <li
           className={`menu-item ${selectedItem === 'reports' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('reports')}
         >
@@ -80,7 +80,7 @@ const HotelSidebar = () => {
               >Reports</span>
             </>
           )}
-        </li>
+        </li> */}
         <li
           className={`menu-item ${selectedItem === 'profile' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('profile')}
@@ -96,16 +96,16 @@ const HotelSidebar = () => {
           )}
         </li>
         <li
-          className={`menu-item ${selectedItem === 'hotel' ? 'selected' : 'not'}`}
+          className={`menu-item ${selectedItem === 'trips' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('hotel')}
         >
           {isCollapsed ? (
-            <Icon.HouseDashFill className='icon' />
+            <Icon.CarFront className='icon' />
           ) : (
             <>
-              <Icon.HouseDashFill className='icon' />
-              <span className={`menu-items-list ${selectedItem === 'hotel' ? 'selected' : 'not'}`}
-              >Our Hotel</span>
+              <Icon.CarFront className='icon' />
+              <span className={`menu-items-list ${selectedItem === 'trips' ? 'selected' : 'not'}`}
+              >Trips</span>
             </>
           )}
         </li>
@@ -114,4 +114,4 @@ const HotelSidebar = () => {
   );
 };
 
-export default HotelSidebar;
+export default Hotel;

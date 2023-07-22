@@ -24,7 +24,7 @@ const About=()=>{
 
 
 {/* ------------------- */}
-<div className='main-2 container d-lg-flex d-md-flex d-sm-flex flex-sm-column flex-xs-column flex-md-row flex-lg-row align-items-center justify-content-center gap-4' >
+<div className='main-2 d-lg-flex d-md-flex d-sm-flex flex-sm-column flex-xs-column flex-md-row flex-lg-row align-items-center justify-content-center gap-4' >
                   <div className='col-lg-5 col-md-5 col-sm-12 d-flex flex-column'>        
                               <img className=' img-fluid about-icon m-auto object-fit-contain w-auto'  src={aboutimg}  />
                   </div>
@@ -38,7 +38,7 @@ const About=()=>{
                         </div>
  
                          {/* container for evaluation of pass activity */}
-                             <div className='ex-2 container d-lg-flex d-md-flex d-sm-flex flex-sm-column flex-md-row flex-lg-row gap-5'> 
+                             <div className='ex-2 d-lg-flex d-md-flex d-sm-flex flex-sm-column flex-md-row flex-lg-row gap-5'> 
                              <div className='d-flex    gap-4'> 
                                  <div className='col-lg-6 col-md-6 col-sm-6 d-flex flex-column' >
                                        <div style={{fontsize:"40px",fontWeight:"bold",color:"#DB163A"}}>15</div> 
@@ -70,7 +70,7 @@ const About=()=>{
                   <span class="head-blue">Why you Roam</span>
                   <span class="head-red"> Sri Lanka?</span>
            </div>
-       <div className="container d-lg-flex d-md-flex d-sm-flex flex-sm-column flex-md-row flex-lg-row align-content-center justify-content-center gap-5 mt-2">
+       <div className="d-lg-flex d-md-flex d-sm-flex flex-sm-column flex-md-row flex-lg-row align-content-center justify-content-center gap-5 mt-2">
           <div className="box col-lg-3 col-md-3 col-sm-12 d-flex flex-column align-content-center">
           <img className='about-icon m-auto' style={{width:"123px",height:"123px"}}  src={quality}  />
                 <div className='box-head text-center'><p style={{fontSize:"43px",fontWeight:"bold"}} >Quality</p></div>
@@ -119,4 +119,4 @@ const About=()=>{
     );
 };
 
-export default About
+export default About;
