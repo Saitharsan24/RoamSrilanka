@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import * as Icon from 'react-bootstrap-icons';
 import './../styles/sidebar.css';
+import { Link } from 'react-router-dom';
 
 const Hotel = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -28,6 +29,7 @@ const Hotel = () => {
           className={`menu-item ${selectedItem === 'dashboard' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('dashboard')}
         >
+          <Link to="/Holidayplanner_dashboard">
           {isCollapsed ? (
             <Icon.ColumnsGap className='icon'/>
           ) : (
@@ -38,11 +40,13 @@ const Hotel = () => {
             >Dashboard</span>
             </>
           )}
+          </Link>
         </li>
         <li
             className={`menu-item ${selectedItem === 'requests' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('requests')}
         >
+          <Link to="/plannerrequests">
           {isCollapsed ? (
             <Icon.BriefcaseFill className='icon' />
           ) : (
@@ -52,11 +56,13 @@ const Hotel = () => {
               >Requests</span>
             </>
           )}
+          </Link>
         </li>
         <li
           className={`menu-item ${selectedItem === 'chat' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('chat')}
         >
+          <Link to="/plannerchat">
           {isCollapsed ? (
             <Icon.ChatSquareText className='icon' />
           ) : (
@@ -66,11 +72,13 @@ const Hotel = () => {
               >Chat</span>
             </>
           )}
+          </Link>
         </li>
         {/* <li
           className={`menu-item ${selectedItem === 'reports' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('reports')}
         >
+        <Link to="/plannerreports">
           {isCollapsed ? (
             <Icon.Clock className='icon' />
           ) : (
@@ -80,11 +88,13 @@ const Hotel = () => {
               >Reports</span>
             </>
           )}
+          </Link>
         </li> */}
         <li
           className={`menu-item ${selectedItem === 'profile' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('profile')}
         >
+          <Link to="/Holidayprofile">
           {isCollapsed ? (
             <Icon.People className='icon' />
           ) : (
@@ -94,11 +104,13 @@ const Hotel = () => {
               >Profile</span>
             </>
           )}
+          </Link>
         </li>
         <li
           className={`menu-item ${selectedItem === 'trips' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('hotel')}
         >
+          <Link to="/trips">
           {isCollapsed ? (
             <Icon.CarFront className='icon' />
           ) : (
@@ -108,6 +120,7 @@ const Hotel = () => {
               >Trips</span>
             </>
           )}
+          </Link>
         </li>
       </ul>
     </div>
