@@ -1,13 +1,12 @@
 import React from "react";
-import Header from "../components/Header";
+import Headeruser from "../components/headerusers";
 import Footer from "../components/footer";
 import "../styles/holidayplanner_profile.css";
 import profile from "../assets/images/profile.jpg";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Link } from "react-bootstrap-icons";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import Sidebar from "../components/holidayplanner-sidebar";
 
-function HolidayDashboard() {
+function Holidayprofile() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Add your form submission logic here
@@ -15,8 +14,8 @@ function HolidayDashboard() {
 
   return (
     <React.Fragment>
-      <div className=" full">
-        <Header />
+      <div className=" full d-flex flex-column">
+        <Headeruser />
         <div className="d-flex">
           <Sidebar />
           <div col-10>
@@ -32,9 +31,9 @@ function HolidayDashboard() {
                 </a>
                 <a href="/saran" className="account">
                   <div className="Acc2 d-flex flex-column col-12 p-3">
-                    <p>Account Setting</p>
+                    <p>Change Password</p>
                     <p className=" text-danger">
-                      Details about your Peronal information
+                    Change your account password
                     </p>
                   </div>
                 </a>
@@ -72,13 +71,13 @@ function HolidayDashboard() {
                   </div>
                 </div>
                 <div className="details d-flex flex-column align-items-center mb-3 col-12 p-3">
-                    <div className="d-flex col-10 p-2">
-                  <p className="user align-self-lg-start">User Information</p>
+                  <div className="d-flex col-10 p-2">
+                    <p className="user align-self-lg-start">User Information</p>
                   </div>
-                  <div className=" d-flex w-100">
-                    {/* <Container>
+                  <div className=" d-flex">
+                    {/* <Container> */}
                       <Row className=" d-flex justify-content-center  ">
-                        <Col xs={12} md={6} lg={10}>  */}
+                        <Col xs={12} md={6} lg={10}>
                           <Form
                             onSubmit={handleSubmit}
                             className="d-flex flex-column gap-4"
@@ -86,7 +85,12 @@ function HolidayDashboard() {
                             <div className=" d-flex flex-lg-row flex-md-column flex-column col-11 gap-5">
                               <Form.Group controlId="formBasicName">
                                 <Form.Label>First Name</Form.Label>
-                                <Form.Control style={{borderRadius: '5px', background: '#F1F1F2', border:'none'}}
+                                <Form.Control
+                                  style={{
+                                    borderRadius: "5px",
+                                    background: "#F1F1F2",
+                                    border: "none",
+                                  }}
                                   type="text"
                                   placeholder="Enter your name"
                                 />
@@ -94,46 +98,79 @@ function HolidayDashboard() {
 
                               <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Last Name</Form.Label>
-                                <Form.Control style={{borderRadius: '5px', background: '#F1F1F2',border:'none'}}
+                                <Form.Control
+                                  style={{
+                                    borderRadius: "5px",
+                                    background: "#F1F1F2",
+                                    border: "none",
+                                  }}
                                   type="email"
                                   placeholder="Enter email"
                                 />
                               </Form.Group>
                             </div>
                             <div className=" d-flex flex-row col-11">
-                            <Form.Group className="d-flex flex-column col-12 align-items-lg-start" controlId="formBasicEmail">
-                              <Form.Label>Address</Form.Label>
-                              <Form.Control style={{borderRadius: '5px', background: '#F1F1F2',border:'none'}}
-                                type="email"
-                                placeholder="Enter email"
-                              />
-                            </Form.Group>
+                              <Form.Group
+                                className="d-flex flex-column col-12 align-items-lg-start"
+                                controlId="formBasicEmail"
+                              >
+                                <Form.Label>Address</Form.Label>
+                                <Form.Control
+                                  style={{
+                                    borderRadius: "5px",
+                                    background: "#F1F1F2",
+                                    border: "none",
+                                  }}
+                                  type="email"
+                                  placeholder="Enter email"
+                                />
+                              </Form.Group>
                             </div>
                             <div className="d-flex flex-lg-row flex-md-column flex-column col-11 gap-5">
                               <Form.Group controlId="formBasicEmail">
                                 <Form.Label>NIC Number</Form.Label>
-                                <Form.Control style={{borderRadius: '5px', background: '#F1F1F2',border:'none'}}
+                                <Form.Control
+                                  style={{
+                                    borderRadius: "5px",
+                                    background: "#F1F1F2",
+                                    border: "none",
+                                  }}
                                   type="email"
                                   placeholder="Enter email"
                                 />
                               </Form.Group>
                               <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Contact</Form.Label>
-                                <Form.Control style={{borderRadius: '5px', background: '#F1F1F2',border:'none'}}
+                                <Form.Control
+                                  style={{
+                                    borderRadius: "5px",
+                                    background: "#F1F1F2",
+                                    border: "none",
+                                  }}
                                   type="email"
                                   placeholder="Enter email"
                                 />
                               </Form.Group>
                             </div>
                             <div className="d-flex justify-content-end col-11">
-                            <button style={{borderRadius:'10px',backgroundColor:'#004577',color:'#ffffff',border:'0px',width:'auto'}} className=" d-flex col-4 justify-content-center  p-1" type="submit">
-                            Update profile
-                            </button>
+                              <button
+                                style={{
+                                  borderRadius: "10px",
+                                  backgroundColor: "#004577",
+                                  color: "#ffffff",
+                                  border: "0px",
+                                  width: "auto",
+                                }}
+                                className=" d-flex col-4 justify-content-center  p-1"
+                                type="submit"
+                              >
+                                Update profile
+                              </button>
                             </div>
                           </Form>
                         {/* </Col>
                       </Row>
-                    </Container> */}
+                    {/* </Container> */}
                   </div>
                 </div>
               </div>
@@ -146,4 +183,4 @@ function HolidayDashboard() {
   );
 }
 
-export default HolidayDashboard;
+export default Holidayprofile;

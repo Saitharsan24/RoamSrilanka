@@ -37,7 +37,7 @@ function Contact() {
                 size={30}
                 className="mt-3 border rounded-circle p-1 bg-white"
               ></Icon.Envelope>
-              <p class="ms-3 info-text mb-0">info@yourdomain.com</p>
+              <p className="ms-3 info-text mb-0">info@yourdomain.com</p>
             </div>
             <div className="d-flex flex-column flex-md-row flex-sm-row align-items-center py-1">
               <Icon.Telephone
