@@ -3,18 +3,18 @@ import "./../styles/hotelrequest.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, Table } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
-import Hotel from "../components/hotel-sidebar";
+import HotelSidebar from "../components/hotel-sidebar";
+import Headeruser from "../components/headerusers";
 
 function HotelRequest() {
   return (
-    <div className="flex-row d-inline-flex">
-      <div className="col-2">
-        <Hotel />
-      </div>
-
-      <div className="col-10 p-5 container-fluid">
+    <div className="main d-flex flex-column">
+        <Headeruser />
+        <div className="d-flex">
+        <HotelSidebar />
+      <div className="col-10 p-5 d-flex flex-column">
         <h1 className="req-h1">All Requests</h1>
-        <div className="search-bar d-flex me-5 rounded">
+        <div className="search-bar d-flex mx-5 rounded">
           <div className="d-flex bg-white search">
             <button className="button">
               <BsSearch style={{ color: "#7E7E7E" }} />
@@ -23,7 +23,7 @@ function HotelRequest() {
           </div>
         </div>
 
-        <div className="table-responsive ">
+        <div className="d-flex flex-column">
           <Table className="p-5">
             <thead className="table-thead">
               <tr>
@@ -48,7 +48,7 @@ function HotelRequest() {
                   <Button className="btn-rej px-5">Reject</Button>
                 </td>
               </tr>
-              <tr>
+              {/* <tr>
                 <td>Jane Cooper</td>
                 <td>(225) 555-0118</td>
                 <td>jane@microsoft.com</td>
@@ -71,12 +71,12 @@ function HotelRequest() {
                 <td className="col-1 justify-content-center align-items-center">
                   <Button className="btn-rej px-5">Reject</Button>
                 </td>
-              </tr>
+              </tr> */}
             </tbody>
           </Table>
         </div>
 
-        <div>
+        <div className="d-flex flex-column">
           <ul className="pagination justify-content-end">
             <li className="page-item disabled">
               <a className="page-link" href="#">«</a>
@@ -102,6 +102,7 @@ function HotelRequest() {
           </ul>
           </div>
       </div>
+    </div>
     </div>
   );
 }
