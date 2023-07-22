@@ -4,6 +4,7 @@ import { Component } from "react";
 import { Link } from 'react-router-dom'
 import Header from "../components/Header";
 import "./../styles/error.css";
+import err from '../assets/img/bg3.png';
 
 export default function Error() {
   return (
@@ -17,7 +18,7 @@ export default function Error() {
             <button type="submit" className="btn btn-primary mt-3" style={{width:'50%', backgroundColor: '#004577', height: '50px'}}>Back To Home </button>
           </div>
           <div className='column'>
-            <img src="../assets/img/bg3.png" alt="error" />
+            <img className="img_2 img-fluid" src={err}></img>
           </div>
         </div>
       </div>
