@@ -1,7 +1,7 @@
 import React from "react";
 import HotelSidebar from "../components/hotel-sidebar";
 import "./../styles/hotel-dashboard.css";
-import Header from "../components/Header";
+import Headeruser from "../components/headerusers";
 import * as Icon from "react-bootstrap-icons";
 import Chart from 'chart.js/auto';
 import ResponsiveCalendar from "../components/calender";
@@ -47,7 +47,7 @@ const HotelDashboard = () => {
 
   return (
     <div>
-      <Header />
+      <Headeruser />
       <div
         style={{ backgroundColor: "#ECECEC" }}
         className="d-flex flex-row column-gap-3 col-12"

@@ -1,13 +1,13 @@
 import React from "react";
 import HotelSidebar from "../components/hotel-sidebar";
 import DragDropFile from "../components/file-upload";
-import Header from "../components/Header";
+import Headeruser from "../components/headerusers";
 import * as Icon from "react-bootstrap-icons";
 
 const OurHotel = () => {
   return (
     <div className="d-flex flex-column">
-      <Header />
+      <Headeruser />
       <div
         className="d-flex flex-row col-12"
         style={{ backgroundColor: "#F4F4F5" }}
@@ -65,12 +65,12 @@ const OurHotel = () => {
                   }}
                   className="m-0"
                 >
-                  Cost per Room
+                  Booked Room
                 </p>
               </div>
               <div className="d-flex justify-content-center">
                 <p style={{ fontSize: "30px" }}>
-                  <b>$198k</b>
+                  <b>15</b>
                 </p>
               </div>
               <div className="d-flex flex-row gap-5">
@@ -81,9 +81,6 @@ const OurHotel = () => {
                   <p style={{ fontSize: "15px", fontFamily: "Poppins" }}>
                     <span style={{ color: "#00B087" }}>37.8%</span> this month
                   </p>
-                </div>
-                <div>
-                  <Icon.PencilSquare style={{ fontSize: "22px" }} />
                 </div>
               </div>
             </div>
@@ -91,35 +88,25 @@ const OurHotel = () => {
               className="d-flex flex-column col-10 col-lg-3 col-md-7 column-gap-5 align-items-center p-3"
               style={{ borderRadius: "20px", backgroundColor: "#EAEAF2" }}
             >
-              <div className="d-flex flex-row gap-3 align-items-center ">
-                <Icon.Coin style={{ fontSize: "22px", color: "#7166F9" }} />
-                <p
-                  style={{
-                    fontSize: "18px",
-                    color: "#ACACAC",
-                    fontFamily: "Poppins",
-                  }}
-                  className="m-0"
-                >
-                  Cost per Room
-                </p>
+              <div className="d-flex flex-row gap-5 align-items-center ">
+                <Icon.PersonFill style={{ fontSize: "22px", color: "#7166F9" }} />
+                <div className="d-flex flex-row gap-2 align-items-center">
+                  <Icon.CaretDownFill style={{color:"#FD2E00",fontSize:"10px"}}/>
+                  <p className="m-0" style={{ fontSize: "15px", fontFamily: "Poppins" }}>
+                  2.1%
+                  </p>
+                </div>
               </div>
               <div className="d-flex justify-content-center">
                 <p style={{ fontSize: "30px" }}>
-                  <b>$198k</b>
+                  <b>326.60K</b>
                 </p>
               </div>
               <div className="d-flex flex-row gap-5">
                 <div className="d-flex flex-row">
-                  <Icon.ArrowUp
-                    style={{ fontSize: "22px", color: "#00B087" }}
-                  />
                   <p style={{ fontSize: "15px", fontFamily: "Poppins" }}>
-                    <span style={{ color: "#00B087" }}>37.8%</span> this month
+                  Total Monthly Visit
                   </p>
-                </div>
-                <div>
-                  <Icon.PencilSquare style={{ fontSize: "22px" }} />
                 </div>
               </div>
             </div>
