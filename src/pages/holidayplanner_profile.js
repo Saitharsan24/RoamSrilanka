@@ -167,7 +167,7 @@ function Holidayprofile() {
                               </button>
                             </div>
                           </Form>
-                        </Col>
+                        {/* </Col>
                       </Row>
                     {/* </Container> */}
                   </div>
