@@ -10,7 +10,6 @@ import { FaCoffee,FaSignOutAlt,FaCog,FaBell,FaUser } from 'react-icons/fa';
 
 const Headeruser=()=>(
   <>
-
     <React.Fragment>
       <div className=" container-fluid d-lg-flex d-md-flex d-sm-flex flex-sm-column  bg-white ">
         <div className='row '>
@@ -41,7 +40,6 @@ const Headeruser=()=>(
         </div>
       </div>
     </React.Fragment>
-
   </>
 );
 

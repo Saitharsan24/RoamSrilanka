@@ -1,6 +1,5 @@
 import React from "react";
 import Headeruser from "../components/headerusers";
-import Footer from "../components/footer";
 import "../styles/holidayplanner_profile.css";
 import profile from "../assets/images/profile.jpg";
 import { Container, Row, Col, Form } from "react-bootstrap";
@@ -14,7 +13,7 @@ function Holidayprofile() {
 
   return (
     <React.Fragment>
-      <div className=" full d-flex flex-column">
+      <div className=" full ">
         <Headeruser />
         <div className="d-flex">
           <Sidebar />
