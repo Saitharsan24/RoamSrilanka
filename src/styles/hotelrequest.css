@@ -1,0 +1,96 @@
+.main {
+  background-color: #f5f5f5;
+}
+
+.search-bar {
+  align-items: center;
+  justify-content: right;
+}
+
+.search {
+  align-items: center;
+  border-radius: 10px;
+  margin: 0.5em 0;
+  padding: 0.5em 0.5em 0.5em 1em;
+  align-content: flex-end;
+}
+
+.search button,
+.search input {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  align-items: right;
+}
+
+.search input::placeholder {
+  color: #b5b7c0;
+}
+
+.req-h1 {
+  font-family: "Poppins" !important;
+  font-weight: 600 !important;
+  font-size: 22px !important;
+}
+
+.btn-acc {
+  flex-direction: row !important;
+  background: rgba(22, 192, 152, 0.38) !important;
+  border: 1px solid #00b087 !important;
+  border-radius: 6px !important;
+  padding: 4px 12px !important;
+  font-size: 14px !important;
+  color: #008767 !important;
+}
+
+.btn-rej {
+  flex-direction: row !important;
+  background: #ffc5c5 !important;
+  border: 1px solid #df0404 !important;
+  border-radius: 6px !important;
+  padding: 4px 12px !important;
+  font-size: 14px !important;
+  color: #DF0404 !important;
+}
+
+.table {
+  --bs-table-bg-type: #f5f5f5 !important;
+}
+
+.table-thead {
+  border-color: #8f8f8f;
+}
+
+.table > tbody > tr > td {
+  border-bottom: 1px solid #8f8f8f !important;
+  color: #292d32;
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.table > thead > tr > th {
+  color: #b5b7c0;
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.pagination li a {
+  font-family: "Poppins";
+  color: #464d51;
+  background-color: rgba(255, 255, 255, 0.3);
+  font-weight: 500;
+  font-size: 12px;
+  margin: 0 5px;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  padding: 6px 9px;
+}
+
+.pagination li a:hover,
+.pagination li a:focus,
+.pagination li.active a {
+  color: #ffffff;
+  background-color: #5932ea;
+}

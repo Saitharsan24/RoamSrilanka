@@ -1,18 +1,12 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-import Header from './components/Header'
-import Footer from './components/footer'
-import Home from './pages/home';
-import Explore from './pages/explore';
+import { Sidebar } from "react-pro-sidebar";
+import Routing from './routes/Routing';
 
 function App() {
   return (
-    <>
-      
-      <Explore />
-      <Footer />
-    </>
+    <Routing/>
   );
 }
 
