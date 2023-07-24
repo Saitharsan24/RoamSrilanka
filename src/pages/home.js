@@ -91,10 +91,10 @@ function Home() {
             <h1 className='p-2 pt-0' style={{color:"#004577", fontWeight:"700", fontSize:"3rem", margin:"0px", textAlign:"center"}}>We can do anything we want to <br />  
               if <span style={{ fontFamily: "Barlow", color: "#DB163A" }}> we stick</span> to it long enough.
             </h1>
-            <p className='pt-3' style={{fontSize:"1.5rem", fontWeight:"500"}}>Do what you can, with what you have, where you are.</p>
+            <p className='pt-3' style={{fontSize:"1.5rem", fontWeight:"500", textAlign:"center  "}}>Do what you can, with what you have, where you are.</p>
         </div>
         <Button
-          className="explore-btn"
+          className="explore-btn mt-4"
           variant="primary"
           size="lg"
           style={{
