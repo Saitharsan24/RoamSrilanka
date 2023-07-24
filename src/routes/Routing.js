@@ -32,6 +32,7 @@ function Routing() {
             <Route path="/Holidayprofile" element={<Holidayprofile />}></Route>
             <Route path="/Adminprofile" element={<Adminprofile />}></Route>
             <Route path='/Holidayplanner_dashboard' element={<Holiday_dashboard/>}></Route>
+            <Route path='/Hotel-dashboard' element={<HotelDashboard/>}></Route>
 
         </Routes>
 
