@@ -29,7 +29,6 @@ const Header=()=>{
             <Nav.Link className='nav-item-1 text-black m-2 jost-text ' ><Link to='/Contact'>Contact</Link></Nav.Link>
             </Nav>
             <Nav className="nav-item-list-2 ms-auto ">
-            
             <Nav.Link className='nav-item-2 text-black m-2 jost-text ' href="/Login">Log In</Nav.Link>
             <Nav.Link className=' nav-item-2 text-danger m-2 jost-text ' href="#link"><button type="button" className="btn btn-danger reg-btn">Register</button></Nav.Link>
             </Nav>
