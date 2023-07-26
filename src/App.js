@@ -15,7 +15,7 @@ import HotelSidebar from './components/hotel-sidebar';
 import HotelDashboard from './pages/hotel-dashboard';
 import Holidayprofile from "./pages/holidayplanner_profile";
 import Adminprofile from './pages/admin_profile';
-
+import Adminusers from './pages/admin_users';
 import Holiday_dashboard from "./pages/holidayplanner_dashboard";
 
 function App() {

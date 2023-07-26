@@ -20,17 +20,17 @@ const Headeruser=()=>(
           <div className='col-6 flex-sm-column flex-xs-column flex-md-colum flex-lg-colum'>
             <div className=' mt-4 d-flex flex-row align-items-center justify-content-end gap-2 gap-sm-2 gap-md-4 gap-lg-5 '>
 
-              <div className=' ' style={{ color: "#004577" }}><FaBell/></div>
-              <div className='' style={{ color: "#004577" }}><FaUser/></div>
+              <div className=' ' style={{ color: "#004577",fontSize:"20px" }}><FaBell/></div>
+              <div className='' style={{ color: "#004577",fontSize:"30px" }}><FaUser/></div>
               <div className='' style={{ color: "#004577", fontWeight: "bold" }}>
-                <div class="dropdown">
+                <div className="dropdown" >
                   <button className="btn  dropdown-toggle" style={{ width: "100px" }} type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Saranjan
                   </button>
                   <ul className="dropdown-menu custom-dropdown-menu">
                     <li><div></div></li>
-                    <li><div className="dropdown-item " style={{ color: "#004577", fontSize: "16px" }}><p>  <FaSignOutAlt/>LogOut</p></div></li>
-                    <li><div className="dropdown-item " style={{ color: "#004577", fontSize: "16px" }}><p> <FaCog/> Setting</p></div></li>
+                    <li><div className="dropdown-item " ><p style={{ fontSize: "16px" }}>  <FaSignOutAlt/>LogOut</p></div></li>
+                    <li><div className="dropdown-item " ><p style={{ fontSize: "16px" }}> <FaCog/> Setting</p></div></li>
                   </ul>
                 </div>
 
