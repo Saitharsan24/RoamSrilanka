@@ -9,6 +9,8 @@ import About from "../pages/about";
 import Login from "../pages/login";
 import Error from "../pages/error";
 import Holidayprofile from "../pages/holidayplanner_profile";
+import Adminusers  from '../pages/admin_users';
+import Admin_tourist_details from '../pages/admin_tourist_view_detail';
 import Holiday_dashboard from "../pages/holidayplanner_dashboard";
 import HotelDashboard from "../pages/hotel-dashboard";
 import Adminprofile from "../pages/admin_profile";
@@ -23,8 +25,6 @@ function Routing() {
         <Route path="/header" element={<Header />}></Route>
         <Route path="/hoteldashboard" element={<HotelDashboard />}></Route>
         <Route path="/requests" element={<HotelRequest />}></Route>
-
-        {/* <Route path='/' element={<Header />}></Route> */}
         <Route path="/Contact" element={<Contact />}></Route>
         <Route path="/Services" element={<Services />}></Route>
         <Route path="/Blog" element={<Blog />}></Route>
@@ -35,6 +35,8 @@ function Routing() {
         <Route path="/Holidayprofile" element={<Holidayprofile />}></Route>
         <Route path="/Adminprofile" element={<Adminprofile />}></Route>
         <Route path="/Holidayplanner_dashboard" element={<Holiday_dashboard />}></Route>
+        <Route path='/Adminusers' element={<Adminusers/>}></Route>
+        <Route path='/Admin_touristdetails' element={<Admin_tourist_details/>}></Route>
       </Routes>
     </BrowserRouter>
   );
