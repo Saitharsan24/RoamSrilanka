@@ -35,6 +35,20 @@
   letter-spacing: -0.14px;
   cursor: pointer;
 }
+.view {
+  border-radius: 6px;
+  background: #004577;
+  padding: 4px 12px;
+  width: 98px;
+  height: 28px;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  cursor: pointer;
+}
 .table-striped > tbody > tr:nth-of-type(odd) > * {
   --bs-table-color-type: var(--bs-table-striped-color);
   --bs-table-bg-type: rgb(255 255 255 / 5%) !important;
@@ -46,7 +60,7 @@ th {
   border-right: none !important;
   border-left: none !important;
   border-top: none !important;
-  border-bottom: 1px solid #8f8f8f !important;
+  border-bottom: 1px solid #8F8F8F !important;
 }
 .bs-select select {
   display: inline-block !important;
@@ -54,7 +68,7 @@ th {
   margin-left: 0.5rem;
 }
 th {
-  color: #B5B7C0 !important;
+  color: #b5b7c0 !important;
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
@@ -62,14 +76,14 @@ th {
   line-height: normal;
   letter-spacing: -0.14px;
 }
-td{
-  color: #292D32 !important;
-font-family: Poppins;
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-letter-spacing: -0.14px;
+td {
+  color: #292d32 !important;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.14px;
 }
 label {
   display: inline-block;

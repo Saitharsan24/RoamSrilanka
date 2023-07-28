@@ -15,6 +15,9 @@ import HotelDashboard from '../pages/hotel-dashboard';
 import OurHotel from '../pages/our-hotel';
 import HotelRequest from '../pages/HotelRequest';
 import Adminprofile from '../pages/admin_profile';
+import UpdateEvent1 from '../pages/HPUpdate-event1';
+import AdminUser from '../pages/admin-users';
+import GuideDashoard from '../pages/guide-dashboard';
 
 function Routing() {
   return (
@@ -34,6 +37,9 @@ function Routing() {
             <Route path='/hotelRequest' element={<HotelRequest/>}></Route>
             <Route path="/Adminprofile" element={<Adminprofile />}></Route>
             <Route path='/Holidayplanner_dashboard' element={<Holiday_dashboard/>}></Route>
+            <Route path='/UpdateEvent1' element={<UpdateEvent1/>}></Route>
+            <Route path='/adminUser' element={<AdminUser/>}></Route>
+            <Route path='/guideDashboard' element={<GuideDashoard/>}></Route>
         </Routes>
 
     </BrowserRouter>

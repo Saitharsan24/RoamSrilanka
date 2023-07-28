@@ -14,7 +14,7 @@ const OurHotel = () => {
       >
         <HotelSidebar />
         <div className="d-flex flex-column w-100 gap-3">
-          <div className="d-flex flex-column flex-md-column flex-lg-row gap-3 align-items-center justify-content-evenly mt-2">
+          <div className="d-flex flex-column flex-md-column flex-lg-row gap-3 align-items-center justify-content-evenly mt-3">
             <div
               className="d-flex flex-column col-10 col-lg-3 col-md-7 column-gap-5 align-items-center p-3"
               style={{ borderRadius: "20px", backgroundColor: "#EAEAF2" }}
