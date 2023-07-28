@@ -69,3 +69,6 @@
     color: #ffffff ;
 }
 
+a:link {
+    text-decoration: none;
+}

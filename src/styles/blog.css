@@ -21,6 +21,7 @@
     height: 15rem;
     border-radius: 10% 0 10% 0;
 }
+
 .blog-list-msg{
     background-color: #ECECEC;
     width: 100%;
@@ -35,4 +36,3 @@
 .blog-full-list h4{
     font-family: Jost;
 }
-

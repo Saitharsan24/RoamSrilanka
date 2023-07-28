@@ -1,50 +1,48 @@
-// import React from "react";
-// import Headeruser from "../components/headerusers";
-// import Footer from "../components/footer";
-// import "../styles/holidayplanner_profile.css";
-// import profile from "../assets/images/profile.jpg";
-// import { Container, Row, Col, Form } from "react-bootstrap";
-// import Sidebar from "../components/holidayplanner-sidebar";
-
+import React from "react";
+import Headeruser from "../components/headerusers";
+import "../styles/holidayplanner_profile.css";
+import profile from "../assets/images/profile.jpg";
+import { Container, Row, Col, Form } from "react-bootstrap";
+import Sidebar from "../components/holidayplanner-sidebar";
 // function Holidayprofile() {
 //   const handleSubmit = (event) => {
 //     event.preventDefault();
 //     // Add your form submission logic here
 //   };
 
-//   return (
-//     <React.Fragment>
-//       <div className=" full d-flex flex-column">
-//         <Headeruser />
-//         <div className="d-flex">
-//           <Sidebar />
-//           <div col-10>
-//             <div className="total d-flex flex-column  flex-md-row flex-lg-row  gap-3 col-12 justify-content-evenly align-items-center align-items-md-start align-items-lg-start">
-//               <div className=" d-flex flex-column col-11 col-md-4 col-lg-4 gap-4">
-//                 <a href="/saran" className=" account">
-//                   <div className="Acc d-flex flex-column col-12 p-3">
-//                     <p>Account Setting</p>
-//                     <p className=" text-danger">
-//                       Details about your Peronal information
-//                     </p>
-//                   </div>
-//                 </a>
-//                 <a href="/saran" className="account">
-//                   <div className="Acc2 d-flex flex-column col-12 p-3">
-//                     <p>Change Password</p>
-//                     <p className=" text-danger">
-//                     Change your account password
-//                     </p>
-//                   </div>
-//                 </a>
-//               </div>
-//               <div className="d-flex col-11 col-md-6 col-lg-6 gap-3 flex-column">
-//                 <div className="profile d-flex flex-column flex-md-column p-3 ">
-//                   <div className=" d-lg-flex d-md-flex d-flex flex-column-reverse flex-md-column-reverse flex-lg-row gap-lg-4 gap-md-2 gap-sm-1 justify-content-between p-2 ">
-//                     <img
-//                       src={profile}
-//                       className=" profile-pic object-fit-cover img-fluid m-auto col-3"
-//                     ></img>
+  return (
+    <React.Fragment>
+      <div className=" full ">
+        <Headeruser />
+        <div className="d-flex">
+          <Sidebar />
+          <div col-10>
+            <div className="total d-flex flex-column  flex-md-row flex-lg-row  gap-3 col-12 justify-content-evenly align-items-center align-items-md-start align-items-lg-start">
+              <div className=" d-flex flex-column col-11 col-md-4 col-lg-4 gap-4">
+                <a href="/saran" className=" account">
+                  <div className="Acc d-flex flex-column col-12 p-3">
+                    <p>Account Setting</p>
+                    <p className=" text-danger">
+                      Details about your Peronal information
+                    </p>
+                  </div>
+                </a>
+                <a href="/saran" className="account">
+                  <div className="Acc2 d-flex flex-column col-12 p-3">
+                    <p>Change Password</p>
+                    <p className=" text-danger">
+                    Change your account password
+                    </p>
+                  </div>
+                </a>
+              </div>
+              <div className="d-flex col-11 col-md-6 col-lg-6 gap-3 flex-column">
+                <div className="profile d-flex flex-column flex-md-column p-3 ">
+                  <div className=" d-lg-flex d-md-flex d-flex flex-column-reverse flex-md-column-reverse flex-lg-row gap-lg-4 gap-md-2 gap-sm-1 justify-content-between p-2 ">
+                    <img
+                      src={profile}
+                      className=" profile-pic object-fit-cover img-fluid m-auto col-3"
+                    ></img>
 
 //                     <p className="name float-md-start float-lg-start">
 //                       Manoharan Keethapriya

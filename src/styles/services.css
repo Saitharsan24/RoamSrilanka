@@ -14,8 +14,6 @@
     
 }
 
-
-
 .text_1{
     font-size: 7rem;
     font-family:'Barlow';
@@ -28,6 +26,7 @@
     background-color: #ffffff;
     margin-top: -4rem;
 }
+
 .ser_title{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #004577;
@@ -55,6 +54,7 @@
 .element{
     padding-top: 2.5rem;
     padding-bottom: 2rem;
+
 }
 
 .img_2{

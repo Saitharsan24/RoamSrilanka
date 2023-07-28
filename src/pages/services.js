@@ -17,6 +17,7 @@ import backpack from "../assets/images/backpack 1.png";
 function Services() {
   return (
     <React.Fragment>
+
       {<Header />}
       <div className="top">
         <p className="text-white text-center text_1 align-middle ">Services</p>
@@ -46,7 +47,7 @@ function Services() {
           </div>
         </div>
 
-        <div className=" element d-flex flex-column  flex-md-column flex-lg-row justify-content-center gap-5">
+        <div className=" element d-flex flex-column  flex-md-column flex-lg-row-reverse justify-content-center gap-5">
           <img className="img_1 img-fluid " src={ser_2}></img>
           <div className="d-flex flex-column gap-3 align-content-center justify-content-center">
             <img className="img_2 img-fluid" src={vector_2}></img>
@@ -78,7 +79,7 @@ function Services() {
           </div>
         </div>
 
-        <div className=" element d-flex flex-column flex-md-column flex-lg-row justify-content-center gap-5">
+        <div className=" element d-flex flex-column flex-md-column flex-lg-row-reverse justify-content-center gap-5">
           <img className="img_1 img-fluid " src={ser_4}></img>
           <div className="d-flex flex-column gap-3 align-content-center justify-content-center">
             <img className="img_2 img-fluid" src={backpack}></img>
@@ -94,7 +95,6 @@ function Services() {
           </div>
         </div>
       </div>
-
       <Footer />
     </React.Fragment>
   );
