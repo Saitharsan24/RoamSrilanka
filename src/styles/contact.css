@@ -3,7 +3,7 @@ p {
   }
   
   .info {
-    height: 22rem;
+    /* height: 22rem; */
     background: rgba(219, 22, 58, 0.25);
     border-radius: 2rem;
   }
@@ -52,17 +52,21 @@ p {
     background-image: url(../assets/img/location.png);
     background-position: center;
     background-size: cover;
-    height: 28rem;
+    height: 23rem;
     border-radius: 10%;
   }
   
   .contact-list {
     border-radius: 5% 5% 0 0;
-    margin-top: -5rem;
+    /* margin-top: -5rem; */
     background-color: white;
   }
+
+  .form-label {
+    justify-content: end !important;
+}
   
-  @media only screen and (max-width: 600px) {
+  /* @media only screen and (max-width: 600px) {
     .container {
       width: 100% !important;
       padding-bottom: 207px !important;
@@ -70,4 +74,4 @@ p {
     .info-text {
       font-size: unset;
     }
-  }
+  } */
