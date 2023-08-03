@@ -11,16 +11,26 @@ export default function Error() {
     <div>
       <Header />
       <div className='error-bg'>
-        <div className='container'>
-          <div className='column'>
+        <div className='d-flex flex-column flex-md-row flex-lg-row p-5 justify-content-evenly'>
+          <div className='d-flex flex-column p-5 text-black info'>
             <h2>404</h2>
             <h4>We are sorry, but the page you requested was not found</h4>
             <button type="submit" className="btn btn-primary mt-3" style={{width:'50%', backgroundColor: '#004577', height: '50px'}}>Back To Home </button>
           </div>
-          <div className='column'>
+          <div className='d-flex flex-column p-5 text-black info'>
             <img className="img_2 img-fluid" src={err}></img>
           </div>
         </div>
+          {/* <div className='container'>
+            <div className='column'>
+              <h2>404</h2>
+              <h4>We are sorry, but the page you requested was not found</h4>
+              <button type="submit" className="btn btn-primary mt-3" style={{width:'50%', backgroundColor: '#004577', height: '50px'}}>Back To Home </button>
+            </div>
+            <div className='column'>
+              <img className="img_2 img-fluid" src={err}></img>
+            </div>
+          </div> */}
       </div>
     </div>
   )
