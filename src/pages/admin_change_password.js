@@ -5,7 +5,7 @@ import profile from "../assets/images/profile.jpg";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import Sidebar from "../components/holidayplanner-sidebar";
 
-function Holidayprofile() {
+function Admin_change_password() {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Add your form submission logic here
@@ -184,4 +184,4 @@ function Holidayprofile() {
   );
 }
 
-export default Holidayprofile;
+export default Admin_change_password;

@@ -15,29 +15,30 @@ function Adminprofile() {
   return (
       
       <React.Fragment>
-      <div className=" full d-flex flex-column">
+         <div className="d-flex flex-column" style={{backgroundColor:"#f4f4f5"}}>
         <div>
         <Headeruser />
         </div>
       <div className="d-flex">
           <Adminsidebar />
-          <div className="w-100 d-flex justify-content-center  align-items-center ">
-            <div className="  d-flex  h-75 w-75 bg-white">
-              <div className="d-flex flex-column ">
-                <div className=" d-flex flex-column flex-md-row flex-sm-row justify-content-around  align-items-center gap-5 ">
-                              <img
+          <div className="w-100 d-flex justify-content-center  align-items-center "></div>
+          <div className="  d-flex  h-75 w-75 justify-content-around  align-items-center bg-white">
+              <div className="d-flex flex-column justify-content-around  align-items-center ">
+                <div className=" d-flex flex-column flex-md-row flex-sm-row justify-content-around  align-items-center gap-5  ">
+                            <div className=" d-flex flex-column flex-md-row flex-sm-row justify-content-around  align-items-center  ">
+                                  <img
                                   src={profile}
-                                  className=" profile-pic object-fit-cover img-fluid m-auto col-3 round-cricle"   ></img>
-                      
-                              <div className="d-flex flex-column w-75">
-                                      <p style={{fontSize:"32px",fontWeight:"bold",color:"#004577",}}>Manokaran Keethapriya</p>
-                                      <div className="d-flex flex-column flex-md-row flex-sm-row gap-3">
-                                              <button className=" change_pic col-4 " style={{ height: "3rem", width: "Auto" }} >
+                                  className=" profile-pic object-fit-cover img-fluid m-auto  round-cricle"   ></img>
+                                  </div>
+                                  <div className="d-flex flex-column justify-content-around  align-items-center w-75 ">
+                                          <p style={{fontSize:"32px",fontWeight:"bold",color:"#004577",}}>Manokaran Keethapriya</p>
+                                          <div className="d-flex flex-column flex-md-row flex-sm-row justify-content-around  align-items-center gap-3">
+                                              <button className=" btn-change-pic  " style={{ height: "3rem", width: "Auto" }} >
                                                 Change Profile Picture
                                               </button>
-                                              <div className="Acc2 d-flex flex-column " >
-                                              <p>Change Password</p>
-                                              <p className=" text-danger"> Change your account password </p>
+                                              <div className="Acc-1 d-flex flex-column justify-content-around  align-items-center p-1" style={{backgroundColor:"rgb(200, 200, 200)"}} >
+                                              <span>Change Password</span>
+                                              <span className=" text-danger"> Change your account password </span>
                                               </div>
                                       </div>
                               
@@ -71,7 +72,7 @@ function Adminprofile() {
                               </div>
 
                               <div className="d-flex flex-colum align-items-center justify-content-center mt-4 mb-5">
-                                  <button className="update-button">Update Details</button>
+                              <button className="btn-update">Update Details</button>
                               </div>
 
               </div>
@@ -82,7 +83,7 @@ function Adminprofile() {
           </div>
         </div>
 
-      </div>
+      
     
     </React.Fragment>
   );

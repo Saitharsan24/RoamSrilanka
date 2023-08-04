@@ -9,13 +9,14 @@ import About from "../pages/about";
 import Login from "../pages/login";
 import Error from "../pages/error";
 import Holidayprofile from "../pages/holidayplanner_profile";
-import Adminusers  from '../pages/admin_users';
+// import Adminusers  from '../pages/admin_users';
 import Admin_tourist_details from '../pages/admin_tourist_view_detail';
 import Holiday_dashboard from "../pages/holidayplanner_dashboard";
 import HotelDashboard from "../pages/hotel-dashboard";
 import Adminprofile from "../pages/admin_profile";
 import Actors from "../components/Actors";
-import HotelRequest from "../pages/HotelRequest";
+import HotelRequest from "../pages/Hotelrequest";
+import Admin_change_password from "../pages/admin_change_password";
 
 function Routing() {
   return (
@@ -35,8 +36,9 @@ function Routing() {
         <Route path="/Holidayprofile" element={<Holidayprofile />}></Route>
         <Route path="/Adminprofile" element={<Adminprofile />}></Route>
         <Route path="/Holidayplanner_dashboard" element={<Holiday_dashboard />}></Route>
-        <Route path='/Adminusers' element={<Adminusers/>}></Route>
+        {/* <Route path='/Adminusers' element={<Adminusers/>}></Route> */}
         <Route path='/Admin_touristdetails' element={<Admin_tourist_details/>}></Route>
+        <Route path='/Admin_change_password' element={<Admin_change_password/>}></Route>
       </Routes>
     </BrowserRouter>
   );
