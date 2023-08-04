@@ -94,8 +94,6 @@ import Sidebar from "../components/holidayplanner-sidebar";
     //                               placeholder="Enter your name"
     //                             />
     //                           </Form.Group>
-
-
     //                           <Form.Group controlId="formBasicEmail">
     //                             <Form.Label>Last Name</Form.Label>
     //                             <Form.Control

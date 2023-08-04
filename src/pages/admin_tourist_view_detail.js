@@ -7,6 +7,11 @@ import { Link } from "react-bootstrap-icons";
 import Adminsidebar from "../components/admin-sidebar";
 
 
+
+
+
+
+
 function Admin_tourist_details() {
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -22,31 +27,149 @@ function Admin_tourist_details() {
         </div>
       <div className="d-flex">
           <Adminsidebar />
-          <div className="w-100 d-flex justify-content-center  align-items-center ">
-            <div className="  d-flex  h-75 w-75 bg-white">
+          <div className="w-100 d-flex justify-content-center  align-items-center">
+            <div className="  d-flex justify-content-center  align-items-center col-11  " style={{backgroundColor:"#ffff"}}>
             
-                <div className="d-flex flex-column col-12 ">
+              
+                <div className="d-flex flex-column  col-lg-10 col-md-10 ">
                 
-                      <div className="d-flex flex  justify-content-around align-content-center">
-                           
-                                  <div className=" d-flex flex-column justify-content-center align-content-center col-10">
-                                    <p>Basic Information About Brad Simmons</p>
-                                      <ul>
-                                        <li>UserName:</li>
-                                        <li>ID:</li>
-                                        <li>User Type:</li>
-                                      </ul>
+                 
+                      <div className="d-flex flex  justify-content-center align-content-center me-2 mb-2 mt-4 gap-2  ">
+                      
+                                  <div className="box-2 box-large d-flex flex-column justify-content-center align-items-center col-8   "  >
+                                    <p ><span style={{fontWeight:"bold"}}>Basic Information About </span><span style={{color:"#004577",fontWeight:"bold"}}>Brad Simmons</span></p>
+                                      <table className=" " style={{textAlign: "center"}}>
+                                      <tbody>
+                                                    <tr >
+                                                      <td style={{width: "100px"}}>User Name </td>
+                                                      <td style={{width: "200px",backgroundColor:"#FFFFFF",borderRadius:"5px"}}>Laxshan_19</td>
+                                                    </tr>
+
+                                                    <tr style={{height:"10px"}}></tr>
+
+                                                    <tr>
+                                                      <td style={{width: "100px"}}>User ID </td>
+                                                      <td style={{width: "200px",backgroundColor:"#FFFFFF",borderRadius:"5px"}}>003</td>
+                                                    </tr>
+                                                 
+                                                    <tr style={{height:"10px"}}></tr>
+
+                                                    <tr>
+                                                      <td style={{width: "100px"}}>User Type </td>
+                                                      <td style={{width: "200px",backgroundColor:"#FFFFFF",borderRadius:"5px"}}>Tourist</td>
+                                                    </tr>
+
+                                                    <tr style={{height:"20px"}}></tr>
+                                                  </tbody>
+                                      </table>
 
                                     </div>
-                                  <div className="d-flex col-2">
-                                    <p>Rating</p>
+                                  
+                                  <div className=" box-3 box-large d-flex flex-column justify-content-center align-items-center p-3 col-4 ">
+                                    <p style={{fontWeight:"bold",fontSize:"25px"}}>Number Of Trip</p>
+                                    <p style={{fontWeight:"bold",color:"#004577",fontSize:"35px"}}>04</p>
                                     </div>
 
                             
                        
-                      </div>
+                     
+                      </div >
 
-                      <div><p>Personal Information</p></div>
+                      <div className=" box-4  d-flex flex justify-content-center align-content-center  mb-3 col-12  ">
+                        
+                        <div className="d-flex flex-column justify-content-center align-items-center col-3 ">
+                        <p style={{fontWeight:"bold",color:"#004577"}}>Personal Information</p>
+                        <img
+                                  src={profile}
+                                  className=" round-cricle"  style={{borderRadius:"50%",width:"10vw",height:"10vw"}}></img>
+                       </div>
+                        
+                       
+                        <table className=" d-flex flex-column justify-content-center align-items-center col-7 " style={{textAlign: "left"}}>
+                                      <tbody>
+
+                                      <tr style={{height:"10px"}}></tr>
+                                                    <tr >
+                                                      <td style={{width: "200px",textAlign:"left"}}>First Name </td>
+                                                      <td style={{width:"50px"}}></td>                     
+                                                      <td style={{width: "200px"}}>Last Name </td>  
+                                                    </tr>
+
+                                                    <tr style={{height:"10px"}}></tr>
+
+                                                    <tr>
+                                                    <td style={{width: "200px",backgroundColor:"#FFFFFF",borderRadius:"5px"}}>Laxshan</td>
+                                                    <td style={{width:"50px"}}></td>
+                                                      <td style={{width: "200px",backgroundColor:"#FFFFFF",borderRadius:"5px"}}>Panchavarnan </td>
+                                                    </tr>
+                                                 
+                                                    <tr style={{height:"10px"}}></tr>
+                                                   
+                                                    <tr >
+                                                      <td style={{width: "200px",textAlign:"left"}}>NIC/Passport No </td>
+                                                      <td style={{width:"50px"}}></td>                     
+                                                      <td style={{width: "200px"}}>Phone No </td>  
+                                                    </tr>
+
+                                                    <tr style={{height:"10px"}}></tr>
+
+                                                    <tr>
+                                                    <td style={{width: "200px",backgroundColor:"#FFFFFF",borderRadius:"5px"}}>991756432</td>
+                                                    <td style={{width:"50px"}}></td>
+                                                      <td style={{width: "200px",backgroundColor:"#FFFFFF",borderRadius:"5px"}}>0779656689 </td>
+                                                    </tr>
+                                                 
+                                                    <tr style={{height:"10px"}}></tr>
+                                                    
+                                                    <tr >
+                                                      <td style={{width: "200px",textAlign:"left"}}>Email </td>
+                                                      <td style={{width:"50px"}}></td>                     
+                                                      <td style={{width: "200px"}}>Familier Languages </td>  
+                                                    </tr>
+
+                                                    <tr style={{height:"10px"}}></tr>
+
+                                                    <tr>
+                                                    <td style={{width: "200px",backgroundColor:"#FFFFFF",borderRadius:"5px"}}>laxshan1906@gmail.com</td>
+                                                    <td style={{width:"50px"}}></td>
+                                                      <td style={{width: "200px",backgroundColor:"#FFFFFF",borderRadius:"5px"}}>Tamil </td>
+                                                    </tr>
+                                                 
+                                                    <tr style={{height:"10px"}}></tr>
+                                                      
+                                                    <tr >
+                                                      <td style={{width: "200px",textAlign:"left"}}>SLTDA Registration Number </td>
+                                                      <td style={{width:"50px"}}></td>                     
+                                                      <td style={{width: "200px"}}>Date of Birth </td>  
+                                                    </tr>
+
+                                                    <tr style={{height:"10px"}}></tr>      
+
+                                                    <tr>
+                                                    <td style={{width: "200px",backgroundColor:"#FFFFFF",borderRadius:"5px"}}>998833</td>
+                                                    <td style={{width:"50px"}}></td>
+                                                      <td style={{width: "200px",backgroundColor:"#FFFFFF",borderRadius:"5px"}}>19/06/1999 </td>
+                                                    </tr>
+                                                 
+                                                    <tr style={{height:"10px"}}></tr>   
+                                                    
+                                                    <tr >
+                                                      <td colSpan="3" style={{width: "200px",textAlign:"left"}}>Address </td>
+                                                    </tr>
+
+                                                    <tr style={{height:"10px"}}></tr> 
+
+                                                    <tr >
+                                                      <td colSpan="3" style={{width: "200px",backgroundColor:"#FFFFFF",borderRadius:"5px"}}>
+                                                        Annasilayady,Karanavai,Karaveddy.
+                                                         </td>
+                                                    </tr>
+
+                  
+                      <tr style={{height:"20px"}}></tr>
+                                                  </tbody>
+                                      </table>
+                        </div>
                         
                      
                 </div>
@@ -61,5 +184,6 @@ function Admin_tourist_details() {
     </React.Fragment>
   );
 }
+
 
 export default Admin_tourist_details ;
