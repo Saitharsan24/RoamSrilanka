@@ -20,6 +20,7 @@ import OurHotel from '../pages/our-hotel';
 import UpdateEvent1 from '../pages/HPUpdate-event1';
 import AdminUser from '../pages/admin-users';
 import GuideDashoard from '../pages/guide-dashboard';
+import Driver from '../pages/driver/dashboard';
 
 function Routing() {
   return (
@@ -45,6 +46,7 @@ function Routing() {
         <Route path='/UpdateEvent1' element={<UpdateEvent1/>}></Route>
         <Route path='/ourHotel' element={<OurHotel/>}></Route>
         <Route path='/hotelRequest' element={<HotelRequest/>}></Route>
+        <Route path='/driver/dashboard' element={<Driver/>}></Route>
       </Routes>
     </BrowserRouter>
   );
