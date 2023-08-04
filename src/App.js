@@ -1,10 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-import Footer from './components/footer';
+import React from "react";
+import "./App.css";
+
+import { Sidebar } from "react-pro-sidebar";
+import Routing from './routes/Routing';
 
 function App() {
   return (
-    <Footer></Footer>
+    <Routing/>
   );
 }
 

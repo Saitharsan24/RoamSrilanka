@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@200&display=swap'); 
+
+.sidebar {
+    width: 15rem;
+    height: 35rem;
+    padding: 2rem;
+    background-color: #004577;
+    transition: width 0.3s;
+  }
+  
+  .sidebar.collapsed {
+    width: 7rem;
+  }
+  
+  .toggle-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #004577;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .menu-items {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+  }
+
+  .menu-items-list{
+    margin-left: 1rem;
+    color: #ffffff;
+    font-family: Barlow;
+    font-weight: bold;
+  }
+  
+  .menu-item:hover {
+    /* background-color: #ffffff; */
+    color: red !important;
+    border-radius: 30px 30px 30px 30px;
+    background-color: #ffffff;
+    .menu-items-list{
+        color: red !important;
+        background-color: rgb(255, 255, 255);
+        
+    }
+  }
+  
+  .menu-item.selected {
+    background-color: #ffffff;
+    color:red;
+  }
+  .menu-item.not {
+    color: #ffffff;
+  }
+ 
+  .menu-items-list.selected {
+    color: red;
+  }
+
+  .icon{
+    font-size: larger;
+  }
+
+  
