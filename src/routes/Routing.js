@@ -15,8 +15,14 @@ import Holiday_dashboard from "../pages/holidayplanner_dashboard";
 import HotelDashboard from "../pages/hotel-dashboard";
 import Adminprofile from "../pages/admin_profile";
 import Actors from "../components/Actors";
-import HotelRequest from "../pages/Hotelrequest";
+import HotelRequest from "../pages/HotelRequest";
+import OurHotel from '../pages/our-hotel';
+import UpdateEvent1 from '../pages/HPUpdate-event1';
+import AdminUser from '../pages/admin-users';
+import GuideDashoard from '../pages/guide-dashboard';
+import Driver from '../pages/driver/dashboard';
 import Admin_change_password from "../pages/admin_change_password";
+import HotelRequest from "../pages/Hotelrequest";
 
 function Routing() {
   return (
@@ -30,7 +36,6 @@ function Routing() {
         <Route path="/Services" element={<Services />}></Route>
         <Route path="/Blog" element={<Blog />}></Route>
         <Route path="/About" element={<About />}></Route>
-        <Route path="/dev" element={<HotelDashboard />}></Route>
         <Route path="/Login" element={<Login />}></Route>
         <Route path="/Error" element={<Error />}></Route>
         <Route path="/Holidayprofile" element={<Holidayprofile />}></Route>
@@ -38,6 +43,12 @@ function Routing() {
         <Route path="/Holidayplanner_dashboard" element={<Holiday_dashboard />}></Route>
         {/* <Route path='/Adminusers' element={<Adminusers/>}></Route> */}
         <Route path='/Admin_touristdetails' element={<Admin_tourist_details/>}></Route>
+        <Route path='/guideDashboard' element={<GuideDashoard/>}></Route>
+        <Route path='/adminUser' element={<AdminUser/>}></Route>
+        <Route path='/UpdateEvent1' element={<UpdateEvent1/>}></Route>
+        <Route path='/ourHotel' element={<OurHotel/>}></Route>
+        <Route path='/hotelRequest' element={<HotelRequest/>}></Route>
+        <Route path='/driver/dashboard' element={<Driver/>}></Route>
         <Route path='/Admin_change_password' element={<Admin_change_password/>}></Route>
       </Routes>
     </BrowserRouter>
