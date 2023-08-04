@@ -18,7 +18,7 @@ const Footer = () => {
                 height: "auto",
                 objectFit: "cover",
               }}
-              src={require("./../assets/img/logo.png")}
+              src={require("./../assets/images/footerlogo.png")}
               alt=""
             />
             <p style={{ width: "60%" }} className="text-white m-2 text-center">
