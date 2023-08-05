@@ -77,7 +77,7 @@ function DragDropFile() {
             >
               <b>Drag & drop files or </b>
             </p>
-            <span style={{ color: "#4C95EB" }}><button style={{width:"100%"}} className="upload-button p-2" onClick={onButtonClick}>
+            <span style={{ color: "#4C95EB" }}><button style={{width:"100%" , fontFamily:"Mulish", fontSize:"1rem", borderRadius:"5px"}} className="upload-button p-2" onClick={onButtonClick}>
         Upload Files
         </button></span>
             <p

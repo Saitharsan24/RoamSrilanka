@@ -6,15 +6,14 @@ import * as Icon from "react-bootstrap-icons";
 
 const OurHotel = () => {
   return (
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column" >
       <Headeruser />
       <div
-        className="d-flex flex-row col-12"
-        style={{ backgroundColor: "#F4F4F5" }}
+        className="d-flex flex-row col-12" style={{ backgroundColor: "#F4F4F5" }}
       >
         <HotelSidebar />
-        <div className="d-flex flex-column w-100 gap-3">
-          <div className="d-flex flex-column flex-md-column flex-lg-row gap-3 align-items-center justify-content-evenly mt-3">
+        <div className="d-flex flex-column w-100 gap-5">
+          <div className="d-flex flex-column flex-md-column flex-lg-row gap-3 align-items-center justify-content-evenly mt-4">
             <div
               className="d-flex flex-column col-10 col-lg-3 col-md-7 column-gap-5 align-items-center p-3"
               style={{ borderRadius: "20px", backgroundColor: "#EAEAF2" }}

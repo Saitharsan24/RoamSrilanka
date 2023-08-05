@@ -16,3 +16,7 @@ font-weight: 800;
 line-height: 143%; /* 22.88px */
 letter-spacing: 0.32px;
 }
+
+.react-calendar {
+    margin-left: 3rem;
+}

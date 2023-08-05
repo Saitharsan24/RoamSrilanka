@@ -46,15 +46,15 @@ export const data1 = {
 const HotelDashboard = () => {
 
   return (
-    <div>
+    <div className="d-flex flex-column">
       <Headeruser />
       <div
         style={{ backgroundColor: "#ECECEC" }}
         className="d-flex flex-row column-gap-3 col-12"
       >
         <HotelSidebar />
-        <div className="d-flex flex-column flex-md-row flex-lg-row p-4 gap-5 justify-content-evenly">
-          <div className="d-flex flex-column col-10 col-md-8 col-lg-6 gap-5 mt-2">
+        <div className="d-flex flex-column w-100 flex-md-row flex-lg-row p-4 gap-5 justify-content-evenly">
+          <div className="d-flex flex-column col-10 col-md-8 col-lg-6 gap-4 mt-2">
             <div style={{}}>
               <input
                 style={{ backgroundColor: "#ECECEC" }}
@@ -204,16 +204,50 @@ const HotelDashboard = () => {
                     </p>
                   </div>
                 </div>
+                <div
+                  className="d-flex flex-column flex-md-column flex-lg-row column-gap-6 p-2 justify-content-evenly"
+                  style={{ borderRadius: "1rem", backgroundColor: "white" }}
+                >
+                  <div className="d-flex col-12 col-md-6 col-lg-2">
+                    <img
+                      className="object-fit-cover img-fluid m-auto"
+                      src={require("./../assets/img/DQ.jpeg")}
+                      style={{
+                        borderRadius: "5rem",
+                      }}
+                    ></img>
+                  </div>
+                  <div className="d-flex flex-column justify-content-evenly align-items-center col-12 col-md-6 col-lg-3 ">
+                    <p className="m-0" style={{ fontSize: "1rem" }}>
+                      <b>Lilliana M.</b>
+                    </p>
+                    <p className="m-0" style={{ fontSize: "0.75rem" }}>
+                      Feb 12 - Feb 14
+                    </p>
+                  </div>
+                  <hr style={{ border: "1px solid Black" }} />
+                  <div className="d-flex flex-column col-12 col-md-6 col-lg-3 justify-content-evenly align-items-center">
+                    <p className="m-0" style={{ fontSize: "1.5rem" }}>
+                      <b>$150</b>
+                    </p>
+                    <p
+                      className="m-0"
+                      style={{ color: "#4CAF50", fontSize: "0.75rem" }}
+                    >
+                      <b>Paid</b>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <div className="d-flex flex-column col-10 col-md-8 col-lg-4 row-gap-3">
-            <div className="d-none d-sm-flex d-md-flex d-lg-flex col-10 col-md-8 col-lg-4"><ResponsiveCalendar/></div>
+            <div className="d-none d-md-flex d-lg-flex w-100 align"><ResponsiveCalendar/></div>
             <div className="d-flex flex-column">
               <p style={{ fontSize: "1rem" }}>
                 <b>Analytics</b>
               </p>
-              <div className="d-flex flex-column flex-md-row flex-lg-row gap-4">
+              <div className="d-flex flex-column flex-md-row flex-lg-row">
                 <div className="d-flex row-cols-4"><Doughnut data={data}/></div>
                 <div className="d-flex flex-column justify-content-center">
                   <p className="occup_list" style={{ fontSize: "0.75rem" }}>

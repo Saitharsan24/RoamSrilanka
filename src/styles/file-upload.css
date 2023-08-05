@@ -17,9 +17,9 @@
   justify-content: center;
   border-width: 2px;
   border-radius: 1rem;
-  border-style: 1.076px dashed rgba(39, 116, 207, 0.3);
+  /* border-style: 1.076px dashed rgba(39, 116, 207, 0.3); */
   /* border-color: #B2CFF1; */
-  background-color: #eef6ff;
+  background-color: #a0bee8;
 }
 
 /* #label-file-upload.drag-active {
