@@ -48,7 +48,6 @@ import Sidebar from "../components/holidayplanner-sidebar";
     //                  <p className="name float-md-start float-lg-start">
     //                    Manoharan Keethapriya
     //                  </p>
-
     //                  <button
     //                   className=" change_pic col-4 "
     //                   style={{ height: "3rem", width: "Auto" }}

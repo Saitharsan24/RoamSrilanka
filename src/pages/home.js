@@ -1,8 +1,9 @@
 import React from 'react';
 import './../styles/home.css';
 import "bootstrap/dist/css/bootstrap.css";
-import {Button,Card } from 'react-bootstrap';
+import {Button,Carousel} from 'react-bootstrap';
 import {HiArrowCircleLeft,HiArrowCircleRight} from 'react-icons/hi';
+import Cardcarousel from './../components/card';
 
 
 
@@ -63,8 +64,38 @@ function Home() {
           </div>  
         </div>
 
-        <div className="card-content d-flex flex-row justify-content-center align-items-center col-12 gap-5 mt-4 mb-4">
-        
+        <div className="carousel-div w-100" style={{marginBottom:"3rem", marginTop:"3rem"}}>
+          <Carousel>
+            <Carousel.Item>
+                <div className='d-flex flex-row justify-content-center'>
+                <Cardcarousel />
+                <div style={{width:"3.5rem"}}></div>
+                <Cardcarousel />
+                <div style={{width:"3.5rem"}}></div>
+                <Cardcarousel />
+              </div>
+            </Carousel.Item>
+
+            <Carousel.Item>
+                <div className='d-flex flex-row justify-content-center'>
+                <Cardcarousel />
+                <div style={{width:"3.5rem"}}></div>
+                <Cardcarousel />
+                <div style={{width:"3.5rem"}}></div>
+                <Cardcarousel />
+              </div>
+            </Carousel.Item>
+            
+            <Carousel.Item>
+                <div className='d-flex flex-row justify-content-center'>
+                <Cardcarousel />
+                <div style={{width:"3.5rem"}}></div>
+                <Cardcarousel />
+                <div style={{width:"3.5rem"}}></div>
+                <Cardcarousel />
+              </div>
+            </Carousel.Item>
+          </Carousel>
         </div>
 
       </div>
@@ -80,6 +111,40 @@ function Home() {
               </h1>
            
           </div>
+
+          <div className="carousel-div w-100" style={{marginBottom:"3rem", marginTop:"1rem"}}>
+          <Carousel>
+            <Carousel.Item>
+                <div className='d-flex flex-row justify-content-center'>
+                <Cardcarousel />
+                <div style={{width:"3.5rem"}}></div>
+                <Cardcarousel />
+                <div style={{width:"3.5rem"}}></div>
+                <Cardcarousel />
+              </div>
+            </Carousel.Item>
+
+            <Carousel.Item>
+                <div className='d-flex flex-row justify-content-center'>
+                <Cardcarousel />
+                <div style={{width:"3.5rem"}}></div>
+                <Cardcarousel />
+                <div style={{width:"3.5rem"}}></div>
+                <Cardcarousel />
+              </div>
+            </Carousel.Item>
+            
+            <Carousel.Item>
+                <div className='d-flex flex-row justify-content-center'>
+                <Cardcarousel />
+                <div style={{width:"3.5rem"}}></div>
+                <Cardcarousel />
+                <div style={{width:"3.5rem"}}></div>
+                <Cardcarousel />
+              </div>
+            </Carousel.Item>
+          </Carousel>
+        </div>
       </div>
 
 
