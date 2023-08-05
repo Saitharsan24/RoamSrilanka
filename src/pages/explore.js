@@ -4,6 +4,7 @@ import {IoSearchCircle} from 'react-icons/io5';
 import { HiArrowSmRight } from "react-icons/hi";
 
 
+
 function Explore() {
   return (
     <div className="main-div d-flex flex-column justify-content-center align-items-center align-content-center">
@@ -13,10 +14,13 @@ function Explore() {
                 <h1 style={{fontSize:"8rem", color:"#ffffff", fontWeight:"700", textShadow:"-2px -2px 8px rgba(0, 0, 0, 0.5)"}}>Explore</h1>
             </div>
             <div className='search-bar d-flex flex-row justify-content-between align-items-center' style={{backgroundColor:"#ffffff", borderRadius:"2rem", marginTop:"6rem", width:"40rem", height:"3rem"}}>
+
                 <input type="text" placeholder='Explore places and events' style={{margin:"0rem", paddingLeft:"1.3rem", fontWeight:"500",fontSize:"1.2rem", border:"none", width:"35rem",height:"3rem",borderRadius:"2rem"}}/>
+
                 <IoSearchCircle size="3rem"  color='#DB163A'/>
             </div>
         </div>
+
 
         <div className='explore-body container-fluid d-flex flex-column justify-content-center'>
             <div className='d-flex flex-column justify-content-center align-items-center'>
