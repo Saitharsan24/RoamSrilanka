@@ -13,13 +13,13 @@ import Holiday_dashboard from "../pages/holidayplanner_dashboard";
 import HotelDashboard from "../pages/hotel-dashboard";
 import Adminprofile from "../pages/admin_profile";
 import Actors from "../components/Actors";
-import HotelRequest from "../pages/HotelRequest";
-
+import HotelRequest from "../pages/Hotelrequest";
+import Existing_events from "../pages/existing_events";
 function Routing() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Actors />}></Route>
+        {/* <Route path="/" element={<Actors />}></Route> */}
         <Route path="/header" element={<Header />}></Route>
         <Route path="/hoteldashboard" element={<HotelDashboard />}></Route>
         <Route path="/requests" element={<HotelRequest />}></Route>
@@ -35,6 +35,7 @@ function Routing() {
         <Route path="/Holidayprofile" element={<Holidayprofile />}></Route>
         <Route path="/Adminprofile" element={<Adminprofile />}></Route>
         <Route path="/Holidayplanner_dashboard" element={<Holiday_dashboard />}></Route>
+        <Route path="/Existing_events" element={<Existing_events/>}></Route>
       </Routes>
     </BrowserRouter>
   );
