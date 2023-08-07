@@ -12,7 +12,7 @@ const Blog = () => {
         <h1 
           style={{
             fontSize: "7rem",
-            textAlign: "center" 
+            textAlign: "center", 
           }}
           className="mb-4"
         >

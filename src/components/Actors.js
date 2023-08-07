@@ -18,6 +18,7 @@ const Actors=()=>{
                         <Nav.Link className='nav-item-1 text-black m-2 jost-text '><Link to=''>Admin</Link></Nav.Link>
                         <Nav.Link className='nav-item-1 text-black m-2 jost-text '><Link to='/Holidayplanner_dashboard'>Holiday Planner</Link></Nav.Link>
                         <Nav.Link className='nav-item-1 text-black m-2 jost-text '><Link to='/hoteldashboard'>Hotel</Link></Nav.Link>
+                        <Nav.Link className='nav-item-1 text-black m-2 jost-text '><Link to='/driver/dashboard'>Driver</Link></Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </React.Fragment>
