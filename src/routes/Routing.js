@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Components} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import Header from "../components/Header";
@@ -22,7 +22,8 @@ import AdminUser from '../pages/admin-users';
 import GuideDashoard from '../pages/guide-dashboard';
 import Driver from '../pages/driver/dashboard';
 import Admin_change_password from "../pages/admin_change_password";
-import HotelRequest from "../pages/Hotelrequest";
+// import HotelRequest from "../pages/HotelRequest";
+import ExploreView from "../pages/explore-view";
 
 function Routing() {
   return (
@@ -50,6 +51,7 @@ function Routing() {
         <Route path='/hotelRequest' element={<HotelRequest/>}></Route>
         <Route path='/driver/dashboard' element={<Driver/>}></Route>
         <Route path='/Admin_change_password' element={<Admin_change_password/>}></Route>
+        <Route path='/exploreView' element={<ExploreView/>}></Route>
       </Routes>
     </BrowserRouter>
   );

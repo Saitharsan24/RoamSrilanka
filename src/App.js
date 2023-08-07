@@ -1,17 +1,12 @@
 import React from "react";
 import "./App.css";
-import Explore from "./pages/explore";
-import Footer from "./components/footer";
-import ExploreView from "./pages/explore-view";
+
+import { Sidebar } from "react-pro-sidebar";
+import Routing from './routes/Routing';
 
 function App() {
   return (
-
-    <>     
-      <ExploreView />
-      <Footer/>
-    </>
-
+    <Routing/>
   );
 }
 
