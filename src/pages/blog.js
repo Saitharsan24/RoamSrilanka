@@ -12,7 +12,7 @@ const Blog = () => {
         <h1 
           style={{
             fontSize: "7rem",
-            textAlign: "center" 
+            textAlign: "center", 
           }}
           className="mb-4"
         >
@@ -32,7 +32,6 @@ const Blog = () => {
         </h4>
         <br />
         <div className="d-flex  flex-wrap justify-content-evenly gap-3">
-          
             <div className="col-lg-3 col-md-5 col-sm-11 col-11">
               <div className="blog-list-img"></div>
               <div className="blog-list-msg"></div>
@@ -70,8 +69,7 @@ const Blog = () => {
             <div className="col-lg-3 col-md-5 col-sm-11 col-11">
               <div className="blog-list-img"></div>
               <div className="blog-list-msg"></div>
-            </div>
-          
+            </div>         
         </div>
         <br />
       </div>
