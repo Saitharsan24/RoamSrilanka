@@ -24,12 +24,13 @@ import Driver from '../pages/driver/dashboard';
 import Admin_change_password from "../pages/admin_change_password";
 // import HotelRequest from "../pages/HotelRequest";
 import ExploreView from "../pages/explore-view";
+import Existing_events from "../pages/existing_events";
 
 function Routing() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Actors />}></Route>
+        {/* <Route path="/" element={<Actors />}></Route> */}
         <Route path="/header" element={<Header />}></Route>
         <Route path="/hoteldashboard" element={<HotelDashboard />}></Route>
         <Route path="/requests" element={<HotelRequest />}></Route>
@@ -52,6 +53,7 @@ function Routing() {
         <Route path='/driver/dashboard' element={<Driver/>}></Route>
         <Route path='/Admin_change_password' element={<Admin_change_password/>}></Route>
         <Route path='/exploreView' element={<ExploreView/>}></Route>
+        <Route path="/Existing_events" element={<Existing_events/>}></Route>
       </Routes>
     </BrowserRouter>
   );
