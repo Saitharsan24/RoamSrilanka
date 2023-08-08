@@ -20,6 +20,10 @@ import OurHotel from '../pages/our-hotel';
 import UpdateEvent1 from '../pages/HPUpdate-event1';
 import AdminUser from '../pages/admin-users';
 import GuideDashoard from '../pages/guide-dashboard';
+import HPPackage from "../pages/HPPackage";
+import HPUpdatePackage1 from "../pages/HPUpdatePackage1";
+import HPUpdatePackage2 from "../pages/HPUpdatePackage2";
+import HPUpdatePackage3 from "../pages/HPUpdatePackage3";
 
 function Routing() {
   return (
@@ -44,7 +48,11 @@ function Routing() {
         <Route path='/adminUser' element={<AdminUser/>}></Route>
         <Route path='/UpdateEvent1' element={<UpdateEvent1/>}></Route>
         <Route path='/ourHotel' element={<OurHotel/>}></Route>
-        <Route path='/hotelRequest' element={<HotelRequest/>}></Route>
+        <Route path='/hotelRequest' element={<HotelRequest/>}></Route>        
+        <Route path='/plannerrequests' element={<HPPackage/>}></Route>
+        <Route path='/hpupdatepackage1' element={<HPUpdatePackage1/>}></Route>
+        <Route path='/hpupdatepackage2' element={<HPUpdatePackage2/>}></Route>
+        <Route path='/hpupdatepackage3' element={<HPUpdatePackage3/>}></Route>
       </Routes>
     </BrowserRouter>
   );
