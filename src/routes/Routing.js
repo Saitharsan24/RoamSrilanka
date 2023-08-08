@@ -15,14 +15,13 @@ import Holiday_dashboard from "../pages/holidayplanner_dashboard";
 import HotelDashboard from "../pages/hotel-dashboard";
 import Adminprofile from "../pages/admin_profile";
 import Actors from "../components/Actors";
-import HotelRequest from "../pages/HotelRequest";
 import OurHotel from '../pages/our-hotel';
 import UpdateEvent1 from '../pages/HPUpdate-event1';
 import AdminUser from '../pages/admin-users';
 import GuideDashoard from '../pages/guide-dashboard';
 import Driver from '../pages/driver/dashboard';
 import Admin_change_password from "../pages/admin_change_password";
-import HotelRequest from "../pages/Hotelrequest";
+import TouristDashboard from "../pages/Tourist/tourist-dashboard";
 
 function Routing() {
   return (
@@ -31,7 +30,6 @@ function Routing() {
         <Route path="/" element={<Actors />}></Route>
         <Route path="/header" element={<Header />}></Route>
         <Route path="/hoteldashboard" element={<HotelDashboard />}></Route>
-        <Route path="/requests" element={<HotelRequest />}></Route>
         <Route path="/Contact" element={<Contact />}></Route>
         <Route path="/Services" element={<Services />}></Route>
         <Route path="/Blog" element={<Blog />}></Route>
@@ -47,9 +45,11 @@ function Routing() {
         <Route path='/adminUser' element={<AdminUser/>}></Route>
         <Route path='/UpdateEvent1' element={<UpdateEvent1/>}></Route>
         <Route path='/ourHotel' element={<OurHotel/>}></Route>
-        <Route path='/hotelRequest' element={<HotelRequest/>}></Route>
+        {/* <Route path='/hotelRequest' element={<HotelRequest/>}></Route> */}
         <Route path='/driver/dashboard' element={<Driver/>}></Route>
         <Route path='/Admin_change_password' element={<Admin_change_password/>}></Route>
+        <Route path='/tourist-dashboard' element={<TouristDashboard/>}></Route>
+        <Route path='/tourist-sidebar' element={<TouristDashboard/>}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -31,8 +31,8 @@ function ExploreView() {
                     <div className='where-to-visit-carousel d-flex flex-column justify-content-center align-items-center gap-5 m-5'>
                         
                         <div className="palce-image-text d-flex flex-row justify-content-between" style={{width:"100%"}}>
-                            <div className="place-image" style={{height:"30rem", width:"35 rem", backgroundColor:"#DB163A", borderRadius:"0rem 0rem 10rem 0rem" }}>
-
+                            <div className="place-image" style={{height:"30rem", width:"35rem", backgroundColor:"#DB163A", borderRadius:"0rem 0rem 10rem 0rem" }}>
+                                
                             </div>
                             <div className="place-text" style={{width:"40rem"}}>
                                 <p style={{margin:"0px", fontSize:"25px", textAlign:"justify"}}>Lorem Ipsum proin gravida nibh vel velit auctor aliqueenean sollicitudin, lorem quis bibendum auct or, nisi elit 
