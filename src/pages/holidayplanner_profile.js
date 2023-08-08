@@ -172,7 +172,7 @@ function Holidayprofile() {
       //                  <p className="name float-md-start float-lg-start">
       //                    Manoharan Keethapriya
       //                  </p>
-      //                  <button
+                        <button
       //                   className=" change_pic col-4 "
       //                   style={{ height: "3rem", width: "Auto" }}
       //                 >
@@ -309,7 +309,7 @@ function Holidayprofile() {
 //   );
 // }
 
-                    <button
+                    
                       className=" change_pic col-4 "
                       style={{ height: "3rem", width: "Auto" }}
                     >
