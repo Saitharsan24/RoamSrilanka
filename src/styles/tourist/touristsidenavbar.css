@@ -5,17 +5,18 @@
     background-color: #004577;
     display: flex;
     justify-content: center;
-    position: fixed;
+    position: realtive;
     top: 0;
-    width: 18%;
+    width: inherit;
     height: 100vh;
     transition: 850ms;
     font-family: 'Barlow', sans-serif !important;
     font-weight: 400;
+    padding: 20px 0px 0px 0px;
 }
 
-.sideNavBar{
-    padding: 20px 0px 0px 0px;
+.sideNavBar a{
+    gap: 15px;
 }
 
 .sidenavbar-items{
@@ -25,6 +26,7 @@
 .sidenav-baricon{
     font-size: 18px !important;
     color: #ffffff;
+    cursor: pointer;
 }
 
 .sidenav-baricon:hover{
@@ -40,6 +42,7 @@
     list-style: none;
     width: 180px;
     height: 50px;
+    margin-bottom: 5px;
 }
 
 .nav-text a{
@@ -52,12 +55,40 @@
     align-items: center; 
     border-radius: 25px;
     gap: 20px;
-    padding: 0px 0px 0px 15px;
+    padding: 0px 15px 0px 15px;
 }
 
 .nav-text a:hover{
     background-color: #ffffff;
     color: #DB163A;
     transition: 450ms;
+}
+
+.active{
+    background-color: #ffffff;
+    color: #DB163A !important;
+    transition: 450ms;
+}
+
+.Collapsed{
+    width: 80px;
+    .sideNav-span{
+        display: none;
+    }
+    .nav-text {
+        width: unset;
+    }
+}
+
+.Expanded{
+    padding: 20px 30px 0px 30px;
+}
+
+.Collapsed{
+    padding: 20px 30px 0px 30px;
+}
+
+.Collapsed .sidenav-baricon{
+    justify-content: center !important;
 }
 
