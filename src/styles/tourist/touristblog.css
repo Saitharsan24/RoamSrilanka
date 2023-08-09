@@ -1,0 +1,19 @@
+h4{
+    margin-bottom: 0px;;
+}
+
+.tourist-main{
+    padding: 15px 15px 0px 15px;
+    width: inherit;
+}
+
+.tourist-headings{
+    color: #004577;
+}
+
+hr{
+    width: auto;
+    border-width: 3px !important;
+    border-color: #004577 !important;
+    border-radius: 25px;
+}
