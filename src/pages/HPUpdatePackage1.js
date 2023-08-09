@@ -1,13 +1,23 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Headeruser from "../components/headerusers";
 import Sidebar from "../components/holidayplanner-sidebar";
 import * as Icon from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
 import StarRating from "../components/Rating";
 import "./../styles/updatepack.css";
+import Toggle from "react-toggle";
+import "react-toggle/style.css";
 
 const HPUpdatePackage1 = () => {
   const navigate = useNavigate();
+  const [isChecked1, setIsChecked1] = useState(false);
+  const [isChecked2, setIsChecked2] = useState(false);
+  const handleToggleChange1 = () => {
+    setIsChecked1(!isChecked1);
+  };
+  const handleToggleChange2 = () => {
+    setIsChecked2(!isChecked2);
+  };
   return (
     <div className="d-flex flex-column">
       <Headeruser />
@@ -27,7 +37,7 @@ const HPUpdatePackage1 = () => {
             }}
             className="d-flex flex-column gap-3 col-6 p-5"
           >
-            <p
+            <h1
               style={{
                 fontFamily: "Barlow",
                 fontSize: "30px",
@@ -36,7 +46,7 @@ const HPUpdatePackage1 = () => {
               className="mx-2"
             >
               New Package
-            </p>
+            </h1>
             {/* <div className="d-none d-sm-flex d-md-flex d-lg-flex flex-row justify-content-evenly">
               <img
                 className="img-fluid"
@@ -84,10 +94,22 @@ const HPUpdatePackage1 = () => {
                   </div>
                   <div className="d-flex flex-column flex-lg-row justify-content m-2 gap-3">
                     <div className="col-6">
-                      <p>Tour Guide</p>
+                      <p>
+                        Tour Guide{" "}
+                        <Toggle
+                          checked={isChecked1}
+                          onChange={handleToggleChange1}
+                        />
+                      </p>
                     </div>
                     <div className="col-6">
-                      <p>Transportation</p>
+                      <p>
+                        Transportation{" "}
+                        <Toggle
+                          checked={isChecked2}
+                          onChange={handleToggleChange2}
+                        />
+                      </p>
                     </div>
                   </div>
                   <div className="d-flex flex-column flex-lg-row justify-content m-2 gap-3">

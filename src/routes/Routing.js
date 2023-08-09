@@ -24,6 +24,7 @@ import HPPackage from "../pages/HPPackage";
 import HPUpdatePackage1 from "../pages/HPUpdatePackage1";
 import HPUpdatePackage2 from "../pages/HPUpdatePackage2";
 import HPUpdatePackage3 from "../pages/HPUpdatePackage3";
+import HPViewPackage from "../pages/HPViewPackage";
 
 function Routing() {
   return (
@@ -53,6 +54,8 @@ function Routing() {
         <Route path='/hpupdatepackage1' element={<HPUpdatePackage1/>}></Route>
         <Route path='/hpupdatepackage2' element={<HPUpdatePackage2/>}></Route>
         <Route path='/hpupdatepackage3' element={<HPUpdatePackage3/>}></Route>
+        <Route path='/hpviewpackage' element={<HPViewPackage/>}></Route>
+
       </Routes>
     </BrowserRouter>
   );

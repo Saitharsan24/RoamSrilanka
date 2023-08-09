@@ -26,7 +26,7 @@ const HPUpdatePackage2 = () => {
             }}
             className="d-flex flex-column gap-3 col-6 p-5"
           >
-            <p
+            <h1
               style={{
                 fontFamily: "Barlow",
                 fontSize: "30px",
@@ -35,7 +35,7 @@ const HPUpdatePackage2 = () => {
               className="mx-2"
             >
               New Package
-            </p>
+            </h1>
             {/* <div className="d-none d-sm-flex d-md-flex d-lg-flex flex-row justify-content-evenly">
               <img
                 className="img-fluid"
@@ -66,15 +66,12 @@ const HPUpdatePackage2 = () => {
                   </div>
                 </div>
                 <div className="d-flex flex-row justify-content-between mx-2">
-                  <button className="btn-cancel"
-                    
-                    type="submit"
-                  >
+                  <button className="btn-cancel" type="submit">
                     Cancel
                   </button>
-                  <button className="btn-next"
+                  <button
+                    className="btn-next"
                     onClick={() => navigate("/hpupdatepackage3")}
-                    
                     type="submit"
                   >
                     Next{" "}

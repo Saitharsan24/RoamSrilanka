@@ -3,7 +3,7 @@
   font-weight: 400;
   color: #000;
   font-family: "Roboto";
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .pack input,
@@ -13,6 +13,7 @@
   border: 1.597px solid rgba(66, 80, 102, 0.4);
   box-shadow: 0px 3.1931917667388916px 6.386383533477783px 0px
     rgba(66, 80, 102, 0.1);
+  font-size: 20px;
 }
 
 .btn-send {
@@ -43,4 +44,19 @@
   color: #008767;
   font-family: "Roboto";
   font-size: 22px;
+}
+
+.pack-list ol {
+  font-family: "Roboto";
+  font-weight: 800;
+  font-size: 16px;
+  align-items: center;
+  color: #000000;
+}
+
+.pack-list h2 {
+  font-family: "Roboto";
+  font-weight: 800;
+  font-size: 24px;
+  color: #004577;
 }
