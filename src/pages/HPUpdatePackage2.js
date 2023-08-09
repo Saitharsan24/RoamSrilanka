@@ -3,6 +3,7 @@ import Headeruser from "../components/headerusers";
 import Sidebar from "../components/holidayplanner-sidebar";
 import * as Icon from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
+import "./../styles/updatepack.css";
 
 const HPUpdatePackage2 = () => {
   const navigate = useNavigate();
@@ -14,10 +15,7 @@ const HPUpdatePackage2 = () => {
         className="d-flex flex-row col-12"
       >
         <Sidebar />
-        <div
-          style={{}}
-          className="d-flex gap-3 w-100 align-items-center justify-content-around"
-        >
+        <div className="d-flex gap-3 w-100 align-items-center justify-content-around">
           <div
             style={{
               height: "auto",
@@ -34,7 +32,7 @@ const HPUpdatePackage2 = () => {
                 fontSize: "30px",
                 fontWeight: "600",
               }}
-              className="ms-5"
+              className="mx-2"
             >
               New Package
             </p>
@@ -44,49 +42,22 @@ const HPUpdatePackage2 = () => {
                 src={require("./../assets/images/FirstProgressBar.png")}
               ></img>
             </div> */}
-            <form className="">
+            <form className="pack">
               <div className="d-flex flex-column gap-5">
                 <div className="d-flex flex-column gap-4">
                   <div className="d-flex flex-column justify-content-center m-2">
-                    <label
-                      style={{
-                        fontWeight: "400",
-                        color: "#000",
-                        fontFamily: "Roboto",
-                        fontSize: "22px",
-                      }}
-                    >
+                    <label>
                       Places
                       <input
-                        style={{
-                          width: "100%",
-                          borderRadius: "7.983px",
-                          border: "1.597px solid rgba(66, 80, 102, 0.40)",
-                          boxShadow:
-                            "0px 3.1931917667388916px 6.386383533477783px 0px rgba(66, 80, 102, 0.10)",
-                        }}
                         className="p-2"
                         type="text"
                         placeholder="Places of the Package"
                       ></input>
                     </label>
-                    <label
-                      style={{
-                        fontWeight: "400",
-                        color: "#000",
-                        fontFamily: "Roboto",
-                        fontSize: "22px",
-                      }}
-                    > <br/>
+                    <label>
+                      {" "}
+                      <br />
                       <input
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          borderRadius: "7.983px",
-                          border: "1.597px solid rgba(66, 80, 102, 0.40)",
-                          boxShadow:
-                            "0px 3.1931917667388916px 6.386383533477783px 0px rgba(66, 80, 102, 0.10)",
-                        }}
                         className="p-2"
                         type="text"
                         placeholder="Added Places"
@@ -95,30 +66,15 @@ const HPUpdatePackage2 = () => {
                   </div>
                 </div>
                 <div className="d-flex flex-row justify-content-between mx-2">
-                  <button
-                    style={{
-                      width: "8rem",
-                      borderRadius: "7.98px",
-                      border: "1px solid #DF0404",
-                      backgroundColor: "#FFC5C5",
-                      color: "rgba(223, 4, 4, 0.74)",
-                      fontFamily: "Roboto",
-                      fontSize: "22px",
-                    }}
+                  <button className="btn-cancel"
+                    
                     type="submit"
                   >
                     Cancel
                   </button>
-                  <button onClick={() => navigate("/hpupdatepackage3")}
-                    style={{
-                      width: "8rem",
-                      borderRadius: "7.98px",
-                      border: "1px solid #00B087",
-                      backgroundColor: "#A0E0D2",
-                      color: "#008767",
-                      fontFamily: "Roboto",
-                      fontSize: "22px",
-                    }}
+                  <button className="btn-next"
+                    onClick={() => navigate("/hpupdatepackage3")}
+                    
                     type="submit"
                   >
                     Next{" "}
@@ -132,7 +88,7 @@ const HPUpdatePackage2 = () => {
           </div>
         </div>
       </div>
-    </div>  
+    </div>
   );
 };
 

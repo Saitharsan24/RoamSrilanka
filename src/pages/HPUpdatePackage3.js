@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Headeruser from "../components/headerusers";
 import Sidebar from "../components/holidayplanner-sidebar";
 import * as Icon from "react-bootstrap-icons";
+import "./../styles/updatepack.css";
+import StarRating from "../components/Rating";
 
 const HPUpdatePackage3 = () => {
   return (
@@ -32,6 +34,7 @@ const HPUpdatePackage3 = () => {
                 fontSize: "30px",
                 fontWeight: "600",
               }}
+              className="mx-3"
             >
               Package Information
             </p>
@@ -41,128 +44,54 @@ const HPUpdatePackage3 = () => {
                 src={require("./../assets/images/FirstProgressBar.png")}
               ></img>
             </div> */}
-            <form className="">
+            <form className="pack">
               <div className="d-flex flex-column gap-5">
+                <div className="d-flex flex-column justify-content-center m-2">
+                  <div className="d-flex flex-column flex-lg-row justify-content-evenly m-2 gap-3">
+                    <label>
+                      Type
+                      <input className="p-2" readOnly></input>
+                    </label>
+                    <label>
+                      Days
+                      <input className="p-2" readOnly></input>
+                    </label>
+                  </div>
                   <div className="d-flex flex-column justify-content-center m-2">
-                    <div className="d-flex flex-column flex-lg-row justify-content-evenly m-2 gap-3">
-                      <label
-                        style={{
-                          fontWeight: "400",
-                          color: "#000",
-                          fontFamily: "Roboto",
-                          fontSize: "22px",
-                        }}
-                      >
-                        Type
-                        <input
-                          style={{
-                            width: "100%",
-                            borderRadius: "7.983px",
-                            border: "1.597px solid rgba(66, 80, 102, 0.40)",
-                            boxShadow:
-                              "0px 3.1931917667388916px 6.386383533477783px 0px rgba(66, 80, 102, 0.10)",
-                          }}
-                          className="p-2"
-                          readOnly
-                        ></input>
-                      </label>
-                      <label
-                        style={{
-                          fontWeight: "400",
-                          color: "#000",
-                          fontFamily: "Roboto",
-                          fontSize: "22px",
-                        }}
-                      >
-                        Days
-                        <input
-                          style={{
-                            width: "100%",
-                            borderRadius: "7.983px",
-                            border: "1.597px solid rgba(66, 80, 102, 0.40)",
-                            boxShadow:
-                              "0px 3.1931917667388916px 6.386383533477783px 0px rgba(66, 80, 102, 0.10)",
-                          }}
-                          className="p-2"
-                          readOnly
-                        ></input>
-                      </label>
+                    <label>
+                      Amount
+                      <input className="p-2" readOnly></input>
+                    </label>
+                    <label>
+                      Places:
+                      <input className="p-2" readOnly></input>
+                    </label>
+                  </div>
+                  <div className="d-flex flex-column flex-lg-row justify-content m-2 gap-3">
+                    <div className="col-6">
+                      <p>Tour Guide</p>
                     </div>
-                    <div className="d-flex flex-column justify-content-center m-2">
-                      <label
-                        style={{
-                          fontWeight: "400",
-                          color: "#000",
-                          fontFamily: "Roboto",
-                          fontSize: "22px",
-                        }}
-                      >
-                        Amount
-                        <input
-                          style={{
-                            width: "100%",
-                            borderRadius: "7.983px",
-                            border: "1.597px solid rgba(66, 80, 102, 0.40)",
-                            boxShadow:
-                              "0px 3.1931917667388916px 6.386383533477783px 0px rgba(66, 80, 102, 0.10)",
-                          }}
-                          className="p-2"
-                          readOnly
-                        ></input>
-                      </label>
-                      <label
-                        style={{
-                          fontWeight: "400",
-                          color: "#000",
-                          fontFamily: "Roboto",
-                          fontSize: "22px",
-                        }}
-                      >
-                        Places:
-                        <input
-                          style={{
-                            width: "100%",
-                            borderRadius: "7.983px",
-                            border: "1.597px solid rgba(66, 80, 102, 0.40)",
-                            boxShadow:
-                              "0px 3.1931917667388916px 6.386383533477783px 0px rgba(66, 80, 102, 0.10)",
-                          }}
-                          className="p-2"
-                          readOnly
-                        ></input>
-                      </label>
+                    <div className="col-6">
+                      <p>Transportation</p>
                     </div>
+                  </div>
+                  <div className="d-flex flex-column flex-lg-row justify-content m-2 gap-3">
+                    <div className="col-6">
+                      <p>Hotel Type</p>
+                    </div>
+                    <div className="col-6">
+                      <StarRating />
+                    </div>
+                  </div>
                 </div>
-                <div className="d-flex flex-row justify-content-between mx-2" >
-                  <button
-                    style={{
-                        width: "10rem",
-                        borderRadius: "8px",
-                        border: "1px solid #004577",
-                        backgroundColor: "#004577",
-                        color: "#FFFFFF",
-                        fontFamily: "Roboto",
-                        fontSize: "20px",
-                      }}
-                    type="submit"
-                  >
+                <div className="d-flex flex-row justify-content-between m-2">
+                  <button className="btn-send" type="submit">
                     <Icon.ChevronLeft
                       style={{ marginBottom: "5px", fontSize: "17px" }}
-                    />
-                    {" "}Back
+                    />{" "}
+                    Back
                   </button>
-                  <button 
-                    style={{
-                      width: "10rem",
-                      borderRadius: "8px",
-                      border: "1px solid #004577",
-                      backgroundColor: "#004577",
-                      color: "#FFFFFF",
-                      fontFamily: "Roboto",
-                      fontSize: "20px",
-                    }}
-                    type="submit"
-                  >
+                  <button className="btn-send" type="submit">
                     Send to Admin{" "}
                     <Icon.ChevronRight
                       style={{ marginBottom: "5px", fontSize: "17px" }}
