@@ -43,7 +43,6 @@ const HPUpdatePackage3 = () => {
             </div> */}
             <form className="">
               <div className="d-flex flex-column gap-5">
-                <div className="d-flex flex-column gap-4">
                   <div className="d-flex flex-column justify-content-center m-2">
                     <div className="d-flex flex-column flex-lg-row justify-content-evenly m-2 gap-3">
                       <label
@@ -133,15 +132,14 @@ const HPUpdatePackage3 = () => {
                         ></input>
                       </label>
                     </div>
-                  </div>
                 </div>
-                <div className="d-flex flex-row justify-content-evenly" >
+                <div className="d-flex flex-row justify-content-between mx-2" >
                   <button
                     style={{
                         width: "10rem",
                         borderRadius: "8px",
-                        border: "1px solid #2254D5",
-                        backgroundColor: "#2254D5",
+                        border: "1px solid #004577",
+                        backgroundColor: "#004577",
                         color: "#FFFFFF",
                         fontFamily: "Roboto",
                         fontSize: "20px",
@@ -157,8 +155,8 @@ const HPUpdatePackage3 = () => {
                     style={{
                       width: "10rem",
                       borderRadius: "8px",
-                      border: "1px solid #2254D5",
-                      backgroundColor: "#2254D5",
+                      border: "1px solid #004577",
+                      backgroundColor: "#004577",
                       color: "#FFFFFF",
                       fontFamily: "Roboto",
                       fontSize: "20px",

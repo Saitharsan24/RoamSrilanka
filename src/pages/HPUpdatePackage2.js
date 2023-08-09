@@ -94,7 +94,7 @@ const HPUpdatePackage2 = () => {
                     </label>
                   </div>
                 </div>
-                <div className="d-flex flex-row justify-content-evenly">
+                <div className="d-flex flex-row justify-content-between mx-2">
                   <button
                     style={{
                       width: "8rem",

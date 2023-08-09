@@ -20,7 +20,7 @@ function HPPackage() {
                 style={{
                   width: "15rem",
                   borderRadius: "11px",
-                  border: "1px solid #2254D5",
+                  border: "1px solid #004577",
                   backgroundColor: "#004577",
                   color: "#FFFFFF",
                   fontFamily: "Lato",
