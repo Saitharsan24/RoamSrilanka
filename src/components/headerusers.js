@@ -14,7 +14,7 @@ const Headeruser=()=>(
       <div className=" container-fluid d-lg-flex d-md-flex d-sm-flex flex-sm-column  bg-white ">
         <div className='row '>
           <div className='col-6 flex-sm-column flex-xs-column flex-md-colum flex-lg-colum'>
-            <img className='logo img-fluid' src={systemlogo} />
+            <img className='logo img-fluid' src={systemlogo} style={{width:"130px"}}/>
           </div>
           <div className='col-6 flex-sm-column flex-xs-column flex-md-colum flex-lg-colum'>
             <div className=' mt-4 d-flex flex-row align-items-center justify-content-end gap-2 gap-sm-2 gap-md-4 gap-lg-5 '>

@@ -21,6 +21,8 @@ import UpdateEvent1 from '../pages/HPUpdate-event1';
 import AdminUser from '../pages/admin-users';
 import GuideDashoard from '../pages/guide-dashboard';
 import Driver from '../pages/driver/dashboard';
+import Admin_change_password from "../pages/admin_change_password";
+import TouristDashboard from "../pages/Tourist/tourist-dashboard";
 import Vehicle from '../pages/driver/vehicle';
 import Admin_change_password from "../pages/admin_change_password";
 // import HotelRequest from "../pages/HotelRequest";
@@ -50,6 +52,12 @@ function Routing() {
         <Route path='/adminUser' element={<AdminUser/>}></Route>
         <Route path='/UpdateEvent1' element={<UpdateEvent1/>}></Route>
         <Route path='/ourHotel' element={<OurHotel/>}></Route>
+
+        {/* <Route path='/hotelRequest' element={<HotelRequest/>}></Route> */}
+        <Route path='/driver/dashboard' element={<Driver/>}></Route>
+        <Route path='/Admin_change_password' element={<Admin_change_password/>}></Route>
+        <Route path='/tourist-dashboard' element={<TouristDashboard/>}></Route>
+        <Route path='/tourist-sidebar' element={<TouristDashboard/>}></Route>
         <Route path='/hotelRequest' element={<HotelRequest/>}></Route>
         <Route path='/driver/dashboard' element={<Driver/>}></Route>
         <Route path='/driver/vehicle' element={<Vehicle/>}></Route>
