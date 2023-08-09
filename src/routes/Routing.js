@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Components} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import Header from "../components/Header";
@@ -15,6 +15,7 @@ import Holiday_dashboard from "../pages/holidayplanner_dashboard";
 import HotelDashboard from "../pages/hotel-dashboard";
 import Adminprofile from "../pages/admin_profile";
 import Actors from "../components/Actors";
+import HotelRequest from "../pages/HotelRequest";
 import OurHotel from '../pages/our-hotel';
 import UpdateEvent1 from '../pages/HPUpdate-event1';
 import AdminUser from '../pages/admin-users';
@@ -22,14 +23,20 @@ import GuideDashoard from '../pages/guide-dashboard';
 import Driver from '../pages/driver/dashboard';
 import Admin_change_password from "../pages/admin_change_password";
 import TouristDashboard from "../pages/Tourist/tourist-dashboard";
+import Vehicle from '../pages/driver/vehicle';
+import Admin_change_password from "../pages/admin_change_password";
+// import HotelRequest from "../pages/HotelRequest";
+import ExploreView from "../pages/explore-view";
+import Existing_events from "../pages/existing_events";
 
 function Routing() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Actors />}></Route>
+        {/* <Route path="/" element={<Actors />}></Route> */}
         <Route path="/header" element={<Header />}></Route>
         <Route path="/hoteldashboard" element={<HotelDashboard />}></Route>
+        <Route path="/requests" element={<HotelRequest />}></Route>
         <Route path="/Contact" element={<Contact />}></Route>
         <Route path="/Services" element={<Services />}></Route>
         <Route path="/Blog" element={<Blog />}></Route>
@@ -45,11 +52,18 @@ function Routing() {
         <Route path='/adminUser' element={<AdminUser/>}></Route>
         <Route path='/UpdateEvent1' element={<UpdateEvent1/>}></Route>
         <Route path='/ourHotel' element={<OurHotel/>}></Route>
+
         {/* <Route path='/hotelRequest' element={<HotelRequest/>}></Route> */}
         <Route path='/driver/dashboard' element={<Driver/>}></Route>
         <Route path='/Admin_change_password' element={<Admin_change_password/>}></Route>
         <Route path='/tourist-dashboard' element={<TouristDashboard/>}></Route>
         <Route path='/tourist-sidebar' element={<TouristDashboard/>}></Route>
+        <Route path='/hotelRequest' element={<HotelRequest/>}></Route>
+        <Route path='/driver/dashboard' element={<Driver/>}></Route>
+        <Route path='/driver/vehicle' element={<Vehicle/>}></Route>
+        <Route path='/Admin_change_password' element={<Admin_change_password/>}></Route>
+        <Route path='/exploreView' element={<ExploreView/>}></Route>
+        <Route path="/Existing_events" element={<Existing_events/>}></Route>
       </Routes>
     </BrowserRouter>
   );

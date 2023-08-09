@@ -110,7 +110,7 @@ const DriverSidebar = () => {
           className={`menu-item ${selectedItem === 'vehicle' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('vehicle')}
         >
-          <Link to="/vehicle">
+          <Link to="../../driver/vehicle">
           {isCollapsed ? (
             <Icon.CarFrontFill className='icon' />
           ) : (
