@@ -30,6 +30,9 @@ import HPUpdateEvent1 from "../pages/HPUpdateEvent1";
 import HPUpdateEvent2 from "../pages/HPUpdateEvent2";
 import HPUpdateEvent3 from "../pages/HPUpdateEvent3";
 import HPViewEvent from "../pages/HPViewEvent";
+import HPItem from "../pages/HPItem";
+import HPUpdateItem1 from "../pages/HPUpdateItem1";
+import HPViewItem from "../pages/HPViewItem";
 
 function Routing() {
   return (
@@ -60,7 +63,7 @@ function Routing() {
         <Route path="/adminUser" element={<AdminUser />}></Route>
         <Route path="/ourHotel" element={<OurHotel />}></Route>
         <Route path="/hotelRequest" element={<HotelRequest />}></Route>
-        <Route path="/plannerrequests" element={<HPPackage />}></Route>
+        <Route path="/hppackage" element={<HPPackage />}></Route>
         <Route path="/hpupdatepackage1" element={<HPUpdatePackage1 />}></Route>
         <Route path="/hpupdatepackage2" element={<HPUpdatePackage2 />}></Route>
         <Route path="/hpupdatepackage3" element={<HPUpdatePackage3 />}></Route>
@@ -70,6 +73,9 @@ function Routing() {
         <Route path="/hpupdateevent2" element={<HPUpdateEvent2 />}></Route>
         <Route path="/hpupdateevent3" element={<HPUpdateEvent3 />}></Route>
         <Route path="/hpviewevent" element={<HPViewEvent />}></Route>
+        <Route path="/hpitem" element={<HPItem />}></Route>
+        <Route path="/hpupdateitem1" element={<HPUpdateItem1 />}></Route>
+        <Route path="/hpviewitem" element={<HPViewItem />}></Route>
       </Routes>
     </BrowserRouter>
   );

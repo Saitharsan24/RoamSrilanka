@@ -7,6 +7,7 @@
 }
 
 .pack input,
+.pack textarea,
 .pack select {
   width: 100%;
   border-radius: 7.983px;

@@ -3,7 +3,7 @@ import Headeruser from "../components/headerusers";
 import Sidebar from "../components/holidayplanner-sidebar";
 import "./../styles/updatepack.css";
 
-function HPViewEvent() {
+function HPViewItem() {
   return (
     <div className=" ">
       <Headeruser />
@@ -31,7 +31,7 @@ function HPViewEvent() {
             }}
             className="d-flex m-5"
           >
-            Event Name: Perahera
+            Item Name: Tent by Northface
           </h1>
           <div className="d-flex align-items-center justify-content-around flex-column flex-md-row flex-lg-row col-12">
             <div
@@ -51,7 +51,7 @@ function HPViewEvent() {
                       filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
                       borderRadius: "11px",
                     }}
-                    src={require("./../assets/images/Event1.png")}
+                    src={require("./../assets/images/Item1.png")}
                   ></img>
                 </div>
               </div>
@@ -60,42 +60,23 @@ function HPViewEvent() {
               <form className="pack">
                 <div className="d-flex flex-column gap-5">
                   <div className="d-flex flex-column justify-content-center m-2">
-                    <h2>Event Information</h2>
-                    <div className="d-flex flex-column flex-lg-row justify-content-between m-2 gap-3">
+                    <h2>Item Information</h2>
+                    <div className="d-flex flex-column justify-content-center m-2">
                       <label>
                         Name:
                         <input
                           className="p-2"
                           type="text"
-                          placeholder="Perahera"
+                          placeholder="Tent by Northface"
                           readOnly
                         ></input>
                       </label>
                       <label>
-                        Days:
+                        Rent:
                         <input
                           className="p-2"
                           type="number"
                           placeholder="3 Days"
-                          readOnly
-                        ></input>
-                      </label>
-                    </div>
-                    <div className="d-flex flex-column justify-content-center m-2">
-                      <label>
-                        Date:
-                        <input
-                          className="p-2"
-                          placeholder="21/08/2023"
-                          readOnly
-                        ></input>
-                      </label>
-                      <label>
-                        Location:
-                        <input
-                          className="p-2"
-                          type="text"
-                          placeholder="Kandy, Sri Lanka"
                           readOnly
                         ></input>
                       </label>
@@ -127,4 +108,4 @@ function HPViewEvent() {
     </div>
   );
 }
-export default HPViewEvent;
+export default HPViewItem;

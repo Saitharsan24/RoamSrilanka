@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Headeruser from "../components/headerusers";
 import Sidebar from "../components/holidayplanner-sidebar";
 import * as Icon from "react-bootstrap-icons";
-import { useNavigate } from "react-router-dom";
 import "./../styles/updatepack.css";
+import DragDropFile from "../components/file-upload";
 
-const HPUpdateEvent2 = () => {
-  const navigate = useNavigate();
+const HPUpdateItem1 = () => {
   return (
     <div className="d-flex flex-column">
       <Headeruser />
@@ -32,52 +31,56 @@ const HPUpdateEvent2 = () => {
                 fontSize: "30px",
                 fontWeight: "600",
               }}
-              className="mx-2"
+              className="mx-3"
             >
-              New Event
+              Item Information
             </h1>
-            {/* <div className="d-none d-sm-flex d-md-flex d-lg-flex flex-row justify-content-evenly">
-              <img
-                className="img-fluid"
-                src={require("./../assets/images/FirstProgressBar.png")}
-              ></img>
-            </div> */}
             <form className="pack">
               <div className="d-flex flex-column gap-5">
-                <div className="d-flex flex-column gap-4">
-                  <div className="d-flex flex-column justify-content-center m-2">
+                <div className="d-flex flex-column justify-content-center m-2">
+                  <div className="d-flex flex-column flex-lg-row justify-content-between m-2 gap-3">
                     <label>
-                      Places
+                      Name:
                       <input
                         className="p-2"
                         type="text"
-                        placeholder="Places of the Event"
+                        placeholder="Tent by northface"
+                        readOnly
                       ></input>
                     </label>
                     <label>
-                      {" "}
-                      <br />
+                      Rent per day :
+                      <input
+                        className="p-2"
+                        type="number"
+                        placeholder="5000.00"
+                        readOnly
+                      ></input>
+                    </label>
+                  </div>
+                  <div className="d-flex flex-column justify-content-center m-2">
+                    <label>
+                      Description:
                       <textarea
                         className="p-2"
-                        type="text"
-                        placeholder="Description"
+                        placeholder="framework of poles or other supporting structures. It's commonly used for outdoor activities such as camping, "
+                        readOnly
                       ></textarea>
+                    </label>
+                    <label>
+                      Image:
+                      <div className="col-12">
+                        <DragDropFile />
+                      </div>
                     </label>
                   </div>
                 </div>
-                <div className="d-flex flex-row justify-content-between mx-2">
-                  <button className="btn-cancel" type="submit">
-                    Cancel
+                <div className="d-flex flex-row justify-content-between m-2">
+                  <button className="btn-send" type="submit">
+                    Back
                   </button>
-                  <button
-                    className="btn-next"
-                    onClick={() => navigate("/hpupdateevent3")}
-                    type="submit"
-                  >
-                    Next{" "}
-                    <Icon.ChevronRight
-                      style={{ marginBottom: "5px", fontSize: "17px" }}
-                    />
+                  <button className="btn-send" type="submit">
+                    Add
                   </button>
                 </div>
               </div>
@@ -89,4 +92,4 @@ const HPUpdateEvent2 = () => {
   );
 };
 
-export default HPUpdateEvent2;
+export default HPUpdateItem1;

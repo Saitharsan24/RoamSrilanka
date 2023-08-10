@@ -2,20 +2,21 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import Sidebar from "../components/holidayplanner-sidebar";
 import Headeruser from "../components/headerusers";
-import HPDatatablePage from "../components/HPPackage";
+import HPDatatablePage from "../components/HPItem";
 import { useNavigate } from "react-router-dom";
 
-function HPPackage() {
-    const navigate = useNavigate();
+function HPItem() {
+  const navigate = useNavigate();
   return (
     <div className="main d-flex flex-column">
       <Headeruser />
       <div className="d-flex">
-      <Sidebar />
+        <Sidebar />
         <div className="d-flex w-100">
           <div className="d-flex flex-column col-lg-12 p-4 ">
             <div className="d-grid d-md-flex justify-content-md-end">
-              <button onClick={() => navigate("/hpupdatepackage1")}
+              <button
+                onClick={() => navigate("/hpupdateitem1")}
                 className=""
                 style={{
                   width: "15rem",
@@ -29,14 +30,15 @@ function HPPackage() {
                 }}
                 type="submit"
               >
-                Add New Package
+                Add New Item
               </button>
             </div>
+
             <p
               style={{ fontFamily: "Poppins", fontSize: "1.5rem" }}
               className="ms-5 m-0"
             >
-              <b>Existing Packages</b>
+              <b>Existing Items</b>
             </p>
             <HPDatatablePage />
           </div>
@@ -46,4 +48,4 @@ function HPPackage() {
   );
 }
 
-export default HPPackage;
+export default HPItem;
