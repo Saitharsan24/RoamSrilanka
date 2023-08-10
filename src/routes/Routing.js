@@ -22,6 +22,7 @@ import AdminUser from '../pages/admin-users';
 import GuideDashoard from '../pages/guide-dashboard';
 import Driver from '../pages/driver/dashboard';
 import Vehicle from '../pages/driver/vehicle';
+import Drequests from '../pages/driver/requests';
 import Admin_change_password from "../pages/admin_change_password";
 // import HotelRequest from "../pages/HotelRequest";
 import ExploreView from "../pages/explore-view";
@@ -53,6 +54,7 @@ function Routing() {
         <Route path='/hotelRequest' element={<HotelRequest/>}></Route>
         <Route path='/driver/dashboard' element={<Driver/>}></Route>
         <Route path='/driver/vehicle' element={<Vehicle/>}></Route>
+        <Route path='/driver/requests' element={<Drequests/>}></Route>
         <Route path='/Admin_change_password' element={<Admin_change_password/>}></Route>
         <Route path='/exploreView' element={<ExploreView/>}></Route>
         <Route path="/Existing_events" element={<Existing_events/>}></Route>

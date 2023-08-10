@@ -11,3 +11,21 @@
     
     border: 5px solid black;
 }
+
+.infrero {
+    width: 50%;
+    border-radius: 5px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    margin-bottom: 1rem;
+    padding: 10px;
+    background-color: aliceblue;
+}
+
+.infrer {
+    width: 220px;
+    border-radius: 5px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    margin-bottom: 1rem;
+    padding-left: 30px;
+    background-color: aliceblue;
+}
