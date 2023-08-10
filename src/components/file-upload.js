@@ -43,7 +43,7 @@ function DragDropFile() {
   };
 
   return (
-    <div className="d-flex flex-column p-5 col-8" style={{backgroundColor:"white",borderRadius:"8px"}}>
+    <div className="d-flex flex-column p-5 col-lg-12" style={{backgroundColor:"white",borderRadius:"8px"}}>
         <form
       id="form-file-upload"
       onDragEnter={handleDrag}

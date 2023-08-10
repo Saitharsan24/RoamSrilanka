@@ -60,3 +60,10 @@
   font-size: 24px;
   color: #004577;
 }
+
+.pack h2 {
+  font-family: "Barlow";
+  font-weight: 600;
+  font-size: 30px;
+  color: #000000;
+}
