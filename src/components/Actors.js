@@ -14,7 +14,7 @@ const Actors=()=>{
                 <img className='logo img-fluid' src={systemlogo}  />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="nav-item-list-1 ms-auto ">
-                        <Nav.Link className='nav-item-1 text-black m-2 jost-text '><Link to='/header'>Tourist</Link></Nav.Link>
+                        <Nav.Link className='nav-item-1 text-black m-2 jost-text '><Link to='/tourist-dashboard'>Tourist</Link></Nav.Link>
                         <Nav.Link className='nav-item-1 text-black m-2 jost-text '><Link to=''>Admin</Link></Nav.Link>
                         <Nav.Link className='nav-item-1 text-black m-2 jost-text '><Link to='/Holidayplanner_dashboard'>Holiday Planner</Link></Nav.Link>
                         <Nav.Link className='nav-item-1 text-black m-2 jost-text '><Link to='/hoteldashboard'>Hotel</Link></Nav.Link>
@@ -22,7 +22,7 @@ const Actors=()=>{
                     </Nav>
                 </Navbar.Collapse>
             </React.Fragment>
-        </Navbar>
+        </Navbar> 
     );
 };
 

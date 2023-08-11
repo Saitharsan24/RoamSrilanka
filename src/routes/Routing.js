@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Components} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import Header from "../components/Header";
@@ -17,6 +17,7 @@ import OurHotel from '../pages/our-hotel';
 import UpdateEvent1 from '../pages/HPUpdate-event1';
 import GuideDashoard from '../pages/guide-dashboard';
 import Driver from '../pages/driver/dashboard';
+
 import Admin_change_password from "../pages/admin/admin_change_password";
 import Admin_blog from '../pages/admin/admin-blog';
 import HotelRequest from "../pages/Hotelrequest";
@@ -32,7 +33,7 @@ function Routing() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Actors />}></Route>
+        {/* <Route path="/" element={<Actors />}></Route> */}
         <Route path="/header" element={<Header />}></Route>
         <Route path="/hoteldashboard" element={<HotelDashboard />}></Route>
         <Route path="/requests" element={<HotelRequest />}></Route>
@@ -47,8 +48,15 @@ function Routing() {
         <Route path='/guideDashboard' element={<GuideDashoard/>}></Route>
         <Route path='/UpdateEvent1' element={<UpdateEvent1/>}></Route>
         <Route path='/ourHotel' element={<OurHotel/>}></Route>
+
+        {/* <Route path='/hotelRequest' element={<HotelRequest/>}></Route> */}
+        <Route path='/driver/dashboard' element={<Driver/>}></Route>
+        <Route path='/Admin_change_password' element={<Admin_change_password/>}></Route>
+        <Route path='/tourist-dashboard' element={<TouristDashboard/>}></Route>
+        <Route path='/tourist-sidebar' element={<TouristDashboard/>}></Route>
         <Route path='/hotelRequest' element={<HotelRequest/>}></Route>
         <Route path='/driver/dashboard' element={<Driver/>}></Route>
+
         <Route path='/admin/Admin_change_password' element={<Admin_change_password/>}></Route>
         <Route path="/admin/Adminprofile" element={<Adminprofile />}></Route>
         <Route path='/admin/admin-blog' element={<Admin_blog/>}></Route>
@@ -57,7 +65,6 @@ function Routing() {
         <Route path='/admin/admin_driver_vehicle_detail' element={<AdminVehicleDetails/>}></Route>
         <Route path='/admin/admin_user' element={<Tourist/>}></Route>
         <Route path='/admin/admin_driver_reg' element={<AdminDiverReg/>}></Route>
-      </Routes>
     </BrowserRouter>
   );
 }
