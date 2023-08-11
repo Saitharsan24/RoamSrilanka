@@ -4,7 +4,7 @@ import { Button, Table } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import HotelSidebar from "../components/hotel-sidebar";
 import Headeruser from "../components/headerusers";
-import DatatablePage from "../components/data-table";
+// import DatatablePage from "../components/data-table";
 
 function HotelRequest() {
   return (
@@ -20,7 +20,7 @@ function HotelRequest() {
             >
               <b>All Requests</b>
             </p>
-            <DatatablePage />
+            {/* <DatatablePage /> */}
           </div>
         </div>
       </div>
