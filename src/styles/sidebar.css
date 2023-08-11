@@ -2,7 +2,7 @@
 
 .sidebar {
     width: 15rem;
-    height: 38rem;
+    /* height: 38rem; */
     padding: 2rem;
     background-color: #004577;
     transition: width 0.3s;
