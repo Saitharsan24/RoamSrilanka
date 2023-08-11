@@ -1,9 +1,11 @@
 import React from 'react';
 import "./../styles/data-table.css";
 import { MDBDataTable } from 'mdbreact';
+import { useNavigate } from "react-router-dom";
 
 const HPDatatablePage = () => {
 
+    const navigate = useNavigate();
   const data = {
     columns: [
       {
@@ -49,7 +51,7 @@ const HPDatatablePage = () => {
             type: 'Day Based',
             amount: '800',
             day: '2',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><div className='accept' onClick={() => navigate("/hpviewpackage")}>View</div></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {

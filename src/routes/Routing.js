@@ -33,6 +33,7 @@ import HPViewEvent from "../pages/HPViewEvent";
 import HPItem from "../pages/HPItem";
 import HPUpdateItem1 from "../pages/HPUpdateItem1";
 import HPViewItem from "../pages/HPViewItem";
+import UpdateSuccessPopup from "../components/Sucess";
 
 function Routing() {
   return (
@@ -76,6 +77,8 @@ function Routing() {
         <Route path="/hpitem" element={<HPItem />}></Route>
         <Route path="/hpupdateitem1" element={<HPUpdateItem1 />}></Route>
         <Route path="/hpviewitem" element={<HPViewItem />}></Route>
+        <Route path="/success" element={<UpdateSuccessPopup />}></Route>
+
       </Routes>
     </BrowserRouter>
   );

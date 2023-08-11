@@ -16,6 +16,7 @@ import {
 
 import "../styles/holidayplanner_dashboard.css";
 import Calendar from "react-calendar";
+import { useNavigate } from "react-router-dom";
 
 export const data = [
   {
@@ -64,6 +65,7 @@ export const data = [
 
 function Holiday_dashboard() {
   const [value, setValue] = useState(new Date());
+  const navigate = useNavigate();
   return (
     <React.Fragment>
       <div className="d-flex flex-column">
@@ -76,7 +78,7 @@ function Holiday_dashboard() {
             <div className="d-flex col-12 gap-3 p-2 flex-lg-row flex-md-column flex-column">
               <div
                 className=" box d-flex col-lg-3 col-sm-8  flex-row align-items-center gap-3 p-2 justify-content-around"
-                style={{ backgroundColor: "#FFFFFF", borderRadius: "12px" }}
+                style={{ backgroundColor: "#FFFFFF", borderRadius: "12px" }} onClick={() => navigate("/hppackage")}
               >
                 <div className=" d-flex flex-column ">
                   <p style={{ color: "#98A3B2", fontSize: "30px" }}>Packages</p>
@@ -90,7 +92,7 @@ function Holiday_dashboard() {
               </div>
               <div
                 className=" box d-flex col-lg-3 col-sm-8 flex-row align-items-center gap-3 p-3 justify-content-around "
-                style={{ backgroundColor: "#FFFFFF", borderRadius: "12px" }}
+                style={{ backgroundColor: "#FFFFFF", borderRadius: "12px" }} onClick={() => navigate("/hpevent")}
               >
                 <div className=" d-flex flex-column justify-content-between ">
                   <p style={{ color: "#98A3B2", fontSize: "28px" }}>
@@ -120,7 +122,7 @@ function Holiday_dashboard() {
               </div>
               <div
                 className=" box d-flex col-lg-3  col-sm-8 flex-row align-items-center gap-3 p-3 justify-content-around"
-                style={{ backgroundColor: "#FFFFFF", borderRadius: "12px" }}
+                style={{ backgroundColor: "#FFFFFF", borderRadius: "12px" }} onClick={() => navigate("/hpitem")}
               >
                 <div className=" d-flex flex-column justify-content-between ">
                   <p style={{ color: "#98A3B2", fontSize: "28px" }}>
