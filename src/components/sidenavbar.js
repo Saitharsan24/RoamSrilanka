@@ -7,6 +7,8 @@ import * as BiIcons from 'react-icons/bi'
 import * as MdIcons from 'react-icons/md'
 import * as TbIcons from 'react-icons/tb'
 import * as BsIcons from 'react-icons/bs'
+import * as SiIcons from 'react-icons/si'
+
 
 import '../styles/tourist/touristsidenavbar.css'
 
@@ -27,6 +29,13 @@ function SideNavbar() {
         title:'My Bookings',
         path:'touristBookings',
         icon:<BiIcons.BiTrip />,
+        cName: 'nav-text',
+      },
+
+      {
+        title:'Tour Packages',
+        path:'touristPackages',
+        icon:<SiIcons.SiYourtraveldottv />,
         cName: 'nav-text',
       },
 

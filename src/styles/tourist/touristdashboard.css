@@ -1,0 +1,139 @@
+p, h5 {
+    margin: 0px !important;
+}
+
+.place-01{
+    background-color: #f1f1f1;
+    width: 10rem;
+    height: 16rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:5px;
+}
+
+.place-01 p{
+    margin: 0px;
+    font-size: 17px;
+    font-weight:500;
+}
+
+.place-image{
+    background-color: #004577;
+    width: 10rem;
+    height: 12rem;
+    border-radius: 15px;
+}
+
+.dashboard-left-top{
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 15px 0px 0px 25px; 
+}
+
+.dashboard-left-top h4{
+    margin: 0px;
+    font-weight: 600;
+    color: #004577;
+
+}
+
+.book-tour-btn:hover{
+    background-color: #005694 !important;
+}
+
+
+.dashboard-right{
+    width: inherit;
+    height: 100%;
+    border-radius: 15px;
+    background-color: #ffffff;
+}
+
+.dashboard-left-top-places{
+    padding: 20px 80px 30px 50px;
+    width: inherit;
+}
+
+.dashboard-left-bottom-request{
+    width: 50%;
+    height: inherit;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+.dashboard-left-bottom-message{
+    width: 50%;
+    height: inherit;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+.dashboard-right{
+    padding: 20px 10px 10px 10px;
+}
+
+h4{
+    margin: 0px;
+    font-weight: 600;
+    color: #004577 !important;
+    padding-left: 30px;
+}
+
+.dashboard-right-trips span{
+    color: #DB163A;
+}
+
+.dashboard-left-bottom-message{
+    padding: 20px 0px 30px 0px;
+}
+
+.new-message{
+    width: 100%;
+    padding: 20px 0px 0px 30px;
+}
+
+.new-message-one{
+    width: 90%;
+    border-bottom: #9a9a9a  1px solid;
+    padding-bottom: 8px;
+}
+
+.message-image{
+    border-radius: 30px;
+    background-color: #004577;
+    width: 60px;
+    height: 60px;
+}
+
+.message-content{
+    width: 70%;
+}
+
+.message-content h5{
+    font-weight: 600;
+}
+
+.new-request-one{
+    width: 90%;
+    border-bottom: #9a9a9a  1px solid;
+    padding-bottom: 5px;
+
+}
+
+.new-request-one p{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0px;
+}
+
+.request-div{
+    width: 65%;
+}
+
+.request-view-div{
+    color:#DB163A;
+    font-weight: 600;
+
+}
