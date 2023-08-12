@@ -1,0 +1,11 @@
+.tourist-booking-btn{
+    border: none;
+    color: hsl(205, 100%, 23%);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.tourist-booking-hr{
+    background-color: #035C94;;
+    height: 1px;
+}

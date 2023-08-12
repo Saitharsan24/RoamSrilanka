@@ -56,6 +56,7 @@ import HPUpdateItem1 from "./pages/holiday-planner/HPUpdateItem1";
 import HPViewEvent from "./pages/holiday-planner/HPViewEvent";
 import HPViewItem from "./pages/holiday-planner/HPViewItem";
 import HPRequest from "./pages/holiday-planner/HPRequest";
+import TouristBlogList from "./pages/Tourist/tourist-blog-list";
 
 const route = createBrowserRouter(
   createRoutesFromElements(
@@ -77,9 +78,11 @@ const route = createBrowserRouter(
         <Route path="touristProfile" element={<TouristBookings />}></Route>
         <Route path="touristAccessoriesView" element={<ToursitAccessoriesView />}></Route>
         <Route path="rentItem" element={<ToursitAccessoriesRent />}></Route>
+        <Route path="touristBlogList" element={<TouristBlogList />}></Route>
       </Route>
 
       <Route path="/hotel/" element={<HotelLayout />} errorElement={<SystemError />}>
+        <Route index element={<HotelDashboard />}></Route>
         <Route path="hotelDashboard" element={<HotelDashboard />}></Route>
         <Route path="hotelBooking" element={<HotelBooking />}></Route>
         <Route path="ourHotel" element={<OurHotel />}></Route>
@@ -90,6 +93,7 @@ const route = createBrowserRouter(
       </Route>
 
       <Route path="/guide/" element={<GuideLayout />} errorElement={<SystemError />}>
+        <Route index element={<GuideDashboard />}></Route>
         <Route path="guideDashboard" element={<GuideDashboard />}></Route>
         <Route path="guideRequest" element={<GuideRequest />}></Route>
         <Route path="guideRequestForm" element={<GuideRequestForm />}></Route>
@@ -101,6 +105,7 @@ const route = createBrowserRouter(
       </Route>
 
       <Route path="/holidayPlanner/" element={<HolidayPlannerLayout />} errorElement={<SystemError />}>
+        <Route index element={<Holiday_dashboard />}></Route>
         <Route path="plannerDashboard" element={<Holiday_dashboard />}></Route>
         <Route path="plannerProfile" element={<Holidayprofile />}></Route>
         <Route path="plannerPackage" element={<HPPackage />}></Route>

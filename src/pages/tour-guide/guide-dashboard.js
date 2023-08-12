@@ -123,7 +123,7 @@ const GuideDashboard = () => {
               height: "20rem",
               boxShadow: "0px 40px 60px 0px rgba(86, 89, 146, 0.10)",
             }}
-            className="d-flex flex-column col-lg-3 col-md-11 col-11 mt-3 p-3"
+            className="d-flex flex-column col-lg-3 col-md-11 col-11 mt-3 p-3 justify-content-between "
           >
             <p
               style={{
