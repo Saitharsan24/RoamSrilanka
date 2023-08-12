@@ -5,7 +5,7 @@ p, h5 {
 .place-01{
     background-color: #f1f1f1;
     width: 10rem;
-    height: 16rem;
+    height: 17rem;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -135,5 +135,21 @@ h4{
 .request-view-div{
     color:#DB163A;
     font-weight: 600;
+}
 
+.dashboard-my-trips{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+}
+
+.dashboard-right-trips{
+    height: 80%;
+}
+
+.dashboard-my-trips{
+    border-radius: 15px;
 }

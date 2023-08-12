@@ -175,17 +175,16 @@ function TouristDashboard() {
 
             </div>
           </div>
-        </div>
-        
+        </div>    
       </div>
 
       <div className="dashboard-right d-flex flex-column gap-4">
         <div className="dashboard-right-calender d-flex flex-column align-items-center"><ResponsiveCalendar/></div>
-        <div className="dashboard-right-trips d-flex flex-column justify-content-start">
-          <h4>My Trips on <span>28.09.2023</span></h4>
-          <div className="">
-
-          </div>
+          <div className="dashboard-right-trips d-flex flex-column justify-content-start gap-3">
+            <h4>My Trips on <span>28.09.2023</span></h4>
+            <div className="dashboard-my-trips">
+              <p>No trips yet</p>
+            </div>
         </div>
       </div>
     </div>
