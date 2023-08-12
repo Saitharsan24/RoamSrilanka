@@ -569,106 +569,55 @@ const GuideProfile = () => {
                     fontWeight: "600",
                   }}
                 >
-                  Change Password
+                  Membership Plan
                 </p>
                 <div className="d-flex flex-column gap-3 p-2">
-                  <div className="d-flex col-12 ms-3">
-                    <div className="d-flex flex-column gap-1 col-12">
-                      <label
-                        style={{
-                          fontSize: "14px",
-                          fontFamily: "Barlow",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Current Password
-                      </label>
-                      <input
-                        className="p-2 col-10"
-                        style={{
-                          borderRadius: "5px",
-                          backgroundColor: "#F1F1F2",
-                          border: "none",
-                          width: "45%",
-                        }}
-                        type="text"
-                        placeholder="Enter Password"
-                      ></input>
-                    </div>
-                  </div>
-                  <div className="d-flex flex-row col-12 ms-3 ">
-                    <div className="d-flex flex-column gap-1 col-6">
-                      <label
-                        style={{
-                          fontSize: "14px",
-                          fontFamily: "Barlow",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        New Password
-                      </label>
-                      <input
-                        className="p-2"
-                        style={{
-                          borderRadius: "5px",
-                          backgroundColor: "#F1F1F2",
-                          border: "none",
-                          width: "90%",
-                        }}
-                        type="text"
-                        placeholder="Enter New Password"
-                      ></input>
-                    </div>
-                    <div className="d-flex flex-column gap-1 col-6">
-                      <label
-                        style={{
-                          fontSize: "14px",
-                          fontFamily: "Barlow",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        New Password
-                      </label>
-                      <input
-                        className="p-2 col-10"
-                        style={{
-                          borderRadius: "5px",
-                          backgroundColor: "#F1F1F2",
-                          border: "none",
-                          width: "90%",
-                        }}
-                        type="text"
-                        placeholder="Again Enter New Password"
-                      ></input>
-                    </div>
-                  </div>
-                  <div className="d-flex flex-row gap-4 justify-content-end me-3 my-2">
-                    <button
-                      className="p-1"
+                  <div className="d-flex flex-column gap-1 col-6">
+                    <label
                       style={{
-                        backgroundColor: "#004577",
-                        boxShadow:
-                          " 0px 10px 20px 0px rgba(192, 192, 192, 0.35)",
-                        borderRadius: "5px",
-                        color: "#FFF",
-                        fontSize: "15px",
+                        fontSize: "14px",
+                        fontFamily: "Barlow",
+                        fontWeight: "bold",
                       }}
                     >
-                      Discard
-                    </button>
-                    <button
-                      className="p-1"
+                      Current subscription Plan
+                    </label>
+                    <input
+                      className="p-2"
                       style={{
-                        backgroundColor: "#004577",
-                        boxShadow:
-                          " 0px 10px 20px 0px rgba(192, 192, 192, 0.35)",
                         borderRadius: "5px",
-                        color: "#FFF",
-                        fontSize: "15px",
+                        backgroundColor: "#F1F1F2",
+                        border: "none",
+                        width: "90%",
+                      }}
+                      type="text"
+                      placeholder="Customized Package"
+                      disabled
+                    ></input>
+                  </div>
+                  <div className="d-flex flex-column gap-1 col-12">
+                    <label
+                      style={{
+                        fontSize: "14px",
+                        fontFamily: "Barlow",
+                        fontWeight: "bold",
                       }}
                     >
-                      Change
-                    </button>
+                      subscription Details
+                    </label>
+                    <input
+                      className="p-2 col-10"
+                      style={{
+                        borderRadius: "5px",
+                        backgroundColor: "#F1F1F2",
+                        border: "none",
+                        width: "100%",
+                        height: "9rem",
+                      }}
+                      type="text"
+                      placeholder="eg: Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem"
+                      disabled
+                    ></input>
                   </div>
                 </div>
               </form>
@@ -848,55 +797,106 @@ const GuideProfile = () => {
                     fontWeight: "600",
                   }}
                 >
-                  Membership Plan
+                  Change Password
                 </p>
                 <div className="d-flex flex-column gap-3 p-2">
-                  <div className="d-flex flex-column gap-1 col-6">
-                    <label
-                      style={{
-                        fontSize: "14px",
-                        fontFamily: "Barlow",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Current subscription Plan
-                    </label>
-                    <input
-                      className="p-2"
-                      style={{
-                        borderRadius: "5px",
-                        backgroundColor: "#F1F1F2",
-                        border: "none",
-                        width: "90%",
-                      }}
-                      type="text"
-                      placeholder="Customized Package"
-                      disabled
-                    ></input>
+                  <div className="d-flex col-12 ms-3">
+                    <div className="d-flex flex-column gap-1 col-12">
+                      <label
+                        style={{
+                          fontSize: "14px",
+                          fontFamily: "Barlow",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Current Password
+                      </label>
+                      <input
+                        className="p-2 col-10"
+                        style={{
+                          borderRadius: "5px",
+                          backgroundColor: "#F1F1F2",
+                          border: "none",
+                          width: "45%",
+                        }}
+                        type="text"
+                        placeholder="Enter Password"
+                      ></input>
+                    </div>
                   </div>
-                  <div className="d-flex flex-column gap-1 col-12">
-                    <label
+                  <div className="d-flex flex-row col-12 ms-3 ">
+                    <div className="d-flex flex-column gap-1 col-6">
+                      <label
+                        style={{
+                          fontSize: "14px",
+                          fontFamily: "Barlow",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        New Password
+                      </label>
+                      <input
+                        className="p-2"
+                        style={{
+                          borderRadius: "5px",
+                          backgroundColor: "#F1F1F2",
+                          border: "none",
+                          width: "90%",
+                        }}
+                        type="text"
+                        placeholder="Enter New Password"
+                      ></input>
+                    </div>
+                    <div className="d-flex flex-column gap-1 col-6">
+                      <label
+                        style={{
+                          fontSize: "14px",
+                          fontFamily: "Barlow",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        New Password
+                      </label>
+                      <input
+                        className="p-2 col-10"
+                        style={{
+                          borderRadius: "5px",
+                          backgroundColor: "#F1F1F2",
+                          border: "none",
+                          width: "90%",
+                        }}
+                        type="text"
+                        placeholder="Again Enter New Password"
+                      ></input>
+                    </div>
+                  </div>
+                  <div className="d-flex flex-row gap-4 justify-content-end me-3 my-2">
+                    <button
+                      className="p-1"
                       style={{
-                        fontSize: "14px",
-                        fontFamily: "Barlow",
-                        fontWeight: "bold",
+                        backgroundColor: "#004577",
+                        boxShadow:
+                          " 0px 10px 20px 0px rgba(192, 192, 192, 0.35)",
+                        borderRadius: "5px",
+                        color: "#FFF",
+                        fontSize: "15px",
                       }}
                     >
-                      subscription Details
-                    </label>
-                    <input
-                      className="p-2 col-10"
+                      Discard
+                    </button>
+                    <button
+                      className="p-1"
                       style={{
+                        backgroundColor: "#004577",
+                        boxShadow:
+                          " 0px 10px 20px 0px rgba(192, 192, 192, 0.35)",
                         borderRadius: "5px",
-                        backgroundColor: "#F1F1F2",
-                        border: "none",
-                        width: "100%",
-                        height: "9rem",
+                        color: "#FFF",
+                        fontSize: "15px",
                       }}
-                      type="text"
-                      placeholder="eg: Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem"
-                      disabled
-                    ></input>
+                    >
+                      Change
+                    </button>
                   </div>
                 </div>
               </form>
