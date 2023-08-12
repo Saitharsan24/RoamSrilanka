@@ -69,7 +69,7 @@ function SideNavbar() {
 
       {
         title:'Blogs',
-        path:'touristBlog',
+        path:'touristBlogList',
         icon:<BiIcons.BiSolidBook />,
         cName: 'nav-text',
       },
