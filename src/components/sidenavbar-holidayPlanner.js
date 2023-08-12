@@ -7,86 +7,55 @@ import * as BiIcons from 'react-icons/bi'
 import * as MdIcons from 'react-icons/md'
 import * as TbIcons from 'react-icons/tb'
 import * as BsIcons from 'react-icons/bs'
-import * as SiIcons from 'react-icons/si'
+
+import '../styles/hotel/sidenavbar-hotel.css'
 
 
-import '../styles/tourist/touristsidenavbar.css'
-
-
-function SideNavbar() {
+function SideNavbarHolidayPlanner() {
 
     const [isCollapsed, setIsCollapsed] = useState(false);
 
     const sidebardata = [
       {
         title:'Dashboard',
-        path:'touristDashboard',
+        path:'plannerDashboard',
         icon:<AiIcons.AiFillHome />,
         cName: 'nav-text',
       },
 
       {
-        title:'My Bookings',
-        path:'touristBookings',
+        title:'Requests',
+        path:'plannerRequest',
+        icon:<BiIcons.BiTrip />,
+        cName: 'nav-text',
+      },
+      {
+        title:'Trips',
+        path:'holidayPlannerTrip',
         icon:<BiIcons.BiTrip />,
         cName: 'nav-text',
       },
 
       {
-        title:'Tour Packages',
-        path:'touristPackages',
-        icon:<SiIcons.SiYourtraveldottv />,
-        cName: 'nav-text',
-      },
-
-      {
-        title:'Hotel',
-        path:'touristHotel',
-        icon:<BiIcons.BiSolidHotel />,
-        cName: 'nav-text',
-      },
-
-      {
-        title:'Tour Guide',
-        path:'touristGuide',
-        icon:<MdIcons.MdTour />,
-        cName: 'nav-text',
-      },
-
-      {
-        title:'Ride',
-        path:'touristDriver',
-        icon:<BiIcons.BiSolidCar />,
-        cName: 'nav-text',
-      },
-
-      {
-        title:'Accessories',
-        path:'touristGadgets',
-        icon:<TbIcons.TbTools />,
-        cName: 'nav-text',
-      },
-
-      {
-        title:'Blogs',
-        path:'touristBlogList',
-        icon:<BiIcons.BiSolidBook />,
-        cName: 'nav-text',
-      },
-
-      {
         title:'Chat',
-        path:'touristChat',
+        path:'holidayPlannerChat',
         icon:<BsIcons.BsChatSquareDotsFill />,
         cName: 'nav-text',
       },
 
       {
+        title:'Reports',
+        path:'holidayPlannerReport',
+        icon:<MdIcons.MdTour />,
+        cName: 'nav-text',
+      },
+
+      {
         title:'Profile',
-        path:'touristProfile',
+        path:'plannerProfile',
         icon:<MdIcons.MdAccountCircle />,
         cName: 'nav-text',
-      }
+      },
     ]
 
   return (
@@ -112,4 +81,4 @@ function SideNavbar() {
   )
 }
 
-export default SideNavbar
+export default SideNavbarHolidayPlanner;

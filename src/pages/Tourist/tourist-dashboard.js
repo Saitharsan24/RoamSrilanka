@@ -175,7 +175,8 @@ function TouristDashboard() {
 
             </div>
           </div>
-        </div>    
+
+        </div>
       </div>
 
       <div className="dashboard-right d-flex flex-column gap-4">

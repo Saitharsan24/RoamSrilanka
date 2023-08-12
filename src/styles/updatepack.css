@@ -1,0 +1,70 @@
+.pack p,
+.pack label {
+  font-weight: 400;
+  color: #000;
+  font-family: "Roboto";
+  font-size: 20px;
+}
+
+.pack input,
+.pack textarea,
+.pack select {
+  width: 100%;
+  border-radius: 7.983px;
+  border: 1.597px solid rgba(66, 80, 102, 0.4);
+  box-shadow: 0px 3.1931917667388916px 6.386383533477783px 0px
+    rgba(66, 80, 102, 0.1);
+  font-size: 20px;
+}
+
+.btn-send {
+  width: 10rem;
+  border-radius: 8px;
+  border: 1px solid #004577;
+  background-color: #004577;
+  color: #ffffff;
+  font-family: "Roboto";
+  font-size: 20px;
+}
+
+.btn-cancel {
+  width: 8rem;
+  border-radius: 7.98px;
+  border: 1px solid #df0404;
+  background-color: #ffc5c5;
+  color: rgba(223, 4, 4, 0.74);
+  font-family: "Roboto";
+  font-size: 22px;
+}
+
+.btn-next {
+  width: 8rem;
+  border-radius: 7.98px;
+  border: 1px solid #00b087;
+  background-color: #a0e0d2;
+  color: #008767;
+  font-family: "Roboto";
+  font-size: 22px;
+}
+
+.pack-list ol {
+  font-family: "Roboto";
+  font-weight: 800;
+  font-size: 16px;
+  align-items: center;
+  color: #000000;
+}
+
+.pack-list h2 {
+  font-family: "Roboto";
+  font-weight: 800;
+  font-size: 24px;
+  color: #004577;
+}
+
+.pack h2 {
+  font-family: "Barlow";
+  font-weight: 600;
+  font-size: 30px;
+  color: #000000;
+}
