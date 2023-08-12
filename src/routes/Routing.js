@@ -17,7 +17,6 @@ import Adminprofile from "../pages/admin_profile";
 import Actors from "../components/Actors";
 import HotelRequest from "../pages/HotelRequest";
 import OurHotel from "../pages/our-hotel";
-import UpdateEvent1 from "../pages/HPUpdateEvent1";
 import AdminUser from "../pages/admin-users";
 import GuideDashoard from "../pages/guide-dashboard";
 import HPPackage from "../pages/HPPackage";
@@ -33,7 +32,7 @@ import HPViewEvent from "../pages/HPViewEvent";
 import HPItem from "../pages/HPItem";
 import HPUpdateItem1 from "../pages/HPUpdateItem1";
 import HPViewItem from "../pages/HPViewItem";
-import UpdateSuccessPopup from "../components/Sucess";
+import HPRequest from "../pages/HPRequest";
 
 function Routing() {
   return (
@@ -77,8 +76,7 @@ function Routing() {
         <Route path="/hpitem" element={<HPItem />}></Route>
         <Route path="/hpupdateitem1" element={<HPUpdateItem1 />}></Route>
         <Route path="/hpviewitem" element={<HPViewItem />}></Route>
-        <Route path="/success" element={<UpdateSuccessPopup />}></Route>
-
+        <Route path="/hprequest" element={<HPRequest />}></Route>
       </Routes>
     </BrowserRouter>
   );
