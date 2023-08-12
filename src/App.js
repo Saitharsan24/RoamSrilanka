@@ -20,6 +20,9 @@ import ToursitAllGuide from "./pages/Tourist/tourist-all-guide";
 import TouristPackages from "./pages/Tourist/tourist-all-guide";
 import ToursitGuideView from "./pages/Tourist/tourist-guide-view";
 import TouristHotel from "./pages/Tourist/tourist-hotel";
+import ToursitHotelSearchList from "./pages/Tourist/tourist-hotel-searchlist";
+
+
 
 import HotelLayout from "./layouts/hotel/hotel-layout";
 import HotelDashboard from "./pages/hotel/hotel-dashboard";
@@ -78,7 +81,9 @@ const route = createBrowserRouter(
         <Route path="touristProfile" element={<TouristBookings />}></Route>
         <Route path="touristAccessoriesView" element={<ToursitAccessoriesView />}></Route>
         <Route path="rentItem" element={<ToursitAccessoriesRent />}></Route>
+        <Route path="touristHotelSearchList" element={<ToursitHotelSearchList />}></Route>
         <Route path="touristBlogList" element={<TouristBlogList />}></Route>
+
       </Route>
 
       <Route path="/hotel/" element={<HotelLayout />} errorElement={<SystemError />}>
