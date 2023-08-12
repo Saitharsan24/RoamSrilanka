@@ -36,7 +36,7 @@ function ToursitAccessories() {
     <div className='tourist-main'>
       
       <div className="tourist-headings w-100">
-        <h2 style={{margin:'0px', fontWeight:'600'}}>Accessories</h2>
+        <h2 className='mb-1' style={{margin:'0px', fontWeight:'600'}}>Accessories</h2>
         <hr style={{margin:'0px'}} />
       </div>
       
@@ -87,7 +87,8 @@ function ToursitAccessories() {
             </div>
 
             <p className='pt-1' style={{fontWeight:'600', fontSize:'18px',color:'#004577',margin:'0px'}}>Camera</p>
-            <a href="touristAccessoriesView">
+            <a href="/tourist/touristAccessoriesView">
+
             <Button
                 className="rent-btn"
                 variant="primary"

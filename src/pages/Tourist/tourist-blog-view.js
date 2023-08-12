@@ -4,7 +4,7 @@ import DropFileInput from '../../components/dragdrop.js';
 import {Button} from 'react-bootstrap';
 
 
-function TouristBlog() {
+function TouristBlogView() {
   const onFileChange = (files) => {
     console.log(files);
   }
@@ -81,7 +81,22 @@ function TouristBlog() {
           <input type="text" value='Lorem epsomeLorem epsomeLorem epsomeLorem epsomeLorem epsomeLorem epsomeLorem epsomeLorem epsomeLorem epsomeLorem epsome'/>
         </div>
 
-        <div className="blog-add-btn d-flex justify-content-end gap-4 mt-3">
+        <div className="blog-add-btn d-flex justify-content-between gap-4 mt-3">
+              <a href="rentItem">
+                <Button
+                    className="rent-btn"
+                    variant="primary"
+                    size='lg'
+                    style={{
+                      backgroundColor: "#A60000",
+                      border: "none",
+                      paddingLeft: "25px",
+                      paddingRight: "25px",
+                      fontSize: "15px",
+                    }}
+                  >Delete article
+                </Button>
+              </a>
               <a href="rentItem">
                 <Button
                     className="rent-btn"
@@ -94,29 +109,15 @@ function TouristBlog() {
                       paddingRight: "25px",
                       fontSize: "15px",
                     }}
-                  >Save as a draft
-                </Button>
-              </a>
-              <a href="touristBlogView">
-                <Button
-                    className="rent-btn"
-                    variant="primary"
-                    size='lg'
-                    style={{
-                      backgroundColor: "#004577",
-                      border: "none",
-                      paddingLeft: "25px",
-                      paddingRight: "25px",
-                      fontSize: "15px",
-                    }}
-                  >Publish
+                  >Edit article
                 </Button>
               </a>
         </div>
         
       </div>
+      
     </div>
   )
 }
 
-export default TouristBlog;
+export default TouristBlogView;

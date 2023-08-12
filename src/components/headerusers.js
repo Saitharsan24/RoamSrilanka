@@ -22,7 +22,7 @@ const Headeruser=()=>(
               <div className=' ' style={{ color: "#004577" }}><FaBell/></div>
               <div className='' style={{ color: "#004577" }}><FaUser/></div>
               <div className='' style={{ color: "#004577", fontWeight: "bold" }}>
-                <div class="dropdown">
+                <div className="dropdown">
                   <button className="btn  dropdown-toggle" style={{ width: "100px" }} type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Saranjan
                   </button>
