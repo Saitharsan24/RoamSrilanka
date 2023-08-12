@@ -53,3 +53,11 @@ tr:nth-child(even) {
   max-width: fit-content;
   margin-left: 0.5rem;
 }
+.pagination .page-item{
+  --bs-pagination-active-bg: #004577;
+  --bs-pagination-active-border-color: #004577;
+  --bs-pagination-color: #004577;
+}
+.dataTables_paginate .pagination{
+  justify-content: flex-end;
+}

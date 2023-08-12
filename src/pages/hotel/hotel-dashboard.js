@@ -351,7 +351,7 @@ const HotelDashboard = () => {
       <div className="d-flex flex-lg-row flex-md-column flex-column justify-content-evenly">
         <div
           style={{ backgroundColor: "#FFF", borderRadius: "5px" }}
-          className="d-none d-md-none d-lg-flex flex-column col-lg-7 shadow-lg p-2"
+          className="d-none d-md-none d-lg-flex flex-column col-lg-7  shadow-lg p-2"
         >
           <p style={{ fontSize: "1rem" }}>
             <b>Revenue</b>
@@ -388,7 +388,7 @@ const HotelDashboard = () => {
           <p style={{ fontSize: "1rem" }}>
             <b>Analytics</b>
           </p>
-          <div className="d-flex col-md-11 mx-lg-3 justify-content-md-center">
+          <div className="d-flex col-md-11 mx-lg-3 mx-md-4 justify-content-md-center">
           <PieChart width={400} height={350}>
             <Pie
               data={data01}
