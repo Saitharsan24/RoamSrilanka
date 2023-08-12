@@ -1,16 +1,13 @@
 import React from "react";
-import Headeruser from "../components/headerusers";
-import "../styles/admin_profile.css";
-import profile from "../assets/images/profile.jpg";
+import Headeruser from "../../components/headerusers";
+import "../../styles/admin/admin_profile.css";
+import profile from "../../assets/images/profile.jpg";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-bootstrap-icons";
-import Adminsidebar from "../components/admin-sidebar";
+import AdminSidebar from "../../components/admin-sidebar";
 
 function Adminprofile() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Add your form submission logic here
-  };
+  
 
   return (
       
@@ -20,20 +17,20 @@ function Adminprofile() {
         <Headeruser />
         </div>
       <div className="d-flex">
-          <Adminsidebar />
-          <div className="w-100 d-flex justify-content-center  align-items-center "></div>
-          <div className="  d-flex  h-75 w-75 justify-content-around  align-items-center bg-white">
+          <AdminSidebar />
+          <div className="w-100 d-flex justify-content-center  align-items-center ">
+          <div className="  d-flex justify-content-center  align-items-center bg-white mt-5 mb-5 w-75" >
               <div className="d-flex flex-column justify-content-around  align-items-center ">
                 <div className=" d-flex flex-column flex-md-row flex-sm-row justify-content-around  align-items-center gap-5  ">
-                            <div className=" d-flex flex-column flex-md-row flex-sm-row justify-content-around  align-items-center  ">
+                            <div className=" d-flex flex-column flex-md-row flex-sm-row justify-content-around  align-items-center mt-5 ">
                                   <img
                                   src={profile}
                                   className=" profile-pic object-fit-cover img-fluid m-auto  round-cricle"   ></img>
                                   </div>
-                                  <div className="d-flex flex-column justify-content-around  align-items-center w-75 ">
+                                  <div className="d-flex flex-column justify-content-around  align-items-center w-75 mt-5">
                                           <p style={{fontSize:"32px",fontWeight:"bold",color:"#004577",}}>Manokaran Keethapriya</p>
                                           <div className="d-flex flex-column flex-md-row flex-sm-row justify-content-around  align-items-center gap-3">
-                                              <button className=" btn-change-pic  " style={{ height: "3rem", width: "Auto" }} >
+                                              <button className=" btn-change-pic  " style={{ height: "3rem", width: "Auto",color: "#FFFFFF" }} >
                                                 Change Profile Picture
                                               </button>
                                               <div className="Acc-1 d-flex flex-column justify-content-around  align-items-center p-1" style={{backgroundColor:"rgb(200, 200, 200)"}} >
@@ -79,7 +76,7 @@ function Adminprofile() {
                    
               
             </div>
-                    
+            </div>         
           </div>
         </div>
 

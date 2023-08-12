@@ -4,6 +4,7 @@ import '../../styles/tourist/touristdashboard.css'
 import ResponsiveCalendar from "../../components/calender.js";
 
 
+
 function TouristDashboard() {
   return (
     <div className='tourist-main d-flex flex-row gap-2 mb-2' style={{width:"inherit"}}>
@@ -187,7 +188,6 @@ function TouristDashboard() {
           </div>
         </div>
       </div>
-
     </div>
   )
 }

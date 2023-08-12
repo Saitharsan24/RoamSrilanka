@@ -38,6 +38,7 @@ function ToursitAccessories() {
               </div>
             </div>
           </div>
+
           <div className="accessories-text width-inherit">
           <h2>Camera</h2>
             <div className="accessories-fields d-flex flex-column align-items-end-">

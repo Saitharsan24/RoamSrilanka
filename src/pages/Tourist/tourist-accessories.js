@@ -88,6 +88,7 @@ function ToursitAccessories() {
 
             <p className='pt-1' style={{fontWeight:'600', fontSize:'18px',color:'#004577',margin:'0px'}}>Camera</p>
             <a href="/tourist/touristAccessoriesView">
+
             <Button
                 className="rent-btn"
                 variant="primary"

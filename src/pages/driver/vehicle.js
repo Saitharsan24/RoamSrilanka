@@ -34,8 +34,13 @@ function Vehicle() {
                 <div className="col-lg-3 col-md-4 col-12">
                     <DriverSidebar />
                 </div>
-                <div className="d-flex mt-5 flex-column align-items-center">
-
+                
+                <div className="d-flex mt-3 flex-column ">
+                    <div className="infrero">
+                        <p style={{ fontSize: "15px", fontWeight: "bold", marginTop: "1em", width: "50%" }}>
+                        Vehicle Info
+                        </p>
+                    </div>
                     <div className="d-flex align-items-center">
                         {
                             images.map((data, i) =>
@@ -47,7 +52,44 @@ function Vehicle() {
                     </div>
                     
                     <img className="big" src={sliderData.value} height="300" width="500"/>
+                    <div className="d-flex flex-row justify-content-between">
+                        <div className="d-flex flex-column">
+                            <div className="infrer">
+                                <p style={{ fontSize: "15px", fontWeight: "bold", marginTop: "1em", width: "50%" }}>
+                                Vehicle Info
+                                </p>
+                            </div>
+                            <div className="infrer">
+                                <p style={{ fontSize: "15px", fontWeight: "bold", marginTop: "1em", width: "50%" }}>
+                                Vehicle Info
+                                </p>
+                            </div>
+                            <div className="infrer">
+                                <p style={{ fontSize: "15px", fontWeight: "bold", marginTop: "1em", width: "50%" }}>
+                                Vehicle Info
+                                </p>
+                            </div>
+                        </div>
+                        <div className="d-flex flex-column">
+                        <div className="infrer">
+                                <p style={{ fontSize: "15px", fontWeight: "bold", marginTop: "1em", width: "50%" }}>
+                                Vehicle Info
+                                </p>
+                            </div>
+                            <div className="infrer">
+                                <p style={{ fontSize: "15px", fontWeight: "bold", marginTop: "1em", width: "50%" }}>
+                                Vehicle Info
+                                </p>
+                            </div>
+                            <div className="infrer">
+                                <p style={{ fontSize: "15px", fontWeight: "bold", marginTop: "1em", width: "50%" }}>
+                                Vehicle Info
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
             </div>
         </div>
     );
