@@ -2,7 +2,7 @@ p {
     font-size: 20px;
   }
   
-  .info {
+  .l-info {
     /* height: 22rem; */
     background: rgba(219, 22, 58, 0.25);
     border-radius: 2rem;
@@ -32,7 +32,7 @@ p {
     height: 35rem;
   }
   
-  .detail {
+  .l-detail {
     font-family: "Jost";
     font-weight: 500;
     font-size: 32px;
@@ -40,20 +40,12 @@ p {
     color: #004577;
   }
   
-  .data {
+  .l-data {
     font-family: "Jost";
     font-weight: 400;
     font-size: 24px;
     line-height: 125%;
     color: #db163a;
-  }
-  
-  .location {
-    background-image: url(../assets/img/location.png);
-    background-position: center;
-    background-size: cover;
-    height: 23rem;
-    border-radius: 10%;
   }
   
   .l-contact-list {
@@ -63,9 +55,12 @@ p {
   }
 
   .form-label {
-    justify-content: end !important;
+    justify-content: left !important;
 }
   
+.contact-form-details label{
+  margin: 0px !important;
+}
   /* @media only screen and (max-width: 600px) {
     .container {
       width: 100% !important;
