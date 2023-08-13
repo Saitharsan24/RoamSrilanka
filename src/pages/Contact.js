@@ -11,7 +11,7 @@ function Contact() {
     <div>
       <Header />
       <div className="d-flex flex-column w-100">
-        <div className="contact col-12 text-white d-flex flex-column justify-content-center barlow-text">
+        <div className="l-contact col-12 text-white d-flex flex-column justify-content-center barlow-text">
           <h1
             className="text-white"
             style={{
