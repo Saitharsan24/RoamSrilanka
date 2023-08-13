@@ -26,8 +26,9 @@ import AdminDiverReg from "./pages/admin/admin_driver_reg";
 import AdminChangePassword from "./pages/admin/admin_change_password";
 import AdminBlogAccept from "./pages/admin/admin_blog_accept";
 import AdminPackage from "./pages/admin/admin_package";
+import AdminPackageAccept from "./pages/admin/admin_package_accept";
 
-import SystemError from "./pages/error"
+//import SystemError from "./pages/error";
 import ToursitAccessoriesRent from "./pages/Tourist/tourist-accessories-rent";
 import TouristBlog from "./pages/Tourist/tourist-blog";
 import TouristBlogView from "./pages/Tourist/tourist-blog-view";
@@ -75,6 +76,7 @@ import HPViewItem from "./pages/holiday-planner/HPViewItem";
 import HPRequest from "./pages/holiday-planner/HPRequest";
 import TouristBlogList from "./pages/Tourist/tourist-blog-list";
 
+
 const route = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -97,7 +99,6 @@ const route = createBrowserRouter(
         <Route path="rentItem" element={<ToursitAccessoriesRent />}></Route>
         <Route path="touristHotelSearchList" element={<ToursitHotelSearchList />}></Route>
         <Route path="touristBlogList" element={<TouristBlogList />}></Route>
-
       </Route>
 
       <Route path="/hotel/" element={<HotelLayout />} errorElement={<SystemError />}>
@@ -136,10 +137,10 @@ const route = createBrowserRouter(
         <Route path="adminchangepassword" element={<AdminChangePassword/>}></Route>
         <Route path="adminblogaccept" element={<AdminBlogAccept/>}></Route>
         <Route path="adminpackage" element={<AdminPackage/>}></Route>
+        <Route path="adminpackageaccept" element={<AdminPackageAccept/>}></Route>
+        
+        
       </Route>
-
-
-      <Route>
           
       <Route path="/holidayPlanner/" element={<HolidayPlannerLayout />} errorElement={<SystemError />}>
         <Route index element={<Holiday_dashboard />}></Route>

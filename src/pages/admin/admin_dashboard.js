@@ -19,96 +19,134 @@ import {
 const Registers_users_bar = [
   {
     name: "February",
-    tourist: 4000,
-    driver: 2400,
-    guite: 2000,
+    tourist: 5,
+    driver: 10,
+    guite: 5,
     amt: 2400,
   },
   {
     name: "March",
-    tourist: 3000,
-    driver: 1398,
-    guite: 5098,
+    tourist: 4,
+    driver: 3,
+    guite: 4,
     amt: 2210,
   },
   {
     name: "April",
-    tourist: 2000,
+    tourist: 20,
     driver: 8,
-    guite:500,
+    guite:10,
     amt: 2290,
   },
   {
     name: "May",
-    tourist: 2780,
-    driver: 3908,
-    guite:200,
+    tourist: 32,
+    driver: 7,
+    guite:3,
     amt: 2000,
   },
   {
     name: "June",
-    tourist: 18,
-    driver: 4800,
-    guite:2500,
+    tourist: 15,
+    driver: 7,
+    guite:3,
     amt: 2181,
   },
   {
     name: "July",
-    tourist: 2390,
-    driver: 3800,
-    guite:500,
+    tourist: 9,
+    driver: 8,
+    guite:4,
     amt: 2500,
   },
   {
     name: "August",
-    tourist: 3490,
-    driver: 4300,
-    guite:2000,
+    tourist: 7,
+    driver: 2,
+    guite:9,
+    amt: 2100,
+  },
+];
+
+const Registered_hotel = [
+  {
+    name: "Feb",
+    hotel: 2,
+    amt: 2400,
+  },
+  {
+    name: "Mar",
+    hotel: 4,
+    amt: 2210,
+  },
+  {
+    name: "Apr",
+    hotel: 7,
+    amt: 2290,
+  },
+  {
+    name: "May",
+    hotel: 12,
+    amt: 2000,
+  },
+  {
+    name: "Jun",
+    hotel: 8,
+    amt: 2181,
+  },
+  {
+    name: "Jul",
+    hotel: 6,
+    amt: 2500,
+  },
+  {
+    name: "Aug",
+    hotel: 3,
     amt: 2100,
   },
 ];
 
 const monthRevenue_1 = [
-  { name: 'Tourist', value: 400 },
-  { name: 'Driver', value: 300 },
-  { name: 'Guite', value: 300 },
-  { name: 'Hotel', value: 200 },
+  { name: 'Tourist', value: 40000 },
+  { name: 'Driver', value: 30000 },
+  { name: 'Guite', value: 30000},
+  { name: 'Hotel', value: 20000 },
 ];
 
-const data = [
+const monthRevenue_2 = [
   {
     name: "Feb",
-    Revenue: 400,
+    Revenue: 100000,
     amt: 2400,
   },
   {
     name: "Mar",
-    tourist: 300,
+    tourist: 120000,
     amt: 2210,
   },
   {
     name: "Apr",
-    Revenue: 600,
+    Revenue: 300000,
     amt: 2290,
   },
   {
     name: "May",
-    Revenue: 780,
+    Revenue: 78000,
     amt: 2000,
   },
   {
     name: "Jun",
-    Revenue: 100,
+    Revenue: 200000,
     amt: 2181,
   },
   {
     name: "Jul",
-    Revenue: 390,
+    Revenue: 390000,
     amt: 2500,
   },
   {
     name: "Aug",
-    Revenue: 340,
+    Revenue: 340000,
     amt: 2100,
   },
 ];
@@ -194,6 +232,8 @@ function AdminDashboard() {
           {/* chart-01 */}
           <div className="d-flex flex justify-content-center  align-items-center col-12  ">
               <div className='reg-chart d-flex flex justify-content-center  align-items-center bg-white p-3 mt-3' style={{borderRadius:"10px"}}>
+                <div className='d-flex flex-column'>
+              <p style={{fontWeight:"bold"}}>Monthly Count Count of Registered users</p>
               {/* <ResponsiveContainer width="100%" height="100%"> */}
                       <BarChart
                         width={600}
@@ -218,17 +258,45 @@ function AdminDashboard() {
                         <Bar dataKey="guite" fill="#67BCAD" minPointSize={10} />
                       </BarChart>
                       {/* </ResponsiveContainer> */}
+
+                      </div>
                </div>
           </div>
           <div className="d-flex flex justify-content-center  align-items-center col-12 ">
-            
+            <div className="bg-white mt-4 p-4" style={{borderRadius:"10px",width:"638px"}}>
+            <p style={{fontWeight:"bold",}}>Monthly Count Count of Registered Hotels</p>
+              {/* <ResponsiveContainer width="100%" height="100%"> */}
+              <BarChart
+                        width={550}
+                        height={250}
+                        data={Registered_hotel}
+                        margin={{
+                          top: 5,
+                          right: 30,
+                          left: 20,
+                          bottom: 5,
+                        }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="hotel" fill="#004577" minPointSize={5}>
+                          <LabelList dataKey="name" content={RegistersUsersBar} />
+                        </Bar>
+                        {/* <Bar dataKey="driver" fill="#98A3B2" minPointSize={10} />
+                        <Bar dataKey="guite" fill="#67BCAD" minPointSize={10} /> */}
+                      </BarChart>
+                      {/* </ResponsiveContainer> */}
+                </div>
           </div>
         </div>
 
         <div className="d-flex flex-column  align-items-start col-5 gap-3 ">
           <div className="d-flex flex justify-content-center align-items-center bg-white mt-5" style={{borderRadius:"10px"}}>
             <div className='reg-chart d-flex flex-column justify-content-center  align-items-center   p-3 mt-3' >
-                     <div className='fw-bold'><span>Total Revenue of this Month</span><span style={{color:"#004577"}}> 500,000/=</span> </div>
+                     <div className='fw-bold'><span>Total Revenue of this Month</span><span style={{color:"#004577"}}> 120,000/=</span> </div>
                      <div className='d-flex flex '>
                       {/* <ResponsiveContainer width="100%" height="100%"> */}
                         <PieChart width={350} height={200}>
@@ -249,22 +317,22 @@ function AdminDashboard() {
                         </PieChart>
                   {/* </ResponsiveContainer> */}
                     <div className='d-flex flex-column justify-content-center  align-items-center'>
-                     <p>Tourist</p>
-                     <p>Driver</p>
-                     <p>Guite</p>
-                     <p>Hotels</p>
+                     <p style={{color:"#004577",fontWeight:"bold"}}>Tourist</p>
+                     <p style={{color:"#98A3B2",fontWeight:"bold"}}>Driver</p>
+                     <p style={{color:"#67BCAD",fontWeight:"bold"}}>Guite</p>
+                     <p style={{color:"#596365",fontWeight:"bold"}}>Hotels</p>
                     </div>
                   </div>
          </div>
           </div>
           <div className="d-flex flex col-8 ">
-            <div className='bg-white p-3'>
+            <div className='bg-white p-3' style={{borderRadius:"10px"}}>
               <p style={{fontWeight:"bold"}}>Monthly Total Revenue  of the System</p>
               {/* <ResponsiveContainer width="100%" height="100%"> */}
               <BarChart
                         width={400}
                         height={280}
-                        data={data}
+                        data={monthRevenue_2}
                         margin={{
                           top: 5,
                           right: 30,
