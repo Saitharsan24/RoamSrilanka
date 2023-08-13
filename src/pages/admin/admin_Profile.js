@@ -6,20 +6,14 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-bootstrap-icons";
 import AdminSidebar from "../../components/admin-sidebar";
 
-function Adminprofile() {
+function AdminProfile() {
   
 
   return (
       
       <React.Fragment>
-         <div className="d-flex flex-column" style={{backgroundColor:"#f4f4f5"}}>
-        <div>
-        <Headeruser />
-        </div>
-      <div className="d-flex">
-          <AdminSidebar />
           <div className="w-100 d-flex justify-content-center  align-items-center ">
-          <div className="  d-flex justify-content-center  align-items-center bg-white mt-5 mb-5 w-75" >
+          <div className="  d-flex justify-content-center  align-items-center bg-white mt-5 mb-5 w-75" style={{borderRadius:"20px"}} >
               <div className="d-flex flex-column justify-content-around  align-items-center ">
                 <div className=" d-flex flex-column flex-md-row flex-sm-row justify-content-around  align-items-center gap-5  ">
                             <div className=" d-flex flex-column flex-md-row flex-sm-row justify-content-around  align-items-center mt-5 ">
@@ -34,12 +28,10 @@ function Adminprofile() {
                                                 Change Profile Picture
                                               </button>
                                               <div className="Acc-1 d-flex flex-column justify-content-around  align-items-center p-1" style={{backgroundColor:"rgb(200, 200, 200)"}} >
-                                              <span>Change Password</span>
-                                              <span className=" text-danger"> Change your account password </span>
+                                            <a href="/admin/adminchangepassword">  <span className="text-dark">Change Password</span><br/>
+                                              <span className=" text-danger"> Change your account password </span></a>
                                               </div>
                                       </div>
-                              
-
                       </div>
                       
                 </div>
@@ -72,18 +64,11 @@ function Adminprofile() {
                               <button className="btn-update">Update Details</button>
                               </div>
 
-              </div>
-                   
-              
+              </div>     
             </div>
             </div>         
-          </div>
-        </div>
-
-      
-    
     </React.Fragment>
   );
 }
 
-export default Adminprofile ;
+export default AdminProfile ;

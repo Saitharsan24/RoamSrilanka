@@ -11,12 +11,8 @@ function AdminTouristDetails() {
 
   return (
     <React.Fragment>
-      <div className=" d-flex flex-column" >
-        <div>
-          <Headeruser />
-        </div>
-        <div className="d-flex" style={{backgroundColor:"#F1F1F2"}}>
-          <Adminsidebar />
+      
+    
           <div className="w-100 d-flex justify-content-center  align-items-center">
             <div
               className=" d-flex justify-content-center  align-items-center col-11 mt-5 mb-5" style={{ backgroundColor: "#ffff" }}    >
@@ -293,8 +289,8 @@ function AdminTouristDetails() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+       
+    
     </React.Fragment>
   );
 }

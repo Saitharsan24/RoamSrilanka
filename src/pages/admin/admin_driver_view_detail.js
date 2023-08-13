@@ -11,12 +11,6 @@ function AdminDrivertDetails() {
 
   return (
     <React.Fragment>
-      <div className=" full d-flex flex-column">
-        <div>
-          <Headeruser />
-        </div>
-        <div className="d-flex">
-          <Adminsidebar />
           <div className="w-100 d-flex justify-content-center  align-items-center">
             <div
               className="  d-flex justify-content-center  align-items-center col-11 mt-5 mb-5 "
@@ -114,7 +108,7 @@ function AdminDrivertDetails() {
                         height: "10vw",
                       }}
                     ></img>
-                      <a href="/admin/admin_driver_vehicle_detail">  <button className="mt-3 " style={{background:"#004577",border:"none",color:"#ffffff",borderRadius:"10px",height:"35px",width:"150px"}}>Vehicle Detail</button></a>
+                      <a href="/admin/adminvehicledetail">  <button className="mt-3 " style={{background:"#004577",border:"none",color:"#ffffff",borderRadius:"10px",height:"35px",width:"150px"}}>Vehicle Detail</button></a>
                   </div>
 
                   <table
@@ -284,14 +278,17 @@ function AdminDrivertDetails() {
                       </tr>
 
                       <tr style={{ height: "20px" }}></tr>
+                      <tr >
+
+                          <td colSpan={3} style={{textAlign:"right"}} ><button style={{backgroundColor:"#004577",color:"#ffff",borderRadius:"10px",width:"7rem"}}>Disable</button> </td>
+                          </tr>
+                          <tr style={{ height: "20px" }}></tr>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
     </React.Fragment>
   );
 }
