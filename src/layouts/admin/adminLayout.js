@@ -1,19 +1,18 @@
 import { NavLink, Outlet } from "react-router-dom";
 import HeaderUser from "../../components/headerusers";
-import TouristSidebar from "../../components/tourist-sidebar";
-import SideNavbar from "../../components/sidenavbar_tourist";
+import AdminSideNavbar from "../../components/adminSideNavbar";
 import "../../styles/tourist/touristlayout.css";
 
-function TouristLayout() {
+function AdminLayout() {
   return (
     <div className="d-flex flex-column gap-0 full">
         <HeaderUser />
         <div className="tourist-layout d-flex gap-0 w-100 max-width justify-content-start">
-            <SideNavbar />
+            <AdminSideNavbar />
             <Outlet />           
         </div>
     </div>
   ); 
 }
 
-export default TouristLayout;
+export default AdminLayout;

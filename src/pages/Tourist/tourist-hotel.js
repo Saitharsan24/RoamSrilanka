@@ -110,117 +110,128 @@ function ToursitHotel() {
 
               <div className="place-01">
                 <div className="place-image"></div>
-                <p>Galle</p>
-                <Button
-                  className="book-tour-btn"
-                  variant="primary"
-                  style={{
-                    backgroundColor: "#004577",
-                    border: "none",
-                    marginTop: "3px",
-                    paddingLeft: "20px",
-                    paddingRight: "20px",
-                    fontSize: "12px",
-                  }}
-                >
-                  Book tour
-                </Button>
-    
+                <div className='hotel-btn-name'>
+                  <p>Hotel Saphire</p>
+                  <Button
+                    className="book-tour-btn"
+                    variant="primary"
+                    style={{
+                      backgroundColor: "#004577",
+                      border: "none",
+                      marginTop: "3px",
+                      paddingLeft: "20px",
+                      paddingRight: "20px",
+                      fontSize: "12px",
+                    }}
+                  >
+                    Book hotel
+                  </Button>
+                </div>
+               </div>
+
+              <div className="place-01">
+                <div className="place-image"></div>
+                <div className='hotel-btn-name'>
+                  <p>Hotel Araliya</p>
+                  <Button
+                    className="book-tour-btn"
+                    variant="primary"
+                    style={{
+                      backgroundColor: "#004577",
+                      border: "none",
+                      marginTop: "3px",
+                      paddingLeft: "20px",
+                      paddingRight: "20px",
+                      fontSize: "12px",
+                    }}
+                  >
+                    Book hotel
+                  </Button>
+                </div>
               </div>
 
               <div className="place-01">
                 <div className="place-image"></div>
-                <p>Galle</p>
-                <Button
-                  className="book-tour-btn"
-                  variant="primary"
-                  style={{
-                    backgroundColor: "#004577",
-                    border: "none",
-                    marginTop: "3px",
-                    paddingLeft: "20px",
-                    paddingRight: "20px",
-                    fontSize: "12px",
-                  }}
-                >
-                  Book tour
-                </Button>
+                <div className='hotel-btn-name'>
+                  <p>Taj Samudra</p>
+                  <Button
+                    className="book-tour-btn"
+                    variant="primary"
+                    style={{
+                      backgroundColor: "#004577",
+                      border: "none",
+                      marginTop: "3px",
+                      paddingLeft: "20px",
+                      paddingRight: "20px",
+                      fontSize: "12px",
+                    }}
+                  >
+                    Book hotel
+                  </Button>
+                </div>
               </div>
 
               <div className="place-01">
                 <div className="place-image"></div>
-                <p>Galle</p>
-                <Button
-                  className="book-tour-btn"
-                  variant="primary"
-                  style={{
-                    backgroundColor: "#004577",
-                    border: "none",
-                    marginTop: "3px",
-                    paddingLeft: "20px",
-                    paddingRight: "20px",
-                    fontSize: "12px",
-                  }}
-                >
-                  Book tour
-                </Button>
+                <div className='hotel-btn-name'>
+                  <p>Shangrila</p>
+                  <Button
+                    className="book-tour-btn"
+                    variant="primary"
+                    style={{
+                      backgroundColor: "#004577",
+                      border: "none",
+                      marginTop: "3px",
+                      paddingLeft: "20px",
+                      paddingRight: "20px",
+                      fontSize: "12px",
+                    }}
+                  >
+                    Book hotel
+                  </Button>
+                </div>
               </div>
 
               <div className="place-01">
                 <div className="place-image"></div>
-                <p>Galle</p>
-                <Button
-                  className="book-tour-btn"
-                  variant="primary"
-                  style={{
-                    backgroundColor: "#004577",
-                    border: "none",
-                    marginTop: "3px",
-                    paddingLeft: "20px",
-                    paddingRight: "20px",
-                    fontSize: "12px",
-                  }}
-                >
-                  Book tour
-                </Button>
+                <div className='hotel-btn-name'>
+                  <p>Cinnamon Grand</p>
+                  <Button
+                    className="book-tour-btn"
+                    variant="primary"
+                    style={{
+                      backgroundColor: "#004577",
+                      border: "none",
+                      marginTop: "3px",
+                      paddingLeft: "20px",
+                      paddingRight: "20px",
+                      fontSize: "12px",
+                    }}
+                  >
+                    Book hotel
+                  </Button>
+                </div>
               </div>
 
               <div className="place-01">
                 <div className="place-image"></div>
-                <p>Galle</p>
-                <Button
-                  className="book-tour-btn"
-                  variant="primary"
-                  style={{
-                    backgroundColor: "#004577",
-                    border: "none",
-                    marginTop: "3px",
-                    paddingLeft: "20px",
-                    paddingRight: "20px",
-                    fontSize: "12px",
-                  }}
-                >
-                  Book tour
-                </Button>
-              </div>
-
-              <div className="place-01">
-                <div className="place-image"></div>
-                <p>Galle</p>
-                <Button
-                  className="book-tour-btn"
-                  variant="primary"
-                  style={{
-                    backgroundColor: "#004577",
-                    border: "none",
-                    marginTop: "3px",
-                    paddingLeft: "20px",
-                    paddingRight: "20px",
-                    fontSize: "12px",
-                  }}
-                >
-                  Book tour
-                </Button>
+                <div className='hotel-btn-name'>
+                  <p>JetWing</p>
+                  <Button
+                    className="book-tour-btn"
+                    variant="primary"
+                    style={{
+                      backgroundColor: "#004577",
+                      border: "none",
+                      marginTop: "3px",
+                      paddingLeft: "20px",
+                      paddingRight: "20px",
+                      fontSize: "12px",
+                    }}
+                  >
+                    Book hotel
+                  </Button>
+                </div>  
               </div>
 
           </div>

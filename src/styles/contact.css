@@ -2,7 +2,7 @@ p {
     font-size: 20px;
   }
   
-  .info {
+  .l-info {
     /* height: 22rem; */
     background: rgba(219, 22, 58, 0.25);
     border-radius: 2rem;
@@ -22,7 +22,7 @@ p {
     color: #db163a;
   }
   
-  .contact {
+  .l-contact {
     background-image: url("../assets/img/contact.png");
     object-fit: cover;
     background-size: cover;
@@ -32,7 +32,7 @@ p {
     height: 35rem;
   }
   
-  .detail {
+  .l-detail {
     font-family: "Jost";
     font-weight: 500;
     font-size: 32px;
@@ -40,7 +40,7 @@ p {
     color: #004577;
   }
   
-  .data {
+  .l-data {
     font-family: "Jost";
     font-weight: 400;
     font-size: 24px;
@@ -48,24 +48,19 @@ p {
     color: #db163a;
   }
   
-  .location {
-    background-image: url(../assets/img/location.png);
-    background-position: center;
-    background-size: cover;
-    height: 23rem;
-    border-radius: 10%;
-  }
-  
-  .contact-list {
+  .l-contact-list {
     border-radius: 5% 5% 0 0;
     /* margin-top: -5rem; */
     background-color: white;
   }
 
   .form-label {
-    justify-content: end !important;
+    justify-content: left !important;
 }
   
+.contact-form-details label{
+  margin: 0px !important;
+}
   /* @media only screen and (max-width: 600px) {
     .container {
       width: 100% !important;

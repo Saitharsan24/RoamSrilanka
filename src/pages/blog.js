@@ -7,7 +7,6 @@ import Header from "../components/Header";
 const Blog = () => {
   return (
     <div>
-      <Header />
       <div className="blog-bg text-white d-flex flex-column justify-content-center">
         <h1 
           style={{
@@ -73,7 +72,6 @@ const Blog = () => {
         </div>
         <br />
       </div>
-      <Footer />
     </div>
   );
 };

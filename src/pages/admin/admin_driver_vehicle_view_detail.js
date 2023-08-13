@@ -11,12 +11,6 @@ function AdminVehicleDetails() {
 
   return (
     <React.Fragment>
-      <div className=" full d-flex flex-column">
-        <div>
-          <Headeruser />
-        </div>
-        <div className="d-flex">
-          <Adminsidebar />
           <div className="w-100 d-flex justify-content-center  align-items-center">
             <div
               className="  d-flex justify-content-center  align-items-center col-10 mt-5 mb-5 "  style={{ backgroundColor: "#ffff" }} >
@@ -265,8 +259,8 @@ function AdminVehicleDetails() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+ 
+      
     </React.Fragment>
   );
 }

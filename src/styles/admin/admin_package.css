@@ -1,0 +1,19 @@
+.include{
+    color: #23FF10;
+    font-family: bold;
+}
+
+.not-include{
+    color: #E71420;
+    font-family: bold;
+}
+
+.amount{
+    color: #004577;
+    font-family: bold;
+}
+
+.day{
+    color: #000000;
+    font-family: bold;
+}

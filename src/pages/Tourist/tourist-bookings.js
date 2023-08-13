@@ -176,7 +176,7 @@ function TouristBookings() {
     ],
   };
 
-  return (
+  return (     
     <div
       className="tourist-main d-flex flex-column gap-2 mb-2"
       style={{ width: "inherit" }}
@@ -219,6 +219,7 @@ function TouristBookings() {
           exportToCSV={true}
         />
       </div>
+
     </div>
   );
 }
