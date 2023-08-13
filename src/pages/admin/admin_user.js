@@ -1,9 +1,5 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { Button, Table } from "react-bootstrap";
-import { BsSearch } from "react-icons/bs";
-import Adminsidebar from "../../components/admin-sidebar";
-import Headeruser from "../../components/headerusers";
 import { MDBDataTable } from "mdbreact";
 import "../../styles/admin/admin_user.css";
 
@@ -11,7 +7,7 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 
 
-function Tourist() {
+function Users() {
   const data_tourist = {
     columns: [
       {
@@ -47,7 +43,7 @@ function Tourist() {
         national: "Sri Lanka",
         btn: [
           <>
-           <a href="/admin/admin_tourist_detail"> <button className="view-detail" >View detail</button></a>
+           <a href="/admin/admintouristdetail"> <button className="view-detail" >View detail</button></a>
           </>,
         ],
       },
@@ -218,7 +214,7 @@ function Tourist() {
         rate: "4.5",
         btn: [
           <>
-            <div className="view-detail">View detail</div>
+              <a href="/admin/admindriverdetail"> <button className="view-detail" >View detail</button></a>
           </>,
         ],
       },
@@ -895,11 +891,8 @@ function Tourist() {
 
 
   return (
-    <div className="user-1 d-flex flex-column" style={{backgroundColor:"#F1F1F2"}}>
-      <Headeruser />
-      <div className="d-flex flex-row col-12">
-        <Adminsidebar/>
-        <div className="d-flex w-100">
+      
+        <div className="user-1 d-flex w-100">
           <div className="d-flex flex-column col-lg-11 ms-lg-5">
             <div className="d-flex flex-column gap-4 my-3">
               
@@ -917,6 +910,9 @@ function Tourist() {
                 </Tab>
 
                 <Tab eventKey="driver" title="Driver">
+                 <div className="d-flex flex justify-content-center align-items-end">
+                <a href="/admin/admindriverreg">  <button className="mt-3 " style={{background:"#004577",border:"none",color:"#ffffff",borderRadius:"10px",height:"35px",width:"150px"}}>Add Driver</button></a>
+                </div>
                 <MDBDataTable
               striped
               bordered
@@ -965,21 +961,12 @@ function Tourist() {
                 </Tab>
 
               </Tabs>
-              
-            </div>
-            
-
-           
-           
-            
-         
-
-           
+        
+            </div>         
           </div>
         </div>
-      </div>
-    </div>
+  
   );
 }
 
-export default Tourist;
+export default Users;

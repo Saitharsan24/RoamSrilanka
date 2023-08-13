@@ -12,11 +12,8 @@ function AdminDiverReg() {
   return (
     <React.Fragment>
       <div className="driver-reg d-flex flex-column" >
-        <div>
-          <Headeruser />
-        </div>
         <div className="d-flex" style={{backgroundColor:"#F1F1F2"}}>
-          <Adminsidebar />
+          
           
           <div className="w-100 d-flex justify-content-center  align-items-center">
           
