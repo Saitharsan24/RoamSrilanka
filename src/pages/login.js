@@ -10,7 +10,6 @@ export default function Login() {
   return (
     <div>
         <div className='login-bg' >
-            <Header />
             <div className='row'>
                 <div className='col-md-6 offset-md-1 p-5 mt-5 shadow' style={{ 
                     position: 'absolute',
@@ -53,7 +52,6 @@ export default function Login() {
                 </div>
             </div>
         </div>
-        <Footer />
     </div>
   )
 }

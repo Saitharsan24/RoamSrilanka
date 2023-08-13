@@ -1,4 +1,4 @@
-.error-bg{
+.error-main-div .error-bg{
     background-image: url("./../assets/img/bg2.png");
     object-fit: cover;
     height:85vh;
@@ -9,19 +9,19 @@
     background-attachment: fixed;
 }
 
-.error-bg h2 {
+.error-main-div .error-bg h2 {
     font-weight: 700;
     color: #DB163A;
     font-size: 150px;
 }
 
-.error-bg h4 {
-    font-weight: 300;
+.error-main-div .error-bg h4 {
+    font-weight: 300; 
     color: #004577;
     font-size: 50px;
 }
 
-.container {
+.error-main-div .container {
     /* position: absolute;
     top: 20%;
     left: 10%; */
@@ -32,14 +32,14 @@
     width: 100%;
 }
 
-.column {
+.error-main-div .column {
     width: 50%;
     align-items: center;
     text-align: left;
     padding: 15px;
 }
 
-.img_2{
+.error-main-div .img_2{
     width: 400px;
     align-self: center;
 }

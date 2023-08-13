@@ -10,7 +10,7 @@ import Cardcarousel from './../components/card';
 
 function Home() {
   return (
-    <div className="main-div d-flex flex-column justify-content-center align-items-center align-content-center">
+    <div className="landing-main-div d-flex flex-column justify-content-center align-items-center w-100">
 
       {/* flash container */}
       <div className="flash-page container-fluid">
@@ -37,6 +37,7 @@ function Home() {
             border: "none",
             padding: "15px",
             fontSize: "17px",
+            marginTop: "20px",
           }}
         >
           Let's Explore
@@ -49,12 +50,8 @@ function Home() {
       <div className="package-container container-fluid d-flex flex-column justify-content-center align-items-center" style={{backgroundColor:"#f7f7f7"}}>
         
         <div className="text-cotent container d-flex flex-column flex-md-column justify-content-lg-between justify-content-md-between justify-content-xs-between   flex-sm-column gap-2 mt-4">
-          <div className='container d-flex flex-row align-items-center align-content-center justify-content-between'>
+          <div className=' d-flex flex-row align-items-center align-content-center justify-content-between'>
             <p className='home-paragraph' style={{color:"#DB163A", fontWeight:"600", fontSize:"1.5rem", margin:"0px"}}>TOUR PACKAGES</p>
-            <div className="arrow-icons">
-              <HiArrowCircleLeft className='arrow-left' color="#DB163A" size="3rem"/>
-              <HiArrowCircleRight className='arrow-right' color="#DB163A" size="3rem"/>
-            </div>
           </div>
 
           <div className="heading-topic">

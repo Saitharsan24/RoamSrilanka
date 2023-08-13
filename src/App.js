@@ -6,11 +6,36 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import LandingPageLayout from "./layouts/landing-page-layout";
+import Home from "./pages/home";
+import About from "./pages/about";
+import Contact from "./pages/Contact";
+import Login from "./pages/login";
+import Services from "./pages/services";
+import Blog from "./pages/blog";
+import Explore from "./pages/explore";
+
 import TouristLayout from "./layouts/tourist/tourist-layout";
+import AdminLayout  from "./layouts/admin/adminLayout";
 import TouristDashboard from "./pages/Tourist/tourist-dashboard";
 import TouristBookings from "./pages/Tourist/tourist-bookings";
 import TouristAccessories from "./pages/Tourist/tourist-accessories";
 import ToursitAccessoriesView from "./pages/Tourist/tourist-accessories-view";
+import SystemError from "./pages/error";
+
+import AdminDashboard from "./pages/admin/admin_dashboard";
+import Users from "./pages/admin/admin_user";
+import AdminBlog from "./pages/admin/admin-blog";
+import AdminReport from "./pages/admin/admin_report";
+import AdminProfile from "./pages/admin/admin_Profile";
+import AdminTouristDetails from "./pages/admin/admin_tourist_view_detail";
+import AdminDrivertDetails from "./pages/admin/admin_driver_view_detail";
+import AdminVehicleDetails from "./pages/admin/admin_driver_vehicle_view_detail";
+import AdminDiverReg from "./pages/admin/admin_driver_reg";
+import AdminChangePassword from "./pages/admin/admin_change_password";
+import AdminBlogAccept from "./pages/admin/admin_blog_accept";
+import AdminPackage from "./pages/admin/admin_package";
+
 import SystemError from "./pages/error"
 import ToursitAccessoriesRent from "./pages/Tourist/tourist-accessories-rent";
 import TouristBlog from "./pages/Tourist/tourist-blog";
@@ -21,8 +46,6 @@ import TouristPackages from "./pages/Tourist/tourist-all-guide";
 import ToursitGuideView from "./pages/Tourist/tourist-guide-view";
 import TouristHotel from "./pages/Tourist/tourist-hotel";
 import ToursitHotelSearchList from "./pages/Tourist/tourist-hotel-searchlist";
-
-
 
 import HotelLayout from "./layouts/hotel/hotel-layout";
 import HotelDashboard from "./pages/hotel/hotel-dashboard";
@@ -68,6 +91,17 @@ import Profile from "./pages/driver/profile";
 const route = createBrowserRouter(
   createRoutesFromElements(
     <>
+      <Route path="/" element={<LandingPageLayout />} errorElement={<SystemError />}>
+        <Route index element={<Home/>}></Route>
+        <Route path="about" element={<About/>}></Route>
+        <Route path="services" element={<Services/>}></Route>
+        <Route path="explore" element={<Explore/>}></Route>
+        <Route path="blogs" element={<Blog/>}></Route>
+        <Route path="contact" element={<Contact/>}></Route>
+        <Route path="login" element={<Login/>}></Route>
+      </Route>
+
+
       <Route path="/tourist/" element={<TouristLayout />} errorElement={<SystemError />}>
         <Route index element={<TouristDashboard />}></Route>
         <Route path="touristDashboard" element={<TouristDashboard />}></Route>
@@ -113,6 +147,21 @@ const route = createBrowserRouter(
         <Route path="guideChat" element={<GuideChat />}></Route>
       </Route>
 
+      <Route path="/admin/" element={<AdminLayout />} errorElement={<SystemError />}>
+        <Route path="admindashboard" element={<AdminDashboard/>}></Route>
+        <Route path="adminusers" element={<Users/>}></Route>
+        <Route path="adminblog" element={<AdminBlog/>}></Route>
+        <Route path="adminreport" element={<AdminReport/>}></Route>
+        <Route path="adminprofile" element={<AdminProfile/>}></Route>
+        <Route path="admintouristdetail" element={<AdminTouristDetails/>}></Route>
+        <Route path="admindriverdetail" element={<AdminDrivertDetails/>}></Route>
+        <Route path="adminvehicledetail" element={<AdminVehicleDetails/>}></Route>
+        <Route path="admindriverreg" element={<AdminDiverReg/>}></Route>
+        <Route path="adminchangepassword" element={<AdminChangePassword/>}></Route>
+        <Route path="adminblogaccept" element={<AdminBlogAccept/>}></Route>
+        <Route path="adminpackage" element={<AdminPackage/>}></Route>
+      </Route>
+          
       <Route path="/holidayPlanner/" element={<HolidayPlannerLayout />} errorElement={<SystemError />}>
         <Route index element={<Holiday_dashboard />}></Route>
         <Route path="plannerDashboard" element={<Holiday_dashboard />}></Route>

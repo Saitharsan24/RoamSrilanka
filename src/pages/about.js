@@ -14,8 +14,6 @@ const About=()=>{
     return(
         
        <>
- {/* header  */}
-       <Header/>
 
  {/* body of about        */}
        <div className='body d-flex justify-content-center align-items-center' >
@@ -108,11 +106,6 @@ const About=()=>{
           </div>
        </div>
      </div>
-
-     
-
-       {/* Footer  */}
-   <Footer/>
      
        </>
 

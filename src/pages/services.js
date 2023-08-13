@@ -17,8 +17,6 @@ import backpack from "../assets/images/backpack 1.png";
 function Services() {
   return (
     <React.Fragment>
-
-      {<Header />}
       <div className="top">
         <p className="text-white text-center text_1 align-middle ">Services</p>
       </div>
@@ -95,7 +93,6 @@ function Services() {
           </div>
         </div>
       </div>
-      <Footer />
     </React.Fragment>
   );
 }
