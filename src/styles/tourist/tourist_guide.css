@@ -1,0 +1,30 @@
+.guide-top h4{
+    padding-left: 0px !important;
+}
+
+.guide-bottom-left{
+    width: 60%;
+    height: inherit;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding-bottom: 15px;
+}
+
+.guide-bottom-right{
+    width: 40%;
+    height: inherit;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding-bottom: 15px;
+}
+
+.guide-bottom-left-heading{
+    padding-left: 0px;
+    padding-right: 40px;
+}
+
+.guide-bottom-left-heading{
+    color: #DB163A;
+    font-size: 15px;
+    font-weight: 500;
+}

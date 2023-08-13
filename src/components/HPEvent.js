@@ -1,5 +1,5 @@
 import React from 'react';
-import "./../styles/data-table.css";
+import "../styles/data-table.css";
 import { MDBDataTable } from 'mdbreact';
 
 const HPDatatablePage = () => {
@@ -49,7 +49,7 @@ const HPDatatablePage = () => {
             name: 'Starry Nights',
             date: '11/09/2020',
             location: 'Galle, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -57,7 +57,7 @@ const HPDatatablePage = () => {
             name: 'Ocean Adventure',
             date: '21/10/2023',
             location: 'Badulla, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -65,7 +65,7 @@ const HPDatatablePage = () => {
             name: 'Cultural Fusion',
             date: '04/11/2021',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -73,7 +73,7 @@ const HPDatatablePage = () => {
             name: 'Forest Fest',
             date: '16/11/2021',
             location: 'Galle, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -81,7 +81,7 @@ const HPDatatablePage = () => {
             name: 'Summer Spectacle',
             date: '07/12/2023',
             location: 'Galle, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -89,7 +89,7 @@ const HPDatatablePage = () => {
             name: 'Wild Safari',
             date: '07/02/2023',
             location: 'Badulla, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -97,7 +97,7 @@ const HPDatatablePage = () => {
             name: 'Safari ',
             date: '17/05/2023',
             location: 'Jaffna, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -105,7 +105,7 @@ const HPDatatablePage = () => {
             name: 'Food Fiesta',
             date: '18/06/2023',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -113,7 +113,7 @@ const HPDatatablePage = () => {
             name: 'Ocean Adventure',
             date: '15/12/2023',
             location: 'Badulla, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -121,7 +121,7 @@ const HPDatatablePage = () => {
             name: 'Sunset Soiree',
             date: '15/12/2022',
             location: 'Badulla, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -129,7 +129,7 @@ const HPDatatablePage = () => {
             name: 'Vintage Carnival',
             date: '28/01/2023',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -137,7 +137,7 @@ const HPDatatablePage = () => {
             name: 'Forest Fest',
             date: '25/04/2022',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -145,7 +145,7 @@ const HPDatatablePage = () => {
             name: 'Cultural Fusion',
             date: '19/10/2023',
             location: 'Galle, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -153,7 +153,7 @@ const HPDatatablePage = () => {
             name: 'Historic Walk',
             date: '08/02/2023',
             location: 'Galle, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -161,7 +161,7 @@ const HPDatatablePage = () => {
             name: 'Historic Walk',
             date: '08/12/2020',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -169,7 +169,7 @@ const HPDatatablePage = () => {
             name: 'Summer Spectacle',
             date: '06/06/2023',
             location: 'Jaffna, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -177,7 +177,7 @@ const HPDatatablePage = () => {
             name: 'Wild Safari',
             date: '12/12/2022',
             location: 'Badulla, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -185,7 +185,7 @@ const HPDatatablePage = () => {
             name: 'Summer Spectacle',
             date: '12/12/2021',
             location: 'Jaffna, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -193,7 +193,7 @@ const HPDatatablePage = () => {
             name: 'Cultural Fusion',
             date: '10/05/2023',
             location: 'Jaffna, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -201,7 +201,7 @@ const HPDatatablePage = () => {
             name: 'Wild Safari',
             date: '28/05/2023',
             location: 'Jaffna, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -209,7 +209,7 @@ const HPDatatablePage = () => {
             name: 'Wild Safari',
             date: '25/04/2022',
             location: 'Badulla, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -217,7 +217,7 @@ const HPDatatablePage = () => {
             name: 'Mountain Magic',
             date: '25/01/2022',
             location: 'Galle, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -225,7 +225,7 @@ const HPDatatablePage = () => {
             name: 'Starry Nights',
             date: '27/12/2022',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -233,7 +233,7 @@ const HPDatatablePage = () => {
             name: 'Wild Safari',
             date: '25/04/2023',
             location: 'Galle, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -241,7 +241,7 @@ const HPDatatablePage = () => {
             name: 'Perahera',
             date: '07/01/2023',
             location: 'Jaffna, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -249,7 +249,7 @@ const HPDatatablePage = () => {
             name: 'Mountain Magic',
             date: '08/08/2023',
             location: 'Jaffna, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -257,7 +257,7 @@ const HPDatatablePage = () => {
             name: 'Mountain Magic',
             date: '26/06/2021',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -265,7 +265,7 @@ const HPDatatablePage = () => {
             name: 'Starry Nights',
             date: '07/05/2023',
             location: 'Galle, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -273,7 +273,7 @@ const HPDatatablePage = () => {
             name: 'Perahera',
             date: '21/08/2023',
             location: 'Kandy, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -281,7 +281,7 @@ const HPDatatablePage = () => {
             name: 'Starry Nights',
             date: '18/05/2023',
             location: 'Badulla, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -289,7 +289,7 @@ const HPDatatablePage = () => {
             name: 'Mountain Retreat',
             date: '04/11/2020',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -297,7 +297,7 @@ const HPDatatablePage = () => {
             name: 'Starry Nights',
             date: '08/06/2023',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -305,7 +305,7 @@ const HPDatatablePage = () => {
             name: 'Mountain Retreat',
             date: '08/05/2023',
             location: 'Galle, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -313,7 +313,7 @@ const HPDatatablePage = () => {
             name: 'Ocean Adventure',
             date: '14/08/2023',
             location: 'Galle, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -321,7 +321,7 @@ const HPDatatablePage = () => {
             name: 'Starry Nights',
             date: '04/11/2023',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -329,7 +329,7 @@ const HPDatatablePage = () => {
             name: 'Perahera',
             date: '30/07/2023',
             location: 'Jaffna, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -337,7 +337,7 @@ const HPDatatablePage = () => {
             name: 'Mountain Retreat',
             date: '22/03/2020',
             location: 'Jaffna, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -345,7 +345,7 @@ const HPDatatablePage = () => {
             name: 'Vintage Carnival',
             date: '05/12/2020',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -353,7 +353,7 @@ const HPDatatablePage = () => {
             name: 'Perahera',
             date: '04/11/2020',
             location: 'Galle, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -361,7 +361,7 @@ const HPDatatablePage = () => {
             name: 'Starry Nights',
             date: '04/11/2022',
             location: 'Badulla, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -369,7 +369,7 @@ const HPDatatablePage = () => {
             name: 'Vintage Carnival',
             date: '01/07/2023',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -377,7 +377,7 @@ const HPDatatablePage = () => {
             name: 'Vintage Carnival',
             date: '01/10/2023',
             location: 'Galle, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -385,7 +385,7 @@ const HPDatatablePage = () => {
             name: 'Ocean Adventure',
             date: '10/11/2020',
             location: 'Jaffna, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -393,7 +393,7 @@ const HPDatatablePage = () => {
             name: 'Cultural Fusion',
             date: '04/10/2020',
             location: 'Galle, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -401,7 +401,7 @@ const HPDatatablePage = () => {
             name: 'Ocean Adventure',
             date: '01/09/2023',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -409,7 +409,7 @@ const HPDatatablePage = () => {
             name: 'Ocean Adventure',
             date: '04/11/2020',
             location: 'Jaffna, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -417,7 +417,7 @@ const HPDatatablePage = () => {
             name: 'Forest Fest',
             date: '04/08/2023',
             location: 'Jaffna, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -425,7 +425,7 @@ const HPDatatablePage = () => {
             name: 'Perahera',
             date: '04/08/2021',
             location: 'Galle, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -433,7 +433,7 @@ const HPDatatablePage = () => {
             name: 'Forest Fest',
             date: '01/08/2023',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
         {
@@ -441,7 +441,7 @@ const HPDatatablePage = () => {
             name: 'Vintage Carnival',
             date: '01/08/2022',
             location: 'Nuwara Eliya, Sri Lanka',
-            button1: [<><div className='accept'>View</div></>],
+            button1: [<><a  href='plannerViewEvent'><button style={{border:"none"}} className='accept'>View</button></a></>],
             button2: [<><div className='reject'>Remove</div></>]
         },
     ]

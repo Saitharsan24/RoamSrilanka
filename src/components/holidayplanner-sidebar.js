@@ -29,7 +29,7 @@ const Hotel = () => {
           className={`menu-item ${selectedItem === 'dashboard' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('dashboard')}
         >
-          <Link to="/Holidayplanner_dashboard">
+          {/* <Link to="/Holidayplanner_dashboard"> */}
           {isCollapsed ? (
             <Icon.ColumnsGap className='icon'/>
           ) : (
@@ -40,13 +40,13 @@ const Hotel = () => {
             >Dashboard</span>
             </>
           )}
-          </Link>
+          {/* </Link> */}
         </li>
         <li
             className={`menu-item ${selectedItem === 'requests' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('requests')}
         >
-          <Link to="/plannerrequests">
+          {/* <Link to="/plannerrequests"> */}
           {isCollapsed ? (
             <Icon.BriefcaseFill className='icon' />
           ) : (
@@ -56,13 +56,13 @@ const Hotel = () => {
               >Requests</span>
             </>
           )}
-          </Link>
+          {/* </Link> */}
         </li>
         <li
           className={`menu-item ${selectedItem === 'chat' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('chat')}
         >
-          <Link to="/plannerchat">
+          {/* <Link to="/plannerchat"> */}
           {isCollapsed ? (
             <Icon.ChatSquareText className='icon' />
           ) : (
@@ -72,7 +72,7 @@ const Hotel = () => {
               >Chat</span>
             </>
           )}
-          </Link>
+          {/* </Link> */}
         </li>
         {/* <li
           className={`menu-item ${selectedItem === 'reports' ? 'selected' : 'not'}`}
@@ -94,7 +94,7 @@ const Hotel = () => {
           className={`menu-item ${selectedItem === 'profile' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('profile')}
         >
-          <Link to="/Holidayprofile">
+          {/* <Link to="/Holidayprofile"> */}
           {isCollapsed ? (
             <Icon.People className='icon' />
           ) : (
@@ -104,13 +104,13 @@ const Hotel = () => {
               >Profile</span>
             </>
           )}
-          </Link>
+          {/* </Link> */}
         </li>
         <li
           className={`menu-item ${selectedItem === 'trips' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('hotel')}
         >
-          <Link to="/trips">
+          {/* <Link to="/trips"> */}
           {isCollapsed ? (
             <Icon.CarFront className='icon' />
           ) : (
@@ -120,7 +120,7 @@ const Hotel = () => {
               >Trips</span>
             </>
           )}
-          </Link>
+          {/* </Link> */}
         </li>
       </ul>
     </div>
