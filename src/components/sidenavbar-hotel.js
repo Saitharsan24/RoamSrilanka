@@ -8,74 +8,53 @@ import * as MdIcons from 'react-icons/md'
 import * as TbIcons from 'react-icons/tb'
 import * as BsIcons from 'react-icons/bs'
 
-import '../styles/tourist/touristsidenavbar.css'
+import '../styles/hotel/sidenavbar-hotel.css'
 
 
-function SideNavbar() {
+function SideNavbarHotel() {
 
     const [isCollapsed, setIsCollapsed] = useState(false);
 
     const sidebardata = [
       {
         title:'Dashboard',
-        path:'touristDashboard',
+        path:'hotelDashboard',
         icon:<AiIcons.AiFillHome />,
         cName: 'nav-text',
       },
 
       {
-        title:'My Bookings',
-        path:'touristBookings',
+        title:'Bookings',
+        path:'hotelBooking',
         icon:<BiIcons.BiTrip />,
         cName: 'nav-text',
       },
 
       {
-        title:'Hotel',
-        path:'touristHotel',
-        icon:<BiIcons.BiSolidHotel />,
-        cName: 'nav-text',
-      },
-
-      {
-        title:'Tour Guide',
-        path:'touristGuide',
-        icon:<MdIcons.MdTour />,
-        cName: 'nav-text',
-      },
-
-      {
-        title:'Ride',
-        path:'touristDriver',
-        icon:<BiIcons.BiSolidCar />,
-        cName: 'nav-text',
-      },
-
-      {
-        title:'Accessories',
-        path:'touristGadgets',
-        icon:<TbIcons.TbTools />,
-        cName: 'nav-text',
-      },
-
-      {
-        title:'Blogs',
-        path:'touristBlog',
-        icon:<BiIcons.BiSolidBook />,
-        cName: 'nav-text',
-      },
-
-      {
         title:'Chat',
-        path:'touristChat',
+        path:'hotelChat',
         icon:<BsIcons.BsChatSquareDotsFill />,
         cName: 'nav-text',
       },
 
       {
+        title:'Reports',
+        path:'hotelReport',
+        icon:<MdIcons.MdTour />,
+        cName: 'nav-text',
+      },
+
+      {
         title:'Profile',
-        path:'touristProfile',
+        path:'hotelProfile',
         icon:<MdIcons.MdAccountCircle />,
+        cName: 'nav-text',
+      },
+
+      {
+        title:'Our Hotel',
+        path:'ourHotel',
+        icon:<TbIcons.TbTools />,
         cName: 'nav-text',
       }
     ]
@@ -103,4 +82,4 @@ function SideNavbar() {
   )
 }
 
-export default SideNavbar
+export default SideNavbarHotel;

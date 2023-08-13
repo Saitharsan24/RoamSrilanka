@@ -1,5 +1,5 @@
 h4{
-    margin-bottom: 0px;;
+    margin-bottom: 0px;
 }
 
 .tourist-main{
@@ -76,7 +76,7 @@ hr{
 }
 
 .accessories-image-text{
-    padding: 20px 0px 0px 50px;
+    padding: 20px 0px 20px 50px;
 }
 
 .accessories-sub-image{
@@ -84,4 +84,47 @@ hr{
     height: 80px;   
     border-radius: 15px;
     background-color: #004577;
+}
+
+.accessories-fields p{
+    font-size: 20px;
+    font-weight: 500;
+}
+.accessories-text h2{
+    font-size: 35px;
+    font-weight: 550;
+}
+
+.accessories-fields{
+    display: flex;
+    gap: 25px;
+}
+
+.accessories-field-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    gap: 10px;
+    margin-right: 20px;
+}
+
+.accessories-field-item *{
+    margin: 0px;
+}
+
+.accessories-field-item input{
+    border-radius: 10px;
+    height: 40px;
+    width: 400px;
+    padding-left: 10px;
+    border:none;
+    background-color: #F1F1F1;
+}
+
+.accessories-field-btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding: 40px 0px 0px 0px;
 }

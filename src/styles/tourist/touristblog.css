@@ -1,0 +1,53 @@
+h4{
+    margin-bottom: 0px;;
+}
+
+.tourist-main{
+    padding: 15px 15px 0px 15px;
+    width: inherit;
+}
+
+.tourist-headings{
+    color: #004577;
+}
+
+hr{
+    width: auto;
+    border-width: 3px !important;
+    border-color: #004577 !important;
+    border-radius: 25px;
+}
+
+.new-blog-form{
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.blog-heading{
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-heading input{
+    background-color: #f1f1f1;
+    border-radius: 15px;
+    padding: 8px 0px 8px 15px;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+}
+
+.blog-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-content input{
+    background-color: #f1f1f1;
+    border-radius: 15px;
+    padding: 8px 15px 8px 15px;
+    font-size: 18px;
+    font-weight: 500;
+    border: none;
+}

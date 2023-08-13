@@ -17,6 +17,8 @@
 
 .sideNavBar a{
     gap: 15px;
+    transition: 350ms;
+
 }
 
 .sidenavbar-items{
@@ -31,7 +33,6 @@
 
 .sidenav-baricon:hover{
    color: #DB163A;
-   transition: 450ms;
 }
 
 .nav-text{
@@ -54,20 +55,19 @@
     display: flex;
     align-items: center; 
     border-radius: 25px;
-    gap: 20px;
+    gap: 15px !important;
     padding: 0px 15px 0px 15px;
 }
 
 .nav-text a:hover{
     background-color: #ffffff;
     color: #DB163A;
-    transition: 450ms;
+    transition: 100ms;
 }
 
 .active{
     background-color: #ffffff;
     color: #DB163A !important;
-    transition: 450ms;
 }
 
 .Collapsed{
@@ -92,3 +92,9 @@
     justify-content: center !important;
 }
 
+.hotel-btn-name{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 15px;
+}

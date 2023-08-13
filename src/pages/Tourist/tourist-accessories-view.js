@@ -9,14 +9,14 @@ function ToursitAccessories() {
     <div className='tourist-main'>
       
       <div className="tourist-headings w-100">
-        <h2 style={{margin:'0px', fontWeight:'600'}}>Accessories</h2>
+        <h2 className='mb-1' style={{margin:'0px', fontWeight:'600'}}>Accessories</h2>
         <hr style={{margin:'0px'}} />
       </div>
 
       {/* Accessories-view */}
       <div className='accessories-view-card mt-4'>
         <div className="accessories-card-text">
-          <h3 style={{fontWeight:'600',fontSize:'30px'}}>Camera</h3>
+          <h3 style={{fontWeight:'600',fontSize:'30px'}}>Details</h3>
         </div>
         <div className="accessories-image-text d-flex flex-row gap-5">
           <div className="accessories-image">
@@ -38,17 +38,54 @@ function ToursitAccessories() {
               </div>
             </div>
           </div>
-          <div className="accessories-text">
-            <div className="accessories-fields d-flex flex-column align-items-end-">
-              <p>Name :</p>
-              <p>Item type :</p>
-              <p>Description :</p>
-              <p>Rent/day :</p>
-              <p>Availability :</p>
-              <p>Terms and conditons :</p>
-            </div>
-            <div className="accessories-details">
 
+          <div className="accessories-text width-inherit">
+          <h2>Camera</h2>
+            <div className="accessories-fields d-flex flex-column align-items-end-">
+
+                <div className="accessories-field-item">
+                  <p>Item type :</p>
+                  <input type="text" />
+                </div>
+
+                <div className="accessories-field-item">
+                  <p>Description :</p>
+                  <input type="text" />
+                </div>
+
+                <div className="accessories-field-item">
+                  <p>Rent/day :</p>
+                  <input type="text" />
+                </div>
+
+                <div className="accessories-field-item">
+                  <p>Availability :</p>
+                  <input type="text" />
+                </div>
+
+                <div className="accessories-field-item">
+                  <p>Terms and conditons :</p>
+                  <input type="text" />
+                </div>
+
+            </div> 
+            <div className="accessories-field-btn">
+              <a href="rentItem">
+                <Button
+                    className="rent-btn"
+                    variant="primary"
+                    size='lg'
+                    style={{
+                      backgroundColor: "#004577",
+                      border: "none",
+                      paddingLeft: "25px",
+                      paddingRight: "25px",
+                      fontSize: "15px",
+                    }}
+                  >
+                  Rent item
+                </Button>
+              </a>
             </div>
           </div>
         </div>

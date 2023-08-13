@@ -1,91 +1,63 @@
-.accept {
-  border-radius: 4px;
-  border: 1px solid #00b087;
-  background: rgba(22, 192, 152, 0.38);
+.view {
   display: flex;
   width: 91.912px;
   padding: 4px 12px;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  color: #008767;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.14px;
-  cursor: pointer;
-}
-.reject {
-  display: inline-flex;
-  padding: 4px 12px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
   border-radius: 4px;
-  border: 1px solid #df0404;
-  background: #ffc5c5;
-  color: #df0404;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.14px;
-  cursor: pointer;
-}
-.view {
-  border-radius: 6px;
-  background: #004577;
-  padding: 4px 12px;
-  width: 98px;
-  height: 28px;
+  border: 1px solid #fff;
+  background: rgba(73, 151, 207, 0.78);
   color: #fff;
   font-family: Poppins;
   font-size: 14px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   line-height: normal;
-  cursor: pointer;
+  letter-spacing: -0.14px;
 }
-.table-striped > tbody > tr:nth-of-type(odd) > * {
-  --bs-table-color-type: var(--bs-table-striped-color);
-  --bs-table-bg-type: rgb(255 255 255 / 5%) !important;
+.view-more {
+  color: #035c94;
+}
+.view-trip {
+  border-radius: 10px;
+  background: #004577;
+  box-shadow: 0px 10px 20px 0px rgba(192, 192, 192, 0.35);
+  color: #fff;
+  text-align: center;
+  font-family: Barlow;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%; /* 15px */
+  letter-spacing: 0.24px;
+  padding: 6px 5px 6px 5px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.page-link a{
+  color: navy;
 }
 td,
-tr,
-th {
-  row-gap: 1rem;
-  border-right: none !important;
-  border-left: none !important;
-  border-top: none !important;
-  border-bottom: 1px solid #8F8F8F !important;
+th,
+tr {
+  padding: 8px;
+  align-self: center;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 .bs-select select {
   display: inline-block !important;
   max-width: fit-content;
   margin-left: 0.5rem;
 }
-th {
-  color: #b5b7c0 !important;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.14px;
+.pagination .page-item{
+  --bs-pagination-active-bg: #004577;
+  --bs-pagination-active-border-color: #004577;
+  --bs-pagination-color: #004577;
 }
-td {
-  color: #292d32 !important;
-  font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: -0.14px;
-}
-label {
-  display: inline-block;
-  font-family: inherit;
+.dataTables_paginate .pagination{
+  justify-content: flex-end;
 }
