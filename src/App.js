@@ -70,8 +70,6 @@ import TouristBlogList from "./pages/Tourist/tourist-blog-list";
 
 
 
-
-
 const route = createBrowserRouter(
   createRoutesFromElements(
     <>
