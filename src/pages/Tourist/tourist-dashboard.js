@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import '../../styles/tourist/touristdashboard.css'
 import ResponsiveCalendar from "../../components/calender.js";
 import profile_pic from "./../../assets/images/profile_pic.png";
@@ -20,20 +21,22 @@ function TouristDashboard() {
               <div className="place-image">
               </div>
               <p>Galle</p>
-              <Button
-                className="book-tour-btn"
-                variant="primary"
-                style={{
-                  backgroundColor: "#004577",
-                  border: "none",
-                  marginTop:"3px",
-                  paddingLeft: "20px",
-                  paddingRight: "20px",
-                  fontSize: "12px",
-                }}
-              >
-                Book tour
-              </Button>
+              <a href="touristPackages">
+                <Button
+                  className="book-tour-btn"
+                  variant="primary"
+                  style={{
+                    backgroundColor: "#004577",
+                    border: "none",
+                    marginTop:"3px",
+                    paddingLeft: "20px",
+                    paddingRight: "20px",
+                    fontSize: "12px",
+                  }}
+                >
+                  Book tour
+                </Button>
+              </a>
             </div>
 
             <div className="place-01">
