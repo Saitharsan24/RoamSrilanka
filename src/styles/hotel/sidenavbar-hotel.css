@@ -64,7 +64,7 @@
     transition: 450ms;
 }
 
-.active{
+.sideNavBar .active{
     background-color: #ffffff;
     color: #DB163A !important;
     transition: 450ms;

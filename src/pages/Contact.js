@@ -9,7 +9,6 @@ import Header from "../components/Header";
 function Contact() {
   return (
     <div>
-      <Header />
       <div className="d-flex flex-column w-100">
         <div className="contact col-12 text-white d-flex flex-column justify-content-center barlow-text">
           <h1
@@ -220,7 +219,6 @@ function Contact() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
