@@ -21,7 +21,6 @@ import TouristDashboard from "./pages/Tourist/tourist-dashboard";
 import TouristBookings from "./pages/Tourist/tourist-bookings";
 import TouristAccessories from "./pages/Tourist/tourist-accessories";
 import ToursitAccessoriesView from "./pages/Tourist/tourist-accessories-view";
-import SystemError from "./pages/error";
 
 import AdminDashboard from "./pages/admin/admin_dashboard";
 import Users from "./pages/admin/admin_user";
@@ -161,9 +160,6 @@ const route = createBrowserRouter(
         <Route path="adminblogaccept" element={<AdminBlogAccept/>}></Route>
         <Route path="adminpackage" element={<AdminPackage/>}></Route>
       </Route>
-
-
-      <Route>
           
       <Route path="/holidayPlanner/" element={<HolidayPlannerLayout />} errorElement={<SystemError />}>
         <Route index element={<Holiday_dashboard />}></Route>
