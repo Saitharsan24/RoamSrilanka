@@ -21,7 +21,6 @@ import TouristDashboard from "./pages/Tourist/tourist-dashboard";
 import TouristBookings from "./pages/Tourist/tourist-bookings";
 import TouristAccessories from "./pages/Tourist/tourist-accessories";
 import ToursitAccessoriesView from "./pages/Tourist/tourist-accessories-view";
-import SystemError from "./pages/error";
 
 import AdminDashboard from "./pages/admin/admin_dashboard";
 import Users from "./pages/admin/admin_user";
