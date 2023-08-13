@@ -234,7 +234,6 @@ h4{
 
 .hotel-room-details{
     width: 100%;
-    height: 100%;
     background-color: #ffffff;
     border-radius: 15px;
     padding: 30px 30px 30px 30px;
@@ -242,8 +241,6 @@ h4{
 
 .hotel-rooms-list{
     width: 100%;
-    height: 100%;
-    background-color: #f1f1f1;
     border-radius: 15px;
 }
 
@@ -292,4 +289,24 @@ h4{
 .hotel-view-details{
     width: 30%;
     padding: 15px 15px 10px 25px;
+}
+
+.roomCard-hotel-view{
+    width: 100%;
+    border-radius: 15px;
+    padding: 15px 15px 15px 15px;
+}
+
+.roomCard-hotel-view div{
+    width: 25%;
+    background-color: #DB163A;
+    border-radius: 15px;
+    height: 350px;
+}
+
+.roomCard-hotel-view-image{
+    width: 100%;
+    height: 40%;
+    border-radius: 15px;
+    background-color: #004577;
 }

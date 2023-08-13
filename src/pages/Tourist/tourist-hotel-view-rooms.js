@@ -37,7 +37,7 @@ function ToursitHotelViewRoom() {
           </div>
         </div> 
 
-        <div className="hotel-room-details h-100 w-100 mt-2 d-flex flex-column gap-4">
+        <div className="hotel-room-details w-100 mt-2 d-flex flex-column gap-4">
           
           <div className='hotel-rooms-list d-flex flex-column gap-3'>
             <h2>Hotel Araliya</h2>
@@ -85,15 +85,24 @@ function ToursitHotelViewRoom() {
                     <p>8.5</p>
                   </div>
                   <p>530 View</p>
-                </div>
-
+              </div>
             </div>
-
+          
+            <div>
+              <h3 style={{fontWeight:"650"}}>Choose your room</h3>
+              <div className='roomCard-hotel-view d-flex flex-row gap-3 align-items-center justify-content-center'>
+                <div>
+                  <div className='roomCard-hotel-view-image'>dsdfd</div>
+                </div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+            
           </div>
 
-          <div>
-            <h3 style={{fontWeight:"650"}}>Choose your room</h3>
-          </div>
+          
 
         </div>
         
