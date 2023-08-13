@@ -44,16 +44,18 @@ function ToursitHotel() {
           <div>
             <h4>Hotels in the most popular regions in Sri Lanka</h4>
             <p className='hotel-heading-para'>Discover Sri Lanka by exploring its top regions</p>
-          </div>
+          </div> 
 
           <div className=" hotel-famous-places-cards w-100 d-flex flex-row  justify-content-around gap-3">
 
               <div className="place-01">
                 <div className="place-image"></div>
-                <div className='d-flex flex-column align-items-center hotel-card-text'>
-                  <p className='hotel-place-text'>Galle</p>
-                  <p style={{ color: "#DB163A", fontSize:'15px' }}>43 Hotels</p>
-                </div>
+                <a href="touristHotelSearchList">
+                  <div className='d-flex flex-column align-items-center hotel-card-text'>
+                    <p className='hotel-place-text'>Galle</p>
+                    <p style={{ color: "#DB163A", fontSize:'15px' }}>43 Hotels</p>
+                  </div>
+                </a>
               </div>
 
               <div className="place-01">

@@ -117,7 +117,7 @@ function ToursitHotelSearchList() {
                 </div>  
                 <div className='search-hotel-price d-flex flex-column justify-content-start align-items-center gap-2'>
                   <h6>VERY GOOD</h6>
-                  <div className='hotel-search-ratin d-flex flex-row justify-content-center align-items-center gap-1 '>
+                  <div className='hotel-search-rating d-flex flex-row justify-content-center align-items-center gap-1 '>
                     <BiIcons.BiSolidStar/>
                     <p>8.5</p>
                   </div>
