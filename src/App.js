@@ -61,6 +61,10 @@ import HPViewItem from "./pages/holiday-planner/HPViewItem";
 import HPRequest from "./pages/holiday-planner/HPRequest";
 import TouristBlogList from "./pages/Tourist/tourist-blog-list";
 
+import DriverLayout from "./layouts/driver/driver-layout";
+import Driver from "./pages/driver/dashboard";
+import Profile from "./pages/driver/profile";
+
 const route = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -126,6 +130,14 @@ const route = createBrowserRouter(
         <Route path="plannerViewEvent" element={<HPViewEvent />}></Route>
         <Route path="plannerViewItem" element={<HPViewItem />}></Route>
         <Route path="plannerRequest" element={<HPRequest />}></Route>
+      </Route>
+
+      <Route path="/driver/" element={<DriverLayout />} errorElement={<SystemError />}>
+        <Route index element={<Driver />}></Route>
+        <Route path="driverDashboard" element={<Driver />}></Route>
+
+        <Route path="driverRequests" element={<HotelRequest />}></Route>
+        <Route path="driverProfile" element={<Profile />}></Route>
       </Route>
     </>
   )
