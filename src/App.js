@@ -159,9 +159,6 @@ const route = createBrowserRouter(
         <Route path="adminblogaccept" element={<AdminBlogAccept/>}></Route>
         <Route path="adminpackage" element={<AdminPackage/>}></Route>
       </Route>
-
-
-      <Route>
           
       <Route path="/holidayPlanner/" element={<HolidayPlannerLayout />} errorElement={<SystemError />}>
         <Route index element={<Holiday_dashboard />}></Route>
