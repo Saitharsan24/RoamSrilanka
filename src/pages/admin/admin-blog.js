@@ -1,16 +1,11 @@
 import React from "react";
-import Headeruser from "../../components/headerusers";
 import "../../styles/admin/admin-blog.css";
-//import "../../styles/holidayplanner_profile.css";
-//import profile from "../../assets/images/profile.jpg"
-//import { Container, Row, Col, Form } from "react-bootstrap";
 import { MDBDataTable } from "mdbreact";
-import Adminsidebar from "../../components/admin-sidebar";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 
 
-function Admin_blog() {
+function AdminBlog() {
   const data_all = {
     columns: [
       {
@@ -53,7 +48,7 @@ function Admin_blog() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-           <a href="/admin/admin_tourist_detail"> <button className="view-detail" >View Blog</button></a>
+           <a href="/admin/adminblogaccept"> <button className="view-detail" >View Blog</button></a>
           </>,
         ],
       },
@@ -465,11 +460,8 @@ function Admin_blog() {
   };
 
   return (
-    <div className="user-1 d-flex flex-column" style={{backgroundColor:"#F1F1F2"}}>
-      <Headeruser />
-      <div className="d-flex flex-row col-12">
-      <Adminsidebar/>
-        <div className="d-flex w-100">
+    
+        <div className="blog-1 d-flex w-100">
           <div className="d-flex flex-column col-lg-11 ms-lg-5">
             <div className="d-flex flex-column gap-4 my-3">
             
@@ -522,19 +514,13 @@ function Admin_blog() {
                   </Tab>
 
             </Tabs>
-           
-          
-
-            
-
              
             </div>     
           </div>
         </div>
-      </div>
-    </div>
+     
   );
 }
 
-export default Admin_blog;
+export default AdminBlog;
 
