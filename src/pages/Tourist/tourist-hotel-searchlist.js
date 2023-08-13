@@ -115,13 +115,17 @@ function ToursitHotelSearchList() {
                     <p>Description</p>
                   </div>
                 </div>  
-                <div className='search-hotel-price d-flex flex-column justify-content-start align-items-center gap-2'>
+                <div className='search-hotel-price d-flex flex-column justify-content-center align-items-center gap-2'>
                   <h6>VERY GOOD</h6>
                   <div className='hotel-search-rating d-flex flex-row justify-content-center align-items-center gap-1 '>
                     <BiIcons.BiSolidStar/>
                     <p>8.5</p>
                   </div>
                   <p>530 View</p>
+                  <p><strike style={{color:"#999999"}}>$500</strike> <br /> $450 / Pax</p>
+                  <Button>
+                    Book Now
+                  </Button>
                 </div>
               </div>
             </div>
