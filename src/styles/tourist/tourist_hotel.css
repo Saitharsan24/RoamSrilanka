@@ -144,9 +144,6 @@ h4{
     background-color: #ffffff;
     height: 100%;
     border-radius: 15px;
-}
-
-.hotel-search-hotellist{
     padding: 15px 15px 15px 15px;
 }
 
@@ -178,6 +175,19 @@ h4{
     padding: 25px 10px 10px 10px;
 }
 
+.search-hotel-price p{
+    text-align: center;
+}
+
+.search-hotel-price Button{
+    background-color: #004577;
+    border-radius: 10px;
+}
+
+.search-hotel-price Button:hover{
+    background-color: #005694;
+}
+
 .search-hotel-text{
     background-color: #ffffff;
     padding: 20px 0px 0px 30px;
@@ -188,6 +198,11 @@ h4{
     padding: 0px;
     color: #ffffff;
     font-weight: 650;    
+}
+
+
+.hotel-all-search-list{
+    padding: 15px 10px 10px 10px;
 }
 
 .search-hotel-list{
@@ -211,4 +226,70 @@ h4{
 .search-hotel-price h6{
     margin: 0px;
     font-weight: 800;
+}
+
+.search-hotel-list h5{
+    color: #004577;
+}
+
+.hotel-room-details{
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 30px 30px 30px 30px;
+}
+
+.hotel-rooms-list{
+    width: 100%;
+    height: 100%;
+    background-color: #f1f1f1;
+    border-radius: 15px;
+}
+
+.hotel-rooms-list h2{
+    font-weight: 650;
+    font-size: 40px;
+}
+
+.tourist-hotel-view-images{
+    width: 100%;
+    height: 350px;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+.hotel-view-images{
+    width: 55%;
+    height: 100%;
+    border-radius: 25px;
+}
+
+.hotel-view-image-main{
+    width: 80%;
+    height: 100%;
+    background-color: #aaaaaa;
+    border-radius: 25px;
+}
+
+.hotel-view-image-sub{
+    width: 20%;
+    height: 100%;    
+}
+
+.hotel-view-image-sub div{
+    width: 100%;
+    height: 30%;
+    background-color: #aaaaaa;
+    border-radius: 25px;
+}
+
+.hotel-view-rating{
+    width: 12%;
+    background-color: #ffffff;
+}
+
+.hotel-view-details{
+    width: 30%;
+    padding: 15px 15px 10px 25px;
 }
