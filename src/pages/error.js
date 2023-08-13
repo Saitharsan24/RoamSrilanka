@@ -9,7 +9,6 @@ import err from '../assets/img/bg3.png';
 export default function SystemError() {
   return (
     <div>
-      <Header />
       <div className='error-bg'>
         <div className='d-flex flex-column flex-md-row flex-lg-row p-5 justify-content-evenly'>
           <div className='d-flex flex-column p-5 text-black info'>

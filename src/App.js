@@ -6,6 +6,15 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import LandingPageLayout from "./layouts/landing-page-layout";
+import Home from "./pages/home";
+import About from "./pages/about";
+import Contact from "./pages/Contact";
+import Login from "./pages/login";
+import Services from "./pages/services";
+import Blog from "./pages/blog";
+import Explore from "./pages/explore";
+
 import TouristLayout from "./layouts/tourist/tourist-layout";
 import TouristDashboard from "./pages/Tourist/tourist-dashboard";
 import TouristBookings from "./pages/Tourist/tourist-bookings";
@@ -21,8 +30,6 @@ import TouristPackages from "./pages/Tourist/tourist-all-guide";
 import ToursitGuideView from "./pages/Tourist/tourist-guide-view";
 import TouristHotel from "./pages/Tourist/tourist-hotel";
 import ToursitHotelSearchList from "./pages/Tourist/tourist-hotel-searchlist";
-
-
 
 import HotelLayout from "./layouts/hotel/hotel-layout";
 import HotelDashboard from "./pages/hotel/hotel-dashboard";
@@ -61,9 +68,24 @@ import HPViewItem from "./pages/holiday-planner/HPViewItem";
 import HPRequest from "./pages/holiday-planner/HPRequest";
 import TouristBlogList from "./pages/Tourist/tourist-blog-list";
 
+
+
+
+
 const route = createBrowserRouter(
   createRoutesFromElements(
     <>
+      <Route path="/" element={<LandingPageLayout />} errorElement={<SystemError />}>
+        <Route index element={<Home/>}></Route>
+        <Route path="about" element={<About/>}></Route>
+        <Route path="services" element={<Services/>}></Route>
+        <Route path="explore" element={<Explore/>}></Route>
+        <Route path="blogs" element={<Blog/>}></Route>
+        <Route path="contact" element={<Contact/>}></Route>
+        <Route path="login" element={<Login/>}></Route>
+      </Route>
+
+
       <Route path="/tourist/" element={<TouristLayout />} errorElement={<SystemError />}>
         <Route index element={<TouristDashboard />}></Route>
         <Route path="touristDashboard" element={<TouristDashboard />}></Route>

@@ -10,7 +10,7 @@ import Cardcarousel from './../components/card';
 
 function Home() {
   return (
-    <div className="main-div d-flex flex-column justify-content-center align-items-center align-content-center">
+    <div className="main-div d-flex flex-column justify-content-center align-items-center w-100">
 
       {/* flash container */}
       <div className="flash-page container-fluid">
