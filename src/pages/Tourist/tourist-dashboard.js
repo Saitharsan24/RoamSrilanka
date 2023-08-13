@@ -2,7 +2,8 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import '../../styles/tourist/touristdashboard.css'
 import ResponsiveCalendar from "../../components/calender.js";
-
+import profile_pic from "./../../assets/images/profile_pic.png";
+import galle_tower from "./../../assets/images/galle_tower.jpeg";
 
 
 function TouristDashboard() {
@@ -17,7 +18,6 @@ function TouristDashboard() {
 
             <div className="place-01">
               <div className="place-image">
-                
               </div>
               <p>Galle</p>
               <Button
