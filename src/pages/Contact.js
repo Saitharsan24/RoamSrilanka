@@ -10,7 +10,7 @@ function Contact() {
   return (
     <div>
       <div className="d-flex flex-column w-100">
-        <div className="contact col-12 text-white d-flex flex-column justify-content-center barlow-text">
+        <div className="l-contact col-12 text-white d-flex flex-column justify-content-center barlow-text">
           <h1
             className="text-white"
             style={{
@@ -35,7 +35,7 @@ function Contact() {
           </h2>
           <h2 className="text-center jost-text heading2">to help you.</h2>
           <div className="d-flex flex-column col-12  flex-md-row flex-lg-row p-5 justify-content-evenly gap-5">
-            <div className="d-flex flex-column col-12 col-lg-3 col-md-5 p-5 text-black info">
+            <div className="d-flex flex-column col-12 col-lg-3 col-md-5 p-5 text-black l-info">
               <div className="d-flex flex-column flex-md-row flex-sm-row align-items-center py-1">
                 <Icon.Envelope
                   color="black"
@@ -67,12 +67,12 @@ function Contact() {
                 <Icon.Instagram color="#023047" size={20} />
               </div>
             </div>
-            <div className="d-flex col-12 col-lg-7 col-md-8 ">
-              <Form className="d-flex flex-column" style={{ width: "100%" }}>
-                <Row>
+            <div className="d-flex col-12 col-lg-7 col-md-8 contact-form-details">
+              <Form className="d-flex flex-column gap-3" style={{ width: "100%", textAlign: "left", fontSize: "20px"}}>
+                <Row className="d-flex flex-row  gap-3">
                   <Col>
                     <Form.Group>
-                      <Form.Label style={{ fontSize: "22px" }}>Name</Form.Label>
+                      <Form.Label>Name</Form.Label>
                       <Form.Control
                         type="text"
                         style={{
@@ -86,7 +86,7 @@ function Contact() {
                   </Col>
                   <Col>
                     <Form.Group>
-                      <Form.Label style={{ fontSize: "22px" }}>
+                      <Form.Label>
                         Email
                       </Form.Label>
                       <Form.Control
@@ -101,10 +101,10 @@ function Contact() {
                     </Form.Group>
                   </Col>
                 </Row>
-                <Row>
+                <Row className="d-flex flex-row  gap-3">
                   <Col>
                     <Form.Group>
-                      <Form.Label style={{ fontSize: "22px" }}>
+                      <Form.Label>
                         Subject
                       </Form.Label>
                       <Form.Control
@@ -120,7 +120,7 @@ function Contact() {
                   </Col>
                   <Col>
                     <Form.Group>
-                      <Form.Label style={{ fontSize: "22px" }}>
+                      <Form.Label>
                         Phone
                       </Form.Label>
                       <Form.Control
@@ -137,7 +137,7 @@ function Contact() {
                 </Row>
                 <Row>
                   <Form.Group>
-                    <Form.Label style={{ fontSize: "22px" }}>
+                    <Form.Label>
                       Hello I'm Intrested in..
                     </Form.Label>
                     <Form.Control
@@ -165,10 +165,10 @@ function Contact() {
             </div>
           </div>
           <div className="d-flex flex-column col-12 flex-md-row flex-lg-row gap-3 justify-content-evenly p-3">
-            <div class="mapouter">
-              <div class="gmap_canvas">
+            <div className="mapouter">
+              <div className="gmap_canvas">
                 <iframe
-                  class="gmap_iframe"
+                  className="gmap_iframe"
                   width="100%"
                   height="350vh"
                   frameborder="0"
@@ -194,22 +194,22 @@ function Contact() {
               style={{ textAlign: "left" }}
             >
               <div>
-                <span className="detail d-flex">Location</span>
-                <span className="data d-flex">
+                <span className="l-detail d-flex">Location</span>
+                <span className="l-data d-flex">
                   14, 3/2, Pereira lane, <br />
                   Colombo 06.
                 </span>
               </div>
               <div className="mt-5">
-                <span className="detail d-flex">Working hours</span>
+                <span className="l-detail d-flex">Working hours</span>
                 <div className="row">
                   <div className="col-md-4">
-                    <span className="data">
+                    <span className="l-data">
                       Week days <br />8 a.m to 6 p.m
                     </span>
                   </div>
                   <div className="col-md-4">
-                    <span className="data d-flex">
+                    <span className="l-data d-flex">
                       Week-ends <br />8 a.m to 12 p.m
                     </span>
                   </div>
