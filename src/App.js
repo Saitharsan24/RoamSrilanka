@@ -84,8 +84,8 @@ import HPRequest from "./pages/holiday-planner/HPRequest";
 import TouristBlogList from "./pages/Tourist/tourist-blog-list";
 import TouristChat from "./pages/Tourist/tourist-chat";
 import TouristProfile from "./pages/Tourist/tourist-profile";
-
-
+import HPChat from "./pages/holiday-planner/HPChat";
+import HPTrip from "./pages/holiday-planner/HPTrips";
 
 const route = createBrowserRouter(
   createRoutesFromElements(
@@ -178,6 +178,8 @@ const route = createBrowserRouter(
         <Route path="plannerViewEvent" element={<HPViewEvent />}></Route>
         <Route path="plannerViewItem" element={<HPViewItem />}></Route>
         <Route path="plannerRequest" element={<HPRequest />}></Route>
+        <Route path="hpchat" element={<HPChat/>}></Route>
+        <Route path="hptrip" element={<HPTrip/>}></Route>
       </Route>
     </>
   )

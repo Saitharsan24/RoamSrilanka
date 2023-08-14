@@ -186,7 +186,7 @@ function Holidayprofile() {
                 </div>
                 <div className="details d-flex flex-column align-items-center mb-3 col-12 p-3">
                   <div className="d-flex col-10 p-2">
-                    <p className="user align-self-lg-start">User Information</p>
+                    <p className="user-hp align-self-lg-start">User Information</p>
                   </div>
                   <div className=" d-flex">
                     {/* <Container> */}

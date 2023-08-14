@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import * as Icon from "react-bootstrap-icons";
 import "../../styles/updatepack.css";
 
@@ -69,7 +70,7 @@ const HPUpdatePackage2 = () => {
                   <button className="btn-cancel" type="submit">
                     Cancel
                   </button>
-                  <a href="">
+                  <Link to="/holidayPlanner/plannerPackage3">
                   <button
                     className="btn-next"
                     type="submit"
@@ -79,7 +80,7 @@ const HPUpdatePackage2 = () => {
                       style={{ marginBottom: "5px", fontSize: "17px" }}
                     />
                   </button>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </form>

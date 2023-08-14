@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.css";
 import HPDatatablePage from "../../components/HPItem";
 
@@ -11,7 +12,7 @@ function HPItem() {
         <div className="d-flex w-100">
           <div className="d-flex flex-column col-lg-12 p-4 ">
             <div className="d-grid d-md-flex justify-content-md-end">
-              <a href="plannerItem1">
+              <Link to="/holidayPlanner/plannerItem1">
               <button
                 className=""
                 style={{
@@ -28,7 +29,7 @@ function HPItem() {
               >
                 Add New Item
               </button>
-              </a>
+              </Link>
             </div>
 
             <p
