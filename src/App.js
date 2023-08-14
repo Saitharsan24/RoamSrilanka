@@ -152,6 +152,7 @@ const route = createBrowserRouter(
       </Route>
 
       <Route path="/admin/" element={<AdminLayout />} errorElement={<SystemError />}>
+        <Route index path="admindashboard" element={<AdminDashboard/>}></Route>
         <Route path="admindashboard" element={<AdminDashboard/>}></Route>
         <Route path="adminusers" element={<Users/>}></Route>
         <Route path="adminblog" element={<AdminBlog/>}></Route>
