@@ -15,7 +15,7 @@ function AdminBlog() {
         width: 150,
       },
       {
-        label: "Tourist Name",
+        label: "Touris Name",
         field: "name",
         sort: "asc",
         width: 150,

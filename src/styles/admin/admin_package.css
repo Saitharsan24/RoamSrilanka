@@ -1,12 +1,18 @@
-.include{
-    color: #23FF10;
+.request{
+    color: #FFC00C;
     font-family: bold;
 }
 
-.not-include{
+.confirm{
+    color: #23FF10;
+    font-family: bold ;
+}
+
+.reject{
     color: #E71420;
     font-family: bold;
 }
+
 
 .amount{
     color: #004577;
