@@ -81,7 +81,7 @@ function AdminBlog() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+            <div className="view-detail ">View Blog</div>
           </>,
         ],
       },
