@@ -18,7 +18,6 @@ import Explore from "./pages/explore";
 import TouristLayout from "./layouts/tourist/tourist-layout";
 import AdminLayout  from "./layouts/admin/adminLayout";
 
-
 import AdminDashboard from "./pages/admin/admin_dashboard";
 import Users from "./pages/admin/admin_user";
 import AdminBlog from "./pages/admin/admin-blog";
@@ -33,7 +32,7 @@ import AdminBlogAccept from "./pages/admin/admin_blog_accept";
 import AdminPackage from "./pages/admin/admin_package";
 import AdminPackageAccept from "./pages/admin/admin_package_accept";
 
-//import SystemError from "./pages/error";
+import SystemError from "./pages/error";
 import ToursitAccessoriesRent from "./pages/Tourist/tourist-accessories-rent";
 import TouristBlog from "./pages/Tourist/tourist-blog";
 import TouristBlogView from "./pages/Tourist/tourist-blog-view";
