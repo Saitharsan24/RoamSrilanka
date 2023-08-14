@@ -48,7 +48,7 @@ function AdminPackage() {
         status:[<><div className="request ">Request</div></>],
         btn: [
           <>
-           <a href="/admin/adminpackageaccept"> <button className="view-detail" >View Blog</button></a>
+           <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -59,7 +59,7 @@ function AdminPackage() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -70,7 +70,7 @@ function AdminPackage() {
         status:[<><div className="reject">Rejected</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -81,7 +81,7 @@ function AdminPackage() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -92,7 +92,7 @@ function AdminPackage() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -103,7 +103,7 @@ function AdminPackage() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+ <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -114,7 +114,7 @@ function AdminPackage() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+             <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -125,8 +125,7 @@ function AdminPackage() {
         status:[<><div className="reject">Rejected</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
-          </>,
+        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>          </>,
         ],
       },
       {
@@ -136,7 +135,7 @@ function AdminPackage() {
         status:[<><div className="reject">Rejected</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -147,7 +146,7 @@ function AdminPackage() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -158,7 +157,7 @@ function AdminPackage() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -169,7 +168,7 @@ function AdminPackage() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+           <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -180,7 +179,7 @@ function AdminPackage() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+                   <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -231,7 +230,7 @@ function AdminPackage() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-           <a href="/admin/admin_tourist_detail"> <button className="view-detail" >View Blog</button></a>
+        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -243,7 +242,7 @@ function AdminPackage() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -254,7 +253,7 @@ function AdminPackage() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -266,7 +265,7 @@ function AdminPackage() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -277,7 +276,7 @@ function AdminPackage() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+             <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -329,7 +328,7 @@ function AdminPackage() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -342,7 +341,7 @@ function AdminPackage() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+             <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -353,7 +352,7 @@ function AdminPackage() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -365,7 +364,7 @@ function AdminPackage() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -376,7 +375,7 @@ function AdminPackage() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+           <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -428,7 +427,7 @@ function AdminPackage() {
         status:[<><div className="reject">Rejected</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+           <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -440,7 +439,7 @@ function AdminPackage() {
         status:[<><div className="reject">Rejected</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
           </>,
         ],
       },
@@ -451,8 +450,7 @@ function AdminPackage() {
         status:[<><div className="reject">Rejected</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
-          </>,
+          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>          </>,
         ],
       },
      
