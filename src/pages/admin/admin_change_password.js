@@ -12,7 +12,7 @@ function AdminChangePassword() {
                
               <img
                                   src={profile}
-                                  className=" profile-pic object-fit-cover img-fluid m-auto  round-cricle"  style={{width:"11vm",height:"11vm"}} ></img>
+                                  className="  object-fit-cover img-fluid m-auto  round-cricle"  style={{width:"11vw",height: "11vw",borderRadius: "50%"}} ></img>
                                    <h6>Change Password</h6>
                 {/* form */}
                          <div className="d-flex flex-column align-items-center justify-content-around mt-5 ">

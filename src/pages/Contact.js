@@ -8,7 +8,7 @@ import Header from "../components/Header";
 
 function Contact() {
   return (
-    <div>
+    <div className="contactpage-main-div">
       <div className="d-flex flex-column w-100">
         <div className="l-contact col-12 text-white d-flex flex-column justify-content-center barlow-text">
           <h1

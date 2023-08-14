@@ -144,9 +144,6 @@ h4{
     background-color: #ffffff;
     height: 100%;
     border-radius: 15px;
-}
-
-.hotel-search-hotellist{
     padding: 15px 15px 15px 15px;
 }
 
@@ -154,7 +151,7 @@ h4{
     /* background-color: #f1f1f1; */
     width: 100%;
     padding: 10px;
-    border: #ececec 2px solid;
+    border: #c1c1c1 2px solid;
     border-radius: 25px;
 }
 
@@ -178,6 +175,19 @@ h4{
     padding: 25px 10px 10px 10px;
 }
 
+.search-hotel-price p{
+    text-align: center;
+}
+
+.search-hotel-price Button{
+    background-color: #004577;
+    border-radius: 10px;
+}
+
+.search-hotel-price Button:hover{
+    background-color: #005694;
+}
+
 .search-hotel-text{
     background-color: #ffffff;
     padding: 20px 0px 0px 30px;
@@ -190,6 +200,11 @@ h4{
     font-weight: 650;    
 }
 
+
+.hotel-all-search-list{
+    padding: 15px 10px 10px 10px;
+}
+
 .search-hotel-list{
     padding: 20px 0px 0px 15px;
 }
@@ -198,7 +213,7 @@ h4{
     font-weight: 500;
 }
 
-.hotel-search-ratin{
+.hotel-search-rating{
     background-color:#DB163A;
     border-radius:20px;
     height:50px;
@@ -206,4 +221,103 @@ h4{
     color:#ffffff;
     font-size: 20px;
     padding: 10px;
+}
+
+.search-hotel-price h6{
+    margin: 0px;
+    font-weight: 800;
+}
+
+.search-hotel-list h5{
+    color: #004577;
+}
+
+.hotel-room-details{
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 30px 30px 30px 30px;
+}
+
+.hotel-rooms-list{
+    width: 100%;
+    border-radius: 15px;
+}
+
+.hotel-rooms-list h2{
+    font-weight: 650;
+    font-size: 40px;
+}
+
+.tourist-hotel-view-images{
+    width: 100%;
+    height: 350px;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+.hotel-view-images{
+    width: 55%;
+    height: 100%;
+    border-radius: 25px;
+}
+
+.hotel-view-image-main{
+    background-image: url("../../assets/images/hotel04.jpg");
+    width: 80%;
+    height: 100%;
+    border-radius: 25px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hotel-view-image-sub{
+    width: 20%;
+    height: 100%;
+}
+
+.hotel-view-image-sub div{
+    width: 100%;
+    height: 30%;
+    background-color: #aaaaaa;
+    border-radius: 25px;
+    background-image: url("../../assets/images/hotel01.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hotel-view-rating{
+    width: 12%;
+    background-color: #ffffff;
+}
+
+.hotel-view-details{
+    width: 30%;
+    padding: 15px 15px 10px 25px;
+}
+
+.roomCard-hotel-view{
+    width: 100%;
+    border-radius: 15px;
+    padding: 15px 15px 15px 15px;
+}
+
+.roomcard-items{
+    width: 25%;
+    background-color: #f1f1f1;
+    border-radius: 15px;
+    height: 420px;
+}
+
+.roomcard-hotel-view-image{
+    background-color: #004577;
+    border-radius: 15px;
+    height: 45%;
+    background-image: url("../../assets/images/room-image3.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.roomcard-hotel-details{
+    padding: 10px 5px 10px 5px;
 }

@@ -17,11 +17,6 @@ import Explore from "./pages/explore";
 
 import TouristLayout from "./layouts/tourist/tourist-layout";
 import AdminLayout  from "./layouts/admin/adminLayout";
-import TouristDashboard from "./pages/Tourist/tourist-dashboard";
-import TouristBookings from "./pages/Tourist/tourist-bookings";
-import TouristAccessories from "./pages/Tourist/tourist-accessories";
-import ToursitAccessoriesView from "./pages/Tourist/tourist-accessories-view";
-
 import AdminDashboard from "./pages/admin/admin_dashboard";
 import Users from "./pages/admin/admin_user";
 import AdminBlog from "./pages/admin/admin-blog";
@@ -34,8 +29,9 @@ import AdminDiverReg from "./pages/admin/admin_driver_reg";
 import AdminChangePassword from "./pages/admin/admin_change_password";
 import AdminBlogAccept from "./pages/admin/admin_blog_accept";
 import AdminPackage from "./pages/admin/admin_package";
+import AdminPackageAccept from "./pages/admin/admin_package_accept";
 
-import SystemError from "./pages/error"
+import SystemError from "./pages/error";
 import ToursitAccessoriesRent from "./pages/Tourist/tourist-accessories-rent";
 import TouristBlog from "./pages/Tourist/tourist-blog";
 import TouristBlogView from "./pages/Tourist/tourist-blog-view";
@@ -45,6 +41,14 @@ import TouristPackages from "./pages/Tourist/tourist-all-guide";
 import ToursitGuideView from "./pages/Tourist/tourist-guide-view";
 import TouristHotel from "./pages/Tourist/tourist-hotel";
 import ToursitHotelSearchList from "./pages/Tourist/tourist-hotel-searchlist";
+import TouristBlogList from "./pages/Tourist/tourist-blog-list";
+import TouristChat from "./pages/Tourist/tourist-chat";
+import TouristProfile from "./pages/Tourist/tourist-profile";
+import TouristDashboard from "./pages/Tourist/tourist-dashboard";
+import TouristBookings from "./pages/Tourist/tourist-bookings";
+import TouristAccessories from "./pages/Tourist/tourist-accessories";
+import ToursitAccessoriesView from "./pages/Tourist/tourist-accessories-view";
+import ToursitHotelViewRoom from "./pages/Tourist/tourist-hotel-view-rooms";
 
 import HotelLayout from "./layouts/hotel/hotel-layout";
 import HotelDashboard from "./pages/hotel/hotel-dashboard";
@@ -81,11 +85,12 @@ import HPUpdateItem1 from "./pages/holiday-planner/HPUpdateItem1";
 import HPViewEvent from "./pages/holiday-planner/HPViewEvent";
 import HPViewItem from "./pages/holiday-planner/HPViewItem";
 import HPRequest from "./pages/holiday-planner/HPRequest";
-import TouristBlogList from "./pages/Tourist/tourist-blog-list";
-import TouristChat from "./pages/Tourist/tourist-chat";
-import TouristProfile from "./pages/Tourist/tourist-profile";
 import HPChat from "./pages/holiday-planner/HPChat";
 import HPTrip from "./pages/holiday-planner/HPTrips";
+
+import DriverLayout from "./layouts/driver/driver-layout";
+import Driver from "./pages/driver/dashboard";
+import Profile from "./pages/driver/profile";
 
 const route = createBrowserRouter(
   createRoutesFromElements(
@@ -119,8 +124,8 @@ const route = createBrowserRouter(
         <Route path="touristAccessoriesView" element={<ToursitAccessoriesView />}></Route>
         <Route path="rentItem" element={<ToursitAccessoriesRent />}></Route>
         <Route path="touristHotelSearchList" element={<ToursitHotelSearchList />}></Route>
+        <Route path="toursitHotelViewRoom" element={<ToursitHotelViewRoom />}></Route>
         <Route path="touristBlogList" element={<TouristBlogList />}></Route>
-
       </Route>
 
       <Route path="/hotel/" element={<HotelLayout />} errorElement={<SystemError />}>
@@ -147,6 +152,7 @@ const route = createBrowserRouter(
       </Route>
 
       <Route path="/admin/" element={<AdminLayout />} errorElement={<SystemError />}>
+        <Route index path="admindashboard" element={<AdminDashboard/>}></Route>
         <Route path="admindashboard" element={<AdminDashboard/>}></Route>
         <Route path="adminusers" element={<Users/>}></Route>
         <Route path="adminblog" element={<AdminBlog/>}></Route>
@@ -159,6 +165,9 @@ const route = createBrowserRouter(
         <Route path="adminchangepassword" element={<AdminChangePassword/>}></Route>
         <Route path="adminblogaccept" element={<AdminBlogAccept/>}></Route>
         <Route path="adminpackage" element={<AdminPackage/>}></Route>
+        <Route path="adminpackageaccept" element={<AdminPackageAccept/>}></Route>
+        
+        
       </Route>
           
       <Route path="/holidayPlanner/" element={<HolidayPlannerLayout />} errorElement={<SystemError />}>
@@ -180,6 +189,13 @@ const route = createBrowserRouter(
         <Route path="plannerRequest" element={<HPRequest />}></Route>
         <Route path="hpchat" element={<HPChat/>}></Route>
         <Route path="hptrip" element={<HPTrip/>}></Route>
+      </Route>
+
+      <Route path="/driver/" element={<DriverLayout />} errorElement={<SystemError />}>
+        <Route index element={<Driver />}></Route>
+        <Route path="driverDashboard" element={<Driver />}></Route>
+        <Route path="driverRequests" element={<HotelRequest />}></Route>
+        <Route path="driverProfile" element={<Profile />}></Route>
       </Route>
     </>
   )

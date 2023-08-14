@@ -32,7 +32,8 @@ p {
     height: 35rem;
   }
   
-  .l-detail {
+  .contactpage-main-div .l-detail {
+  /* .l-detail { */
     font-family: "Jost";
     font-weight: 500;
     font-size: 32px;
@@ -40,10 +41,11 @@ p {
     color: #004577;
   }
   
-  .l-data {
+  .contactpage-main-div .l-data {
+  /* .l-data { */
     font-family: "Jost";
     font-weight: 400;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 125%;
     color: #db163a;
   }
