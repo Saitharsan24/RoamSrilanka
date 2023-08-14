@@ -1,0 +1,14 @@
+.request{
+    color: #FFC00C;
+    font-family: bold;
+}
+
+.confirm{
+    color: #23FF10;
+    font-family: bold;
+}
+
+.reject{
+    color: #E71420;
+    font-family: bold;
+}
