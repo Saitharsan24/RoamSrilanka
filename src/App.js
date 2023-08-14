@@ -17,7 +17,6 @@ import Explore from "./pages/explore";
 
 import TouristLayout from "./layouts/tourist/tourist-layout";
 import AdminLayout  from "./layouts/admin/adminLayout";
-
 import AdminDashboard from "./pages/admin/admin_dashboard";
 import Users from "./pages/admin/admin_user";
 import AdminBlog from "./pages/admin/admin-blog";
@@ -89,6 +88,9 @@ import HPRequest from "./pages/holiday-planner/HPRequest";
 import HPChat from "./pages/holiday-planner/HPChat";
 import HPTrip from "./pages/holiday-planner/HPTrips";
 
+import DriverLayout from "./layouts/driver/driver-layout";
+import Driver from "./pages/driver/dashboard";
+import Profile from "./pages/driver/profile";
 
 const route = createBrowserRouter(
   createRoutesFromElements(
@@ -186,6 +188,13 @@ const route = createBrowserRouter(
         <Route path="plannerRequest" element={<HPRequest />}></Route>
         <Route path="hpchat" element={<HPChat/>}></Route>
         <Route path="hptrip" element={<HPTrip/>}></Route>
+      </Route>
+
+      <Route path="/driver/" element={<DriverLayout />} errorElement={<SystemError />}>
+        <Route index element={<Driver />}></Route>
+        <Route path="driverDashboard" element={<Driver />}></Route>
+        <Route path="driverRequests" element={<HotelRequest />}></Route>
+        <Route path="driverProfile" element={<Profile />}></Route>
       </Route>
     </>
   )
