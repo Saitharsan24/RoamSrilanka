@@ -1,6 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
 import HeaderUser from "../../components/headerusers";
-import TouristSidebar from "../../components/tourist-sidebar";
 import SideNavbar from "../../components/sidenavbar_tourist";
 import "../../styles/tourist/touristlayout.css";
 
