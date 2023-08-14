@@ -1,8 +1,5 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import Headeruser from "../../components/headerusers";
-import DriverSidebar from "./../../components/driver-sidebar";
-import SideNavbar from "../../components/driver-sidenavbar";
 import * as Icon from "react-bootstrap-icons";
 import Calendar from "react-calendar";
 import { useState } from "react";
@@ -142,14 +139,10 @@ function Driver() {
   const [value, setValue] = useState(new Date());
   return (
     <div>
-      <Headeruser />
       <div
         style={{ backgroundColor: "#ECECEC" }}
         className="d-flex flex-row column-gap-2 col-12"
       >
-        <div className="col-lg-2 col-md-4 col-12">
-          <SideNavbar />
-        </div>
         <div className="d-flex flex-column flex-lg-row col-lg-9 col-md-8 col-12 p-2 mt-5">
           <div className="d-flex col-lg-7 col-md-12 gap-3 flex-lg-column flex-md-column flex-column">
             <div class="card mb-2" >
