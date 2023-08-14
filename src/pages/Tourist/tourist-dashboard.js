@@ -8,6 +8,29 @@ import galle_tower from "./../../assets/images/galle_tower.jpeg";
 
 
 function TouristDashboard() {
+  const dashboardCard = [
+    {
+      name: 'Galle',
+      imagePath: '../../assets/images/galle_tower.jpeg'  
+    },
+
+    {
+      name: 'Colombo',
+      imagePath: '../../assets/images/Colombo.jpg'
+    },
+
+    {
+      name: 'Kandy',
+      imagePath: '../../assets/images/kandy.jpg'
+    },
+
+    {
+      name: 'Jaffna',
+      imagePath: '../../assets/images/jaffna.jpg'
+    },
+
+  ]
+
   return (
     <div className='tourist-main d-flex flex-row gap-2 mb-2' style={{width:"inherit"}}>
       
@@ -16,94 +39,21 @@ function TouristDashboard() {
 
           <h4>Famous places to visit</h4>
           <div className="dashboard-left-top-places d-flex flex-row gap-3 justify-content-center align-items-center">
-
-            <div className="place-01">
-              <div className="place-image">
+            
+            {dashboardCard.map((item, index) => {
+            return (
+            <a key={index} href="touristPackages">
+              <div className="place-01">
+                <div className="place-image d-flex flex-column align-items-start justify-content-end p-4">
+                  <p>{item.name}</p>
+                </div>
               </div>
-              <p>Galle</p>
-              <a href="touristPackages">
-                <Button
-                  className="book-tour-btn"
-                  variant="primary"
-                  style={{
-                    backgroundColor: "#004577",
-                    border: "none",
-                    marginTop:"3px",
-                    paddingLeft: "20px",
-                    paddingRight: "20px",
-                    fontSize: "12px",
-                  }}
-                >
-                  Book tour
-                </Button>
-              </a>
-            </div>
-
-            <div className="place-01">
-              <div className="place-image">
-                
-              </div>
-              <p>Galle</p>
-              <Button
-                className="book-tour-btn"
-                variant="primary"
-                style={{
-                  backgroundColor: "#004577",
-                  border: "none",
-                  marginTop:"3px",
-                  paddingLeft: "20px",
-                  paddingRight: "20px",
-                  fontSize: "12px",
-                }}
-              >
-                Book tour
-              </Button>
-            </div>
-
-            <div className="place-01">
-              <div className="place-image">
-                
-              </div>
-              <p>Galle</p>
-              <Button
-                className="book-tour-btn"
-                variant="primary"
-                style={{
-                  backgroundColor: "#004577",
-                  border: "none",
-                  marginTop:"3px",
-                  paddingLeft: "20px",
-                  paddingRight: "20px",
-                  fontSize: "12px",
-                }}
-              >
-                Book tour
-              </Button>
-            </div>
-
-            <div className="place-01">
-              <div className="place-image">
-                
-              </div>
-              <p>Galle</p>
-              <Button
-                className="book-tour-btn"
-                variant="primary"
-                style={{
-                  backgroundColor: "#004577",
-                  border: "none",
-                  marginTop:"3px",
-                  paddingLeft: "20px",
-                  paddingRight: "20px",
-                  fontSize: "12px",
-                }}
-              >
-                Book tour
-              </Button>
-            </div>
+            </a>
+               )
+            })}
 
           </div>
-        </div>  
+        </div>
 
         <div className="dashboard-left-bottom d-flex flex-row gap-2 h-100">
           <div className="dashboard-left-bottom-message">

@@ -91,12 +91,78 @@ function ToursitHotelViewRoom() {
             <div>
               <h3 style={{fontWeight:"650"}}>Choose your room</h3>
               <div className='roomCard-hotel-view d-flex flex-row gap-3 align-items-center justify-content-center'>
-                <div>
-                  <div className='roomCard-hotel-view-image'>dsdfd</div>
+                <div className='roomcard-items d-flex flex-column'>
+                  <div className='roomcard-hotel-view-image'></div>
+                  <div className='roomcard-hotel-details d-flex flex-column justify-content-center align-items-center gap-1'>
+                    <h5>Superior Queen</h5>
+                    <p>
+                      <ul>
+                        <li>Pay at the property</li>
+                        <li>Free cancellation</li>
+                        <li>Breakfast included</li>
+                        <li>Free Wifi</li>
+                        <li>Sleeps 4</li>
+                      </ul>
+                    </p>
+                    <Button>
+                      Reserve
+                    </Button>
+                  </div>
                 </div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <div className='roomcard-items d-flex flex-column'>
+                  <div className='roomcard-hotel-view-image'></div>
+                  <div className='roomcard-hotel-details d-flex flex-column justify-content-center align-items-center gap-1'>
+                    <h5>Superior Queen</h5>
+                    <p>
+                      <ul>
+                        <li>Pay at the property</li>
+                        <li>Free cancellation</li>
+                        <li>Breakfast included</li>
+                        <li>Free Wifi</li>
+                        <li>Sleeps 4</li>
+                      </ul>
+                    </p>
+                    <Button>
+                      Reserve
+                    </Button>
+                  </div>
+                </div>
+                <div className='roomcard-items d-flex flex-column'>
+                  <div className='roomcard-hotel-view-image'></div>
+                  <div className='roomcard-hotel-details d-flex flex-column justify-content-center align-items-center gap-1'>
+                    <h5>Superior Queen</h5>
+                    <p>
+                      <ul>
+                        <li>Pay at the property</li>
+                        <li>Free cancellation</li>
+                        <li>Breakfast included</li>
+                        <li>Free Wifi</li>
+                        <li>Sleeps 4</li>
+                      </ul>
+                    </p>
+                    <Button>
+                      Reserve
+                    </Button>
+                  </div>
+                </div>
+                <div className='roomcard-items d-flex flex-column'>
+                  <div className='roomcard-hotel-view-image'></div>
+                  <div className='roomcard-hotel-details d-flex flex-column justify-content-center align-items-center gap-1'>
+                    <h5>Superior Queen</h5>
+                    <p>
+                      <ul>
+                        <li>Pay at the property</li>
+                        <li>Free cancellation</li>
+                        <li>Breakfast included</li>
+                        <li>Free Wifi</li>
+                        <li>Sleeps 4</li>
+                      </ul>
+                    </p>
+                    <Button>
+                      Reserve
+                    </Button>
+                  </div>
+                </div>                   
               </div>
             </div>
             

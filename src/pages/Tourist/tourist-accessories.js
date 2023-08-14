@@ -51,10 +51,12 @@ function ToursitAccessories() {
           <div className="accessories-subhead">
             <h4>Travel Gears</h4>
           </div>
-          <div className="accessories-all-card">
-            <div className="accessories-card">
+          <div className="accessories-all-card d-flex flex-row gap-3">
+            {cardData.map((item, index) => {
+            return (
+            <div key={index} className="accessories-card">
               <div className="accessories-card-image">
-
+              
               </div>
 
               <p className='pt-1' style={{fontWeight:'600', fontSize:'18px',color:'#004577',margin:'0px'}}>Camera</p>
@@ -73,14 +75,19 @@ function ToursitAccessories() {
                 Rent
               </Button>
             </div>
+             )
+            })}
           </div>
+           
         </div>
         
         <div className="accessories-electronic">
           <div className="accessories-subhead">
             <h4>Electronic Gadgets</h4>
           </div>
-          <div className="accessories-all-card">
+          <div className="accessories-all-card d-flex flex-row gap-3">
+          {cardData.map((item, index) => {
+            return (
             <div className="accessories-card">
             <div className="accessories-card-image">
 
@@ -105,6 +112,8 @@ function ToursitAccessories() {
             </Button>
             </a>
             </div>
+             )
+            })}
           </div>
 
         </div>
