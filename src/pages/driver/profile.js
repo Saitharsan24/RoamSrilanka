@@ -1,20 +1,22 @@
 import React, {useState} from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import Headeruser from "../../components/headerusers";
+import SideNavbar from "../../components/driver-sidenavbar";
 import * as Icon from "react-bootstrap-icons";
 import img2 from "./../../assets/images/profile.jpg";
 import img from "./../../assets/images/driver.jpg";
 
 function Profile() {
     return (
-        // <div>
-        //     <Headeruser />
-        //     <div
-        //         style={{ backgroundColor: "#ECECEC" }}
-        //         className="d-flex flex-row column-gap-2 col-12"
-        //     >
-        //         <div className="col-lg-2 col-md-4 col-12">
-        //             <SideNavbar />
-        //         </div>
+        <div>
+            <Headeruser />
+            <div
+                style={{ backgroundColor: "#ECECEC" }}
+                className="d-flex flex-row column-gap-2 col-12"
+            >
+                <div className="col-lg-2 col-md-4 col-12">
+                    <SideNavbar />
+                </div>
                 
                 <div className="col-lg-9 col-md-8 col-12 p-2 mt-4">
                     <div className="col-sm-12">
@@ -117,8 +119,8 @@ function Profile() {
                     </div>
                     
                 </div>
-        //     </div>
-        // </div>
+            </div>
+        </div>
     );
 }
 
