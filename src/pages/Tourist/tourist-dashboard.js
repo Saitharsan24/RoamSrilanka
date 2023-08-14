@@ -32,7 +32,7 @@ function TouristDashboard() {
   ]
 
   return (
-    <div className='tourist-main d-flex flex-row gap-2 mb-2' style={{width:"inherit"}}>
+    <div className='tourist-main d-flex flex-row gap-2 mb-2' style={{width:"100"}}>
       
       <div className="dashboard-left d-flex flex-column gap-2">
         <div className="dashboard-left-top">
@@ -133,7 +133,7 @@ function TouristDashboard() {
       </div>
 
       <div className="dashboard-right d-flex flex-column gap-4">
-        <div className="dashboard-right-calender d-flex flex-column align-items-center"><ResponsiveCalendar/></div>
+        <div className="dashboard-right-calender d-flex flex-column align-items-center justify-content-center"><ResponsiveCalendar/></div>
           <div className="dashboard-right-trips d-flex flex-column justify-content-start gap-3">
             <h4>My Trips on <span>28.09.2023</span></h4>
             <div className="dashboard-my-trips">
