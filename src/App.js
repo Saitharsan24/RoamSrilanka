@@ -91,6 +91,7 @@ import HPTrip from "./pages/holiday-planner/HPTrips";
 import DriverLayout from "./layouts/driver/driver-layout";
 import Driver from "./pages/driver/dashboard";
 import Profile from "./pages/driver/profile";
+import DriverReport from "./pages/driver/report";
 
 const route = createBrowserRouter(
   createRoutesFromElements(
@@ -166,8 +167,6 @@ const route = createBrowserRouter(
         <Route path="adminblogaccept" element={<AdminBlogAccept/>}></Route>
         <Route path="adminpackage" element={<AdminPackage/>}></Route>
         <Route path="adminpackageaccept" element={<AdminPackageAccept/>}></Route>
-        
-        
       </Route>
           
       <Route path="/holidayPlanner/" element={<HolidayPlannerLayout />} errorElement={<SystemError />}>
@@ -196,6 +195,7 @@ const route = createBrowserRouter(
         <Route path="driverDashboard" element={<Driver />}></Route>
         <Route path="driverRequests" element={<HotelRequest />}></Route>
         <Route path="driverProfile" element={<Profile />}></Route>
+        <Route path="driverReport" element={<DriverReport />}></Route>
       </Route>
     </>
   )
