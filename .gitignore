@@ -23,4 +23,10 @@ package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
+back-end/.idea/codeStyles/Project.xml
+back-end/.idea/codeStyles/codeStyleConfig.xml
+back-end/.idea/encodings.xml
+back-end/.idea/jarRepositories.xml
+back-end/.idea/vcs.xml
+back-end/.idea/misc.xml
+back-end/.idea/compiler.xml
