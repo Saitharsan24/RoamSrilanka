@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as Icon from 'react-bootstrap-icons';
 import './../styles/sidebar.css';
 
-const Adminsidebar = () => {
+const AdminSidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -54,6 +54,20 @@ const Adminsidebar = () => {
           )}
         </li>
         <li
+          className={`menu-item ${selectedItem === 'trips' ? 'selected' : 'not'}`}
+          onClick={() => handleItemClick('chat')}
+        >
+          {isCollapsed ? (
+            <Icon.ListCheck className='icon' />
+          ) : (
+            <>
+              <Icon.ListCheck className='icon' />
+              <span className={`menu-items-list ${selectedItem === 'trips' ? 'selected' : 'not'}`}
+              >Blogs</span>
+            </>
+          )}
+        </li>
+        <li
           className={`menu-item ${selectedItem === 'chat' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('chat')}
         >
@@ -63,11 +77,11 @@ const Adminsidebar = () => {
             <>
               <Icon.ChatSquareText className='icon' />
               <span className={`menu-items-list ${selectedItem === 'chat' ? 'selected' : 'not'}`}
-              >Blogs</span>
+              >Chat</span>
             </>
           )}
         </li>
-        {/* <li
+        <li
           className={`menu-item ${selectedItem === 'reports' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('reports')}
         >
@@ -80,7 +94,7 @@ const Adminsidebar = () => {
               >Reports</span>
             </>
           )}
-        </li> */}
+        </li>
         <li
           className={`menu-item ${selectedItem === 'profile' ? 'selected' : 'not'}`}
           onClick={() => handleItemClick('profile')}
@@ -91,20 +105,6 @@ const Adminsidebar = () => {
             <>
               <Icon.People className='icon' />
               <span className={`menu-items-list ${selectedItem === 'profile' ? 'selected' : 'not'}`}
-              >Reports</span>
-            </>
-          )}
-        </li>
-        <li
-          className={`menu-item ${selectedItem === 'trips' ? 'selected' : 'not'}`}
-          onClick={() => handleItemClick('hotel')}
-        >
-          {isCollapsed ? (
-            <Icon.CarFront className='icon' />
-          ) : (
-            <>
-              <Icon.CarFront className='icon' />
-              <span className={`menu-items-list ${selectedItem === 'trips' ? 'selected' : 'not'}`}
               >Profile</span>
             </>
           )}
@@ -114,4 +114,4 @@ const Adminsidebar = () => {
   );
 };
 
-export default Adminsidebar;
+export default AdminSidebar;

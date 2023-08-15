@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,700;1,900&family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+.sideNavBar{
+    background-color: #004577;
+    display: flex;
+    justify-content: center;
+    position: realtive;
+    top: 0;
+    width: inherit;
+    height: 100vh;
+    transition: 850ms;
+    font-family: 'Barlow', sans-serif !important;
+    font-weight: 400;
+    padding: 20px 0px 0px 0px;
+}
+
+.sideNavBar a{
+    gap: 15px;
+    transition: 350ms;
+
+}
+
+.sidenavbar-items{
+    padding: 0%;
+}
+
+.sidenav-baricon{
+    font-size: 18px !important;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.sidenav-baricon:hover{
+   color: #DB163A;
+}
+
+.nav-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    list-style: none;
+    width: 180px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.sideNavBar .nav-text a{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center; 
+    border-radius: 25px;
+    gap: 15px !important;
+    padding: 0px 15px 0px 15px;
+}
+
+.sideNavBar .nav-text a:hover{
+    background-color: #ffffff;
+    color: #DB163A;
+    transition: 100ms;
+}
+
+.sideNavBar .active{
+    background-color: #ffffff;
+    color: #DB163A !important;
+}
+
+.Collapsed{
+    width: 80px;
+    .sideNav-span{
+        display: none;
+    }
+    .nav-text {
+        width: unset;
+    }
+}
+
+.Expanded{
+    padding: 20px 30px 0px 30px;
+}
+
+.Collapsed{
+    padding: 20px 30px 0px 30px;
+}
+
+.Collapsed .sidenav-baricon{
+    justify-content: center !important;
+}
+
+.hotel-btn-name{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 15px;
+}

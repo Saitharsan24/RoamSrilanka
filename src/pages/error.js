@@ -6,9 +6,9 @@ import Header from "../components/Header";
 import "./../styles/error.css";
 import err from '../assets/img/bg3.png';
 
-export default function Error() {
+export default function SystemError() {
   return (
-    <div>
+    <div className='error-main-div'>
       <Header />
       <div className='error-bg'>
         <div className='d-flex flex-column flex-md-row flex-lg-row p-5 justify-content-evenly'>

@@ -1,0 +1,28 @@
+.request{
+    color: #FFC00C;
+    font-family: bold;
+}
+
+.confirm{
+    color: #23FF10;
+    font-family: bold;
+}
+
+.reject{
+    color: #E71420;
+    font-family: bold;
+}
+
+
+.blog-1 .nav-link{
+    color: #004577 !important;
+    font-weight: bold;
+  }
+
+  .blog-1 .nav-link:hover{
+    color: #0E0E10 !important;
+  }
+
+  .blog-1 .pagination{
+    --bs-pagination-focus-color:#004577 ;
+  }
