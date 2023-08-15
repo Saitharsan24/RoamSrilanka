@@ -44,7 +44,7 @@ function Vehicle() {
                 className="d-flex flex-row column-gap-2 col-12"
             >
                 
-                <div className="d-flex flex-column flex-lg-row col-lg-9 col-md-8 col-12 p-2 mt-4">
+                <div className="d-flex flex-column flex-lg-row col-lg-9 col-md-8 col-12 p-2 mt-4 w-100">
                     {/* <div class="position-relative">
                         <div class="position-absolute top-0 end-0">h</div>
                     </div> */}

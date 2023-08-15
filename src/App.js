@@ -14,6 +14,7 @@ import Login from "./pages/login";
 import Services from "./pages/services";
 import Blog from "./pages/blog";
 import Explore from "./pages/explore";
+import Signup from "./pages/signup";
 
 import TouristLayout from "./layouts/tourist/tourist-layout";
 import AdminLayout  from "./layouts/admin/adminLayout";
@@ -92,7 +93,8 @@ import DriverLayout from "./layouts/driver/driver-layout";
 import Driver from "./pages/driver/dashboard";
 import Profile from "./pages/driver/profile";
 import DriverReport from "./pages/driver/report";
-import DriverChat from "./pages/driver/chat"
+import DriverChat from "./pages/driver/chat";
+import DriverVehicle from "./pages/driver/vehicle";
 
 const route = createBrowserRouter(
   createRoutesFromElements(
@@ -105,6 +107,7 @@ const route = createBrowserRouter(
         <Route path="blogs" element={<Blog/>}></Route>
         <Route path="contact" element={<Contact/>}></Route>
         <Route path="login" element={<Login/>}></Route>
+        <Route path="signup" element={<Signup/>}></Route>
       </Route>
 
 
@@ -198,6 +201,7 @@ const route = createBrowserRouter(
         <Route path="driverProfile" element={<Profile />}></Route>
         <Route path="driverReport" element={<DriverReport />}></Route>
         <Route path="driverChat" element={<DriverChat />}></Route>
+        <Route path="driverVehicle" element={<DriverVehicle />}></Route>
       </Route>
     </>
   )

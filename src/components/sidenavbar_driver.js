@@ -33,6 +33,13 @@ function SideNavbar() {
       },
 
       {
+        title:'Vehicle',
+        path:'driverVehicle',
+        icon:<BiIcons.BiSolidCar />,
+        cName: 'nav-text',
+      },
+
+      {
         title:'Chat',
         path:'driverChat',
         icon:<BsIcons.BsChatSquareDotsFill />,
