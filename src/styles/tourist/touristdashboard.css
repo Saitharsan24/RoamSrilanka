@@ -1,5 +1,6 @@
-p, h5 {
-    margin: 0px !important;
+p,
+h5 {
+  margin: 0px !important;
 }
 
 .place-01{
@@ -14,122 +15,161 @@ p, h5 {
 }
 
 .place-01 p{
-    margin: 0px;
-    font-size: 17px;
-    font-weight:500;
-}
-
-.place-image{
-    background-color: #004577;
-    width: 10rem;
-    height: 12rem;
-    border-radius: 15px;
-}
-
-.dashboard-left-top{
-    background-color: #ffffff;
-    border-radius: 15px;
-    padding: 15px 0px 0px 25px; 
-}
-
-.dashboard-left-top h4{
-    margin: 0px;
-    font-weight: 600;
-    color: #004577;
+  margin: 0px;
+  font-size: 17px;
+  font-weight: 500;
 
 }
 
-.book-tour-btn:hover{
-    background-color: #005694 !important;
+.place-image {
+  background-image: url("../../assets/images/galle_tower.jpeg");
+  width: 10rem;
+  height: 12rem;
+  border-radius: 15px;
+}
+
+.dashboard-left .place-image {
+  background-image: url("../../assets/images/galle_tower.jpeg");
+  width: 10rem;
+  height: 12rem;
+  border-radius: 15px;
+}
+
+.dashboard-left .place-01{
+  background-color: #f1f1f1;
+  width: 10rem;
+  height: 12rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:5px;
+}
+
+.dashboard-left-top-places .place-image p{
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;  
 }
 
 
-.dashboard-right{
-    width: inherit;
-    height: 100%;
-    border-radius: 15px;
-    background-color: #ffffff;
+.dashboard-left-top-places a{
+  text-decoration: none;
+  border-radius: 15px;
 }
 
-.dashboard-left-top-places{
-    padding: 20px 80px 30px 50px;
-    width: inherit;
+.dashboard-left-top-places a:hover{
+  box-shadow: 0 0 11px rgba(33,33,33,.2);
+  transition: .2s;
 }
 
-.dashboard-left-bottom-request{
-    width: 50%;
-    height: inherit;
-    background-color: #ffffff;
-    border-radius: 15px;
+.dashboard-left-top {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 15px 0px 0px 25px;
 }
 
-.dashboard-left-bottom-message{
-    width: 50%;
-    height: inherit;
-    background-color: #ffffff;
-    border-radius: 15px;
+.dashboard-left-top h4 {
+  margin: 0px;
+  font-weight: 600;
+  color: #004577;
 }
 
-.dashboard-right{
-    padding: 20px 10px 10px 10px;
+.book-tour-btn:hover {
+  background-color: #005694 !important;
 }
 
-h4{
-    margin: 0px;
-    font-weight: 600;
-    color: #004577 !important;
-    padding-left: 30px;
+.dashboard-left{
+  width: 70%;
 }
 
-.dashboard-right-trips span{
-    color: #DB163A;
+.dashboard-right {
+  width: 30%;
+  height: 100%;
+  border-radius: 15px;
+  background-color: #ffffff;
 }
 
-.dashboard-left-bottom-message{
-    padding: 20px 0px 30px 0px;
+.dashboard-left-top-places {
+  padding: 20px 80px 30px 50px;
+  width: inherit;
 }
 
-.new-message{
-    width: 100%;
-    padding: 20px 0px 0px 30px;
+.dashboard-left-bottom-request {
+  width: 50%;
+  height: inherit;
+  background-color: #ffffff;
+  border-radius: 15px;
 }
 
-.new-message-one{
-    width: 90%;
-    border-bottom: #9a9a9a  1px solid;
-    padding-bottom: 8px;
+.dashboard-left-bottom-message {
+  width: 50%;
+  height: inherit;
+  background-color: #ffffff;
+  border-radius: 15px;
 }
 
-.message-image{
-    border-radius: 30px;
-    background-color: #004577;
-    width: 60px;
-    height: 60px;
+.dashboard-right {
+  padding: 20px 10px 10px 10px;
 }
 
-.message-content{
-    width: 70%;
+
+.dashboard-left h4 {
+  margin: 0px;
+  font-weight: 600;
+  color: #004577 !important;
+  padding-left: 30px;
 }
 
-.message-content h5{
-    font-weight: 600;
+.dashboard-right-trips span {
+  color: #db163a;
 }
 
-.new-request-one{
-    width: 90%;
-    border-bottom: #9a9a9a  1px solid;
-    padding-bottom: 5px;
-
+.dashboard-left-bottom-message {
+  padding: 20px 0px 30px 0px;
 }
 
-.new-request-one p{
-    font-size: 18px;
-    font-weight: 600;
-    margin: 0px;
+.new-message {
+  width: 100%;
+  padding: 20px 0px 0px 30px;
 }
 
-.request-div{
-    width: 65%;
+.new-message-one {
+  width: 90%;
+  border-bottom: #9a9a9a 1px solid;
+  padding-bottom: 8px;
+}
+
+.message-image {
+  border-radius: 30px;
+  background-size: cover; /* or contain */
+  background-image: url("../../assets/images/profile_pic.png");
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.message-content {
+  width: 70%;
+}
+
+.message-content h5 {
+  font-weight: 600;
+}
+
+.new-request-one {
+  width: 90%;
+  border-bottom: #9a9a9a 1px solid;
+  padding-bottom: 5px;
+}
+
+.new-request-one p {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0px;
+}
+
+.request-div {
+  width: 65%;
 }
 
 .request-view-div{

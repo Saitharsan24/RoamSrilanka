@@ -31,24 +31,24 @@ function SideNavbarHolidayPlanner() {
       },
       {
         title:'Trips',
-        path:'holidayPlannerTrip',
+        path:'hptrip',
         icon:<BiIcons.BiTrip />,
         cName: 'nav-text',
       },
 
       {
         title:'Chat',
-        path:'holidayPlannerChat',
+        path:'hpchat',
         icon:<BsIcons.BsChatSquareDotsFill />,
         cName: 'nav-text',
       },
 
-      {
-        title:'Reports',
-        path:'holidayPlannerReport',
-        icon:<MdIcons.MdTour />,
-        cName: 'nav-text',
-      },
+      // {
+      //   title:'Reports',
+      //   path:'holidayPlannerReport',
+      //   icon:<MdIcons.MdTour />,
+      //   cName: 'nav-text',
+      // },
 
       {
         title:'Profile',

@@ -264,7 +264,7 @@ const OurHotel = () => {
       </div>
       <Modal show={isModalOpen} onHide={closeModalRegister}>
         <Modal.Header closeButton>
-          <Modal.Title>Hotel Request</Modal.Title>
+          <Modal.Title></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form style={{ fontFamily: "Poppins" }}>
@@ -336,7 +336,7 @@ const OurHotel = () => {
       </Modal>
       <Modal show={isModalOpen} onHide={closeModalEdit}>
         <Modal.Header closeButton>
-          <Modal.Title>Hotel Request</Modal.Title>
+          <Modal.Title></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form style={{ fontFamily: "Poppins" }}>

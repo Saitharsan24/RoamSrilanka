@@ -1,106 +1,59 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import '../../styles/tourist/touristdashboard.css'
 import ResponsiveCalendar from "../../components/calender.js";
-
+import profile_pic from "./../../assets/images/profile_pic.png";
+import galle_tower from "./../../assets/images/galle_tower.jpeg";
 
 
 function TouristDashboard() {
+  const dashboardCard = [
+    {
+      name: 'Galle',
+      imagePath: '../../assets/images/galle_tower.jpeg'  
+    },
+
+    {
+      name: 'Colombo',
+      imagePath: '../../assets/images/Colombo.jpg'
+    },
+
+    {
+      name: 'Kandy',
+      imagePath: '../../assets/images/kandy.jpg'
+    },
+
+    {
+      name: 'Jaffna',
+      imagePath: '../../assets/images/jaffna.jpg'
+    },
+
+  ]
+
   return (
-    <div className='tourist-main d-flex flex-row gap-2 mb-2' style={{width:"inherit"}}>
+    <div className='tourist-main d-flex flex-row gap-2 mb-2' style={{width:"100"}}>
       
       <div className="dashboard-left d-flex flex-column gap-2">
         <div className="dashboard-left-top">
 
           <h4>Famous places to visit</h4>
           <div className="dashboard-left-top-places d-flex flex-row gap-3 justify-content-center align-items-center">
-
-            <div className="place-01">
-              <div className="place-image">
-                
+            
+            {dashboardCard.map((item, index) => {
+            return (
+            <a key={index} href="touristPackages">
+              <div className="place-01">
+                <div className="place-image d-flex flex-column align-items-start justify-content-end p-4">
+                  <p>{item.name}</p>
+                </div>
               </div>
-              <p>Galle</p>
-              <Button
-                className="book-tour-btn"
-                variant="primary"
-                style={{
-                  backgroundColor: "#004577",
-                  border: "none",
-                  marginTop:"3px",
-                  paddingLeft: "20px",
-                  paddingRight: "20px",
-                  fontSize: "12px",
-                }}
-              >
-                Book tour
-              </Button>
-            </div>
-
-            <div className="place-01">
-              <div className="place-image">
-                
-              </div>
-              <p>Galle</p>
-              <Button
-                className="book-tour-btn"
-                variant="primary"
-                style={{
-                  backgroundColor: "#004577",
-                  border: "none",
-                  marginTop:"3px",
-                  paddingLeft: "20px",
-                  paddingRight: "20px",
-                  fontSize: "12px",
-                }}
-              >
-                Book tour
-              </Button>
-            </div>
-
-            <div className="place-01">
-              <div className="place-image">
-                
-              </div>
-              <p>Galle</p>
-              <Button
-                className="book-tour-btn"
-                variant="primary"
-                style={{
-                  backgroundColor: "#004577",
-                  border: "none",
-                  marginTop:"3px",
-                  paddingLeft: "20px",
-                  paddingRight: "20px",
-                  fontSize: "12px",
-                }}
-              >
-                Book tour
-              </Button>
-            </div>
-
-            <div className="place-01">
-              <div className="place-image">
-                
-              </div>
-              <p>Galle</p>
-              <Button
-                className="book-tour-btn"
-                variant="primary"
-                style={{
-                  backgroundColor: "#004577",
-                  border: "none",
-                  marginTop:"3px",
-                  paddingLeft: "20px",
-                  paddingRight: "20px",
-                  fontSize: "12px",
-                }}
-              >
-                Book tour
-              </Button>
-            </div>
+            </a>
+               )
+            })}
 
           </div>
-        </div>  
+        </div>
 
         <div className="dashboard-left-bottom d-flex flex-row gap-2 h-100">
           <div className="dashboard-left-bottom-message">
@@ -180,7 +133,7 @@ function TouristDashboard() {
       </div>
 
       <div className="dashboard-right d-flex flex-column gap-4">
-        <div className="dashboard-right-calender d-flex flex-column align-items-center"><ResponsiveCalendar/></div>
+        <div className="dashboard-right-calender d-flex flex-column align-items-center justify-content-center"><ResponsiveCalendar/></div>
           <div className="dashboard-right-trips d-flex flex-column justify-content-start gap-3">
             <h4>My Trips on <span>28.09.2023</span></h4>
             <div className="dashboard-my-trips">
