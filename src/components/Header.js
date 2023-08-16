@@ -38,7 +38,7 @@ const Header=()=>{
           <NavLink to="login">
             <span className='header-links'>Login</span>
           </NavLink>
-          <Link to="/">
+          <Link to="signup">
             <Button>
               Register
             </Button>

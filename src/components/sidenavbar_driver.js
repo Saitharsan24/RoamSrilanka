@@ -7,55 +7,58 @@ import * as BiIcons from 'react-icons/bi'
 import * as MdIcons from 'react-icons/md'
 import * as TbIcons from 'react-icons/tb'
 import * as BsIcons from 'react-icons/bs'
+import * as SiIcons from 'react-icons/si'
 
-import '../styles/hotel/sidenavbar-hotel.css'
+
+import '../styles/tourist/touristsidenavbar.css'
 
 
-function SideNavbarHolidayPlanner() {
+function SideNavbar() {
 
     const [isCollapsed, setIsCollapsed] = useState(false);
 
     const sidebardata = [
       {
         title:'Dashboard',
-        path:'plannerDashboard',
+        path:'driverDashboard',
         icon:<AiIcons.AiFillHome />,
         cName: 'nav-text',
       },
 
       {
         title:'Requests',
-        path:'plannerRequest',
+        path:'driverRequests',
         icon:<BiIcons.BiTrip />,
         cName: 'nav-text',
       },
+
       {
-        title:'Trips',
-        path:'hptrip',
-        icon:<BiIcons.BiTrip />,
+        title:'Vehicle',
+        path:'driverVehicle',
+        icon:<BiIcons.BiSolidCar />,
         cName: 'nav-text',
       },
 
       {
         title:'Chat',
-        path:'hpchat',
+        path:'driverChat',
         icon:<BsIcons.BsChatSquareDotsFill />,
         cName: 'nav-text',
       },
 
-      // {
-      //   title:'Reports',
-      //   path:'holidayPlannerReport',
-      //   icon:<MdIcons.MdTour />,
-      //   cName: 'nav-text',
-      // },
+      {
+        title:'Reports',
+        path:'driverReport',
+        icon:<MdIcons.MdTour />,
+        cName: 'nav-text',
+      },
 
       {
         title:'Profile',
-        path:'plannerProfile',
+        path:'driverProfile',
         icon:<MdIcons.MdAccountCircle />,
         cName: 'nav-text',
-      },
+      }
     ]
 
   return (
@@ -81,4 +84,4 @@ function SideNavbarHolidayPlanner() {
   )
 }
 
-export default SideNavbarHolidayPlanner;
+export default SideNavbar

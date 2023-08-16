@@ -2,16 +2,17 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, Table } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
-import DriverSidebar from "./../../components/driver-sidebar";
-import Headeruser from "../../components/headerusers";
-import DatatablePage from "../../components/data-table";
+import DriverDatatablePage from "../../components/driver-data-table";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 function HotelRequest() {
   return (
     <div className="main d-flex flex-column">
-      <Headeruser />
-      <div className="d-flex">
-        <DriverSidebar />
+      <div
+        // style={{ backgroundColor: "#ECECEC" }}
+        className="d-flex flex-row column-gap-2 col-12"
+      >
         <div className="d-flex w-100">
           <div className="d-flex flex-column col-lg-12 p-4">
             <p
@@ -20,7 +21,7 @@ function HotelRequest() {
             >
               <b>All Requests</b>
             </p>
-            <DatatablePage />
+            <DriverDatatablePage />
           </div>
         </div>
       </div>

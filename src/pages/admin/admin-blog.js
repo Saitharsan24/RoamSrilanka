@@ -15,7 +15,7 @@ function AdminBlog() {
         width: 150,
       },
       {
-        label: "Tourist Name",
+        label: "Touris Name",
         field: "name",
         sort: "asc",
         width: 150,
@@ -81,7 +81,7 @@ function AdminBlog() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-            <div className="view-detail">View Blog</div>
+            <div className="view-detail ">View Blog</div>
           </>,
         ],
       },

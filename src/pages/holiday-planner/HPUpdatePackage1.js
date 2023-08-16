@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import * as Icon from "react-bootstrap-icons";
 import StarRating from "../../components/Rating";
 import "../../styles/updatepack.css";
@@ -99,7 +100,7 @@ const HPUpdatePackage1 = () => {
                         />
                       </p>
                     </div>
-                    <div className="d-flex flex-column flex-md-row flex-lg-row col-md-9 col-lg-5">
+                    <div className="d-flex flex-column flex-md-row flex-lg-row col-md-9 col-lg-6">
                       <p className="col-9">
                         Transportation{" "}
                         <Toggle
@@ -122,17 +123,16 @@ const HPUpdatePackage1 = () => {
                   <button className="btn-cancel" type="submit">
                     Cancel
                   </button>
-                  <a href="plannerPackage2">
+                  <Link to='/holidayPlanner/plannerPackage2'>
                   <button
                     className="btn-next"
-                    type="submit"
                   >
-                    Next{" "}
+                    Next
                     <Icon.ChevronRight
                       style={{ marginBottom: "5px", fontSize: "17px" }}
                     />
                   </button>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </form>

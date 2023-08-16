@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.css";
 import HPDatatablePage from "../../components/HPPackage";
 
@@ -11,7 +12,7 @@ function HPPackage() {
         <div className="d-flex w-100">
           <div className="d-flex flex-column col-lg-12 p-4 ">
             <div className="d-grid d-md-flex justify-content-md-end">
-              <a href="plannerPackage1">
+              <Link to="/holidayPlanner/plannerPackage1">
               <button
                 className=""
                 style={{
@@ -28,7 +29,7 @@ function HPPackage() {
               >
                 Add New Package
               </button>
-              </a>
+              </Link>
             </div>
 
             <p

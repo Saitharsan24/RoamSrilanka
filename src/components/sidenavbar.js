@@ -8,54 +8,76 @@ import * as MdIcons from 'react-icons/md'
 import * as TbIcons from 'react-icons/tb'
 import * as BsIcons from 'react-icons/bs'
 
-import '../styles/hotel/sidenavbar-hotel.css'
+import '../styles/tourist/touristsidenavbar.css'
 
 
-function SideNavbarHolidayPlanner() {
+function SideNavbar() {
 
     const [isCollapsed, setIsCollapsed] = useState(false);
 
     const sidebardata = [
       {
         title:'Dashboard',
-        path:'plannerDashboard',
+        path:'touristDashboard',
         icon:<AiIcons.AiFillHome />,
         cName: 'nav-text',
       },
 
       {
-        title:'Requests',
-        path:'plannerRequest',
+        title:'My Bookings',
+        path:'touristBookings',
         icon:<BiIcons.BiTrip />,
         cName: 'nav-text',
       },
+
       {
-        title:'Trips',
-        path:'hptrip',
-        icon:<BiIcons.BiTrip />,
+        title:'Hotel',
+        path:'touristHotel',
+        icon:<BiIcons.BiSolidHotel />,
+        cName: 'nav-text',
+      },
+
+      {
+        title:'Tour Guide',
+        path:'touristGuide',
+        icon:<MdIcons.MdTour />,
+        cName: 'nav-text',
+      },
+
+      {
+        title:'Ride',
+        path:'touristDriver',
+        icon:<BiIcons.BiSolidCar />,
+        cName: 'nav-text',
+      },
+
+      {
+        title:'Accessories',
+        path:'touristGadgets',
+        icon:<TbIcons.TbTools />,
+        cName: 'nav-text',
+      },
+
+      {
+        title:'Blogs',
+        path:'touristBlog',
+        icon:<BiIcons.BiSolidBook />,
         cName: 'nav-text',
       },
 
       {
         title:'Chat',
-        path:'hpchat',
+        path:'touristChat',
         icon:<BsIcons.BsChatSquareDotsFill />,
         cName: 'nav-text',
       },
 
-      // {
-      //   title:'Reports',
-      //   path:'holidayPlannerReport',
-      //   icon:<MdIcons.MdTour />,
-      //   cName: 'nav-text',
-      // },
-
       {
         title:'Profile',
-        path:'plannerProfile',
+        path:'touristProfile',
         icon:<MdIcons.MdAccountCircle />,
         cName: 'nav-text',
-      },
+      }
     ]
 
   return (
@@ -81,4 +103,4 @@ function SideNavbarHolidayPlanner() {
   )
 }
 
-export default SideNavbarHolidayPlanner;
+export default SideNavbar
