@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.css";
 import HPDatatablePage from "../../components/HPEvent";
 
@@ -12,7 +13,7 @@ function HPEvent() {
         <div className="d-flex w-100">
           <div className="d-flex flex-column col-lg-12 p-4 ">
             <div className="d-grid d-md-flex justify-content-md-end">
-              <a href="plannerEvent1">
+              <Link to="/holidayPlanner/plannerEvent1">
               <button
                 style={{
                   width: "15rem",
@@ -28,7 +29,7 @@ function HPEvent() {
               >
                 Add New Event
               </button>
-              </a>
+              </Link>
               
             </div>
 

@@ -105,23 +105,65 @@ function ToursitHotelSearchList() {
           </div>
           <div className='hotel-search-hotellist'>
             <h5>Search results</h5>
-            <div className='hotel-all-search-list'>
+            <div className='hotel-all-search-list d-flex flex-column gap-3'>
+
               <div className="search-list-01 d-flex flex-row gap-3">
-                <div className='search-hotel-img'>hi</div>
+                <div className='search-hotel-img'></div>
                 <div className='search-hotel-text'>
                   <h4>Hotel Saphire</h4>
                   <div className='search-hotel-list d-flex flex-column gap-2'>
-                    <p>Place</p>
-                    <p>Description</p>
+                    <div>
+                      <h5 style={{margin:"0px",fontWeight:"600" }}>Place</h5>
+                      <p>Galle road, Colombo-06, Srilanka</p>
+                    </div>
+                    <div>
+                      <h5 style={{margin:"0px",fontWeight:"600" }}>Description</h5>
+                      <p>Embrace luxury on pristine shores. Modern suites, exquisite dining, and breathtaking sea views. Dive into elegance at Sapphire Shores.</p>
+                    </div>
                   </div>
                 </div>  
-                <div className='search-hotel-price d-flex flex-column justify-content-start align-items-center gap-2'>
+                <div className='search-hotel-price d-flex flex-column justify-content-center align-items-center gap-2'>
                   <h6>VERY GOOD</h6>
-                  <div className='hotel-search-ratin d-flex flex-row justify-content-center align-items-center gap-1 '>
+                  <div className='hotel-search-rating d-flex flex-row justify-content-center align-items-center gap-1 '>
                     <BiIcons.BiSolidStar/>
                     <p>8.5</p>
                   </div>
                   <p>530 View</p>
+                  <p><strike style={{color:"#999999"}}>$500</strike> <br /> $450 / Pax</p>
+                  <a href="toursitHotelViewRoom">
+                    <Button>
+                      Book Now
+                    </Button>
+                  </a>
+                </div>
+              </div>
+
+              <div className="search-list-01 d-flex flex-row gap-3">
+                <div className='search-hotel-img'></div>
+                <div className='search-hotel-text'>
+                  <h4>Hotel Saphire</h4>
+                  <div className='search-hotel-list d-flex flex-column gap-2'>
+                    <div>
+                      <h5 style={{margin:"0px",fontWeight:"600" }}>Place</h5>
+                      <p>Galle road, Colombo-06, Srilanka</p>
+                    </div>
+                    <div>
+                      <h5 style={{margin:"0px",fontWeight:"600" }}>Description</h5>
+                      <p>Embrace luxury on pristine shores. Modern suites, exquisite dining, and breathtaking sea views. Dive into elegance at Sapphire Shores.</p>
+                    </div>
+                  </div>
+                </div>  
+                <div className='search-hotel-price d-flex flex-column justify-content-center align-items-center gap-2'>
+                  <h6>VERY GOOD</h6>
+                  <div className='hotel-search-rating d-flex flex-row justify-content-center align-items-center gap-1 '>
+                    <BiIcons.BiSolidStar/>
+                    <p>8.5</p>
+                  </div>
+                  <p>530 View</p>
+                  <p><strike style={{color:"#999999"}}>$500</strike> <br /> $450 / Pax</p>
+                  <Button>
+                    Book Now
+                  </Button>
                 </div>
               </div>
             </div>

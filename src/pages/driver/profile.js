@@ -6,17 +6,13 @@ import img from "./../../assets/images/driver.jpg";
 
 function Profile() {
     return (
-        // <div>
-        //     <Headeruser />
-        //     <div
-        //         style={{ backgroundColor: "#ECECEC" }}
-        //         className="d-flex flex-row column-gap-2 col-12"
-        //     >
-        //         <div className="col-lg-2 col-md-4 col-12">
-        //             <SideNavbar />
-        //         </div>
+        <div>
+            <div
+                style={{ backgroundColor: "#ECECEC" }}
+                className="d-flex flex-row column-gap-2 col-12"
+            >
                 
-                <div className="col-lg-9 col-md-8 col-12 p-2 mt-4">
+                <div className="col-lg-9 col-md-8 col-12 p-2 mt-4 w-100">
                     <div className="col-sm-12">
                         <div class="card">
                             <div class="card-body">
@@ -117,8 +113,8 @@ function Profile() {
                     </div>
                     
                 </div>
-        //     </div>
-        // </div>
+            </div>
+        </div>
     );
 }
 

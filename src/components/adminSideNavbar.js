@@ -4,9 +4,8 @@ import {Button} from 'react-bootstrap';
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import * as BiIcons from 'react-icons/bi'
-import * as MdIcons from 'react-icons/md'
-import * as TbIcons from 'react-icons/tb'
-import * as BsIcons from 'react-icons/bs'
+import * as FiIcons from 'react-icons/fi'
+import * as RiIcons from  'react-icons/ri'
 
 import '../styles/tourist/touristsidenavbar.css'
 
@@ -26,33 +25,33 @@ function AdminSideNavbar() {
       {
         title:'Users',
         path:'adminusers',
-        icon:<BiIcons.BiTrip />,
+        icon:<AiIcons.AiOutlineUsergroupDelete />,
         cName: 'nav-text',
       },
 
       {
         title:'Blog',
         path:'adminblog',
-        icon:<BiIcons.BiSolidHotel />,
+        icon:<RiIcons.RiDraftFill />,
         cName: 'nav-text',
       },
 
       {
         title:'Reports',
         path:'adminreport',
-        icon:<MdIcons.MdTour />,
+        icon:<BiIcons.BiSolidReport />,
         cName: 'nav-text',
       },
       {
         title:'Package',
         path:'adminpackage',
-        icon:<BiIcons.BiSolidCar />,
+        icon:<FiIcons.FiPackage />,
         cName: 'nav-text',
       },
       {
         title:'Profile',
         path:'adminprofile',
-        icon:<BiIcons.BiSolidCar />,
+        icon:<BiIcons.BiSolidUserCircle />,
         cName: 'nav-text',
       },
 

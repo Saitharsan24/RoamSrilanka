@@ -46,7 +46,7 @@
     margin-bottom: 5px;
 }
 
-.nav-text a{
+.sideNavBar .nav-text a{
     text-decoration: none;
     color: #ffffff;
     font-size: 18px;
@@ -59,7 +59,7 @@
     padding: 0px 15px 0px 15px;
 }
 
-.nav-text a:hover{
+.sideNavBar .nav-text a:hover{
     background-color: #ffffff;
     color: #DB163A;
     transition: 100ms;

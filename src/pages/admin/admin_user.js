@@ -706,23 +706,18 @@ function Users() {
   const data_holidayplanner = {
     columns: [
       {
-        label: "Hotel ID",
+        label: "Planner ID",
         field: "id",
         sort: "asc",
         width: 150,
       },
       {
-        label: "Hotel Name",
+        label: "Planner Name",
         field: "name",
         sort: "asc",
         width: 150,
       },
-      {
-        label: "Address",
-        field: "address",
-        sort: "asc",
-        width: 200,
-      },
+      
 
       {
         label: "Rating",
@@ -762,128 +757,7 @@ function Users() {
           </>,
         ],
       },
-      {
-        id: "003",
-        name: "Ella Brown",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "004",
-        name: "William Davis",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "005",
-        name: "Sophia Wilson",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "006",
-        name: "Sarah Martinez",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "007",
-        name: "Oliver Taylor",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "008",
-        name: "Ava Martinez",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "009",
-        name: "Ethan Thompson",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "010",
-        name: "Ava Martinez",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "011",
-        name: "Sophia Wilson",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "012",
-        name: "Matthew Taylor",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "013",
-        name: "Christopher Davis",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-    
+     
     ],
   };
 
@@ -910,7 +784,7 @@ function Users() {
                 </Tab>
 
                 <Tab eventKey="driver" title="Driver">
-                 <div className="d-flex flex justify-content-center align-items-end">
+                 <div className="d-flex flex justify-content-end align-items-center">
                 <a href="/admin/admindriverreg">  <button className="mt-3 " style={{background:"#004577",border:"none",color:"#ffffff",borderRadius:"10px",height:"35px",width:"150px"}}>Add Driver</button></a>
                 </div>
                 <MDBDataTable
@@ -925,6 +799,9 @@ function Users() {
                 </Tab>
 
                 <Tab eventKey="guide" title="Guide">
+                <div className="d-flex flex justify-content-end align-items-center">
+                <a href="#">  <button className="mt-3 " style={{background:"#004577",border:"none",color:"#ffffff",borderRadius:"10px",height:"35px",width:"150px"}}>Add Driver</button></a>
+                </div>
                 <MDBDataTable
               striped
               bordered

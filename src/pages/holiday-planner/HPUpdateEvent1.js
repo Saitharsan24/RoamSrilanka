@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import * as Icon from "react-bootstrap-icons";
 import "../../styles/updatepack.css";
 
@@ -76,14 +77,14 @@ const HPUpdateEvent1 = () => {
               <button className="btn-cancel" type="submit">
                 Cancel
               </button>
-              <a href="plannerEvent2">
+              <Link to="/holidayPlanner/plannerEvent2">
               <button className="btn-next" type="button" >
                 Next{" "}
                 <Icon.ChevronRight
                   style={{ marginBottom: "5px", fontSize: "17px" }}
                 />
               </button>
-              </a>
+              </Link>
             </div>
           </div>
         </form>
