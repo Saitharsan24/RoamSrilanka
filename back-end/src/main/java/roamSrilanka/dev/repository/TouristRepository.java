@@ -2,11 +2,10 @@ package roamSrilanka.dev.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import roamSrilanka.dev.model.User;
+import roamSrilanka.dev.model.Tourist;
 
-public interface TouristRepository {
-    @Repository
-    public interface UserRepository extends JpaRepository<User, Integer> {
 
-    }
+@Repository
+public interface TouristRepository extends JpaRepository<Tourist, Integer>{
+
 }

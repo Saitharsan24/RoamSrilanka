@@ -1,10 +1,7 @@
 package roamSrilanka.dev.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 
 @Table(name = "tourist")
@@ -24,17 +21,11 @@ public class Tourist {
     @Column(name = "tourist_contact")
     private String touristContat;
 
-    @Column(name = "tourist_email")
-    private String touristAddress;
-
     @Column(name = "passport_no")
     private  String touristPassport;
 
-    @Column(name = "cuntry")
+    @Column(name = "country")
     private String country;
-
-    @Column(name = "passwprd")
-    private String password;
 
     @Column(name = "emrgcy_person")
     private String emergencyPerson;
@@ -45,126 +36,124 @@ public class Tourist {
     @Column(name = "emrgcy_contact")
     private String emergencyContact;
 
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "userId")
+    private User user;
 
     public Tourist() {
     }
 
-    public Tourist(int userId, String touristName, String touristGender, String touristContat, String touristAddress, String touristPassport, String country, String password, String emergencyPerson, String emergencyRelation, String emergencyContact) {
+    public Tourist(int userId, String touristName, String touristGender, String touristContat, String touristPassport, String country, String emergencyPerson, String emergencyRelation, String emergencyContact) {
         this.userId = userId;
         this.touristName = touristName;
         this.touristGender = touristGender;
         this.touristContat = touristContat;
-        this.touristAddress = touristAddress;
         this.touristPassport = touristPassport;
         this.country = country;
-        this.password = password;
         this.emergencyPerson = emergencyPerson;
         this.emergencyRelation = emergencyRelation;
         this.emergencyContact = emergencyContact;
     }
 
-    public Tourist(String touristName, String touristGender, String touristContat, String touristAddress, String touristPassport, String country, String password, String emergencyPerson, String emergencyRelation, String emergencyContact) {
+    public Tourist(int userId, String touristName, String touristGender, String touristContat, String touristPassport, String country) {
+        this.userId = userId;
         this.touristName = touristName;
         this.touristGender = touristGender;
         this.touristContat = touristContat;
-        this.touristAddress = touristAddress;
         this.touristPassport = touristPassport;
         this.country = country;
-        this.password = password;
-        this.emergencyPerson = emergencyPerson;
-        this.emergencyRelation = emergencyRelation;
-        this.emergencyContact = emergencyContact;
     }
 
-    //getters
-
+    //Getters
     public int getUserId() {
         return userId;
     }
 
-    public String getTouristName() {
-        return touristName;
-    }
-
-    public String getTouristGender() {
-        return touristGender;
-    }
-
-    public String getTouristContat() {
-        return touristContat;
-    }
-
-    public String getTouristAddress() {
-        return touristAddress;
-    }
-
-    public String getTouristPassport() {
-        return touristPassport;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getEmergencyPerson() {
-        return emergencyPerson;
-    }
-
-    public String getEmergencyRelation() {
-        return emergencyRelation;
-    }
-
-    public String getEmergencyContact() {
-        return emergencyContact;
-    }
-
-    //setters
-
+    //Setters
     public void setUserId(int userId) {
         this.userId = userId;
     }
 
+    //Getters
+    public String getTouristName() {
+        return touristName;
+    }
+
+    //Setters
     public void setTouristName(String touristName) {
         this.touristName = touristName;
     }
 
+    //Getters
+    public String getTouristGender() {
+        return touristGender;
+    }
+
+    //Setters
     public void setTouristGender(String touristGender) {
         this.touristGender = touristGender;
     }
 
+    //Getters
+    public String getTouristContat() {
+        return touristContat;
+    }
+
+    //Setters
     public void setTouristContat(String touristContat) {
         this.touristContat = touristContat;
     }
 
-    public void setTouristAddress(String touristAddress) {
-        this.touristAddress = touristAddress;
+    //Getters
+    public String getTouristPassport() {
+        return touristPassport;
     }
 
+    //Setters
     public void setTouristPassport(String touristPassport) {
         this.touristPassport = touristPassport;
     }
 
+    //Getters
+    public String getCountry() {
+        return country;
+    }
+
+    //Setters
     public void setCountry(String country) {
         this.country = country;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    //Getters
+    public String getEmergencyPerson() {
+        return emergencyPerson;
     }
 
+    //Setters
     public void setEmergencyPerson(String emergencyPerson) {
         this.emergencyPerson = emergencyPerson;
     }
 
+    //Getters
+    public String getEmergencyRelation() {
+        return emergencyRelation;
+    }
+
+    //Setters
     public void setEmergencyRelation(String emergencyRelation) {
         this.emergencyRelation = emergencyRelation;
     }
 
+    //Getters
+    public String getEmergencyContact() {
+        return emergencyContact;
+    }
+
+    //Setters
     public void setEmergencyContact(String emergencyContact) {
         this.emergencyContact = emergencyContact;
     }
 }
+
+
