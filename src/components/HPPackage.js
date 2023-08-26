@@ -446,6 +446,7 @@ const HPDatatablePage = () => {
             button1: [<><div className='hp-accept'>View</div></>],
             button2: [<><div className='hp-reject'>Remove</div></>]
         },
+        
     ]
   };
 

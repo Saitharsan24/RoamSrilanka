@@ -1,9 +1,6 @@
 import React from 'react'
-import { Component } from "react";
-import { Link,useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import "./../styles/login.css";
-import Header from "../components/Header";
-import Footer from "../components/footer";
 import axios from "axios";
 
 export default function Login() {
@@ -60,9 +57,7 @@ export default function Login() {
     
         
   return (
-    <div>
-        <div className='login-bg' >
-            <div className='row'>
+        <div className='login-bg'>    
                 <div className='col-md-6 offset-md-1 p-5 mt-5 shadow' style={{ 
                     position: 'absolute',
                     top: '20%',
@@ -102,9 +97,8 @@ export default function Login() {
                     <a class="forgot-password-link" style={{marginRight: '0', color: '#004577', textDecoration:'none', cursor: 'pointer'}}>  Register</a>
                     
                 </div>
-            </div>
+
         </div>
-    </div>
   )
 }
 

@@ -2,6 +2,7 @@ p,
 h5 {
   margin: 0px !important;
 }
+
 .place-01{
     background-color: #f1f1f1;
     width: 10rem;
@@ -112,7 +113,8 @@ h5 {
   padding: 20px 10px 10px 10px;
 }
 
-h4 {
+
+.dashboard-left h4 {
   margin: 0px;
   font-weight: 600;
   color: #004577 !important;
