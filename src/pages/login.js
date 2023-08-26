@@ -1,9 +1,6 @@
 import React from 'react'
-import { Component } from "react";
-import { Link,useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import "./../styles/login.css";
-import Header from "../components/Header";
-import Footer from "../components/footer";
 import axios from "axios";
 
 export default function Login() {
