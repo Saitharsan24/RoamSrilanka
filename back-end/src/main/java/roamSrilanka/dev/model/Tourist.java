@@ -3,6 +3,8 @@ package roamSrilanka.dev.model;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 
 @Table(name = "tourist")
 @Entity
@@ -15,11 +17,14 @@ public class Tourist {
     @Column(name = "tourist_name")
     private String touristName;
 
+    @Column(name = "tourist_dob")
+    private Date touristDob;
+
     @Column(name = "tourist_gender")
     private String touristGender;
 
     @Column(name = "tourist_contact")
-    private String touristContat;
+    private String touristContact;
 
     @Column(name = "passport_no")
     private  String touristPassport;
@@ -38,17 +43,14 @@ public class Tourist {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private User user;
 
-    public Tourist() {
-    }
-
-    public Tourist(int userId, String touristName, String touristGender, String touristContat, String touristPassport, String country, String emergencyPerson, String emergencyRelation, String emergencyContact) {
+    public Tourist(int userId, String touristName, String touristGender, String touristContact, String touristPassport, String country, String emergencyPerson, String emergencyRelation, String emergencyContact) {
         this.userId = userId;
         this.touristName = touristName;
         this.touristGender = touristGender;
-        this.touristContat = touristContat;
+        this.touristContact = touristContact;
         this.touristPassport = touristPassport;
         this.country = country;
         this.emergencyPerson = emergencyPerson;
@@ -56,13 +58,25 @@ public class Tourist {
         this.emergencyContact = emergencyContact;
     }
 
-    public Tourist(int userId, String touristName, String touristGender, String touristContat, String touristPassport, String country) {
+    public Tourist(int userId, String touristName, String touristGender, String touristContact, String touristPassport, String country) {
         this.userId = userId;
         this.touristName = touristName;
         this.touristGender = touristGender;
-        this.touristContat = touristContat;
+        this.touristContact = touristContact;
         this.touristPassport = touristPassport;
         this.country = country;
+    }
+
+    public Tourist(String touristName, Date touristDob, String touristGender, String touristPassport, String country) {
+        this.touristName = touristName;
+        this.touristDob = touristDob;
+        this.touristGender = touristGender;
+        this.touristPassport = touristPassport;
+        this.country = country;
+    }
+
+    public Tourist() {
+
     }
 
     //Getters
@@ -96,13 +110,13 @@ public class Tourist {
     }
 
     //Getters
-    public String getTouristContat() {
-        return touristContat;
+    public String getTouristContact() {
+        return touristContact;
     }
 
     //Setters
-    public void setTouristContat(String touristContat) {
-        this.touristContat = touristContat;
+    public void setTouristContact(String touristContact) {
+        this.touristContact = touristContact;
     }
 
     //Getters
@@ -153,6 +167,20 @@ public class Tourist {
     //Setters
     public void setEmergencyContact(String emergencyContact) {
         this.emergencyContact = emergencyContact;
+    }
+
+    //Getters
+    public Date getTouristDob() {
+        return touristDob;
+    }
+
+    //Setters
+    public void setTouristDob(Date touristDob) {
+        this.touristDob = touristDob;
+    }
+
+    public void setUser(User savedUser) {
+        this.user = savedUser;
     }
 }
 
