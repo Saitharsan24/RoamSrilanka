@@ -11,11 +11,8 @@ import roamSrilanka.dev.repository.UserRepository;
 public class TouristService {
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
     private TouristRepository touristRepository;
-  
+
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public Tourist addTourist (Tourist tourist){
