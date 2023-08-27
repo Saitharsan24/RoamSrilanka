@@ -6,6 +6,8 @@
   width: 300px; /* Adjust as needed */
   text-align: center;
   z-index: 1001;
+  
+ 
 }
 .popup-container {
   position: fixed;
@@ -20,6 +22,7 @@
   
   
     background-color: rgba(138, 131, 122, 0.482);
+   
   
 }
 

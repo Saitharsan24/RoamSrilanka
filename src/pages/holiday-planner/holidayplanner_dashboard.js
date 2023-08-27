@@ -140,6 +140,7 @@ function Holiday_dashboard() {
                 backgroundColor: "#FFFFFF",
                 borderRadius: "12px",
                 color: "inherit",
+                textDecoration: "none",
               }}
             >
               <div className=" d-flex flex-column ">
@@ -159,6 +160,7 @@ function Holiday_dashboard() {
                 backgroundColor: "#FFFFFF",
                 borderRadius: "12px",
                 color: "inherit",
+                textDecoration: "none",
               }}
             >
               <div className=" d-flex flex-column justify-content-between ">
@@ -180,6 +182,7 @@ function Holiday_dashboard() {
                 backgroundColor: "#FFFFFF",
                 borderRadius: "12px",
                 color: "inherit",
+                textDecoration: "none",
               }}
             >
               <div className=" d-flex flex-column ">
@@ -199,6 +202,7 @@ function Holiday_dashboard() {
                 backgroundColor: "#FFFFFF",
                 borderRadius: "12px",
                 color: "inherit",
+                textDecoration: "none",
               }}
             >
               <div className=" d-flex flex-column justify-content-between ">
