@@ -8,6 +8,7 @@ import * as MdIcons from 'react-icons/md'
 import * as TbIcons from 'react-icons/tb'
 import * as BsIcons from 'react-icons/bs'
 
+
 import '../styles/hotel/sidenavbar-hotel.css'
 
 
@@ -26,7 +27,7 @@ function SideNavbarHolidayPlanner() {
       {
         title:'Requests',
         path:'plannerRequest',
-        icon:<BiIcons.BiTrip />,
+        icon:<BsIcons.BsPersonFillAdd />,
         cName: 'nav-text',
       },
       {
@@ -43,12 +44,19 @@ function SideNavbarHolidayPlanner() {
         cName: 'nav-text',
       },
 
-      // {
-      //   title:'Reports',
-      //   path:'holidayPlannerReport',
-      //   icon:<MdIcons.MdTour />,
-      //   cName: 'nav-text',
-      // },
+      {
+        title:'Packages',
+        path:'plannerPackage',
+        icon:<BiIcons.BiSolidPackage />,
+        cName: 'nav-text',
+      },
+
+      {
+        title:'Events',
+        path:'plannerEvent',
+        icon:<BsIcons.BsFillCalendar2WeekFill />,
+        cName: 'nav-text',
+      },
 
       {
         title:'Profile',

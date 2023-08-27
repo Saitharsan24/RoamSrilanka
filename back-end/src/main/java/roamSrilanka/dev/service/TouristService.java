@@ -16,7 +16,7 @@ public class TouristService {
     @Autowired
     private TouristRepository touristRepository;
 
-    @Autowired
+
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public Tourist addTourist (Tourist tourist){
