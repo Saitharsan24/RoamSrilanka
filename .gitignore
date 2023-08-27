@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 package-lock.json
+package.jason
 .pnp.js
 /package-lock.json
 
