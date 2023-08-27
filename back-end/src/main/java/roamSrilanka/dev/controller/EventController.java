@@ -18,6 +18,11 @@ public class EventController {
         return this.eventService.getAllEvents();
     }
 
+    @GetMapping("/events")
+    public List<Object[]> getEventsFields() {
+        return eventService.getEventsFields();
+    }
+
     @PostMapping("/addEvent")
     public Event createEvent(@RequestBody Event newEvent) {
         return this.eventService.createEvent(newEvent);

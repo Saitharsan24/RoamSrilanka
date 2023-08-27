@@ -17,6 +17,10 @@ public class EventService {
         return this.eventRepository.findAll();
     }
 
+    public List<Object[]> getEventsFields() {
+        return eventRepository.findAllBy();
+    }
+
     public Event createEvent (Event newEvent) {
         return this.eventRepository.save(newEvent);
     }
@@ -37,4 +41,5 @@ public class EventService {
         this.eventRepository.deleteById(id);
         return "Successfully Deleted";
     }
+
 }
