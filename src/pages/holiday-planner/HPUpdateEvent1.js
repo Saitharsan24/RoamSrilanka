@@ -27,7 +27,7 @@ const HPUpdateEvent1 = () => {
     timeout: 5000,
   });
 
-  const handleSignup = async (e) => {
+  const handlePost = async (e) => {
     e.preventDefault();
 
     try {
@@ -75,7 +75,7 @@ const HPUpdateEvent1 = () => {
             src={require("../../assets/images/FirstProgressBar.png")}
           ></img>
         </div> */}
-        <form className="pack" onSubmit={handleSignup} method="POST">
+        <form className="pack" onSubmit={handlePost} method="POST">
           <div className="d-flex flex-column gap-5">
             <div className="d-flex flex-column gap-4">
               <div className="d-flex flex-column justify-content-center m-2">
@@ -159,10 +159,11 @@ const HPUpdateEvent1 = () => {
             </div>
 
             <div className="d-flex flex-column flex-md-column flex-lg-row gap-3 justify-content-between mx-2">
-              <button className="btn-cancel" type="submit">
-                Cancel
-              </button>
-
+              <Link to="/holidayPlanner/plannerEvent">
+                <button className="btn-cancel" type="submit">
+                  Cancel
+                </button>
+              </Link>
               <button
                 className="btn-next"
                 type="submit"

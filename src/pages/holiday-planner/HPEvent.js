@@ -5,9 +5,6 @@ import { MDBDataTable } from "mdbreact";
 import axios from "axios";
 
 function HPEvent() {
-  const [eventData, setEventData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
   const apiBaseUrl = "http://localhost:8080";
 
   const axiosInstance = axios.create({
@@ -35,18 +32,23 @@ function HPEvent() {
   }, []);
 
   const handleDeleteEvent = async (eventId) => {
-    try {
-      const response = await axiosInstance.delete(`/deleteEvent/${eventId}`); // Replace with your delete endpoint
-      if (response.status === 200) {
-        // Filter out the deleted event from the events array
-        const updatedEvents = events.filter((event) => event.id !== eventId);
-        setEvents(updatedEvents);
-        window.location.reload();
-      } else {
-        console.error("Failed to delete event:", response.status);
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this event?"
+    );
+    if (confirmed) {
+      try {
+        const response = await axiosInstance.delete(`/deleteEvent/${eventId}`);
+        if (response.status === 200) {
+          // Filter out the deleted event from the events array
+          const updatedEvents = events.filter((event) => event.id !== eventId);
+          setEvents(updatedEvents);
+          window.location.reload();
+        } else {
+          console.error("Failed to delete event:", response.status);
+        }
+      } catch (error) {
+        console.error("An error occurred:", error);
       }
-    } catch (error) {
-      console.error("An error occurred:", error);
     }
   };
 
@@ -95,7 +97,7 @@ function HPEvent() {
       date: event.date,
       places: event.places,
       button1: (
-        <Link to={`/holidayPlanner/plannerViewEvent/${event.id}`}>
+        <Link to={`/holidayPlanner/plannerViewEvent/${event.eventId}`}>
           <button style={{ border: "inherit" }}>View</button>
         </Link>
       ),
