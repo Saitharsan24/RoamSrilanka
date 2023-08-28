@@ -43,7 +43,7 @@ const HPUpdateEvent1 = () => {
         console.log("ok");
       }
     } catch (error) {
-      console.log("hhhh");
+      console.log("error");
     }
   };
 
@@ -177,7 +177,9 @@ const HPUpdateEvent1 = () => {
           </div>
         </form>
       </div>
-      {showPopup && <HpPopup2 onClose={() => setShowPopup(false)} />}
+      <Link to="/holidayPlanner/plannerEvent">
+        {showPopup && <HpPopup2 onClose={() => setShowPopup(false)} />}
+      </Link>
     </div>
     //   </div>
 
