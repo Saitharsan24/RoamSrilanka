@@ -1,0 +1,33 @@
+.uploadBoxStyleCommon{
+    background-color:#c5e6ff;
+    border:2px dashed #004577 !important;
+    border-radius:20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.uploadBoxStyleCommon.image-present {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+.uploadBoxStyleCommon:hover{
+    background-color:#a9d7fb;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.box-size-var01{
+    width: 150px;
+    height: 150px;
+}
+
+.uploadCompPara{
+    font-size: 18px;
+    font-weight: 600;
+    color: #004577;
+    margin: 0px;
+}

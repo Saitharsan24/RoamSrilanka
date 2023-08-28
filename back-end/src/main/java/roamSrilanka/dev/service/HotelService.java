@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import roamSrilanka.dev.model.Hotel.Hotels;
 import roamSrilanka.dev.repository.HotelRepository;
 
+import java.util.List;
+
 @Service
 public class HotelService {
 
@@ -15,4 +17,13 @@ public class HotelService {
     public Hotels addHotels(Hotels hotels){
         return hotelRepository.save(hotels);
     }
+
+    public Hotels getHotelById(Integer id) {
+        return hotelRepository.findById(id).orElse(null);
+    }
+
+    public List<Hotels> getAllHotels() {
+        return hotelRepository.findAll();
+    }
+
 }

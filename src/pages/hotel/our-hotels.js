@@ -7,6 +7,7 @@ import "./../../styles/hotel/our-hotel.css";
 import room1 from "./../../assets/images/room-image1.png";
 import room2 from "./../../assets/images/room-image2.png";
 import room3 from "./../../assets/images/room-image3.png";
+import ImageUpload from "../../components/imageUpload";
 import { MdAccessible } from "react-icons/md";
 import { MdDone } from "react-icons/md";
 
@@ -400,22 +401,104 @@ const OurHotel = () => {
           <form>
             <div className="d-flex flex-column mx-2" style={{}}>
               <div className="d-flex flex-column mx-3">
-                <div className="d-flex flex-column">
+                <div className="d-flex flex-column gap-2">
+                  
                   <div className="d-flex flex-row gap-5">
                     <label>
-                      Hotel Name
-                      <br />
+                    <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
+                       Hotel Name
+                    </p>
                       <input type="text"></input>
                     </label>
                     <label>
-                      Location
-                      <br />
+                    <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
+                       Address
+                    </p>
                       <input type="text"></input>
                     </label>
                   </div>
+
+                  <div className="d-flex flex-row gap-5">
+                    <label>
+                    <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
+                       Longitude
+                    </p>
+                      <input type="text"></input>
+                    </label>
+                    <label>
+                    <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
+                       Latitude
+                    </p>
+                      <input type="text"></input>
+                    </label>
+                  </div>
+
                   <div className="d-flex mt-3 mb-2 flex-row gap-5">
                   <label>
-                      Add star rating{" "}
+                    <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
+                       Hotel type
+                    </p>
+                      <input type="text"></input>
+                    </label>
+                  <label>
+                    <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
+                       Add star rating{" "}
+                    </p>
+                     
                       <ReactStars
                         count={5}
                         onChange={ratingChanged}
@@ -428,15 +511,44 @@ const OurHotel = () => {
                       />
                     </label>
                   </div>
+                  
                   <div className="d-flex flex-row gap-5">
                     <label>
+                    <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
                       Description
-                      <br />
+                    </p>
                       <input
                         style={{ width: "26rem", height: "7rem" }}
                         type="text"
                       ></input>
                     </label>
+                  </div>
+                  
+                  <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
+                      Hotel images
+                    </p>
+                  <div className="d-flex flex-row gap-2">
+                    <ImageUpload/>
+                    <ImageUpload/>  
+                    <ImageUpload/>
                   </div>
                 </div>
 
