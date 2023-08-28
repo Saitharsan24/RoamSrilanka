@@ -4,7 +4,7 @@ import * as IoIcon from 'react-icons/io5'
 import '../styles/imageUpload.css'
 import { Opacity } from '@mui/icons-material';
 
-function ImageUpload() {
+function ImageUpload({ onFileChange }) {
 
   const [imageSrc, setImageSrc] = useState(null);
   const fileInputRef = useRef(null);
@@ -12,11 +12,14 @@ function ImageUpload() {
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImageSrc(reader.result);
-      }
-      reader.readAsDataURL(file);
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setImageSrc(reader.result);
+        };
+        reader.readAsDataURL(file);
+
+        // Inform the parent about the selected file
+        onFileChange(file);
     }
   };
 
