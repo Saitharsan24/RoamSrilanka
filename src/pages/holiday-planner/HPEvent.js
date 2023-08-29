@@ -97,7 +97,7 @@ function HPEvent() {
       date: event.date,
       places: event.places,
       button1: (
-        <Link to={`/holidayPlanner/plannerViewEvent/${event.eventId}`}>
+        <Link to={`/holidayPlanner/plannerViewEvent`}>
           <button style={{ border: "inherit" }}>View</button>
         </Link>
       ),

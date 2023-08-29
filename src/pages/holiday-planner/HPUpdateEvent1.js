@@ -145,8 +145,9 @@ const HPUpdateEvent1 = () => {
                     name="description"
                     value={formData.description}
                     onChange={(e) => {
-                      inputFormdata(e.target.name, e.target.value);
+                      inputFormdata(e.target.name, e.target.value); 
                     }}
+                    style={{minHeight: "50px"}}
                   ></textarea>
                 </label>
                 <label>
