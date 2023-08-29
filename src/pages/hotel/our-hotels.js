@@ -7,14 +7,19 @@ import "./../../styles/hotel/our-hotel.css";
 import room1 from "./../../assets/images/room-image1.png";
 import room2 from "./../../assets/images/room-image2.png";
 import room3 from "./../../assets/images/room-image3.png";
+import axios from "axios";
 import { MdAccessible } from "react-icons/md";
 import { MdDone } from "react-icons/md";
 
-const ratingChanged = (newRating) => {
-  console.log(newRating);
-};
-
 const OurHotel = () => {
+
+  const apiBaseUrl = "http://localhost:8080";
+
+    const axiosInstance = axios.create({
+        baseURL: apiBaseUrl,
+        timeout: 5000
+        });
+
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
@@ -32,6 +37,82 @@ const OurHotel = () => {
 
   const closeModalEdit = () => {
     setIsEditModalOpen(false);
+  };
+
+  const [rating, setRating] = useState(0);
+  const ratingChanged = (newRating) => {
+    setRating(newRating);
+  };
+
+  const [formData, setFormData] = useState({
+    hotelName: "",
+    location: "",
+    //rating: 0,
+    description: ""
+    // amenities: {
+    //   pool: false,
+    //   wifi: false,
+    //   restaurant: false,
+    //   parking: false,
+    //   breakfast: false,
+    //   housekeeping: false,
+    //   businessServices: false,
+    //   airConditioning: false,
+    //   bar: false,
+    // },
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  // const handleAmenitiesChange = (e) => {
+  //   const { name, checked } = e.target;
+  //   setFormData((prevData) => ({
+  //     ...prevData,
+  //     amenities: {
+  //       ...prevData.amenities,
+  //       [name]: checked,
+  //     },
+  //   }));
+  // };
+
+  const handleRatingChange = (newRating) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      rating: newRating,
+    }));
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formData);
+    
+    try {
+      const headers = {contentType: "application/json"};
+      const response = await axiosInstance.post("/hotels",{
+        hotelName: formData.hotelName,
+        location: formData.location,
+        //rating: 0,
+        description: formData.description
+      });
+      console.log("response.OK length:", response);
+
+      if (response.status === 200) {
+        // Data successfully submitted
+        closeModalAdd();
+      } else {
+        // Handle errors
+        console.error(response.data);
+      }
+    } catch (error) {
+      // Handle network errors
+      console.error("Network error:", error);
+    }
   };
 
   return (
@@ -397,7 +478,7 @@ const OurHotel = () => {
           <Modal.Title>Add Hotel Information</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+          <form onSubmit={handleFormSubmit} method="POST">
             <div className="d-flex flex-column mx-2" style={{}}>
               <div className="d-flex flex-column mx-3">
                 <div className="d-flex flex-column">
@@ -405,20 +486,33 @@ const OurHotel = () => {
                     <label>
                       Hotel Name
                       <br />
-                      <input type="text"></input>
+                      <input
+                        type="text"
+                        name="hotelName"
+                        value={formData.hotelName}
+                        onChange={handleInputChange}
+                        placeholder="Hotel Name"
+                      />
                     </label>
                     <label>
                       Location
                       <br />
-                      <input type="text"></input>
+                      <input
+                        type="text"
+                        name="location"
+                        value={formData.location}
+                        onChange={handleInputChange}
+                        placeholder="Location"
+                      />
                     </label>
                   </div>
                   <div className="d-flex mt-3 mb-2 flex-row gap-5">
-                  <label>
+                    <label>
                       Add star rating{" "}
                       <ReactStars
                         count={5}
-                        onChange={ratingChanged}
+                       // value={formData.rating}
+                        //onChange={handleRatingChange}
                         size={20}
                         isHalf={true}
                         emptyIcon={<i className="far fa-star"></i>}
@@ -432,10 +526,13 @@ const OurHotel = () => {
                     <label>
                       Description
                       <br />
-                      <input
+                      <textarea
+                        name="description"
+                        value={formData.description}
+                        onChange={handleInputChange}
+                        placeholder="Description"
                         style={{ width: "26rem", height: "7rem" }}
-                        type="text"
-                      ></input>
+                      />
                     </label>
                   </div>
                 </div>
@@ -458,27 +555,57 @@ const OurHotel = () => {
                       <ui style={{ listStyle: "none" }}>
                         <li>
                           <label>
-                            <input type="checkbox"></input> Pool
+                            <input
+                              type="checkbox"
+                              name="pool"
+                              // checked={formData.amenities.pool}
+                              // onChange={handleAmenitiesChange}
+                            />{" "}
+                            Pool
                           </label>
                         </li>
                         <li>
                           <label>
-                            <input type="checkbox"></input> Free WiFi
+                            <input
+                              type="checkbox"
+                              name="wifi"
+                              // checked={formData.amenities.wifi}
+                              //onChange={handleAmenitiesChange}
+                            />{" "}
+                            Free WiFi
                           </label>
                         </li>
                         <li>
                           <label>
-                            <input type="checkbox"></input> Restaurant
+                            <input
+                              type="checkbox"
+                              name="restaurant"
+                              //checked={formData.amenities.restaurant}
+                              //onChange={handleAmenitiesChange}
+                            />
+                            Restaurant
                           </label>
                         </li>
                         <li>
                           <label>
-                            <input type="checkbox"></input> Parking included
+                            <input
+                              type="checkbox"
+                              name="parking"
+                              //checked={formData.amenities.parking}
+                              //onChange={handleAmenitiesChange}
+                            />
+                            Parking included
                           </label>
                         </li>
                         <li>
                           <label>
-                            <input type="checkbox"></input> Breakfast available
+                            <input
+                              type="checkbox"
+                              name="breakfast"
+                              //checked={formData.amenities.breakfast}
+                              //onChange={handleAmenitiesChange}
+                            />{" "}
+                            Breakfast available
                           </label>
                         </li>
                       </ui>
@@ -487,22 +614,46 @@ const OurHotel = () => {
                       <ui style={{ listStyle: "none" }}>
                         <li>
                           <label>
-                            <input type="checkbox"></input> Housekeeping
+                            <input
+                              type="checkbox"
+                              name="housekeeping"
+                              //checked={formData.amenities.housekeeping}
+                              //onChange={handleAmenitiesChange}
+                            />{" "}
+                            Housekeeping
                           </label>
                         </li>
                         <li>
                           <label>
-                            <input type="checkbox"></input> Business services
+                            <input
+                              type="checkbox"
+                              name="businessServices"
+                              //checked={formData.amenities.businessServices}
+                              //onChange={handleAmenitiesChange}
+                            />{" "}
+                            Business services
                           </label>
                         </li>
                         <li>
                           <label>
-                            <input type="checkbox"></input> Air conditioning
+                            <input
+                              type="checkbox"
+                              name="airConditioning"
+                              //checked={formData.amenities.airConditioning}
+                              //onChange={handleAmenitiesChange}
+                            />{" "}
+                            Air conditioning
                           </label>
                         </li>
                         <li>
                           <label>
-                            <input type="checkbox"></input> Bar
+                            <input
+                              type="checkbox"
+                              name="bar"
+                              //checked={formData.amenities.bar}
+                              //onChange={handleAmenitiesChange}
+                            />{" "}
+                            Bar
                           </label>
                         </li>
                       </ui>
@@ -523,6 +674,7 @@ const OurHotel = () => {
                   Cancel
                 </button>
                 <button
+                  type="submit"
                   className="p-2"
                   style={{
                     borderRadius: "5px",
@@ -561,7 +713,7 @@ const OurHotel = () => {
                     </label>
                   </div>
                   <div className="d-flex mt-3 mb-2 flex-row gap-5">
-                  <label>
+                    <label>
                       Add star rating{" "}
                       <ReactStars
                         count={5}
