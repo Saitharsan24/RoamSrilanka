@@ -57,14 +57,14 @@ function HPEvent() {
       {
         label: "Event No",
         field: "eventId",
-        sort: "dsc",
-        width: 150,
+        sort: "asc",
+        width: 50,
       },
       {
         label: "Name",
         field: "name",
         sort: "asc",
-        width: 200,
+        width: 150,
       },
       {
         label: "Date",
@@ -98,13 +98,16 @@ function HPEvent() {
       places: event.places,
       button1: (
         <Link to={`/holidayPlanner/plannerViewEvent`}>
-          <button style={{ border: "inherit" }}>View</button>
+          <button style={{ border: "inherit" }} className="hp-accept">
+            View
+          </button>
         </Link>
       ),
       button2: (
         <button
           style={{ border: "inherit" }}
           onClick={() => handleDeleteEvent(event.eventId)}
+          className="hp-reject"
         >
           Remove
         </button>
