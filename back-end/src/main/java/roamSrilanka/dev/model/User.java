@@ -2,6 +2,7 @@ package roamSrilanka.dev.model;
 
 
 import jakarta.persistence.*;
+import roamSrilanka.dev.model.Tourist.Tourist;
 
 @Table(name = "users")
 @Entity

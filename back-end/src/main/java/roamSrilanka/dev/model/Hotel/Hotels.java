@@ -46,6 +46,9 @@ public class Hotels {
     @Column(name = "hotel_images")
     private List<String> hotelImages;
 
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<HotelRooms> rooms;  // One-to-Many relationship with HotelRooms
+
     //Constructors
     public Hotels() {
     }
@@ -78,6 +81,14 @@ public class Hotels {
     }
 
     //Getters and Setters
+    public List<HotelRooms> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<HotelRooms> rooms) {
+        this.rooms = rooms;
+    }
+
     public Integer getHotelId() {
         return hotelId;
     }

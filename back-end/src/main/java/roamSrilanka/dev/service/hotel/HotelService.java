@@ -1,9 +1,9 @@
-package roamSrilanka.dev.service;
+package roamSrilanka.dev.service.hotel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import roamSrilanka.dev.model.Hotel.Hotels;
-import roamSrilanka.dev.repository.HotelRepository;
+import roamSrilanka.dev.repository.hotel.HotelRepository;
 
 import java.util.List;
 
