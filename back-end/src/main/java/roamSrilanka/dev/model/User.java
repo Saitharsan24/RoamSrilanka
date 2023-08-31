@@ -2,6 +2,7 @@ package roamSrilanka.dev.model;
 
 
 import jakarta.persistence.*;
+import roamSrilanka.dev.model.Tourist.Tourist;
 
 @Table(name = "users")
 @Entity
@@ -21,6 +22,9 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Tourist tourist;
+
     public User() {
     }
 
@@ -37,6 +41,10 @@ public class User {
         this.password = password;
     }
 
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
 
     //getters
 
@@ -74,4 +82,7 @@ public class User {
         this.password = password;
     }
 
+    public void setTourist(Tourist tourist) {
+        this.tourist = tourist;
+    }
 }

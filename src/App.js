@@ -55,7 +55,11 @@ import HotelLayout from "./layouts/hotel/hotel-layout";
 import HotelDashboard from "./pages/hotel/hotel-dashboard";
 import HotelBooking from "./pages/hotel/hotel-booking";
 import HotelRequest from "./pages/hotel/hotel-request";
-import OurHotel from "./pages/hotel/our-hotel";
+import OurHotel from "./pages/hotel/our-hotels";
+import HotelReport from "./pages/hotel/hotel-report";
+import HotelProfile from "./pages/hotel/hotel-profile";
+import AboutHotel from "./pages/hotel/about-hotel";
+import HotelReviews from "./pages/hotel/hotel-reviews";
 
 import GuideLayout from "./layouts/guide/guide-layout";
 import GuideDashboard from "./pages/tour-guide/guide-dashboard";
@@ -67,8 +71,6 @@ import GuideReport from "./pages/tour-guide/guide-report";
 import GuideProfile from "./pages/tour-guide/guide-profile";
 import HotelChat from "./pages/hotel/hotel-chat";
 import GuideChat from "./pages/tour-guide/guide-chat";
-import HotelReport from "./pages/hotel/hotel-report";
-import HotelProfile from "./pages/hotel/hotel-profile";
 
 import HolidayPlannerLayout from "./layouts/holiday-planner/holiday-planner-layout";
 import Holiday_dashboard from "./pages/holiday-planner/holidayplanner_dashboard";
@@ -142,6 +144,8 @@ const route = createBrowserRouter(
         <Route path="hotelChat" element={<HotelChat />}></Route>
         <Route path="hotelReport" element={<HotelReport />}></Route>
         <Route path="hotelProfile" element={<HotelProfile />}></Route>
+        <Route path="aboutHotel" element={<AboutHotel/>}></Route>
+        <Route path="hotelReviews" element={<HotelReviews/>}></Route>
       </Route>
 
       <Route path="/guide/" element={<GuideLayout />} errorElement={<SystemError />}>
@@ -203,6 +207,7 @@ const route = createBrowserRouter(
         <Route path="driverChat" element={<DriverChat />}></Route>
         <Route path="driverVehicle" element={<DriverVehicle />}></Route>
       </Route>
+
     </>
   )
 );

@@ -71,3 +71,12 @@
     font-weight: 700;
     font-size: 17px;
 }
+
+.signup-input-row-elements{
+    width: 33%;
+}
+
+.signup-error-text {
+    color: red !important;
+    font-size: 12px !important;
+  }
