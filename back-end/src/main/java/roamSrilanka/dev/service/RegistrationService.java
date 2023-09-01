@@ -3,9 +3,9 @@ package roamSrilanka.dev.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import roamSrilanka.dev.model.Tourist;
+import roamSrilanka.dev.model.Tourist.Tourist;
 import roamSrilanka.dev.model.User;
-import roamSrilanka.dev.repository.TouristRepository;
+import roamSrilanka.dev.repository.tourist.TouristRepository;
 import roamSrilanka.dev.repository.UserRepository;
 
 

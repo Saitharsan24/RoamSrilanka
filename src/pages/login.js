@@ -3,57 +3,57 @@ import { useNavigate } from 'react-router-dom'
 import "./../styles/login.css";
 import axios from "axios";
 
-export default function Login() {
-    const apiBaseUrl = "http://localhost:8080";
+    export default function Login() {
+        const apiBaseUrl = "http://localhost:8080";
 
-    const axiosInstance = axios.create({
-        baseURL: apiBaseUrl,
-        timeout: 5000
-        });
-
-    const [userName, setUsername] = React.useState("");
-    const [password, setPassword] = React.useState("");
-
-    const navigate =useNavigate();
-
-    const handleLogin = async (e) => {
-        e.preventDefault();
-
-        try {
-            const response = await axiosInstance.post("/login", {
-                userName: userName,
-                password: password
+        const axiosInstance = axios.create({
+            baseURL: apiBaseUrl,
+            timeout: 5000
             });
 
-            if (response.status === 200) {
-                const userType = response.data.userType;
+        const [userName, setUsername] = React.useState("");
+        const [password, setPassword] = React.useState("");
 
-                if (userType === "admin") {
-                    navigate("/admin");
-                }
-                else if (userType === "tourist") {
-                    navigate("/tourist");
-                }
-                else if (userType === "hotel") {
-                    navigate("/hotel");
-                }
-                else if (userType === "guide") {
-                    navigate("/guide");
-                }
-                else if (userType === "driver") {
-                    navigate("/driver");
+        const navigate =useNavigate();
 
+        const handleLogin = async (e) => {
+            e.preventDefault();
+
+            try {
+                const response = await axiosInstance.post("/login", {
+                    userName: userName,
+                    password: password
+                });
+
+                if (response.status === 200) {
+                    const userType = response.data.userType;
+
+                    if (userType === "admin") {
+                        navigate("/admin");
+                    }
+                    else if (userType === "tourist") {
+                        navigate("/tourist");
+                    }
+                    else if (userType === "hotel") {
+                        navigate("/hotel");
+                    }
+                    else if (userType === "guide") {
+                        navigate("/guide");
+                    }
+                    else if (userType === "driver") {
+                        navigate("/driver");
+
+                    }
+                    
                 }
-                
+
+
+                // console.log(response.data);
+            } catch (error) {
+                console.log(error);
             }
 
-
-            // console.log(response.data);
-        } catch (error) {
-            console.log(error);
         }
-
-    }
     
         
   return (

@@ -1,7 +1,8 @@
-package roamSrilanka.dev.model;
+package roamSrilanka.dev.model.Tourist;
 
 
 import jakarta.persistence.*;
+import roamSrilanka.dev.model.User;
 
 import java.util.Date;
 

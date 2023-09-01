@@ -15,7 +15,7 @@ const HPUpdateEvent1 = () => {
     places: "",
     description: "",
   });
-
+  
   const inputFormdata = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -75,6 +75,7 @@ const HPUpdateEvent1 = () => {
             src={require("../../assets/images/FirstProgressBar.png")}
           ></img>
         </div> */}
+
         <form className="pack" onSubmit={handlePost} method="POST">
           <div className="d-flex flex-column gap-5">
             <div className="d-flex flex-column gap-4">
@@ -157,9 +158,35 @@ const HPUpdateEvent1 = () => {
                   </div>
                 </label>
               </div>
+              <div className="d-flex flex-column justify-content-center m-2 gap-3">
+                <label>
+                  Places
+                  <input
+                    className="p-2"
+                    type="text"
+                    placeholder="Places of the Event"
+                  ></input>
+                </label>
+                <label>
+                  Description{" "}
+                  <br />
+                  <textarea
+                    className="p-2"
+                    type="text"
+                    placeholder="Description"
+                  ></textarea>
+                </label>
+                <label >
+                      Image:
+                      <div className="d-flex justify-content-center w-100">
+                        <DragDropFile />
+                      </div>
+                    </label>
+              </div>
             </div>
 
             <div className="d-flex flex-column flex-md-column flex-lg-row gap-3 justify-content-between mx-2">
+
               <Link to="/holidayPlanner/plannerEvent">
                 <button className="btn-cancel" type="submit">
                   Cancel

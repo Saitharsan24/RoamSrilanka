@@ -12,4 +12,9 @@ public class PackagesService {
     private PackagesRepository packagesRepository;
 
     public  Iterable<Packages> getAllPackages(){ return packagesRepository.findAll();}
+
+    public void addPackage(Packages newPackage) {
+        // You can perform any necessary validation or business logic here before saving
+        packagesRepository.save(newPackage);
+    }
 }

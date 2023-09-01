@@ -7,6 +7,8 @@ import "./../../styles/hotel/our-hotel.css";
 import room1 from "./../../assets/images/room-image1.png";
 import room2 from "./../../assets/images/room-image2.png";
 import room3 from "./../../assets/images/room-image3.png";
+import ImageUpload from "../../components/imageUpload";
+import axios from "axios";
 import { MdAccessible } from "react-icons/md";
 import { MdDone } from "react-icons/md";
 
@@ -33,6 +35,82 @@ const OurHotel = () => {
   const closeModalEdit = () => {
     setIsEditModalOpen(false);
   };
+
+
+  //GETTING THE FILE FROM UPLOAD COMPONENT
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  //STORING IMAGE FILE FOR OOPERATIONS
+  const handleFileChange = (file) => {
+    setSelectedFile(file);
+  };
+
+  //UPLOADING THE FILE
+  const handleUploadButtonClick  = () => {
+    if (!selectedFile) return;
+
+    // 1. Rename the file (this can be a bit tricky in the browser, but let's assume you have a way)
+    const newFileName = "newNameForFile.jpg";  // Your renaming logic here
+
+    // 2. Process the file (like copying or uploading it somewhere)
+
+    // 3. Optionally, update your data structures or state
+  };
+
+
+  const [hotelData, setHotelData] = useState({
+    hotelName: "",
+    starRating: 0,
+    userRating:0,
+    description: "",
+    hotelType: "",
+    address: "",
+    latitude: 0,
+    longitude: 0,
+    hotelAmenities: [],
+    hotelImages: []
+  });
+
+  const inputHoteldata = (name, value) => {
+    setHotelData((prev) => ({ ...prev, [name]: value}));
+  }
+
+  //Sending data to backend
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+      baseURL: apiBaseUrl,
+      timeout: 5000
+  }); 
+
+  const handleAddHotel = async (e) => {
+
+    e.preventDefault();
+
+    try {
+      
+      const response = await axiosInstance.post("/addHotel", {
+        hotelName: "",
+        starRating: 0,
+        userRating:0,
+        description: "",
+        hotelType: "",
+        address: "",
+        latitude: 0,
+        longitude: 0,
+        hotelAmenities: [],
+        hotelImages: []
+      });
+
+      if (response.status === 200) {
+        console.log("ok");
+      }
+
+    } catch (error) {
+     
+      console.log(error);
+    }
+  }
 
   return (
     <div className="d-flex flex-column gap-2 w-100 my-lg-2">
@@ -397,25 +475,107 @@ const OurHotel = () => {
           <Modal.Title>Add Hotel Information</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+          <form onSubmit={handleAddHotel} method='POST'>
             <div className="d-flex flex-column mx-2" style={{}}>
               <div className="d-flex flex-column mx-3">
-                <div className="d-flex flex-column">
+                <div className="d-flex flex-column gap-2">
+                  
                   <div className="d-flex flex-row gap-5">
                     <label>
-                      Hotel Name
-                      <br />
-                      <input type="text"></input>
+                    <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
+                       Hotel Name
+                    </p>
+                      <input type="text" name="hotelName"></input>
                     </label>
                     <label>
-                      Location
-                      <br />
-                      <input type="text"></input>
+                    <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
+                       Address
+                    </p>
+                      <input type="text" name="address"></input>
                     </label>
                   </div>
+
+                  <div className="d-flex flex-row gap-5">
+                    <label>
+                    <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
+                       Longitude
+                    </p>
+                      <input type="text" name="longitude"></input>
+                    </label>
+                    <label>
+                    <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
+                       Latitude
+                    </p>
+                      <input type="text" name="latitude"></input>
+                    </label>
+                  </div>
+
                   <div className="d-flex mt-3 mb-2 flex-row gap-5">
                   <label>
-                      Add star rating{" "}
+                    <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
+                       Hotel type
+                    </p>
+                      <input type="text"></input>
+                    </label>
+                  <label>
+                    <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
+                       Add star rating{" "}
+                    </p>
+                     
                       <ReactStars
                         count={5}
                         onChange={ratingChanged}
@@ -428,15 +588,45 @@ const OurHotel = () => {
                       />
                     </label>
                   </div>
+                  
                   <div className="d-flex flex-row gap-5">
                     <label>
+                    <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
                       Description
-                      <br />
+                    </p>
                       <input
                         style={{ width: "26rem", height: "7rem" }}
                         type="text"
+                        name="description"
                       ></input>
                     </label>
+                  </div>
+                  
+                  <p
+                      style={{
+                        textAlign: "",
+                        fontFamily: "Poppins",
+                        fontSize: "18px",
+                        color: "",
+                        fontWeight: "600",
+                        marginBottom: "0px",
+                      }}
+                    >
+                      Hotel images
+                    </p>
+                  <div className="d-flex flex-row gap-2">
+                    <ImageUpload onFileChange={handleFileChange}/>
+                    <ImageUpload onFileChange={handleFileChange}/>  
+                    <ImageUpload onFileChange={handleFileChange}/>
                   </div>
                 </div>
 
@@ -511,7 +701,7 @@ const OurHotel = () => {
                 </div>
               </div>
               <div className="d-flex flex-row gap-5 my-3 justify-content-center">
-                <button
+                <button onClick={handleUploadButtonClick}
                   className="p-2"
                   style={{
                     borderRadius: "5px",
@@ -523,6 +713,7 @@ const OurHotel = () => {
                   Cancel
                 </button>
                 <button
+                  type="submit"
                   className="p-2"
                   style={{
                     borderRadius: "5px",

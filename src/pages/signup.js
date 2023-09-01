@@ -51,6 +51,7 @@ function Signup() {
     return passwordRegex.test(password);
   };
 
+  //DOB validation
   const is18OrOlder = (dobString) => {
     const dob = new Date(dobString);
     const eighteenthBirthday = new Date(dob);
