@@ -24,6 +24,9 @@ public class Event {
         @Column(name = "places")
         private String places;
 
+        @Column(name = "description")
+        private String description;
+
         public int getEventId() {
             return eventId;
         }
@@ -62,5 +65,13 @@ public class Event {
 
         public void setPlaces(String places) {
             this.places = places;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
         }
 }
