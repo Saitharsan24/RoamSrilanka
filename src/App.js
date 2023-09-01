@@ -31,6 +31,9 @@ import AdminChangePassword from "./pages/admin/admin_change_password";
 import AdminBlogAccept from "./pages/admin/admin_blog_accept";
 import AdminPackage from "./pages/admin/admin_package";
 import AdminPackageAccept from "./pages/admin/admin_package_accept";
+import AdminPlannerReg from "./pages/admin/admin_holidayplanner_reg";
+import AdminVehicle from "./pages/admin/admin_vehicle";
+
 
 import SystemError from "./pages/error";
 import ToursitAccessoriesRent from "./pages/Tourist/tourist-accessories-rent";
@@ -175,6 +178,9 @@ const route = createBrowserRouter(
         <Route path="adminblogaccept" element={<AdminBlogAccept/>}></Route>
         <Route path="adminpackage" element={<AdminPackage/>}></Route>
         <Route path="adminpackageaccept" element={<AdminPackageAccept/>}></Route>
+        <Route path="adminholidayplannrreg" element={<AdminPlannerReg/>}></Route>
+        <Route path="adminvehicle" element={<AdminVehicle/>}></Route>
+
       </Route>
           
       <Route path="/holidayPlanner/" element={<HolidayPlannerLayout />} errorElement={<SystemError />}>

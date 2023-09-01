@@ -216,7 +216,6 @@ function Signup() {
               <Link>Register as a driver</Link>
               <Link>Register as a your guide</Link>
           </div>
-
         </div>
       </div>
       </form>   

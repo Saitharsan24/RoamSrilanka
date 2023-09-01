@@ -826,6 +826,9 @@ function Users() {
                 </Tab>
 
                 <Tab eventKey="holiday" title="holiday">
+                <div className="d-flex flex justify-content-end align-items-center">
+                <a href="/admin/adminholidayplannrreg">  <button className="mt-3 " style={{background:"#004577",border:"none",color:"#ffffff",borderRadius:"10px",height:"35px",width:"150px"}}>Add Holidayplanner</button></a>
+                </div>
                 <MDBDataTable
               striped
               bordered
