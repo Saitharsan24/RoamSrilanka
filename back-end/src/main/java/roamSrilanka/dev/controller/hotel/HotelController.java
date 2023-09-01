@@ -22,7 +22,7 @@ public class HotelController {
     public ResponseEntity<Hotels> createHotel(@RequestBody Hotels hotels){
 
             Hotels saveHotel = hotelService.addHotels(hotels);
-
+            System.out.println(hotels);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

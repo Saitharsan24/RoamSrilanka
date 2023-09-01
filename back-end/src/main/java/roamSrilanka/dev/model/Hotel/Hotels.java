@@ -53,6 +53,19 @@ public class Hotels {
     public Hotels() {
     }
 
+    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, Double longitude, Double latitude, List<String> hotelAmenities, List<String> hotelImages) {
+        this.hotelName = hotelName;
+        this.starRating = starRating;
+        this.userRating = userRating;
+        this.description = description;
+        this.hotelType = hotelType;
+        this.address = address;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.hotelAmenities = hotelAmenities;
+        this.hotelImages = hotelImages;
+    }
+
     public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, Double longitude, Double latitude, List<String> hotelAmenities, List<String> hotelImages) {
         this.hotelId = hotelId;
         this.hotelName = hotelName;
