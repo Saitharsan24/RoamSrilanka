@@ -15,9 +15,6 @@ public class Tourist {
     @Column(name = "user_id")
     private int userId;
 
-    @Column(name = "tourist_name")
-    private String touristName;
-
     @Column(name = "tourist_dob")
     private Date touristDob;
 
@@ -47,9 +44,8 @@ public class Tourist {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Tourist(int userId, String touristName, String touristGender, String touristContact, String touristPassport, String country, String emergencyPerson, String emergencyRelation, String emergencyContact) {
+    public Tourist(int userId, String touristGender, String touristContact, String touristPassport, String country, String emergencyPerson, String emergencyRelation, String emergencyContact) {
         this.userId = userId;
-        this.touristName = touristName;
         this.touristGender = touristGender;
         this.touristContact = touristContact;
         this.touristPassport = touristPassport;
@@ -59,17 +55,15 @@ public class Tourist {
         this.emergencyContact = emergencyContact;
     }
 
-    public Tourist(int userId, String touristName, String touristGender, String touristContact, String touristPassport, String country) {
+    public Tourist(int userId, String touristGender, String touristContact, String touristPassport, String country) {
         this.userId = userId;
-        this.touristName = touristName;
         this.touristGender = touristGender;
         this.touristContact = touristContact;
         this.touristPassport = touristPassport;
         this.country = country;
     }
 
-    public Tourist(String touristName, Date touristDob, String touristGender, String touristPassport, String country) {
-        this.touristName = touristName;
+    public Tourist( Date touristDob, String touristGender, String touristPassport, String country) {
         this.touristDob = touristDob;
         this.touristGender = touristGender;
         this.touristPassport = touristPassport;
@@ -88,16 +82,6 @@ public class Tourist {
     //Setters
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    //Getters
-    public String getTouristName() {
-        return touristName;
-    }
-
-    //Setters
-    public void setTouristName(String touristName) {
-        this.touristName = touristName;
     }
 
     //Getters

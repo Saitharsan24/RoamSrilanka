@@ -78,6 +78,12 @@ const OurHotel = () => {
     hotelImages: [],
   });
 
+  const handleImagesSelected = (images) => {
+    inputHoteldata("hotelImages", images);
+    console.log(images);  // Handle selected images here
+    console.log(hotelData);
+  };
+
   const inputHoteldata = (name, value) => {
     setHotelData((prev) => ({ ...prev, [name]: value }));
     // console.log(hotelData);
@@ -432,6 +438,7 @@ const OurHotel = () => {
         </div>
       </div>
 
+      
       <Modal show={isAddModalOpen} onHide={closeModalAdd}>
         <Modal.Header closeButton>
           <Modal.Title>Add Hotel Information</Modal.Title>
@@ -643,9 +650,7 @@ const OurHotel = () => {
                     Hotel images
                   </p>
                   <div className="d-flex flex-row gap-2">
-                    <ImageUpload onFileChange={handleFileChange} />
-                    <ImageUpload onFileChange={handleFileChange} />
-                    <ImageUpload onFileChange={handleFileChange} />
+                    <ImageUpload onImagesSelected={handleImagesSelected} />
                   </div>
                 </div>
 
