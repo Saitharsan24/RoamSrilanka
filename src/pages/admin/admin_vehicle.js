@@ -48,7 +48,7 @@ function AdminVehicle() {
         status:[<><div className="request ">Request</div></>],
         btn: [
           <>
-           <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+           <a href="/admin/adminvehicledetail_1"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -59,7 +59,7 @@ function AdminVehicle() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+            <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -70,7 +70,7 @@ function AdminVehicle() {
         status:[<><div className="reject">Rejected</div></>],
         btn: [
           <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+            <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -81,7 +81,7 @@ function AdminVehicle() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+            <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -92,7 +92,7 @@ function AdminVehicle() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+            <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -103,7 +103,7 @@ function AdminVehicle() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
- <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+ <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -114,7 +114,7 @@ function AdminVehicle() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-             <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+             <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -125,7 +125,7 @@ function AdminVehicle() {
         status:[<><div className="reject">Rejected</div></>],
         btn: [
           <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>          </>,
+        <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>          </>,
         ],
       },
       {
@@ -135,7 +135,7 @@ function AdminVehicle() {
         status:[<><div className="reject">Rejected</div></>],
         btn: [
           <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+            <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -146,7 +146,7 @@ function AdminVehicle() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+        <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -157,7 +157,7 @@ function AdminVehicle() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+        <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -168,7 +168,7 @@ function AdminVehicle() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-           <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+           <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -179,7 +179,7 @@ function AdminVehicle() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-                   <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+                   <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -230,7 +230,7 @@ function AdminVehicle() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+        <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -242,7 +242,7 @@ function AdminVehicle() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+        <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -253,7 +253,7 @@ function AdminVehicle() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+          <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -265,7 +265,7 @@ function AdminVehicle() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+          <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -276,7 +276,7 @@ function AdminVehicle() {
         status:[<><div className="request">Request</div></>],
         btn: [
           <>
-             <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+             <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -328,7 +328,7 @@ function AdminVehicle() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+          <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -341,7 +341,7 @@ function AdminVehicle() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-             <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+             <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -352,7 +352,7 @@ function AdminVehicle() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+          <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -364,7 +364,7 @@ function AdminVehicle() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+        <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -375,7 +375,7 @@ function AdminVehicle() {
         status:[<><div className="confirm">Confirmed</div></>],
         btn: [
           <>
-           <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+           <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -427,7 +427,7 @@ function AdminVehicle() {
         status:[<><div className="reject">Rejected</div></>],
         btn: [
           <>
-           <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+           <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -439,7 +439,7 @@ function AdminVehicle() {
         status:[<><div className="reject">Rejected</div></>],
         btn: [
           <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
+            <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
           </>,
         ],
       },
@@ -450,7 +450,7 @@ function AdminVehicle() {
         status:[<><div className="reject">Rejected</div></>],
         btn: [
           <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>          </>,
+          <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>          </>,
         ],
       },
      
