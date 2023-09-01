@@ -35,29 +35,7 @@ const OurHotel = () => {
   const closeModalEdit = () => {
     setIsEditModalOpen(false);
   };
-
-
-  //GETTING THE FILE FROM UPLOAD COMPONENT
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  //STORING IMAGE FILE FOR OOPERATIONS
-  const handleFileChange = (file) => {
-    setSelectedFile(file);
-  };
-
-  //UPLOADING THE FILE
-  const handleUploadButtonClick  = () => {
-    if (!selectedFile) return;
-
-    // 1. Rename the file (this can be a bit tricky in the browser, but let's assume you have a way)
-    const newFileName = "newNameForFile.jpg";  // Your renaming logic here
-
-    // 2. Process the file (like copying or uploading it somewhere)
-
-    // 3. Optionally, update your data structures or state
-  };
-
-
+  
   const [hotelData, setHotelData] = useState({
     hotelName: "",
     starRating: 0,
@@ -70,6 +48,12 @@ const OurHotel = () => {
     hotelAmenities: [],
     hotelImages: []
   });
+
+  const handleImagesSelected = (images) => {
+    inputHoteldata("hotelImages", images);
+    console.log(images);  // Handle selected images here
+    console.log(hotelData);
+  };
 
   const inputHoteldata = (name, value) => {
     setHotelData((prev) => ({ ...prev, [name]: value}));
@@ -424,52 +408,9 @@ const OurHotel = () => {
           </div>
         </div>
       </div>
-      {/* <div className="d-none d-lg-flex d-md-flex justify-content-end my-md-5 my-4 me-4">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item">
-              <a class="page-link" href="#">
-                <Icon.ChevronLeft />
-              </a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">
-                1
-              </a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">
-                2
-              </a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">
-                3
-              </a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">
-                4
-              </a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">
-                ...
-              </a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">
-                40
-              </a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">
-                <Icon.ChevronRight />
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div> */}
+    
+
+    
       <Modal show={isAddModalOpen} onHide={closeModalAdd}>
         <Modal.Header closeButton>
           <Modal.Title>Add Hotel Information</Modal.Title>
@@ -624,9 +565,7 @@ const OurHotel = () => {
                       Hotel images
                     </p>
                   <div className="d-flex flex-row gap-2">
-                    <ImageUpload onFileChange={handleFileChange}/>
-                    <ImageUpload onFileChange={handleFileChange}/>  
-                    <ImageUpload onFileChange={handleFileChange}/>
+                    <ImageUpload onImagesSelected={handleImagesSelected} />
                   </div>
                 </div>
 
@@ -701,7 +640,7 @@ const OurHotel = () => {
                 </div>
               </div>
               <div className="d-flex flex-row gap-5 my-3 justify-content-center">
-                <button onClick={handleUploadButtonClick}
+                <button
                   className="p-2"
                   style={{
                     borderRadius: "5px",
