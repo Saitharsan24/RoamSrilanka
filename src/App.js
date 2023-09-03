@@ -97,6 +97,7 @@ import Profile from "./pages/driver/profile";
 import DriverReport from "./pages/driver/report";
 import DriverChat from "./pages/driver/chat";
 import DriverVehicle from "./pages/driver/vehicle";
+import DriverRequest from "./pages/driver/requests";
 
 const route = createBrowserRouter(
   createRoutesFromElements(
@@ -201,7 +202,7 @@ const route = createBrowserRouter(
       <Route path="/driver/" element={<DriverLayout />} errorElement={<SystemError />}>
         <Route index element={<Driver />}></Route>
         <Route path="driverDashboard" element={<Driver />}></Route>
-        <Route path="driverRequests" element={<HotelRequest />}></Route>
+        <Route path="driverRequests" element={<DriverRequest />}></Route>
         <Route path="driverProfile" element={<Profile />}></Route>
         <Route path="driverReport" element={<DriverReport />}></Route>
         <Route path="driverChat" element={<DriverChat />}></Route>
