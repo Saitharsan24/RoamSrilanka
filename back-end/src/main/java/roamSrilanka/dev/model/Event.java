@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "event")
@@ -26,6 +27,23 @@ public class Event {
 
         @Column(name = "description")
         private String description;
+
+        @ElementCollection
+        @Column(name = "event_images")
+        private List<String> eventImages;
+
+        public Event() {
+        }
+
+        public Event(int eventId, String name, String date, int days, String places, String description, List<String> eventImages) {
+            this.eventId = eventId;
+            this.name = name;
+            this.date = date;
+            this.days = days;
+            this.places = places;
+            this.description = description;
+            this.eventImages = eventImages;
+        }
 
         public int getEventId() {
             return eventId;
@@ -73,5 +91,13 @@ public class Event {
 
         public void setDescription(String description) {
             this.description = description;
+        }
+
+        public List<String> getEventImages() {
+            return eventImages;
+        }
+
+        public void setEventImages(List<String> eventImages) {
+            this.eventImages = eventImages;
         }
 }

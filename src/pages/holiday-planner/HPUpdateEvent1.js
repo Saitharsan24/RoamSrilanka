@@ -178,9 +178,6 @@ const HPUpdateEvent1 = () => {
         {showPopup && <HpPopup2 onClose={() => setShowPopup(false)} />}
       </Link>
     </div>
-    //   </div>
-
-    // </div>
   );
 };
 

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import { MDBDataTable } from "mdbreact";
 import axios from "axios";
+import HPViewEvent from "./HPViewEvent";
 
 function HPEvent() {
   const apiBaseUrl = "http://localhost:8080";
@@ -11,6 +12,8 @@ function HPEvent() {
     baseURL: apiBaseUrl,
     timeout: 5000,
   });
+
+  const [selectedEventId, setSelectedEventId] = useState(null);
 
   const [events, setEvents] = useState([]);
 
@@ -97,8 +100,12 @@ function HPEvent() {
       date: event.date,
       places: event.places,
       button1: (
-        <Link to={`/holidayPlanner/plannerViewEvent`}>
-          <button style={{ border: "inherit" }} className="hp-accept">
+        <Link to="/holidayPlanner/plannerEvent">
+          <button
+            style={{ border: "inherit" }}
+            className="hp-accept"
+            onClick={() => setSelectedEventId(event.eventId)}
+          >
             View
           </button>
         </Link>
@@ -118,38 +125,50 @@ function HPEvent() {
   return (
     <div className="d-flex w-100">
       <div className="d-flex flex-column col-lg-12 p-4 ">
-        <div className="d-grid d-md-flex justify-content-md-end">
-          <Link to="/holidayPlanner/plannerEvent1">
-            <button
-              style={{
-                width: "15rem",
-                borderRadius: "11px",
-                border: "1px solid #004577",
-                backgroundColor: "#004577",
-                color: "#FFFFFF",
-                fontFamily: "Lato",
-                fontSize: "20px",
-                boxShadow: "0px 4px 40px rgba(0, 69, 119, 0.35)",
-              }}
-              type="submit"
-            >
-              Add New Event
-            </button>
-          </Link>
-        </div>
-
-        <p
-          style={{ fontFamily: "Poppins", fontSize: "1.5rem" }}
-          className="ms-5 m-0"
-        >
-          <b>Existing Events</b>
-        </p>
-        <MDBDataTable
-          striped
-          bordered
-          //   small
-          data={data}
-        />
+        {selectedEventId ? (
+          // Display event details when an event is selected
+          <HPViewEvent
+            eventId={selectedEventId}
+            onBack={() => setSelectedEventId(null)}
+          />
+        ) : (
+          // Display event list when no event is selected
+          <div>
+            <div className="d-grid d-md-flex justify-content-md-end">
+              <Link to="/holidayPlanner/plannerEvent1">
+                <button
+                  style={{
+                    width: "15rem",
+                    borderRadius: "11px",
+                    border: "1px solid #004577",
+                    backgroundColor: "#004577",
+                    color: "#FFFFFF",
+                    fontFamily: "Lato",
+                    fontSize: "20px",
+                    boxShadow: "0px 4px 40px rgba(0, 69, 119, 0.35)",
+                  }}
+                  type="submit"
+                >
+                  Add New Event
+                </button>
+              </Link>
+            </div>
+            <div>
+              <p
+                style={{ fontFamily: "Poppins", fontSize: "1.5rem" }}
+                className="ms-5 m-0"
+              >
+                <b>Existing Events</b>
+              </p>
+              <MDBDataTable
+                striped
+                bordered
+                //   small
+                data={data}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
