@@ -6,7 +6,7 @@ import "../../styles/tourist/touristlayout.css";
 function TouristLayout() {
   return (
     <div className="d-flex flex-column gap-0 full">
-        <HeaderUser />
+        <HeaderUser/>
         <div className="tourist-layout d-flex gap-0 w-100 max-width justify-content-start">
             <SideNavbar />
             <Outlet />           

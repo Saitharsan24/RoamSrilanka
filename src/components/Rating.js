@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaStar } from 'react-icons/fa';
 
-const StarRating = () => {
-  const [rating, setRating] = useState(0);
-  
+const StarRating = ({ selectedRating, onRatingChange }) => {
   const handleRatingClick = (selectedRating) => {
-    setRating(selectedRating === rating ? 0 : selectedRating);
+    onRatingChange(selectedRating);
   };
   
   return (
@@ -14,7 +12,7 @@ const StarRating = () => {
         <FaStar
           key={star}
           className="star"
-          color={star <= rating ? '#ffc107' : '#e4e5e9'}
+          color={star <= selectedRating ? '#ffc107' : '#e4e5e9'}
           onClick={() => handleRatingClick(star)}
         />
       ))}

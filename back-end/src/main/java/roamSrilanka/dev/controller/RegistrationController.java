@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import roamSrilanka.dev.model.Tourist;
+import roamSrilanka.dev.model.Tourist.Tourist;
 import roamSrilanka.dev.model.User;
 import roamSrilanka.dev.service.RegistrationService;
 
@@ -23,8 +23,8 @@ public class RegistrationController {
 
     @PostMapping("/tourist")
     public ResponseEntity<User> registerTourist(@RequestBody RegistrationRequest request) {
-        User user = new User(request.getUsername(), request.getPassword()); // userType will be set inside the service
-        Tourist tourist = new Tourist(request.getFullName(), request.getDob(), request.getGender(), request.getPassportNumber(), request.getCountry());
+        User user = new User( request.getUsername(), request.getPassword(), request.getFullName()); // userType will be set inside the service
+        Tourist tourist = new Tourist(request.getDob(), request.getGender(), request.getPassportNumber(), request.getCountry());
 
         User savedUser = registrationService.registerTourist(tourist, user);
         return new ResponseEntity<>(savedUser, HttpStatus.OK);

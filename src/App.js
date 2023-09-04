@@ -97,8 +97,11 @@ import Profile from "./pages/driver/profile";
 import DriverReport from "./pages/driver/report";
 import DriverChat from "./pages/driver/chat";
 import DriverVehicle from "./pages/driver/vehicle";
+
 import DriverRequest from "./pages/driver/requests";
 import DriverTrips from "./pages/driver/trips";
+import { useSession } from "./Context/SessionContext";
+
 
 const route = createBrowserRouter(
   createRoutesFromElements(
@@ -210,11 +213,16 @@ const route = createBrowserRouter(
         <Route path="driverVehicle" element={<DriverVehicle />}></Route>
         <Route path="driverTrips" element={<DriverTrips />}></Route>
       </Route>
+
     </>
   )
 );
 
 function App() {
+
+  const sessionData = useSession();
+  console.log(sessionData);
+
   return (
     <>
       <RouterProvider router={route} />
