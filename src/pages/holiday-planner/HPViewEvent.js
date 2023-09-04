@@ -3,7 +3,6 @@ import axios from "axios";
 import "../../styles/updatepack.css";
 
 function HPViewEvent({ eventId, onBack }) {
-
   const apiBaseUrl = "http://localhost:8080";
 
   const axiosInstance = axios.create({
@@ -12,6 +11,8 @@ function HPViewEvent({ eventId, onBack }) {
   });
 
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [events, setEvents] = useState([]);
+  const [selectedEventId, setSelectedEventId] = useState(null);
 
   useEffect(() => {
     const fetchEventById = async () => {
@@ -35,6 +36,28 @@ function HPViewEvent({ eventId, onBack }) {
   if (!selectedEvent) {
     return <div>No Record</div>;
   }
+
+  const handleDeleteEvent = async () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this event?"
+    );
+    if (confirmed) {
+      try {
+        const response = await axiosInstance.delete(`/deleteEvent/${eventId}`);
+        if (response.status === 200) {
+          const updatedEvents = events.filter(
+            (event) => event.eventId !== eventId
+          );
+          setEvents(updatedEvents);
+          window.location.reload();
+        } else {
+          console.error("Failed to delete event:", response.status);
+        }
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
+    }
+  };
 
   return (
     <div>
@@ -142,7 +165,7 @@ function HPViewEvent({ eventId, onBack }) {
           </div>
         </div>
         <div className="d-flex flex-row justify-content-between mx-5 mb-5">
-          <button className="btn-cancel" type="submit">
+          <button className="btn-cancel" onClick={handleDeleteEvent}>
             Delete
           </button>
           <button className="btn-next" onClick={onBack}>
