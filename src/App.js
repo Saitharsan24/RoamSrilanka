@@ -98,6 +98,7 @@ import DriverReport from "./pages/driver/report";
 import DriverChat from "./pages/driver/chat";
 import DriverVehicle from "./pages/driver/vehicle";
 import DriverRequest from "./pages/driver/requests";
+import DriverTrips from "./pages/driver/trips";
 
 const route = createBrowserRouter(
   createRoutesFromElements(
@@ -207,6 +208,7 @@ const route = createBrowserRouter(
         <Route path="driverReport" element={<DriverReport />}></Route>
         <Route path="driverChat" element={<DriverChat />}></Route>
         <Route path="driverVehicle" element={<DriverVehicle />}></Route>
+        <Route path="driverTrips" element={<DriverTrips />}></Route>
       </Route>
     </>
   )
