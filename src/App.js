@@ -97,7 +97,7 @@ import Profile from "./pages/driver/profile";
 import DriverReport from "./pages/driver/report";
 import DriverChat from "./pages/driver/chat";
 import DriverVehicle from "./pages/driver/vehicle";
-
+import DrivernewVehicle from "./pages/driver/newVehicle";
 import DriverRequest from "./pages/driver/requests";
 import DriverTrips from "./pages/driver/trips";
 import { useSession } from "./Context/SessionContext";
@@ -212,6 +212,7 @@ const route = createBrowserRouter(
         <Route path="driverChat" element={<DriverChat />}></Route>
         <Route path="driverVehicle" element={<DriverVehicle />}></Route>
         <Route path="driverTrips" element={<DriverTrips />}></Route>
+        <Route path="drivernewVehicle" element={<DrivernewVehicle />}></Route>
       </Route>
 
     </>
