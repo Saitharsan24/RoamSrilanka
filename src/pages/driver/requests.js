@@ -322,7 +322,7 @@ function HotelRequest() {
                 </div>
                 <div className="d-flex flex-row justify-content-between ms-4">
                 <div>
-                    <label className="hotel-popup-label">Message</label>
+                    <label className="hotel-popup-label">Location</label>
                     <br />
                     <div className="mapouter">
                       <div className="gmap_canvas">

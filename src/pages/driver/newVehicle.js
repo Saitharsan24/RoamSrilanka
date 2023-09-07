@@ -5,7 +5,7 @@ function DrivernewVehicle () {
     return (
         <div className="d-flex w-100">
             <div className="d-flex flex-row col-lg-11 ms-lg-5 col-md-12 justify-content-around">
-                <div class="col-sm-10 mb-3 mb-sm-0">
+                <div class="col-sm-11 mb-3 mb-sm-0">
                     <div class="card mt-5">
                         <div class="card-body">
                             <h5 class="card-title">My Vehicle Info</h5><hr></hr>
