@@ -5,8 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import roamSrilanka.dev.model.Hotel.HotelRooms;
+import roamSrilanka.dev.model.Hotel.Hotels;
 import roamSrilanka.dev.service.hotel.HotelRoomServices;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -21,47 +23,79 @@ public class HotelRoomController {
     public ResponseEntity<HotelRooms> addHotelRoom(@RequestBody HotelRooms hotelRooms){
 
         HotelRooms hotelRoom = hotelRoomServices.addHotelRoom(hotelRooms);
-
+        System.out.println(hotelRoom);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    //View hotel rooms with hotel_id
+    @GetMapping("/viewHotelRoom/{hotelId}")
+    public ResponseEntity<List<HotelRooms>> viewHotelRoomsWithHotelId(@PathVariable Integer hotelId) {
+        List<HotelRooms> hotelRooms = hotelRoomServices.getRoomsByHotelId(hotelId);
 
-    //View hotel rooms with id
-    @GetMapping("/viewHotelRoom/{id}")
-    public ResponseEntity<HotelRooms> viewHotelRoomwithId(@PathVariable Integer id){
+        if (!hotelRooms.isEmpty()) {
+            return new ResponseEntity<>(hotelRooms, HttpStatus.OK);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
-            HotelRooms viewHotelRoom = hotelRoomServices.getRoomById(id).orElse(null);
 
-            if(viewHotelRoom != null) {
-                return new ResponseEntity<>(viewHotelRoom, HttpStatus.OK);
-            } else {
-                return ResponseEntity.notFound().build();
-            }
+    //View hotel rooms with room_id
+    @GetMapping("/viewRoom/{roomId}")
+    public ResponseEntity<List<HotelRooms>> viewHotelRoomsWithRoomId(@PathVariable Integer roomId) {
+        List<HotelRooms> hotelRooms = hotelRoomServices.getRoomsByRoomId(roomId);
+
+        if (!hotelRooms.isEmpty()) {
+            return new ResponseEntity<>(hotelRooms, HttpStatus.OK);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 
     // Endpoint to retrieve all rooms.
-    @GetMapping
+    @GetMapping("/viewHotelRooms")
     public ResponseEntity<List<HotelRooms>> getAllRooms() {
-        List<HotelRooms> rooms = hotelRoomServices.getAllRooms();
-        return new ResponseEntity<>(rooms, HttpStatus.OK);
+        List<HotelRooms> resultList = hotelRoomServices.getAllRooms();
+        return new ResponseEntity<>(resultList, HttpStatus.OK);
     }
+
 
     // Endpoint to update a room's information.
     // Ensure the ID in the URL matches the ID in the request body.
-    @PutMapping("/{id}")
-    public ResponseEntity<HotelRooms> updateRoom(@PathVariable Integer id, @RequestBody HotelRooms room) {
-        if (!id.equals(room.getRoomId())) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    @PutMapping("/updateRoom/{roomId}")
+    public ResponseEntity<HotelRooms> updateHotelRoom(
+            @PathVariable String roomId,
+            @RequestBody HotelRooms updatedRoom
+    ) {
+
+        HotelRooms existingRoom = hotelRoomServices.getRoomById(roomId);
+
+        if (existingRoom == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        HotelRooms updatedRoom = hotelRoomServices.updateRoom(room);
-        return new ResponseEntity<>(updatedRoom, HttpStatus.OK);
+
+        // Update the existing room's information with the data from the request body
+        existingRoom.setRoomType(updatedRoom.getRoomType());
+        existingRoom.setDescription(updatedRoom.getDescription());
+        existingRoom.setAvailability(updatedRoom.getAvailability());
+        existingRoom.setPrice(updatedRoom.getPrice());
+        existingRoom.setRoomSize(updatedRoom.getRoomSize());
+        existingRoom.setNoOfBeds(updatedRoom.getNoOfBeds());
+        existingRoom.setOccupancy(updatedRoom.getOccupancy());
+
+
+        // Save the updated room
+        hotelRoomServices.saveRoom(existingRoom);
+
+        return new ResponseEntity<>(existingRoom, HttpStatus.OK);
     }
 
-    // Endpoint to delete a room by its ID.
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRoom(@PathVariable Integer id) {
-        hotelRoomServices.deleteRoom(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+    // Endpoint to delete a room by its roomId.
+    @DeleteMapping("deleteRoom/{roomId}")
+    public ResponseEntity<Void> deleteRoom(@PathVariable Integer roomId) {
+        hotelRoomServices.deleteRoom(roomId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

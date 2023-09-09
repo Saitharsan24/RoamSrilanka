@@ -26,4 +26,7 @@ public class HotelService {
         return hotelRepository.findAll();
     }
 
+    public void saveHotel(Hotels existingHotel) {
+        hotelRepository.save(existingHotel);
+    }
 }
