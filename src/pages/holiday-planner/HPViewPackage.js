@@ -19,7 +19,7 @@ function HPViewpackage() {
             fontFamily: "Barlow",
             fontWeight: "700",
             fontSize: "auto",
-            color: "#DB163A",
+            color: "black",
           }}
           className="d-flex mx-5 mt-5"
         >
@@ -29,7 +29,6 @@ function HPViewpackage() {
           <form className="pack">
             <div className="d-flex flex-column gap-5">
               <div className="d-flex flex-column justify-content-center m-2">
-                <h2>Package Information</h2>
                 <div className="d-flex flex-column justify-content-center m-2">
                   <label>
                     Name:
