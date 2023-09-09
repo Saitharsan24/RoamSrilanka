@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { MDBDataTable } from "mdbreact";
 import axios from "axios";
 import HPViewEvent from "./HPViewEvent";
+import DeleteConfirm from "../../components/DeleteConfirm";
 
 function HPEvent() {
   const apiBaseUrl = "http://localhost:8080";
@@ -14,8 +15,40 @@ function HPEvent() {
   });
 
   const [selectedEventId, setSelectedEventId] = useState(null);
-
   const [events, setEvents] = useState([]);
+  const [isDialogVisible, setDialogVisible] = useState(false);
+  const [eventToDelete, setEventToDelete] = useState(null);
+
+  const handleDeleteEvent = (eventId) => {
+    setEventToDelete(eventId);
+    setDialogVisible(true);
+  };
+
+  const handleDialogClose = () => {
+    setDialogVisible(false);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      const response = await axiosInstance.delete(
+        `/deleteEvent/${eventToDelete}`
+      );
+      if (response.status === 200) {
+        // Filter out the deleted event from the events array
+        const updatedEvents = events.filter(
+          (event) => event.id !== eventToDelete
+        );
+        setEvents(updatedEvents);
+        // Close the dialog
+        setDialogVisible(false);
+        window.location.reload();
+      } else {
+        console.error("Failed to delete event:", response.status);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,27 +66,6 @@ function HPEvent() {
 
     fetchData();
   }, []);
-
-  const handleDeleteEvent = async (eventId) => {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this event?"
-    );
-    if (confirmed) {
-      try {
-        const response = await axiosInstance.delete(`/deleteEvent/${eventId}`);
-        if (response.status === 200) {
-          // Filter out the deleted event from the events array
-          const updatedEvents = events.filter((event) => event.id !== eventId);
-          setEvents(updatedEvents);
-          window.location.reload();
-        } else {
-          console.error("Failed to delete event:", response.status);
-        }
-      } catch (error) {
-        console.error("An error occurred:", error);
-      }
-    }
-  };
 
   const data = {
     columns: [
@@ -167,6 +179,21 @@ function HPEvent() {
                 data={data}
               />
             </div>
+            {isDialogVisible && (
+              <DeleteConfirm
+                message="Are you sure you want to delete this event?"
+                // nameProduct={/* Pass the name of the event here */}
+                onDialog={(confirmed) => {
+                  if (confirmed) {
+                    // Handle event deletion here
+                    handleConfirmDelete();
+                  } else {
+                    // Close the dialog
+                    handleDialogClose();
+                  }
+                }}
+              />
+            )}
           </div>
         )}
       </div>
