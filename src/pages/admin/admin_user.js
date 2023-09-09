@@ -2,12 +2,26 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { MDBDataTable } from "mdbreact";
 import "../../styles/admin/admin_user.css";
+import { useState, useEffect } from "react";
 
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
+import axios from "axios";
+
 
 
 function Users() {
+
+  const [holidayPlanners, setHolidayPlanners] = useState([]);
+  
+  useEffect(() => {
+    // Make an HTTP GET request to fetch data from the API
+    axios.get("http://localhost:8080/viewHolidayplanner").then((response) => {
+      setHolidayPlanners(response.data);
+    });
+  }, []);
+
+
   const data_tourist = {
     columns: [
       {
@@ -734,31 +748,20 @@ function Users() {
         btn: "view-button",
       },
     ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail" >View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "002",
-        name: "Jane Smith",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail" >View detail</div>
-          </>,
-        ],
-      },
-     
-    ],
+
+     // Map your API data to the rows
+       rows :holidayPlanners.map((planner) => ({
+       id: planner.userId, //  API response has a field named 'id' for Planner ID
+       name: planner.plannerName, //  API response has a field named 'plannerName' for Planner Name
+       rate: planner.contactNo, //  API response has a field named 'userId' for User ID
+       btn: [
+        <>
+         <a href="/admin/adminholidayplannrdetail"> <button className="view-detail" >View detail</button></a>
+        </>,
+      ],
+  })),
+
+
   };
 
 
@@ -836,7 +839,7 @@ function Users() {
               searching={true}
               data={data_holidayplanner}
               exportToCSV={true}
-              //table for tourist
+              //table for holidayplanner
             />
                 </Tab>
 

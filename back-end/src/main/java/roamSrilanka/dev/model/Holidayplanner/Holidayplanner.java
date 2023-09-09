@@ -32,6 +32,9 @@ public class Holidayplanner {
     @Column (name="image")
     private  String image;
 
+    @Column(name="gender")
+    private String gender;
+
     @Column(name="password")
     private String password;
 
@@ -46,6 +49,7 @@ public class Holidayplanner {
         this.contactNo = contactNo;
         this.email = email;
         this.nic = nic;
+        this.gender=gender;
         this.password=password;
         this.image = image;
     }
@@ -56,6 +60,7 @@ public class Holidayplanner {
         this.contactNo = contactNo;
         this.email = email;
         this.nic = nic;
+        this.gender=gender;
         this.password=password;
         this.image = image;
     }
@@ -106,6 +111,14 @@ public class Holidayplanner {
 
     public String getNic() {
         return nic;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public void setPassword(String password) {
