@@ -20,11 +20,6 @@ function HPEvent() {
   const [isDialogVisible, setDialogVisible] = useState(false);
   const [eventToDelete, setEventToDelete] = useState(null);
 
-  const handleDeleteEvent = (eventId) => {
-    setEventToDelete(eventId);
-    setDialogVisible(true);
-  };
-
   const handleDialogClose = () => {
     setDialogVisible(false);
   };
