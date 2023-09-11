@@ -78,8 +78,8 @@ const OurHotel = () => {
     hotelRating: 0,
     // city: "",
     address: "",
-    latitude: 0,
-    longitude: 0,
+    latitude: "",
+    longitude: "",
     hotelAmenities: [],
     hotelImages: [],
   });
@@ -137,7 +137,7 @@ const OurHotel = () => {
       .get("/viewHotels")
       .then((response) => {
         setHotels(response.data);
-        //console.log(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log("Error fetching data:", error);
@@ -719,28 +719,6 @@ const OurHotel = () => {
                         }}
                       ></input>
                     </label>
-                    {/* <label>
-                      <p
-                        style={{
-                          textAlign: "",
-                          fontFamily: "Poppins",
-                          fontSize: "18px",
-                          color: "",
-                          fontWeight: "600",
-                          marginBottom: "0px",
-                        }}
-                      >
-                        City
-                      </p>
-                      <input
-                        type="text"
-                        name="city"
-                        value={hotelData.city}
-                        onChange={(e) => {
-                          inputHoteldata(e.target.name, e.target.value);
-                        }}
-                      ></input>
-                    </label> */}
                   </div>
                   <div className="d-flex flex-row gap-5">
                     <label>
@@ -854,7 +832,7 @@ const OurHotel = () => {
                         Add star rating{" "}
                       </p>
                       <StarRating
-                        selectedRating={hotelData.hotelRating}
+                        selectedRating={hotelData.starRating}
                         onRatingChange={handleHotelRatingChange}
                       />
                     </label>
