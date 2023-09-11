@@ -15,6 +15,9 @@ const OurHotel = () => {
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [hotels, setHotels] = useState([]);
+  const [hotelId, setHotelId] = useState("");
+  const [selectedHotel, setSelectedHotel] = useState([]);
 
   const openModalAdd = () => {
     setIsAddModalOpen(true);
@@ -24,8 +27,11 @@ const OurHotel = () => {
     setIsAddModalOpen(false);
   };
 
-  const openModalEdit = () => {
+  const openModalEdit = (hotelId) => {
     setIsEditModalOpen(true);
+    setHotelId(hotelId);
+    setSelectedHotel(hotels.find((hotel) => hotel.hotelId === hotelId));
+    console.log(hotelId);
   };
 
   const closeModalEdit = () => {
@@ -89,14 +95,6 @@ const OurHotel = () => {
     // console.log(hotelData);
   };
 
-  //Sending data to backend
-  const apiBaseUrl = "http://localhost:8080";
-
-  const axiosInstance = axios.create({
-    baseURL: apiBaseUrl,
-    timeout: 5000,
-  });
-
   const handleHotelRatingChange = (rating) => {
     setHotelData((prevData) => ({
       ...prevData,
@@ -104,26 +102,82 @@ const OurHotel = () => {
     }));
   };
 
+  //Sending data to backend
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 10000,
+  });
+
   const handleAddHotel = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axiosInstance.post("/addHotel", {
-
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body:hotelData,
+        hotelName: hotelData.hotelName,
+        description: hotelData.description,
+        hotelType: hotelData.hotelType,
+        starRating: hotelData.hotelRating,
+        // city: "",
+        address: hotelData.address,
+        latitude: hotelData.latitude,
+        longitude: hotelData.longitude,
+        // hotelAmenities: hotelData.hotelAmenities,
+        // hotelImages: hotelData.hotelImages,
       });
 
       if (response.status === 200) {
+        closeModalAdd();
         console.log(hotelData);
-        console.log("ok");
+        console.log("okkkk");
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get("/viewHotels")
+      .then((response) => {
+        setHotels(response.data);
+        //console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
+  const handleEditHotel = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axiosInstance.put(`/updateHotel/${hotelId}`, {
+        hotelType: hotelData.hotelType,
+        description: hotelData.description,
+        starRating: hotelData.hotelRating,
+        address: hotelData.address,
+        latitude: hotelData.latitude,
+        longitude: hotelData.longitude,
+        hotelName: hotelData.hotelName,
+      });
+
+      if (response.status === 200) {
+        // console.log();
+        console.log("okkk");
+        closeModalEdit();
+        window.location.reload();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleEditHotelId = (e) => {
+    setHotelId(e.target.value);
+  };
+
 
   return (
     <div className="d-flex flex-column gap-2 w-100 my-lg-2">
@@ -157,285 +211,101 @@ const OurHotel = () => {
         </div>
       </div>
       <div className="d-flex flex-column flex-md-column flex-lg-row gap-2 col-lg-12 col-md-12 col-12 justify-content-lg-evenly">
-        <div
-          className="d-flex flex-column gap-3 mx-lg-0 mx-md-5 mx-1 col-lg-3 col-md-10 col-11 shadow-lg"
-          style={{ borderRadius: "10px", backgroundColor: "#FFFFFF" }}
-        >
-          <img className="img-fluid" src={room1}></img>
-          <div className="d-flex flex-column justify-content-evenly">
-            <div className="d-flex flex-column">
-              <p
-                style={{
-                  textAlign: "center",
-                  fontFamily: "Poppins",
-                  fontSize: "25px",
-                  color: "",
-                  fontWeight: "600",
-                }}
-                className="m-0"
-              >
-                GOOD WOOD AIRPORT HOTEL
-              </p>
-              <p
-                style={{
-                  fontFamily: "Poppins",
-                  fontSize: "16px",
-                  fontWeight: "400",
-                }}
-                className="m-0 mx-2"
-              >
-                <ReactStars
-                  count={3}
-                  // onChange={ratingChanged}
-                  size={15}
-                  isHalf={true}
-                  emptyIcon={<i className="far fa-star"></i>}
-                  halfIcon={<i className="fa fa-star-half-alt"></i>}
-                  fullIcon={<i className="fa fa-star"></i>}
-                  activeColor="#ffd700"
-                />
-                3-star hotel with 2 restaurants
-              </p>
-              <p
-                style={{
-                  fontFamily: "Poppins",
-                }}
-                className="m-0 mx-2"
-              >
-                <span style={{ fontWeight: "600", fontSize: "16px" }}>
-                  7.2/10 Good
-                </span>
-                <br />
-              </p>
-              <Link to="/hotel/hotelReviews" className="mx-2">
-                See all 18 reviews <Icon.ChevronRight />
-              </Link>
-            </div>
-            <div className="d-flex flex-column justify-content-between me-1">
-              <div className="d-flex flex-column my-2">
+        {hotels.map((hotel) => (
+          <div
+            className="d-flex flex-column gap-3 mx-lg-0 mx-md-5 mx-1 col-lg-3 col-md-10 col-11 shadow-lg"
+            style={{ borderRadius: "10px", backgroundColor: "#FFFFFF" }}
+          >
+            <img className="img-fluid" src={room1}></img>
+            <div className="d-flex flex-column justify-content-evenly">
+              <div className="d-flex flex-column">
+                <p
+                  style={{
+                    textAlign: "center",
+                    fontFamily: "Poppins",
+                    fontSize: "25px",
+                    color: "",
+                    fontWeight: "600",
+                  }}
+                  className="m-0"
+                >
+                  {hotel.hotelName}
+                </p>
                 <p
                   style={{
                     fontFamily: "Poppins",
                     fontSize: "16px",
-                    fontWeight: "600",
+                    fontWeight: "400",
                   }}
                   className="m-0 mx-2"
                 >
-                  Popular amenities
-                  <br />
+                  <ReactStars
+                    count={hotel.starRating}
+                    // onChange={ratingChanged}
+                    size={15}
+                    isHalf={true}
+                    emptyIcon={<i className="far fa-star"></i>}
+                    halfIcon={<i className="fa fa-star-half-alt"></i>}
+                    fullIcon={<i className="fa fa-star"></i>}
+                    color="#ffd700"
+                  />
+                  {hotel.starRating}-star hotel with 2 restaurants
                 </p>
-                <div className="d-flex flex-column mx-4">
-                  <p className="m-0" style={{ fontSize: "13px" }}>
-                    <Icon.CupHotFill size={15} /> Breakfast available
-                  </p>
-                  <p className="m-0" style={{ fontSize: "13px" }}>
-                    <Icon.Wifi size={15} /> Free Wifi
-                  </p>
-                  <p className="m-0" style={{ fontSize: "13px" }}>
-                    <Icon.PSquareFill size={15} /> Parking included
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex flex-row justify-content-between my-1 mx-2">
-                <Link to="/hotel/aboutHotel">
-                  see all <Icon.ChevronRight />
-                </Link>
-                <button
-                  onClick={openModalEdit}
-                  style={{ border: "none", backgroundColor: "white" }}
-                >
-                  <Icon.PencilSquare size={25} />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="d-flex flex-column gap-3 mx-lg-0 mx-md-5 mx-1 col-lg-3 col-md-10 col-11 shadow-lg"
-          style={{ borderRadius: "10px", backgroundColor: "#FFFFFF" }}
-        >
-          <img className="img-fluid" src={room2}></img>
-          <div className="d-flex flex-column justify-content-evenly">
-            <div className="d-flex flex-column">
-              <p
-                style={{
-                  textAlign: "center",
-                  fontFamily: "Poppins",
-                  fontSize: "25px",
-                  color: "",
-                  fontWeight: "600",
-                }}
-                className="m-0"
-              >
-                GOOD WOOD AIRPORT HOTEL
-              </p>
-              <p
-                style={{
-                  fontFamily: "Poppins",
-                  fontSize: "16px",
-                  fontWeight: "400",
-                }}
-                className="m-0 mx-2"
-              >
-                <ReactStars
-                  count={3}
-                  //onChange={ratingChanged}
-                  size={15}
-                  isHalf={true}
-                  emptyIcon={<i className="far fa-star"></i>}
-                  halfIcon={<i className="fa fa-star-half-alt"></i>}
-                  fullIcon={<i className="fa fa-star"></i>}
-                  activeColor="#ffd700"
-                />
-                3-star hotel with 2 restaurants
-              </p>
-              <p
-                style={{
-                  fontFamily: "Poppins",
-                }}
-                className="m-0 mx-2"
-              >
-                <span style={{ fontWeight: "600", fontSize: "16px" }}>
-                  7.2/10 Good
-                </span>
-                <br />
-              </p>
-              <Link className="mx-2">
-                See all 18 reviews <Icon.ChevronRight />
-              </Link>
-            </div>
-            <div className="d-flex flex-column justify-content-between me-1">
-              <div className="d-flex flex-column my-2">
                 <p
                   style={{
                     fontFamily: "Poppins",
-                    fontSize: "16px",
-                    fontWeight: "600",
                   }}
                   className="m-0 mx-2"
                 >
-                  Popular amenities
+                  <span style={{ fontWeight: "600", fontSize: "16px" }}>
+                    7.2/10 Good
+                  </span>
                   <br />
                 </p>
-                <div className="d-flex flex-column mx-4">
-                  <p className="m-0" style={{ fontSize: "13px" }}>
-                    <Icon.CupHotFill size={15} /> Breakfast available
-                  </p>
-                  <p className="m-0" style={{ fontSize: "13px" }}>
-                    <Icon.Wifi size={15} /> Free Wifi
-                  </p>
-                  <p className="m-0" style={{ fontSize: "13px" }}>
-                    <Icon.PSquareFill size={15} /> Parking included
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex flex-row justify-content-between my-1 mx-2">
-                <Link>
-                  see all <Icon.ChevronRight />
+                <Link to="/hotel/hotelReviews" className="mx-2">
+                  See all 18 reviews <Icon.ChevronRight />
                 </Link>
-                <button
-                  onClick={openModalEdit}
-                  style={{ border: "none", backgroundColor: "white" }}
-                >
-                  <Icon.PencilSquare size={25} />
-                </button>
+              </div>
+              <div className="d-flex flex-column justify-content-between me-1">
+                <div className="d-flex flex-column my-2">
+                  <p
+                    style={{
+                      fontFamily: "Poppins",
+                      fontSize: "16px",
+                      fontWeight: "600",
+                    }}
+                    className="m-0 mx-2"
+                  >
+                    Popular amenities
+                    <br />
+                  </p>
+                  <div className="d-flex flex-column mx-4">
+                    <p className="m-0" style={{ fontSize: "13px" }}>
+                      <Icon.CupHotFill size={15} /> Breakfast available
+                    </p>
+                    <p className="m-0" style={{ fontSize: "13px" }}>
+                      <Icon.Wifi size={15} /> Free Wifi
+                    </p>
+                    <p className="m-0" style={{ fontSize: "13px" }}>
+                      <Icon.PSquareFill size={15} /> Parking included
+                    </p>
+                  </div>
+                </div>
+                <div className="d-flex flex-row justify-content-between my-1 mx-2">
+                  <Link to={`/hotel/aboutHotel?id=${hotel.hotelId}`}>
+                    see all <Icon.ChevronRight />
+                  </Link>
+                  <Link
+                    onClick={()=>openModalEdit(hotel.hotelId)}
+                    style={{ border: "none", color:"black", backgroundColor: "white" }}
+                  >
+                    <Icon.PencilSquare size={25} />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          className="d-flex flex-column gap-3 mx-lg-0 mx-md-5 mx-1 col-lg-3 col-md-10 col-11 shadow-lg"
-          style={{ borderRadius: "10px", backgroundColor: "#FFFFFF" }}
-        >
-          <img className="img-fluid" src={room3}></img>
-          <div className="d-flex flex-column justify-content-evenly">
-            <div className="d-flex flex-column">
-              <p
-                style={{
-                  textAlign: "center",
-                  fontFamily: "Poppins",
-                  fontSize: "25px",
-                  color: "",
-                  fontWeight: "600",
-                }}
-                className="m-0"
-              >
-                GOOD WOOD AIRPORT HOTEL
-              </p>
-              <p
-                style={{
-                  fontFamily: "Poppins",
-                  fontSize: "16px",
-                  fontWeight: "400",
-                }}
-                className="m-0 mx-2"
-              >
-                <ReactStars
-                  count={3}
-                 // onChange={ratingChanged}
-                  size={15}
-                  isHalf={true}
-                  emptyIcon={<i className="far fa-star"></i>}
-                  halfIcon={<i className="fa fa-star-half-alt"></i>}
-                  fullIcon={<i className="fa fa-star"></i>}
-                  activeColor="#ffd700"
-                />
-                3-star hotel with 2 restaurants
-              </p>
-              <p
-                style={{
-                  fontFamily: "Poppins",
-                }}
-                className="m-0 mx-2"
-              >
-                <span style={{ fontWeight: "600", fontSize: "16px" }}>
-                  7.2/10 Good
-                </span>
-                <br />
-              </p>
-              <Link className="mx-2">
-                See all 18 reviews <Icon.ChevronRight />
-              </Link>
-            </div>
-            <div className="d-flex flex-column justify-content-between me-1">
-              <div className="d-flex flex-column my-2">
-                <p
-                  style={{
-                    fontFamily: "Poppins",
-                    fontSize: "16px",
-                    fontWeight: "600",
-                  }}
-                  className="m-0 mx-2"
-                >
-                  Popular amenities
-                  <br />
-                </p>
-                <div className="d-flex flex-column mx-4">
-                  <p className="m-0" style={{ fontSize: "13px" }}>
-                    <Icon.CupHotFill size={15} /> Breakfast available
-                  </p>
-                  <p className="m-0" style={{ fontSize: "13px" }}>
-                    <Icon.Wifi size={15} /> Free Wifi
-                  </p>
-                  <p className="m-0" style={{ fontSize: "13px" }}>
-                    <Icon.PSquareFill size={15} /> Parking included
-                  </p>
-                </div>
-              </div>
-              <div className="d-flex flex-row justify-content-between my-1 mx-2">
-                <Link>
-                  see all <Icon.ChevronRight />
-                </Link>
-                <button
-                  onClick={openModalEdit}
-                  style={{ border: "none", backgroundColor: "white" }}
-                >
-                  <Icon.PencilSquare size={25} />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
 
       
@@ -606,7 +476,7 @@ const OurHotel = () => {
                       </p>
                       <StarRating
                         selectedRating={hotelData.hotelRating}
-                        onRatingChange={handleHotelRatingChange} 
+                        onRatingChange={handleHotelRatingChange}
                       />
                     </label>
                   </div>
@@ -653,7 +523,6 @@ const OurHotel = () => {
                     <ImageUpload onImagesSelected={handleImagesSelected} />
                   </div>
                 </div>
-
                 <p
                   style={{
                     textAlign: "",
@@ -736,7 +605,9 @@ const OurHotel = () => {
                             <input
                               type="checkbox"
                               name="houseKeeping" // This should match the amenity name
-                              checked={selectedCheckboxes.includes("houseKeeping")}
+                              checked={selectedCheckboxes.includes(
+                                "houseKeeping"
+                              )}
                               onChange={handleCheckboxChange}
                             ></input>{" "}
                             Housekeeping
@@ -758,7 +629,9 @@ const OurHotel = () => {
                             <input
                               type="checkbox"
                               name="airConditioning" // This should match the amenity name
-                              checked={selectedCheckboxes.includes("airConditioning")}
+                              checked={selectedCheckboxes.includes(
+                                "airConditioning"
+                              )}
                               onChange={handleCheckboxChange}
                             ></input>{" "}
                             Air conditioning
@@ -816,49 +689,208 @@ const OurHotel = () => {
           <Modal.Title>Edit Hotel Information</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+        {hotels.find((hotel) => hotel.hotelId === hotelId) ? (
+          <form onSubmit={handleEditHotel} method="POST">
+            <input
+              type="hidden"
+              name="hotelId"
+              value={hotelId}
+              onChange={handleEditHotelId}
+            />
             <div className="d-flex flex-column mx-2" style={{}}>
               <div className="d-flex flex-column mx-3">
                 <div className="d-flex flex-column">
                   <div className="d-flex flex-row gap-5">
                     <label>
-                      Hotel Name
-                      <br />
-                      <input type="text"></input>
+                      <p
+                        style={{
+                          textAlign: "",
+                          fontFamily: "Poppins",
+                          fontSize: "18px",
+                          color: "",
+                          fontWeight: "600",
+                          marginBottom: "0px",
+                        }}
+                      >
+                        Hotel Name
+                      </p>
+                      <input
+                        type="text"
+                        name="hotelName"
+                        placeholder={selectedHotel.hotelName}
+                        value={hotelData.hotelName}
+                        onChange={(e) => {
+                          inputHoteldata(e.target.name, e.target.value);
+                        }}
+                      ></input>
+                    </label>
+                    {/* <label>
+                      <p
+                        style={{
+                          textAlign: "",
+                          fontFamily: "Poppins",
+                          fontSize: "18px",
+                          color: "",
+                          fontWeight: "600",
+                          marginBottom: "0px",
+                        }}
+                      >
+                        City
+                      </p>
+                      <input
+                        type="text"
+                        name="city"
+                        value={hotelData.city}
+                        onChange={(e) => {
+                          inputHoteldata(e.target.name, e.target.value);
+                        }}
+                      ></input>
+                    </label> */}
+                  </div>
+                  <div className="d-flex flex-row gap-5">
+                    <label>
+                      <p
+                        style={{
+                          textAlign: "",
+                          fontFamily: "Poppins",
+                          fontSize: "18px",
+                          color: "",
+                          fontWeight: "600",
+                          marginBottom: "0px",
+                        }}
+                      >
+                        Address
+                      </p>
+                      <input
+                        style={{ width: "26.25rem" }}
+                        type="text"
+                        name="address"
+                        placeholder={selectedHotel.address}
+                        value={hotelData.address}
+                        onChange={(e) => {
+                          inputHoteldata(e.target.name, e.target.value);
+                        }}
+                      ></input>
+                    </label>
+                  </div>
+                  <div className="d-flex flex-row gap-5">
+                    <label>
+                      <p
+                        style={{
+                          textAlign: "",
+                          fontFamily: "Poppins",
+                          fontSize: "18px",
+                          color: "",
+                          fontWeight: "600",
+                          marginBottom: "0px",
+                        }}
+                      >
+                        Longitude
+                      </p>
+                      <input
+                        type="text"
+                        name="longitude"
+                        placeholder={selectedHotel.longitude}
+                        value={hotelData.longitude}
+                        onChange={(e) => {
+                          inputHoteldata(e.target.name, e.target.value);
+                        }}
+                      ></input>
                     </label>
                     <label>
-                      Location
-                      <br />
-                      <input type="text"></input>
+                      <p
+                        style={{
+                          textAlign: "",
+                          fontFamily: "Poppins",
+                          fontSize: "18px",
+                          color: "",
+                          fontWeight: "600",
+                          marginBottom: "0px",
+                        }}
+                      >
+                        Latitude
+                      </p>
+                      <input
+                        type="text"
+                        name="latitude"
+                        placeholder={selectedHotel.latitude}
+                        value={hotelData.latitude}
+                        onChange={(e) => {
+                          inputHoteldata(e.target.name, e.target.value);
+                        }}
+                      ></input>
                     </label>
                   </div>
                   <div className="d-flex mt-3 mb-2 flex-row gap-5">
                     <label>
-                      Add star rating{" "}
-                      <ReactStars
-                        count={5}
-                        //onChange={ratingChanged}
-                        size={20}
-                        isHalf={true}
-                        emptyIcon={<i className="far fa-star"></i>}
-                        halfIcon={<i className="fa fa-star-half-alt"></i>}
-                        fullIcon={<i className="fa fa-star"></i>}
-                        activeColor="#ffd700"
+                      <p
+                        style={{
+                          textAlign: "",
+                          fontFamily: "Poppins",
+                          fontSize: "18px",
+                          color: "",
+                          fontWeight: "600",
+                          marginBottom: "0px",
+                        }}
+                      >
+                        Hotel type
+                      </p>
+                      <input
+                        type="text"
+                        name="hotelType"
+                        placeholder={selectedHotel.hotelType}
+                        value={hotelData.hotelType}
+                        onChange={(e) => {
+                          inputHoteldata(e.target.name, e.target.value);
+                        }}
+                      ></input>
+                    </label>
+                    <label>
+                      <p
+                        style={{
+                          textAlign: "",
+                          fontFamily: "Poppins",
+                          fontSize: "18px",
+                          color: "",
+                          fontWeight: "600",
+                          marginBottom: "0px",
+                        }}
+                      >
+                        Add star rating{" "}
+                      </p>
+                      <StarRating
+                        selectedRating={hotelData.hotelRating}
+                        onRatingChange={handleHotelRatingChange}
                       />
                     </label>
                   </div>
                   <div className="d-flex flex-row gap-5">
                     <label>
-                      Description
-                      <br />
+                      <p
+                        style={{
+                          textAlign: "",
+                          fontFamily: "Poppins",
+                          fontSize: "18px",
+                          color: "",
+                          fontWeight: "600",
+                          marginBottom: "0px",
+                        }}
+                      >
+                        Description
+                      </p>
                       <input
                         style={{ width: "26rem", height: "7rem" }}
                         type="text"
+                        name="description"
+                        placeholder={selectedHotel.description}
+                        value={hotelData.description}
+                        onChange={(e) => {
+                          inputHoteldata(e.target.name, e.target.value);
+                        }}
                       ></input>
                     </label>
                   </div>
                 </div>
-
                 <p
                   style={{
                     textAlign: "",
@@ -955,6 +987,9 @@ const OurHotel = () => {
               </div>
             </div>
           </form>
+          ) : (
+            <p>No room found for roomId: {hotelId}</p>
+          )}
         </Modal.Body>
       </Modal>
     </div>
