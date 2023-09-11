@@ -61,7 +61,10 @@ tr:nth-child(even) {
 .dataTables_paginate .pagination{
   justify-content: flex-end;
 }
-.hp-accept{
+.pagination .page-item .page-link .sr-only{
+  display: none;
+}
+.hp-accept{ 
   background-color: #035c94;
   border-radius: 5px;
   text-align: center;

@@ -1,57 +1,43 @@
-import React ,{ useState, useRef } from 'react'
-import * as AiIcon from 'react-icons/ai'
-import * as IoIcon from 'react-icons/io5'
-import '../styles/imageUpload.css'
-import { Opacity } from '@mui/icons-material';
+import React, { useState, useRef } from 'react';
+import * as AiIcon from 'react-icons/ai';
+import * as IoIcon from 'react-icons/io5';
+import '../styles/imageUpload.css';
 
-function ImageUpload({ onFileChange }) {
+function ImageUpload(props) {
+  const [imageSrc, setImageSrc] = useState([]);
+  const inputRef = useRef();
 
-  const [imageSrc, setImageSrc] = useState(null);
-  const fileInputRef = useRef(null);
+  const handleFileChange = (event) => {
+    const files = Array.from(event.target.files);  // Convert FileList to Array
+    setImageSrc(files);
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setImageSrc(reader.result);
-        };
-        reader.readAsDataURL(file);
-
-        // Inform the parent about the selected file
-        onFileChange(file);
+    if (props.onImagesSelected) {  // Send selected images to the parent component
+      props.onImagesSelected(files);
     }
   };
 
-  const handleUploadClick = () => {
-    fileInputRef.current.click();
-  };
-
-  const handleClearImage = (event) => {
-    setImageSrc(null);
-    event.stopPropagation(); // Prevent the event from bubbling up to parent elements
+  const triggerFileSelect = () => {
+    inputRef.current.click();
   };
 
   return (
     <>
-        <div
-            className={`uploadBoxStyleCommon box-size-var01 ${imageSrc ? 'image-present' : ''}`}
-            onClick={handleUploadClick}
-            style={{ backgroundImage: `url(${imageSrc})` }}
-        >
-            {!imageSrc && (
-            <>
-                <AiIcon.AiOutlineCloudUpload style={{ fontSize: "60px", color: "#004577" }} />
-                <p className='uploadCompPara'>Upload image</p>
-            </>
-                )}
-            {imageSrc && (
-                <IoIcon.IoCloseCircle onClick={handleClearImage} style={{fontSize:"50px",opacity:0.8, color:"#004577"}}/>
-            )}
-            <input type="file" style={{ display: 'none' }} ref={fileInputRef} onChange={handleImageChange} accept="image/*"/>                 
-        </div>
+      <div className='uploadBoxStyleCommon box-size-var01' onClick={triggerFileSelect}>
+        <AiIcon.AiOutlineCloudUpload style={{ fontSize: "60px", color: "#004577" }} />
+        <p className='uploadCompPara'>Upload image</p>
+        {imageSrc.length > 0 && (
+          <IoIcon.IoCloseCircle style={{ fontSize: "50px", opacity: 0.8, color: "#004577" }} />
+        )}
+        <input
+          ref={inputRef}
+          type="file"
+          style={{ display: 'none' }}
+          multiple
+          onChange={handleFileChange}
+        />
+      </div>
     </>
-  )
+  );
 }
 
-export default ImageUpload
+export default ImageUpload;

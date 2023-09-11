@@ -7,7 +7,6 @@ import { Link } from "react-bootstrap-icons";
 import Adminsidebar from "../../components/admin-sidebar";
 
 function AdminDiverReg() {
-  
 
   return (
     <React.Fragment>

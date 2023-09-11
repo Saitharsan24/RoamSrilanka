@@ -3,8 +3,6 @@ import "./../styles/contact.css";
 import "bootstrap/dist/css/bootstrap.css";
 import * as Icon from "react-bootstrap-icons";
 import { Row, Col, Form, Button } from "react-bootstrap";
-import Footer from "../components/footer";
-import Header from "../components/Header";
 
 function Contact() {
   return (

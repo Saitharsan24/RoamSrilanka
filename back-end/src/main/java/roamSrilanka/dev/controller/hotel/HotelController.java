@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import roamSrilanka.dev.model.Hotel.HotelRequest;
-import roamSrilanka.dev.model.Hotel.HotelRooms;
 import roamSrilanka.dev.model.Hotel.Hotels;
 import roamSrilanka.dev.service.hotel.HotelService;
 
@@ -53,6 +51,7 @@ public class HotelController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
+
         // Update only the non-null fields from updatedHotel
         if (updatedHotel.getHotelName() != null && !updatedHotel.getHotelName().isEmpty()) {
             existingHotel.setHotelName(updatedHotel.getHotelName());
@@ -78,9 +77,11 @@ public class HotelController {
         if (updatedHotel.getLongitude() != null) {
             existingHotel.setLongitude(updatedHotel.getLongitude());
         }
+      
         // Save the updated hotel
         hotelService.saveHotel(existingHotel);
 
         return new ResponseEntity<>(existingHotel, HttpStatus.OK);
     }
+
 }

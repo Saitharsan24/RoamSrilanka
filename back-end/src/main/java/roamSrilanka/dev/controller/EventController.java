@@ -2,12 +2,13 @@ package roamSrilanka.dev.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import roamSrilanka.dev.model.Event;
+import roamSrilanka.dev.model.Holidayplanner.Event;
 import roamSrilanka.dev.service.EventService;
 
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class EventController {
     @Autowired

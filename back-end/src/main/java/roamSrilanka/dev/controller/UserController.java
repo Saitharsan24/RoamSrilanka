@@ -32,6 +32,9 @@ public class UserController {
 
              JSONObject jsonResponse = new JSONObject();
              jsonResponse.put("userType", user.getUserType());
+             jsonResponse.put("userId", user.getUserId());
+             jsonResponse.put("userName", user.getUserName());
+             jsonResponse.put("userFullname", user.getUserFullname());
              return new ResponseEntity<>(jsonResponse.toString(), HttpStatus.OK);
 
          }else{

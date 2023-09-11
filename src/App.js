@@ -31,6 +31,11 @@ import AdminChangePassword from "./pages/admin/admin_change_password";
 import AdminBlogAccept from "./pages/admin/admin_blog_accept";
 import AdminPackage from "./pages/admin/admin_package";
 import AdminPackageAccept from "./pages/admin/admin_package_accept";
+import AdminPlannerReg from "./pages/admin/admin_holidayplanner_reg";
+import AdminPlannertDetails from "./pages/admin/admin_holidayplanner_view_detail";
+import AdminVehicle from "./pages/admin/admin_vehicle";
+import AdminVehicleDetail_1 from "./pages/admin/admin_vehice_detail";
+
 
 import SystemError from "./pages/error";
 import ToursitAccessoriesRent from "./pages/Tourist/tourist-accessories-rent";
@@ -79,11 +84,10 @@ import HPPackage from "./pages/holiday-planner/HPPackage";
 import HPEvent from "./pages/holiday-planner/HPEvent";
 import HPItem from "./pages/holiday-planner/HPItem";
 import HPUpdateEvent1 from "./pages/holiday-planner/HPUpdateEvent1";
-import HPUpdateEvent2 from "./pages/holiday-planner/HPUpdateEvent2";
-import HPUpdateEvent3 from "./pages/holiday-planner/HPUpdateEvent3";
 import HPUpdatePackage1 from "./pages/holiday-planner/HPUpdatePackage1";
 import HPUpdatePackage2 from "./pages/holiday-planner/HPUpdatePackage2";
 import HPUpdatePackage3 from "./pages/holiday-planner/HPUpdatePackage3";
+import HPViewpackage from "./pages/holiday-planner/HPViewPackage";
 import HPUpdateItem1 from "./pages/holiday-planner/HPUpdateItem1";
 import HPViewEvent from "./pages/holiday-planner/HPViewEvent";
 import HPViewItem from "./pages/holiday-planner/HPViewItem";
@@ -97,6 +101,11 @@ import Profile from "./pages/driver/profile";
 import DriverReport from "./pages/driver/report";
 import DriverChat from "./pages/driver/chat";
 import DriverVehicle from "./pages/driver/vehicle";
+import DrivernewVehicle from "./pages/driver/newVehicle";
+import DriverRequest from "./pages/driver/requests";
+import DriverTrips from "./pages/driver/trips";
+import { useSession } from "./Context/SessionContext";
+
 
 const route = createBrowserRouter(
   createRoutesFromElements(
@@ -175,6 +184,11 @@ const route = createBrowserRouter(
         <Route path="adminblogaccept" element={<AdminBlogAccept/>}></Route>
         <Route path="adminpackage" element={<AdminPackage/>}></Route>
         <Route path="adminpackageaccept" element={<AdminPackageAccept/>}></Route>
+        <Route path="adminholidayplannrreg" element={<AdminPlannerReg/>}></Route>
+        <Route path="adminholidayplannrdetail" element={<AdminPlannertDetails/>}></Route>
+        <Route path="adminvehicle" element={<AdminVehicle/>}></Route>
+        <Route path="adminvehicledetail_1" element={<AdminVehicleDetail_1/>}></Route>
+
       </Route>
           
       <Route path="/holidayPlanner/" element={<HolidayPlannerLayout />} errorElement={<SystemError />}>
@@ -185,11 +199,10 @@ const route = createBrowserRouter(
         <Route path="plannerEvent" element={<HPEvent />}></Route>
         <Route path="plannerItem" element={<HPItem />}></Route>
         <Route path="plannerEvent1" element={<HPUpdateEvent1 />}></Route>
-        <Route path="plannerEvent2" element={<HPUpdateEvent2 />}></Route>
-        <Route path="plannerEvent3" element={<HPUpdateEvent3 />}></Route>
         <Route path="plannerPackage1" element={<HPUpdatePackage1 />}></Route>
         <Route path="plannerPackage2" element={<HPUpdatePackage2 />}></Route>
         <Route path="plannerPackage3" element={<HPUpdatePackage3 />}></Route>
+        <Route path="plannerViewPackage" element={<HPViewpackage />}></Route>
         <Route path="plannerItem1" element={<HPUpdateItem1 />}></Route>
         <Route path="plannerViewEvent" element={<HPViewEvent />}></Route>
         <Route path="plannerViewItem" element={<HPViewItem />}></Route>
@@ -201,11 +214,13 @@ const route = createBrowserRouter(
       <Route path="/driver/" element={<DriverLayout />} errorElement={<SystemError />}>
         <Route index element={<Driver />}></Route>
         <Route path="driverDashboard" element={<Driver />}></Route>
-        <Route path="driverRequests" element={<HotelRequest />}></Route>
+        <Route path="driverRequests" element={<DriverRequest />}></Route>
         <Route path="driverProfile" element={<Profile />}></Route>
         <Route path="driverReport" element={<DriverReport />}></Route>
         <Route path="driverChat" element={<DriverChat />}></Route>
         <Route path="driverVehicle" element={<DriverVehicle />}></Route>
+        <Route path="driverTrips" element={<DriverTrips />}></Route>
+        <Route path="drivernewVehicle" element={<DrivernewVehicle />}></Route>
       </Route>
 
     </>
@@ -213,6 +228,10 @@ const route = createBrowserRouter(
 );
 
 function App() {
+
+  const sessionData = useSession();
+  console.log(sessionData);
+
   return (
     <>
       <RouterProvider router={route} />

@@ -1,0 +1,82 @@
+.holi-main{
+    background-color: #F1F1F2;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 40rem;
+}
+
+.holi-main .holi-content-container{
+    width: 40rem;
+    height: 37rem;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(3px);
+    padding: 25px 30px 30px 30px;
+    margin-right: 100px;
+}
+
+.holi-content-container h4{
+    color: #004577;
+}
+
+.holi-content-container h4 span{
+    font-weight: 800;
+}
+
+.holi-input-row p{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.holi-input-row input{
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    padding: 10px;
+}
+
+.holi-input-row select{
+    border: none;
+    border-radius: 5px;
+    height: 40px;
+    padding: 10px;
+}
+
+.holi-input-row select:focus{
+    outline: none;
+}
+
+.holi-input-row-btn{
+    border: none !important;
+}
+
+.holi-input-row-btn:hover{
+    background-color: #005fa3 !important;
+}
+
+.already-have-account a{
+    text-decoration: none;
+    color: #004577;
+    font-weight: 600;
+}
+
+.holi-input-row-registerlinks{
+    margin-top: -10px;
+}
+
+.holi-input-row-registerlinks a{
+    text-decoration: none;
+    color: #004577;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.holi-input-row-elements{
+    width: 33%;
+}
+
+.holi-error-text {
+    color: red !important;
+    font-size: 12px !important;
+  }

@@ -98,8 +98,6 @@ public class HotelRoomController {
             existingRoom.setOccupancy(updatedRoom.getOccupancy());
         }
 
-
-
         // Save the updated room
         hotelRoomServices.saveRoom(existingRoom);
 
