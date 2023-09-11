@@ -18,13 +18,4 @@ public class TouristController {
     @Autowired
     private TouristService touristService;
 
-    @PostMapping("/addTourist")
-    public ResponseEntity<Tourist> addTourist(Tourist tourist){
-        Tourist newTourist = touristService.addTourist(tourist);
-        if(newTourist != null){
-            return new ResponseEntity<>(newTourist, HttpStatus.CREATED);
-        }else{
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
 }

@@ -40,6 +40,10 @@ public class User {
         this.password = password;
     }
 
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
 
     //getters
 
@@ -77,4 +81,7 @@ public class User {
         this.password = password;
     }
 
+    public void setTourist(Tourist tourist) {
+        this.tourist = tourist;
+    }
 }
