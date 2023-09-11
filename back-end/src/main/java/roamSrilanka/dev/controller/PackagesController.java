@@ -25,6 +25,13 @@ public class PackagesController {
         return ResponseEntity.ok("Package added successfully");
     }
 
+    @DeleteMapping("/packages/{id}")
+    public ResponseEntity<String> deletePackage(@PathVariable Integer id) {
+        packagesService.deletePackage(id);
+        return ResponseEntity.ok("Package deleted successfully");
+    }
+
+
 
 
 }

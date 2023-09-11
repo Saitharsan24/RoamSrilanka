@@ -17,4 +17,9 @@ public class PackagesService {
         // You can perform any necessary validation or business logic here before saving
         packagesRepository.save(newPackage);
     }
+
+    public void deletePackage(Integer id) {
+        // You can perform any necessary validation or business logic here before deleting
+        packagesRepository.deleteById(id);
+    }
 }
