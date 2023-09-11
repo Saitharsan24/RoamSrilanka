@@ -1,17 +1,21 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import * as Icon from "react-bootstrap-icons";
 import StarRating from "../../components/Rating";
 import "../../styles/updatepack.css";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import HpPopup from "../../components/HpPopup";
-
-
+import axios from "axios";
 
 
 
 const HPUpdatePackage1 = () => {
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 5000,
+  });
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const handleToggleChange1 = () => {
@@ -23,58 +27,97 @@ const HPUpdatePackage1 = () => {
 
   const [showPopup, setShowPopup] = useState(false);
 
+  const [placesInput, setPlacesInput] = useState("");
+  const [places, setPlaceSuggestions] = useState([]);
+  const fetchPlaceSuggestions = async (query) => {
+    try {
+      const response = await axiosInstance.get(`https://nominatim.openstreetmap.org/search?q=${query}&countrycodes=LK&format=json`);
+      if (response.status === 200) {
+        const suggestions = response.data.map((item) => ({
+          name: item.display_name,
+        }));
+        setPlaceSuggestions(suggestions);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+    }
+  };
   
+
   const [formData, setFormData] = useState({
-    name:'',
-    amount:'',
-    days:'',
-    tourGuide:false,
-    hotelRating:0,
-    meals:false,
-    places:''
+    package_name: "",
+    price: 0,
+    days: 0,
+    trip_guide: false,
+    hotel_rating: 0,
+    meals: false,
+    places: "",
   });
 
+  const handleSuggestionClick = (suggestion) => {
+    console.log("handleSuggestionClick called with suggestion:", suggestion.name);
+    setPlacesInput(suggestion.name);
+    formData.places = suggestion.name;
+    setPlaceSuggestions([]);
+  };
+
+  const handlePlacesInputChange = (e) => {
+    const inputvalue = e.target.value;
+    setPlacesInput(inputvalue);
+    if (inputvalue.length >= 3) {
+      fetchPlaceSuggestions(inputvalue);
+    } else {
+      setPlaceSuggestions([]);
+    }
+  };
+
+
   const handleChange = (e) => {
-    const {name, value, type, checked} = e.target;
-    const newValue = type === 'checkbox' ? checked : value;
-    
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+
     setFormData((prevData) => ({
       ...prevData,
       [name]: newValue,
     }));
+  };
 
- };
+  const handleHotelRatingChange = (rating) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      hotel_rating: rating,
+    }));
+  };
 
- const handleHotelRatingChange = (rating) => {
-  setFormData((prevData) => ({
-    ...prevData,
-    hotelRating: rating,
-  }));
-};
- 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  console.log(formData);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formData);
 
-  try {
-    const response = await fetch('/packages', {
-      
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await axiosInstance.post("/packages", formData);
 
-    if (response.ok) {
-      // Successful response, do something
-    } else {
-      // Handle error
+      if (response.status === 200) {
+        // Successful response, do something
+        console.log("Data sent successfully:", response.data);
+        // Reset the form data if needed
+        setFormData({
+          package_name: "",
+          price: "",
+          days: "",
+          trip_guide: false,
+          hotel_rating: 0,
+          meals: false,
+          places: "",
+        });
+      } else {
+        // Handle error
+        console.error("Error sending data:", response.statusText);
+      }
+    } catch (error) {
+      // Handle network error
+      console.error("Network error:", error);
     }
-  } catch (error) {
-    // Handle network error
-  }
-};
+  };
 
   return (
     // <div className="d-flex flex-column">
@@ -121,8 +164,8 @@ const HPUpdatePackage1 = () => {
                     className="p-2"
                     type="text"
                     placeholder="Name of the package"
-                    name="name"
-                    value={formData.name}
+                    name="package_name"
+                    value={formData.package_name}
                     onChange={handleChange}
                   ></input>
                 </label>
@@ -135,8 +178,8 @@ const HPUpdatePackage1 = () => {
                     type="number"
                     placeholder="Amount of the Package"
                     min={1}
-                    name="amount"
-                    value={formData.amount}
+                    name="price"
+                    value={formData.price}
                     onChange={handleChange}
                   ></input>
                 </label>
@@ -163,9 +206,8 @@ const HPUpdatePackage1 = () => {
                         handleToggleChange1(); // Call your existing toggle handler
                         handleChange(e); // Call the common handleChange function
                       }}
-                      value={formData.tourGuide}
-                      name="tourGuide"
-                      
+                      value={formData.trip_guide}
+                      name="trip_guide"
                     />
                   </p>
                 </div>
@@ -186,8 +228,9 @@ const HPUpdatePackage1 = () => {
                 </div>
                 <div className="col-12 col-md-6 col-lg-3">
                   <StarRating
-                  selectedRating={formData.hotelRating}
-                  onRatingChange={handleHotelRatingChange} />
+                    selectedRating={formData.hotel_rating}
+                    onRatingChange={handleHotelRatingChange}
+                  />
                 </div>
                 <label className="d-flex flex-lg-row gap-3">
                   Meals
@@ -209,12 +252,19 @@ const HPUpdatePackage1 = () => {
                     type="text"
                     placeholder="Places of the Package"
                     name="places"
-                    value={formData.places}
-                    onChange={handleChange}
+                    value={placesInput}
+                    onChange={handlePlacesInputChange}
                   ></input>
                 </label>
+                {places.length > 0 && (
+                   <ul className="suggestions">
+                   {places.map((suggestion, index) => (
+                     <li onClick={() => handleSuggestionClick(suggestion)} key={index}>{suggestion.name}</li>
+                   ))}
+                 </ul>
+                )}
 
-                <label>
+                {/* <label>
                   {" "}
                   <br />
                   <input
@@ -222,7 +272,7 @@ const HPUpdatePackage1 = () => {
                     type="text"
                     placeholder="Added Places"
                   ></input>
-                </label>
+                </label> */}
               </div>
             </div>
             <div className="d-flex flex-lg-row flex-md-column flex-column gap-sm-3 justify-content-between mx-2">
@@ -244,11 +294,7 @@ const HPUpdatePackage1 = () => {
           </div>
         </form>
       </div>
-      {showPopup && (
-        
-          <HpPopup onClose={() => setShowPopup(false)} />
-
-      )}
+      {showPopup && <HpPopup onClose={() => setShowPopup(false)} />}
     </div>
     //   </div>
     // </div>

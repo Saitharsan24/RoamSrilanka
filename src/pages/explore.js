@@ -1,7 +1,6 @@
 import React from 'react'
 import './../styles/explore.css';
 import {IoSearchCircle} from 'react-icons/io5';
-import { HiArrowSmRight } from "react-icons/hi";
 
 
 
@@ -31,7 +30,7 @@ function Explore() {
                 <div>
                     <div className="where-to-travl-text d-flex flex-column justify-content-between align-items-left">
                         <h1 style={{fontSize:"3rem", fontWeight:"700", color:"#035C94",fontFamily:"jost"}}>Where to <span style={{fontFamily: "jost", color: "#DB163A", fontWeight: '800'}}>travel</span> in <span style={{fontFamily: "jost", color: "#DB163A", fontWeight: '800'}} >Sri Lanka?</span></h1>
-                        <p style={{fontSize:"20px", margin:"0px",color:"#DB163A"}}>See more <HiArrowSmRight /></p>
+                        <p style={{fontSize:"20px", margin:"0px",color:"#DB163A"}}>See more</p>
                     </div>
                     <div className='where-to-visit-carousel d-flex flex-row justify-content-center align-align-items-center gap-5 m-5'>
                         <div className="where-to-visit-card d-flex flex-column justify-content-start align-align-items-center" style={{height:'30rem', width:'19rem', backgroundColor:"#EDEDED", borderRadius:"5rem 0rem 1rem 1rem"}}>
@@ -90,7 +89,7 @@ function Explore() {
                 <div className='mt-5 mb-5'>
                     <div className="where-to-travl-text d-flex flex-column justify-content-center align-items-end">
                         <h1 style={{fontSize:"3rem", fontWeight:"700", color:"#035C94",fontFamily:"jost"}}>Upcoming <span style={{fontFamily: "jost", color: "#DB163A", fontWeight: '800'}} >events</span></h1>
-                        <p style={{fontSize:"20px", margin:"0px", color:"#DB163A"}}>See more <HiArrowSmRight /></p>
+                        <p style={{fontSize:"20px", margin:"0px", color:"#DB163A"}}>See more </p>
                     </div>
         
                     <div className='where-to-visit-carousel d-flex flex-row justify-content-center align-align-items-center gap-5 m-5'>

@@ -25,14 +25,21 @@ public class HotelRoomServices {
     //Adding hotel rooms to database
     public HotelRooms addHotelRoom(HotelRooms hotelRooms){
 
-        Hotels existingHotel = hotelRepository.findById(hotelRooms.getHotelId()).orElseThrow(() -> new EntityNotFoundException("Hotel not found"));
+        //Hotels existingHotel = hotelRepository.findById(hotelRooms.getHotelId()).orElseThrow(() -> new EntityNotFoundException("Hotel not found"));
+//        hotelRooms.setHotel(existingHotel);
         return hotelRoomsRepository.save(hotelRooms);
     }
 
-    // Retrieves a room by its ID.
-    public Optional<HotelRooms> getRoomById(Integer id) {
-        return hotelRoomsRepository.findById(id);
+    // Retrieves a room by its hotel_Id.
+    public List<HotelRooms> getRoomsByHotelId(Integer hotelId) {
+        return hotelRoomsRepository.findByHotelId(hotelId);
     }
+
+    // Retrieves a room by its ID.
+    public List<HotelRooms> getRoomsByRoomId(Integer roomId) {
+        return hotelRoomsRepository.findByRoomId(roomId);
+    }
+
 
     // Retrieves all rooms.
     public List<HotelRooms> getAllRooms() {
@@ -40,16 +47,27 @@ public class HotelRoomServices {
     }
 
     //Delete specific room using ID
-    public void deleteRoom(Integer id) {
-        hotelRoomsRepository.deleteById(id);
+    public void deleteRoom(Integer roomId) {
+        hotelRoomsRepository.deleteById(roomId);
     }
 
     // Updates an existing room.
-    public HotelRooms updateRoom(HotelRooms room) {
-        if (hotelRoomsRepository.existsById(room.getRoomId())) {
-            return hotelRoomsRepository.save(room);
+//    public HotelRooms updateRoom(HotelRooms room) {
+//        if (hotelRoomsRepository.existsById(room.getRoomId())) {
+//            return hotelRoomsRepository.save(room);
+//        }
+//        throw new EntityNotFoundException("Room not found with id " + room.getRoomId());
+//    }
+
+    public HotelRooms getRoomById(String roomId) {
+        Optional<HotelRooms> room = hotelRoomsRepository.findById(Integer.parseInt(roomId));
+        if (room.isPresent()) {
+            return room.get();
         }
-        throw new EntityNotFoundException("Room not found with id " + room.getRoomId());
+        throw new EntityNotFoundException("Room not found with id " + roomId);
     }
 
+    public void saveRoom(HotelRooms existingRoom) {
+        hotelRoomsRepository.save(existingRoom);
+    }
 }

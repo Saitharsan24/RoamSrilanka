@@ -8,6 +8,7 @@ import roamSrilanka.dev.service.EventService;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class EventController {
     @Autowired

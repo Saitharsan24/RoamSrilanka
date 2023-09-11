@@ -41,7 +41,7 @@ function GuideRequest() {
         date: "2023-07-04",
         btn: [
           <>
-            <div className="view-more"><a href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
+            <div className="view-more"><a style={{textDecoration:"none"}} href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
           </>,
         ],
       },
@@ -51,7 +51,7 @@ function GuideRequest() {
         date: "2023-07-01",
         btn: [
           <>
-            <div className="view-more"><a href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
+            <div className="view-more"><a style={{textDecoration:"none"}} href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
           </>,
         ],
       },
@@ -61,7 +61,7 @@ function GuideRequest() {
         date: "2023-07-02",
         btn: [
           <>
-            <div className="view-more"><a href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
+            <div className="view-more"><a style={{textDecoration:"none"}} href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
           </>,
         ],
       },
@@ -71,7 +71,7 @@ function GuideRequest() {
         date: "2023-07-08",
         btn: [
           <>
-            <div className="view-more"><a href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
+            <div className="view-more"><a style={{textDecoration:"none"}} href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
           </>,
         ],
       },
@@ -81,7 +81,7 @@ function GuideRequest() {
         date: "2023-07-09",
         btn: [
           <>
-            <div className="view-more"><a href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
+            <div className="view-more"><a style={{textDecoration:"none"}} href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
           </>,
         ],
       },
@@ -91,7 +91,7 @@ function GuideRequest() {
         date: "2023-07-10",
         btn: [
           <>
-            <div className="view-more"><a href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
+            <div className="view-more"><a style={{textDecoration:"none"}} href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
           </>,
         ],
       },
@@ -101,7 +101,7 @@ function GuideRequest() {
         date: "2023-07-11",
         btn: [
           <>
-            <div className="view-more"><a href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
+            <div className="view-more"><a style={{textDecoration:"none"}} href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
           </>,
         ],
       },
@@ -111,7 +111,7 @@ function GuideRequest() {
         date: "2023-07-12",
         btn: [
           <>
-            <div className="view-more"><a href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
+            <div className="view-more"><a style={{textDecoration:"none"}} href="guideRequestForm">View More <Icon.ArrowRightSquareFill/></a></div>
           </>,
         ],
       },

@@ -39,21 +39,29 @@ public class Hotels {
     private Double latitude;
 
     @ElementCollection
-    @Column(name = "hotel_amenities")
-    private List<String> hotelAmenities;
-
-    @ElementCollection
     @Column(name = "hotel_images")
     private List<String> hotelImages;
 
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<HotelRooms> rooms;  // One-to-Many relationship with HotelRooms
+//    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<HotelRooms> rooms;  // One-to-Many relationship with HotelRooms
 
     //Constructors
     public Hotels() {
     }
 
-    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, Double longitude, Double latitude, List<String> hotelAmenities, List<String> hotelImages) {
+    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, Double longitude, Double latitude, List<String> hotelImages) {
+        this.hotelName = hotelName;
+        this.starRating = starRating;
+        this.userRating = userRating;
+        this.description = description;
+        this.hotelType = hotelType;
+        this.address = address;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.hotelImages = hotelImages;
+    }
+
+    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, Double longitude, Double latitude, List<String> hotelImages) {
         this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.starRating = starRating;
@@ -63,11 +71,10 @@ public class Hotels {
         this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.hotelAmenities = hotelAmenities;
         this.hotelImages = hotelImages;
     }
 
-    public Hotels(Integer hotelId, String hotelName, Integer starRating, String description, String hotelType, String address, Double longitude, Double latitude, List<String> hotelAmenities, List<String> hotelImages) {
+    public Hotels(Integer hotelId, String hotelName, Integer starRating, String description, String hotelType, String address, Double longitude, Double latitude, List<String> hotelImages) {
         this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.starRating = starRating;
@@ -76,18 +83,17 @@ public class Hotels {
         this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.hotelAmenities = hotelAmenities;
         this.hotelImages = hotelImages;
     }
 
     //Getters and Setters
-    public List<HotelRooms> getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(List<HotelRooms> rooms) {
-        this.rooms = rooms;
-    }
+//    public List<HotelRooms> getRooms() {
+//        return rooms;
+//    }
+//
+//    public void setRooms(List<HotelRooms> rooms) {
+//        this.rooms = rooms;
+//    }
 
     public Integer getHotelId() {
         return hotelId;
@@ -159,14 +165,6 @@ public class Hotels {
 
     public void setLatitude(Double latitude) {
         this.latitude = latitude;
-    }
-
-    public List<String> getHotelAmenities() {
-        return hotelAmenities;
-    }
-
-    public void setHotelAmenities(List<String> hotelAmenities) {
-        this.hotelAmenities = hotelAmenities;
     }
 
     public List<String> getHotelImages() {

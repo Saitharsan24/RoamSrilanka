@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-import Header from "../components/Header";
-import Footer from "../components/footer";
-import bg from "../assets/images/Sri-Lanka-Waterfalls-gallery-pop-up-1-min 1.png";
-import { render } from "@testing-library/react";
 import "../styles/services.css";
 import ser_1 from "../assets/images/ser_1.png";
 import map from "../assets/images/Vector.png";
