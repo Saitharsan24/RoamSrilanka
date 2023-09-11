@@ -3,17 +3,20 @@ import axios from "axios";
 import "../../styles/updatepack.css";
 import { Link } from "react-router-dom";
 
-function HPViewEvent() {
+
+function HPViewEvent({ eventId, onBack }) {
   const apiBaseUrl = "http://localhost:8080";
+
   const axiosInstance = axios.create({
     baseURL: apiBaseUrl,
     timeout: 5000,
   });
 
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [events, setEvents] = useState([]);
+  const [selectedEventId, setSelectedEventId] = useState(null);
 
   useEffect(() => {
-    const eventId = 48; // Replace with the desired event ID
     const fetchEventById = async () => {
       try {
         const response = await axiosInstance.get(
@@ -35,6 +38,28 @@ function HPViewEvent() {
   if (!selectedEvent) {
     return <div>No Record</div>;
   }
+
+  const handleDeleteEvent = async () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this event?"
+    );
+    if (confirmed) {
+      try {
+        const response = await axiosInstance.delete(`/deleteEvent/${eventId}`);
+        if (response.status === 200) {
+          const updatedEvents = events.filter(
+            (event) => event.eventId !== eventId
+          );
+          setEvents(updatedEvents);
+          window.location.reload();
+        } else {
+          console.error("Failed to delete event:", response.status);
+        }
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
+    }
+  };
 
   return (
     <div>
@@ -132,7 +157,8 @@ function HPViewEvent() {
                         type="text"
                         value={selectedEvent.description}
                         readOnly
-                        style={{minHeight: "50px"}}
+                        style={{ minHeight: "50px" }}
+
                       ></textarea>
                     </label>
                   </div>
@@ -142,14 +168,12 @@ function HPViewEvent() {
           </div>
         </div>
         <div className="d-flex flex-row justify-content-between mx-5 mb-5">
-          <button className="btn-cancel" type="submit">
+          <button className="btn-cancel" onClick={handleDeleteEvent}>
             Delete
           </button>
-          <Link to="/holidayPlanner/plannerEvent">
-            <button className="btn-next" type="submit">
-              Cancel
-            </button>
-          </Link>
+          <button className="btn-next" onClick={onBack}>
+            Cancel
+          </button>
         </div>
       </div>
     </div>

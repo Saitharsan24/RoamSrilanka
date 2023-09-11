@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import { MDBDataTable } from "mdbreact";
 import axios from "axios";
+import HPViewEvent from "./HPViewEvent";
+import DeleteConfirm from "../../components/DeleteConfirm";
 
 function HPEvent() {
   const apiBaseUrl = "http://localhost:8080";
@@ -12,7 +14,42 @@ function HPEvent() {
     timeout: 5000,
   });
 
+
+  const [selectedEventId, setSelectedEventId] = useState(null);
   const [events, setEvents] = useState([]);
+  const [isDialogVisible, setDialogVisible] = useState(false);
+  const [eventToDelete, setEventToDelete] = useState(null);
+
+  const handleDeleteEvent = (eventId) => {
+    setEventToDelete(eventId);
+    setDialogVisible(true);
+  };
+
+  const handleDialogClose = () => {
+    setDialogVisible(false);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      const response = await axiosInstance.delete(
+        `/deleteEvent/${eventToDelete}`
+      );
+      if (response.status === 200) {
+        // Filter out the deleted event from the events array
+        const updatedEvents = events.filter(
+          (event) => event.id !== eventToDelete
+        );
+        setEvents(updatedEvents);
+        // Close the dialog
+        setDialogVisible(false);
+        window.location.reload();
+      } else {
+        console.error("Failed to delete event:", response.status);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +67,6 @@ function HPEvent() {
 
     fetchData();
   }, []);
-
   const handleDeleteEvent = async (eventId) => {
     const confirmed = window.confirm(
       "Are you sure you want to delete this event?"
@@ -97,8 +133,13 @@ function HPEvent() {
       date: event.date,
       places: event.places,
       button1: (
-        <Link to={`/holidayPlanner/plannerViewEvent`}>
-          <button style={{ border: "inherit" }} className="hp-accept">
+
+        <Link to="/holidayPlanner/plannerEvent">
+          <button
+            style={{ border: "inherit" }}
+            className="hp-accept"
+            onClick={() => setSelectedEventId(event.eventId)}
+          >
             View
           </button>
         </Link>
@@ -118,38 +159,65 @@ function HPEvent() {
   return (
     <div className="d-flex w-100">
       <div className="d-flex flex-column col-lg-12 p-4 ">
-        <div className="d-grid d-md-flex justify-content-md-end">
-          <Link to="/holidayPlanner/plannerEvent1">
-            <button
-              style={{
-                width: "15rem",
-                borderRadius: "11px",
-                border: "1px solid #004577",
-                backgroundColor: "#004577",
-                color: "#FFFFFF",
-                fontFamily: "Lato",
-                fontSize: "20px",
-                boxShadow: "0px 4px 40px rgba(0, 69, 119, 0.35)",
-              }}
-              type="submit"
-            >
-              Add New Event
-            </button>
-          </Link>
-        </div>
-
-        <p
-          style={{ fontFamily: "Poppins", fontSize: "1.5rem" }}
-          className="ms-5 m-0"
-        >
-          <b>Existing Events</b>
-        </p>
-        <MDBDataTable
-          striped
-          bordered
-          //   small
-          data={data}
-        />
+        {selectedEventId ? (
+          // Display event details when an event is selected
+          <HPViewEvent
+            eventId={selectedEventId}
+            onBack={() => setSelectedEventId(null)}
+          />
+        ) : (
+          // Display event list when no event is selected
+          <div>
+            <div className="d-grid d-md-flex justify-content-md-end">
+              <Link to="/holidayPlanner/plannerEvent1">
+                <button
+                  style={{
+                    width: "15rem",
+                    borderRadius: "11px",
+                    border: "1px solid #004577",
+                    backgroundColor: "#004577",
+                    color: "#FFFFFF",
+                    fontFamily: "Lato",
+                    fontSize: "20px",
+                    boxShadow: "0px 4px 40px rgba(0, 69, 119, 0.35)",
+                  }}
+                  type="submit"
+                >
+                  Add New Event
+                </button>
+              </Link>
+            </div>
+            <div>
+              <p
+                style={{ fontFamily: "Poppins", fontSize: "1.5rem" }}
+                className="ms-5 m-0"
+              >
+                <b>Existing Events</b>
+              </p>
+              <MDBDataTable
+                striped
+                bordered
+                //   small
+                data={data}
+              />
+            </div>
+            {isDialogVisible && (
+              <DeleteConfirm
+                message="Are you sure you want to delete this event?"
+                // nameProduct={/* Pass the name of the event here */}
+                onDialog={(confirmed) => {
+                  if (confirmed) {
+                    // Handle event deletion here
+                    handleConfirmDelete();
+                  } else {
+                    // Close the dialog
+                    handleDialogClose();
+                  }
+                }}
+              />
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

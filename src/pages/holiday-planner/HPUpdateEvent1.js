@@ -27,6 +27,7 @@ const HPUpdateEvent1 = () => {
     timeout: 5000,
   });
 
+
   const handlePost = async (e) => {
     e.preventDefault();
 
@@ -38,6 +39,7 @@ const HPUpdateEvent1 = () => {
         places: formData.places,
         description: formData.description,
       });
+
 
       if (response.status === 200) {
         console.log("ok");
@@ -69,12 +71,6 @@ const HPUpdateEvent1 = () => {
         >
           New Event
         </h1>
-        {/* <div className="d-none d-sm-flex d-md-flex d-lg-flex flex-row justify-content-evenly">
-          <img
-            className="img-fluid"
-            src={require("../../assets/images/FirstProgressBar.png")}
-          ></img>
-        </div> */}
 
         <form className="pack" onSubmit={handlePost} method="POST">
           <div className="d-flex flex-column gap-5">
@@ -135,6 +131,7 @@ const HPUpdateEvent1 = () => {
                     onChange={(e) => {
                       inputFormdata(e.target.name, e.target.value);
                     }}
+
                   ></input>
                 </label>
                 <label>
@@ -168,25 +165,29 @@ const HPUpdateEvent1 = () => {
                   ></input>
                 </label>
                 <label>
-                  Description{" "}
-                  <br />
+                  Description <br />
                   <textarea
                     className="p-2"
                     type="text"
                     placeholder="Description"
+                    name="description"
+                    value={formData.description}
+                    onChange={(e) => {
+                      inputFormdata(e.target.name, e.target.value); 
+                    }}
+                    style={{minHeight: "50px"}}
                   ></textarea>
                 </label>
-                <label >
-                      Image:
-                      <div className="d-flex justify-content-center w-100">
-                        <DragDropFile />
-                      </div>
-                    </label>
+                <label>
+                  Image:
+                  <div className="d-flex justify-content-center w-100">
+                    <DragDropFile />
+                  </div>
+                </label>
               </div>
             </div>
 
             <div className="d-flex flex-column flex-md-column flex-lg-row gap-3 justify-content-between mx-2">
-
               <Link to="/holidayPlanner/plannerEvent">
                 <button className="btn-cancel" type="submit">
                   Cancel
@@ -210,9 +211,6 @@ const HPUpdateEvent1 = () => {
         {showPopup && <HpPopup2 onClose={() => setShowPopup(false)} />}
       </Link>
     </div>
-    //   </div>
-
-    // </div>
   );
 };
 
