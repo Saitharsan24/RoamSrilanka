@@ -27,6 +27,5 @@ public class HolidayplannerService {
         return holidayplannerRepository.findById(userId).orElse(null);
     }
 
-
-
+    
 }
