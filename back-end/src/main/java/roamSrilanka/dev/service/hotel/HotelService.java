@@ -2,6 +2,7 @@ package roamSrilanka.dev.service.hotel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import roamSrilanka.dev.model.Hotel.HotelRequest;
 import roamSrilanka.dev.model.Hotel.Hotels;
 import roamSrilanka.dev.repository.hotel.HotelRepository;
 
