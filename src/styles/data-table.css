@@ -74,5 +74,8 @@ tr:nth-child(even) {
   background-color: #DB163A;
   border-radius: 5px;
   text-align: center;
-  color: #fff;
+  color: #fff;}
+  
+.pagination .page-item .page-link .sr-only {
+  display: none;
 }

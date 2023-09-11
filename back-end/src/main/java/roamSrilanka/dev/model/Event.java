@@ -28,6 +28,7 @@ public class Event {
         @Column(name = "description")
         private String description;
 
+
         @ElementCollection
         @Column(name = "event_images")
         private List<String> eventImages;
@@ -92,7 +93,7 @@ public class Event {
         public void setDescription(String description) {
             this.description = description;
         }
-
+  
         public List<String> getEventImages() {
             return eventImages;
         }

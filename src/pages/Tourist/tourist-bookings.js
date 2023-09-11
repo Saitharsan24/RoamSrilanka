@@ -1,5 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import "./../../styles/tourist/tourist_booking.css";
+import "./../../styles/data-table.css";
 import { MDBDataTable } from "mdbreact";
 import "../../styles/admin/admin_user.css";
 

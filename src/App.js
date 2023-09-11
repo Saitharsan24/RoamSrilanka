@@ -96,6 +96,11 @@ import Profile from "./pages/driver/profile";
 import DriverReport from "./pages/driver/report";
 import DriverChat from "./pages/driver/chat";
 import DriverVehicle from "./pages/driver/vehicle";
+import DrivernewVehicle from "./pages/driver/newVehicle";
+import DriverRequest from "./pages/driver/requests";
+import DriverTrips from "./pages/driver/trips";
+import { useSession } from "./Context/SessionContext";
+
 
 const route = createBrowserRouter(
   createRoutesFromElements(
@@ -199,11 +204,13 @@ const route = createBrowserRouter(
       <Route path="/driver/" element={<DriverLayout />} errorElement={<SystemError />}>
         <Route index element={<Driver />}></Route>
         <Route path="driverDashboard" element={<Driver />}></Route>
-        <Route path="driverRequests" element={<HotelRequest />}></Route>
+        <Route path="driverRequests" element={<DriverRequest />}></Route>
         <Route path="driverProfile" element={<Profile />}></Route>
         <Route path="driverReport" element={<DriverReport />}></Route>
         <Route path="driverChat" element={<DriverChat />}></Route>
         <Route path="driverVehicle" element={<DriverVehicle />}></Route>
+        <Route path="driverTrips" element={<DriverTrips />}></Route>
+        <Route path="drivernewVehicle" element={<DrivernewVehicle />}></Route>
       </Route>
 
     </>
@@ -211,6 +218,10 @@ const route = createBrowserRouter(
 );
 
 function App() {
+
+  const sessionData = useSession();
+  console.log(sessionData);
+
   return (
     <>
       <RouterProvider router={route} />

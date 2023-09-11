@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import "./../styles/login.css";
 import axios from "axios";
+import { useSession } from '../Context/SessionContext';
 
     export default function Login() {
         const apiBaseUrl = "http://localhost:8080";
@@ -13,6 +14,7 @@ import axios from "axios";
 
         const [userName, setUsername] = React.useState("");
         const [password, setPassword] = React.useState("");
+        const { setSessionData } = useSession();
 
         const navigate =useNavigate();
 
@@ -26,6 +28,14 @@ import axios from "axios";
                 });
 
                 if (response.status === 200) {
+                    
+                    setSessionData({
+                        loggedIn: true,
+                        userType: response.data.userType,
+                        userName: response.data.userName,
+                        userId: response.data.userId,
+                    })
+
                     const userType = response.data.userType;
 
                     if (userType === "admin") {
@@ -57,16 +67,15 @@ import axios from "axios";
     
         
   return (
-        <div className='login-bg'>    
-                <div className='col-md-6 offset-md-1 p-5 mt-5 shadow' style={{ 
-                    position: 'absolute',
-                    top: '20%',
-                    left: '0%',
+           <div className='login-bg'>
+
+                <div className='col-md-6 p-5 shadow' style={{ 
                     width: '35%',
                     height: 'auto',
                     backgroundColor: '#D9D9D9', 
                     opacity: 0.8,
-                    borderRadius: '10%'
+                    borderRadius: '10%',
+                    margin:'80px 0px 80px 200px'
                      }}>
 
                     <h2 className='text-left m-2' style={{ color: '#004577' , fontWeight: '300'}}>Welcome to</h2>
@@ -98,7 +107,7 @@ import axios from "axios";
                     
                 </div>
 
-        </div>
+            </div>
   )
 }
 

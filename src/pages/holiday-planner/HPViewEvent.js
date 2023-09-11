@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../styles/updatepack.css";
+import { Link } from "react-router-dom";
+
 
 function HPViewEvent({ eventId, onBack }) {
   const apiBaseUrl = "http://localhost:8080";
@@ -156,6 +158,7 @@ function HPViewEvent({ eventId, onBack }) {
                         value={selectedEvent.description}
                         readOnly
                         style={{ minHeight: "50px" }}
+
                       ></textarea>
                     </label>
                   </div>

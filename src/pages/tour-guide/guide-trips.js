@@ -55,7 +55,7 @@ function GuideTrip() {
         ],
         btn: [
           <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
+            <div className="view-trip"><a style={{color:"inherit", textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
           </>,
         ],
       },
@@ -73,7 +73,7 @@ function GuideTrip() {
         ],
         btn: [
           <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
+            <div className="view-trip"><a style={{color:"inherit",textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
           </>,
         ],
       },
@@ -91,7 +91,7 @@ function GuideTrip() {
         ],
         btn: [
           <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
+            <div className="view-trip"><a style={{color:"inherit",textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
           </>,
         ],
       },
@@ -109,7 +109,7 @@ function GuideTrip() {
         ],
         btn: [
           <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
+            <div className="view-trip"><a style={{color:"inherit",textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
           </>,
         ],
       },
@@ -127,7 +127,7 @@ function GuideTrip() {
         ],
         btn: [
           <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
+            <div className="view-trip"><a style={{color:"inherit",textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
           </>,
         ],
       },
@@ -145,7 +145,7 @@ function GuideTrip() {
         ],
         btn: [
           <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
+            <div className="view-trip"><a style={{color:"inherit",textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
           </>,
         ],
       },
@@ -163,7 +163,7 @@ function GuideTrip() {
         ],
         btn: [
           <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
+            <div className="view-trip"><a style={{color:"inherit",textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
           </>,
         ],
       },
@@ -181,7 +181,7 @@ function GuideTrip() {
         ],
         btn: [
           <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
+            <div className="view-trip"><a style={{color:"inherit",textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
           </>,
         ],
       },

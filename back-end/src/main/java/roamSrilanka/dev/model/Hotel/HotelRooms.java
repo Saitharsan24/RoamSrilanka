@@ -1,6 +1,7 @@
 package roamSrilanka.dev.model.Hotel;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.util.List;
 
@@ -9,12 +10,13 @@ import java.util.List;
 public class HotelRooms {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "room_id")
     private Integer roomId;
 
-    @ManyToOne(fetch = FetchType.LAZY) // Many-to-One relationship with Hotels
-    @JoinColumn(name = "hotel_id", nullable = false, insertable = false, updatable = false)
-    private Hotels hotel; // Reference to the hotel this room belongs to
+//    @ManyToOne(fetch = FetchType.LAZY) // Many-to-One relationship with Hotels
+//    @JoinColumn(name = "hotel_id", nullable = false, insertable = false, updatable = false)
+//    private Hotels hotel; // Reference to the hotel this room belongs to
 
     @Column(name = "hotel_id")
     private Integer hotelId;
@@ -27,6 +29,13 @@ public class HotelRooms {
 
     @Column(name = "price")
     private Double price;
+
+    @Getter
+    @Column(name = "no_of_beds")
+    private Integer noOfBeds;
+
+    @Column(name = "room_size")
+    private String roomSize;
 
     @Column(name = "description")
     private String description;
@@ -51,17 +60,32 @@ public class HotelRooms {
     public HotelRooms() {
     }
 
-    public HotelRooms(Integer roomId, Integer hotelId, String roomType, Integer occupancy, Double price, String description, Boolean availability, List<String> policies, List<String> amenities, List<String> images) {
+    public HotelRooms(Integer roomId, Integer hotelId, String roomType, Integer occupancy, Double price, Integer noOfBeds, String roomSize, String description, Boolean availability, List<String> policies, List<String> amenities, List<String> images) {
         this.roomId = roomId;
         this.hotelId = hotelId;
         this.roomType = roomType;
         this.occupancy = occupancy;
         this.price = price;
+        this.noOfBeds = noOfBeds;
+        this.roomSize = roomSize;
         this.description = description;
         this.availability = availability;
         this.policies = policies;
         this.amenities = amenities;
         this.images = images;
+    }
+
+    public HotelRooms(String roomType, Integer occupancy, Double price, Integer noOfBeds, String roomSize, String description, Boolean availability, List<String> policies, List<String> amenities, List<String> images) {
+        this.roomType = roomType;
+        this.occupancy = occupancy;
+        this.price = price;
+        this.noOfBeds = noOfBeds;
+        this.roomSize = roomSize;
+        this.description = description;
+        this.availability = availability;
+        this.policies = policies;
+        this.amenities = amenities;
+//        this.images = images;
     }
 
     //Getters and Setters
@@ -73,13 +97,13 @@ public class HotelRooms {
         this.roomId = roomId;
     }
 
-    public Hotels getHotel() {
-        return hotel;
-    }
-
-    public void setHotel(Hotels hotel) {
-        this.hotel = hotel;
-    }
+//    public Hotels getHotel() {
+//        return hotel;
+//    }
+//
+//    public void setHotel(Hotels hotel) {
+//        this.hotel = hotel;
+//    }
 
     public Integer getHotelId() {
         return hotelId;
@@ -103,6 +127,22 @@ public class HotelRooms {
 
     public void setOccupancy(Integer occupancy) {
         this.occupancy = occupancy;
+    }
+
+    public void setNoOfBeds(Integer noOfBeds) {
+        this.noOfBeds = noOfBeds;
+    }
+
+    public Integer getNoOfBeds() {
+        return noOfBeds;
+    }
+
+    public String getRoomSize() {
+        return roomSize;
+    }
+
+    public void setRoomSize(String roomSize) {
+        this.roomSize = roomSize;
     }
 
     public Double getPrice() {
