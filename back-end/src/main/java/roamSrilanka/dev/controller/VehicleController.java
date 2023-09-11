@@ -17,19 +17,21 @@ public class VehicleController {
         this.vehicleService = vehicleService;
     }
 
+    // working in insomnia
     @GetMapping("/vehicle")
      public List<Vehicle> findAllVehicle() {
         return vehicleService.findAllVehicle();
      }
 
-     @GetMapping("/{vehicleID}")
+    // working in insomnia
+     @GetMapping("vehicle/{vehicleID}")
      public Optional<Vehicle> findVehicleById(@PathVariable("vehicleID") Long vehicleID) {
         return vehicleService.findbyId(vehicleID);
      }
 
+     //add working in insomnia
      @PostMapping("/addVehicle")
-     public Vehicle SaveVehicle(@RequestBody Vehicle vehicle) {
-         return vehicleService.saveVehicle(vehicle);
+     public Vehicle saveVehicle(@RequestBody Vehicle vehicle) { return vehicleService.saveVehicle(vehicle);
      }
 
     @PutMapping

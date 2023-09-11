@@ -13,6 +13,9 @@ public class Vehicle {
     @Column(name = "vehicleID")
     private Long vehicleID;
 
+    @Column(name = "vehicle_number")
+    private String vehicle_number;
+
     @Column(name = "color")
     private String color;
 
@@ -43,7 +46,8 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle(Long vehicleID, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4) {
+    public Vehicle(Long vehicleID, String vehicle_number, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4) {
+        this.vehicle_number = vehicle_number;
         this.vehicleID = vehicleID;
         this.color = color;
         this.model = model;
@@ -56,7 +60,8 @@ public class Vehicle {
         this.image4 = image4;
     }
 
-    public Vehicle(String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4) {
+    public Vehicle(String vehicle_number, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4) {
+        this.vehicle_number = vehicle_number;
         this.color = color;
         this.model = model;
         this.company = company;
@@ -74,6 +79,14 @@ public class Vehicle {
 
     public void setVehicleID(Long vehicleID) {
         this.vehicleID = vehicleID;
+    }
+
+    public String getVehicle_number() {
+        return vehicle_number;
+    }
+
+    public void setVehicle_number(String vehicle_number) {
+        this.vehicle_number = vehicle_number;
     }
 
     public String getColor() {
