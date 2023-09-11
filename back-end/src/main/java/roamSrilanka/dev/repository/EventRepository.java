@@ -3,7 +3,7 @@ package roamSrilanka.dev.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import roamSrilanka.dev.model.Event;
+import roamSrilanka.dev.model.Holidayplanner.Event;
 
 import java.util.List;
 

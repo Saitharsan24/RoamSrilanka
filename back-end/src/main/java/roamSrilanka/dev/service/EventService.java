@@ -2,7 +2,7 @@ package roamSrilanka.dev.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import roamSrilanka.dev.model.Event;
+import roamSrilanka.dev.model.Holidayplanner.Event;
 import roamSrilanka.dev.repository.EventRepository;
 
 import java.util.List;
