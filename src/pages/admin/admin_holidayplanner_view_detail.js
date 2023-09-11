@@ -1,19 +1,68 @@
 import React from "react";
-import Headeruser from "../../components/headerusers";
 import "../../styles/admin/admin_tourist_view_detail.css";
 import profile from "../../assets/images/profile.jpg";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Link } from "react-bootstrap-icons";
-import Adminsidebar from "../../components/admin-sidebar";
+import { useParams } from 'react-router-dom';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Modal from "../../components/admin-modal";
+
 
 function AdminPlannertDetails() {
+  //const { userId } = useParams();
+  const urlParams = new URLSearchParams(window.location.search);
+  const userId = urlParams.get('userId');
   
+  const [holidayPlannerdetail, setHolidayPlannerdetail] = useState([]);
+ 
+  
+  const apiBaseUrl = "http://localhost:8080";
 
+   const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 5000,
+   });
+
+  // Make an HTTP GET request to fetch the details of the holiday planner using userId
+  useEffect(() => {
+    axiosInstance.get(`/viewHolidayplanner/${userId}`)
+      .then((response) => {
+        // Handle the response and set the state with the details
+        setHolidayPlannerdetail(response.data);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.log('Error fetching Data',error);
+      });
+  }, [userId]);
+
+
+
+  const [openModal, setOpenModal] = useState(false);  // This is the state variable to control the model(Eable/Disable)
+  const [blurBackground, setBlurBackground] = useState(false); // State to control background blur
+
+  // Function to open the modal and blur the background
+  const openModalWithBlur = () => {
+    setOpenModal(true);
+    setBlurBackground(true);
+  };
+
+   // Function to close the modal and remove the background blur
+   const closeModal = () => {
+    setOpenModal(false);
+    setBlurBackground(false);
+  };
+  
   return (
     <React.Fragment>
       
+           {openModal && <Modal closeModal={closeModal}/>}
     
-          <div className="w-100 d-flex justify-content-center  align-items-center">
+          <div  className={`w-100 d-flex justify-content-center align-items-center 
+          ${
+          blurBackground ? 'blur-background' : '' // Apply blur class conditionally
+          }`
+        }>
             <div
               className=" d-flex justify-content-center  align-items-center col-11 mt-5 mb-5" style={{ backgroundColor: "#ffff" }}    >
               <div className="d-flex flex-column  col-lg-10 col-md-10 ">
@@ -38,7 +87,7 @@ function AdminPlannertDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            Laxshan_19
+                            {holidayPlannerdetail.email}
                           </td>
                         </tr>
 
@@ -53,7 +102,8 @@ function AdminPlannertDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            003
+                           {holidayPlannerdetail.userId} 
+
                           </td>
                         </tr>
 
@@ -68,7 +118,7 @@ function AdminPlannertDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            Tourist
+                            Holiday Planner
                           </td>
                         </tr>
 
@@ -133,7 +183,7 @@ function AdminPlannertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          Laxshan
+                          {holidayPlannerdetail.plannerName}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -143,7 +193,7 @@ function AdminPlannertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          Panchavarnan{" "}
+                          {holidayPlannerdetail.contactNo}
                         </td>
                       </tr>
 
@@ -167,7 +217,7 @@ function AdminPlannertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          991756432
+                          {holidayPlannerdetail.nic}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -177,7 +227,7 @@ function AdminPlannertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          0779656689{" "}
+                          {holidayPlannerdetail.email}
                         </td>
                       </tr>
 
@@ -190,6 +240,7 @@ function AdminPlannertDetails() {
                       <tr>
                         <td style={{ width: "200px", textAlign: "left" }}>
                        Gender{" "}
+                       
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td style={{ width: "200px",textAlign: "left" }}>Date of Birth </td>
@@ -205,7 +256,7 @@ function AdminPlannertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          998833
+                          {holidayPlannerdetail.gender}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -215,7 +266,7 @@ function AdminPlannertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          19/06/1999{" "}
+                          {holidayPlannerdetail.date}
                         </td>
                       </tr>
 
@@ -241,25 +292,29 @@ function AdminPlannertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          Annasilayady,Karanavai,Karaveddy.
+                          {holidayPlannerdetail.address}
                         </td>
                       </tr>
 
                       <tr style={{ height: "20px" }}></tr>
                       <tr >
 
-                       <td colSpan={3} style={{textAlign:"right"}} ><button style={{backgroundColor:"#004577",color:"#ffff",borderRadius:"10px",width:"7rem"}}>Disable</button> </td>
+                       <td colSpan={3} style={{textAlign:"right"}} ><button style={{backgroundColor:"#004577",color:"#ffff",borderRadius:"10px",width:"7rem"}} onClick={openModalWithBlur}>Disable</button>
+                         
+                        </td>
+                       
                        </tr>
                        <tr style={{ height: "20px" }}></tr>
                     </tbody>
                   </table>
-                  
                 </div>
                 
               </div>
             </div>
+
           </div>
        
+          
     
     </React.Fragment>
   );

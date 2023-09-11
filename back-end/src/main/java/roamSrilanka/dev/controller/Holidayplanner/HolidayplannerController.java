@@ -21,17 +21,20 @@ public class HolidayplannerController {
 
     //Storing holidayplanner to the database when adding new holidayplanner
     @PostMapping("/addPlanner")
-    public ResponseEntity<Holidayplanner> createHolidayplanner(@RequestBody Holidayplanner holidayplanner){
-            Holidayplanner saveHolidayplanner= holidayplannerService.addPlanner(holidayplanner);
-            return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<Holidayplanner> createHolidayplanner(@RequestBody Holidayplanner holidayplanner) {
+        Holidayplanner saveHolidayplanner = holidayplannerService.addPlanner(holidayplanner);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     //view holidayplanner
     @GetMapping("/viewHolidayplanner")
-    public List<Holidayplanner> getAllHolidayplanner(
-            
-    ){
+    public List<Holidayplanner> getAllHolidayplanner() {
         return holidayplannerService.getAllHolidayplanner();
     }
 
+    @GetMapping("/viewHolidayplanner/{userId}")
+    public Holidayplanner getHolidayplannerById(@PathVariable Integer userId) {
+        return holidayplannerService.getHolidayplannerById(userId);
+    }
 }
+

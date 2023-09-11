@@ -35,6 +35,13 @@ public class Holidayplanner {
     @Column(name="gender")
     private String gender;
 
+    @Column(name="address")
+    private String address;
+
+    @Column(name="status")
+    private Integer status;
+
+
     @Column(name="password")
     private String password;
 
@@ -42,27 +49,31 @@ public class Holidayplanner {
 
     }
 
-    public Holidayplanner(Integer userId, String plannerName, Date date, Integer contactNo, String email,String nic,String password, String image) {
+    public Holidayplanner(String plannerName, Date date, Integer contactNo, String email, String nic, String image, String gender, String address, boolean status, String password) {
+        this.plannerName = plannerName;
+        this.date = date;
+        this.contactNo = contactNo;
+        this.email = email;
+        this.nic = nic;
+        this.image = image;
+        this.gender = gender;
+        this.address = address;
+        this.status = status;
+        this.password = password;
+    }
+
+    public Holidayplanner(Integer userId, String plannerName, Date date, Integer contactNo, String email, String nic, String image, String gender, String address, boolean status, String password) {
         this.userId = userId;
         this.plannerName = plannerName;
         this.date = date;
         this.contactNo = contactNo;
         this.email = email;
         this.nic = nic;
-        this.gender=gender;
-        this.password=password;
         this.image = image;
-    }
-
-    public Holidayplanner(String plannerName, Date date, Integer contactNo, String email, String image) {
-        this.plannerName = plannerName;
-        this.date = date;
-        this.contactNo = contactNo;
-        this.email = email;
-        this.nic = nic;
-        this.gender=gender;
-        this.password=password;
-        this.image = image;
+        this.gender = gender;
+        this.address = address;
+        this.status = status;
+        this.password = password;
     }
 
     public Integer getUserId() {
@@ -119,6 +130,21 @@ public class Holidayplanner {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean getStatus() {
+        return status;
     }
 
     public void setPassword(String password) {

@@ -13,6 +13,7 @@ function AdminPlannerReg() {
         username: '',
         nicNumber: '',
         contactNo: '',
+        address: '',
         password: '',
         confirmPassword: ''
     });
@@ -29,6 +30,7 @@ function AdminPlannerReg() {
         username: '',
         nicNumber: '',
         contactNo: '',
+        address: '',
         password: '',
         confirmPassword: ''
   });
@@ -116,7 +118,8 @@ function AdminPlannerReg() {
             email:formData.username, // This is the email.
             nic:formData.nictNumber,
             gender:formData.gender,
-            password:formData.password
+            password:formData.password,
+            address:formData.address
             });
 
             if (response.status === 200) {
@@ -199,6 +202,15 @@ function AdminPlannerReg() {
                                 <input className='w-100' name='confirmPassword' type="password" value={formData.confirmPassword} onChange={(e)=>{inputFormdata(e.target.name, e.target.value); validateField(e.target.name, e.target.value);}}/>
                                 <p className="holi-error-text">{errors.confirmPassword}</p>
                             </div>
+                            </div>
+
+                            <div className="holi-input-row d-flex flex-row w-100 gap-4">
+                            <div className='w-100'>
+                                <p>Address</p>
+                                <input className='w-100' name='address' type="text" value={formData.address} onChange={(e)=> {inputFormdata(e.target.name, e.target.value); validateField(e.target.name, e.target.value);}}/>
+                                <p className="holi-error-text">{errors.address}</p>
+                            </div>
+                            
                             </div>
 
                             <div className="holi-input-row d-flex flex-row w-100 gap-4">

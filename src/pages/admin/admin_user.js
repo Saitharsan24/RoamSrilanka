@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { MDBDataTable } from "mdbreact";
 import "../../styles/admin/admin_user.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
@@ -734,8 +735,8 @@ function Users() {
       
 
       {
-        label: "Rating",
-        field: "rate",
+        label: "Account Status",
+        field: "status",
         sort: "asc",
         width: 100,
         
@@ -753,10 +754,13 @@ function Users() {
        rows :holidayPlanners.map((planner) => ({
        id: planner.userId, //  API response has a field named 'id' for Planner ID
        name: planner.plannerName, //  API response has a field named 'plannerName' for Planner Name
-       rate: planner.contactNo, //  API response has a field named 'userId' for User ID
+       status: planner.contactNo, //  API response has a field named 'userId' for User ID
        btn: [
         <>
-         <a href="/admin/adminholidayplannrdetail"> <button className="view-detail" >View detail</button></a>
+         <Link to={`/admin/adminholidayplannrdetail?userId=${planner.userId}`}>
+         <button className="view-detail">View detail</button>
+          </Link>
+         {/* <a href="/admin/adminholidayplannrdetail"> <button className="view-detail" >View detail</button></a> */}
         </>,
       ],
   })),

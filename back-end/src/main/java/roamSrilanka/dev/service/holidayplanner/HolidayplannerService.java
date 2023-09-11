@@ -23,4 +23,10 @@ public class HolidayplannerService {
         return holidayplannerRepository.findAll();
     }
 
+    public Holidayplanner getHolidayplannerById(Integer userId){
+        return holidayplannerRepository.findById(userId).orElse(null);
+    }
+
+
+
 }
