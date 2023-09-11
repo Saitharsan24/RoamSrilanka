@@ -37,44 +37,22 @@ public class HolidayplannerController {
         return holidayplannerService.getHolidayplannerById(userId);
     }
 
-    @PutMapping("/updateHolidayplanner/{userId}")
-    public ResponseEntity<Holidayplanner> updateHolidayplanner(@PathVariable Integer userId, @RequestBody Holidayplanner updatedHolidayplanner) {
-        Holidayplanner existingHolidayplanner = HolidayplannerService.getHolidayplannerById(userId);
-
-        if (existingHolidayplanner == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    // Update plannerName
+    @PutMapping("/updatePlannerName/{userId}")
+    public ResponseEntity<Holidayplanner> updatePlannerName(
+            @PathVariable Integer userId,
+            @RequestParam String newPlannerName
+    ) {
+        Holidayplanner updatedHolidayplanner = holidayplannerService.updatePlannerName(userId, newPlannerName);
+        if (updatedHolidayplanner != null) {
+            return new ResponseEntity<>(updatedHolidayplanner, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Handle not found case
         }
-
-        // Update only the non-null fields from updatedHotel
-        if (updatedHolidayplanner.getHolidayplannerName() != null && !updatedHoliadayplanner.getHotelName().isEmpty()) {
-            existingHolidayplanner.setholidayplannerName(updatedHolidayplanner.getHolidayplannerName());
-        }
-        if (updatedHotel.getStarRating() != null && updatedHotel.getStarRating() > 0) {
-            existingHotel.setStarRating(updatedHotel.getStarRating());
-        }
-        if (updatedHotel.getUserRating() != null && updatedHotel.getUserRating() >= 0) {
-            existingHotel.setUserRating(updatedHotel.getUserRating());
-        }
-        if (updatedHotel.getDescription() != null && !updatedHotel.getDescription().isEmpty()) {
-            existingHotel.setDescription(updatedHotel.getDescription());
-        }
-        if (updatedHotel.getHotelType() != null && !updatedHotel.getHotelType().isEmpty()) {
-            existingHotel.setHotelType(updatedHotel.getHotelType());
-        }
-        if (updatedHotel.getAddress() != null && !updatedHotel.getAddress().isEmpty()) {
-            existingHotel.setAddress(updatedHotel.getAddress());
-        }
-        if (updatedHotel.getLatitude() != null) {
-            existingHotel.setLatitude(updatedHotel.getLatitude());
-        }
-        if (updatedHotel.getLongitude() != null) {
-            existingHotel.setLongitude(updatedHotel.getLongitude());
-        }
-        // Save the updated hotel
-        hotelService.saveHotel(existingHotel);
-
-        return new ResponseEntity<>(existingHotel, HttpStatus.OK);
     }
+
+
+
 
 }
 
