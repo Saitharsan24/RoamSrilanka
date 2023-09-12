@@ -81,12 +81,22 @@ input:focus{
 }
 
 .hotel-room-pax input{
-    width: 100%;
+    width: 40%;
     border-radius: 10px;
     background-color: #f1f1f1;
     border: #aaaaaa 1px solid;
     height: 35px;
     padding: 10px;
+    text-align: center;
+}
+
+.hotel-room-pax button{
+    border: none;
+    border: #aaaaaa 1px solid;
+    border-radius: 10px;
+    height: 35px;
+    width: 20%;
+    font-size: 20px;
 }
 
 .hotel-offers{
@@ -196,10 +206,9 @@ h4{
 
 .search-hotel-text h4{
     padding: 0px;
-    color: #ffffff;
+    color: #004577;
     font-weight: 650;    
 }
-
 
 .hotel-all-search-list{
     padding: 15px 10px 10px 10px;

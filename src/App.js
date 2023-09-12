@@ -37,7 +37,7 @@ import ToursitAccessoriesRent from "./pages/Tourist/tourist-accessories-rent";
 import TouristBlog from "./pages/Tourist/tourist-blog";
 import TouristBlogView from "./pages/Tourist/tourist-blog-view";
 import ToursitGuide from "./pages/Tourist/tourist-guide";
-import ToursitAllGuide from "./pages/Tourist/tourist-packages";
+import ToursitPackageView from "./pages/Tourist/tourist-packages-view";
 import TouristPackages from "./pages/Tourist/tourist-packages";
 import ToursitGuideView from "./pages/Tourist/tourist-guide-view";
 import TouristHotel from "./pages/Tourist/tourist-hotel";
@@ -124,7 +124,6 @@ const route = createBrowserRouter(
         <Route path="touristPackages" element={<TouristPackages />}></Route>
         <Route path="touristHotel" element={<TouristHotel />}></Route>
         <Route path="touristGuide" element={<ToursitGuide />}></Route>
-        <Route path="touristAllGuide" element={<ToursitAllGuide />}></Route>
         <Route path="touristGuideView" element={<ToursitGuideView />}></Route>
         <Route path="touristDriver" element={<TouristBookings />}></Route>
         <Route path="touristGadgets" element={<TouristAccessories />}></Route>
@@ -137,6 +136,8 @@ const route = createBrowserRouter(
         <Route path="touristHotelSearchList" element={<ToursitHotelSearchList />}></Route>
         <Route path="toursitHotelViewRoom" element={<ToursitHotelViewRoom />}></Route>
         <Route path="touristBlogList" element={<TouristBlogList />}></Route>
+        <Route path="touristPackageView" element={<ToursitPackageView />}></Route>
+
       </Route>
 
       <Route path="/hotel/" element={<HotelLayout />} errorElement={<SystemError />}>
