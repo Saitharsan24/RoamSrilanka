@@ -71,11 +71,8 @@ public class HotelController {
         if (updatedHotel.getAddress() != null && !updatedHotel.getAddress().isEmpty()) {
             existingHotel.setAddress(updatedHotel.getAddress());
         }
-        if (updatedHotel.getLatitude() != null) {
-            existingHotel.setLatitude(updatedHotel.getLatitude());
-        }
-        if (updatedHotel.getLongitude() != null) {
-            existingHotel.setLongitude(updatedHotel.getLongitude());
+        if (updatedHotel.getCity() != null && !updatedHotel.getCity().isEmpty()) {
+            existingHotel.setCity(updatedHotel.getCity());
         }
       
         // Save the updated hotel

@@ -39,12 +39,8 @@ public class Holidayplanner {
     @Column(name="address")
     private String address;
 
-
-
     @Column(name = "status", columnDefinition = "VARCHAR(255) DEFAULT '1'")
     private String status;
-
-
 
     @Column(name="password")
     private String password;
@@ -65,6 +61,7 @@ public class Holidayplanner {
         this.status = status;
         this.password = password;
     }
+
 
     public Holidayplanner(Integer userId, String plannerName, Date date, Integer contactNo, String email, String nic, String image, String gender, String address,String status , String password) {
         this.userId = userId;
