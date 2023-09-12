@@ -32,11 +32,8 @@ public class Hotels {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "longitude")
-    private Double longitude;
-
-    @Column(name = "latitude")
-    private Double latitude;
+    @Column(name = "city")
+    private String city;
 
     @ElementCollection
     @Column(name = "hotel_images")
@@ -49,19 +46,18 @@ public class Hotels {
     public Hotels() {
     }
 
-    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, Double longitude, Double latitude, List<String> hotelImages) {
+    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city,  List<String> hotelImages) {
         this.hotelName = hotelName;
         this.starRating = starRating;
         this.userRating = userRating;
         this.description = description;
         this.hotelType = hotelType;
         this.address = address;
-        this.longitude = longitude;
-        this.latitude = latitude;
+        this.city = city;
         this.hotelImages = hotelImages;
     }
 
-    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, Double longitude, Double latitude, List<String> hotelImages) {
+    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, List<String> hotelImages) {
         this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.starRating = starRating;
@@ -69,20 +65,18 @@ public class Hotels {
         this.description = description;
         this.hotelType = hotelType;
         this.address = address;
-        this.longitude = longitude;
-        this.latitude = latitude;
+        this.city = city;
         this.hotelImages = hotelImages;
     }
 
-    public Hotels(Integer hotelId, String hotelName, Integer starRating, String description, String hotelType, String address, Double longitude, Double latitude, List<String> hotelImages) {
+    public Hotels(Integer hotelId, String hotelName, Integer starRating, String description, String hotelType, String address, String city, List<String> hotelImages) {
         this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.starRating = starRating;
         this.description = description;
         this.hotelType = hotelType;
         this.address = address;
-        this.longitude = longitude;
-        this.latitude = latitude;
+        this.city = city;
         this.hotelImages = hotelImages;
     }
 
@@ -151,20 +145,12 @@ public class Hotels {
         this.address = address;
     }
 
-    public Double getLongitude() {
-        return longitude;
+    public String getCity() {
+        return city;
     }
 
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public List<String> getHotelImages() {
