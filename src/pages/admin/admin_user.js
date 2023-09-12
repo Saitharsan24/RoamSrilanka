@@ -2,12 +2,27 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { MDBDataTable } from "mdbreact";
 import "../../styles/admin/admin_user.css";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
+import axios from "axios";
+
 
 
 function Users() {
+
+  const [holidayPlanners, setHolidayPlanners] = useState([]);
+  
+  useEffect(() => {
+    // Make an HTTP GET request to fetch data from the API
+    axios.get("http://localhost:8080/viewHolidayplanner").then((response) => {
+      setHolidayPlanners(response.data);
+    });
+  }, []);
+
+
   const data_tourist = {
     columns: [
       {
@@ -720,8 +735,8 @@ function Users() {
       
 
       {
-        label: "Rating",
-        field: "rate",
+        label: "Account Status",
+        field: "status",
         sort: "asc",
         width: 100,
         
@@ -734,31 +749,23 @@ function Users() {
         btn: "view-button",
       },
     ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail" >View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "002",
-        name: "Jane Smith",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail" >View detail</div>
-          </>,
-        ],
-      },
-     
-    ],
+
+     // Map your API data to the rows
+       rows :holidayPlanners.map((planner) => ({
+       id: planner.userId, //  API response has a field named 'id' for Planner ID
+       name: planner.plannerName, //  API response has a field named 'plannerName' for Planner Name
+       status: planner.contactNo, //  API response has a field named 'userId' for User ID
+       btn: [
+        <>
+         <Link to={`/admin/adminholidayplannrdetail?userId=${planner.userId}`}>
+         <button className="view-detail">View detail</button>
+          </Link>
+         {/* <a href="/admin/adminholidayplannrdetail"> <button className="view-detail" >View detail</button></a> */}
+        </>,
+      ],
+  })),
+
+
   };
 
 
@@ -826,6 +833,9 @@ function Users() {
                 </Tab>
 
                 <Tab eventKey="holiday" title="holiday">
+                <div className="d-flex flex justify-content-end align-items-center">
+                <a href="/admin/adminholidayplannrreg">  <button className="mt-3 " style={{background:"#004577",border:"none",color:"#ffffff",borderRadius:"10px",height:"35px",width:"150px"}}>Add Holidayplanner</button></a>
+                </div>
                 <MDBDataTable
               striped
               bordered
@@ -833,7 +843,7 @@ function Users() {
               searching={true}
               data={data_holidayplanner}
               exportToCSV={true}
-              //table for tourist
+              //table for holidayplanner
             />
                 </Tab>
 
