@@ -36,5 +36,23 @@ public class HolidayplannerController {
     public Holidayplanner getHolidayplannerById(@PathVariable Integer userId) {
         return holidayplannerService.getHolidayplannerById(userId);
     }
+
+    // Update plannerName
+    @PutMapping("/updatePlannerName/{userId}")
+    public ResponseEntity<Holidayplanner> updatePlannerName(
+            @PathVariable Integer userId,
+            @RequestParam String newPlannerName
+    ) {
+        Holidayplanner updatedHolidayplanner = holidayplannerService.updatePlannerName(userId, newPlannerName);
+        if (updatedHolidayplanner != null) {
+            return new ResponseEntity<>(updatedHolidayplanner, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Handle not found case
+        }
+    }
+
+
+
+
 }
 
