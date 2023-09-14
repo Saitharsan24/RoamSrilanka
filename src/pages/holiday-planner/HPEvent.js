@@ -20,6 +20,11 @@ function HPEvent() {
   const [isDialogVisible, setDialogVisible] = useState(false);
   const [eventToDelete, setEventToDelete] = useState(null);
 
+  // const handleDeleteEvent = (eventId) => {
+  //   setEventToDelete(eventId);
+  //   setDialogVisible(true);
+  // };
+
   const handleDialogClose = () => {
     setDialogVisible(false);
   };
@@ -62,6 +67,7 @@ function HPEvent() {
 
     fetchData();
   }, []);
+  
   const handleDeleteEvent = async (eventId) => {
     const confirmed = window.confirm(
       "Are you sure you want to delete this event?"
