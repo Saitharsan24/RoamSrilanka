@@ -16,54 +16,44 @@ public class HotelRequest {
     @Column(name="hotel_name")
     private String hotelName;
 
-    @Column(name="room_type")
-    private String roomType;
+    @Column(name="room_id")
+    private Integer roomId;
 
     @Column(name="date")
     private Date date;
 
+    @Column(name="from_date")
+    private Date fromDate;
+
+    @Column(name="to_date")
+    private Date toDate;
+
     @Column(name="no_of_rooms")
     private Integer noOfRooms;
-
-    @Column(name="tourist_name")
-    private String touristName;
-
-    @Column(name="tourist_email")
-    private String touristEmail;
-
-    @Column(name="tourist_phone")
-    private String touristPhone;
-
-    @Column(name="tourist_message")
-    private String touristMessage;
 
     @Column(name="status")
     private String status;
     public HotelRequest() {
     }
 
-    public HotelRequest(Integer requestId, String hotelName, String roomType, Date date, Integer noOfRooms, String touristName, String touristEmail, String touristPhone, String touristMessage, String status) {
-        this.requestId = requestId;
+    public HotelRequest(String hotelName, Integer roomId, Date date, Date fromDate, Date toDate, Integer noOfRooms, String status) {
         this.hotelName = hotelName;
-        this.roomType = roomType;
+        this.roomId = roomId;
         this.date = date;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
         this.noOfRooms = noOfRooms;
-        this.touristName = touristName;
-        this.touristEmail = touristEmail;
-        this.touristPhone = touristPhone;
-        this.touristMessage = touristMessage;
         this.status = status;
     }
 
-    public HotelRequest(String hotelName, String roomType, Date date, Integer noOfRooms, String touristName, String touristEmail, String touristPhone, String touristMessage, String status) {
+    public HotelRequest(Integer requestId, String hotelName, Integer roomId, Date date, Date fromDate, Date toDate, Integer noOfRooms, String status) {
+        this.requestId = requestId;
         this.hotelName = hotelName;
-        this.roomType = roomType;
+        this.roomId = roomId;
         this.date = date;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
         this.noOfRooms = noOfRooms;
-        this.touristName = touristName;
-        this.touristEmail = touristEmail;
-        this.touristPhone = touristPhone;
-        this.touristMessage = touristMessage;
         this.status = status;
     }
 
@@ -83,12 +73,12 @@ public class HotelRequest {
         this.hotelName = hotelName;
     }
 
-    public String getRoomType() {
-        return roomType;
+    public Integer getRoomId() {
+        return roomId;
     }
 
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
     }
 
     public Date getDate() {
@@ -99,44 +89,28 @@ public class HotelRequest {
         this.date = date;
     }
 
+    public Date getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public Date getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
+    }
+
     public Integer getNoOfRooms() {
         return noOfRooms;
     }
 
     public void setNoOfRooms(Integer noOfRooms) {
         this.noOfRooms = noOfRooms;
-    }
-
-    public String getTouristName() {
-        return touristName;
-    }
-
-    public void setTouristName(String touristName) {
-        this.touristName = touristName;
-    }
-
-    public String getTouristEmail() {
-        return touristEmail;
-    }
-
-    public void setTouristEmail(String touristEmail) {
-        this.touristEmail = touristEmail;
-    }
-
-    public String getTouristPhone() {
-        return touristPhone;
-    }
-
-    public void setTouristPhone(String touristPhone) {
-        this.touristPhone = touristPhone;
-    }
-
-    public String getTouristMessage() {
-        return touristMessage;
-    }
-
-    public void setTouristMessage(String touristMessage) {
-        this.touristMessage = touristMessage;
     }
 
     public String getStatus() {
