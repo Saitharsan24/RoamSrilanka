@@ -227,6 +227,8 @@ const AboutHotel = () => {
     setRoomId(e.target.value);
   };
 
+  const hotelRating = hotel.starRating;
+
   return (
     <div className="d-flex flex-column w-100">
       <div
@@ -255,7 +257,7 @@ const AboutHotel = () => {
             className="m-0 mx-2"
           >
             <ReactStars
-              count={2}
+              count={hotelRating}
               // onChange={ratingChanged}
               size={15}
               isHalf={true}
@@ -460,145 +462,150 @@ const AboutHotel = () => {
           </button>
         </p>
         <div className="container">
-          <Carousel>
-            {hotelRooms.map(
-              (room, index) =>
-                index % 3 === 0 && (
-                  <Carousel.Item key={index}>
-                    <div className="d-flex flex-row justify-content-evenly">
-                      {hotelRooms.slice(index, index + 3).map((room) => (
-                        <div
-                          className="d-flex flex-column gap-3 mx-lg-0 mx-md-5 mx-1 col-lg-3 col-md-10 col-11 shadow-lg"
-                          style={{
-                            borderRadius: "10px",
-                            backgroundColor: "#FFFFFF",
-                          }}
-                        >
-                          <img className="img-fluid" src={room1}></img>
-                          <div className="d-flex flex-column justify-content-evenly">
-                            <div className="d-flex flex-column">
-                              <p
-                                style={{
-                                  textAlign: "center",
-                                  fontFamily: "Poppins",
-                                  fontSize: "25px",
-                                  color: "",
-                                  fontWeight: "600",
-                                }}
-                                className="m-0"
-                              >
-                                {room.roomType}
-                              </p>
-                              <p
-                                className="m-0 mx-2"
-                                style={{ fontSize: "13px" }}
-                              >
-                                <Icon.Wifi size={15} /> Free Wifi
-                              </p>
-                              <p
-                                className="m-0 mx-2"
-                                style={{ fontSize: "13px" }}
-                              >
-                                <Icon.PSquareFill size={15} /> Parking included
-                              </p>
-                              <p
-                                className="m-0 mx-2"
-                                style={{ fontSize: "13px" }}
-                              >
-                                <Icon.Textarea size={15} /> {room.roomSize} sq
-                                ft
-                              </p>
-                              <p
-                                className="m-0 mx-2"
-                                style={{ fontSize: "13px" }}
-                              >
-                                <Icon.PeopleFill size={15} /> Sleeps{" "}
-                                {room.occupancy}
-                              </p>
-                              <p
-                                className="m-0 mx-2"
-                                style={{ fontSize: "13px" }}
-                              >
-                                <MdIcons.MdHorizontalSplit size={15} />{" "}
-                                {room.noOfBeds} Queen bed
-                              </p>
-                              <p
-                                style={{
-                                  fontFamily: "Poppins",
-                                }}
-                                className="m-0 mx-2"
-                              >
-                                <span
+          {hotelRooms.length !== 0 && (
+            <Carousel>
+              {hotelRooms.map(
+                (room, index) =>
+                  index % 3 === 0 && (
+                    <Carousel.Item key={index}>
+                      <div className="d-flex flex-row justify-content-evenly">
+                        {hotelRooms.slice(index, index + 3).map((room) => (
+                          <div
+                            className="d-flex flex-column gap-3 mx-lg-0 mx-md-5 mx-1 col-lg-3 col-md-10 col-11 shadow-lg"
+                            style={{
+                              borderRadius: "10px",
+                              backgroundColor: "#FFFFFF",
+                            }}
+                          >
+                            <img className="img-fluid" src={room1}></img>
+                            <div className="d-flex flex-column justify-content-evenly">
+                              <div className="d-flex flex-column">
+                                <p
                                   style={{
+                                    textAlign: "center",
+                                    fontFamily: "Poppins",
+                                    fontSize: "25px",
+                                    color: "",
                                     fontWeight: "600",
-                                    fontSize: "16px",
                                   }}
+                                  className="m-0"
                                 >
-                                  7.2/10 Good
-                                </span>
-                                <br />
-                              </p>
-                              <Link to="/hotel/hotelReviews" className="mx-2">
-                                See all 18 reviews <Icon.ChevronRight />
-                              </Link>
-                            </div>
-                            <div className="d-flex flex-column justify-content-between me-1">
-                              <div className="d-flex flex-column my-2">
-                                <div className="d-flex flex-column mx-4">
-                                  <p
-                                    className="m-0"
+                                  {room.roomType}
+                                </p>
+                                <p
+                                  className="m-0 mx-2"
+                                  style={{ fontSize: "13px" }}
+                                >
+                                  <Icon.Wifi size={15} /> Free Wifi
+                                </p>
+                                <p
+                                  className="m-0 mx-2"
+                                  style={{ fontSize: "13px" }}
+                                >
+                                  <Icon.PSquareFill size={15} /> Parking
+                                  included
+                                </p>
+                                <p
+                                  className="m-0 mx-2"
+                                  style={{ fontSize: "13px" }}
+                                >
+                                  <Icon.Textarea size={15} /> {room.roomSize} sq
+                                  ft
+                                </p>
+                                <p
+                                  className="m-0 mx-2"
+                                  style={{ fontSize: "13px" }}
+                                >
+                                  <Icon.PeopleFill size={15} /> Sleeps{" "}
+                                  {room.occupancy}
+                                </p>
+                                <p
+                                  className="m-0 mx-2"
+                                  style={{ fontSize: "13px" }}
+                                >
+                                  <MdIcons.MdHorizontalSplit size={15} />{" "}
+                                  {room.noOfBeds} Queen bed
+                                </p>
+                                <p
+                                  style={{
+                                    fontFamily: "Poppins",
+                                  }}
+                                  className="m-0 mx-2"
+                                >
+                                  <span
                                     style={{
-                                      fontSize: "15px",
                                       fontWeight: "600",
+                                      fontSize: "16px",
                                     }}
                                   >
-                                    ${room.price}
-                                  </p>
-                                  <p
-                                    className="m-0"
-                                    style={{ fontSize: "13px" }}
-                                  >
-                                    <span
-                                      style={{ textDecoration: "line-through" }}
-                                    >
-                                      $400
-                                    </span>{" "}
-                                    Total
-                                  </p>
-                                  <p
-                                    className="m-0"
-                                    style={{ fontSize: "13px" }}
-                                  >
-                                    Includes tax and fees
-                                  </p>
-                                </div>
+                                    7.2/10 Good
+                                  </span>
+                                  <br />
+                                </p>
+                                <Link to="/hotel/hotelReviews" className="mx-2">
+                                  See all 18 reviews <Icon.ChevronRight />
+                                </Link>
                               </div>
-                              <div className="d-flex flex-row justify-content-between my-1 mx-2">
-                                <Link
-                                  onClick={() => openModalSeeAll(room.roomId)}
-                                >
-                                  see all <Icon.ChevronRight />
-                                </Link>
-                                <Link
-                                  onClick={() => openModalEdit(room.roomId)}
-                                  style={{
-                                    border: "none",
-                                    color: "black",
-                                    backgroundColor: "white",
-                                  }}
-                                >
-                                  <Icon.PencilSquare size={25} />
-                                </Link>
+                              <div className="d-flex flex-column justify-content-between me-1">
+                                <div className="d-flex flex-column my-2">
+                                  <div className="d-flex flex-column mx-4">
+                                    <p
+                                      className="m-0"
+                                      style={{
+                                        fontSize: "15px",
+                                        fontWeight: "600",
+                                      }}
+                                    >
+                                      ${room.price}
+                                    </p>
+                                    <p
+                                      className="m-0"
+                                      style={{ fontSize: "13px" }}
+                                    >
+                                      <span
+                                        style={{
+                                          textDecoration: "line-through",
+                                        }}
+                                      >
+                                        $400
+                                      </span>{" "}
+                                      Total
+                                    </p>
+                                    <p
+                                      className="m-0"
+                                      style={{ fontSize: "13px" }}
+                                    >
+                                      Includes tax and fees
+                                    </p>
+                                  </div>
+                                </div>
+                                <div className="d-flex flex-row justify-content-between my-1 mx-2">
+                                  <Link
+                                    onClick={() => openModalSeeAll(room.roomId)}
+                                  >
+                                    see all <Icon.ChevronRight />
+                                  </Link>
+                                  <Link
+                                    onClick={() => openModalEdit(room.roomId)}
+                                    style={{
+                                      border: "none",
+                                      color: "black",
+                                      backgroundColor: "white",
+                                    }}
+                                  >
+                                    <Icon.PencilSquare size={25} />
+                                  </Link>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
-                    </div>
-                  </Carousel.Item>
-                )
-            )}
-          </Carousel>
+                        ))}
+                      </div>
+                    </Carousel.Item>
+                  )
+              )}
+            </Carousel>
+          )}
         </div>
       </div>
 
@@ -902,7 +909,7 @@ const AboutHotel = () => {
                         }}
                       ></input>
                     </label>
-                    <label style={{ fontWeight: "600" }}>
+                    {/* <label style={{ fontWeight: "600" }}>
                       Availability
                       <br />
                       <input
@@ -913,7 +920,7 @@ const AboutHotel = () => {
                           inputRoomdata(e.target.name, e.target.value);
                         }}
                       ></input>
-                    </label>
+                    </label> */}
                   </div>
                   <div className="d-flex flex-row gap-5">
                     <label style={{ fontWeight: "600" }}>

@@ -215,24 +215,15 @@ const HotelDashboard = () => {
                   }}
                 ></img>
               </div>
-              <div className="d-flex flex-column justify-content-center">
+              <div className="d-flex flex-column align-items-center">
                 <p className="m-0" style={{ fontSize: "1rem" }}>
                   <b>{request.touristName}</b>
                 </p>
                 <p className="m-0" style={{ fontSize: "0.75rem" }}>
+                  {request.hotelName}
+                </p>
+                <p className="m-0" style={{ fontSize: "0.75rem" }}>
                   {request.date}
-                </p>
-              </div>
-              <hr style={{ border: "1px solid Black" }} />
-              <div className="d-flex flex-column ">
-                <p className="m-0" style={{ fontSize: "1.5rem" }}>
-                  <b>$150</b>
-                </p>
-                <p
-                  className="m-0"
-                  style={{ color: "#4CAF50", fontSize: "0.75rem" }}
-                >
-                  <b>Paid</b>
                 </p>
               </div>
             </div>
