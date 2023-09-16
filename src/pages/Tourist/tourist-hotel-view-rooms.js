@@ -15,28 +15,6 @@ function ToursitHotelViewRoom() {
           <hr style={{ margin: "0px"}} />
         </div>
 
-        <div className="hotel-searchbar">
-          <div className='hotel-place'>
-            <h6>Place going to</h6>
-            <input type="text" />
-          </div>
-          <div className='hotel-checkin'>
-            <h6>Check in date</h6>
-            <input type="text" />
-          </div>
-          <div className='hotel-checkout'>
-            <h6>Check out date</h6>
-            <input type="text" />
-          </div>
-          <div className='hotel-room-pax'>
-            <h6>Travelers</h6>
-            <input type="text" />
-          </div>
-          <div className='hotel-search-btn'>
-            <BsIcons.BsSearch />
-          </div>
-        </div> 
-
         <div className="hotel-room-details w-100 mt-2 d-flex flex-column gap-4">
           
           <div className='hotel-rooms-list d-flex flex-column gap-3'>

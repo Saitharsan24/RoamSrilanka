@@ -3,7 +3,6 @@ import '../../styles/tourist/tourist_hotel.css'
 import * as BsIcons from 'react-icons/bs'
 import { Button } from 'react-bootstrap'
 import * as BiIcons from 'react-icons/bi'
-import ReactSlider from 'react-slider'
 import axios from "axios";
 
 function ToursitHotelSearchList() {
@@ -31,9 +30,6 @@ function ToursitHotelSearchList() {
   //data from backend will directly store in this state  
   const [hotels, setHotels] = useState([]);
 
-  //when filtering the filtered data will store in this state and mapped
-  const [filterHotels, setFilterHotels] = useState([]);
-
   useEffect(() => {
     // Fetch hotel data from your backend API
     axiosInstance
@@ -46,6 +42,37 @@ function ToursitHotelSearchList() {
         console.log("Error fetching data:", error);
       });
   }, []);
+
+      // State for filters
+      const [minPrice, setMinPrice] = useState(null);
+      const [maxPrice, setMaxPrice] = useState(null);
+      const [starRating, setStarRating] = useState(null);
+      const [propertyType, setPropertyType] = useState([]);
+      const [facilities, setFacilities] = useState([]);
+      const [mealPreferences, setMealPreferences] = useState([]);
+  
+      const [filteredHotels, setFilteredHotels] = useState(hotels);
+  
+      useEffect(() => {
+          let filtered = hotels;
+          
+          // Price Filter
+          if (minPrice) filtered = filtered.filter(hotel => hotel.price >= minPrice);
+          if (maxPrice) filtered = filtered.filter(hotel => hotel.price <= maxPrice);
+  
+          // Star Rating Filter
+          if (starRating) filtered = filtered.filter(hotel => hotel.starRating === starRating);
+  
+          // Property Type Filter
+          if (propertyType.length > 0) filtered = filtered.filter(hotel => propertyType.includes(hotel.hotelType));
+  
+          // Update the filtered hotels state
+          setFilteredHotels(filtered);
+      }, [minPrice, maxPrice, starRating, propertyType, facilities, mealPreferences]); // Watch for changes in these states
+  
+      const clearFilter = () =>{
+        setFilteredHotels(hotels);
+      }
 
   return (
     <div className="tourist-main d-flex flex-column gap-2 mb-2" style={{ width: "inherit" }}>
@@ -105,33 +132,31 @@ function ToursitHotelSearchList() {
           </a>
         </div>
 
-        <div className="hotel-searchlist w-100 d-flex flex gap-3">
+        <div className="hotel-searchlist w-100 d-flex flex gap-3  ">
 
           <div className='hotel-search-filter d-flex flex-column gap-3'>
-            <h5>Filter by</h5>
+            <h5>Filter by <span onClick={clearFilter} style={{fontSize:"15px", color:"#DB163A", marginLeft:"60px", fontWeight:"700", cursor:"pointer"}}>X Clear filter</span></h5>
             <div className='hotel-filter-01'>
               <h6>Price</h6>
-              <ReactSlider
-                className="horizontal-slider"
-                style={{color:'#004577', backgroundColor:'#004577'}}
-                thumbClassName="example-thumb"
-                trackClassName="example-track"
-                defaultValue={[0, 100]}
-                ariaLabel={['Lower thumb', 'Upper thumb']}
-                ariaValuetext={state => `Thumb value ${state.valueNow}`}
-                renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
-                pearling
-                minDistance={10}
-              />
+              <div className='d-flex flex-row gap-2' style={{marginLeft:"10px"}}>
+                <div>
+                  <h6>Min</h6>
+                  <input type="number" onChange={(e) => setMinPrice(e.target.value)} style={{width:"130px", borderRadius:"15px", paddingLeft:"10px",border: "#aaaaaa 1px solid"}}/>
+                </div>
+                <div>
+                  <h6>Max</h6>
+                  <input type="number" onChange={(e) => setMaxPrice(e.target.value)} style={{width:"130px", borderRadius:"15px", paddingLeft:"10px",border: "#aaaaaa 1px solid"}}/>
+                </div>
+              </div>
             </div>
             <div className='hotel-filter-02'>
               <h6>Star Rating</h6>
               <div className='d-flex flex justify-content-center align-items-center gap-2' >
-                <Button className='d-flex justify-content-center align-items-center'>1<BiIcons.BiSolidStar/></Button>
-                <Button className='d-flex justify-content-center align-items-center'>2<BiIcons.BiSolidStar/></Button>
-                <Button className='d-flex justify-content-center align-items-center'>3<BiIcons.BiSolidStar/></Button>
-                <Button className='d-flex justify-content-center align-items-center'>4<BiIcons.BiSolidStar/></Button>
-                <Button className='d-flex justify-content-center align-items-center'>5<BiIcons.BiSolidStar/></Button>
+                <Button onClick={() => setStarRating(1)} className='d-flex justify-content-center align-items-center'>1<BiIcons.BiSolidStar/></Button>
+                <Button onClick={() => setStarRating(2)} className='d-flex justify-content-center align-items-center'>2<BiIcons.BiSolidStar/></Button>
+                <Button onClick={() => setStarRating(3)} className='d-flex justify-content-center align-items-center'>3<BiIcons.BiSolidStar/></Button>
+                <Button onClick={() => setStarRating(4)} className='d-flex justify-content-center align-items-center'>4<BiIcons.BiSolidStar/></Button>
+                <Button onClick={() => setStarRating(5)} className='d-flex justify-content-center align-items-center'>5<BiIcons.BiSolidStar/></Button>
               </div>
             </div>
 
@@ -178,7 +203,7 @@ function ToursitHotelSearchList() {
             <h5>Search results</h5>
             <div className='hotel-all-search-list d-flex flex-column gap-3'>
            
-            {hotels.map((hotel) => (
+            {filteredHotels.map((hotel) => (
               <div className="search-list-01 d-flex flex-row gap-3" key={hotel}>
                 <div className='search-hotel-img'></div>
                 <div className='search-hotel-text'>
