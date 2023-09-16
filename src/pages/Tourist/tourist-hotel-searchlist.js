@@ -27,6 +27,7 @@ function ToursitHotelSearchList() {
     baseURL: apiBaseUrl,
     timeout: 10000,
   });
+  
   //data from backend will directly store in this state  
   const [hotels, setHotels] = useState([]);
 

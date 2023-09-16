@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import "../../styles/tourist/tour_packages.css";
-import { width } from "@mui/system";
 
 function ToursitGuide() {
   return (
