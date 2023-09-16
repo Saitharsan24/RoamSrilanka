@@ -44,6 +44,7 @@ function ToursitHotelSearchList() {
               <h6>Price</h6>
               <ReactSlider
                 className="horizontal-slider"
+                style={{color:'#004577', backgroundColor:'#004577'}}
                 thumbClassName="example-thumb"
                 trackClassName="example-track"
                 defaultValue={[0, 100]}

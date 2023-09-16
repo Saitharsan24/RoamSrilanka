@@ -131,7 +131,7 @@ const OurHotel = () => {
 
   const inputHoteldata = (name, value) => {
     setHotelData((prev) => ({ ...prev, [name]: value }));
-    //console.log(hotelData);
+    console.log(hotelData);
   };
 
   const handleHotelRatingChange = (rating) => {
