@@ -113,12 +113,15 @@ function ToursitHotel() {
             <p className='hotel-heading-para'>Try one of these popular and highly-rated Sri Lanka hotels</p>
           </div>
 
-          <div className=" hotel-famous-places-cards w-100 d-flex flex-row  justify-content-around gap-3">
+          <div className="hotel-famous-places-cards w-100 d-flex flex-row  justify-content-around gap-3">
         
-          {hotels.map((hotel) => (
+          {hotels
+            .sort((a, b) => b.rating - a.rating) // This sorts the hotels in descending order based on their ratings
+            .slice(0, 5)
+            .map((hotel) => (
               <div className="place-01" key={hotel}>
                 <div className="place-image"></div>
-                <div className='hotel-btn-name'>
+                <div className='hotel-btn-name d-flex flex-column gap-2'>
                   <p>{hotel.hotelName}</p>
                   <Button
                     className="book-tour-btn"

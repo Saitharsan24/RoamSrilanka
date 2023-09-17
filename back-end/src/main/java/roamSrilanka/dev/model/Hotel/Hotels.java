@@ -35,6 +35,9 @@ public class Hotels {
     @Column(name = "city")
     private String city;
 
+    @Column(name = "price")
+    private Double price;
+
     @ElementCollection
     @Column(name = "hotel_images")
     private List<String> hotelImages;
@@ -83,6 +86,14 @@ public class Hotels {
 //    public void setRooms(List<HotelRooms> rooms) {
 //        this.rooms = rooms;
 //    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
     public Integer getHotelId() {
         return hotelId;

@@ -4,6 +4,7 @@ import * as BsIcons from 'react-icons/bs'
 import { Button } from 'react-bootstrap'
 import * as BiIcons from 'react-icons/bi'
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 function ToursitHotelSearchList() {
 
@@ -38,6 +39,7 @@ function ToursitHotelSearchList() {
       .then((response) => {
         console.log(response.data);
         setHotels(response.data);
+        setFilteredHotels(response.data);
       })
       .catch((error) => {
         console.log("Error fetching data:", error);
@@ -53,10 +55,24 @@ function ToursitHotelSearchList() {
       const [mealPreferences, setMealPreferences] = useState([]);
   
       const [filteredHotels, setFilteredHotels] = useState(hotels);
+      const countHotel = filteredHotels.length;
+      // Handle checkbox change
+      const handleCheckboxChange = (event) => {
+        const value = event.target.value;
+        if (event.target.checked) {
+          // If the checkbox is checked, add the value to the state array
+          setPropertyType(prevState => [...prevState, value]);
+        } else {
+          // If the checkbox is unchecked, remove the value from the state array
+          setPropertyType(prevState => prevState.filter(type => type !== value));
+        }
+      };
   
+      // Filter hotels when any of the filter state changes
       useEffect(() => {
+          // Copy all hotels to filteredHotels
           let filtered = hotels;
-          
+
           // Price Filter
           if (minPrice) filtered = filtered.filter(hotel => hotel.price >= minPrice);
           if (maxPrice) filtered = filtered.filter(hotel => hotel.price <= maxPrice);
@@ -71,6 +87,7 @@ function ToursitHotelSearchList() {
           setFilteredHotels(filtered);
       }, [minPrice, maxPrice, starRating, propertyType, facilities, mealPreferences]); // Watch for changes in these states
   
+      // Clear all filters
       const clearFilter = () =>{
         setFilteredHotels(hotels);
       }
@@ -142,11 +159,11 @@ function ToursitHotelSearchList() {
               <div className='d-flex flex-row gap-2' style={{marginLeft:"10px"}}>
                 <div>
                   <h6>Min</h6>
-                  <input type="number" onChange={(e) => setMinPrice(e.target.value)} style={{width:"130px", borderRadius:"15px", paddingLeft:"10px",border: "#aaaaaa 1px solid"}}/>
+                  <input type="number" min={0} onChange={(e) => setMinPrice(e.target.value)} style={{width:"130px", borderRadius:"15px", paddingLeft:"10px",border: "#aaaaaa 1px solid"}}/>
                 </div>
                 <div>
                   <h6>Max</h6>
-                  <input type="number" onChange={(e) => setMaxPrice(e.target.value)} style={{width:"130px", borderRadius:"15px", paddingLeft:"10px",border: "#aaaaaa 1px solid"}}/>
+                  <input type="number" min={0} onChange={(e) => setMaxPrice(e.target.value)} style={{width:"130px", borderRadius:"15px", paddingLeft:"10px",border: "#aaaaaa 1px solid"}}/>
                 </div>
               </div>
             </div>
@@ -164,13 +181,13 @@ function ToursitHotelSearchList() {
             <div className='hotel-filter-03'>
               <h6>Property type</h6>
               <div className='d-flex flex-column justify-content-center gap-2' style={{paddingLeft:'15px'}}>
-                <div><input type="checkbox" /> Hotels</div>
-                <div><input type="checkbox" /> Home stays</div>
-                <div><input type="checkbox" /> Guesthouses</div>
-                <div><input type="checkbox" /> Apartments</div>
-                <div><input type="checkbox" /> Bread and breakfast</div>
-                <div><input type="checkbox" /> Villas</div>
-                <div><input type="checkbox" /> Resorts</div>
+                <div><input type="checkbox" value="Hotels" onChange={handleCheckboxChange} /> Hotels</div>
+                <div><input type="checkbox" value="Home stays" onChange={handleCheckboxChange} /> Home stays</div>
+                <div><input type="checkbox" value="Guesthouses" onChange={handleCheckboxChange} /> Guesthouses</div>
+                <div><input type="checkbox" value="Apartments" onChange={handleCheckboxChange} /> Apartments</div>
+                <div><input type="checkbox" value="Bread and breakfast" onChange={handleCheckboxChange} /> Bread and breakfast</div>
+                <div><input type="checkbox" value="Villas" onChange={handleCheckboxChange} /> Villas</div>
+                <div><input type="checkbox" value="Resorts" onChange={handleCheckboxChange} /> Resorts</div>
               </div>
             </div>
 
@@ -201,7 +218,7 @@ function ToursitHotelSearchList() {
           </div>
 
           <div className='hotel-search-hotellist'>
-            <h5>Search results</h5>
+            <h5>Search results &nbsp;&nbsp;&nbsp;<span className='searchResultFilter'>{countHotel} Found</span></h5>
             <div className='hotel-all-search-list d-flex flex-column gap-3'>
            
             {filteredHotels.map((hotel) => (
@@ -218,6 +235,10 @@ function ToursitHotelSearchList() {
                       <h5 style={{margin:"0px",fontWeight:"600" }}>Description</h5>
                       <p>{hotel.description}</p>
                     </div>
+                    <div>
+                      <h5 style={{margin:"0px",fontWeight:"600" }}>Type</h5>
+                      <p>{hotel.hotelType }</p>
+                    </div>
                   </div>
                 </div>  
                 <div className='search-hotel-price d-flex flex-column justify-content-center align-items-center gap-2'>
@@ -227,11 +248,13 @@ function ToursitHotelSearchList() {
                     <p style={{fontSize:"15px"}}><BiIcons.BiSolidStar/> {hotel.userRating}</p>
                   </div>
                   <p>530 View</p>
-                  <p><strike style={{color:"#999999"}}>$500</strike> <br /> $450 / Pax</p>
+                  <p><strike style={{color:"#999999"}}>${hotel.price+100}</strike> <br /> ${hotel.price} / Pax</p>
                   <a href="toursitHotelViewRoom">
+                    <Link to={`/tourist/toursitHotelViewRoom?hotelId=${hotel.hotelId}`}>
                     <Button>
                       Book Now
                     </Button>
+                    </Link>
                   </a>
                 </div>
               </div>

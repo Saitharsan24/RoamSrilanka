@@ -245,7 +245,7 @@ h4{
     width: 100%;
     background-color: #ffffff;
     border-radius: 15px;
-    padding: 30px 30px 30px 30px;
+    padding: 10px 30px 30px 30px;
 }
 
 .hotel-rooms-list{
@@ -329,4 +329,21 @@ h4{
 
 .roomcard-hotel-details{
     padding: 10px 5px 10px 5px;
+}
+
+.searchResultFilter{
+    color: #db163a;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.roomMoreDetailHover{
+    margin-top: -15px !important;
+    margin-bottom: 10px !important;
+}
+
+.roomMoreDetailHover:hover{
+    color: #db163a !important;
+    cursor: pointer;
+    transition: .3s;
 }
