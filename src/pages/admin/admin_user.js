@@ -14,22 +14,28 @@ import axios from "axios";
 function Users() {
 
   const [holidayPlanners, setHolidayPlanners] = useState([]);
+  const [tourists, setTourists] = useState([]);
   
-  // const apiBaseUrl = "http://localhost:8080";
+  const apiBaseUrl = "http://localhost:8080";
 
-  //  const axiosInstance = axios.create({
-  //   baseURL: apiBaseUrl,
-  //   timeout: 5000,
-  //  });
+   const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 5000,
+   });
   
   useEffect(() => {
     // Make an HTTP GET request to fetch data from the API
-    axios.get("http://localhost:8080/viewHolidayplanner").then((response) => {
+    axiosInstance.get("http://localhost:8080/viewHolidayplanner").then((response) => {
       setHolidayPlanners(response.data);
+      console.log(response.data);
+      
     });
+
+    axiosInstance.get("http://localhost:8080/viewTourist").then((response) => {
+      setTourists(response.data);
+  });
+
   }, []);
-
-
   const data_tourist = {
     columns: [
       {
@@ -58,139 +64,20 @@ function Users() {
         btn: "view-button",
       },
     ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        national: "Sri Lanka",
-        btn: [
-          <>
-           <a href="/admin/admintouristdetail"> <button className="view-detail" >View detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "002",
-        name: "Jane Smith",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail ">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "003",
-        name: "Ella Brown",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "004",
-        name: "William Davis",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "005",
-        name: "Sophia Wilson",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "006",
-        name: "Sarah Martinez",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "007",
-        name: "Oliver Taylor",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "008",
-        name: "Ava Martinez",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "009",
-        name: "Ethan Thompson",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "010",
-        name: "Ava Martinez",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "011",
-        name: "Sophia Wilson",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "012",
-        name: "Matthew Taylor",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "013",
-        name: "Christopher Davis",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-    
-    ],
+
+    rows :tourists.map((tourist) => ({
+      id: tourist.userId, //  API response has a field named 'id' for Tourist ID
+      name: tourist.tourist_name, //  API response has a field named 'touristName' for Tourist Name
+      national: tourist.country, //  API response has a field named 'nationality' for Nationality
+      btn: [
+        <>
+         <Link to={`/admin/admintouristdetail?userId=${tourist.userId}`}>
+         <button className="view-detail">View detail</button>
+          </Link>
+                </>,
+      ],
+  })),
+
   };
 
   const data_driver = {
@@ -761,13 +648,12 @@ function Users() {
        rows :holidayPlanners.map((planner) => ({
        id: planner.userId, //  API response has a field named 'id' for Planner ID
        name: planner.plannerName, //  API response has a field named 'plannerName' for Planner Name
-       status: planner.contactNo, //  API response has a field named 'userId' for User ID
+       status: planner.status === null ?<div style={{color:"#66d03b",fontWeight:"bolder"}}>active</div>  : <div style={{color:"#d03b3b",fontWeight:"bolder"}}>passive</div>, // Set status based on the condition
        btn: [
         <>
          <Link to={`/admin/adminholidayplannrdetail?userId=${planner.userId}`}>
          <button className="view-detail">View detail</button>
           </Link>
-         {/* <a href="/admin/adminholidayplannrdetail"> <button className="view-detail" >View detail</button></a> */}
         </>,
       ],
   })),

@@ -1,0 +1,81 @@
+.modalBackgroundReject {
+    width: 400px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 20px;
+     position: fixed;  
+    top: 50%; /* Adjust this value to center the popup vertically */
+    left: 50%; /* Adjust this value to center the popup horizontally */
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .blur-backgroundReject {
+    filter: blur(10px); /* You can adjust the blur amount as needed */
+  }
+  
+  .modalContainerReject{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .modal.title-modalReject{
+    display: inline-block;
+    text-align: center;
+    margin-top:10px;
+  }
+  
+  .title-modalCloseBtnReject{
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .title-modalCloseBtnAccept button{
+    background-color: transparent;
+    border:none;
+    font-size: 25px;
+    cursor: pointer;
+  }
+  
+  .modalContainerReject .body-modal{
+    flex:50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:1.7rem;
+    text-align: center;
+  }
+  
+  .modalContainerReject .footer-modal{
+    flex:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modalContainerReject .footer-modal button{
+    width: 150px;
+    height: 45px;
+    margin: 10px;
+    background-color: #004577;
+    border: 1px solid #000;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  #cancelBtnReject{
+    background-color: #fff;
+  }
+
+  
+  
+  

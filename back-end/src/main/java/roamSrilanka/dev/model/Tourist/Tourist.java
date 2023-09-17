@@ -15,6 +15,9 @@ public class Tourist {
     @Column(name = "user_id")
     private int userId;
 
+    @Column(name = "tourist_name")
+    private String touristName;
+
     @Column(name = "tourist_dob")
     private Date touristDob;
 
@@ -39,13 +42,15 @@ public class Tourist {
     @Column(name = "emrgcy_contact")
     private String emergencyContact;
 
+
     @OneToOne
     @MapsId
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Tourist(int userId, String touristGender, String touristContact, String touristPassport, String country, String emergencyPerson, String emergencyRelation, String emergencyContact) {
+    public Tourist(int userId ,String touristName,String touristGender, String touristContact, String touristPassport, String country, String emergencyPerson, String emergencyRelation, String emergencyContact) {
         this.userId = userId;
+        this.touristName= touristName;
         this.touristGender = touristGender;
         this.touristContact = touristContact;
         this.touristPassport = touristPassport;
@@ -53,14 +58,17 @@ public class Tourist {
         this.emergencyPerson = emergencyPerson;
         this.emergencyRelation = emergencyRelation;
         this.emergencyContact = emergencyContact;
+
     }
 
-    public Tourist(int userId, String touristGender, String touristContact, String touristPassport, String country) {
+    public Tourist(int userId, String touristName,String touristGender, String touristContact, String touristPassport, String country) {
         this.userId = userId;
+        this.touristName= touristName;
         this.touristGender = touristGender;
         this.touristContact = touristContact;
         this.touristPassport = touristPassport;
         this.country = country;
+
     }
 
     public Tourist( Date touristDob, String touristGender, String touristPassport, String country) {
@@ -68,6 +76,8 @@ public class Tourist {
         this.touristGender = touristGender;
         this.touristPassport = touristPassport;
         this.country = country;
+
+
     }
 
     public Tourist() {
@@ -82,6 +92,14 @@ public class Tourist {
     //Setters
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public void setTouristName(String touristName) {
+        this.touristName = touristName;
+    }
+
+    public String getTouristName() {
+        return touristName;
     }
 
     //Getters
@@ -167,6 +185,18 @@ public class Tourist {
     public void setUser(User savedUser) {
         this.user = savedUser;
     }
+
+
+
+    public User getUser() {
+        return user;
+    }
+
+
+
+
+
+
 }
 
 

@@ -41,7 +41,7 @@ public class Holidayplanner {
 
 
 
-    @Column(name = "status", columnDefinition = "VARCHAR(255) DEFAULT '1'")
+    @Column(name = "status")
     private String status;
 
 

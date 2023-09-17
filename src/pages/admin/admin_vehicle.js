@@ -3,9 +3,45 @@ import "../../styles/admin/admin_package.css";
 import { MDBDataTable } from "mdbreact";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 function AdminVehicle() {
+
+  const [vehicles, setVehicle] = useState([]);
+
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+   baseURL: apiBaseUrl,
+   timeout: 5000,
+  });
+
+  const filteredvehicles = (status) => vehicles.filter((vehicle) => vehicle.status === status);
+ 
+  useEffect(() => {
+    // Make an HTTP GET request to fetch data from the API
+    axiosInstance.get("http://localhost:8080/vehicle").then((response) => {
+      setVehicle(response.data);
+      console.log(response.data);
+      
+    });
+  }, []);
+
+  function getStatusText(status) {
+    if (status == null) {
+      return <div style={{color:"#d0c96e",fontWeight:"bolder"}}>Pending</div>;
+    } else if (status== 0) {
+      return <div style={{color:"#d03b3b",fontWeight:"bolder"}}>Rejected</div>;
+    } else if (status == 1) {
+      return <div style={{color:"#66d03b",fontWeight:"bolder"}}>Accepted</div>;
+    } else {
+      return "Unknown";
+    }
+  }
+
   const data_all = {
     columns: [
       {
@@ -21,8 +57,8 @@ function AdminVehicle() {
         width: 150,
       },
       {
-        label: "Vehicle Type",
-        field: "type",
+        label: "Seating Capacity",
+        field: "seat",
         sort: "asc",
         width: 200,
       },
@@ -40,171 +76,41 @@ function AdminVehicle() {
         btn: "view-button",
       },
     ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="request ">Request</div></>],
-        btn: [
-          <>
-           <a href="/admin/adminvehicledetail_1"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "002",
-        name: "Jane Smith",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "003",
-        name: "Ella Brown",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="reject">Rejected</div></>],
-        btn: [
-          <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "004",
-        name: "William Davis",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "005",
-        name: "Sophia Wilson",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "006",
-        name: "Sarah Martinez",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
- <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "007",
-        name: "Oliver Taylor",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-             <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "008",
-        name: "Ava Martinez",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="reject">Rejected</div></>],
-        btn: [
-          <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>          </>,
-        ],
-      },
-      {
-        id: "009",
-        name: "Ethan Thompson",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="reject">Rejected</div></>],
-        btn: [
-          <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "010",
-        name: "Ava Martinez",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "011",
-        name: "Sophia Wilson",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "012",
-        name: "Matthew Taylor",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-           <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "013",
-        name: "Christopher Davis",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-                   <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-    
-    ],
+
+    rows :vehicles.map((vehicle) => ({
+      id: vehicle.vehicleID, //  API response has a field named 'id' for Tourist ID
+      name: vehicle.year, //  API response has a field named 'touristName' for Tourist Name
+      seat: vehicle.seats, //  API response has a field named 'nationality' for Nationality
+      status: getStatusText(vehicle.status),
+
+      btn: [
+        <>
+         <Link to={`/admin/adminvehicledetail_1?vehicleId=${vehicle.vehicleID}`}>
+         <button className="view-detail">View detail</button>
+          </Link>
+        </>,
+      ],
+  })),
   };
 
 
   const data_request = {
     columns: [
       {
-        label: "Package ID",
+        label: "Vehicle ID",
         field: "id",
         sort: "asc",
         width: 150,
       },
       {
-        label: "Package Name",
+        label: "Driver Name",
         field: "name",
         sort: "asc",
         width: 150,
       },
       {
-        label: "Package Type",
-        field: "type",
+        label: "Seating Capacity",
+        field: "seat",
         sort: "asc",
         width: 200,
       },
@@ -216,73 +122,28 @@ function AdminVehicle() {
       },
      
       {
-        label: "Package Detail",
+        label: "Vehicle detail",
         field: "btn",
         width: 100,
         btn: "view-button",
       },
     ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      
-      {
-        id: "004",
-        name: "William Davis",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "005",
-        name: "Sophia Wilson",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-     
-      {
-        id: "010",
-        name: "Ava Martinez",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "011",
-        name: "Sophia Wilson",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-             <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-    
-    ],
-  };
+
+    rows :filteredvehicles(null).map((vehicle) => ({
+      id: vehicle.vehicleID, //  API response has a field named 'id' for Tourist ID
+      name: vehicle.year, //  API response has a field named 'touristName' for Tourist Name
+      seat: vehicle.seats, //  API response has a field named 'nationality' for Nationality
+      status: getStatusText(vehicle.status),
+
+      btn: [
+        <>
+         <Link to={`/admin/adminvehicledetail_1?vehicleId=${vehicle.vehicleID}`}>
+         <button className="view-detail">View detail</button>
+          </Link>
+        </>,
+      ],
+  })),
+   };
 
 
   const data_confirmed = {
@@ -319,68 +180,21 @@ function AdminVehicle() {
         btn: "view-button",
       },
     ],
-    rows: [
+    rows :filteredvehicles("1").map((vehicle) => ({
+      id: vehicle.vehicleID, //  API response has a field named 'id' for Tourist ID
+      name: vehicle.year, //  API response has a field named 'touristName' for Tourist Name
+      seat: vehicle.seats, //  API response has a field named 'nationality' for Nationality
+      status: getStatusText(vehicle.status),
+
+      btn: [
+        <>
+         <Link to={`/admin/adminvehicledetail_1?vehicleId=${vehicle.vehicleID}`}>
+         <button className="view-detail">View detail</button>
+          </Link>
+        </>,
+      ],
+  })),
   
-      {
-        id: "002",
-        name: "Jane Smith",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-    
-      
-      {
-        id: "006",
-        name: "Sarah Martinez",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-             <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "007",
-        name: "Oliver Taylor",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      
-            {
-        id: "012",
-        name: "Matthew Taylor",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "013",
-        name: "Christopher Davis",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-           <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-    
-    ],
   };
 
   const data_rejected = {
@@ -417,44 +231,21 @@ function AdminVehicle() {
         btn: "view-button",
       },
     ],
-    rows: [
-     
-  
-      {
-        id: "003",
-        name: "Ella Brown",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="reject">Rejected</div></>],
-        btn: [
-          <>
-           <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-     
-      {
-        id: "008",
-        name: "Ava Martinez",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="reject">Rejected</div></>],
-        btn: [
-          <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "009",
-        name: "Ethan Thompson",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="reject">Rejected</div></>],
-        btn: [
-          <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Vehicle detail</button></a>          </>,
-        ],
-      },
-     
-    ],
+   
+    rows :filteredvehicles("0").map((vehicle) => ({
+      id: vehicle.vehicleID, //  API response has a field named 'id' for Tourist ID
+      name: vehicle.year, //  API response has a field named 'touristName' for Tourist Name
+      seat: vehicle.seats, //  API response has a field named 'nationality' for Nationality
+      status: getStatusText(vehicle.status),
+
+      btn: [
+        <>
+         <Link to={`/admin/adminvehicledetail_1?vehicleId=${vehicle.vehicleID}`}>
+         <button className="view-detail">View detail</button>
+          </Link>
+        </>,
+      ],
+  })),
   };
 
   return (

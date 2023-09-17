@@ -28,13 +28,9 @@ public class HolidayplannerService {
         return holidayplannerRepository.findById(userId).orElse(null);
     }
 
-    public Holidayplanner updatePlannerName(Integer userId, String newPlannerName) {
-        Optional<Holidayplanner> Holidayplanner = holidayplannerRepository.findById(userId);
-        if (Holidayplanner.isPresent()) {
-            Holidayplanner holidayplanner = Holidayplanner.get();
-            holidayplanner.setPlannerName(newPlannerName);
-            return holidayplannerRepository.save(holidayplanner);
-        }
-        return null; // Handle the case where the user with the specified ID is not found
+
+    //delete holidayplanner
+    public void deleteHolidayplanner(Integer userId){
+        holidayplannerRepository.deleteById(userId);
     }
 }

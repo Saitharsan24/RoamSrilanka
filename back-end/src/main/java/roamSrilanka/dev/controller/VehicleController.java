@@ -1,5 +1,7 @@
 package roamSrilanka.dev.controller;
 
+import org.springframework.data.rest.webmvc.support.RepositoryEntityLinks;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import roamSrilanka.dev.model.Vehicle;
 import roamSrilanka.dev.service.VehicleService;
@@ -34,9 +36,24 @@ public class VehicleController {
      public Vehicle saveVehicle(@RequestBody Vehicle vehicle) { return vehicleService.saveVehicle(vehicle);
      }
 
-    @PutMapping
-    public Vehicle updateVehicle(@RequestBody Vehicle vehicle) {
-        return vehicleService.updateVehicle(vehicle);
+    @PutMapping("/updateVehicle/{vehicleID}")
+    public Repository updateVehicle(@PathVariable("vehicleID") Long vehicleID, @RequestBody Vehicle vehicle) {
+        Vehicle exitingVehicle = vehicleService.findbyId(vehicleID).orElse(null);
+
+        if (exitingVehicle==null) {
+            return null;
+        }
+        else {
+            exitingVehicle.setVehicle_number(vehicle.getVehicle_number());
+            exitingVehicle.setColor(vehicle.getColor());
+            exitingVehicle.setModel(vehicle.getModel());
+            exitingVehicle.setStatus(vehicle.getStatus());
+
+            //save the changes made to the existing vehicle
+            vehicleService.saveVehicle(exitingVehicle);
+            return null;
+
+        }
     }
 
     @DeleteMapping("/{vehicleID}")

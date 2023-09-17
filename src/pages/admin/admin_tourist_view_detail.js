@@ -1,14 +1,44 @@
 import React from "react";
-import Headeruser from "../../components/headerusers";
 import "../../styles/admin/admin_tourist_view_detail.css";
 import profile from "../../assets/images/profile.jpg";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-bootstrap-icons";
-import Adminsidebar from "../../components/admin-sidebar";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 
 function AdminTouristDetails() {
-  
+  const urlParams = new URLSearchParams(window.location.search);
+  const userId = urlParams.get('userId');
 
+  console.log(userId);
+
+  const [touristdetail, setTouristdetail] = useState([]);
+ 
+  
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+   baseURL: apiBaseUrl,
+   timeout: 5000,
+  });
+ // Make an HTTP GET request using axiosInstance
+ // Make an HTTP GET request to fetch the details of the holiday planner using userId
+ useEffect(() => {
+  axiosInstance.get(`/viewTorist/${userId}`)
+    .then((response) => {
+      // Handle the response and set the state with the details
+      setTouristdetail(response.data);
+      
+    })
+    .catch((error) => {
+      // Handle errors
+      console.log('Error fetching Data',error);
+    });
+}, [userId]);
+
+//console.log(touristdetail);
+ 
   return (
     <React.Fragment>
       
@@ -38,7 +68,7 @@ function AdminTouristDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            Laxshan_19
+                            {touristdetail.email}
                           </td>
                         </tr>
 

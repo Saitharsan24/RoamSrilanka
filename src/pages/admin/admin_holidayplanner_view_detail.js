@@ -29,6 +29,7 @@ function AdminPlannertDetails() {
       .then((response) => {
         // Handle the response and set the state with the details
         setHolidayPlannerdetail(response.data);
+        
       })
       .catch((error) => {
         // Handle errors
@@ -56,7 +57,7 @@ function AdminPlannertDetails() {
   return (
     <React.Fragment>
       
-           {openModal && <Modal closeModal={closeModal}/>}
+           {openModal && <Modal closeModal={closeModal} userId={userId} />}
     
           <div  className={`w-100 d-flex justify-content-center align-items-center 
           ${
@@ -298,9 +299,39 @@ function AdminPlannertDetails() {
 
                       <tr style={{ height: "20px" }}></tr>
                       <tr >
+                        
+                       <td colSpan={3} style={{textAlign:"right"}} >
+                      
+                          {holidayPlannerdetail.status === null ? (
+                              <button
+                                style={{
+                                  backgroundColor: "#d03b3b",
+                                  color: "#ffff",
+                                  borderRadius: "10px",
+                                  borderColor: "#ffff",
+                                  width: "7rem"
+                                }}
+                                onClick={openModalWithBlur}
+                              >
+                                Disable
+                              </button>
+                            ) : (
+                              <button
+                                style={{
+                                  backgroundColor: "#66d03b",
+                                 color: "#ffff",
+                                  borderColor: "#ffff",
+                                  borderRadius: "10px",
+                                  width: "7rem"
+                                }}
+                                onClick={openModalWithBlur}
+                              >
+                                Enable
+                              </button>
+)}
 
-                       <td colSpan={3} style={{textAlign:"right"}} ><button style={{backgroundColor:"#004577",color:"#ffff",borderRadius:"10px",width:"7rem"}} onClick={openModalWithBlur}>Disable</button>
-                         
+
+
                         </td>
                        
                        </tr>

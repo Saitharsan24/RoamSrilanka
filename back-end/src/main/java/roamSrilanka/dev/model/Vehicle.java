@@ -43,10 +43,16 @@ public class Vehicle {
     @Column(name = "image4")
     private String image4;
 
+    @Column(name = "status")
+    private String status;
+
+    @Column(name="feedback")
+    private String feedback;
+
     public Vehicle() {
     }
 
-    public Vehicle(Long vehicleID, String vehicle_number, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4) {
+    public Vehicle(Long vehicleID, String vehicle_number, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4,String status,String feedback) {
         this.vehicle_number = vehicle_number;
         this.vehicleID = vehicleID;
         this.color = color;
@@ -58,9 +64,11 @@ public class Vehicle {
         this.image2 = image2;
         this.image3 = image3;
         this.image4 = image4;
+        this.status = status;
+        this.feedback = feedback;
     }
 
-    public Vehicle(String vehicle_number, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4) {
+    public Vehicle(String vehicle_number, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4,String status){
         this.vehicle_number = vehicle_number;
         this.color = color;
         this.model = model;
@@ -71,6 +79,8 @@ public class Vehicle {
         this.image2 = image2;
         this.image3 = image3;
         this.image4 = image4;
+        this.status = status;
+        this.feedback = feedback;
     }
 
     public Long getVehicleID() {
@@ -159,5 +169,21 @@ public class Vehicle {
 
     public void setImage4(String image4) {
         this.image4 = image4;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
     }
 }
