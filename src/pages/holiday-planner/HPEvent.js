@@ -112,19 +112,17 @@ function HPEvent() {
       date: event.date,
       places: event.places,
       button1: (
-        <Link to="/holidayPlanner/plannerEvent">
-          <button
-            style={{ border: "inherit" }}
-            className="hp-accept"
-            onClick={() => setSelectedEventId(event.eventId)}
-          >
-            View
-          </button>
-        </Link>
+        <button
+          style={{ border: "inherit", width: "50%" }}
+          className="hp-accept"
+          onClick={() => setSelectedEventId(event.eventId)}
+        >
+          View
+        </button>
       ),
       button2: (
         <button
-          style={{ border: "inherit" }}
+          style={{ border: "inherit", width: "50%" }}
           onClick={() => handleDeleteEvent(event.eventId)}
           className="hp-reject"
         >

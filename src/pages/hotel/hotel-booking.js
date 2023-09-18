@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import Modal from "react-bootstrap/Modal";
 import { Button, Table } from "react-bootstrap";
@@ -6,148 +7,83 @@ import { BsSearch } from "react-icons/bs";
 import { MDBDataTable } from "mdbreact";
 import "./../../styles/data-table.css";
 import "./../../styles/hotel/popup.css";
+import axios from "axios";
 
 function HotelBooking() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedRowData, setSelectedRowData] = useState(null);
-
+  const [selectedRequest, setSelectedRowData] = useState([]);
+  const [requests, setRequests] = useState([]);
+  const [requestId, setRequestId] = useState("");
   const [inputValue, setInputValue] = useState("");
 
-  const openModal = (rowData) => {
-    setSelectedRowData(rowData);
+  //Sending data to backend
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 10000,
+  });
+
+  const openModal = (requestId) => {
     setIsModalOpen(true);
+    setRequestId(requestId);
+    setSelectedRowData(requests.find((request) => request.requestId === requestId));
+    console.log("requestId: ", requestId);
+    console.log("selectedRequest: ", selectedRequest);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
-  const data = {
-    columns: [
-      {
-        label: "Tourist Name",
-        field: "name",
-        sort: "asc",
-        width: 150,
-      },
-      {
-        label: "Date",
-        field: "date",
-        sort: "asc",
-        width: 150,
-      },
-      {
-        label: "Type",
-        field: "type",
-        sort: "asc",
-        width: 200,
-      },
-      {
-        label: "Status",
-        field: "status",
-        sort: "asc",
-        width: 100,
-      },
-      {
-        label: "",
-        field: "btn",
-        width: 100,
-        btn: "view-button",
-      },
-    ],
-    rows: [
-      {
-        name: "John Doe",
-        date: "2023-07-01",
-        type: "Single bed room",
-        status: "Accepted",
-        btn: [
-          <>
-            <button className="view">View More</button>
-          </>,
-        ],
-      },
-      {
-        name: "Robert Johnson",
-        date: "2023-07-02",
-        type: "Double bed room",
-        status: "Rejected",
-        btn: [
-          <>
-            <button className="view">View More</button>
-          </>,
-        ],
-      },
-      {
-        name: "Jane Smith",
-        date: "2023-07-03",
-        type: "Suite",
-        status: "Pending",
-        btn: [
-          <>
-            <button className="view">View More</button>
-          </>,
-        ],
-      },
-      {
-        name: "Ella Brown",
-        date: "2023-07-04",
-        type: "Single bed room",
-        status: "Accepted",
-        btn: [
-          <>
-            <button className="view">View More</button>
-          </>,
-        ],
-      },
-      {
-        name: "William Davis",
-        date: "2023-07-05",
-        type: "Double bed room",
-        status: "Accepted",
-        btn: [
-          <>
-            <button className="view">View More</button>
-          </>,
-        ],
-      },
-      {
-        name: "Sophia Wilson",
-        date: "2023-07-06",
-        type: "Suite",
-        status: "Pending",
-        btn: [
-          <>
-            <button className="view">View More</button>
-          </>,
-        ],
-      },
-      {
-        name: "Oliver Taylor",
-        date: "2023-07-07",
-        type: "Single bed room",
-        status: "Rejected",
-        btn: [
-          <>
-            <button className="view">View More</button>
-          </>,
-        ],
-      },
-      {
-        name: "Ava Martinez",
-        date: "2023-07-08",
-        type: "Double bed room",
-        status: "Accepted",
-        btn: [
-          <>
-            <button className="view">View More</button>
-          </>,
-        ],
-      },
-    ],
-  };
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get("/viewRequest")
+      .then((response) => {
+        setRequests(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
 
-  return (
+  const rows = requests.map((request) => {
+    return {
+      name: request.touristName,
+      date: request.date,
+      type: request.roomType,
+      status: determineStatus(request.status) ,
+      btn: (
+        <Link
+          key={`view-${request.requestId}`}
+          className="view"
+          onClick={() => openModal(request.requestId)}
+        >
+          View More
+        </Link>
+      ),
+    };
+});
+
+function determineStatus(status) {
+  if (status == null) {
+    return "Pending";
+  } else if (status == 1) {
+    return "Accepted";
+  } else if (status == 2){
+    return "Completed";
+  } else {
+    return "Rejected";
+  }
+}
+
+const handleRequestlId = (e) => {
+  setRequestId(e.target.value);
+};
+
+return (
     <div className="d-flex w-100">
       <div className="d-flex flex-column col-lg-11 ms-lg-5 col-md-12">
         <div className="d-flex flex-row gap-4 my-3">
@@ -178,19 +114,40 @@ function HotelBooking() {
           bordered
           paging={true}
           searching={true}
-          //   small
           data={{
-            ...data,
-            rows: data.rows.map((row) => {
-              return {
-                ...row,
-                btn: (
-                  <button onClick={() => openModal(row)} className="view">
-                    View More
-                  </button>
-                ),
-              };
-            }),
+            columns: [
+              {
+                label: "Tourist Name",
+                field: "name",
+                sort: "asc",
+                width: 150,
+              },
+              {
+                label: "Date",
+                field: "date",
+                sort: "asc",
+                width: 150,
+              },
+              {
+                label: "Type",
+                field: "type",
+                sort: "asc",
+                width: 200,
+              },
+              {
+                label: "Status",
+                field: "status",
+                sort: "asc",
+                width: 100,
+              },
+              {
+                label: "",
+                field: "btn",
+                width: 100,
+                btn: "view-button",
+              },
+            ],
+            rows: rows, // Use the rows you generated
           }}
           exportToCSV={true}
         />
@@ -200,81 +157,93 @@ function HotelBooking() {
             <Modal.Title>Hotel Booking</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form style={{ fontFamily: "Poppins" }}>
+          {requests.find((request) => request.requestId === requestId) ? ( 
+            <form method="POST" style={{ fontFamily: "Poppins" }}>
+              <input
+              type="hidden"
+              name="hotelId"
+              value={requestId}
+              onChange={handleRequestlId}
+            />
               <div className="d-flex flex-column gap-3">
-                <div className="d-flex flex-row justify-content-around ">
+                <div className="d-flex flex-row justify-content-between ">
+                  <div>
+                    <label className="hotel-popup-label">Hotel Name</label>
+                    <br />
+                    <div
+                    style={{width: "210px"}}
+                      className="hotel-popup-input"
+                    >{selectedRequest.hotelName}</div>
+                  </div>
+                  <div>
+                    <label className="hotel-popup-label">Room Type</label>
+                    <br />
+                    <div
+                    style={{width: "210px"}}
+                      className="hotel-popup-input"
+                    >{selectedRequest.roomType}</div>
+                  </div>
+                </div>
+                <div className="d-flex flex-row justify-content-between ">
                   <div>
                     <label className="hotel-popup-label">Tourist Name</label>
                     <br />
-                    <input
-                    className="hotel-popup-input"
-                      value={selectedRowData?.name}
-                      onChange={(e) => setInputValue(e.target.value)}
-                      placeholder={`(${selectedRowData?.name})`}
-                      disabled
-                    ></input>
+                    <div
+                    style={{width: "210px"}}
+                      className="hotel-popup-input"
+                    >{selectedRequest.touristName}</div>
                   </div>
                   <div>
                     <label className="hotel-popup-label">Phone Number</label>
                     <br />
-                    <input
-                    className="hotel-popup-input"
-                      placeholder="076 263 9672"
-                      disabled
-                    ></input>
+                    <div
+                    style={{width: "210px"}}
+                      className="hotel-popup-input"
+                    >{selectedRequest.touristPhone}</div>
                   </div>
                 </div>
-                <div className="d-flex flex-row justify-content-around ">
+                <div className="d-flex flex-row justify-content-between">
                   <div>
                     <label className="hotel-popup-label">Date</label>
                     <br />
-                    <input
-                    className="hotel-popup-input"
-                      style={{ width: "190px" }}
-                      value={selectedRowData?.date}
-                      onChange={(e) => setInputValue(e.target.value)}
-                      placeholder={`(${selectedRowData?.date})`}
-                      disabled
-                    ></input>
+                    <div
+                      className="hotel-popup-input"
+                    >{selectedRequest.date}</div>
                   </div>
                   <div>
-                    <label className="hotel-popup-label">Email Address</label>
+                    <label className="hotel-popup-label">No of Rooms</label>
                     <br />
-                    <input
-                    className="hotel-popup-input"
-                      type="email"
-                      placeholder="saran@gmail.com"
-                      disabled
-                    ></input>
+                    <div
+                    style={{width: "170px"}}
+                      className="hotel-popup-input"
+                    >{selectedRequest.noOfRooms}</div>
                   </div>
                 </div>
-                <div className="d-flex flex-row justify-content-around ">
-                  <div>
-                    <label className="hotel-popup-label">Booked Rooms</label>
+                <div>
+                    <label className="hotel-popup-label">Email Address</label>
                     <br />
-                    <input className="hotel-popup-input" type="number" placeholder="2" disabled></input>
-                  </div>
-                  <div>
-                    <label className="hotel-popup-label">Total Cost</label>
-                    <br />
-                    <input className="hotel-popup-input" type="number" placeholder="$200" disabled></input>
-                  </div>
+                    <div
+                      className="hotel-popup-input"
+                    >{selectedRequest.touristEmail}</div>
                 </div>
                 <div className="d-flex flex-row justify-content-around ">
                   <div>
                     <label className="hotel-popup-label">Message</label>
                     <br />
-                    <input 
-                    className="hotel-popup-input"
-                      style={{ width: "425px", height: "100px" }}
-                      type="text"
-                      placeholder="eg: Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem EpsumLorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum Lorem Epsum"
+                    <div
+                      className="hotel-popup-input"
+                      style={{}}
                       disabled
-                    ></input>
+                    >
+                      {selectedRequest.touristMessage}
+                    </div>
                   </div>
                 </div>
               </div>
             </form>
+            ) : (
+              <p>No room found for roomId: {requestId}</p>
+            )}
           </Modal.Body>
         </Modal>
       </div>

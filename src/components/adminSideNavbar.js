@@ -48,6 +48,13 @@ function AdminSideNavbar() {
         icon:<FiIcons.FiPackage />,
         cName: 'nav-text',
       },
+
+      {
+        title:'Vehicle',
+        path:'adminvehicle',
+        icon:<AiIcons.AiFillCar />,
+        cName: 'nav-text',
+      },
       {
         title:'Profile',
         path:'adminprofile',

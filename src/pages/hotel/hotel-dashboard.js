@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import "./../../styles/hotel/hotel-dashboard.css";
 import * as Icon from "react-bootstrap-icons";
 import { Calendar } from "react-modern-calendar-datepicker";
-
+import axios from "axios";
 import {
   ComposedChart,
   Line,
@@ -122,6 +122,31 @@ const HotelDashboard = () => {
     from: null,
     to: null,
   });
+  const [requests, setRequests] = useState([]);
+  //Sending data to backend
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 10000,
+  });
+
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get("/viewRequest")
+      .then((response) => {
+        setRequests(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
+  const filteredRequests = requests.filter((request) => request.status == null);
+
+  const currentOccupants = requests.filter((request) => request.status == 1);
 
   return (
     <div className="d-flex flex-column gap-2 w-100">
@@ -134,6 +159,7 @@ const HotelDashboard = () => {
             <b>Incoming requests</b>
           </p>
           <div className="d-flex flex-column align-items-center gap-lg-3 gap-md-2">
+            {filteredRequests.map((request)=>
             <div
               className="d-flex shadow-lg col-10 p-2 justify-content-center"
               style={{ borderRadius: "1rem", backgroundColor: "#FFF" }}
@@ -154,76 +180,17 @@ const HotelDashboard = () => {
                 className="d-flex flex-column col-12 col-md-8 col-lg-7 align-items-center justify-content-center "
               >
                 <p className="m-0" style={{ fontSize: "1rem" }}>
-                  <b>Jonathan D.</b>
+                  <b>{request.touristName}</b>
                 </p>
                 <p className="m-0" style={{ fontSize: "0.75rem" }}>
-                  Tourist
+                  {request.hotelName}
                 </p>
                 <p className="m-0" style={{ fontSize: "0.75rem" }}>
-                  Feb 12 - Feb 14
+                  {request.date}
                 </p>
               </div>
             </div>
-            <div
-              className="d-flex col-10 shadow-lg p-2 justify-content-center"
-              style={{ borderRadius: "1rem", backgroundColor: "#ffff" }}
-            >
-              <div className="d-flex col-3">
-                <img
-                  className="object-fit-cover img-fluid m-auto"
-                  src={require("./../../assets/img/DQ.jpeg")}
-                  style={{
-                    borderRadius: "5rem",
-                    // width: "40px",
-                    // height: "40px"
-                  }}
-                ></img>
-              </div>
-              <div
-                style={{}}
-                className="d-flex flex-column col-12 col-md-8 col-lg-7 align-items-center justify-content-center "
-              >
-                <p className="m-0" style={{ fontSize: "1rem" }}>
-                  <b>Jonathan D.</b>
-                </p>
-                <p className="m-0" style={{ fontSize: "0.75rem" }}>
-                  Tourist
-                </p>
-                <p className="m-0" style={{ fontSize: "0.75rem" }}>
-                  Feb 12 - Feb 14
-                </p>
-              </div>
-            </div>
-            <div
-              className="d-flex col-10 shadow-lg p-2 justify-content-center"
-              style={{ borderRadius: "1rem", backgroundColor: "#ffff" }}
-            >
-              <div className="d-flex col-3">
-                <img
-                  className="object-fit-cover img-fluid m-auto"
-                  src={require("./../../assets/img/DQ.jpeg")}
-                  style={{
-                    borderRadius: "5rem",
-                    // width: "40px",
-                    // height: "40px"
-                  }}
-                ></img>
-              </div>
-              <div
-                style={{}}
-                className="d-flex flex-column col-12 col-md-8 col-lg-7 align-items-center justify-content-center "
-              >
-                <p className="m-0" style={{ fontSize: "1rem" }}>
-                  <b>Jonathan D.</b>
-                </p>
-                <p className="m-0" style={{ fontSize: "0.75rem" }}>
-                  Tourist
-                </p>
-                <p className="m-0" style={{ fontSize: "0.75rem" }}>
-                  Feb 12 - Feb 14
-                </p>
-              </div>
-            </div>
+            )}
           </div>
         </div>
         <div
@@ -234,6 +201,7 @@ const HotelDashboard = () => {
             <b>Current occupants</b>
           </p>
           <div className="d-flex flex-column align-items-center gap-lg-3 gap-md-2">
+          {currentOccupants.map((request)=>
             <div
               className="d-flex flex-row col-10 shadow-lg p-2 justify-content-evenly"
               style={{ borderRadius: "1rem", backgroundColor: "white" }}
@@ -249,10 +217,10 @@ const HotelDashboard = () => {
               </div>
               <div className="d-flex flex-column justify-content-center">
                 <p className="m-0" style={{ fontSize: "1rem" }}>
-                  <b>Lilliana M.</b>
+                  <b>{request.touristName}</b>
                 </p>
                 <p className="m-0" style={{ fontSize: "0.75rem" }}>
-                  Feb 12 - Feb 14
+                  {request.date}
                 </p>
               </div>
               <hr style={{ border: "1px solid Black" }} />
@@ -268,74 +236,7 @@ const HotelDashboard = () => {
                 </p>
               </div>
             </div>
-            <div
-              className="d-flex flex-row col-10 shadow-lg p-2 justify-content-evenly"
-              style={{ borderRadius: "1rem", backgroundColor: "white" }}
-            >
-              <div className="d-flex col-3">
-                <img
-                  className="object-fit-cover img-fluid m-auto"
-                  src={require("./../../assets/img/DQ.jpeg")}
-                  style={{
-                    borderRadius: "5rem",
-                  }}
-                ></img>
-              </div>
-              <div className="d-flex flex-column justify-content-center">
-                <p className="m-0" style={{ fontSize: "1rem" }}>
-                  <b>Lilliana M.</b>
-                </p>
-                <p className="m-0" style={{ fontSize: "0.75rem" }}>
-                  Feb 12 - Feb 14
-                </p>
-              </div>
-              <hr style={{ border: "1px solid Black" }} />
-              <div className="d-flex flex-column ">
-                <p className="m-0" style={{ fontSize: "1.5rem" }}>
-                  <b>$150</b>
-                </p>
-                <p
-                  className="m-0"
-                  style={{ color: "#4CAF50", fontSize: "0.75rem" }}
-                >
-                  <b>Paid</b>
-                </p>
-              </div>
-            </div>
-            <div
-              className="d-flex flex-row col-10 shadow-lg p-2 justify-content-evenly"
-              style={{ borderRadius: "1rem", backgroundColor: "white" }}
-            >
-              <div className="d-flex col-3">
-                <img
-                  className="object-fit-cover img-fluid m-auto"
-                  src={require("./../../assets/img/DQ.jpeg")}
-                  style={{
-                    borderRadius: "5rem",
-                  }}
-                ></img>
-              </div>
-              <div className="d-flex flex-column justify-content-center">
-                <p className="m-0" style={{ fontSize: "1rem" }}>
-                  <b>Lilliana M.</b>
-                </p>
-                <p className="m-0" style={{ fontSize: "0.75rem" }}>
-                  Feb 12 - Feb 14
-                </p>
-              </div>
-              <hr style={{ border: "1px solid Black" }} />
-              <div className="d-flex flex-column ">
-                <p className="m-0" style={{ fontSize: "1.5rem" }}>
-                  <b>$150</b>
-                </p>
-                <p
-                  className="m-0"
-                  style={{ color: "#4CAF50", fontSize: "0.75rem" }}
-                >
-                  <b>Paid</b>
-                </p>
-              </div>
-            </div>
+            )}
           </div>
         </div>
         <div className="d-flex col-lg-3 col-md-11 justify-content-md-center ">

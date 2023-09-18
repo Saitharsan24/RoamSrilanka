@@ -11,7 +11,7 @@ public class Packages {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="packageID")
+    @Column(name="packageid")
     private int packageID;
 
     @Column(name = "price")

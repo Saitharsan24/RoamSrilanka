@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import roamSrilanka.dev.model.Hotel.HotelRooms;
 import roamSrilanka.dev.model.Hotel.Hotels;
 import roamSrilanka.dev.service.hotel.HotelService;
 
@@ -52,16 +51,30 @@ public class HotelController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        // Update the existing hotel's information with the data from the request body
-        existingHotel.setHotelName(updatedHotel.getHotelName());
-        existingHotel.setStarRating(updatedHotel.getStarRating());
-        existingHotel.setUserRating(updatedHotel.getUserRating());
-        existingHotel.setDescription(updatedHotel.getDescription());
-        existingHotel.setHotelType(updatedHotel.getHotelType());
-        existingHotel.setAddress(updatedHotel.getAddress());
-        existingHotel.setLatitude(updatedHotel.getLatitude());
-        existingHotel.setLongitude(updatedHotel.getLongitude());
 
+        // Update only the non-null fields from updatedHotel
+        if (updatedHotel.getHotelName() != null && !updatedHotel.getHotelName().isEmpty()) {
+            existingHotel.setHotelName(updatedHotel.getHotelName());
+        }
+        if (updatedHotel.getStarRating() != null && updatedHotel.getStarRating() > 0) {
+            existingHotel.setStarRating(updatedHotel.getStarRating());
+        }
+        if (updatedHotel.getUserRating() != null && updatedHotel.getUserRating() >= 0) {
+            existingHotel.setUserRating(updatedHotel.getUserRating());
+        }
+        if (updatedHotel.getDescription() != null && !updatedHotel.getDescription().isEmpty()) {
+            existingHotel.setDescription(updatedHotel.getDescription());
+        }
+        if (updatedHotel.getHotelType() != null && !updatedHotel.getHotelType().isEmpty()) {
+            existingHotel.setHotelType(updatedHotel.getHotelType());
+        }
+        if (updatedHotel.getAddress() != null && !updatedHotel.getAddress().isEmpty()) {
+            existingHotel.setAddress(updatedHotel.getAddress());
+        }
+        if (updatedHotel.getCity() != null && !updatedHotel.getCity().isEmpty()) {
+            existingHotel.setCity(updatedHotel.getCity());
+        }
+      
         // Save the updated hotel
         hotelService.saveHotel(existingHotel);
 
