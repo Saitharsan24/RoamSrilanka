@@ -32,4 +32,8 @@ public class UserService {
         }
         return null;
     }
+
+    public User getUserById(Integer userId){
+        return userRepository.findById(userId).orElse(null);
+    }
 }

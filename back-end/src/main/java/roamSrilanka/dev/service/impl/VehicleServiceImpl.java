@@ -42,5 +42,10 @@ public class VehicleServiceImpl implements VehicleService {
         vehicleRepository.deleteById(vehicleID);
     }
 
+    @Override
+    public Vehicle saveFeedback(Vehicle vehicle) {
+        return null;
+    }
+
 
 }

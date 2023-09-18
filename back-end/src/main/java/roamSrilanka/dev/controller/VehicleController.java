@@ -31,7 +31,7 @@ public class VehicleController {
         return vehicleService.findbyId(vehicleID);
      }
 
-     //add working in insomnia
+    // add working in insomnia
      @PostMapping("/addVehicle")
      public Vehicle saveVehicle(@RequestBody Vehicle vehicle) { return vehicleService.saveVehicle(vehicle);
      }
@@ -59,5 +59,23 @@ public class VehicleController {
     @DeleteMapping("/{vehicleID}")
     public void deleteVehicle(@PathVariable("vehicleID") Long vehicleID) {
         vehicleService.deleteVehicle(vehicleID);
+    }
+
+    // get the specific vehicle by vehicleID and and feedback
+    @GetMapping("/vehicle/{vehicleID}/{feedback}")
+    public Vehicle saveFeedback(@PathVariable("vehicleID") Long vehicleID, @PathVariable("feedback") String feedback) {
+        Vehicle exitingVehicle = vehicleService.findbyId(vehicleID).orElse(null);
+
+        if (exitingVehicle==null) {
+            return null;
+        }
+        else {
+            exitingVehicle.setFeedback(feedback);
+
+            //save the changes made to the existing vehicle
+            vehicleService.saveVehicle(exitingVehicle);
+            return null;
+
+        }
     }
 }

@@ -57,7 +57,7 @@ function VehicleAcceptModal({closeModal,vehicleID}){
             <div className="modalContainerAccept">
                <div className="title-modalCloseBtnAccept w-75 mt-1 " onClick={()=>closeModal(false)}> <button  >X</button></div>
                 <div className="title-modalAccept "><h3>Are You sure</h3></div>
-                <div className="body-modal "><p>Do you want to  Account?</p></div>
+                <div className="body-modal "><p>Do you want to Accept?</p></div>
                 <div className="footer-modal">
                     <button  id="cancelBtnAccept" onClick={()=>closeModal(false)}>Cancel</button>
                     <button onClick={handleUpdateAccept}>Yes</button>

@@ -11,9 +11,11 @@ function AdminTouristDetails() {
   const urlParams = new URLSearchParams(window.location.search);
   const userId = urlParams.get('userId');
 
-  console.log(userId);
+  //console.log(userId);
 
   const [touristdetail, setTouristdetail] = useState([]);
+  const [touristuserdetail, setTouristuserdetail] = useState([]);
+  console.log(touristdetail);
  
   
   const apiBaseUrl = "http://localhost:8080";
@@ -25,11 +27,10 @@ function AdminTouristDetails() {
  // Make an HTTP GET request using axiosInstance
  // Make an HTTP GET request to fetch the details of the holiday planner using userId
  useEffect(() => {
-  axiosInstance.get(`/viewTorist/${userId}`)
+  axiosInstance.get(`/viewTourist/${userId}`)
     .then((response) => {
       // Handle the response and set the state with the details
       setTouristdetail(response.data);
-      
     })
     .catch((error) => {
       // Handle errors
@@ -38,6 +39,18 @@ function AdminTouristDetails() {
 }, [userId]);
 
 //console.log(touristdetail);
+
+useEffect(() => {
+  axiosInstance.get(`/viewUser/${userId}`)
+    .then((response) => {
+      // Handle the response and set the state with the details 
+      setTouristuserdetail(response.data);
+    })
+    .catch((error) => {
+      // Handle errors
+      console.log('Error fetching Data',error);
+    });
+}, [userId]);
  
   return (
     <React.Fragment>
@@ -68,7 +81,7 @@ function AdminTouristDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            {touristdetail.email}
+                            {touristuserdetail.userName}
                           </td>
                         </tr>
 
@@ -83,7 +96,7 @@ function AdminTouristDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            003
+                            {touristuserdetail.userId}
                           </td>
                         </tr>
 
@@ -98,7 +111,7 @@ function AdminTouristDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            Tourist
+                            {touristuserdetail.userType}
                           </td>
                         </tr>
 
@@ -147,10 +160,10 @@ function AdminTouristDetails() {
                       <tr style={{ height: "10px" }}></tr>
                       <tr>
                         <td style={{ width: "200px", textAlign: "left" }}>
-                          First Name{" "}
+                          Full Name{" "}
                         </td>
                         <td style={{ width: "50px" }}></td>
-                        <td style={{ width: "200px" }}>Last Name </td>
+                        <td style={{ width: "200px" }}>Gender </td>
                       </tr>
 
                       <tr style={{ height: "10px" }}></tr>
@@ -173,7 +186,7 @@ function AdminTouristDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          Panchavarnan{" "}
+                          {touristdetail.touristGender}
                         </td>
                       </tr>
 
@@ -197,7 +210,7 @@ function AdminTouristDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          991756432
+                        {touristdetail.touristPassport}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -207,7 +220,7 @@ function AdminTouristDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          0779656689{" "}
+                          {touristdetail.touristContact}
                         </td>
                       </tr>
 
@@ -218,7 +231,7 @@ function AdminTouristDetails() {
                           Email{" "}
                         </td>
                         <td style={{ width: "50px" }}></td>
-                        <td style={{ width: "200px" }}>Familier Languages </td>
+                        <td style={{ width: "200px" }}>Nationality </td>
                       </tr>
 
                       <tr style={{ height: "10px" }}></tr>
@@ -241,7 +254,7 @@ function AdminTouristDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          Tamil{" "}
+                          {touristdetail.country}
                         </td>
                       </tr>
 
@@ -249,23 +262,23 @@ function AdminTouristDetails() {
 
                       <tr>
                         <td style={{ width: "200px", textAlign: "left" }}>
-                          SLTDA Registration Number{" "}
+                          Emergency Person
                         </td>
                         <td style={{ width: "50px" }}></td>
-                        <td style={{ width: "200px" }}>Date of Birth </td>
+                        <td style={{ width: "200px" }}>Emergency Relationship </td>
                       </tr>
 
                       <tr style={{ height: "10px" }}></tr>
 
                       <tr>
-                        <td
+                     <td
                           style={{
                             width: "200px",
                             backgroundColor: "#FFFFFF",
                             borderRadius: "5px",
                           }}
                         >
-                          998833
+                          {touristdetail.emergencyPerson}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -275,33 +288,37 @@ function AdminTouristDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          19/06/1999{" "}
+                          {touristdetail.emergencyRelation}
                         </td>
                       </tr>
 
                       <tr style={{ height: "10px" }}></tr>
 
                       <tr>
-                        <td
-                          colSpan="3"
-                          style={{ width: "200px", textAlign: "left" }}
-                        >
-                          Address{" "}
+                        <td style={{ width: "200px", textAlign: "left" }}>
+                          Emergency Contact
                         </td>
+                        <td style={{ width: "50px" }}></td>
+                        <td style={{ width: "200px" }}></td>
                       </tr>
 
                       <tr style={{ height: "10px" }}></tr>
 
                       <tr>
                         <td
-                          colSpan="3"
                           style={{
                             width: "200px",
                             backgroundColor: "#FFFFFF",
                             borderRadius: "5px",
                           }}
                         >
-                          Annasilayady,Karanavai,Karaveddy.
+                          {touristdetail.emergencyContact}
+                        </td>
+                        <td style={{ width: "50px" }}></td>
+                        <td
+                          
+                        >
+                         
                         </td>
                       </tr>
 

@@ -41,7 +41,11 @@ public class UserController {
              return new ResponseEntity<>("Login Failed", HttpStatus.UNAUTHORIZED);
          }
 
+    }
 
+    @GetMapping("/viewUser/{userId}")
+    public User getUserById(@PathVariable Integer userId){
+        return userService.getUserById(userId);
     }
 
     private static class LoginRequest{

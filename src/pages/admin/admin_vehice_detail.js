@@ -8,6 +8,7 @@ import '../../styles/admin/admin_driver_vechicle_view_details.css';
 import axios from "axios";
 import VehicleAcceptModal from "../../components/admin-vehicle-accept-modal";
 import VehicleRejecttModal from "../../components/admin-vehicle-reject-modal";
+import profile from "../../assets/images/profile.jpg";
 
 
 function AdminVehicleDetail_1() {
@@ -70,10 +71,8 @@ function AdminVehicleDetail_1() {
           if(status==null){
             return(
               <tr>
-              <td >
-              </td>
-              <td style={{ width: "50px" }}></td>
-              <td style={{ width: "200px", textAlign: "right" }}>
+              
+              <td style={{ width: "200px", textAlign: "center" }}>
               <button  onClick={openModalWithBlurReject}
                       style={{
                         backgroundColor: "#d03b3b",
@@ -89,7 +88,7 @@ function AdminVehicleDetail_1() {
               </button>
               </td>
               <td style={{ width: "50px" }}></td>
-              <td style={{ width: "200px", textAlign: "left" }}>
+              <td style={{ width: "200px", textAlign: "center" }}>
               <button  onClick={openModalWithBlurAccept}
                       style={{
                         backgroundColor: "#66d03b",
@@ -159,7 +158,7 @@ function AdminVehicleDetail_1() {
   return (
     <React.Fragment>
         {openModalAccept && <VehicleAcceptModal closeModal={closeModalAccept} vehicleID={vehicleId}/>}
-        {openModalReject && <VehicleRejecttModal closeModal={closeModalReject}/>}
+        {openModalReject && <VehicleRejecttModal closeModal={closeModalReject} vehicleID={vehicleId}/>}
         <div  className={`w-100 d-flex justify-content-center align-items-center 
           ${
           blurBackground ? 'blur-background' : '' // Apply blur class conditionally
@@ -298,21 +297,110 @@ function AdminVehicleDetail_1() {
                           {vehicledetail.company}
                         </td>
                       </tr>
-                      <tr style={{ height: "20px" }}></tr>
-                      {getButtonTr(vehicledetail.status)}
+                     
                       <tr style={{ height: "20px" }}></tr>
                     </tbody>
                   </table>
+                  <p style={{ fontWeight: "bold", color: "#004577",fontSize:"15px"}}>Vehicle Insurance Details</p>
+                  <table
+                    className=" d-flex flex-column justify-content-center align-items-center w-100 col-7 "
+                    style={{ textAlign: "left", overflowX:'auto', borderCollapse:'collapse' }}
+                  >
+                    <tbody>
+                      <tr style={{ height: "10px" }}></tr>
+                      <tr>
+                        <td style={{ width: "200px", textAlign: "left" }}>
+                        Insurance Number
+                        </td>
+                        <td style={{ width: "50px" }}></td>
+                        <td style={{ width: "200px" }}> Start Date </td>
+                        <td style={{ width: "50px" }}></td>
+                        <td style={{ width: "200px" }}>End Date </td>
+                      </tr>
 
+                      <tr style={{ height: "10px" }}></tr>
 
+                      <tr>
+                        <td
+                          style={{
+                            width: "200px",
+                            backgroundColor: "#FFFFFF",
+                            borderRadius: "5px",
+                          }}
+                        >
+                          {vehicledetail.insurance_no}
+                        </td>
+                        <td style={{ width: "50px" }}></td>
+                        <td
+                          style={{
+                            width: "200px",
+                            backgroundColor: "#FFFFFF",
+                            borderRadius: "5px",
+                          }}
+                        >
+                          {vehicledetail.insurance_sdate}
+                        </td>
+                        <td style={{ width: "50px" }}></td>
+                        <td
+                          style={{
+                            width: "200px",
+                            backgroundColor: "#FFFFFF",
+                            borderRadius: "5px",
+                          }}
+                        >
+                          {vehicledetail.insurance_edate}
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td style={{ width: "200px", textAlign: "left" }}>
+                        Insurance Company
+                        </td>
+                        <td style={{ width: "50px" }} colSpan={4}></td>
+                      
+                      </tr>
+
+                      <tr style={{ height: "10px" }}></tr>
+
+                      <tr>
+                        <td
+                          style={{
+                            width: "200px",
+                            backgroundColor: "#FFFFFF",
+                            borderRadius: "5px",
+                          }}
+                        >
+                          {vehicledetail.insurance_company}
+                        </td>
+                        <td style={{ width: "50px" }} colSpan={3}></td>
+                        
+                                               
+                      </tr>
+                      <tr style={{ height: "20px" }}></tr>
+                     
+                      </tbody>
+
+                   </table>
+
+                   <div className='vehicle-content d-flex flex-column justify-content-center align-items-center col-10  '>
+              <h4 className='mb-2' style={{ fontWeight: "bold", color: "#004577",fontSize:"25px"}}>Insurance Plate Photo</h4>
+              <img  src={profile}
+                     className=" vehicle-pic object-fit-cover img-fluid m-auto"  style={{width:"30vw",height:"50vh"}} />
+            </div>
+
+            <table className=" d-flex flex-column justify-content-center align-items-center w-100  ">
+            {getButtonTr(vehicledetail.status)}
+            </table>
                     
                   
                   </div>
-
                  
                 </div>
+                
               </div>
+                
             </div>
+
           </div>
  
       

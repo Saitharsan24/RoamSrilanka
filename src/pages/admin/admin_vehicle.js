@@ -149,19 +149,19 @@ function AdminVehicle() {
   const data_confirmed = {
     columns: [
       {
-        label: "Package ID",
+        label: "Vehicle ID",
         field: "id",
         sort: "asc",
         width: 150,
       },
       {
-        label: "Package Name",
+        label: "Driver Name",
         field: "name",
         sort: "asc",
         width: 150,
       },
       {
-        label: "Package Type",
+        label: "Seating Capacity",
         field: "type",
         sort: "asc",
         width: 200,
@@ -174,7 +174,7 @@ function AdminVehicle() {
       },
      
       {
-        label: "Package detail",
+        label: "Vehicle detail",
         field: "btn",
         width: 100,
         btn: "view-button",
@@ -200,19 +200,19 @@ function AdminVehicle() {
   const data_rejected = {
     columns: [
       {
-        label: "Package ID",
+        label: "Vehicle ID",
         field: "id",
         sort: "asc",
         width: 150,
       },
       {
-        label: "Package Name",
+        label: "Vehicle Name",
         field: "name",
         sort: "asc",
         width: 150,
       },
       {
-        label: "Package Type",
+        label: "Vehicle Type",
         field: "type",
         sort: "asc",
         width: 200,
@@ -225,7 +225,7 @@ function AdminVehicle() {
       },
      
       {
-        label: "Package detail",
+        label: "Vehicle detail",
         field: "btn",
         width: 100,
         btn: "view-button",
