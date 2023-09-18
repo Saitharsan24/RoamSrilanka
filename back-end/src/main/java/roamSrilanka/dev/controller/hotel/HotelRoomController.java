@@ -79,18 +79,12 @@ public class HotelRoomController {
         if (updatedRoom.getRoomType() != null && !updatedRoom.getRoomType().isEmpty()) {
             existingRoom.setRoomType(updatedRoom.getRoomType());
         }
-        if (updatedRoom.getDescription() != null && !updatedRoom.getDescription().isEmpty()) {
-            existingRoom.setDescription(updatedRoom.getDescription());
-        }
-        if (updatedRoom.getAvailability() != null) {
-            existingRoom.setAvailability(updatedRoom.getAvailability());
-        }
+
+
         if (updatedRoom.getPrice() != null && updatedRoom.getPrice() > 0) {
             existingRoom.setPrice(updatedRoom.getPrice());
         }
-        if (updatedRoom.getRoomSize() != null && !updatedRoom.getRoomSize().isEmpty() && !updatedRoom.getRoomSize().isEmpty()) {
-            existingRoom.setRoomSize(updatedRoom.getRoomSize());
-        }
+
         if (updatedRoom.getNoOfBeds() != null && updatedRoom.getNoOfBeds() > 0) {
             existingRoom.setNoOfBeds(updatedRoom.getNoOfBeds());
         }

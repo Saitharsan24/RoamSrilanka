@@ -12,12 +12,14 @@ function ToursitHotelViewRoom() {
 
   //Showing room details in a popup
   const [showPopup, setShowPopup] = useState(false);
+  const [selectedRoom, setSelectedRoom] = useState(null);
   const [showBlur, setShowBlur] = useState(false);
   //console.log(showPopup);
 
   //function for show popup
-  const openPopup = () => {
+  const openPopup = (room) => {
     setShowPopup(!showPopup);
+    setSelectedRoom(room);
     setShowBlur(!showBlur);
   }
 
@@ -41,7 +43,12 @@ function ToursitHotelViewRoom() {
     timeout: 10000,
   });
 
+  //to store details of hotel with specific hotel id
   const [hotels, setHotels] = useState([]);
+
+  //to store rooms of the particular hotel
+  const [hotelRooms, setHotelRooms] = useState([]);
+
   
   useEffect(() => {
     // Fetch hotel data from your backend API
@@ -55,14 +62,32 @@ function ToursitHotelViewRoom() {
       .catch((error) => {
         console.log("Error fetching data:", error);
       });
-  }, []);
   
-  console.log(hotels);
+  }, []);
 
+  useEffect(() => {
+    // Fetch hotel data from your backend API
+    axiosInstance
+      .get("/viewHotelRoom/"+hotelId)
+      .then((response) => {
+        setHotelRooms(response.data);
+        //console.log(response.data);
+      })
+
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  
+  }, []);
+
+  //getting random number from 0 to 4
+  function getRandomIndex() {
+    return Math.floor(Math.random() * 2);
+  }
 
   return (
     <>
-    {showPopup && <RoomPopup closeModal={closeModal} />}
+    {showPopup && <RoomPopup closeModal={closeModal} room={selectedRoom} />}
     <div  className={`tourist-main d-flex flex-column gap-2 mb-2 
           ${
           showBlur ? 'blur-background' : '' // Apply blur class conditionally
@@ -129,19 +154,19 @@ function ToursitHotelViewRoom() {
             <div>
               <h3 style={{fontWeight:"650"}}>Choose your room</h3>
               <div className='roomCard-hotel-view d-flex flex-row gap-3 align-items-center justify-content-center'>
-                
+
+              {hotelRooms.map((room) => (
                 <div className='roomcard-items d-flex flex-column'>
                   <div className='roomcard-hotel-view-image'></div>
                   <div className='roomcard-hotel-details d-flex flex-column align-items-start gap-1'>
-                    <h5 style={{fontWeight:"600"}}>Superior Queen</h5>
+                    <h5 style={{fontWeight:"600"}}>{room.roomType}</h5>
                     <ul>
-                        <li>Free cancellation</li>
-                        <li>Breakfast included</li>
-                        <li>Free Wifi</li>
-                        <li>Sleeps 2</li>
-                        <li>1 King bed</li>
+                        <li>{room.policyBathroom.split(",")[getRandomIndex()]}</li>
+                        <li>{room.policyBedroom.split(",")[getRandomIndex()]}</li>
+                        <li>{room.policyFoodanddrink.split(",")[getRandomIndex()]}</li>
+                        <li>{room.policyInternet.split(",")[0]}</li>
                     </ul> 
-                    <p onClick={openPopup} className='roomMoreDetailHover' style={{fontWeight:"600", fontSize:"18px", color:"#004577"}}>
+                    <p onClick={() => openPopup(room)} className='roomMoreDetailHover' style={{fontWeight:"600", fontSize:"18px", color:"#004577"}}>
                       More datails <BsIcons.BsArrowRight/>
                     </p>
                     <Button>
@@ -149,7 +174,7 @@ function ToursitHotelViewRoom() {
                     </Button>
                   </div>
                 </div>
-                 
+              ))}   
               </div>
             </div>
           </div>

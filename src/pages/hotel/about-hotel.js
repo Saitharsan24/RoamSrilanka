@@ -99,7 +99,6 @@ const AboutHotel = () => {
     roomType: "",
     occupancy: "",
     price: "",
-    roomSize: "",
     noOfBeds: "",
     availability: "",
     description: "",
