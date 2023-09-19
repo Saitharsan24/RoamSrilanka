@@ -2,6 +2,7 @@ package roamSrilanka.dev.model;
 
 
 import jakarta.persistence.*;
+import roamSrilanka.dev.model.Tourist.Tourist;
 
 @Table(name = "users")
 @Entity
@@ -21,25 +22,41 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "User_fullname")
+    private String userFullname;
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Tourist tourist;
 
     public User() {
     }
 
-    public User(int userId, String userType, String userName, String password) {
+    public User(int userId, String userType, String userName, String password, String userFullname) {
         this.userId = userId;
         this.userType = userType;
         this.userName = userName;
         this.password = password;
+        this.userFullname = userFullname;
     }
 
-    public User(String userType, String userName, String password) {
+    public User(String userName, String password, String userFullname) {
+        this.userName = userName;
+        this.password = password;
+        this.userFullname = userFullname;
+    }
+
+
+    public User(String userType, String userName, String password, String userFullname) {
         this.userType = userType;
         this.userName = userName;
         this.password = password;
+        this.userFullname = userFullname;
     }
 
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
 
     //getters
 
@@ -59,8 +76,14 @@ public class User {
         return password;
     }
 
-    //setters
+    public String getUserFullname() {
+        return userFullname;
+    }
 
+    //setters
+    public void setUserFullname(String userFullname) {
+        this.userFullname = userFullname;
+    }
     public void setUserId(int userId) {
         this.userId = userId;
     }
@@ -77,4 +100,7 @@ public class User {
         this.password = password;
     }
 
+    public void setTourist(Tourist tourist) {
+        this.tourist = tourist;
+    }
 }

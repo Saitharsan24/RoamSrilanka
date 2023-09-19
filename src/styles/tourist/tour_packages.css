@@ -1,0 +1,102 @@
+.all-tourist-packages{
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 15px 10px 10px 10px;
+}
+
+.all-tourist-packages .package-card{
+    width:30%;
+    background-color:#f6f6f6;
+    height: 20rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.package-card h5{
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 10px !important;
+    color:#004577 ;
+}
+
+.all-tourist-packages .package-card-image{
+    width: 100%;
+    height: 70%;
+    border-radius: 15px;
+    background-color:blue;
+}
+
+.package-name-price{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    gap:100px;
+}
+
+.package-name-price span{
+    font-size: 25px;
+    color: #DB163A;
+    font-weight: 600;
+}
+
+.view-package-row-01 span{
+    font-size: 45px;
+    color: #DB163A;
+    font-weight: 600;
+}
+
+.view-package-row-01 p{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+
+.tourist-packages-view{
+    background-color: #ffffff;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.view-package-row-01{
+    width: 100%;
+    gap : 20px;
+}
+
+.tourist-packages-view .package-view-image{
+    background-color: aqua;
+    width: 70%;
+    height: 20rem;
+    border-radius: 20px;
+}
+
+.view-package-row-01 h3{
+    font-weight: 600;
+}
+
+.view-package-row-02{
+    width: 100%;
+}
+
+.row-2-description{
+    width:65%;
+    text-align: justify;
+}
+
+.row-2-itinerary{
+    width: 35%;
+}
+
+.package-details-list p{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.package-details-list span{
+    color: #004577;
+    font-size: 20px;
+}
+

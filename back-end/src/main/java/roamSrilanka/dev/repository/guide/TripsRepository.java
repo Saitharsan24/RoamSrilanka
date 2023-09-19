@@ -6,5 +6,5 @@ import roamSrilanka.dev.model.guide.Trips;
 
 @Repository
 public interface TripsRepository extends JpaRepository<Trips, Integer> {
-    Trips findByTripId(int tripId);
+    //Trips findByTripId(int tripId);
 }

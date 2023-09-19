@@ -2,7 +2,6 @@ import React from 'react';
 import './../styles/home.css';
 import "bootstrap/dist/css/bootstrap.css";
 import {Button,Carousel} from 'react-bootstrap';
-import {HiArrowCircleLeft,HiArrowCircleRight} from 'react-icons/hi';
 import Cardcarousel from './../components/card';
 
 

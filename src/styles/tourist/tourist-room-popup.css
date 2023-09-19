@@ -1,0 +1,43 @@
+    .modalBackground{
+    width: 850px;
+    height: 650px;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    position: fixed;  
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding:0px 15px 0px 25px;
+  }
+  
+  .blur-background {
+    filter: blur(10px); /* You can adjust the blur amount as needed */
+  }
+
+  .roomDetailClosebtn{
+    font-size: 20px;
+    display: flex;
+    justify-content: end;
+    padding: 10px 20px 20px 0px;
+  }
+  
+  .roomDetailClosebtnicon:hover{
+    color: #db163a;
+    transition: .3s;
+  }
+
+  .hotelRoomImages{
+    background-color: #db163a;
+    width: 95%;
+    border-radius: 20px;
+    height: 300px;
+  }
+
+  .priceandreservebtn{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+  }

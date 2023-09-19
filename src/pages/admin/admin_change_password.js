@@ -3,7 +3,7 @@ import "../../styles/admin/admin_change_password.css";
 import profile from "../../assets/images/profile.jpg";
 
 function AdminChangePassword() {
-    
+
   return (
     <React.Fragment>
           <div className="w-100 d-flex justify-content-center mt-5 p-5">
