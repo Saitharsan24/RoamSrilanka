@@ -4,11 +4,28 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import systemlogo from './../assets/images/systemlogo.png';
 import '../styles/headeruser.css';
 import * as Icon from 'react-bootstrap-icons';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { FaCoffee,FaSignOutAlt,FaCog,FaBell,FaUser } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useSession } from '../Context/SessionContext';
 
 
-const Headeruser=()=>(
+export default function Headeruser(){
+
+  const { setSessionData } = useSession();
+const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setSessionData({
+        loggedIn: false,
+        userType: null,
+        userName: null,
+        userId: null,
+        userFullName: null
+    });
+    navigate("/login");
+  }
+  return(
   <>
     <React.Fragment>
       <div className=" container-fluid d-lg-flex d-md-flex d-sm-flex flex-sm-column  bg-white ">
@@ -22,17 +39,9 @@ const Headeruser=()=>(
               <div className=' ' style={{ color: "#004577" }}><FaBell/></div>
               <div className='' style={{ color: "#004577" }}><FaUser/></div>
               <div className='' style={{ color: "#004577", fontWeight: "bold" }}>
-                <div className="dropdown">
-                  <button className="btn  dropdown-toggle" style={{ width: "100px" }} type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Saranjan
-                  </button>
-                  <ul className="dropdown-menu custom-dropdown-menu">
-                    <li><div></div></li>
-                    <li><div className="dropdown-item " style={{ color: "#004577", fontSize: "16px" }}><p>  <FaSignOutAlt/>LogOut</p></div></li>
-                    <li><div className="dropdown-item " style={{ color: "#004577", fontSize: "16px" }}><p> <FaCog/> Setting</p></div></li>
-                  </ul>
-                </div>
-
+                  <Button onClick={handleLogout} className="" style={{ width: "100px", backgroundColor:"#db163a", border:"none", marginRight:"15px"}}>
+                    <p><FaSignOutAlt/>Logout</p>
+                  </Button>
               </div>
 
             </div>
@@ -41,6 +50,7 @@ const Headeruser=()=>(
       </div>
     </React.Fragment>
   </>
-);
+)
+}
 
-export default Headeruser
+

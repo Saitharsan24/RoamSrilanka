@@ -104,8 +104,8 @@ import DriverVehicle from "./pages/driver/vehicle";
 import DrivernewVehicle from "./pages/driver/newVehicle";
 import DriverRequest from "./pages/driver/requests";
 import DriverTrips from "./pages/driver/trips";
-import { useSession } from "./Context/SessionContext";
-
+import { useNavigate } from 'react-router-dom';
+import { useSession } from './Context/SessionContext';
 
 const route = createBrowserRouter(
   createRoutesFromElements(
@@ -232,6 +232,30 @@ function App() {
 
   const sessionData = useSession();
   console.log(sessionData);
+
+  const currentURL = window.location.href;
+  const splitURL = currentURL.split("/");
+
+  if (splitURL[3] === "tourist" || splitURL[3] === "admin" || splitURL[3] === "driver" || splitURL[3] === "holidayPlanner" || splitURL[3] === "guide" || splitURL[3] === "hotel") {
+    
+    if (sessionData.sessionData.userType === null || sessionData.sessionData.userType === undefined ) {
+      window.location.href = "/login";
+    }else{
+      if (sessionData.sessionData.userType !== splitURL[3]) {
+        window.location.href = "/login";        
+      }
+    
+    else{
+      
+    return <RouterProvider router={route} />;
+    }
+    }
+  } else{
+    
+    return <RouterProvider router={route} />;
+
+  }
+
 
   return (
     <>
