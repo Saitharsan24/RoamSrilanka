@@ -19,8 +19,6 @@ const ImageConfig = {
 
 const DropFileInput = props => {
 
-    
-
     const wrapperRef = useRef(null);
 
     const [fileList, setFileList] = useState([]);

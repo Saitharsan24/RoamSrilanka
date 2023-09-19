@@ -1,10 +1,50 @@
-import React from 'react'
+import React,{ useState, useEffect } from 'react'
 import '../../styles/tourist/tourist_hotel.css'
 import * as BsIcons from 'react-icons/bs'
 import { Button } from 'react-bootstrap'
 import HotelImage from '../../assets/images/hotel_01.jpg'
+import axios from "axios";
 
 function ToursitHotel() {
+
+  const [destination, setDestination] = useState('');
+  const [checkInDate, setCheckInDate] = useState(new Date().toISOString().split('T')[0]);
+  const [checkOutDate, setCheckOutDate] = useState(new Date().toISOString().split('T')[0]);
+  const [travelers, setTravelers] = useState(1);
+
+  const placesInSriLanka = ['Colombo', 'Kandy', 'Galle', 'Anuradhapura', 'Jaffna',
+  'Sigiriya', 'Dambulla Cave Temple', 'Polonnaruwa', 'Nuwara Eliya', 'Adams Peak', 'Yala National Park', 'Uda Walawe National Park',
+  'Mirissa', 'Unawatuna Beach', 'Ella', 'Arugam Bay', 'Pinnawala Elephant Orphanage', 'Horton Plains National Park', 'Trincomalee', 
+  'Hikkaduwa Beach', 'Wilpattu National Park', 'Batticaloa', 'Pasikudah Beach', 'Minneriya National Park', 'Knuckles Mountain Range',
+  'Gal Oya National Park', 'Kitulgala', 'Matara', 'Bundala National Park', 'Sinharaja Rain Forest', 'Ratnapura', 'Badulla', 'Kadugannawa',
+  'Kataragama', 'Mannar', 'Negombo', 'Tangalle', 'Ahangama', 'Weligama', 'Kurunegala'];
+
+   //Sending data to backend
+   const apiBaseUrl = "http://localhost:8080";
+
+   const axiosInstance = axios.create({
+     baseURL: apiBaseUrl,
+     timeout: 10000,
+   });
+   //data from backend will directly store in this state  
+   const [hotels, setHotels] = useState([]);
+ 
+   //when filtering the filtered data will store in this state and mapped
+   const [filterHotels, setFilterHotels] = useState([]);
+ 
+   useEffect(() => {
+     // Fetch hotel data from your backend API
+     axiosInstance
+       .get("/viewHotels")
+       .then((response) => {
+         console.log(response.data);
+         setHotels(response.data);
+       })
+       .catch((error) => {
+         console.log("Error fetching data:", error);
+       });
+   }, []);
+
   return (
     <div className="tourist-main d-flex flex-column gap-3 mb-2" style={{ width: "inherit" }}>
         <div className="tourist-headings w-100">
@@ -17,23 +57,50 @@ function ToursitHotel() {
         <div className="hotel-searchbar">
           <div className='hotel-place'>
             <h6>Place going to</h6>
-            <input type="text" />
+            <input 
+              type="text" 
+              list="places" 
+              value={destination}
+              onChange={(e) => setDestination(e.target.value)}
+            />
+            <datalist id="places">
+              {placesInSriLanka.map(place => <option key={place} value={place} />)}
+            </datalist>
           </div>
+          
           <div className='hotel-checkin'>
             <h6>Check in date</h6>
-            <input type="text" />
+              <input 
+                type="date" 
+                value={checkInDate}
+                min={new Date().toISOString().split('T')[0]}
+                onChange={(e) => setCheckInDate(e.target.value)}
+              />
           </div>
+
           <div className='hotel-checkout'>
             <h6>Check out date</h6>
-            <input type="text" />
+            <input 
+              type="date" 
+              value={checkOutDate}
+              min={checkInDate}
+              onChange={(e) => setCheckOutDate(e.target.value)}
+            />
           </div>
-          <div className='hotel-room-pax'>
+           
+          <div className='hotel-room-pax d-flex flex-column'>
             <h6>Travelers</h6>
-            <input type="text" />
+            <div className='d-flex flex-row gap-4'>
+            <button onClick={() => setTravelers(prev => Math.max(prev - 1, 1))}>-</button>
+            <input type="number" value={travelers} readOnly />
+            <button onClick={() => setTravelers(prev => prev + 1)}>+</button>
+            </div>
           </div>
+          <a href="touristHotelSearchList">
           <div className='hotel-search-btn'>
             <BsIcons.BsSearch />
           </div>
+          </a>
         </div>
 
         <div className="hotel-offers">
@@ -42,78 +109,20 @@ function ToursitHotel() {
 
         <div className="hotel-famous-places d-flex flex-column gap-4">
           <div>
-            <h4>Hotels in the most popular regions in Sri Lanka</h4>
-            <p className='hotel-heading-para'>Discover Sri Lanka by exploring its top regions</p>
-          </div> 
-
-          <div className=" hotel-famous-places-cards w-100 d-flex flex-row  justify-content-around gap-3">
-
-              <div className="place-01">
-                <div className="place-image"></div>
-                <a href="touristHotelSearchList">
-                  <div className='d-flex flex-column align-items-center hotel-card-text'>
-                    <p className='hotel-place-text'>Galle</p>
-                    <p style={{ color: "#DB163A", fontSize:'15px' }}>43 Hotels</p>
-                  </div>
-                </a>
-              </div>
-
-              <div className="place-01">
-                <div className="place-image"></div>
-                <div className='d-flex flex-column align-items-center hotel-card-text'>
-                  <p className='hotel-place-text'>Galle</p>
-                  <p style={{ color: "#DB163A", fontSize:'15px' }}>43 Hotels</p>
-                </div>
-              </div>
-
-              <div className="place-01">
-                <div className="place-image"></div>
-                <div className='d-flex flex-column align-items-center hotel-card-text'>
-                  <p className='hotel-place-text'>Galle</p>
-                  <p style={{ color: "#DB163A", fontSize:'15px' }}>43 Hotels</p>
-                </div>
-              </div>
-
-              <div className="place-01">
-                <div className="place-image"></div>
-                <div className='d-flex flex-column align-items-center hotel-card-text'>
-                  <p className='hotel-place-text'>Galle</p>
-                  <p style={{ color: "#DB163A", fontSize:'15px' }}>43 Hotels</p>
-                </div>
-              </div>
-
-              <div className="place-01">
-                <div className="place-image"></div>
-                <div className='d-flex flex-column align-items-center hotel-card-text'>
-                  <p className='hotel-place-text'>Galle</p>
-                  <p style={{ color: "#DB163A", fontSize:'15px' }}>43 Hotels</p>
-                </div>
-              </div>
-
-              <div className="place-01">
-                <div className="place-image"></div>
-                <div className='d-flex flex-column align-items-center hotel-card-text'>
-                  <p className='hotel-place-text'>Galle</p>
-                  <p style={{ color: "#DB163A", fontSize:'15px' }}>43 Hotels</p>
-                </div>
-              </div>
-
-          </div>
-
-        </div>
-
-        <div className="hotel-famous-places d-flex flex-column gap-4">
-          <div>
             <h4>Top picks for hotels in Sri Lanka</h4>
             <p className='hotel-heading-para'>Try one of these popular and highly-rated Sri Lanka hotels</p>
           </div>
 
-          <div className=" hotel-famous-places-cards w-100 d-flex flex-row  justify-content-around gap-3">
-
-              <div className="place-01">
+          <div className="hotel-famous-places-cards w-100 d-flex flex-row  justify-content-around gap-3">
+        
+          {hotels
+            .sort((a, b) => b.rating - a.rating) // This sorts the hotels in descending order based on their ratings
+            .slice(0, 5)
+            .map((hotel) => (
+              <div className="place-01" key={hotel}>
                 <div className="place-image"></div>
-                <div className='hotel-btn-name'>
-                  <p>Hotel Saphire</p>
+                <div className='hotel-btn-name d-flex flex-column gap-2'>
+                  <p>{hotel.hotelName}</p>
                   <Button
                     className="book-tour-btn"
                     variant="primary"
@@ -130,112 +139,7 @@ function ToursitHotel() {
                   </Button>
                 </div>
                </div>
-
-              <div className="place-01">
-                <div className="place-image"></div>
-                <div className='hotel-btn-name'>
-                  <p>Hotel Araliya</p>
-                  <Button
-                    className="book-tour-btn"
-                    variant="primary"
-                    style={{
-                      backgroundColor: "#004577",
-                      border: "none",
-                      marginTop: "3px",
-                      paddingLeft: "20px",
-                      paddingRight: "20px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    Book hotel
-                  </Button>
-                </div>
-              </div>
-
-              <div className="place-01">
-                <div className="place-image"></div>
-                <div className='hotel-btn-name'>
-                  <p>Taj Samudra</p>
-                  <Button
-                    className="book-tour-btn"
-                    variant="primary"
-                    style={{
-                      backgroundColor: "#004577",
-                      border: "none",
-                      marginTop: "3px",
-                      paddingLeft: "20px",
-                      paddingRight: "20px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    Book hotel
-                  </Button>
-                </div>
-              </div>
-
-              <div className="place-01">
-                <div className="place-image"></div>
-                <div className='hotel-btn-name'>
-                  <p>Shangrila</p>
-                  <Button
-                    className="book-tour-btn"
-                    variant="primary"
-                    style={{
-                      backgroundColor: "#004577",
-                      border: "none",
-                      marginTop: "3px",
-                      paddingLeft: "20px",
-                      paddingRight: "20px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    Book hotel
-                  </Button>
-                </div>
-              </div>
-
-              <div className="place-01">
-                <div className="place-image"></div>
-                <div className='hotel-btn-name'>
-                  <p>Cinnamon Grand</p>
-                  <Button
-                    className="book-tour-btn"
-                    variant="primary"
-                    style={{
-                      backgroundColor: "#004577",
-                      border: "none",
-                      marginTop: "3px",
-                      paddingLeft: "20px",
-                      paddingRight: "20px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    Book hotel
-                  </Button>
-                </div>
-              </div>
-
-              <div className="place-01">
-                <div className="place-image"></div>
-                <div className='hotel-btn-name'>
-                  <p>JetWing</p>
-                  <Button
-                    className="book-tour-btn"
-                    variant="primary"
-                    style={{
-                      backgroundColor: "#004577",
-                      border: "none",
-                      marginTop: "3px",
-                      paddingLeft: "20px",
-                      paddingRight: "20px",
-                      fontSize: "12px",
-                    }}
-                  >
-                    Book hotel
-                  </Button>
-                </div>  
-              </div>
-
+          ))}     
           </div>
 
         </div>

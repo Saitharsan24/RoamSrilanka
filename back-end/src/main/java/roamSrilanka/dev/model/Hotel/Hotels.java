@@ -2,25 +2,25 @@ package roamSrilanka.dev.model.Hotel;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @Table
 @Entity(name = "Hotels")
 public class Hotels {
-
     @Id
-    @Column(name="hotel_id")
+    @Column(name = "hotel_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer hotelId;
 
-    @Column(name="hotel_name")
+    @Column(name = "hotel_name")
     private String hotelName;
 
-    @Column(name="star_rating")
+    @Column(name = "star_rating")
     private Integer starRating;
 
-    @Column(name="user_rating")
+    @Column(name = "user_rating")
     private Double userRating;
 
     @Column(name = "description")
@@ -35,9 +35,15 @@ public class Hotels {
     @Column(name = "city")
     private String city;
 
+    @Column(name = "price")
+    private Double price;
+
     @ElementCollection
     @Column(name = "hotel_images")
     private List<String> hotelImages;
+
+    @OneToMany(mappedBy = "hotels", cascade = CascadeType.ALL)
+    private List<HotelAmenities> hotelAmenities = new ArrayList<>();
 
 //    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private List<HotelRooms> rooms;  // One-to-Many relationship with HotelRooms
@@ -46,18 +52,7 @@ public class Hotels {
     public Hotels() {
     }
 
-    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city,  List<String> hotelImages) {
-        this.hotelName = hotelName;
-        this.starRating = starRating;
-        this.userRating = userRating;
-        this.description = description;
-        this.hotelType = hotelType;
-        this.address = address;
-        this.city = city;
-        this.hotelImages = hotelImages;
-    }
-
-    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, List<String> hotelImages) {
+    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, List<String> hotelImages, List<HotelAmenities> hotelAmenities) {
         this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.starRating = starRating;
@@ -67,18 +62,21 @@ public class Hotels {
         this.address = address;
         this.city = city;
         this.hotelImages = hotelImages;
+        this.hotelAmenities = hotelAmenities;
     }
 
-    public Hotels(Integer hotelId, String hotelName, Integer starRating, String description, String hotelType, String address, String city, List<String> hotelImages) {
-        this.hotelId = hotelId;
+    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, List<String> hotelImages, List<HotelAmenities> hotelAmenities) {
         this.hotelName = hotelName;
         this.starRating = starRating;
+        this.userRating = userRating;
         this.description = description;
         this.hotelType = hotelType;
         this.address = address;
         this.city = city;
         this.hotelImages = hotelImages;
+        this.hotelAmenities = hotelAmenities;
     }
+
 
     //Getters and Setters
 //    public List<HotelRooms> getRooms() {
@@ -88,6 +86,14 @@ public class Hotels {
 //    public void setRooms(List<HotelRooms> rooms) {
 //        this.rooms = rooms;
 //    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
     public Integer getHotelId() {
         return hotelId;
@@ -160,5 +166,14 @@ public class Hotels {
     public void setHotelImages(List<String> hotelImages) {
         this.hotelImages = hotelImages;
     }
+
+    public List<HotelAmenities> getHotelAmenities() {
+        return hotelAmenities;
+    }
+
+    public void setHotelAmenities(List<HotelAmenities> hotelAmenities) {
+        this.hotelAmenities = hotelAmenities;
+    }
 }
+
 
