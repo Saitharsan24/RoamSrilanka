@@ -1,6 +1,6 @@
 package roamSrilanka.dev.controller;
-
 import org.springframework.web.bind.annotation.*;
+
 import roamSrilanka.dev.model.Vehicle;
 import roamSrilanka.dev.service.VehicleService;
 
@@ -30,8 +30,51 @@ public class VehicleController {
      }
 
      //add working in insomnia
+//     @PostMapping("/addVehicle")
+//     public String saveVehicle(@ModelAttribute(name="Vehicle") Vehicle vehicle,
+//                               RedirectAttributes ra,
+//                               @RequestParam("image1")MultipartFile multipartImage1File) throws IOException {
+//
+//        String Image1Name = StringUtils.cleanPath(Objects.requireNonNull(multipartImage1File.getOriginalFilename()));
+//        vehicle.setImage1(Image1Name);
+//
+////        String Image2Name = StringUtils.cleanPath(multipartImage2File.getOriginalFilename());
+////        vehicle.setImage1(Image2Name);
+////
+////        String Image3Name = StringUtils.cleanPath(multipartImage3File.getOriginalFilename());
+////        vehicle.setImage1(Image3Name);
+////
+////        String Image4Name = StringUtils.cleanPath(multipartImage4File.getOriginalFilename());
+////        vehicle.setImage1(Image4Name);
+//
+//        Vehicle savedVehicle =  vehicleService.saveVehicle(vehicle);
+//
+//        String uploadDir = "./vehicle-images/" + savedVehicle.getVehicleID();
+//
+////        uploading in vehicle-images
+//        Path uploadPath = Paths.get(uploadDir);
+//
+//        if (!Files.exists(uploadPath)) {
+//            Files.createDirectories(uploadPath);
+//        }
+//
+//        try (InputStream inputStream = multipartImage1File.getInputStream()){
+//            Path filePath = uploadPath.resolve((Path) multipartImage1File);
+//            System.out.println(filePath.toFile().getAbsolutePath());
+//
+//            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+//        } catch (IOException e) {
+//            throw new IOException("Couldn't save the file " + multipartImage1File);
+//        }
+//
+//        ra.addFlashAttribute("message", "added");
+//
+//        return "redirect:/driver/driverVehicle";
+//     }
+
      @PostMapping("/addVehicle")
-     public Vehicle saveVehicle(@RequestBody Vehicle vehicle) { return vehicleService.saveVehicle(vehicle);
+     public Vehicle saveVehicle(@RequestBody Vehicle vehicle) {
+        return vehicleService.saveVehicle(vehicle);
      }
 
     @PutMapping
