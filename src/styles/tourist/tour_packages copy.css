@@ -1,0 +1,45 @@
+.all-tourist-packages{
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 15px 10px 10px 10px;
+}
+
+.all-tourist-packages .package-card{
+    width:30%;
+    background-color:#f6f6f6;
+    height: 20rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.package-card h5{
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 10px !important;
+    color:#004577 ;
+}
+
+.all-tourist-packages .package-card-image{
+    width: 100%;
+    height: 70%;
+    border-radius: 15px;
+    background-color:blue;
+}
+
+.package-name-price{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    gap:100px;
+}
+
+.package-name-price span{
+    font-size: 25px;
+    color: #DB163A;
+    font-weight: 600;
+}
+
