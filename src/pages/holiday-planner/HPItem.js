@@ -1,34 +1,156 @@
-import React from "react";
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import HPDatatablePage from "../../components/HPItem";
+import axios from "axios";
+import { MDBDataTable } from "mdbreact";
+import DeleteConfirm from "../../components/DeleteConfirm";
+import HPViewItem from "./HPViewItem";
 
 function HPItem() {
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 5000,
+  });
+
+  const [selectedEventId, setSelectedEventId] = useState(null);
+  const [events, setEvents] = useState([]);
+  const [isDialogVisible, setDialogVisible] = useState(false);
+  const [eventToDelete, setEventToDelete] = useState(null);
+
+  const handleDeleteEvent = (eventId) => {
+    setEventToDelete(eventId);
+    setDialogVisible(true);
+  };
+
+  const handleDialogClose = () => {
+    setDialogVisible(false);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      const response = await axiosInstance.delete(
+        `/deleteFair/${eventToDelete}`
+      );
+      if (response.status === 200) {
+        const updatedEvents = events.filter(
+          (event) => event.id !== eventToDelete
+        );
+        setEvents(updatedEvents);
+        setDialogVisible(false);
+        window.location.reload();
+      } else {
+        console.error("Failed to delete event:", response.status);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axiosInstance.get("/getAllFairs");
+        if (response.status === 200) {
+          setEvents(response.data);
+        } else {
+          console.error("Failed to fetch data:", response.status);
+        }
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const data = {
+    columns: [
+      {
+        label: "Item No",
+        field: "fairId",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "Name",
+        field: "name",
+        sort: "asc",
+        width: 200,
+      },
+      {
+        label: "Rent",
+        field: "rent",
+        sort: "asc",
+        width: 50,
+      },
+      {
+        label: "View",
+        field: "button1",
+        width: 50,
+        btn: "accept-button",
+      },
+      {
+        label: "Remove",
+        field: "button2",
+        width: 50,
+        btn: "reject-button",
+      },
+    ],
+    rows: events.map((event) => ({
+      fairId: event.fairId,
+      name: event.name,
+      rent: event.rent,
+      button1: (
+        <button
+          style={{ border: "inherit", width: "50%" }}
+          className="hp-accept"
+          onClick={() => setSelectedEventId(event.fairId)}
+        >
+          View
+        </button>
+      ),
+      button2: (
+        <button
+          style={{ border: "inherit", width: "50%" }}
+          onClick={() => handleDeleteEvent(event.fairId)}
+          className="hp-reject"
+        >
+          Remove
+        </button>
+      ),
+    })),
+  };
+
   return (
-    // <div className="main d-flex flex-column">
-    //   <Headeruser />
-    //   <div className="d-flex">
-    //     <Sidebar />
-        <div className="d-flex w-100">
-          <div className="d-flex flex-column col-lg-12 p-4 ">
+    <div className="d-flex w-100">
+      <div className="d-flex flex-column col-lg-12 p-4 ">
+        {selectedEventId ? (
+          <HPViewItem
+            fairId={selectedEventId}
+            onBack={() => setSelectedEventId(null)}
+          />
+        ) : (
+          <div>
             <div className="d-grid d-md-flex justify-content-md-end">
               <Link to="/holidayPlanner/plannerItem1">
-              <button
-                className=""
-                style={{
-                  width: "15rem",
-                  borderRadius: "11px",
-                  border: "1px solid #004577",
-                  backgroundColor: "#004577",
-                  color: "#FFFFFF",
-                  fontFamily: "Lato",
-                  fontSize: "20px",
-                  boxShadow: "0px 4px 40px rgba(0, 69, 119, 0.35)",
-                }}
-                type="submit"
-              >
-                Add New Item
-              </button>
+                <button
+                  className=""
+                  style={{
+                    width: "15rem",
+                    borderRadius: "11px",
+                    border: "1px solid #004577",
+                    backgroundColor: "#004577",
+                    color: "#FFFFFF",
+                    fontFamily: "Lato",
+                    fontSize: "20px",
+                    boxShadow: "0px 4px 40px rgba(0, 69, 119, 0.35)",
+                  }}
+                  type="submit"
+                >
+                  Add New Item
+                </button>
               </Link>
             </div>
 
@@ -38,11 +160,29 @@ function HPItem() {
             >
               <b>Existing Items</b>
             </p>
-            <HPDatatablePage />
+            <MDBDataTable
+              striped
+              bordered
+              //   small
+              data={data}
+            />
+
+            {isDialogVisible && (
+              <DeleteConfirm
+                message="Are you sure you want to delete this event?"
+                onDialog={(confirmed) => {
+                  if (confirmed) {
+                    handleConfirmDelete();
+                  } else {
+                    handleDialogClose();
+                  }
+                }}
+              />
+            )}
           </div>
-        </div>
-    //   </div>
-    // </div>
+        )}
+      </div>
+    </div>
   );
 }
 
