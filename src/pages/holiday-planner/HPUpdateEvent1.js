@@ -15,7 +15,7 @@ const HPUpdateEvent1 = () => {
     places: "",
     description: "",
   });
-  
+
   const inputFormdata = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -26,7 +26,6 @@ const HPUpdateEvent1 = () => {
     baseURL: apiBaseUrl,
     timeout: 5000,
   });
-
 
   const handlePost = async (e) => {
     e.preventDefault();
@@ -39,7 +38,6 @@ const HPUpdateEvent1 = () => {
         places: formData.places,
         description: formData.description,
       });
-
 
       if (response.status === 200) {
         console.log("ok");
@@ -131,7 +129,6 @@ const HPUpdateEvent1 = () => {
                     onChange={(e) => {
                       inputFormdata(e.target.name, e.target.value);
                     }}
-
                   ></input>
                 </label>
                 <label>
@@ -143,39 +140,9 @@ const HPUpdateEvent1 = () => {
                     name="description"
                     value={formData.description}
                     onChange={(e) => {
-                      inputFormdata(e.target.name, e.target.value); 
+                      inputFormdata(e.target.name, e.target.value);
                     }}
-                    style={{minHeight: "50px"}}
-                  ></textarea>
-                </label>
-                <label>
-                  Image:
-                  <div className="d-flex justify-content-center w-100">
-                    <DragDropFile />
-                  </div>
-                </label>
-              </div>
-              <div className="d-flex flex-column justify-content-center m-2 gap-3">
-                <label>
-                  Places
-                  <input
-                    className="p-2"
-                    type="text"
-                    placeholder="Places of the Event"
-                  ></input>
-                </label>
-                <label>
-                  Description <br />
-                  <textarea
-                    className="p-2"
-                    type="text"
-                    placeholder="Description"
-                    name="description"
-                    value={formData.description}
-                    onChange={(e) => {
-                      inputFormdata(e.target.name, e.target.value); 
-                    }}
-                    style={{minHeight: "50px"}}
+                    style={{ minHeight: "50px" }}
                   ></textarea>
                 </label>
                 <label>

@@ -28,12 +28,14 @@ import { useSession } from '../Context/SessionContext';
                 });
 
                 if (response.status === 200) {
+                    console.log(response.data);
                     
                     setSessionData({
                         loggedIn: true,
                         userType: response.data.userType,
                         userName: response.data.userName,
                         userId: response.data.userId,
+                        userFullName: response.data.userFullname
                     })
 
                     const userType = response.data.userType;

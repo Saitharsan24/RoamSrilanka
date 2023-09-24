@@ -15,6 +15,13 @@ function Users() {
 
   const [holidayPlanners, setHolidayPlanners] = useState([]);
   
+  // const apiBaseUrl = "http://localhost:8080";
+
+  //  const axiosInstance = axios.create({
+  //   baseURL: apiBaseUrl,
+  //   timeout: 5000,
+  //  });
+  
   useEffect(() => {
     // Make an HTTP GET request to fetch data from the API
     axios.get("http://localhost:8080/viewHolidayplanner").then((response) => {

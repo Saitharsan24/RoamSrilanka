@@ -2,6 +2,7 @@ package roamSrilanka.dev.model.Holidayplanner;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.util.Date;
 
@@ -38,9 +39,8 @@ public class Holidayplanner {
     @Column(name="address")
     private String address;
 
-    @Column(name="status")
+    @Column(name = "status", columnDefinition = "VARCHAR(255) DEFAULT '1'")
     private String status;
-
 
     @Column(name="password")
     private String password;
@@ -49,7 +49,7 @@ public class Holidayplanner {
 
     }
 
-    public Holidayplanner(String plannerName, Date date, Integer contactNo, String email, String nic, String image, String gender, String address, String status, String password) {
+    public Holidayplanner(String plannerName, Date date, Integer contactNo, String email, String nic, String image, String gender, String address,String status ,String password) {
         this.plannerName = plannerName;
         this.date = date;
         this.contactNo = contactNo;
@@ -62,7 +62,8 @@ public class Holidayplanner {
         this.password = password;
     }
 
-    public Holidayplanner(Integer userId, String plannerName, Date date, Integer contactNo, String email, String nic, String image, String gender, String address, String status, String password) {
+
+    public Holidayplanner(Integer userId, String plannerName, Date date, Integer contactNo, String email, String nic, String image, String gender, String address,String status , String password) {
         this.userId = userId;
         this.plannerName = plannerName;
         this.date = date;

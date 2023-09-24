@@ -14,11 +14,15 @@ function HPEvent() {
     timeout: 5000,
   });
 
-
   const [selectedEventId, setSelectedEventId] = useState(null);
   const [events, setEvents] = useState([]);
   const [isDialogVisible, setDialogVisible] = useState(false);
   const [eventToDelete, setEventToDelete] = useState(null);
+
+  const handleDeleteEvent = (eventId) => {
+    setEventToDelete(eventId);
+    setDialogVisible(true);
+  };
 
   const handleDialogClose = () => {
     setDialogVisible(false);
@@ -62,26 +66,6 @@ function HPEvent() {
 
     fetchData();
   }, []);
-  const handleDeleteEvent = async (eventId) => {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this event?"
-    );
-    if (confirmed) {
-      try {
-        const response = await axiosInstance.delete(`/deleteEvent/${eventId}`);
-        if (response.status === 200) {
-          // Filter out the deleted event from the events array
-          const updatedEvents = events.filter((event) => event.id !== eventId);
-          setEvents(updatedEvents);
-          window.location.reload();
-        } else {
-          console.error("Failed to delete event:", response.status);
-        }
-      } catch (error) {
-        console.error("An error occurred:", error);
-      }
-    }
-  };
 
   const data = {
     columns: [
@@ -128,20 +112,17 @@ function HPEvent() {
       date: event.date,
       places: event.places,
       button1: (
-
-        <Link to="/holidayPlanner/plannerEvent">
-          <button
-            style={{ border: "inherit" }}
-            className="hp-accept"
-            onClick={() => setSelectedEventId(event.eventId)}
-          >
-            View
-          </button>
-        </Link>
+        <button
+          style={{ border: "inherit", width: "50%" }}
+          className="hp-accept"
+          onClick={() => setSelectedEventId(event.eventId)}
+        >
+          View
+        </button>
       ),
       button2: (
         <button
-          style={{ border: "inherit" }}
+          style={{ border: "inherit", width: "50%" }}
           onClick={() => handleDeleteEvent(event.eventId)}
           className="hp-reject"
         >
