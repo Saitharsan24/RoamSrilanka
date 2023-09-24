@@ -39,7 +39,7 @@ public class Holidayplanner {
     private String address;
 
     @Column(name="status")
-    private Integer status;
+    private String status;
 
 
     @Column(name="password")
@@ -49,7 +49,7 @@ public class Holidayplanner {
 
     }
 
-    public Holidayplanner(String plannerName, Date date, Integer contactNo, String email, String nic, String image, String gender, String address, boolean status, String password) {
+    public Holidayplanner(String plannerName, Date date, Integer contactNo, String email, String nic, String image, String gender, String address, String status, String password) {
         this.plannerName = plannerName;
         this.date = date;
         this.contactNo = contactNo;
@@ -62,7 +62,7 @@ public class Holidayplanner {
         this.password = password;
     }
 
-    public Holidayplanner(Integer userId, String plannerName, Date date, Integer contactNo, String email, String nic, String image, String gender, String address, boolean status, String password) {
+    public Holidayplanner(Integer userId, String plannerName, Date date, Integer contactNo, String email, String nic, String image, String gender, String address, String status, String password) {
         this.userId = userId;
         this.plannerName = plannerName;
         this.date = date;
@@ -139,11 +139,11 @@ public class Holidayplanner {
         return address;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public boolean getStatus() {
+    public String getStatus() {
         return status;
     }
 

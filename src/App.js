@@ -105,6 +105,7 @@ import DrivernewVehicle from "./pages/driver/newVehicle";
 import DriverRequest from "./pages/driver/requests";
 import DriverTrips from "./pages/driver/trips";
 import { useSession } from "./Context/SessionContext";
+import HPRequestDetails from "./pages/holiday-planner/HPRequestDetails";
 
 
 const route = createBrowserRouter(
@@ -202,13 +203,15 @@ const route = createBrowserRouter(
         <Route path="plannerPackage1" element={<HPUpdatePackage1 />}></Route>
         <Route path="plannerPackage2" element={<HPUpdatePackage2 />}></Route>
         <Route path="plannerPackage3" element={<HPUpdatePackage3 />}></Route>
-        <Route path="plannerViewPackage" element={<HPViewpackage />}></Route>
+        <Route path="plannerViewPackage/:packageID" element={<HPViewpackage />}></Route>
         <Route path="plannerItem1" element={<HPUpdateItem1 />}></Route>
         <Route path="plannerViewEvent" element={<HPViewEvent />}></Route>
         <Route path="plannerViewItem" element={<HPViewItem />}></Route>
         <Route path="plannerRequest" element={<HPRequest />}></Route>
         <Route path="hpchat" element={<HPChat/>}></Route>
         <Route path="hptrip" element={<HPTrip/>}></Route>
+        <Route path="hprequestdetail" element={<HPRequestDetails/>}></Route>
+      
       </Route>
 
       <Route path="/driver/" element={<DriverLayout />} errorElement={<SystemError />}>
