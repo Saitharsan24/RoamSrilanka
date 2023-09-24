@@ -213,7 +213,7 @@ const route = createBrowserRouter(
         <Route path="plannerRequest" element={<HPRequest />}></Route>
         <Route path="hpchat" element={<HPChat/>}></Route>
         <Route path="hptrip" element={<HPTrip/>}></Route>
-        <Route path="hprequestdetail" element={<HPRequestDetails/>}></Route>
+        <Route path="hprequestdetail/:p_bookingID" element={<HPRequestDetails/>}></Route>
       
       </Route>
 

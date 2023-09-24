@@ -1,13 +1,65 @@
-import React, { Component } from "react";
+import React, { useState,useEffect } from "react";
 // import Headeruser from "../components/headerusers";
 // import Sidebar from "../components/holidayplanner-sidebar";
 //import * as Icon from "react-bootstrap-icons";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 // import "./../styles/updatepack.css";
-// import profile from "../assets/images/profile.jpg";
+import profile from "../../assets/images/profile_pic.png";
+import axios from "axios";
 
 const HPRequestDetails = () => {
+  const paraData = useParams();
+  console.log(paraData.p_bookingID);
   const navigate = useNavigate();
+  const apiBaseUrl = "http://localhost:8080";
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 5000,
+  });
+  const [requestData, setRequestData] = useState({});
+  const [userData, setUserData] = useState({});
+  const [packageData, setPackageData] = useState({});
+
+  useEffect(() => {
+    axiosInstance
+      .get("/request/" + paraData.p_bookingID)
+      .then((res) => {
+        setRequestData(res.data);
+        console.log(res.data);
+
+        axiosInstance
+        .get("/users/" + res.data.touristID)
+        .then((res2) => {
+          setUserData(res2.data);
+          console.log(res2.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+        axiosInstance
+        .get("/packages/" + res.data.packageID)
+        .then((res3) => {
+          setPackageData(res3.data);
+          console.log(res3.data);
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      
+
+
+
+      
+  }, []);
+
+  const handleRowClick = (packageID) => {
+    navigate(`/holidayPlanner/plannerViewPackage/${packageID}`);
+  }
+
+
   return (
     <div className="d-flex flex-column">
       {/* <Headeruser /> */}
@@ -16,7 +68,7 @@ const HPRequestDetails = () => {
         className="d-flex flex-row col-12"
       >
         {/* <Sidebar /> */}
-        <div className="d-flex gap-3 w-100 align-items-center justify-content-around">
+        <div className="d-flex gap-3 w-100 align-items-center justify-content-around mt-4">
           <div
             style={{
               height: "auto",
@@ -28,11 +80,11 @@ const HPRequestDetails = () => {
             className="d-flex flex-column gap-3 col-6 p-5"
           >
             <div className="d-lg-flex d-md-flex d-flex flex-lg-row justify-content-between">
-              {/* <img
+              <img
                 src={profile}
                 className="object-fit-cover img-fluid col-3"
                 style={{ borderRadius: "50%" }}
-              ></img> */}
+              ></img>
               <button
                 className="change_pic col-4"
                 style={{ height: "3rem", width: "Auto" }}
@@ -42,10 +94,10 @@ const HPRequestDetails = () => {
             </div>
 
             <div>
-              <p className="name px-5 justify-content-center">
-                Manoharan Keethapriya
+              <p className="name px-2 justify-content-center">
+                {userData.userFullname}
               </p>
-              <p className=" bio m-0 p-3">Bio</p>
+              <p className=" bio m-0 p-3">Description</p>
               <div
                 className="d-flex align-self-center p-3"
                 style={{ borderRadius: "15px", backgroundColor: "#F1F1F2" }}
@@ -62,21 +114,31 @@ const HPRequestDetails = () => {
                 <p>Request for :</p>
               </div>
               <div className="col-4 hp-req">
-                <p>Package 01</p>
+                <p>{packageData.package_name}</p>
               </div>
               <button
                 className=" change_pic col-4 flex-fill"
                 style={{ height: "2rem" }}
+                onClick={() => handleRowClick(packageData.packageID) & console.log("Clicked View for package ID:", packageData.packageID)}
+               
               >
                 View package
               </button>
             </div>
             <div className="d-flex flex-column flex-lg-row justify-content-left m-2 gap-3">
               <div className="col-4">
-                <p>Date :</p>
+                <p>From Date :</p>
               </div>
               <div className="col-4 hp-req">
-                <p>23/08/2023</p>
+                <p>{requestData.fromdate}</p>
+              </div>
+            </div>
+            <div className="d-flex flex-column flex-lg-row justify-content-left m-2 gap-3">
+              <div className="col-4">
+                <p>To Date :</p>
+              </div>
+              <div className="col-4 hp-req">
+                <p>{requestData.todate}</p>
               </div>
             </div>
             <div className="d-flex flex-row justify-content-between mx-2">

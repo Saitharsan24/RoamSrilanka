@@ -24,6 +24,12 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @GetMapping("/users/{id}")
+    @ResponseBody
+    public ResponseEntity<User> getUser(@PathVariable Integer id) {
+        return ResponseEntity.ok(userService.getUser(id));
+    }
+
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) throws JSONException {
        User user = userService.authenticateUser(loginRequest.getUserName(), loginRequest.getPassword());

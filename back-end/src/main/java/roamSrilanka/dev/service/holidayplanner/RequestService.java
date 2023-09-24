@@ -19,4 +19,8 @@ public class RequestService {
         return requestRepository.findAll();
 
     }
+
+    public Request getRequest(Integer id) {
+        return requestRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid request Id:" + id));
+    }
 }

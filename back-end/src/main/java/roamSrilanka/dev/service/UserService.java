@@ -32,4 +32,8 @@ public class UserService {
         }
         return null;
     }
+
+    public User getUser(Integer id) {
+        return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+    }
 }

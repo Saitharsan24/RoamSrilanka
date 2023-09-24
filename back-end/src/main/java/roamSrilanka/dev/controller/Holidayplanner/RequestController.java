@@ -25,4 +25,10 @@ public class RequestController {
 
         return ResponseEntity.ok("Request added successfully");
     }
+
+    @GetMapping("/request/{id}")
+    @ResponseBody
+    public ResponseEntity<Request> getRequest(@PathVariable Integer id) {
+        return ResponseEntity.ok(requestService.getRequest(id));
+    }
 }

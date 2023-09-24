@@ -16,6 +16,11 @@ const HPDatatablePage = () => {
     timeout: 5000,
   });
 
+  const handleRowClick = (p_bookingID) => {
+    console.log("p_bookingID", p_bookingID);
+    navigate(`/holidayPlanner/hprequestdetail/${p_bookingID}`)
+  }
+
   const mergeData = (rowData, packages,tourist) => {
     const mergedData = rowData.map(
       (requestItem) => {
@@ -124,7 +129,10 @@ const HPDatatablePage = () => {
       package_name: item.package_name,
       from: item.fromdate,
       date: item.todate,
-      button1: <button className="hp-accept" >View</button>,
+      button1: <button
+      className="hp-accept"
+      onClick={() => handleRowClick(item.p_bookingID) & console.log("Clicked View for booking ID:", item.p_bookingID)}
+    >View</button>,
     })),
   };
 
