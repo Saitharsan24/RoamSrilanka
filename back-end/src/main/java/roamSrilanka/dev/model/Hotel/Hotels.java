@@ -2,6 +2,7 @@ package roamSrilanka.dev.model.Hotel;
 
 import jakarta.persistence.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -38,12 +39,16 @@ public class Hotels {
     @Column(name = "price")
     private Double price;
 
-    @ElementCollection
-    @Column(name = "hotel_images")
-    private List<String> hotelImages;
+//    @ElementCollection
+//    @Column(name = "hotel_images")
+//    private List<File> hotelImages;
+//
+//    @ElementCollection
+//    @Column(name = "hotel_amenities")
+//    private ArrayList<String> hAmenities = new ArrayList<>();
 
-    @OneToMany(mappedBy = "hotels", cascade = CascadeType.ALL)
-    private List<HotelAmenities> hotelAmenities = new ArrayList<>();
+//    @OneToMany(mappedBy = "hotels", cascade = CascadeType.ALL)
+//    private List<HotelAmenities> hotelAmenities = new ArrayList<>();
 
 //    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private List<HotelRooms> rooms;  // One-to-Many relationship with HotelRooms
@@ -52,7 +57,18 @@ public class Hotels {
     public Hotels() {
     }
 
-    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, List<String> hotelImages, List<HotelAmenities> hotelAmenities) {
+    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price) {
+        this.hotelName = hotelName;
+        this.starRating = starRating;
+        this.userRating = userRating;
+        this.description = description;
+        this.hotelType = hotelType;
+        this.address = address;
+        this.city = city;
+        this.price = price;
+    }
+
+    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price) {
         this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.starRating = starRating;
@@ -61,21 +77,33 @@ public class Hotels {
         this.hotelType = hotelType;
         this.address = address;
         this.city = city;
-        this.hotelImages = hotelImages;
-        this.hotelAmenities = hotelAmenities;
+        this.price = price;
     }
 
-    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, List<String> hotelImages, List<HotelAmenities> hotelAmenities) {
-        this.hotelName = hotelName;
-        this.starRating = starRating;
-        this.userRating = userRating;
-        this.description = description;
-        this.hotelType = hotelType;
-        this.address = address;
-        this.city = city;
-        this.hotelImages = hotelImages;
-        this.hotelAmenities = hotelAmenities;
-    }
+    //    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, List<File> hotelImages, List<HotelAmenities> hotelAmenities) {
+//        this.hotelId = hotelId;
+//        this.hotelName = hotelName;
+//        this.starRating = starRating;
+//        this.userRating = userRating;
+//        this.description = description;
+//        this.hotelType = hotelType;
+//        this.address = address;
+//        this.city = city;
+//        this.hotelImages = hotelImages;
+//        this.hotelAmenities = hotelAmenities;
+//    }
+//
+//    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, List<File> hotelImages, List<HotelAmenities> hotelAmenities) {
+//        this.hotelName = hotelName;
+//        this.starRating = starRating;
+//        this.userRating = userRating;
+//        this.description = description;
+//        this.hotelType = hotelType;
+//        this.address = address;
+//        this.city = city;
+//        this.hotelImages = hotelImages;
+//        this.hotelAmenities = hotelAmenities;
+//    }
 
 
     //Getters and Setters
@@ -159,21 +187,21 @@ public class Hotels {
         this.city = city;
     }
 
-    public List<String> getHotelImages() {
-        return hotelImages;
-    }
+//    public List<String> getHotelImages() {
+//        return hotelImages;
+//    }
+//
+//    public void setHotelImages(List<String> hotelImages) {
+//        this.hotelImages = hotelImages;
+//    }
 
-    public void setHotelImages(List<String> hotelImages) {
-        this.hotelImages = hotelImages;
-    }
+   // public List<HotelAmenities> getHotelAmenities() {
+      //  return hotelAmenities;
+  //  }
 
-    public List<HotelAmenities> getHotelAmenities() {
-        return hotelAmenities;
-    }
-
-    public void setHotelAmenities(List<HotelAmenities> hotelAmenities) {
-        this.hotelAmenities = hotelAmenities;
-    }
+    //public void setHotelAmenities(List<HotelAmenities> hotelAmenities) {
+     //   this.hotelAmenities = hotelAmenities;
+   // }
 }
 
 

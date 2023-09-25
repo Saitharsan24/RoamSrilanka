@@ -18,7 +18,7 @@ public class HotelRooms {
 //    @JoinColumn(name = "hotel_id", nullable = false, insertable = false, updatable = false)
 //    private Hotels hotel; // Reference to the hotel this room belongs to
 
-    @JoinColumn(name = "hotel_id")
+    @Column(name = "hotel_id")
     private Integer hotelId;
 
     @Column(name = "room_type")
@@ -88,8 +88,8 @@ public class HotelRooms {
         this.images = images;
     }
 
-    //Getters and Setters
 
+    //Getters and Setters
 
     public Integer getRoomId() {
         return roomId;

@@ -25,8 +25,8 @@ public class User {
     @Column(name = "User_fullname")
     private String userFullname;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Tourist tourist;
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+//    private Tourist tourist;
 
     public User() {
     }
@@ -100,7 +100,7 @@ public class User {
         this.password = password;
     }
 
-    public void setTourist(Tourist tourist) {
-        this.tourist = tourist;
-    }
+//    public void setTourist(Tourist tourist) {
+//        this.tourist = tourist;
+//    }
 }
