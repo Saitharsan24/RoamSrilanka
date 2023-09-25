@@ -39,20 +39,6 @@ public class Hotels {
     @Column(name = "price")
     private Double price;
 
-//    @ElementCollection
-//    @Column(name = "hotel_images")
-//    private List<File> hotelImages;
-//
-//    @ElementCollection
-//    @Column(name = "hotel_amenities")
-//    private ArrayList<String> hAmenities = new ArrayList<>();
-
-//    @OneToMany(mappedBy = "hotels", cascade = CascadeType.ALL)
-//    private List<HotelAmenities> hotelAmenities = new ArrayList<>();
-
-//    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<HotelRooms> rooms;  // One-to-Many relationship with HotelRooms
-
     //Constructors
     public Hotels() {
     }
@@ -79,41 +65,6 @@ public class Hotels {
         this.city = city;
         this.price = price;
     }
-
-    //    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, List<File> hotelImages, List<HotelAmenities> hotelAmenities) {
-//        this.hotelId = hotelId;
-//        this.hotelName = hotelName;
-//        this.starRating = starRating;
-//        this.userRating = userRating;
-//        this.description = description;
-//        this.hotelType = hotelType;
-//        this.address = address;
-//        this.city = city;
-//        this.hotelImages = hotelImages;
-//        this.hotelAmenities = hotelAmenities;
-//    }
-//
-//    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, List<File> hotelImages, List<HotelAmenities> hotelAmenities) {
-//        this.hotelName = hotelName;
-//        this.starRating = starRating;
-//        this.userRating = userRating;
-//        this.description = description;
-//        this.hotelType = hotelType;
-//        this.address = address;
-//        this.city = city;
-//        this.hotelImages = hotelImages;
-//        this.hotelAmenities = hotelAmenities;
-//    }
-
-
-    //Getters and Setters
-//    public List<HotelRooms> getRooms() {
-//        return rooms;
-//    }
-//
-//    public void setRooms(List<HotelRooms> rooms) {
-//        this.rooms = rooms;
-//    }
 
     public Double getPrice() {
         return price;
@@ -186,22 +137,6 @@ public class Hotels {
     public void setCity(String city) {
         this.city = city;
     }
-
-//    public List<String> getHotelImages() {
-//        return hotelImages;
-//    }
-//
-//    public void setHotelImages(List<String> hotelImages) {
-//        this.hotelImages = hotelImages;
-//    }
-
-   // public List<HotelAmenities> getHotelAmenities() {
-      //  return hotelAmenities;
-  //  }
-
-    //public void setHotelAmenities(List<HotelAmenities> hotelAmenities) {
-     //   this.hotelAmenities = hotelAmenities;
-   // }
 }
 
 
