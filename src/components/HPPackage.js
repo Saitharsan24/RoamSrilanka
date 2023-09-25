@@ -3,6 +3,8 @@ import "./../styles/data-table.css";
 import { MDBDataTable } from "mdbreact";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import HPViewpackage from "../pages/holiday-planner/HPViewPackage";
+
 
 const HPDatatablePage = () => {
   const navigate = useNavigate();
@@ -13,6 +15,12 @@ const HPDatatablePage = () => {
     baseURL: apiBaseUrl,
     timeout: 5000,
   });
+
+  const filteredRequests = rowData.filter((packages) => packages.status == 1);
+
+  const handleRowClick = (packageID) => {
+    navigate(`/holidayPlanner/plannerViewPackage/${packageID}`);
+  }
 
   const deletePackage = (id) => {
     console.log("id", id);
@@ -79,8 +87,9 @@ const HPDatatablePage = () => {
         btn: "hp-reject-button",
       },
     ],
-    rows: rowData.map((item) => {
+    rows: filteredRequests.map((item) => {
       return {
+        
         Package_name: item.package_name,
         places: item.places,
         amount: item.price,
@@ -88,10 +97,12 @@ const HPDatatablePage = () => {
         button1: (
           <button
             className="hp-accept"
-            onClick={() => navigate(`/hpviewpackage/${item.package_id}`)}
+            onClick={() => handleRowClick(item.packageID) & console.log("Clicked View for package ID:", item.packageID)}
           >
+          
             View
           </button>
+          
         ),
         button2: (
           <button
