@@ -17,4 +17,8 @@ public class TouristService {
     public Tourist addTourist (Tourist tourist){
         return touristRepository.save(tourist);
     }
+
+    public Tourist getTouristById(Integer id) {
+        return touristRepository.findById(id).get();
+    }
 }

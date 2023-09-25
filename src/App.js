@@ -121,7 +121,6 @@ const route = createBrowserRouter(
         <Route path="signup" element={<Signup/>}></Route>
       </Route>
 
-
       <Route path="/tourist/" element={<TouristLayout />} errorElement={<SystemError />}>
         <Route index element={<TouristDashboard />}></Route>
         <Route path="touristDashboard" element={<TouristDashboard />}></Route>

@@ -314,9 +314,6 @@ const OurHotel = () => {
                               </span>
                               <br />
                             </p>
-                            <Link to="/hotel/hotelReviews" className="mx-2">
-                              See all 18 reviews <Icon.ChevronRight />
-                            </Link>
                           </div>
                           <div className="d-flex flex-column justify-content-between me-1">
                             <div className="d-flex flex-column my-2">

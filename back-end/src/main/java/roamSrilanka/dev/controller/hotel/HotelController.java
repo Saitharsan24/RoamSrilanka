@@ -17,6 +17,7 @@ public class HotelController {
     @Autowired
      private HotelService hotelService;
 
+
     //Storing hotel details to the database when adding new hotels
     @PostMapping("/addHotel")
     public ResponseEntity<Hotels> createHotel(@RequestBody Hotels hotels){
@@ -42,6 +43,7 @@ public class HotelController {
             return ResponseEntity.notFound().build();
         }
     }
+
 
     @PutMapping("/updateHotel/{hotelId}")
     public ResponseEntity<Hotels> updateHotel(@PathVariable Integer hotelId, @RequestBody Hotels updatedHotel) {

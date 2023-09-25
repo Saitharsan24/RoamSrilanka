@@ -18,8 +18,10 @@ public class HotelRooms {
 //    @JoinColumn(name = "hotel_id", nullable = false, insertable = false, updatable = false)
 //    private Hotels hotel; // Reference to the hotel this room belongs to
 
-    @Column(name = "hotel_id")
-    private Integer hotelId;
+    @ManyToOne
+    @MapsId
+    @JoinColumn(name = "hotel_id")
+    private Hotels hotels;
 
     @Column(name = "room_type")
     private String roomType;
@@ -61,7 +63,7 @@ public class HotelRooms {
 
     public HotelRooms(Integer roomId, Integer hotelId, String roomType, Integer occupancy, Double price, Integer noOfBeds, String policyBathroom, String policyBedroom, String policyFoodanddrink, String policyInternet, List<String> amenities, List<String> images) {
         this.roomId = roomId;
-        this.hotelId = hotelId;
+        this.hotels = hotels;
         this.roomType = roomType;
         this.occupancy = occupancy;
         this.price = price;
@@ -94,7 +96,7 @@ public class HotelRooms {
         this.price = price;
         this.noOfBeds = noOfBeds;
         this.amenities = amenities;
-//        this.images = images;
+        this.images = images;
     }
 
     //Getters and Setters
@@ -151,8 +153,8 @@ public class HotelRooms {
         return hotelId;
     }
 
-    public void setHotelId(Integer hotelId) {
-        this.hotelId = hotelId;
+    public void setHotels(Hotels hotels) {
+        this.hotels = hotels;
     }
 
     public String getRoomType() {
