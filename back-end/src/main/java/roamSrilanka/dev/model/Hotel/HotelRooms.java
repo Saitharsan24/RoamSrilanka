@@ -10,8 +10,8 @@ import java.util.List;
 public class HotelRooms {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "room_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer roomId;
 
 //    @ManyToOne(fetch = FetchType.LAZY) // Many-to-One relationship with Hotels
@@ -36,18 +36,17 @@ public class HotelRooms {
     @Column(name = "no_of_beds")
     private Integer noOfBeds;
 
-    @Column(name = "room_size")
-    private String roomSize;
+    @Column(name = "policy_bathroom")
+    private String policyBathroom;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "policy_bedroom")
+    private String policyBedroom;
 
-    @Column(name = "availability")
-    private Boolean availability;
+    @Column(name = "policy_foodanddrink")
+    private String policyFoodanddrink;
 
-    @ElementCollection
-    @Column(name = "policies")
-    private List<String> policies;
+    @Column(name = "policy_internet")
+    private String policyInternet;
 
     @ElementCollection
     @Column(name = "amenities")
@@ -62,31 +61,40 @@ public class HotelRooms {
     public HotelRooms() {
     }
 
-    public HotelRooms(Integer roomId, Hotels hotels, String roomType, Integer occupancy, Double price, Integer noOfBeds, String roomSize, String description, Boolean availability, List<String> policies, List<String> amenities, List<String> images) {
+    public HotelRooms(Integer roomId, Integer hotelId, String roomType, Integer occupancy, Double price, Integer noOfBeds, String policyBathroom, String policyBedroom, String policyFoodanddrink, String policyInternet, List<String> amenities, List<String> images) {
         this.roomId = roomId;
         this.hotels = hotels;
         this.roomType = roomType;
         this.occupancy = occupancy;
         this.price = price;
         this.noOfBeds = noOfBeds;
-        this.roomSize = roomSize;
-        this.description = description;
-        this.availability = availability;
-        this.policies = policies;
+        this.policyBathroom = policyBathroom;
+        this.policyBedroom = policyBedroom;
+        this.policyFoodanddrink = policyFoodanddrink;
+        this.policyInternet = policyInternet;
         this.amenities = amenities;
         this.images = images;
     }
 
-    public HotelRooms(Hotels hotels, String roomType, Integer occupancy, Double price, Integer noOfBeds, String roomSize, String description, Boolean availability, List<String> policies, List<String> amenities, List<String> images) {
-        this.hotels = hotels;
+    public HotelRooms(Integer hotelId, String roomType, Integer occupancy, Double price, Integer noOfBeds, String policyBathroom, String policyBedroom, String policyFoodanddrink, String policyInternet, List<String> amenities, List<String> images) {
+        this.hotelId = hotelId;
         this.roomType = roomType;
         this.occupancy = occupancy;
         this.price = price;
         this.noOfBeds = noOfBeds;
-        this.roomSize = roomSize;
-        this.description = description;
-        this.availability = availability;
-        this.policies = policies;
+        this.policyBathroom = policyBathroom;
+        this.policyBedroom = policyBedroom;
+        this.policyFoodanddrink = policyFoodanddrink;
+        this.policyInternet = policyInternet;
+        this.amenities = amenities;
+        this.images = images;
+    }
+
+    public HotelRooms(String roomType, Integer occupancy, Double price, Integer noOfBeds, List<String> amenities, List<String> images) {
+        this.roomType = roomType;
+        this.occupancy = occupancy;
+        this.price = price;
+        this.noOfBeds = noOfBeds;
         this.amenities = amenities;
         this.images = images;
     }
@@ -100,8 +108,49 @@ public class HotelRooms {
         this.roomId = roomId;
     }
 
-    public Hotels getHotels() {
-        return hotels;
+//    public Hotels getHotel() {
+//        return hotel;
+//    }
+//
+//    public void setHotel(Hotels hotel) {
+//        this.hotel = hotel;
+//    }
+
+
+    public String getPolicyBathroom() {
+        return policyBathroom;
+    }
+
+    public void setPolicyBathroom(String policyBathroom) {
+        this.policyBathroom = policyBathroom;
+    }
+
+    public String getPolicyBedroom() {
+        return policyBedroom;
+    }
+
+    public void setPolicyBedroom(String policyBedroom) {
+        this.policyBedroom = policyBedroom;
+    }
+
+    public String getPolicyFoodanddrink() {
+        return policyFoodanddrink;
+    }
+
+    public void setPolicyFoodanddrink(String policyFoodanddrink) {
+        this.policyFoodanddrink = policyFoodanddrink;
+    }
+
+    public String getPolicyInternet() {
+        return policyInternet;
+    }
+
+    public void setPolicyInternet(String policyInternet) {
+        this.policyInternet = policyInternet;
+    }
+
+    public Integer getHotelId() {
+        return hotelId;
     }
 
     public void setHotels(Hotels hotels) {
@@ -132,44 +181,12 @@ public class HotelRooms {
         return noOfBeds;
     }
 
-    public String getRoomSize() {
-        return roomSize;
-    }
-
-    public void setRoomSize(String roomSize) {
-        this.roomSize = roomSize;
-    }
-
     public Double getPrice() {
         return price;
     }
 
     public void setPrice(Double price) {
         this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Boolean getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(Boolean availability) {
-        this.availability = availability;
-    }
-
-    public List<String> getPolicies() {
-        return policies;
-    }
-
-    public void setPolicies(List<String> policies) {
-        this.policies = policies;
     }
 
     public List<String> getAmenities() {

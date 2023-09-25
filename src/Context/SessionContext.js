@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState } from 'react';
 // Create a context
 const SessionContext = createContext();
 
-// Create a provider component
+// Create a provider component 
 export function SessionProvider({ children }) {
   const storedSessionData = JSON.parse(localStorage.getItem('sessionData'));
   const [sessionData, setSessionData] = useState(storedSessionData);
