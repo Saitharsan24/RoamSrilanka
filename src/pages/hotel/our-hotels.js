@@ -11,6 +11,7 @@ import room3 from "./../../assets/images/room-image3.png";
 import ImageUpload from "../../components/imageUpload";
 import axios from "axios";
 import StarRating from "../../components/Rating";
+import { set } from "lodash";
 
 const OurHotel = () => {
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
@@ -85,29 +86,26 @@ const OurHotel = () => {
     setSelectedFile(file);
   };
 
-  //UPLOADING THE FILE
-  const handleUploadButtonClick = () => {
-    if (!selectedFile) return;
-
-    // 1. Rename the file (this can be a bit tricky in the browser, but let's assume you have a way)
-    const newFileName = "newNameForFile.jpg"; // Your renaming logic here
-
-    // 2. Process the file (like copying or uploading it somewhere)
-
-    // 3. Optionally, update your data structures or state
-  };
-
+  
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
-
-    setSelectedCheckboxes((prevCheckboxes) =>
-      checked
-        ? [...prevCheckboxes, name]
-        : prevCheckboxes.filter((item) => item !== name)
-    );
-
-    // Update the hotelAmenities property in hotelData
-    inputHoteldata("hotelAmenities", selectedCheckboxes);
+  
+    setHotelData((prevData) => {
+      if (checked) {
+        // If the checkbox is checked, add the amenity to the hotelAmenities array
+        return {
+          ...prevData,
+          hotelAmenities: [...prevData.hotelAmenities, name],
+        };
+      } else {
+        // If the checkbox is unchecked, remove the amenity from the hotelAmenities array
+        return {
+          ...prevData,
+          hotelAmenities: prevData.hotelAmenities.filter((amenity) => amenity !== name),
+        };
+      }
+    });
+    console.log(hotelData);
   };
 
   const [hotelData, setHotelData] = useState({
@@ -117,19 +115,26 @@ const OurHotel = () => {
     hotelRating: 0,
     city: "",
     address: "",
-    latitude: "",
-    longitude: "",
     hotelAmenities: [],
     hotelImages: [],
   });
 
-  const handleImagesSelected = (images) => {
-    inputHoteldata("hotelImages", images);
-    console.log(images); // Handle selected images here
+  const handleImagesSelected = (e) => {
+    //update the hotelData state with the selected images
+    const files = e.target.files;
+    const images = [];
+    for (let i = 0; i < files.length; i++) {
+      images.push(files[i]);
+    }
+    setHotelData((prevData) => ({
+      ...prevData,
+      hotelImages: images,
+    }));
     console.log(hotelData);
   };
 
   const inputHoteldata = (name, value) => {
+    console.log(name, value);
     setHotelData((prev) => ({ ...prev, [name]: value }));
     console.log(hotelData);
   };
@@ -153,16 +158,40 @@ const OurHotel = () => {
     e.preventDefault();
 
     try {
-      const response = await axiosInstance.post("/addHotel", {
-        hotelName: hotelData.hotelName,
-        description: hotelData.description,
-        hotelType: hotelData.hotelType,
-        starRating: hotelData.hotelRating,
-        city: hotelData.city,
-        address: hotelData.address,
-        // hotelAmenities: hotelData.hotelAmenities,
-        // hotelImages: hotelData.hotelImages,
-      });
+
+      // const request = {
+      //   hotelName: hotelData.hotelName,
+      //   description: hotelData.description,
+      //   hotelType: hotelData.hotelType,
+      //   starRating: hotelData.hotelRating,
+      //   city: hotelData.city,
+      //   address: hotelData.address,
+      //   hotelAmenities: hotelData.hotelAmenities,
+      //   hotelImages: hotelData.hotelImages,
+      // };
+      // console.log(request);
+      // const response = await axiosInstance.post("/addHotel", request);
+    const formData = new FormData();
+    formData.append("hotelName", hotelData.hotelName);
+    formData.append("description", hotelData.description);
+    formData.append("hotelType", hotelData.hotelType);  
+    formData.append("starRating", hotelData.hotelRating);
+    formData.append("city", hotelData.city);
+    formData.append("address", hotelData.address);
+    hotelData.hotelAmenities.forEach((amenity, index) => {
+      formData.append("hAmenities", amenity);
+   });
+    // formData.append("hotelAmenities", JSON.stringify(hotelData.hotelAmenities)); // Assuming it's an array or object, convert to string
+    
+    hotelData.hotelImages.forEach((image, index) => {
+      formData.append("hotelImages", image); // 'hotelImages' should match the name you expect in your Spring controller
+    });
+    console.log(formData);
+    const response = await axiosInstance.post("/addHotel", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
       if (response.status === 200) {
         closeModalAdd();
@@ -545,7 +574,8 @@ const OurHotel = () => {
                     Hotel images
                   </p>
                   <div className="d-flex flex-row gap-2">
-                    <ImageUpload onImagesSelected={handleImagesSelected} />
+                    {/* <ImageUpload onImagesSelected={handleImagesSelected} /> */}
+                    <input type="file" multiple onChange={handleImagesSelected}/>
                   </div>
                 </div>
                 <p

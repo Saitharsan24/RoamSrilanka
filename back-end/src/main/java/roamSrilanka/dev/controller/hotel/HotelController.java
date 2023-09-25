@@ -2,12 +2,16 @@ package roamSrilanka.dev.controller.hotel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import roamSrilanka.dev.model.Hotel.Hotels;
 import roamSrilanka.dev.service.hotel.HotelService;
 
 import java.util.List;
+
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @CrossOrigin(origins = "http://localhost:3000")
 
@@ -19,10 +23,14 @@ public class HotelController {
 
 
     //Storing hotel details to the database when adding new hotels
-    @PostMapping("/addHotel")
-    public ResponseEntity<Hotels> createHotel(@RequestBody Hotels hotels){
+//    @PostMapping("/addHotel")
+    @RequestMapping(path = "/addHotel", method = POST, consumes = { MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ResponseEntity<Hotels> createHotel(
+            @ModelAttribute Hotels hotels,
+            @RequestParam("hotelImages") List<MultipartFile> hotelImages,
+            @RequestParam("hAmenities") List<String> hotelAmenities) {
 
-            Hotels saveHotel = hotelService.addHotels(hotels);
+           Hotels saveHotel = hotelService.addHotels(hotels);
            // System.out.println(hotels);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -43,7 +51,6 @@ public class HotelController {
             return ResponseEntity.notFound().build();
         }
     }
-
 
     @PutMapping("/updateHotel/{hotelId}")
     public ResponseEntity<Hotels> updateHotel(@PathVariable Integer hotelId, @RequestBody Hotels updatedHotel) {
