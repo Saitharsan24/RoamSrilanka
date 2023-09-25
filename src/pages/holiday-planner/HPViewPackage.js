@@ -1,7 +1,42 @@
 import React, { useState } from "react";
 import "../../styles/updatepack.css";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
+import StarRating from "../../components/Rating";
 
 function HPViewpackage() {
+  const paraData = useParams();
+  // console.log(paraData.packageID);
+  
+
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 5000,
+  });
+  const [packageData, setPackageData] = useState({});
+  const [trip_guide, setTrip_guide] = useState(false);
+  const [meals, setMeals] = useState(false);
+  const [selectedRating, onRatingChange] = useState(false);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/packages/" + paraData.packageID)
+      .then((res) => {
+        setPackageData(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    const trip_guide = packageData.trip_guide;
+    setTrip_guide(trip_guide);
+    const meals = packageData.meals;
+    setMeals(meals);
+  }, []);
+
   return (
     <div className="d-flex gap-3 w-100 m align-items-center justify-content-around">
       <div
@@ -23,7 +58,7 @@ function HPViewpackage() {
           }}
           className="d-flex mx-5 mt-5"
         >
-          Package Name: Perahera
+          Package Name: {packageData.package_name}
         </h1>
         <div className="d-flex align-items-center justify-content-around flex-column flex-md-row flex-lg-row col-12">
           <form className="pack">
@@ -35,7 +70,7 @@ function HPViewpackage() {
                     <input
                       className="p-2"
                       type="text"
-                      placeholder="Perahera"
+                      placeholder={packageData.package_name}
                       readOnly
                     ></input>
                   </label>
@@ -44,7 +79,7 @@ function HPViewpackage() {
                     <input
                       className="p-2"
                       type="number"
-                      placeholder="4000"
+                      placeholder={packageData.price}
                       readOnly
                     ></input>
                   </label>
@@ -53,7 +88,7 @@ function HPViewpackage() {
                     <input
                       className="p-2"
                       type="number"
-                      placeholder="3 Days"
+                      placeholder={packageData.days}
                       readOnly
                     ></input>
                   </label>
@@ -62,7 +97,7 @@ function HPViewpackage() {
                     <input
                       className="p-2"
                       type="text"
-                      placeholder="Kandy"
+                      placeholder={packageData.places}
                       readOnly
                     ></input>
                   </label>
@@ -74,6 +109,7 @@ function HPViewpackage() {
                       className="d-flex"
                       type="checkbox"
                       name="tourGuide"
+                      checked={packageData.trip_guide}
                     ></input>
                   </label>
                   <label className="d-flex flex-lg-row gap-3 m-2">
@@ -82,8 +118,20 @@ function HPViewpackage() {
                       className="d-flex"
                       type="checkbox"
                       name="meals"
+                      checked={packageData.meals}
                     ></input>
                   </label>
+                </div>
+                <div className="d-flex flex-md-row col-md-10 col-sm-10 flex-column flex-lg-row justify-content m-2 gap-3">
+                  <div className="col-12 col-md-6 col-lg-4">
+                    <p>Hotel Type</p>
+                  </div>
+                  <div className="col-12 col-md-6 col-lg-3">
+                    <StarRating
+                      selectedRating={packageData.hotel_rating}
+                      onRatingChange={onRatingChange}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import "./../../styles/HPChat.css";
 import user from "./../../assets/images/user.jpeg";
 
+
+
 const contacts = [
   { id: 1, name: "John Doe" },
   { id: 2, name: "Jane Smith" },

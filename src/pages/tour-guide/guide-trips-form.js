@@ -1,8 +1,64 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as Icon from "react-bootstrap-icons";
 import lotusTower from "./../../assets/images/lotusTower.png";
+import axios from "axios";
+
 
 const GuideTripForm = () => {
+  const [trip, setTrip] = useState([]);
+  const [tourist, setTourist] = useState([]);
+  const [user, setUser] = useState([]);
+  //Sending data to backend
+  const apiBaseUrl = "http://localhost:8080";
+  const urlParams = new URLSearchParams(window.location.search);
+  const tripId = urlParams.get("tripId");
+  const userId = urlParams.get("userId");
+  //console.log(touristId);
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 10000,
+  });
+
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get(`/viewTrip/${tripId}`)
+      .then((response) => {
+        setTrip(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get(`/viewTourist/${userId}`)
+      .then((response) => {
+        setTourist(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get(`/viewUser/${tourist.userId}`)
+      .then((response) => {
+        setUser(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
   return (
         <div className="d-flex flex-column w-100">
           <div className="d-flex col-12 justify-content-lg-around justify-content-md-around">
@@ -44,7 +100,7 @@ const GuideTripForm = () => {
                             width: "100%",
                           }}
                           type="text"
-                          placeholder="John"
+                          placeholder={user.userName}
                         ></input>
                       </label>
                     </div>
@@ -63,7 +119,7 @@ const GuideTripForm = () => {
                             width: "100%",
                           }}
                           type="text"
-                          placeholder="12 Feb"
+                          placeholder={trip.fromDate}
                         ></input>
                       </label>
                       <label
@@ -80,7 +136,7 @@ const GuideTripForm = () => {
                             width: "100%",
                           }}
                           type="text"
-                          placeholder="15 Feb"
+                          placeholder={trip.toDate}
                         ></input>
                       </label>
                     </div>
@@ -150,7 +206,7 @@ const GuideTripForm = () => {
                             width: "100%",
                           }}
                           type="text"
-                          placeholder="0771234567"
+                          placeholder={tourist.touristContact}
                         ></input>
                       </label>
                     </div>
