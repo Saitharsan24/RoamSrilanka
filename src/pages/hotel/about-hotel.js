@@ -279,9 +279,6 @@ const AboutHotel = () => {
             </span>
             <br />
           </p>
-          <Link to="/hotel/hotelReviews" className="mx-2">
-            See all 18 reviews <Icon.ChevronRight />
-          </Link>
           <div className="d-flex flex-column my-2">
             <p
               style={{
@@ -542,8 +539,8 @@ const AboutHotel = () => {
                                   </span>
                                   <br />
                                 </p>
-                                <Link to="/hotel/hotelReviews" className="mx-2">
-                                  See all 18 reviews <Icon.ChevronRight />
+                                <Link to={`/hotel/hotelReviews?id=${room.roomId}`} className="mx-2">
+                                  See all reviews <Icon.ChevronRight />
                                 </Link>
                               </div>
                               <div className="d-flex flex-column justify-content-between me-1">
@@ -558,7 +555,7 @@ const AboutHotel = () => {
                                     >
                                       ${room.price}
                                     </p>
-                                    <p
+                                    {/* <p
                                       className="m-0"
                                       style={{ fontSize: "13px" }}
                                     >
@@ -570,7 +567,7 @@ const AboutHotel = () => {
                                         $400
                                       </span>{" "}
                                       Total
-                                    </p>
+                                    </p> */}
                                     <p
                                       className="m-0"
                                       style={{ fontSize: "13px" }}
@@ -583,7 +580,7 @@ const AboutHotel = () => {
                                   <Link
                                     onClick={() => openModalSeeAll(room.roomId)}
                                   >
-                                    see all <Icon.ChevronRight />
+                                    See all <Icon.ChevronRight />
                                   </Link>
                                   <Link
                                     onClick={() => openModalEdit(room.roomId)}
@@ -904,23 +901,12 @@ const AboutHotel = () => {
                         type="number"
                         name="price"
                         value={roomData.price}
+                        placeholder="Price in Dolars"
                         onChange={(e) => {
                           inputRoomdata(e.target.name, e.target.value);
                         }}
                       ></input>
                     </label>
-                    {/* <label style={{ fontWeight: "600" }}>
-                      Availability
-                      <br />
-                      <input
-                        type="boolean"
-                        name="availability"
-                        value={roomData.availability}
-                        onChange={(e) => {
-                          inputRoomdata(e.target.name, e.target.value);
-                        }}
-                      ></input>
-                    </label> */}
                   </div>
                   <div className="d-flex flex-row gap-5">
                     <label style={{ fontWeight: "600" }}>

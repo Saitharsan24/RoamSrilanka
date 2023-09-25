@@ -18,8 +18,10 @@ public class HotelRooms {
 //    @JoinColumn(name = "hotel_id", nullable = false, insertable = false, updatable = false)
 //    private Hotels hotel; // Reference to the hotel this room belongs to
 
-    @Column(name = "hotel_id")
-    private Integer hotelId;
+    @ManyToOne
+    @MapsId
+    @JoinColumn(name = "hotel_id")
+    private Hotels hotels;
 
     @Column(name = "room_type")
     private String roomType;
@@ -60,9 +62,9 @@ public class HotelRooms {
     public HotelRooms() {
     }
 
-    public HotelRooms(Integer roomId, Integer hotelId, String roomType, Integer occupancy, Double price, Integer noOfBeds, String roomSize, String description, Boolean availability, List<String> policies, List<String> amenities, List<String> images) {
+    public HotelRooms(Integer roomId, Hotels hotels, String roomType, Integer occupancy, Double price, Integer noOfBeds, String roomSize, String description, Boolean availability, List<String> policies, List<String> amenities, List<String> images) {
         this.roomId = roomId;
-        this.hotelId = hotelId;
+        this.hotels = hotels;
         this.roomType = roomType;
         this.occupancy = occupancy;
         this.price = price;
@@ -75,7 +77,8 @@ public class HotelRooms {
         this.images = images;
     }
 
-    public HotelRooms(String roomType, Integer occupancy, Double price, Integer noOfBeds, String roomSize, String description, Boolean availability, List<String> policies, List<String> amenities, List<String> images) {
+    public HotelRooms(Hotels hotels, String roomType, Integer occupancy, Double price, Integer noOfBeds, String roomSize, String description, Boolean availability, List<String> policies, List<String> amenities, List<String> images) {
+        this.hotels = hotels;
         this.roomType = roomType;
         this.occupancy = occupancy;
         this.price = price;
@@ -85,7 +88,7 @@ public class HotelRooms {
         this.availability = availability;
         this.policies = policies;
         this.amenities = amenities;
-//        this.images = images;
+        this.images = images;
     }
 
     //Getters and Setters
@@ -97,20 +100,12 @@ public class HotelRooms {
         this.roomId = roomId;
     }
 
-//    public Hotels getHotel() {
-//        return hotel;
-//    }
-//
-//    public void setHotel(Hotels hotel) {
-//        this.hotel = hotel;
-//    }
-
-    public Integer getHotelId() {
-        return hotelId;
+    public Hotels getHotels() {
+        return hotels;
     }
 
-    public void setHotelId(Integer hotelId) {
-        this.hotelId = hotelId;
+    public void setHotels(Hotels hotels) {
+        this.hotels = hotels;
     }
 
     public String getRoomType() {

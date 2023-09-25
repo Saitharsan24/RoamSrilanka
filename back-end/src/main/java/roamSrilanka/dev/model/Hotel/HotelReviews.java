@@ -16,6 +16,9 @@ public class HotelReviews {
     @Column(name = "request_id")
     private Integer requestId;
 
+    @Column(name = "room_id")
+    private Integer roomId;
+
     @Column(name = "date")
     private Date date;
 
@@ -28,19 +31,21 @@ public class HotelReviews {
     public HotelReviews() {
     }
 
-    public HotelReviews(Integer reviewId, Integer requestId, Date date, String review, Integer rating) {
+    public HotelReviews(Integer requestId, Date date, String review, Integer rating, Integer roomId) {
+        this.requestId = requestId;
+        this.date = date;
+        this.review = review;
+        this.rating = rating;
+        this.roomId = roomId;
+    }
+
+    public HotelReviews(Integer reviewId, Integer requestId, Date date, String review, Integer rating, Integer roomId) {
         this.reviewId = reviewId;
         this.requestId = requestId;
         this.date = date;
         this.review = review;
         this.rating = rating;
-    }
-
-    public HotelReviews(Integer requestId, Date date, String review, Integer rating) {
-        this.requestId = requestId;
-        this.date = date;
-        this.review = review;
-        this.rating = rating;
+        this.roomId = roomId;
     }
 
     public Integer getReviewId() {
@@ -81,5 +86,13 @@ public class HotelReviews {
 
     public void setRating(Integer rating) {
         this.rating = rating;
+    }
+
+    public Integer getRoomId() {
+    	return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+    	this.roomId = roomId;
     }
 }

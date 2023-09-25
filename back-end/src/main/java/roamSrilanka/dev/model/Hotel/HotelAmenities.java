@@ -2,6 +2,7 @@ package roamSrilanka.dev.model.Hotel;
 
 import jakarta.persistence.*;
 
+@Table (name = "HotelAmenities")
 @Entity(name = "HotelAmenities")
 public class HotelAmenities {
         @Id
