@@ -44,11 +44,18 @@ function Vehicle() {
 
     // console.log(vehicle[0]['image1'])
 
+    // const images = [
+    //     {id:0, value:rowCount === 3 ? vehicle[0]['image1'] : img1},
+    //     {id:1, value:rowCount === 3 ? vehicle[0]['image2'] : img2},
+    //     {id:2, value:rowCount === 3 ? vehicle[0]['image3'] : img3},
+    //     {id:3, value:rowCount === 3 ? vehicle[0]['image4'] : img4}
+    // ]
+
     const images = [
-        {id:0, value:rowCount === 3 ? vehicle[0]['image1'] : img1},
-        {id:1, value:rowCount === 3 ? vehicle[0]['image2'] : img2},
-        {id:2, value:rowCount === 3 ? vehicle[0]['image3'] : img3},
-        {id:3, value:rowCount === 3 ? vehicle[0]['image4'] : img4}
+        {id:0, value:img1},
+        {id:1, value:img2},
+        {id:2, value:img3},
+        {id:3, value:img4}
     ]
 
     setTimeout(() => { 
@@ -75,7 +82,7 @@ function Vehicle() {
                         <div class="position-absolute top-0 end-0">h</div>
                     </div> */}
                     <div class="row">
-                        {rowCount === 2 ? (
+                        {rowCount === 0 ? (
                         <div className="col-sm-12 w-100">
                             <div>
                                 <div class="card">
