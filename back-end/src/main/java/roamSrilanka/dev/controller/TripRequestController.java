@@ -20,7 +20,7 @@ public class TripRequestController {
     public TripRequest saveRequest(@RequestBody TripRequest tripRequest) {
         return this.tripRequestService.saveRequest(tripRequest);
     }
-    
+
     @GetMapping("/allTripRequests")
     public List<TripRequest> findAllTrips() {
         return this.tripRequestService.findAllTrips();

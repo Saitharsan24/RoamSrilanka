@@ -29,7 +29,7 @@ public class TripRequest {
     private String destination;
 
     @Column(name = "contact")
-    private Number contact;
+    private Long contact;
 
     public Long getRequst_id() {
         return requst_id;
@@ -83,7 +83,7 @@ public class TripRequest {
         return contact;
     }
 
-    public void setContact(Number contact) {
+    public void setContact(Long contact) {
         this.contact = contact;
     }
 }
