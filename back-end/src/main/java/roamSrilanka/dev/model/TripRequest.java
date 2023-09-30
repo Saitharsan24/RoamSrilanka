@@ -16,11 +16,11 @@ public class TripRequest {
     @Column(name = "tourist_name")
     private String tourist_name;
 
-    @Column(name = "from_date")
-    private Date from_date;
+    @Column(name = "start_date")
+    private Date start_date;
 
-    @Column(name = "to_date")
-    private Date to_date;
+    @Column(name = "end_date")
+    private Date end_date;
 
     @Column(name = "pickup")
     private String pickup;
@@ -47,20 +47,20 @@ public class TripRequest {
         this.tourist_name = tourist_name;
     }
 
-    public Date getFrom_date() {
-        return from_date;
+    public Date getStart_date() {
+        return start_date;
     }
 
-    public void setFrom_date(Date from_date) {
-        this.from_date = from_date;
+    public void setStart_date(Date start_date) {
+        this.start_date = start_date;
     }
 
-    public Date getTo_date() {
-        return to_date;
+    public Date getEnd_date() {
+        return end_date;
     }
 
-    public void setTo_date(Date to_date) {
-        this.to_date = to_date;
+    public void setEnd_date(Date end_date) {
+        this.end_date = end_date;
     }
 
     public String getPickup() {
