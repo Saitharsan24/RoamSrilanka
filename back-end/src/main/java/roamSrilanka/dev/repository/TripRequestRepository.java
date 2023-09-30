@@ -1,2 +1,8 @@
-package roamSrilanka.dev.repository;public interface TripRequestRepository {
+package roamSrilanka.dev.repository;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TripRequestRepository {
+
 }
