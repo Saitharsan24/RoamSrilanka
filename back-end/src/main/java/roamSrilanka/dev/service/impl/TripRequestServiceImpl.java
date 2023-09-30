@@ -20,4 +20,9 @@ public class TripRequestServiceImpl implements TripRequestService {
     public List<TripRequest> findAllTrips() {
         return tripRequestRepository.findAll();
     }
+
+    @Override
+    public TripRequest saveRequest(TripRequest tripRequest) {
+        return tripRequestRepository.save(tripRequest);
+    }
 }

@@ -7,4 +7,6 @@ import java.util.List;
 public interface TripRequestService {
 
     List<TripRequest> findAllTrips();
+
+    TripRequest saveRequest(TripRequest tripRequest);
 }
