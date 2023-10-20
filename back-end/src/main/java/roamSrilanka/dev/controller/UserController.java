@@ -30,7 +30,7 @@ public class UserController {
     @ResponseBody
     public ResponseEntity<User> getUser(@PathVariable Integer id) {
         return ResponseEntity.ok(userService.getUser(id));
-
+    }
     @GetMapping("/viewUser/{id}")
     @ResponseBody
     public ResponseEntity<User> getUserById(@PathVariable Integer id) {
