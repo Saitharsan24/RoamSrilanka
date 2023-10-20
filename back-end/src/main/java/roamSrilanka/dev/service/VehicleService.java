@@ -11,6 +11,4 @@ public interface VehicleService {
     Vehicle saveVehicle(Vehicle vehicle);
     Vehicle updateVehicle(Vehicle vehicle);
     void deleteVehicle(Long vehicleID);
-
-  long getVehicleCount();
 }
