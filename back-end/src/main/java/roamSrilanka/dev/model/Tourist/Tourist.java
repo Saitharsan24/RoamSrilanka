@@ -44,6 +44,19 @@ public class Tourist {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public Tourist(int userId, Date touristDob, String touristGender, String touristContact, String touristPassport, String country, String emergencyPerson, String emergencyRelation, String emergencyContact) {
+        this.userId = userId;
+        this.touristDob = touristDob;
+        this.touristGender = touristGender;
+        this.touristContact = touristContact;
+        this.touristPassport = touristPassport;
+        this.country = country;
+        this.emergencyPerson = emergencyPerson;
+        this.emergencyRelation = emergencyRelation;
+        this.emergencyContact = emergencyContact;
+    }
+
+
     public Tourist(int userId, String touristGender, String touristContact, String touristPassport, String country, String emergencyPerson, String emergencyRelation, String emergencyContact) {
         this.userId = userId;
         this.touristGender = touristGender;

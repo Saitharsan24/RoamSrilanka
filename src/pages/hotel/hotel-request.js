@@ -56,7 +56,6 @@ function HotelRequest() {
     return {
       name: request.hotelName,
       date: request.date,
-      type: request.roomType,
       number: request.noOfRooms,
       btn: (
         <Link
@@ -139,12 +138,6 @@ function HotelRequest() {
                 width: 150,
               },
               {
-                label: "Type",
-                field: "type",
-                sort: "asc",
-                width: 200,
-              },
-              {
                 label: "No of rooms",
                 field: "number",
                 sort: "asc",
@@ -185,40 +178,33 @@ function HotelRequest() {
                     >{selectedRequest.hotelName}</div>
                   </div>
                   <div>
-                    <label className="hotel-popup-label">Room Type</label>
+                    <label className="hotel-popup-label">Date</label>
                     <br />
                     <div
                     style={{width: "210px"}}
                       className="hotel-popup-input"
-                    >{selectedRequest.roomType}</div>
+                    >{selectedRequest.date}</div>
                   </div>
                 </div>
                 <div className="d-flex flex-row justify-content-between ">
                   <div>
-                    <label className="hotel-popup-label">Tourist Name</label>
+                    <label className="hotel-popup-label">From Date</label>
                     <br />
                     <div
                     style={{width: "210px"}}
                       className="hotel-popup-input"
-                    >{selectedRequest.touristName}</div>
+                    >{selectedRequest.fromDate}</div>
                   </div>
                   <div>
-                    <label className="hotel-popup-label">Phone Number</label>
+                    <label className="hotel-popup-label">To Date</label>
                     <br />
                     <div
                     style={{width: "210px"}}
                       className="hotel-popup-input"
-                    >{selectedRequest.touristPhone}</div>
+                    >{selectedRequest.toDate}</div>
                   </div>
                 </div>
                 <div className="d-flex flex-row justify-content-between">
-                  <div>
-                    <label className="hotel-popup-label">Date</label>
-                    <br />
-                    <div
-                      className="hotel-popup-input"
-                    >{selectedRequest.date}</div>
-                  </div>
                   <div>
                     <label className="hotel-popup-label">No of Rooms</label>
                     <br />
@@ -226,26 +212,6 @@ function HotelRequest() {
                     style={{width: "170px"}}
                       className="hotel-popup-input"
                     >{selectedRequest.noOfRooms}</div>
-                  </div>
-                </div>
-                <div>
-                    <label className="hotel-popup-label">Email Address</label>
-                    <br />
-                    <div
-                      className="hotel-popup-input"
-                    >{selectedRequest.touristEmail}</div>
-                </div>
-                <div className="d-flex flex-row justify-content-around ">
-                  <div>
-                    <label className="hotel-popup-label">Message</label>
-                    <br />
-                    <div
-                      className="hotel-popup-input"
-                      style={{}}
-                      disabled
-                    >
-                      {selectedRequest.touristMessage}
-                    </div>
                   </div>
                 </div>
                 <dic className="d-flex flex-row justify-content-center gap-5">

@@ -29,8 +29,8 @@ public class RegistrationService {
         User savedUser = userRepository.save(user);
 
         // Associate the saved user with the tourist and vice versa
-        savedUser.setTourist(tourist);
-        tourist.setUser(savedUser);
+//        savedUser.setTourist(tourist);
+//        tourist.setUser(savedUser);
 
 
         // Save the Tourist entity

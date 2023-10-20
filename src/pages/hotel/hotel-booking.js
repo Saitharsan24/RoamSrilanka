@@ -27,7 +27,9 @@ function HotelBooking() {
   const openModal = (requestId) => {
     setIsModalOpen(true);
     setRequestId(requestId);
-    setSelectedRowData(requests.find((request) => request.requestId === requestId));
+    setSelectedRowData(
+      requests.find((request) => request.requestId === requestId)
+    );
     console.log("requestId: ", requestId);
     console.log("selectedRequest: ", selectedRequest);
   };
@@ -51,10 +53,10 @@ function HotelBooking() {
 
   const rows = requests.map((request) => {
     return {
-      name: request.touristName,
+      name: request.hotelName,
       date: request.date,
-      type: request.roomType,
-      status: determineStatus(request.status) ,
+      noOfRooms: request.noOfRooms,
+      status: determineStatus(request.status),
       btn: (
         <Link
           key={`view-${request.requestId}`}
@@ -65,25 +67,25 @@ function HotelBooking() {
         </Link>
       ),
     };
-});
+  });
 
-function determineStatus(status) {
-  if (status == null) {
-    return "Pending";
-  } else if (status == 1) {
-    return "Accepted";
-  } else if (status == 2){
-    return "Completed";
-  } else {
-    return "Rejected";
+  function determineStatus(status) {
+    if (status == null) {
+      return "Pending";
+    } else if (status == 1) {
+      return "Accepted";
+    } else if (status == 2) {
+      return "Completed";
+    } else {
+      return "Rejected";
+    }
   }
-}
 
-const handleRequestlId = (e) => {
-  setRequestId(e.target.value);
-};
+  const handleRequestlId = (e) => {
+    setRequestId(e.target.value);
+  };
 
-return (
+  return (
     <div className="d-flex w-100">
       <div className="d-flex flex-column col-lg-11 ms-lg-5 col-md-12">
         <div className="d-flex flex-row gap-4 my-3">
@@ -130,7 +132,7 @@ return (
               },
               {
                 label: "Type",
-                field: "type",
+                field: "noOfRooms",
                 sort: "asc",
                 width: 200,
               },
@@ -157,90 +159,83 @@ return (
             <Modal.Title>Hotel Booking</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          {requests.find((request) => request.requestId === requestId) ? ( 
-            <form method="POST" style={{ fontFamily: "Poppins" }}>
-              <input
-              type="hidden"
-              name="hotelId"
-              value={requestId}
-              onChange={handleRequestlId}
-            />
-              <div className="d-flex flex-column gap-3">
-                <div className="d-flex flex-row justify-content-between ">
-                  <div>
-                    <label className="hotel-popup-label">Hotel Name</label>
-                    <br />
-                    <div
-                    style={{width: "210px"}}
-                      className="hotel-popup-input"
-                    >{selectedRequest.hotelName}</div>
+            {requests.find((request) => request.requestId === requestId) ? (
+              <form method="POST" style={{ fontFamily: "Poppins" }}>
+                <input
+                  type="hidden"
+                  name="hotelId"
+                  value={requestId}
+                  onChange={handleRequestlId}
+                />
+                <div className="d-flex flex-column gap-3">
+                  <div className="d-flex flex-row justify-content-between ">
+                    <div>
+                      <label className="hotel-popup-label">Hotel Name</label>
+                      <br />
+                      <div
+                        style={{ width: "210px" }}
+                        className="hotel-popup-input"
+                      >
+                        {selectedRequest.hotelName}
+                      </div>
+                    </div>
+                    <div>
+                      <label className="hotel-popup-label">Date</label>
+                      <br />
+                      <div
+                        style={{ width: "210px" }}
+                        className="hotel-popup-input"
+                      >
+                        {selectedRequest.date}
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <label className="hotel-popup-label">Room Type</label>
-                    <br />
-                    <div
-                    style={{width: "210px"}}
-                      className="hotel-popup-input"
-                    >{selectedRequest.roomType}</div>
+                  <div className="d-flex flex-row justify-content-between ">
+                    <div>
+                      <label className="hotel-popup-label">From Date</label>
+                      <br />
+                      <div
+                        style={{ width: "210px" }}
+                        className="hotel-popup-input"
+                      >
+                        {selectedRequest.fromDate}
+                      </div>
+                    </div>
+                    <div>
+                      <label className="hotel-popup-label">To Date</label>
+                      <br />
+                      <div
+                        style={{ width: "210px" }}
+                        className="hotel-popup-input"
+                      >
+                        {selectedRequest.toDate}
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="d-flex flex-row justify-content-between ">
-                  <div>
-                    <label className="hotel-popup-label">Tourist Name</label>
-                    <br />
-                    <div
-                    style={{width: "210px"}}
-                      className="hotel-popup-input"
-                    >{selectedRequest.touristName}</div>
-                  </div>
-                  <div>
-                    <label className="hotel-popup-label">Phone Number</label>
-                    <br />
-                    <div
-                    style={{width: "210px"}}
-                      className="hotel-popup-input"
-                    >{selectedRequest.touristPhone}</div>
-                  </div>
-                </div>
-                <div className="d-flex flex-row justify-content-between">
-                  <div>
-                    <label className="hotel-popup-label">Date</label>
-                    <br />
-                    <div
-                      className="hotel-popup-input"
-                    >{selectedRequest.date}</div>
-                  </div>
-                  <div>
-                    <label className="hotel-popup-label">No of Rooms</label>
-                    <br />
-                    <div
-                    style={{width: "170px"}}
-                      className="hotel-popup-input"
-                    >{selectedRequest.noOfRooms}</div>
-                  </div>
-                </div>
-                <div>
-                    <label className="hotel-popup-label">Email Address</label>
-                    <br />
-                    <div
-                      className="hotel-popup-input"
-                    >{selectedRequest.touristEmail}</div>
-                </div>
-                <div className="d-flex flex-row justify-content-around ">
-                  <div>
-                    <label className="hotel-popup-label">Message</label>
-                    <br />
-                    <div
-                      className="hotel-popup-input"
-                      style={{}}
-                      disabled
-                    >
-                      {selectedRequest.touristMessage}
+                  <div className="d-flex flex-row justify-content-between">
+                    <div>
+                      <label className="hotel-popup-label">Status</label>
+                      <br />
+                      <div
+                        style={{ width: "170px" }}
+                        className="hotel-popup-input"
+                      >
+                        {determineStatus(selectedRequest.status)}
+                      </div>
+                    </div>
+                    <div>
+                      <label className="hotel-popup-label">No of Rooms</label>
+                      <br />
+                      <div
+                        style={{ width: "170px" }}
+                        className="hotel-popup-input"
+                      >
+                        {selectedRequest.noOfRooms}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </form>
+              </form>
             ) : (
               <p>No room found for roomId: {requestId}</p>
             )}

@@ -4,6 +4,7 @@ import * as BsIcons from 'react-icons/bs'
 import { Button } from 'react-bootstrap'
 import HotelImage from '../../assets/images/hotel_01.jpg'
 import axios from "axios";
+import { useSession } from '../../Context/SessionContext';
 
 function ToursitHotel() {
 
@@ -26,12 +27,21 @@ function ToursitHotel() {
      baseURL: apiBaseUrl,
      timeout: 10000,
    });
+
+   //Initiating sessoin data
+   const { sessionData , setSessionData  } = useSession();
+
+  //  //adding search details to session variable
+  //  setSessionData({
+  //     ...sessionData,
+  //     city: destination,
+  //     checkIn: checkInDate,
+  //     checkOut: checkOutDate,
+  //     travellers: travelers
+  // })
+
    //data from backend will directly store in this state  
    const [hotels, setHotels] = useState([]);
- 
-   //when filtering the filtered data will store in this state and mapped
-   const [filterHotels, setFilterHotels] = useState([]);
- 
    useEffect(() => {
      // Fetch hotel data from your backend API
      axiosInstance
@@ -60,6 +70,7 @@ function ToursitHotel() {
             <input 
               type="text" 
               list="places" 
+              name='city'
               value={destination}
               onChange={(e) => setDestination(e.target.value)}
             />
@@ -72,6 +83,7 @@ function ToursitHotel() {
             <h6>Check in date</h6>
               <input 
                 type="date" 
+                name='checkIn'
                 value={checkInDate}
                 min={new Date().toISOString().split('T')[0]}
                 onChange={(e) => setCheckInDate(e.target.value)}
@@ -82,6 +94,7 @@ function ToursitHotel() {
             <h6>Check out date</h6>
             <input 
               type="date" 
+              name='checkOut'
               value={checkOutDate}
               min={checkInDate}
               onChange={(e) => setCheckOutDate(e.target.value)}
@@ -89,10 +102,10 @@ function ToursitHotel() {
           </div>
            
           <div className='hotel-room-pax d-flex flex-column'>
-            <h6>Travelers</h6>
+            <h6>Travellers</h6>
             <div className='d-flex flex-row gap-4'>
             <button onClick={() => setTravelers(prev => Math.max(prev - 1, 1))}>-</button>
-            <input type="number" value={travelers} readOnly />
+            <input type="number" name='travellers' value={travelers} readOnly />
             <button onClick={() => setTravelers(prev => prev + 1)}>+</button>
             </div>
           </div>
