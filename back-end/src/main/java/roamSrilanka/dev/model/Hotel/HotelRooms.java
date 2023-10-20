@@ -88,16 +88,9 @@ public class HotelRooms {
         this.images = images;
     }
 
-    public HotelRooms(String roomType, Integer occupancy, Double price, Integer noOfBeds, List<String> amenities, List<String> images) {
-        this.roomType = roomType;
-        this.occupancy = occupancy;
-        this.price = price;
-        this.noOfBeds = noOfBeds;
-        this.amenities = amenities;
-//        this.images = images;
-    }
 
     //Getters and Setters
+
     public Integer getRoomId() {
         return roomId;
     }
@@ -106,14 +99,45 @@ public class HotelRooms {
         this.roomId = roomId;
     }
 
-//    public Hotels getHotel() {
-//        return hotel;
-//    }
-//
-//    public void setHotel(Hotels hotel) {
-//        this.hotel = hotel;
-//    }
+    public Integer getHotelId() {
+        return hotelId;
+    }
 
+    public void setHotelId(Integer hotelId) {
+        this.hotelId = hotelId;
+    }
+
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
+    public Integer getOccupancy() {
+        return occupancy;
+    }
+
+    public void setOccupancy(Integer occupancy) {
+        this.occupancy = occupancy;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Integer getNoOfBeds() {
+        return noOfBeds;
+    }
+
+    public void setNoOfBeds(Integer noOfBeds) {
+        this.noOfBeds = noOfBeds;
+    }
 
     public String getPolicyBathroom() {
         return policyBathroom;
@@ -145,46 +169,6 @@ public class HotelRooms {
 
     public void setPolicyInternet(String policyInternet) {
         this.policyInternet = policyInternet;
-    }
-
-    public Integer getHotelId() {
-        return hotelId;
-    }
-
-    public void setHotelId(Integer hotelId) {
-        this.hotelId = hotelId;
-    }
-
-    public String getRoomType() {
-        return roomType;
-    }
-
-    public void setRoomType(String roomType) {
-        this.roomType = roomType;
-    }
-
-    public Integer getOccupancy() {
-        return occupancy;
-    }
-
-    public void setOccupancy(Integer occupancy) {
-        this.occupancy = occupancy;
-    }
-
-    public void setNoOfBeds(Integer noOfBeds) {
-        this.noOfBeds = noOfBeds;
-    }
-
-    public Integer getNoOfBeds() {
-        return noOfBeds;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
     }
 
     public List<String> getAmenities() {

@@ -85,6 +85,8 @@ function HotelBooking() {
     setRequestId(e.target.value);
   };
 
+  const filteredRequests = requests.filter((request) => request.status == null);
+
   return (
     <div className="d-flex w-100">
       <div className="d-flex flex-column col-lg-11 ms-lg-5 col-md-12">
@@ -105,9 +107,11 @@ function HotelBooking() {
               class="btn shadow-md position-relative"
             >
               Requests
-              <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-                <span class="visually-hidden">New alerts</span>
-              </span>
+              {filteredRequests.length > 0 && ( 
+                <span className="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                  <span className="visually-hidden">New alerts</span>
+                </span>
+              )}
             </button>
           </a>
         </div>
@@ -131,7 +135,7 @@ function HotelBooking() {
                 width: 150,
               },
               {
-                label: "Type",
+                label: "No of rooms",
                 field: "noOfRooms",
                 sort: "asc",
                 width: 200,

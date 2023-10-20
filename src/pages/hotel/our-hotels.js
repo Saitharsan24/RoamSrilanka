@@ -5,9 +5,6 @@ import ReactStars from "react-rating-stars-component";
 import * as Icon from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
 import "./../../styles/hotel/our-hotel.css";
-import room1 from "./../../assets/images/room-image1.png";
-import room2 from "./../../assets/images/room-image2.png";
-import room3 from "./../../assets/images/room-image3.png";
 import ImageUpload from "../../components/imageUpload";
 import axios from "axios";
 import StarRating from "../../components/Rating";
@@ -18,6 +15,7 @@ const OurHotel = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [hotels, setHotels] = useState([]);
+  const [hotelsImages, setHotelsImages] = useState([]);
   const [hotelId, setHotelId] = useState("");
   const [selectedHotel, setSelectedHotel] = useState([]);
 
@@ -86,10 +84,9 @@ const OurHotel = () => {
     setSelectedFile(file);
   };
 
-  
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
-  
+
     setHotelData((prevData) => {
       if (checked) {
         // If the checkbox is checked, add the amenity to the hotelAmenities array
@@ -101,11 +98,13 @@ const OurHotel = () => {
         // If the checkbox is unchecked, remove the amenity from the hotelAmenities array
         return {
           ...prevData,
-          hotelAmenities: prevData.hotelAmenities.filter((amenity) => amenity !== name),
+          hotelAmenities: prevData.hotelAmenities.filter(
+            (amenity) => amenity !== name
+          ),
         };
       }
     });
-    console.log(hotelData);
+    // console.log(hotelData);
   };
 
   const [hotelData, setHotelData] = useState({
@@ -116,27 +115,13 @@ const OurHotel = () => {
     city: "",
     address: "",
     hotelAmenities: [],
-    hotelImages: [],
+    hotelImage: null,
   });
 
-  const handleImagesSelected = (e) => {
-    //update the hotelData state with the selected images
-    const files = e.target.files;
-    const images = [];
-    for (let i = 0; i < files.length; i++) {
-      images.push(files[i]);
-    }
-    setHotelData((prevData) => ({
-      ...prevData,
-      hotelImages: images,
-    }));
-    console.log(hotelData);
-  };
-
   const inputHoteldata = (name, value) => {
-    console.log(name, value);
+    // console.log(name, value);
     setHotelData((prev) => ({ ...prev, [name]: value }));
-    console.log(hotelData);
+    // console.log(hotelData);
   };
 
   const handleHotelRatingChange = (rating) => {
@@ -154,50 +139,58 @@ const OurHotel = () => {
     timeout: 10000,
   });
 
+  const handleImageChange = (e) => {
+    const selectedFiles = e.target.files; // Get an array of selected image files
+    const imageFiles = [];
+
+    // Iterate through the selected files and add them to the imageFiles array
+    for (let i = 0; i < selectedFiles.length; i++) {
+      imageFiles.push(selectedFiles[i]);
+    }
+
+    inputHoteldata("hotelImage", imageFiles); // Update productDetails state with the selected images
+    // console.log(imageFiles)
+  };
+
   const handleAddHotel = async (e) => {
     e.preventDefault();
 
     try {
-
-      // const request = {
-      //   hotelName: hotelData.hotelName,
-      //   description: hotelData.description,
-      //   hotelType: hotelData.hotelType,
-      //   starRating: hotelData.hotelRating,
-      //   city: hotelData.city,
-      //   address: hotelData.address,
-      //   hotelAmenities: hotelData.hotelAmenities,
-      //   hotelImages: hotelData.hotelImages,
-      // };
-      // console.log(request);
-      // const response = await axiosInstance.post("/addHotel", request);
-    const formData = new FormData();
-    formData.append("hotelName", hotelData.hotelName);
-    formData.append("description", hotelData.description);
-    formData.append("hotelType", hotelData.hotelType);  
-    formData.append("starRating", hotelData.hotelRating);
-    formData.append("city", hotelData.city);
-    formData.append("address", hotelData.address);
-    hotelData.hotelAmenities.forEach((amenity, index) => {
-      formData.append("hAmenities", amenity);
-   });
-    // formData.append("hotelAmenities", JSON.stringify(hotelData.hotelAmenities)); // Assuming it's an array or object, convert to string
-    
-    hotelData.hotelImages.forEach((image, index) => {
-      formData.append("hotelImages", image); // 'hotelImages' should match the name you expect in your Spring controller
-    });
-    console.log(formData);
-    const response = await axiosInstance.post("/addHotel", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+      const response = await axiosInstance.post("/addHotel", {
+        hotelName: hotelData.hotelName,
+        description: hotelData.description,
+        hotelType: hotelData.hotelType,
+        starRating: hotelData.hotelRating,
+        city: hotelData.city,
+        address: hotelData.address,
+        city: hotelData.city,
+        price: hotelData.price,
+      });
 
       if (response.status === 200) {
-        closeModalAdd();
-        console.log(hotelData);
-        window.location.reload();
-        console.log("okkkk");
+        console.log(hotelData.hotelImage.length);
+        try {
+          for (let i = 0; i < hotelData.hotelImage.length; i++) {
+            const formData = new FormData();
+            formData.append("imageFile", hotelData.hotelImage[i]);
+            const imageResponse = await axiosInstance.post(
+              `/addHotelImage/${response.data.hotelId}`,
+              formData,
+              {
+                headers: {
+                  "Content-Type": `multipart/form-data`,
+                },
+              }
+            );
+            if (imageResponse.status === 200) {
+              console.log("image uploaded");
+            }
+          }
+          closeModalAdd();
+          window.location.reload();
+        } catch (error) {
+          console.log(error);
+        }
       }
     } catch (error) {
       console.log(error);
@@ -210,12 +203,37 @@ const OurHotel = () => {
       .get("/viewHotels")
       .then((response) => {
         setHotels(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.log("Error fetching data:", error);
       });
   }, []);
+
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get("/viewHotelsImages")
+      .then((response) => {
+        setHotelsImages(response.data);
+        // console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
+  const mergedData = hotels.map((hotel) => {
+    // Find the corresponding image for each hotel based on the hotelId
+    const image = hotelsImages.find((image) => image.hotelId === hotel.hotelId);
+
+    // Create a new object containing both hotel and image data
+    return {
+      ...hotel,
+      image: image ? image.hotelImage : null, 
+    };
+  });
+
 
   const handleEditHotel = async (e) => {
     e.preventDefault();
@@ -279,12 +297,12 @@ const OurHotel = () => {
       </div>
       <div className="container">
         <Carousel>
-          {hotels.map(
+          {mergedData.map(
             (hotel, index) =>
               index % 3 === 0 && (
                 <Carousel.Item key={index}>
                   <div className="d-flex flex-row justify-content-evenly">
-                    {hotels.slice(index, index + 3).map((hotel) => (
+                    {mergedData.slice(index, index + 3).map((hotel) => (
                       <div
                         key={hotel.hotelId}
                         className="d-flex flex-column gap-3 mx-lg-0 mx-md-5 mx-1 col-lg-3 col-md-10 col-11 shadow-lg"
@@ -293,7 +311,25 @@ const OurHotel = () => {
                           backgroundColor: "#FFFFFF",
                         }}
                       >
-                        <img className="img-fluid" src={room1}></img>
+                        {hotel && hotel.image ? (
+                          <img
+                            className="img-fluid"
+                            style={{
+                              borderRadius: "10px",
+                            }}
+                            src={require(`../../assets/images/hotel/${hotel.image}`)}
+                            alt={hotel.image}
+                          />
+                        ) : (
+                          <img
+                            className="img-fluid"
+                            style={{
+                              borderRadius: "10px",
+                            }}
+                            src={require("./../../assets/images/room-image1.png")}
+                            alt="Default Alt Text"
+                          />
+                        )}
                         <div className="d-flex flex-column justify-content-evenly">
                           <div className="d-flex flex-column">
                             <p
@@ -575,7 +611,12 @@ const OurHotel = () => {
                   </p>
                   <div className="d-flex flex-row gap-2">
                     {/* <ImageUpload onImagesSelected={handleImagesSelected} /> */}
-                    <input type="file" multiple onChange={handleImagesSelected}/>
+                    <input
+                      type="file"
+                      name="hotelImage"
+                      multiple // Allow multiple file selection
+                      onChange={(e) => handleImageChange(e)}
+                    />
                   </div>
                 </div>
                 <p

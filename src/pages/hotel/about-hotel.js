@@ -29,10 +29,12 @@ const AboutHotel = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [hotel, setHotel] = useState([]);
   const [hotelRooms, setHotelRooms] = useState([]);
+  const [hotelImages, setHotelImage] = useState([]);
   const urlParams = new URLSearchParams(window.location.search);
   const [roomId, setRoomId] = useState("");
   const [rooms, setRooms] = useState([]);
 
+  // console.log(hotelImages.hotelImage);
   const openModalSeeAll = (roomId) => {
     setIsAllModalOpen(true);
     setRoomId(roomId);
@@ -155,6 +157,19 @@ const AboutHotel = () => {
       .get(`/viewHotel/${hotelId}`)
       .then((response) => {
         setHotel(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get(`/viewHotelImage/${hotelId}`)
+      .then((response) => {
+        setHotelImage(response.data);
         console.log(response.data);
       })
       .catch((error) => {
@@ -328,63 +343,28 @@ const AboutHotel = () => {
           </div>
         </div>
         <div className="d-flex flex-row col-6">
-          <div
-            id="carouselExampleControlsNoTouching"
-            class="carousel slide col-6"
-            data-bs-touch="false"
-          >
-            <div class="carousel-inner">
-              <div class="carousel-item img-fluid active">
-                <img
-                  style={{ width: "15rem", height: "15rem" }}
-                  src={room1}
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item img-fluid">
-                <img
-                  style={{ width: "15rem", height: "15rem" }}
-                  src={room2}
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
-              <div class="carousel-item img-fluid">
-                <img
-                  style={{ width: "15rem", height: "15rem" }}
-                  src={room3}
-                  class="d-block w-100"
-                  alt="..."
-                />
-              </div>
-            </div>
-            <button
-              class="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleControlsNoTouching"
-              data-bs-slide="prev"
-            >
-              <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button
-              class="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleControlsNoTouching"
-              data-bs-slide="next"
-            >
-              <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+          <div class="d-flex col-5">
+            {hotelImages && hotelImages.hotelImage ? (
+              <img
+                className="img-fluid"
+                style={{
+                  borderRadius: "10px",
+                }}
+                src={require(`../../assets/images/hotel/${hotelImages.hotelImage}`)}
+                alt={hotelImages.hotelImage}
+              />
+            ) : (
+              <img
+                className="img-fluid"
+                style={{
+                  borderRadius: "10px",
+                }}
+                src={require("./../../assets/images/room-image1.png")}
+                alt="Default Alt Text"
+              />
+            )}
           </div>
-          <div className="d-flex flex-column my-3">
+          <div className="d-flex flex-column col-7 my-3">
             <p
               style={{
                 fontFamily: "Poppins",
@@ -538,7 +518,10 @@ const AboutHotel = () => {
                                   </span>
                                   <br />
                                 </p>
-                                <Link to={`/hotel/hotelReviews?id=${room.roomId}`} className="mx-2">
+                                <Link
+                                  to={`/hotel/hotelReviews?id=${room.roomId}`}
+                                  className="mx-2"
+                                >
                                   See all reviews <Icon.ChevronRight />
                                 </Link>
                               </div>
