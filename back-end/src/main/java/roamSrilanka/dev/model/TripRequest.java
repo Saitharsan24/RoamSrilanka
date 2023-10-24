@@ -11,7 +11,7 @@ public class TripRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "request_id")
-    private Long requst_id;
+    private Long request_id;
 
     @Column(name = "tourist_name")
     private String tourist_name;
@@ -31,12 +31,15 @@ public class TripRequest {
     @Column(name = "contact")
     private Long contact;
 
-    public Long getRequst_id() {
-        return requst_id;
+    @Column(name = "status")
+    private Long status;
+
+    public Long getRequest_id() {
+        return request_id;
     }
 
-    public void setRequst_id(Long requst_id) {
-        this.requst_id = requst_id;
+    public void setRequest_id(Long request_id) {
+        this.request_id = request_id;
     }
 
     public String getTourist_name() {
@@ -85,5 +88,13 @@ public class TripRequest {
 
     public void setContact(Long contact) {
         this.contact = contact;
+    }
+
+    public Long getStatus() {
+        return status;
+    }
+
+    public void setStatus(Long status) {
+        this.status = status;
     }
 }
