@@ -447,22 +447,22 @@ function HotelRequest() {
     };
 });
 
-  // const requestAcceptProcess = async(e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axiosInstance.put(`/addStatus/${requestId}`, {
-  //       status: 1,
-  //     });
+  const requestAcceptProcess = async(e) => {
+    e.preventDefault();
+    try {
+      const response = await axiosInstance.put(`/updateStatus/${request_id}`, {
+        status: 1,
+      });
 
-  //     if (response.status === 200) {
-  //       closeModal();
-  //       window.location.reload();
-  //       console.log("okkkk");
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+      if (response.status === 200) {
+        closeModal();
+        window.location.reload();
+        console.log("okkkk");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // const requestRejectProcess = async(e) => {
   //   e.preventDefault();
@@ -621,7 +621,7 @@ function HotelRequest() {
                 </div>
                 <dic className="d-flex flex-row justify-content-center gap-5">
                   <button /*onClick={requestRejectProcess}*/ className="hotel-popup-reject p-2">Reject</button>
-                  <button /*onClick={requestAcceptProcess}*/ className="hotel-popup-accept p-2">Accept</button>
+                  <button onClick={requestAcceptProcess} className="hotel-popup-accept p-2">Accept</button>
                 </dic>
               </div>
             </form>

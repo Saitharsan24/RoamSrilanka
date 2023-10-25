@@ -6,6 +6,7 @@ import roamSrilanka.dev.repository.TripRequestRepository;
 import roamSrilanka.dev.service.TripRequestService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TripRequestServiceImpl implements TripRequestService {
@@ -24,5 +25,16 @@ public class TripRequestServiceImpl implements TripRequestService {
     @Override
     public TripRequest saveRequest(TripRequest tripRequest) {
         return tripRequestRepository.save(tripRequest);
+    }
+
+
+//    @Override
+//    public TripRequest getRequestById(Long request_id) {
+//        return tripRequestRepository.findById(request_id);
+//    }
+
+    @Override
+    public Optional<TripRequest> getTripRequestById(Long request_id) {
+        return tripRequestRepository.findById(request_id);
     }
 }
