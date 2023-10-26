@@ -1,23 +1,20 @@
 import React from "react";
 import "../../styles/admin/admin_tourist_view_detail.css";
 import profile from "../../assets/images/profile.jpg";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Modal from "../../components/admin-modal";
 
 
 function AdminPlannertDetails() {
-  //const { userId } = useParams();
   const urlParams = new URLSearchParams(window.location.search);
   const userId = urlParams.get('userId');
   
-  const [holidayPlannerdetail, setHolidayPlannerdetail] = useState([]);
+  const [holidayPlannerdetail, setHolidayPlannerdetail] = useState([]);  
+             //usestate hook to set the state of the holiday planner details
  
-  
   const apiBaseUrl = "http://localhost:8080";
-
+              
    const axiosInstance = axios.create({
     baseURL: apiBaseUrl,
     timeout: 5000,

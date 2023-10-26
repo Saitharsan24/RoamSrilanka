@@ -4,7 +4,6 @@ import { MDBDataTable } from "mdbreact";
 import "../../styles/admin/admin_user.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import axios from "axios";
@@ -15,6 +14,7 @@ function Users() {
 
   const [holidayPlanners, setHolidayPlanners] = useState([]);
   const [tourists, setTourists] = useState([]);
+
   
   const apiBaseUrl = "http://localhost:8080";
 
@@ -22,7 +22,9 @@ function Users() {
     baseURL: apiBaseUrl,
     timeout: 5000,
    });
-  
+ 
+   
+   
   useEffect(() => {
     // Make an HTTP GET request to fetch data from the API
     axiosInstance.get("http://localhost:8080/viewHolidayplanner").then((response) => {
@@ -36,6 +38,8 @@ function Users() {
   });
 
   }, []);
+
+  
   const data_tourist = {
     columns: [
       {
