@@ -47,8 +47,6 @@ public class HolidayplannerController {
         }
 
         // Update the existing holidayplanner's information with the data from the request body
-        existingHolidayplanner.setPlannerName(updatedHolidayplanner.getPlannerName());
-        existingHolidayplanner.setEmail(updatedHolidayplanner.getEmail());
         existingHolidayplanner.setStatus(updatedHolidayplanner.getStatus());
 
 

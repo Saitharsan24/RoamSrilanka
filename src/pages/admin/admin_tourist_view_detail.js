@@ -11,7 +11,7 @@ function AdminTouristDetails() {
   const urlParams = new URLSearchParams(window.location.search);
   const userId = urlParams.get('userId');
 
-  //console.log(userId);
+  
 
   const [touristdetail, setTouristdetail] = useState([]);
   const [touristuserdetail, setTouristuserdetail] = useState([]);
@@ -51,6 +51,8 @@ useEffect(() => {
       console.log('Error fetching Data',error);
     });
 }, [userId]);
+
+
  
   return (
     <React.Fragment>
@@ -176,7 +178,7 @@ useEffect(() => {
                             borderRadius: "5px",
                           }}
                         >
-                          Laxshan
+                          {touristuserdetail.userFullname}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -244,7 +246,7 @@ useEffect(() => {
                             borderRadius: "5px",
                           }}
                         >
-                          laxshan1906@gmail.com
+                      {touristuserdetail.userName}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td

@@ -67,6 +67,11 @@ public class Vehicle {
     @Column(name="insurance_img")
     private String insurance_img;
 
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "vehicleID")
+    private Driver driver;
+
     public Vehicle() {
     }
 

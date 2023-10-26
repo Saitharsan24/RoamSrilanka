@@ -12,11 +12,8 @@ import java.util.Date;
 public class Holidayplanner {
     @Id
     @Column(name="user_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
-   @Column(name="planner_name")
-    private String plannerName;
 
     @Column(name="date_of_birth")
     private Date date;
@@ -24,9 +21,6 @@ public class Holidayplanner {
     @Getter
     @Column(name="contact_no")
     private Integer contactNo;
-
-    @Column (name="email")
-    private String email;
 
     @Column(name="nic")
     private String nic;
@@ -41,20 +35,20 @@ public class Holidayplanner {
     private String address;
 
 
-
     @Column(name = "status")
     private String status;
 
+     @OneToOne
+     @MapsId
+     @JoinColumn(name = "user_id")
+     private User user;
 
     public Holidayplanner(){
-
     }
 
-    public Holidayplanner( String plannerName,Date date, Integer contactNo, String email, String nic, String image, String gender, String address,String status ,String password) {
-        this.plannerName = plannerName;
+    public Holidayplanner( Date date, Integer contactNo, String nic, String image, String gender, String address,String status ,String password) {
         this.date = date;
         this.contactNo = contactNo;
-        this.email = email;
         this.nic = nic;
         this.image = image;
         this.gender = gender;
@@ -62,12 +56,10 @@ public class Holidayplanner {
         this.status = status;
     }
 
-    public Holidayplanner(String plannerName,Integer userId, Date date, Integer contactNo, String email, String nic, String image, String gender, String address,String status) {
-        this.plannerName = plannerName;
+    public Holidayplanner(Integer userId, Date date, Integer contactNo, String nic, String image, String gender, String address,String status) {
         this.userId = userId;
         this.date = date;
         this.contactNo = contactNo;
-        this.email = email;
         this.nic = nic;
         this.image = image;
         this.gender = gender;
@@ -75,13 +67,6 @@ public class Holidayplanner {
         this.status = status;
     }
 
-    public String getPlannerName() {
-        return plannerName;
-    }
-
-    public void setPlannerName(String plannerName) {
-        this.plannerName = plannerName;
-    }
 
     public Integer getUserId() {
         return userId;
@@ -107,13 +92,6 @@ public class Holidayplanner {
         return contactNo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getEmail() {
-        return email;
-    }
 
     public void setNic(String nic) {
         this.nic = nic;

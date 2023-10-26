@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import roamSrilanka.dev.model.Holidayplanner.Holidayplanner;
 import roamSrilanka.dev.model.Tourist.Tourist;
+import roamSrilanka.dev.model.User;
 import roamSrilanka.dev.service.TouristService;
 
 import java.util.List;
@@ -29,5 +30,7 @@ public class TouristController {
     public Tourist getTouristById(@PathVariable Integer userId){
         return touristService.getTouristById(userId);
     }
+
+
 
 }

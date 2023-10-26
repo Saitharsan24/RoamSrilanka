@@ -6,13 +6,17 @@ import { useEffect, useState } from "react";
 import Modal from "../../components/admin-modal";
 
 
+
 function AdminPlannertDetails() {
   const urlParams = new URLSearchParams(window.location.search);
   const userId = urlParams.get('userId');
   
   const [holidayPlannerdetail, setHolidayPlannerdetail] = useState([]);  
              //usestate hook to set the state of the holiday planner details
- 
+  const [holidayPlanneruserdetail, setHolidayPlanneruserdetail] = useState([]);
+              //usestate hook to set the state of the holiday planner user details
+
+
   const apiBaseUrl = "http://localhost:8080";
               
    const axiosInstance = axios.create({
@@ -34,6 +38,18 @@ function AdminPlannertDetails() {
       });
   }, [userId]);
 
+  // Make an HTTP GET request to fetch the details of the holiday planner user using userId
+  useEffect(() => {
+    axiosInstance.get(`/viewHolidayplanneruser/${userId}`)
+      .then((response) => {
+        // Handle the response and set the state with the details
+        setHolidayPlanneruserdetail(response.data);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.log('Error fetching Data',error);
+      });
+  }, [userId]);
 
 
   const [openModal, setOpenModal] = useState(false);  // This is the state variable to control the model(Eable/Disable)
@@ -85,7 +101,7 @@ function AdminPlannertDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            {holidayPlannerdetail.email}
+                            {holidayPlanneruserdetail.userName}
                           </td>
                         </tr>
 
@@ -116,7 +132,7 @@ function AdminPlannertDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            Holiday Planner
+                            {holidayPlanneruserdetail.userType}
                           </td>
                         </tr>
 

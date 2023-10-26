@@ -300,9 +300,9 @@ function AdminVehicleDetail_1() {
                      
                       <tr style={{ height: "20px" }}></tr>
                     </tbody>
-                  </table>
-                  <p style={{ fontWeight: "bold", color: "#004577",fontSize:"15px"}}>Vehicle Insurance Details</p>
-                  <table
+                   </table>
+                   <p style={{ fontWeight: "bold", color: "#004577",fontSize:"15px"}}>Vehicle Insurance Details</p>
+                   <table
                     className=" d-flex flex-column justify-content-center align-items-center w-100 col-7 "
                     style={{ textAlign: "left", overflowX:'auto', borderCollapse:'collapse' }}
                   >
@@ -383,10 +383,10 @@ function AdminVehicleDetail_1() {
                    </table>
 
                    <div className='vehicle-content d-flex flex-column justify-content-center align-items-center col-10  '>
-              <h4 className='mb-2' style={{ fontWeight: "bold", color: "#004577",fontSize:"25px"}}>Insurance Plate Photo</h4>
-              <img  src={profile}
+               <h4 className='mb-2' style={{ fontWeight: "bold", color: "#004577",fontSize:"25px"}}>Insurance Plate Photo</h4>
+               <img  src={profile}
                      className=" vehicle-pic object-fit-cover img-fluid m-auto"  style={{width:"30vw",height:"50vh"}} />
-            </div>
+             </div>
 
             <table className=" d-flex flex-column justify-content-center align-items-center w-100  ">
             {getButtonTr(vehicledetail.status)}
