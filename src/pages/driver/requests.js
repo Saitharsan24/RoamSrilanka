@@ -468,7 +468,7 @@ function HotelRequest() {
   //   e.preventDefault();
   //   try {
   //     const response = await axiosInstance.put(`/addStatus/${requestId}`, {
-  //       status: 3,
+  //       status: 1,
   //     });
 
   //     if (response.status === 200) {
@@ -488,13 +488,26 @@ function HotelRequest() {
   return (
     <div className="d-flex w-100">
       <div className="d-flex flex-column col-lg-11 ms-lg-5 col-md-12">
-        <div className="d-flex flex-row gap-4 my-3">
-          <p
+         <div className="d-flex flex-row gap-4 my-3 justify-content-between">
+             <p
             style={{ fontFamily: "Poppins", fontSize: "1.5rem" }}
             className="ms-1 m-0"
-          >
-            <b>Requests</b>
-          </p>
+            >
+
+              <b>Requests</b>
+            </p>
+            <Link to="/driver/driverTrips">
+              <button style={{
+                width:"10vw", 
+                borderRadius: "8px",
+                border: "1px solid #004577",
+                backgroundColor: "#004577",
+                color: "#FFFFFF",
+                fontFamily: "Lato",
+                fontSize: "20px",
+                // boxShadow: "0px 4px 40px rgba(0, 69, 119, 0.35)"
+              }}>My Trips</button>
+            </Link>
         </div>
         <MDBDataTable
           striped
@@ -553,7 +566,7 @@ function HotelRequest() {
 
         <Modal show={isModalOpen} onHide={closeModal}>
           <Modal.Header closeButton>
-            <Modal.Title>Hotel Request</Modal.Title>
+            <Modal.Title>Trip Request</Modal.Title>
           </Modal.Header>
           <Modal.Body>
           {requests.find((request) => request.request_id === request_id) ? ( 
@@ -617,6 +630,36 @@ function HotelRequest() {
                     style={{width: "210px"}}
                       className="hotel-popup-input"
                     >{selectedRequest.destination}</div>
+                  </div>
+                </div>
+               <div className="d-flex flex-row justify-content-between ms-4">
+                 <div>
+                     <label className="hotel-popup-label">Location</label>
+                     <br />
+                     <div className="mapouter">
+                       <div className="gmap_canvas">
+                         <iframe
+                          className="gmap_iframe"
+                          width= "425px"
+                          height="250vh"
+                          frameborder="0"
+                          scrolling="no"
+                          marginheight="0"
+                          marginwidth="0"
+                          src="https://maps.google.com/maps?width=600&amp;height=1000&amp;hl=en&amp;q=Matara&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                        ></iframe>
+                        
+                      </div>
+                      <style>
+                        .mapouter
+                        {"position:relative;text-align:right;width:100%;height:500px;"}
+                        .gmap_canvas{" "}
+                        {
+                          "overflow:hidden;background:none!important;width:100%;height:500px;"
+                        }
+                        .gmap_iframe {"height:500px!important;"}
+                      </style>
+                    </div>
                   </div>
                 </div>
                 <dic className="d-flex flex-row justify-content-center gap-5">
