@@ -31,15 +31,6 @@ public class TouristService {
         return touristRepository.save(tourist);
     }
 
-
-    public List<Tourist> getAllTourist() {
-        return touristRepository.findAll();
-    }
-
-    public Tourist getTouristById(Integer userId){
-        return touristRepository.findById(userId).orElse(null);
-    }
-
     public Iterable<Object> getAllTourist() {
         List<Tourist> tourists = touristRepository.findAll(); // Replace with your repository method to fetch tourists
         List<User> users = userRepository.findAll(); // Replace with your repository method to fetch users

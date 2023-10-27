@@ -47,6 +47,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) throws JSONException {
+
        User user = userService.authenticateUser(loginRequest.getUserName(), loginRequest.getPassword());
 
          if(user != null) {
@@ -65,8 +66,8 @@ public class UserController {
     }
 
     @GetMapping("/viewUser/{userId}")
-    public User getUserById(@PathVariable Integer userId){
-        return userService.getUserById(userId);
+    public User getUserByID(@PathVariable Integer id){
+        return userService.getUserByID(id);
     }
 
     private static class LoginRequest{

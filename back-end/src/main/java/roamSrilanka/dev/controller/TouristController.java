@@ -23,11 +23,6 @@ public class TouristController {
     @Autowired
     private TouristService touristService;
 
-    @GetMapping("/viewTourist")
-    public List<Tourist> getAllTourist(){
-        return touristService.getAllTourist();
-    }
-
     @GetMapping("/viewTourist/{userId}")
     public Tourist getTouristById(@PathVariable Integer userId){
         return touristService.getTouristById(userId);
