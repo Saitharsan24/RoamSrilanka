@@ -12,5 +12,9 @@ public interface VehicleService {
     Vehicle updateVehicle(Vehicle vehicle);
     void deleteVehicle(Long vehicleID);
 
+
+  long getVehicleCount();
+
     Vehicle saveFeedback(Vehicle vehicle);
+
 }
