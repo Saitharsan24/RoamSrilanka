@@ -5,6 +5,7 @@ import lombok.Getter;
 import org.hibernate.annotations.ColumnDefault;
 import roamSrilanka.dev.model.User;
 
+
 import java.util.Date;
 
 @Table(name="holidayplanner")
@@ -47,6 +48,7 @@ public class Holidayplanner {
     }
 
     public Holidayplanner( Date date, Integer contactNo, String nic, String image, String gender, String address,String status ,String password) {
+
         this.date = date;
         this.contactNo = contactNo;
         this.nic = nic;
@@ -57,6 +59,7 @@ public class Holidayplanner {
     }
 
     public Holidayplanner(Integer userId, Date date, Integer contactNo, String nic, String image, String gender, String address,String status) {
+
         this.userId = userId;
         this.date = date;
         this.contactNo = contactNo;

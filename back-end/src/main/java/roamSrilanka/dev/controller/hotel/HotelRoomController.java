@@ -76,14 +76,21 @@ public class HotelRoomController {
         }
 
         // Update the existing room's information with the data from the request body
-        existingRoom.setRoomType(updatedRoom.getRoomType());
-        existingRoom.setDescription(updatedRoom.getDescription());
-        existingRoom.setAvailability(updatedRoom.getAvailability());
-        existingRoom.setPrice(updatedRoom.getPrice());
-        existingRoom.setRoomSize(updatedRoom.getRoomSize());
-        existingRoom.setNoOfBeds(updatedRoom.getNoOfBeds());
-        existingRoom.setOccupancy(updatedRoom.getOccupancy());
+        if (updatedRoom.getRoomType() != null && !updatedRoom.getRoomType().isEmpty()) {
+            existingRoom.setRoomType(updatedRoom.getRoomType());
+        }
 
+
+        if (updatedRoom.getPrice() != null && updatedRoom.getPrice() > 0) {
+            existingRoom.setPrice(updatedRoom.getPrice());
+        }
+
+        if (updatedRoom.getNoOfBeds() != null && updatedRoom.getNoOfBeds() > 0) {
+            existingRoom.setNoOfBeds(updatedRoom.getNoOfBeds());
+        }
+        if (updatedRoom.getOccupancy() != null && updatedRoom.getOccupancy() > 0) {
+            existingRoom.setOccupancy(updatedRoom.getOccupancy());
+        }
 
         // Save the updated room
         hotelRoomServices.saveRoom(existingRoom);

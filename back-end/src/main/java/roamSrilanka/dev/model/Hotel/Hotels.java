@@ -2,25 +2,26 @@ package roamSrilanka.dev.model.Hotel;
 
 import jakarta.persistence.*;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @Table
 @Entity(name = "Hotels")
 public class Hotels {
-
     @Id
-    @Column(name="hotel_id")
+    @Column(name = "hotel_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer hotelId;
 
-    @Column(name="hotel_name")
+    @Column(name = "hotel_name")
     private String hotelName;
 
-    @Column(name="star_rating")
+    @Column(name = "star_rating")
     private Integer starRating;
 
-    @Column(name="user_rating")
+    @Column(name = "user_rating")
     private Double userRating;
 
     @Column(name = "description")
@@ -32,36 +33,28 @@ public class Hotels {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "longitude")
-    private Double longitude;
+    @Column(name = "city")
+    private String city;
 
-    @Column(name = "latitude")
-    private Double latitude;
-
-    @ElementCollection
-    @Column(name = "hotel_images")
-    private List<String> hotelImages;
-
-//    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<HotelRooms> rooms;  // One-to-Many relationship with HotelRooms
+    @Column(name = "price")
+    private Double price;
 
     //Constructors
     public Hotels() {
     }
 
-    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, Double longitude, Double latitude, List<String> hotelImages) {
+    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price) {
         this.hotelName = hotelName;
         this.starRating = starRating;
         this.userRating = userRating;
         this.description = description;
         this.hotelType = hotelType;
         this.address = address;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.hotelImages = hotelImages;
+        this.city = city;
+        this.price = price;
     }
 
-    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, Double longitude, Double latitude, List<String> hotelImages) {
+    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price) {
         this.hotelId = hotelId;
         this.hotelName = hotelName;
         this.starRating = starRating;
@@ -69,31 +62,17 @@ public class Hotels {
         this.description = description;
         this.hotelType = hotelType;
         this.address = address;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.hotelImages = hotelImages;
+        this.city = city;
+        this.price = price;
     }
 
-    public Hotels(Integer hotelId, String hotelName, Integer starRating, String description, String hotelType, String address, Double longitude, Double latitude, List<String> hotelImages) {
-        this.hotelId = hotelId;
-        this.hotelName = hotelName;
-        this.starRating = starRating;
-        this.description = description;
-        this.hotelType = hotelType;
-        this.address = address;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.hotelImages = hotelImages;
+    public Double getPrice() {
+        return price;
     }
 
-    //Getters and Setters
-//    public List<HotelRooms> getRooms() {
-//        return rooms;
-//    }
-//
-//    public void setRooms(List<HotelRooms> rooms) {
-//        this.rooms = rooms;
-//    }
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
     public Integer getHotelId() {
         return hotelId;
@@ -151,28 +130,13 @@ public class Hotels {
         this.address = address;
     }
 
-    public Double getLongitude() {
-        return longitude;
+    public String getCity() {
+        return city;
     }
 
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public List<String> getHotelImages() {
-        return hotelImages;
-    }
-
-    public void setHotelImages(List<String> hotelImages) {
-        this.hotelImages = hotelImages;
+    public void setCity(String city) {
+        this.city = city;
     }
 }
+
 

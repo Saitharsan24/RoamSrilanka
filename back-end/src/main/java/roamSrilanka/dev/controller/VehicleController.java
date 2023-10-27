@@ -1,8 +1,11 @@
 package roamSrilanka.dev.controller;
 
+
 import org.springframework.data.rest.webmvc.support.RepositoryEntityLinks;
 import org.springframework.stereotype.Repository;
+
 import org.springframework.web.bind.annotation.*;
+
 import roamSrilanka.dev.model.Vehicle;
 import roamSrilanka.dev.service.VehicleService;
 
@@ -33,7 +36,8 @@ public class VehicleController {
 
     // add working in insomnia
      @PostMapping("/addVehicle")
-     public Vehicle saveVehicle(@RequestBody Vehicle vehicle) { return vehicleService.saveVehicle(vehicle);
+     public Vehicle saveVehicle(@RequestBody Vehicle vehicle) {
+        return vehicleService.saveVehicle(vehicle);
      }
 
     @PutMapping("/updateVehicle/{vehicleID}")

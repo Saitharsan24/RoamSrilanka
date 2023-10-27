@@ -1,10 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function DrivernewVehicle () {
 
     const navigate = useNavigate();
+
+    const [imageUrls, setImageUrls] = useState({
+        image1: "",
+        image2: "",
+        image3: "",
+        image4: "",
+    });
+
+    // const [imageUrl3, setImageUrl3] = useState("");
+
+    const upload_preset = "moz2vspi";
+    const cloud_name = "dg3y629pc";
+
+    const onInputChange = (e) => {
+        const file = e.target.files[0];
+        const name = e.target.name;
+
+        if (file) {
+        // Upload the image to Cloudinary
+        uploadImage(file)
+            .then((url) => {
+            // Update the state with the uploaded image URL
+            setImageUrls({ ...imageUrls, [name]: url });
+            })
+            .catch((err) => console.log(err));
+        }
+        setVehicle({ ...vehicle, [e.target.name]: e.target.value })
+    }
+
+    const uploadImage = (file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", upload_preset);
+        const options = {
+          method: "POST",
+          body: formData,
+        };
+        return fetch(`https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`, options)
+          .then((res) => res.json())
+          .then((res) => res.secure_url)
+          .catch((err) => {
+            throw err;
+        });
+    };
+
     const [vehicle, setVehicle] = useState({
         vehicle_number: "",
         color: "",
@@ -12,21 +57,31 @@ function DrivernewVehicle () {
         company: "",
         seats: "",
         year: "",
-        image1: "",
-        image2: "",
-        image3: "",
-        image4: ""
     })
 
-    const {vehicle_number, color, model, company, seats, year, image1, image2, image3, image4 } = vehicle;
+    const {vehicle_number, color, model, company, seats, year} = vehicle;
 
-    const onInputChange = (e) => {
-        setVehicle({ ...vehicle, [e.target.name]: e.target.value })
-    }
+    
 
-    const onSubmit =async (e) => {
+    // const onSubmit =async (e) => {
+    //     e.preventDefault();
+    //     await axios.post("http://localhost:8080/addVehicle", vehicle);
+    //     navigate("/driver/driverVehicle");
+        
+    // };
+    const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post("http://localhost:8080/addVehicle", vehicle);
+    
+        // Create a vehicle object with image URLs
+        const vehicleWithImages = {
+          ...vehicle,
+          image1: imageUrls.image1,
+          image2: imageUrls.image2,
+          image3: imageUrls.image3,
+          image4: imageUrls.image4,
+        };
+    
+        await axios.post("http://localhost:8080/addVehicle", vehicleWithImages);
         navigate("/driver/driverVehicle");
     };
 
@@ -37,7 +92,7 @@ function DrivernewVehicle () {
                     <div class="card mt-5">
                         <div class="card-body">
                             <h5 class="card-title">My Vehicle Info</h5><hr></hr>
-                            <form className="" onSubmit={(e) => onSubmit(e)}>
+                            <form className="" onSubmit={(e) => onSubmit(e)} encType="multipart/form-data">
                                 <div class="d-flex flex-row justify-content-between">
                                     <div class="form-group col-md-6 p-2">
                                         <label for="inputEmail4">Vehicle Number</label>
@@ -71,21 +126,21 @@ function DrivernewVehicle () {
                                 <div class="d-flex flex-row justify-content-between">
                                     <div class="form-group col-md-6 p-2">
                                         <label for="inputEmail4">Image - 01</label>
-                                        <input type={"file"} class="form-control" id="inputEmail4" name="image1" value={image1} onChange={(e)=>onInputChange(e)}/>
+                                        <input type={"file"} class="form-control" id="image1" name="image1" accept={"image/png, image/jpeg"} onChange={(e)=>onInputChange(e)} />
                                     </div>
                                     <div class="form-group col-md-6 p-2">
                                         <label for="inputEmail4">Image - 02</label>
-                                        <input type={"file"} class="form-control" id="inputEmail4" name="image2" value={image2} onChange={(e)=>onInputChange(e)}/>
+                                        <input type={"file"} class="form-control" id="image2" name="image2" accept={"image/png, image/jpeg"} onChange={(e)=>onInputChange(e)}/>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-row justify-content-between">
                                     <div class="form-group col-md-6 p-2">
                                         <label for="inputEmail4">Image - 03</label>
-                                        <input type="file" class="form-control" id="inputEmail4" name="image3" value={image3} onChange={(e)=>onInputChange(e)}/>
+                                        <input type="file" class="form-control" id="image3" name="image3" accept={"image/png, image/jpeg"} onChange={(e)=>onInputChange(e)}/>
                                     </div>
                                     <div class="form-group col-md-6 p-2">
                                         <label for="inputEmail4">Image - 04</label>
-                                        <input type="file" class="form-control" id="inputEmail4" name="image4" value={image4} onChange={(e)=>onInputChange(e)}/>
+                                        <input type="file" class="form-control" id="image4" name="image4" accept={"image/png, image/jpeg"} onChange={(e)=>onInputChange(e)}/>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-3 ml-2">Submit</button>

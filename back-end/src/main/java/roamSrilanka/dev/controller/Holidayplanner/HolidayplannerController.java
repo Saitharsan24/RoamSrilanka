@@ -38,6 +38,7 @@ public class HolidayplannerController {
     }
 
     // Update plannerName
+
     @PutMapping("/updateHolidayplanner/{userId}")
     public ResponseEntity UpdateHolidayplanner(@PathVariable Integer userId, @RequestBody Holidayplanner updatedHolidayplanner) {
         Holidayplanner existingHolidayplanner = holidayplannerService.getHolidayplannerById(userId);

@@ -42,8 +42,8 @@ import ToursitAccessoriesRent from "./pages/Tourist/tourist-accessories-rent";
 import TouristBlog from "./pages/Tourist/tourist-blog";
 import TouristBlogView from "./pages/Tourist/tourist-blog-view";
 import ToursitGuide from "./pages/Tourist/tourist-guide";
-import ToursitAllGuide from "./pages/Tourist/tourist-all-guide";
-import TouristPackages from "./pages/Tourist/tourist-all-guide";
+import ToursitPackageView from "./pages/Tourist/tourist-packages-view";
+import TouristPackages from "./pages/Tourist/tourist-packages";
 import ToursitGuideView from "./pages/Tourist/tourist-guide-view";
 import TouristHotel from "./pages/Tourist/tourist-hotel";
 import ToursitHotelSearchList from "./pages/Tourist/tourist-hotel-searchlist";
@@ -105,6 +105,10 @@ import DrivernewVehicle from "./pages/driver/newVehicle";
 import DriverRequest from "./pages/driver/requests";
 import DriverTrips from "./pages/driver/trips";
 import { useSession } from "./Context/SessionContext";
+import HPRequestDetails from "./pages/holiday-planner/HPRequestDetails";
+
+import { useNavigate } from 'react-router-dom';
+
 
 
 const route = createBrowserRouter(
@@ -121,7 +125,6 @@ const route = createBrowserRouter(
         <Route path="signup" element={<Signup/>}></Route>
       </Route>
 
-
       <Route path="/tourist/" element={<TouristLayout />} errorElement={<SystemError />}>
         <Route index element={<TouristDashboard />}></Route>
         <Route path="touristDashboard" element={<TouristDashboard />}></Route>
@@ -129,7 +132,6 @@ const route = createBrowserRouter(
         <Route path="touristPackages" element={<TouristPackages />}></Route>
         <Route path="touristHotel" element={<TouristHotel />}></Route>
         <Route path="touristGuide" element={<ToursitGuide />}></Route>
-        <Route path="touristAllGuide" element={<ToursitAllGuide />}></Route>
         <Route path="touristGuideView" element={<ToursitGuideView />}></Route>
         <Route path="touristDriver" element={<TouristBookings />}></Route>
         <Route path="touristGadgets" element={<TouristAccessories />}></Route>
@@ -142,6 +144,8 @@ const route = createBrowserRouter(
         <Route path="touristHotelSearchList" element={<ToursitHotelSearchList />}></Route>
         <Route path="toursitHotelViewRoom" element={<ToursitHotelViewRoom />}></Route>
         <Route path="touristBlogList" element={<TouristBlogList />}></Route>
+        <Route path="touristPackageView" element={<ToursitPackageView />}></Route>
+
       </Route>
 
       <Route path="/hotel/" element={<HotelLayout />} errorElement={<SystemError />}>
@@ -202,13 +206,15 @@ const route = createBrowserRouter(
         <Route path="plannerPackage1" element={<HPUpdatePackage1 />}></Route>
         <Route path="plannerPackage2" element={<HPUpdatePackage2 />}></Route>
         <Route path="plannerPackage3" element={<HPUpdatePackage3 />}></Route>
-        <Route path="plannerViewPackage" element={<HPViewpackage />}></Route>
+        <Route path="plannerViewPackage/:packageID" element={<HPViewpackage />}></Route>
         <Route path="plannerItem1" element={<HPUpdateItem1 />}></Route>
         <Route path="plannerViewEvent" element={<HPViewEvent />}></Route>
         <Route path="plannerViewItem" element={<HPViewItem />}></Route>
         <Route path="plannerRequest" element={<HPRequest />}></Route>
         <Route path="hpchat" element={<HPChat/>}></Route>
         <Route path="hptrip" element={<HPTrip/>}></Route>
+        <Route path="hprequestdetail/:p_bookingID" element={<HPRequestDetails/>}></Route>
+      
       </Route>
 
       <Route path="/driver/" element={<DriverLayout />} errorElement={<SystemError />}>
@@ -231,6 +237,30 @@ function App() {
 
   const sessionData = useSession();
   console.log(sessionData);
+
+  const currentURL = window.location.href;
+  const splitURL = currentURL.split("/");
+
+  if (splitURL[3] === "tourist" || splitURL[3] === "admin" || splitURL[3] === "driver" || splitURL[3] === "holidayPlanner" || splitURL[3] === "guide" || splitURL[3] === "hotel") {
+    
+    if (sessionData.sessionData.userType === null || sessionData.sessionData.userType === undefined ) {
+      window.location.href = "/login";
+    }else{
+      if (sessionData.sessionData.userType !== splitURL[3]) {
+        window.location.href = "/login";        
+      }
+    
+    else{
+      
+    return <RouterProvider router={route} />;
+    }
+    }
+  } else{
+    
+    return <RouterProvider router={route} />;
+
+  }
+
 
   return (
     <>
