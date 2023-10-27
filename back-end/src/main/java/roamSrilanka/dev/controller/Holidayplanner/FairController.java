@@ -2,9 +2,7 @@ package roamSrilanka.dev.controller.Holidayplanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import roamSrilanka.dev.model.Holidayplanner.Event;
 import roamSrilanka.dev.model.Holidayplanner.Fair;
-import roamSrilanka.dev.service.EventService;
 import roamSrilanka.dev.service.holidayplanner.FairService;
 
 import java.util.List;
