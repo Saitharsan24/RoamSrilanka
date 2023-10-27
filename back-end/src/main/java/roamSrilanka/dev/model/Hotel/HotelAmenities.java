@@ -2,7 +2,9 @@ package roamSrilanka.dev.model.Hotel;
 
 import jakarta.persistence.*;
 
+@Table (name = "hotel_amenties")
 @Entity(name = "HotelAmenities")
+
 public class HotelAmenities {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,6 +3,8 @@ package roamSrilanka.dev.model.Holidayplanner;
 import jakarta.persistence.*;
 import lombok.Getter;
 import org.hibernate.annotations.ColumnDefault;
+import roamSrilanka.dev.model.User;
+
 
 import java.util.Date;
 
@@ -11,11 +13,8 @@ import java.util.Date;
 public class Holidayplanner {
     @Id
     @Column(name="user_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
-    @Column(name="planner_name")
-    private String plannerName;
 
     @Column(name="date_of_birth")
     private Date date;
@@ -23,9 +22,6 @@ public class Holidayplanner {
     @Getter
     @Column(name="contact_no")
     private Integer contactNo;
-
-    @Column (name="email")
-    private String email;
 
     @Column(name="nic")
     private String nic;
@@ -39,43 +35,41 @@ public class Holidayplanner {
     @Column(name="address")
     private String address;
 
-    @Column(name = "status", columnDefinition = "VARCHAR(255) DEFAULT '1'")
+
+    @Column(name = "status")
     private String status;
 
-    @Column(name="password")
-    private String password;
+     @OneToOne
+     @MapsId
+     @JoinColumn(name = "user_id")
+     private User user;
 
     public Holidayplanner(){
-
     }
 
-    public Holidayplanner(String plannerName, Date date, Integer contactNo, String email, String nic, String image, String gender, String address,String status ,String password) {
-        this.plannerName = plannerName;
+    public Holidayplanner( Date date, Integer contactNo, String nic, String image, String gender, String address,String status ,String password) {
+
         this.date = date;
         this.contactNo = contactNo;
-        this.email = email;
         this.nic = nic;
         this.image = image;
         this.gender = gender;
         this.address = address;
         this.status = status;
-        this.password = password;
     }
 
+    public Holidayplanner(Integer userId, Date date, Integer contactNo, String nic, String image, String gender, String address,String status) {
 
-    public Holidayplanner(Integer userId, String plannerName, Date date, Integer contactNo, String email, String nic, String image, String gender, String address,String status , String password) {
         this.userId = userId;
-        this.plannerName = plannerName;
         this.date = date;
         this.contactNo = contactNo;
-        this.email = email;
         this.nic = nic;
         this.image = image;
         this.gender = gender;
         this.address = address;
         this.status = status;
-        this.password = password;
     }
+
 
     public Integer getUserId() {
         return userId;
@@ -93,14 +87,6 @@ public class Holidayplanner {
         this.date = date;
     }
 
-    public String getPlannerName() {
-        return plannerName;
-    }
-
-    public void setPlannerName(String plannerName) {
-        this.plannerName = plannerName;
-    }
-
     public void setContactNo(Integer contactNo) {
         this.contactNo = contactNo;
     }
@@ -109,13 +95,6 @@ public class Holidayplanner {
         return contactNo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getEmail() {
-        return email;
-    }
 
     public void setNic(String nic) {
         this.nic = nic;
@@ -146,14 +125,6 @@ public class Holidayplanner {
 
     public String getStatus() {
         return status;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPassword() {
-        return password;
     }
 
     public String getImage() {

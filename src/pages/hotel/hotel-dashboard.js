@@ -177,12 +177,9 @@ const HotelDashboard = () => {
               </div>
               <div
                 style={{ color: "" }}
-                className="d-flex flex-column col-12 col-md-8 col-lg-7 align-items-center justify-content-center "
+                className="d-flex flex-column col-12 col-md-8 col-lg-7 gap-2 align-items-center justify-content-center "
               >
                 <p className="m-0" style={{ fontSize: "1rem" }}>
-                  <b>{request.touristName}</b>
-                </p>
-                <p className="m-0" style={{ fontSize: "0.75rem" }}>
                   {request.hotelName}
                 </p>
                 <p className="m-0" style={{ fontSize: "0.75rem" }}>
@@ -215,11 +212,8 @@ const HotelDashboard = () => {
                   }}
                 ></img>
               </div>
-              <div className="d-flex flex-column align-items-center">
+              <div className="d-flex flex-column gap-2 align-items-center justify-content-center">
                 <p className="m-0" style={{ fontSize: "1rem" }}>
-                  <b>{request.touristName}</b>
-                </p>
-                <p className="m-0" style={{ fontSize: "0.75rem" }}>
                   {request.hotelName}
                 </p>
                 <p className="m-0" style={{ fontSize: "0.75rem" }}>

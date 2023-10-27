@@ -10,7 +10,7 @@ import { useSession } from '../Context/SessionContext';
         const axiosInstance = axios.create({
             baseURL: apiBaseUrl,
             timeout: 5000
-            });
+            }); 
 
         const [userName, setUsername] = React.useState("");
         const [password, setPassword] = React.useState("");
@@ -28,12 +28,14 @@ import { useSession } from '../Context/SessionContext';
                 });
 
                 if (response.status === 200) {
+                    console.log(response.data);
                     
                     setSessionData({
                         loggedIn: true,
                         userType: response.data.userType,
                         userName: response.data.userName,
                         userId: response.data.userId,
+                        userFullName: response.data.userFullname
                     })
 
                     const userType = response.data.userType;

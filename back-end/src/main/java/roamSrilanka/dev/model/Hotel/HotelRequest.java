@@ -13,8 +13,8 @@ public class HotelRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer requestId;
 
-    @Column(name="hotel_name")
-    private String hotelName;
+    @Column(name="hotel_id")
+    private String hotelId;
 
     @Column(name="room_id")
     private Integer roomId;
@@ -28,32 +28,27 @@ public class HotelRequest {
     @Column(name="to_date")
     private Date toDate;
 
-    @Column(name="no_of_rooms")
-    private Integer noOfRooms;
-
     @Column(name="status")
     private String status;
     public HotelRequest() {
     }
 
-    public HotelRequest(String hotelName, Integer roomId, Date date, Date fromDate, Date toDate, Integer noOfRooms, String status) {
-        this.hotelName = hotelName;
+    public HotelRequest(String hotelId, Integer roomId, Date date, Date fromDate, Date toDate, String status) {
+        this.hotelId = hotelId;
         this.roomId = roomId;
         this.date = date;
         this.fromDate = fromDate;
         this.toDate = toDate;
-        this.noOfRooms = noOfRooms;
         this.status = status;
     }
 
-    public HotelRequest(Integer requestId, String hotelName, Integer roomId, Date date, Date fromDate, Date toDate, Integer noOfRooms, String status) {
+    public HotelRequest(Integer requestId, String hotelId, Integer roomId, Date date, Date fromDate, Date toDate, String status) {
         this.requestId = requestId;
-        this.hotelName = hotelName;
+        this.hotelId = hotelId;
         this.roomId = roomId;
         this.date = date;
         this.fromDate = fromDate;
         this.toDate = toDate;
-        this.noOfRooms = noOfRooms;
         this.status = status;
     }
 
@@ -65,12 +60,12 @@ public class HotelRequest {
         this.requestId = requestId;
     }
 
-    public String getHotelName() {
-        return hotelName;
+    public String gethotelId() {
+        return hotelId;
     }
 
-    public void setHotelName(String hotelName) {
-        this.hotelName = hotelName;
+    public void sethotelId(String hotelId) {
+        this.hotelId = hotelId;
     }
 
     public Integer getRoomId() {
@@ -103,14 +98,6 @@ public class HotelRequest {
 
     public void setToDate(Date toDate) {
         this.toDate = toDate;
-    }
-
-    public Integer getNoOfRooms() {
-        return noOfRooms;
-    }
-
-    public void setNoOfRooms(Integer noOfRooms) {
-        this.noOfRooms = noOfRooms;
     }
 
     public String getStatus() {

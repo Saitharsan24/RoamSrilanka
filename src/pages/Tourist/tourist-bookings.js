@@ -37,141 +37,7 @@ function TouristBookings() {
         width: 100,
         btn: "view-button",
       },
-    ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        national: "Sri Lanka",
-        btn: [
-          <>
-           <a href="/admin/admintouristdetail"> <button className="view-detail" >View detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "002",
-        name: "Jane Smith",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail ">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "003",
-        name: "Ella Brown",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "004",
-        name: "William Davis",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "005",
-        name: "Sophia Wilson",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "006",
-        name: "Sarah Martinez",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "007",
-        name: "Oliver Taylor",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "008",
-        name: "Ava Martinez",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "009",
-        name: "Ethan Thompson",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "010",
-        name: "Ava Martinez",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "011",
-        name: "Sophia Wilson",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "012",
-        name: "Matthew Taylor",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "013",
-        name: "Christopher Davis",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-    
-    ],
-  };
+    ]};
 
   const data_driver = {
     columns: [
@@ -208,152 +74,6 @@ function TouristBookings() {
         btn: "view-button",
       },
     ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        seat: "12",
-        rate: "4.5",
-        btn: [
-          <>
-              <a href="/admin/admindriverdetail"> <button className="view-detail" >View detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "002",
-        name: "Jane Smith",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "003",
-        name: "Ella Brown",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "004",
-        name: "William Davis",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "005",
-        name: "Sophia Wilson",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "006",
-        name: "Sarah Martinez",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "007",
-        name: "Oliver Taylor",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "008",
-        name: "Ava Martinez",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "009",
-        name: "Ethan Thompson",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "010",
-        name: "Ava Martinez",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "011",
-        name: "Sophia Wilson",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "012",
-        name: "Matthew Taylor",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "013",
-        name: "Christopher Davis",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-    
-    ],
   };
 
   const data_guide = {
@@ -384,149 +104,16 @@ function TouristBookings() {
         btn: "view-button",
       },
     ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail" >View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "002",
-        name: "Jane Smith",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "003",
-        name: "Ella Brown",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "004",
-        name: "William Davis",
-        rate: "4.2",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "005",
-        name: "Sophia Wilson",
-        rate: "4.0",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "006",
-        name: "Sarah Martinez",
-        rate: "4.9",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "007",
-        name: "Oliver Taylor",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "008",
-        name: "Ava Martinez",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "009",
-        name: "Ethan Thompson",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "010",
-        name: "Ava Martinez",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "011",
-        name: "Sophia Wilson",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "012",
-        name: "Matthew Taylor",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "013",
-        name: "Christopher Davis",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-    
-    ],
   };
 
 
   const data_hotel = {
     columns: [
       {
-        label: "Hotel ID",
+        label: "Reference No",
         field: "id",
         sort: "asc",
-        width: 150,
+        width: 100,
       },
       {
         label: "Hotel Name",
@@ -535,15 +122,15 @@ function TouristBookings() {
         width: 150,
       },
       {
-        label: "Address",
-        field: "address",
+        label: "Booking Date",
+        field: "date",
         sort: "asc",
-        width: 200,
+        width: 150,
       },
 
       {
-        label: "Rating",
-        field: "rate",
+        label: "Booking Status",
+        field: "Status",
         sort: "asc",
         width: 100,
         
@@ -555,152 +142,6 @@ function TouristBookings() {
         width: 100,
         btn: "view-button",
       },
-    ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail" >View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "002",
-        name: "Jane Smith",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail" >View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "003",
-        name: "Ella Brown",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "004",
-        name: "William Davis",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "005",
-        name: "Sophia Wilson",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "006",
-        name: "Sarah Martinez",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "007",
-        name: "Oliver Taylor",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "008",
-        name: "Ava Martinez",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "009",
-        name: "Ethan Thompson",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "010",
-        name: "Ava Martinez",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "011",
-        name: "Sophia Wilson",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "012",
-        name: "Matthew Taylor",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "013",
-        name: "Christopher Davis",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-    
     ],
   };
 
@@ -735,31 +176,6 @@ function TouristBookings() {
         width: 100,
         btn: "view-button",
       },
-    ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail" >View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "002",
-        name: "Jane Smith",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail" >View detail</div>
-          </>,
-        ],
-      },
-     
     ],
   };
 
@@ -797,7 +213,7 @@ function TouristBookings() {
               bordered
               paging={true}
               searching={true}
-              data={data_driver}
+              data={data_hotel}
               exportToCSV={true}
               //table for tourist
             />

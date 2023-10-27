@@ -5,18 +5,17 @@ import ReactStars from "react-rating-stars-component";
 import * as Icon from "react-bootstrap-icons";
 import Modal from "react-bootstrap/Modal";
 import "./../../styles/hotel/our-hotel.css";
-import room1 from "./../../assets/images/room-image1.png";
-import room2 from "./../../assets/images/room-image2.png";
-import room3 from "./../../assets/images/room-image3.png";
 import ImageUpload from "../../components/imageUpload";
 import axios from "axios";
 import StarRating from "../../components/Rating";
+import { set } from "lodash";
 
 const OurHotel = () => {
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [hotels, setHotels] = useState([]);
+  const [hotelsImages, setHotelsImages] = useState([]);
   const [hotelId, setHotelId] = useState("");
   const [selectedHotel, setSelectedHotel] = useState([]);
 
@@ -85,29 +84,27 @@ const OurHotel = () => {
     setSelectedFile(file);
   };
 
-  //UPLOADING THE FILE
-  const handleUploadButtonClick = () => {
-    if (!selectedFile) return;
-
-    // 1. Rename the file (this can be a bit tricky in the browser, but let's assume you have a way)
-    const newFileName = "newNameForFile.jpg"; // Your renaming logic here
-
-    // 2. Process the file (like copying or uploading it somewhere)
-
-    // 3. Optionally, update your data structures or state
-  };
-
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
 
-    setSelectedCheckboxes((prevCheckboxes) =>
-      checked
-        ? [...prevCheckboxes, name]
-        : prevCheckboxes.filter((item) => item !== name)
-    );
-
-    // Update the hotelAmenities property in hotelData
-    inputHoteldata("hotelAmenities", selectedCheckboxes);
+    setHotelData((prevData) => {
+      if (checked) {
+        // If the checkbox is checked, add the amenity to the hotelAmenities array
+        return {
+          ...prevData,
+          hotelAmenities: [...prevData.hotelAmenities, name],
+        };
+      } else {
+        // If the checkbox is unchecked, remove the amenity from the hotelAmenities array
+        return {
+          ...prevData,
+          hotelAmenities: prevData.hotelAmenities.filter(
+            (amenity) => amenity !== name
+          ),
+        };
+      }
+    });
+    // console.log(hotelData);
   };
 
   const [hotelData, setHotelData] = useState({
@@ -117,21 +114,14 @@ const OurHotel = () => {
     hotelRating: 0,
     city: "",
     address: "",
-    latitude: "",
-    longitude: "",
     hotelAmenities: [],
-    hotelImages: [],
+    hotelImage: null,
   });
 
-  const handleImagesSelected = (images) => {
-    inputHoteldata("hotelImages", images);
-    console.log(images); // Handle selected images here
-    console.log(hotelData);
-  };
-
   const inputHoteldata = (name, value) => {
+    // console.log(name, value);
     setHotelData((prev) => ({ ...prev, [name]: value }));
-    console.log(hotelData);
+    // console.log(hotelData);
   };
 
   const handleHotelRatingChange = (rating) => {
@@ -149,6 +139,19 @@ const OurHotel = () => {
     timeout: 10000,
   });
 
+  const handleImageChange = (e) => {
+    const selectedFiles = e.target.files; // Get an array of selected image files
+    const imageFiles = [];
+
+    // Iterate through the selected files and add them to the imageFiles array
+    for (let i = 0; i < selectedFiles.length; i++) {
+      imageFiles.push(selectedFiles[i]);
+    }
+
+    inputHoteldata("hotelImage", imageFiles); // Update productDetails state with the selected images
+    // console.log(imageFiles)
+  };
+
   const handleAddHotel = async (e) => {
     e.preventDefault();
 
@@ -160,15 +163,34 @@ const OurHotel = () => {
         starRating: hotelData.hotelRating,
         city: hotelData.city,
         address: hotelData.address,
-        // hotelAmenities: hotelData.hotelAmenities,
-        // hotelImages: hotelData.hotelImages,
+        city: hotelData.city,
+        price: hotelData.price,
       });
 
       if (response.status === 200) {
-        closeModalAdd();
-        console.log(hotelData);
-        window.location.reload();
-        console.log("okkkk");
+        console.log(hotelData.hotelImage.length);
+        try {
+          for (let i = 0; i < hotelData.hotelImage.length; i++) {
+            const formData = new FormData();
+            formData.append("imageFile", hotelData.hotelImage[i]);
+            const imageResponse = await axiosInstance.post(
+              `/addHotelImage/${response.data.hotelId}`,
+              formData,
+              {
+                headers: {
+                  "Content-Type": `multipart/form-data`,
+                },
+              }
+            );
+            if (imageResponse.status === 200) {
+              console.log("image uploaded");
+            }
+          }
+          closeModalAdd();
+          window.location.reload();
+        } catch (error) {
+          console.log(error);
+        }
       }
     } catch (error) {
       console.log(error);
@@ -181,12 +203,37 @@ const OurHotel = () => {
       .get("/viewHotels")
       .then((response) => {
         setHotels(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.log("Error fetching data:", error);
       });
   }, []);
+
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get("/viewHotelsImages")
+      .then((response) => {
+        setHotelsImages(response.data);
+        // console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
+  const mergedData = hotels.map((hotel) => {
+    // Find the corresponding image for each hotel based on the hotelId
+    const image = hotelsImages.find((image) => image.hotelId === hotel.hotelId);
+
+    // Create a new object containing both hotel and image data
+    return {
+      ...hotel,
+      image: image ? image.hotelImage : null, 
+    };
+  });
+
 
   const handleEditHotel = async (e) => {
     e.preventDefault();
@@ -250,12 +297,12 @@ const OurHotel = () => {
       </div>
       <div className="container">
         <Carousel>
-          {hotels.map(
+          {mergedData.map(
             (hotel, index) =>
               index % 3 === 0 && (
                 <Carousel.Item key={index}>
                   <div className="d-flex flex-row justify-content-evenly">
-                    {hotels.slice(index, index + 3).map((hotel) => (
+                    {mergedData.slice(index, index + 3).map((hotel) => (
                       <div
                         key={hotel.hotelId}
                         className="d-flex flex-column gap-3 mx-lg-0 mx-md-5 mx-1 col-lg-3 col-md-10 col-11 shadow-lg"
@@ -264,7 +311,25 @@ const OurHotel = () => {
                           backgroundColor: "#FFFFFF",
                         }}
                       >
-                        <img className="img-fluid" src={room1}></img>
+                        {hotel && hotel.image ? (
+                          <img
+                            className="img-fluid"
+                            style={{
+                              borderRadius: "10px",
+                            }}
+                            src={require(`../../assets/images/hotel/${hotel.image}`)}
+                            alt={hotel.image}
+                          />
+                        ) : (
+                          <img
+                            className="img-fluid"
+                            style={{
+                              borderRadius: "10px",
+                            }}
+                            src={require("./../../assets/images/room-image1.png")}
+                            alt="Default Alt Text"
+                          />
+                        )}
                         <div className="d-flex flex-column justify-content-evenly">
                           <div className="d-flex flex-column">
                             <p
@@ -314,9 +379,6 @@ const OurHotel = () => {
                               </span>
                               <br />
                             </p>
-                            <Link to="/hotel/hotelReviews" className="mx-2">
-                              See all 18 reviews <Icon.ChevronRight />
-                            </Link>
                           </div>
                           <div className="d-flex flex-column justify-content-between me-1">
                             <div className="d-flex flex-column my-2">
@@ -548,7 +610,13 @@ const OurHotel = () => {
                     Hotel images
                   </p>
                   <div className="d-flex flex-row gap-2">
-                    <ImageUpload onImagesSelected={handleImagesSelected} />
+                    {/* <ImageUpload onImagesSelected={handleImagesSelected} /> */}
+                    <input
+                      type="file"
+                      name="hotelImage"
+                      multiple // Allow multiple file selection
+                      onChange={(e) => handleImageChange(e)}
+                    />
                   </div>
                 </div>
                 <p
