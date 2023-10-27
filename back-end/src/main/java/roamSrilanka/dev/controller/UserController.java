@@ -11,6 +11,8 @@ import roamSrilanka.dev.model.Tourist.Tourist;
 import roamSrilanka.dev.model.User;
 import roamSrilanka.dev.service.UserService;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:3000")
 
 @RestController
@@ -60,7 +62,11 @@ public class UserController {
              return new ResponseEntity<>("Login Failed", HttpStatus.UNAUTHORIZED);
          }
 
+    }
 
+    @GetMapping("/viewUser/{userId}")
+    public User getUserById(@PathVariable Integer userId){
+        return userService.getUserById(userId);
     }
 
     private static class LoginRequest{
@@ -86,5 +92,6 @@ public class UserController {
 
     }
 
-
 }
+
+

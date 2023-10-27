@@ -3,6 +3,7 @@ package roamSrilanka.dev.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import roamSrilanka.dev.model.Holidayplanner.Holidayplanner;
 import roamSrilanka.dev.model.Tourist.Tourist;
 import roamSrilanka.dev.model.User;
 import roamSrilanka.dev.repository.UserRepository;
@@ -13,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
 
 @Service
 public class TouristService {
@@ -29,6 +31,14 @@ public class TouristService {
         return touristRepository.save(tourist);
     }
 
+
+    public List<Tourist> getAllTourist() {
+        return touristRepository.findAll();
+    }
+
+    public Tourist getTouristById(Integer userId){
+        return touristRepository.findById(userId).orElse(null);
+    }
 
     public Iterable<Object> getAllTourist() {
         List<Tourist> tourists = touristRepository.findAll(); // Replace with your repository method to fetch tourists
@@ -59,3 +69,4 @@ public class TouristService {
         return touristRepository.findById(id).get();
     }
 }
+
