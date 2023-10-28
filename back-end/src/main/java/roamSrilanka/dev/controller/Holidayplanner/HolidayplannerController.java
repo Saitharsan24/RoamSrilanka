@@ -38,18 +38,31 @@ public class HolidayplannerController {
     }
 
     // Update plannerName
-    @PutMapping("/updatePlannerName/{userId}")
-    public ResponseEntity<Holidayplanner> updatePlannerName(
-            @PathVariable Integer userId,
-            @RequestParam String newPlannerName
-    ) {
-        Holidayplanner updatedHolidayplanner = holidayplannerService.updatePlannerName(userId, newPlannerName);
-        if (updatedHolidayplanner != null) {
-            return new ResponseEntity<>(updatedHolidayplanner, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Handle not found case
+
+    @PutMapping("/updateHolidayplanner/{userId}")
+    public ResponseEntity UpdateHolidayplanner(@PathVariable Integer userId, @RequestBody Holidayplanner updatedHolidayplanner) {
+        Holidayplanner existingHolidayplanner = holidayplannerService.getHolidayplannerById(userId);
+
+        if (existingHolidayplanner == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+
+        // Update the existing holidayplanner's information with the data from the request body
+        existingHolidayplanner.setStatus(updatedHolidayplanner.getStatus());
+
+
+        // Save the changes made to the existing holidayplanner
+        holidayplannerService.addPlanner(existingHolidayplanner);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    //delete holidayplanner
+    @DeleteMapping("/deleteHolidayplanner/{userId}")
+    public ResponseEntity deleteHolidayplanner(@PathVariable Integer userId){
+        holidayplannerService.deleteHolidayplanner(userId);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 
 
 

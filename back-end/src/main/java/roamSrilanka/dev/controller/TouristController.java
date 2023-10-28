@@ -7,9 +7,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import roamSrilanka.dev.model.Hotel.Hotels;
+import roamSrilanka.dev.model.Holidayplanner.Holidayplanner;
 import roamSrilanka.dev.model.Tourist.Tourist;
+import roamSrilanka.dev.model.User;
+import org.springframework.web.bind.annotation.ResponseBody;
+import roamSrilanka.dev.model.Hotel.Hotels;
 import roamSrilanka.dev.service.TouristService;
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 
@@ -18,6 +22,20 @@ public class TouristController {
 
     @Autowired
     private TouristService touristService;
+
+    @GetMapping("/viewTourist/{userId}")
+    public Tourist getTouristById(@PathVariable Integer userId){
+        return touristService.getTouristById(userId);
+    }
+
+
+
+
+    @GetMapping("/tourist")
+    @ResponseBody
+    public Iterable<Object> getAllTourist(){
+        return touristService.getAllTourist();
+    }
 
     @GetMapping("/viewTourist/{id}")
     public ResponseEntity<Tourist> getHotelById(@PathVariable Integer id) {

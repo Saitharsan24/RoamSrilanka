@@ -1,23 +1,24 @@
 import React from "react";
 import "../../styles/admin/admin_tourist_view_detail.css";
 import profile from "../../assets/images/profile.jpg";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Modal from "../../components/admin-modal";
 
 
+
 function AdminPlannertDetails() {
-  //const { userId } = useParams();
   const urlParams = new URLSearchParams(window.location.search);
   const userId = urlParams.get('userId');
   
-  const [holidayPlannerdetail, setHolidayPlannerdetail] = useState([]);
- 
-  
-  const apiBaseUrl = "http://localhost:8080";
+  const [holidayPlannerdetail, setHolidayPlannerdetail] = useState([]);  
+             //usestate hook to set the state of the holiday planner details
+  const [holidayPlanneruserdetail, setHolidayPlanneruserdetail] = useState([]);
+              //usestate hook to set the state of the holiday planner user details
 
+
+  const apiBaseUrl = "http://localhost:8080";
+              
    const axiosInstance = axios.create({
     baseURL: apiBaseUrl,
     timeout: 5000,
@@ -29,6 +30,7 @@ function AdminPlannertDetails() {
       .then((response) => {
         // Handle the response and set the state with the details
         setHolidayPlannerdetail(response.data);
+        
       })
       .catch((error) => {
         // Handle errors
@@ -36,6 +38,18 @@ function AdminPlannertDetails() {
       });
   }, [userId]);
 
+  // Make an HTTP GET request to fetch the details of the holiday planner user using userId
+  useEffect(() => {
+    axiosInstance.get(`/viewHolidayplanneruser/${userId}`)
+      .then((response) => {
+        // Handle the response and set the state with the details
+        setHolidayPlanneruserdetail(response.data);
+      })
+      .catch((error) => {
+        // Handle errors
+        console.log('Error fetching Data',error);
+      });
+  }, [userId]);
 
 
   const [openModal, setOpenModal] = useState(false);  // This is the state variable to control the model(Eable/Disable)
@@ -56,7 +70,7 @@ function AdminPlannertDetails() {
   return (
     <React.Fragment>
       
-           {openModal && <Modal closeModal={closeModal}/>}
+           {openModal && <Modal closeModal={closeModal} userId={userId} />}
     
           <div  className={`w-100 d-flex justify-content-center align-items-center 
           ${
@@ -87,7 +101,7 @@ function AdminPlannertDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            {holidayPlannerdetail.email}
+                            {holidayPlanneruserdetail.userName}
                           </td>
                         </tr>
 
@@ -118,7 +132,7 @@ function AdminPlannertDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            Holiday Planner
+                            {holidayPlanneruserdetail.userType}
                           </td>
                         </tr>
 
@@ -298,9 +312,39 @@ function AdminPlannertDetails() {
 
                       <tr style={{ height: "20px" }}></tr>
                       <tr >
+                        
+                       <td colSpan={3} style={{textAlign:"right"}} >
+                      
+                          {holidayPlannerdetail.status === null ? (
+                              <button
+                                style={{
+                                  backgroundColor: "#d03b3b",
+                                  color: "#ffff",
+                                  borderRadius: "10px",
+                                  borderColor: "#ffff",
+                                  width: "7rem"
+                                }}
+                                onClick={openModalWithBlur}
+                              >
+                                Disable
+                              </button>
+                            ) : (
+                              <button
+                                style={{
+                                  backgroundColor: "#66d03b",
+                                 color: "#ffff",
+                                  borderColor: "#ffff",
+                                  borderRadius: "10px",
+                                  width: "7rem"
+                                }}
+                                onClick={openModalWithBlur}
+                              >
+                                Enable
+                              </button>
+)}
 
-                       <td colSpan={3} style={{textAlign:"right"}} ><button style={{backgroundColor:"#004577",color:"#ffff",borderRadius:"10px",width:"7rem"}} onClick={openModalWithBlur}>Disable</button>
-                         
+
+
                         </td>
                        
                        </tr>

@@ -12,6 +12,8 @@ import roamSrilanka.dev.model.Tourist.Tourist;
 import roamSrilanka.dev.model.User;
 import roamSrilanka.dev.service.UserService;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:3000")
 
 @RestController
@@ -26,6 +28,12 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+
+    @GetMapping("/users/{id}")
+    @ResponseBody
+    public ResponseEntity<User> getUser(@PathVariable Integer id) {
+        return ResponseEntity.ok(userService.getUser(id));
+    }
     @GetMapping("/viewUser/{id}")
     @ResponseBody
     public ResponseEntity<User> getUserById(@PathVariable Integer id) {
@@ -35,10 +43,12 @@ public class UserController {
         } else {
             return ResponseEntity.notFound().build();
         }
+
     }
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) throws JSONException {
+
        User user = userService.authenticateUser(loginRequest.getUserName(), loginRequest.getPassword());
 
          if(user != null) {
@@ -54,7 +64,11 @@ public class UserController {
              return new ResponseEntity<>("Login Failed", HttpStatus.UNAUTHORIZED);
          }
 
+    }
 
+    @GetMapping("/viewUser/{userId}")
+    public User getUserByID(@PathVariable Integer id){
+        return userService.getUserByID(id);
     }
 
     private static class LoginRequest{
@@ -79,6 +93,7 @@ public class UserController {
 
 
     }
+
 
     @PutMapping("/updatePassword/{id}")
     public ResponseEntity<User> updatePassword(@PathVariable Integer id, @RequestBody UpdatePasswordRequest updatePasswordRequest) {
@@ -138,4 +153,7 @@ public class UserController {
         userService.updateUser(existingUser);
         return ResponseEntity.ok(existingUser);
     }
+
 }
+
+
