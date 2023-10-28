@@ -21,4 +21,8 @@ public class TouristService {
     public Tourist getTouristById(Integer id) {
         return touristRepository.findById(id).get();
     }
+
+    public Iterable<Tourist> getAllTourists() {
+        return touristRepository.findAll();
+    }
 }
