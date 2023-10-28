@@ -2,7 +2,7 @@ package roamSrilanka.dev.model.Hotel;
 
 import jakarta.persistence.*;
 
-@Table (name = "hotel_amenties")
+@Table (name = "hotel_amenities")
 @Entity(name = "HotelAmenities")
 
 public class HotelAmenities {

@@ -29,4 +29,9 @@ public class TouristController {
         }
     }
 
+    @GetMapping("/viewTourists")
+    public Iterable<Tourist> getAllTourists(){
+        return touristService.getAllTourists();
+    }
+
 }
