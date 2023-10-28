@@ -29,6 +29,7 @@ public class TouristService {
         return touristRepository.save(tourist);
     }
 
+
     public Iterable<Object> getAllTourist() {
         List<Tourist> tourists = touristRepository.findAll(); // Replace with your repository method to fetch tourists
         List<User> users = userRepository.findAll(); // Replace with your repository method to fetch users
@@ -52,5 +53,9 @@ public class TouristService {
         }
 
         return mergedData;
+    }
+
+    public Tourist getTouristById(Integer id) {
+        return touristRepository.findById(id).get();
     }
 }

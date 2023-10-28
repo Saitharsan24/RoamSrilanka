@@ -1,192 +1,56 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { Button, Table } from "react-bootstrap";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { MDBDataTable } from "mdbreact";
 import "./../../styles/data-table.css";
 import * as Icon from "react-bootstrap-icons";
+import axios from "axios";
 
 function GuideTrip() {
-  const data = {
-    columns: [
-      {
-        label: "Tourist Name",
-        field: "name",
-        sort: "asc",
-        width: 150,
-      },
-      {
-        label: "Date",
-        field: "date",
-        sort: "asc",
-        width: 150,
-      },
-      {
-        label: "Location",
-        field: "location",
-        sort: "asc",
-        width: 200,
-      },
-      {
-        label: "Status",
-        field: "status",
-        sort: "asc",
-        width: 100,
-      },
-      {
-        label: "",
-        field: "btn",
-        width: 100,
-        btn: "view-button",
-      },
-    ],
-    rows: [
-      {
-        name: "John Doe",
-        date: "2023-07-01",
-        location: "Jaffna",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#04F21C" }} size={30} />
-              Completed
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit", textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-      {
-        name: "Robert Johnson",
-        date: "2023-07-02",
-        location: "Colombo",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#E0163B" }} size={30} />
-              Rejected
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit",textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-      {
-        name: "Jane Smith",
-        date: "2023-07-03",
-        location: "Vavuniya",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#DFE32A" }} size={30} />
-              On Going
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit",textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-      {
-        name: "Ella Brown",
-        date: "2023-07-04",
-        location: "Trincomalee",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#E0163B" }} size={30} />
-              Rejected
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit",textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-      {
-        name: "William Davis",
-        date: "2023-07-05",
-        location: "Anuradhapura",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#DFE32A" }} size={30} />
-              On Going
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit",textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-      {
-        name: "Sophia Wilson",
-        date: "2023-07-06",
-        location: "Mannar",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#04F21C" }} size={30} />
-              Completed
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit",textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-      {
-        name: "Oliver Taylor",
-        date: "2023-07-07",
-        location: "Nuwareliya",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#04F21C" }} size={30} />
-              Completed
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit",textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-      {
-        name: "Ava Martinez",
-        date: "2023-07-08",
-        location: "Kandy",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#E0163B" }} size={30} />
-              Rejected
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit",textDecoration:"none"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-    ],
-  };
+  const [trips, setTrips] = useState([]);
+  //Sending data to backend
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 10000,
+  });
+
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get("/viewTrips")
+      .then((response) => {
+        setTrips(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
+  const rows = trips.map((trip) => {
+    return {
+      date: trip.date,
+      fromDate: trip.fromDate,
+      toDate: trip.toDate,
+      status: determineStatus(trip.status),
+      btn: <Link to={`/guide/guideTripForm?tripId=${trip.tripId}&touristId=${trip.userId}`}>View More</Link>,
+    };
+  });
+
+  function determineStatus(status) {
+    if (status == null) {
+      return "Pending";
+    } else if (status == 1) {
+      return "Accepted";
+    } else if (status == 2) {
+      return "Completed";
+    } else {
+      return "Rejected";
+    }
+  }
 
   return (
     <div className="d-flex w-100">
@@ -220,8 +84,41 @@ function GuideTrip() {
           bordered
           paging={true}
           searching={true}
-          //   small
-          data={data}
+          data={{
+            columns: [
+              {
+                label: "Date",
+                field: "date",
+                sort: "asc",
+                width: 150,
+              },
+              {
+                label: "From Date",
+                field: "fromDate",
+                sort: "asc",
+                width: 150,
+              },
+              {
+                label: "To Date",
+                field: "toDate",
+                sort: "asc",
+                width: 200,
+              },
+              {
+                label: "Status",
+                field: "status",
+                sort: "asc",
+                width: 100,
+              },
+              {
+                label: "",
+                field: "btn",
+                width: 100,
+                btn: "view-button",
+              },
+            ],
+            rows: rows, // Use the rows you generated
+          }}
           exportToCSV={true}
         />
       </div>

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import roamSrilanka.dev.model.Tourist.Tourist;
 import roamSrilanka.dev.model.User;
 import roamSrilanka.dev.service.UserService;
 
@@ -25,10 +26,22 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+
     @GetMapping("/users/{id}")
     @ResponseBody
     public ResponseEntity<User> getUser(@PathVariable Integer id) {
         return ResponseEntity.ok(userService.getUser(id));
+
+    @GetMapping("/viewUser/{id}")
+    @ResponseBody
+    public ResponseEntity<User> getUserById(@PathVariable Integer id) {
+        User viewUser = userService.getUserById(id);
+        if(viewUser != null) {
+            return ResponseEntity.ok(viewUser);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
     }
 
     @PostMapping("/login")
