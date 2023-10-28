@@ -1,4 +1,4 @@
-package roamSrilanka.dev.controller;
+package roamSrilanka.dev.controller.Holidayplanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +32,11 @@ public class EventController {
     @GetMapping("/getParticularEvent/{id}")
     public Optional<Event> getEvent (@PathVariable(value = "id") Integer identity ) {
         return this.eventService.getEvent(identity);
+    }
+
+    @GetMapping("/event/count")
+    public Long countEvents() {
+        return eventService.countEvents();
     }
 
 //    @PutMapping("/updateEvent/{id}")
