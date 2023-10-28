@@ -66,10 +66,10 @@ public class UserController {
 
     }
 
-    @GetMapping("/viewUser/{userId}")
-    public User getUserByID(@PathVariable Integer id){
-        return userService.getUserByID(id);
-    }
+//    @GetMapping("/viewUser/{userId}")
+//    public User getUserByID(@PathVariable Integer id){
+//        return userService.getUserByID(id);
+//    }
 
     private static class LoginRequest{
         private String userName;
