@@ -12,13 +12,13 @@ public class Fair {
     @Column(name = "fair_no")
     private int fairId;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "fairname")
+    private String fairname;
 
     @Column(name = "rent")
     private float rent;
 
-    @Column(name = "description")
+    @Column(name = "description" ,columnDefinition = "VARCHAR(2000)")
     private String description;
 
     @ElementCollection
@@ -28,9 +28,9 @@ public class Fair {
     public Fair() {
     }
 
-    public Fair(int fairId, String name, float rent, String description, List<String> fairImages) {
+    public Fair(int fairId, String fairname, float rent, String description, List<String> fairImages) {
         this.fairId = fairId;
-        this.name = name;
+        this.fairname = fairname;
         this.rent = rent;
         this.description = description;
         this.fairImages = fairImages;
@@ -44,12 +44,12 @@ public class Fair {
         this.fairId = fairId;
     }
 
-    public String getName() {
-        return name;
+    public String getFairname() {
+        return fairname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String fairname) {
+        this.fairname = fairname;
     }
 
     public float getRent() {

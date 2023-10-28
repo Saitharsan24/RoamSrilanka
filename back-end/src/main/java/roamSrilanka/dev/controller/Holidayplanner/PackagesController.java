@@ -35,6 +35,12 @@ public class PackagesController {
         return ResponseEntity.ok(packagesService.getPackage(id));
     }
 
+    @GetMapping("/packages/count")
+    @ResponseBody
+    public ResponseEntity<Long> countPackages() {
+        return ResponseEntity.ok(packagesService.countPackages());
+    }
+
 
 
 

@@ -24,7 +24,7 @@ public class Event {
     @Column(name = "places")
     private String places;
 
-    @Column(name = "description")
+    @Column(name = "description",columnDefinition = "VARCHAR(2000)")
     private String description;
 
 
