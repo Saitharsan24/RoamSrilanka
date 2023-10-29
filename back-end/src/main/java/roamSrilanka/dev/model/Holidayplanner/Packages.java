@@ -35,6 +35,7 @@ public class Packages {
     @Column(name = "status")
     private Integer status;
 
+
     @Column(name = "discription", columnDefinition = "VARCHAR(2000)")
     private String discription;
 
@@ -45,7 +46,7 @@ public class Packages {
     public Packages() {
     }
 
-    public Packages(int packageID, BigDecimal price, String package_name, Boolean trip_guide, int days, int hotel_rating, String places, int status, String discription, int no_of_people) {
+    public Packages(int packageID, BigDecimal price, String package_name, Boolean trip_guide, int days, int hotel_rating, String places, String status, String discription, int no_of_people) {
         this.packageID = packageID;
         this.price = price;
         this.package_name = package_name;
@@ -58,7 +59,7 @@ public class Packages {
         this.no_of_people = no_of_people;
     }
 
-    public Packages(BigDecimal price, String package_name, Boolean meals, Boolean trip_guide, int days, int hotel_rating, String places, int status, String discription, int no_of_people) {
+    public Packages(BigDecimal price, String package_name, Boolean meals, Boolean trip_guide, int days, int hotel_rating, String places, String status, String discription, int no_of_people) {
         this.price = price;
         this.package_name = package_name;
         this.trip_guide = trip_guide;
@@ -70,8 +71,10 @@ public class Packages {
         this.no_of_people = no_of_people;
     }
 
+
     public int getPackageID() {
         return packageID;
+
     }
 
     public void setPackageID(int packageID) {
@@ -156,5 +159,13 @@ public class Packages {
 
     public void setNo_of_people(int no_of_people) {
         this.no_of_people = no_of_people;
+    }
+
+    public Boolean getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Boolean vehicle) {
+        this.vehicle = vehicle;
     }
 }
