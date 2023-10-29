@@ -46,13 +46,15 @@ const HPUpdatePackage1 = () => {
   
 
   const [formData, setFormData] = useState({
-    package_name: "",
-    price: 0,
-    days: 0,
-    trip_guide: false,
-    hotel_rating: 0,
-    meals: false,
-    places: "",
+          package_name: "",
+          price: "",
+          days: "",
+          trip_guide: false,
+          hotel_rating: 0,
+          no_of_people: false,
+          vehicle:false,
+          places: "",
+          discription: "",
   });
 
   const handleSuggestionClick = (suggestion) => {
@@ -107,8 +109,11 @@ const HPUpdatePackage1 = () => {
           days: "",
           trip_guide: false,
           hotel_rating: 0,
-          meals: false,
+          no_of_people: false,
+          vehicle:false,
           places: "",
+          discription: "",
+
         });
       } else {
         // Handle error
@@ -173,7 +178,7 @@ const HPUpdatePackage1 = () => {
               </div>
               <div className="d-flex flex-column flex-lg-row justify-content-between m-2 gap-3">
                 <label>
-                  Amount per Person
+                  Amount
                   <input
                     className="p-2"
                     type="number"
@@ -213,18 +218,24 @@ const HPUpdatePackage1 = () => {
                   </p>
                 </div>
                 <div className="d-flex flex-column flex-md-row flex-lg-row col-md-9 col-lg-6">
-                  {/* <p className="col-9">
+                  <p className="col-9">
                         Transportation{" "}
                         <Toggle
                           checked={isChecked2}
-                          onChange={handleToggleChange2}
+                          onChange={(e) => {
+                            handleToggleChange2(); // Call your existing toggle handler
+                            handleChange(e); // Call the common handleChange function 
+
+                          }}
+                          value={formData.vehicle}
+                          name="vehicle"
                         />
-                      </p> */}
+                      </p>
                 </div>
               </div>
 
               <div className="d-flex flex-md-column col-md-10 col-sm-10 flex-column flex-lg-row justify-content m-2 gap-2">
-                <div className="col-12 col-md-6 col-lg-4">
+                <div className="col-10 col-md-6 col-lg-4">
                   <p>Hotel Ratings</p>
                 </div>
                 <div className="col-12 col-md-6 col-lg-3">
@@ -233,13 +244,14 @@ const HPUpdatePackage1 = () => {
                     onRatingChange={handleHotelRatingChange}
                   />
                 </div>
-                <label className="d-flex flex-lg-row gap-3">
-                  Meals
+                <label className="d-flex flex-lg-row col-6 gap-5 ml-1">
+                  Persons
                   <input
                     className="d-flex"
-                    type="checkbox"
-                    name="meals"
-                    value={formData.meals}
+                    type="number"
+                    name="no_of_people"
+                    min={1}
+                    value={formData.no_of_people}
                     onChange={handleChange}
                   ></input>
                 </label>
@@ -264,6 +276,22 @@ const HPUpdatePackage1 = () => {
                    ))}
                  </ul>
                 )}
+              </div>
+
+              <div className="d-flex flex-column justify-content-center m-2">
+              <label>
+                  Description:
+                  <textarea
+                    className="p-2"
+                    placeholder="Discription"
+                    name="discription"
+                    value={formData.discription}
+                    onChange={(e) => {
+                      handleChange(e);
+                    }}
+                    style={{ minHeight: "50px" }}
+                  ></textarea>
+                </label>
               </div>
             </div>
             <div className="d-flex flex-lg-row flex-md-column flex-column gap-sm-3 justify-content-between mx-2">
