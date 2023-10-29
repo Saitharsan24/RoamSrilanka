@@ -41,7 +41,7 @@ import { useSession } from '../Context/SessionContext';
                     const userType = response.data.userType;
 
                     if (userType === "admin") {
-                        navigate("/admin");
+                        navigate("/admin/admindashboard");
                     }
                     else if (userType === "tourist") {
                         navigate("/tourist");

@@ -3,7 +3,6 @@ package roamSrilanka.dev.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import roamSrilanka.dev.model.Holidayplanner.Holidayplanner;
 import roamSrilanka.dev.model.Tourist.Tourist;
 import roamSrilanka.dev.model.User;
 import roamSrilanka.dev.repository.UserRepository;
@@ -58,6 +57,11 @@ public class TouristService {
 
     public Tourist getTouristById(Integer id) {
         return touristRepository.findById(id).get();
+    }
+
+
+    public List<Tourist> getAllTourists() {
+        return touristRepository.findAll();
     }
 }
 
