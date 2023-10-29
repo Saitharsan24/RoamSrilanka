@@ -1,10 +1,5 @@
 import React from "react";
-import Headeruser from "../../components/headerusers";
 import "../../styles/admin/admin_driver.css";
-import profile from "../../assets/images/profile.jpg";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Link } from "react-bootstrap-icons";
-import Adminsidebar from "../../components/admin-sidebar";
 
 function AdminDiverReg() {
 

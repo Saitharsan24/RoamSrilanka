@@ -45,4 +45,11 @@ public class VehicleServiceImpl implements VehicleService {
     public long getVehicleCount() {
         return vehicleRepository.getVehicleCount();
     }
+
+    @Override
+    public Vehicle saveFeedback(Vehicle vehicle) {
+        return null;
+    }
+
+
 }

@@ -33,12 +33,23 @@ public class UserService {
         return null;
     }
 
+    public User getUserByID(Integer userId){
+        return userRepository.findById(userId).orElse(null);
+    }
+
+    public Object getAllUser() {
+        return null;
+    }
 
     public User getUser(Integer id) {
         return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-
+    }
     public User getUserById(Integer id) {
         return userRepository.findById(id).orElse(null);
 
+    }
+
+    public void updateUser(User existingUser) {
+        userRepository.save(existingUser);
     }
 }

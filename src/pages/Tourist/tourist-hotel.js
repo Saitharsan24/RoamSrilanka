@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap'
 import HotelImage from '../../assets/images/hotel_01.jpg'
 import axios from "axios";
 import { useSession } from '../../Context/SessionContext';
+import { Link } from 'react-router-dom';
 
 function ToursitHotel() {
 
@@ -31,14 +32,21 @@ function ToursitHotel() {
    //Initiating sessoin data
    const { sessionData , setSessionData  } = useSession();
 
-  //  //adding search details to session variable
-  //  setSessionData({
-  //     ...sessionData,
-  //     city: destination,
-  //     checkIn: checkInDate,
-  //     checkOut: checkOutDate,
-  //     travellers: travelers
-  // })
+  //adding search details to session variable
+   const updateSessionData ={
+        ...sessionData,
+       city: destination,
+       checkIn: checkInDate,
+       checkOut: checkOutDate,
+       travellers: travelers
+    };
+    console.log(updateSessionData);
+
+    //updating session data
+    const updateSession = () => {
+      setSessionData(updateSessionData);
+      window.location.href = "/tourist/touristHotelSearchList";
+    };
 
    //data from backend will directly store in this state  
    const [hotels, setHotels] = useState([]);
@@ -109,11 +117,9 @@ function ToursitHotel() {
             <button onClick={() => setTravelers(prev => prev + 1)}>+</button>
             </div>
           </div>
-          <a href="touristHotelSearchList">
-          <div className='hotel-search-btn'>
+            <div className='hotel-search-btn' onClick={() => updateSession()}>
             <BsIcons.BsSearch />
-          </div>
-          </a>
+            </div>
         </div>
 
         <div className="hotel-offers">

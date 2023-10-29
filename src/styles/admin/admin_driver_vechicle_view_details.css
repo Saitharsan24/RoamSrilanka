@@ -1,3 +1,6 @@
-/* .table{
-    border: 0px !important;
-} */
+.vehicle-pic{
+    border-radius: 5% !important;
+    width: 11vw;
+    height: 11vw;
+    object-fit: cover;
+    }

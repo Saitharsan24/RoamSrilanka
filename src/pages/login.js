@@ -47,19 +47,20 @@ import { useSession } from '../Context/SessionContext';
                         navigate("/tourist");
                     }
                     else if (userType === "hotel") {
-                        navigate("/hotel");
+                        navigate("/hotel/hotelDashboard");
                     }
                     else if (userType === "guide") {
                         navigate("/guide");
                     }
                     else if (userType === "driver") {
                         navigate("/driver");
-
+                    }else if(userType === "holidayPlanner"){
+                        navigate("/holidayPlanner/plannerDashboard");
                     }
                     
                 }
 
-
+                
                 // console.log(response.data);
             } catch (error) {
                 console.log(error);
