@@ -16,6 +16,50 @@ const HPUpdateEvent1 = () => {
     description: "",
   });
 
+  const [placesInput, setPlacesInput] = useState("");
+  const [places, setPlaceSuggestions] = useState("");
+  const fetchPlaceSuggestions = async (query) => {
+    try {
+      const response = await axiosInstance.get(`https://nominatim.openstreetmap.org/search?q=${query}&countrycodes=LK&format=json`);
+      if (response.status === 200) {
+        const suggestions = response.data.map((item) => ({
+          name: item.display_name,
+        }));
+        setPlaceSuggestions(suggestions);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+    }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    console.log("handleSuggestionClick called with suggestion:", suggestion.name);
+    setPlacesInput(suggestion.name);
+    formData.places = suggestion.name;
+    setPlaceSuggestions([]);
+  };
+
+  const handlePlacesInputChange = (e) => {
+    const inputvalue = e.target.value;
+    setPlacesInput(inputvalue);
+    if (inputvalue.length >= 3) {
+      fetchPlaceSuggestions(inputvalue);
+    } else {
+      setPlaceSuggestions([]);
+    }
+  };
+
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: newValue,
+    }));
+  };
+
   const inputFormdata = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -29,6 +73,7 @@ const HPUpdateEvent1 = () => {
 
   const handlePost = async (e) => {
     e.preventDefault();
+    console.log("formdata",formData);
 
     try {
       const response = await axiosInstance.post("/addEvent", {
@@ -125,12 +170,17 @@ const HPUpdateEvent1 = () => {
                     type="text"
                     placeholder="Places of the Event"
                     name="places"
-                    value={formData.places}
-                    onChange={(e) => {
-                      inputFormdata(e.target.name, e.target.value);
-                    }}
+                    value={placesInput}
+                    onChange={handlePlacesInputChange}
                   ></input>
                 </label>
+                {places.length > 0 && (
+                   <ul className="suggestions">
+                   {places.map((suggestion, index) => (
+                     <li onClick={() => handleSuggestionClick(suggestion)} key={index}>{suggestion.name}</li>
+                   ))}
+                 </ul>
+                )}
                 <label>
                   Description <br />
                   <textarea

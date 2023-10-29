@@ -42,4 +42,7 @@ public class EventService {
         return "Successfully Deleted";
     }
 
+    public Long countEvents() {
+        return eventRepository.count();
+    }
 }

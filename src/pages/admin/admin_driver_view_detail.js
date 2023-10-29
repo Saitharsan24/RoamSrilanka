@@ -1,13 +1,53 @@
 import React from "react";
-import Headeruser from "../../components/headerusers";
 import "../../styles/admin/admin_tourist_view_detail.css";
 import profile from "../../assets/images/profile.jpg";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Link } from "react-bootstrap-icons";
-import Adminsidebar from "../../components/admin-sidebar";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Driver from "../driver/dashboard";
 
 function AdminDrivertDetails() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const userId = urlParams.get('userId');
   
+  const [driverdetail, setdriverdetail] = useState([]); //usestate hook to set the state of the holiday planner user details
+  const [driveruserdetail, setdriveruserdetail] = useState([]);
+              //usestate hook to set the state of the holiday planner user details
+
+            const apiBaseUrl = "http://localhost:8080";
+              
+              const axiosInstance = axios.create({
+               baseURL: apiBaseUrl,
+               timeout: 5000,
+              });
+
+  useEffect(() => {
+    axiosInstance.get(`/viewDriver/${userId}`).then((response) => {
+      console.log(response.data);
+      setdriverdetail(response.data);
+    })
+    .catch((error) => {
+      // Handle errors
+      console.log('Error fetching Data',error);
+    });
+  }, [userId]);
+
+  useEffect(() => {
+    axiosInstance.get(`/viewUser/${userId}`).then((response) => {
+      console.log(response.data);
+      setdriveruserdetail(response.data);
+    })
+    .catch((error) => {
+      // Handle errors
+      console.log('Error fetching Data',error);
+    });
+  }
+  , [userId]);
+
+
+  
+
+
+
 
   return (
     <React.Fragment>
@@ -39,7 +79,7 @@ function AdminDrivertDetails() {
                               
                             }}
                           >
-                            Laxshan_19
+                            {driveruserdetail.userName}
                           </td>
                         </tr>
 
@@ -54,7 +94,7 @@ function AdminDrivertDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            003
+                            {driveruserdetail.userId}
                           </td>
                         </tr>
 
@@ -69,7 +109,7 @@ function AdminDrivertDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            Driver
+                            {driveruserdetail.userType}
                           </td>
                         </tr>
 
@@ -119,10 +159,10 @@ function AdminDrivertDetails() {
                       <tr style={{ height: "10px" }}></tr>
                       <tr>
                         <td style={{ width: "200px", textAlign: "left" }}>
-                          First Name{" "}
+                          Full Name{" "}
                         </td>
                         <td style={{ width: "50px" }}></td>
-                        <td style={{ width: "200px" }}>Last Name </td>
+                        <td style={{ width: "200px" }}>Date of Birth </td>
                       </tr>
 
                       <tr style={{ height: "10px" }}></tr>
@@ -135,7 +175,7 @@ function AdminDrivertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          Laxshan
+                        {driveruserdetail.userFullname} 
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -145,7 +185,7 @@ function AdminDrivertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          Panchavarnan{" "}
+                        {driverdetail.dateOfBirth}
                         </td>
                       </tr>
 
@@ -169,7 +209,7 @@ function AdminDrivertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          991756432
+                          {driverdetail.nic}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -179,7 +219,7 @@ function AdminDrivertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          0779656689{" "}
+                          {driverdetail.phoneNo}
                         </td>
                       </tr>
 
@@ -187,10 +227,10 @@ function AdminDrivertDetails() {
 
                       <tr>
                         <td style={{ width: "200px", textAlign: "left" }}>
-                          Email{" "}
+                          Email
                         </td>
                         <td style={{ width: "50px" }}></td>
-                        <td style={{ width: "200px" }}>Familier Languages </td>
+                        <td style={{ width: "200px" }}>SLTDA Registration Number </td>
                       </tr>
 
                       <tr style={{ height: "10px" }}></tr>
@@ -203,7 +243,7 @@ function AdminDrivertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          laxshan1906@gmail.com
+                          {driveruserdetail.userName}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -213,7 +253,7 @@ function AdminDrivertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          Tamil{" "}
+                          {driverdetail.SLTDANo}
                         </td>
                       </tr>
 
@@ -221,10 +261,10 @@ function AdminDrivertDetails() {
 
                       <tr>
                         <td style={{ width: "200px", textAlign: "left" }}>
-                          SLTDA Registration Number{" "}
+                          License No
                         </td>
                         <td style={{ width: "50px" }}></td>
-                        <td style={{ width: "200px" }}>Date of Birth </td>
+                        <td style={{ width: "200px" }}>License Expiration date </td>
                       </tr>
 
                       <tr style={{ height: "10px" }}></tr>
@@ -237,7 +277,7 @@ function AdminDrivertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          998833
+                          {driverdetail.licenseNo}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -247,7 +287,7 @@ function AdminDrivertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          19/06/1999{" "}
+                          {driverdetail.licenseExpDate}
                         </td>
                       </tr>
 
@@ -273,7 +313,7 @@ function AdminDrivertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          Annasilayady,Karanavai,Karaveddy.
+                          {driverdetail.address}
                         </td>
                       </tr>
 
@@ -285,7 +325,13 @@ function AdminDrivertDetails() {
                           <tr style={{ height: "20px" }}></tr>
                     </tbody>
                   </table>
+                  
                 </div>
+                <div className='vehicle-content d-flex flex-column justify-content-center align-items-center col-10  '>
+                     <h4 className='mb-2' style={{ fontWeight: "bold", color: "#004577",fontSize:"25px"}}>License Plate Photo</h4>
+                     <img  src={profile}
+                     className=" vehicle-pic object-fit-cover img-fluid m-auto"  style={{width:"30vw",height:"50vh"}} />
+            </div>
               </div>
             </div>
           </div>

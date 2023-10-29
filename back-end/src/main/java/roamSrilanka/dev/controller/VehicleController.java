@@ -1,7 +1,16 @@
 package roamSrilanka.dev.controller;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import roamSrilanka.dev.model.Vehicle;
+import roamSrilanka.dev.repository.VehicleRepository;
+
+
+
+import org.springframework.data.rest.webmvc.support.RepositoryEntityLinks;
+import org.springframework.stereotype.Repository;
+
 import roamSrilanka.dev.service.VehicleService;
 
 import java.util.List;
@@ -13,77 +22,83 @@ public class VehicleController {
 
     private final VehicleService vehicleService;
 
+    private VehicleRepository vehicleRepository;
+
     public VehicleController(VehicleService vehicleService) {
         this.vehicleService = vehicleService;
     }
 
     // working in insomnia
     @GetMapping("/vehicle")
-     public List<Vehicle> findAllVehicle() {
+    public List<Vehicle> findAllVehicle() {
         return vehicleService.findAllVehicle();
-     }
+    }
 
     // working in insomnia
-     @GetMapping("vehicle/{vehicleID}")
-     public Optional<Vehicle> findVehicleById(@PathVariable("vehicleID") Long vehicleID) {
+    @GetMapping("vehicle/{vehicleID}")
+    public Optional<Vehicle> findVehicleById(@PathVariable("vehicleID") Long vehicleID) {
         return vehicleService.findbyId(vehicleID);
-     }
+    }
 
-     //add working in insomnia
-//     @PostMapping("/addVehicle")
-//     public String saveVehicle(@ModelAttribute(name="Vehicle") Vehicle vehicle,
-//                               RedirectAttributes ra,
-//                               @RequestParam("image1")MultipartFile multipartImage1File) throws IOException {
-//
-//        String Image1Name = StringUtils.cleanPath(Objects.requireNonNull(multipartImage1File.getOriginalFilename()));
-//        vehicle.setImage1(Image1Name);
-//
-////        String Image2Name = StringUtils.cleanPath(multipartImage2File.getOriginalFilename());
-////        vehicle.setImage1(Image2Name);
-////
-////        String Image3Name = StringUtils.cleanPath(multipartImage3File.getOriginalFilename());
-////        vehicle.setImage1(Image3Name);
-////
-////        String Image4Name = StringUtils.cleanPath(multipartImage4File.getOriginalFilename());
-////        vehicle.setImage1(Image4Name);
-//
-//        Vehicle savedVehicle =  vehicleService.saveVehicle(vehicle);
-//
-//        String uploadDir = "./vehicle-images/" + savedVehicle.getVehicleID();
-//
-////        uploading in vehicle-images
-//        Path uploadPath = Paths.get(uploadDir);
-//
-//        if (!Files.exists(uploadPath)) {
-//            Files.createDirectories(uploadPath);
-//        }
-//
-//        try (InputStream inputStream = multipartImage1File.getInputStream()){
-//            Path filePath = uploadPath.resolve((Path) multipartImage1File);
-//            System.out.println(filePath.toFile().getAbsolutePath());
-//
-//            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-//        } catch (IOException e) {
-//            throw new IOException("Couldn't save the file " + multipartImage1File);
-//        }
-//
-//        ra.addFlashAttribute("message", "added");
-//
-//        return "redirect:/driver/driverVehicle";
-//     }
+    @GetMapping("/count")
+    public ResponseEntity<Long> getRowCount() {
+        long rowCount = vehicleService.getVehicleCount();
+        return ResponseEntity.ok(rowCount);
+    }
 
-     @PostMapping("/addVehicle")
-     public Vehicle saveVehicle(@RequestBody Vehicle vehicle) {
+
+    @PostMapping("/addVehicle")
+    public Vehicle saveVehicle(@RequestBody Vehicle vehicle) {
         return vehicleService.saveVehicle(vehicle);
-     }
+    }
 
     @PutMapping
     public Vehicle updateVehicle(@RequestBody Vehicle vehicle) {
         return vehicleService.updateVehicle(vehicle);
     }
 
-    @DeleteMapping("/{vehicleID}")
+    @DeleteMapping("deleteVehicle/{vehicleID}")
     public void deleteVehicle(@PathVariable("vehicleID") Long vehicleID) {
         vehicleService.deleteVehicle(vehicleID);
     }
+
+    @PutMapping("/updateVehicle/{vehicleID}")
+    public Repository updateVehicle(@PathVariable("vehicleID") Long vehicleID, @RequestBody Vehicle vehicle) {
+        Vehicle exitingVehicle = vehicleService.findbyId(vehicleID).orElse(null);
+
+        if (exitingVehicle==null) {
+            return null;
+        }
+        else {
+            exitingVehicle.setVehicle_number(vehicle.getVehicle_number());
+            exitingVehicle.setColor(vehicle.getColor());
+            exitingVehicle.setModel(vehicle.getModel());
+            exitingVehicle.setStatus(vehicle.getStatus());
+
+            //save the changes made to the existing vehicle
+            vehicleService.saveVehicle(exitingVehicle);
+            return null;
+
+        }
+    }
+
+
+    // get the specific vehicle by vehicleID and and feedback
+    @GetMapping("/vehicle/{vehicleID}/{feedback}")
+    public Vehicle saveFeedback(@PathVariable("vehicleID") Long vehicleID, @PathVariable("feedback") String feedback) {
+        Vehicle exitingVehicle = vehicleService.findbyId(vehicleID).orElse(null);
+
+        if (exitingVehicle==null) {
+            return null;
+        }
+        else {
+            exitingVehicle.setFeedback(feedback);
+
+            //save the changes made to the existing vehicle
+            vehicleService.saveVehicle(exitingVehicle);
+            return null;
+
+        }
+    }
 }
+

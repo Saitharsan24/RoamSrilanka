@@ -89,7 +89,7 @@ const HPRequestDetails = () => {
                 className="change_pic col-4"
                 style={{ height: "3rem", width: "Auto" }}
               >
-                Message to Manoharan
+                Message to {userData.userFullname}
               </button>
             </div>
 

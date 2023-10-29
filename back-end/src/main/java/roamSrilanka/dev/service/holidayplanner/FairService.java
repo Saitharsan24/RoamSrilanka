@@ -31,4 +31,8 @@ public class FairService {
         this.fairRepository.deleteById(id);
         return "Successfully Deleted";
     }
+
+    public Long countFairs() {
+        return fairRepository.count();
+    }
 }
