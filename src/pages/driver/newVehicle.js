@@ -4,6 +4,11 @@ import axios from "axios";
 
 function DrivernewVehicle () {
 
+    const [imageUrl1, setImageUrl1] = useState("");
+    const [imageUrl2, setImageUrl2] = useState("");
+    const [imageUrl3, setImageUrl3] = useState("");
+    const [imageUrl4, setImageUrl4] = useState("");
+
     const navigate = useNavigate();
 
     const [imageUrls, setImageUrls] = useState({
@@ -59,7 +64,8 @@ function DrivernewVehicle () {
         year: "",
     })
 
-    const {vehicle_number, color, model, company, seats, year} = vehicle;
+    const {vehicle_number, color, model, company, seats, year } = vehicle;
+
 
     
 
@@ -83,6 +89,98 @@ function DrivernewVehicle () {
     
         await axios.post("http://localhost:8080/addVehicle", vehicleWithImages);
         navigate("/driver/driverVehicle");
+    };
+
+    const upload_preset = "moz2vspi";
+    const cloud_name = "dg3y629pc";
+
+  const handleFileChange1 = (e) => {
+
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", upload_preset);
+    const options = {
+      method: "POST",
+      body: formData,
+    };
+
+    fetch(`https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`, options)
+      .then((res) => res.json())
+      .then((res) => {
+        setImageUrl1(res.secure_url); // Update the state with the uploaded image URL
+        console.log(res.secure_url); //equal to image1Url1
+        setVehicle({ ...vehicle, [e.target.name]: res.secure_url })
+        console.log(vehicle); //
+      })
+      .catch((err) => console.log(err));
+  };
+
+    const handleFileChange2 = (e) => {
+
+        const file = e.target.files[0];
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", upload_preset);
+        const options = {
+        method: "POST",
+        body: formData,
+        };
+
+        fetch(`https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`, options)
+        .then((res) => res.json())
+        .then((res) => {
+            setImageUrl2(res.secure_url); // Update the state with the uploaded image URL
+            console.log(res.secure_url); //
+            setVehicle({ ...vehicle, [e.target.name]: res.secure_url })
+        })
+        .catch((err) => console.log(err));  
+    };
+
+    const handleFileChange3 = (e) => {
+
+        const file = e.target.files[0];
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", upload_preset);
+        const options = {
+        method: "POST",
+        body: formData,
+        };
+
+        fetch(`https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`, options)
+        .then((res) => res.json())
+        .then((res) => {
+            setImageUrl3(res.secure_url); // Update the state with the uploaded image URL
+            console.log(res.secure_url); //
+            setVehicle({ ...vehicle, [e.target.name]: res.secure_url })
+        })
+        .catch((err) => console.log(err));
+        
+        // console.log(imageUrl3);  
+    };
+
+    const handleFileChange4 = (e) => {
+
+        const file = e.target.files[0];
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", upload_preset);
+        const options = {
+        method: "POST",
+        body: formData,
+        };
+
+        fetch(`https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`, options)
+        .then((res) => res.json())
+        .then((res) => {
+            setImageUrl4(res.secure_url); // Update the state with the uploaded image URL
+            console.log(res.secure_url); //
+            setVehicle({ ...vehicle, [e.target.name]: res.secure_url })
+        })
+        .catch((err) => console.log(err));
+        
+        // console.log(imageUrl4);  
     };
 
     return (
@@ -126,24 +224,27 @@ function DrivernewVehicle () {
                                 <div class="d-flex flex-row justify-content-between">
                                     <div class="form-group col-md-6 p-2">
                                         <label for="inputEmail4">Image - 01</label>
-                                        <input type={"file"} class="form-control" id="image1" name="image1" accept={"image/png, image/jpeg"} onChange={(e)=>onInputChange(e)} />
+
+                                        <input type="file" class="form-control" id="inputEmail4" name="image1" onChange={handleFileChange1}/>
                                     </div>
                                     <div class="form-group col-md-6 p-2">
                                         <label for="inputEmail4">Image - 02</label>
-                                        <input type={"file"} class="form-control" id="image2" name="image2" accept={"image/png, image/jpeg"} onChange={(e)=>onInputChange(e)}/>
+                                        <input type="file" class="form-control" id="inputEmail4" name="image2" onChange={handleFileChange2}/>
                                     </div>
                                 </div>
                                 <div class="d-flex flex-row justify-content-between">
                                     <div class="form-group col-md-6 p-2">
                                         <label for="inputEmail4">Image - 03</label>
-                                        <input type="file" class="form-control" id="image3" name="image3" accept={"image/png, image/jpeg"} onChange={(e)=>onInputChange(e)}/>
+
+                                        <input type="file" class="form-control" id="inputEmail4" name="image3" onChange={handleFileChange3}/>
                                     </div>
                                     <div class="form-group col-md-6 p-2">
                                         <label for="inputEmail4">Image - 04</label>
-                                        <input type="file" class="form-control" id="image4" name="image4" accept={"image/png, image/jpeg"} onChange={(e)=>onInputChange(e)}/>
+                                        <input type="file" class="form-control" id="inputEmail4" name="image4" onChange={handleFileChange4}/>
+
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3 ml-2">Submit</button>
+                                <button type="submit" class="btn btn-primary mt-3 ml-2" >Submit</button>
                             </form>
                         </div>
                     </div>

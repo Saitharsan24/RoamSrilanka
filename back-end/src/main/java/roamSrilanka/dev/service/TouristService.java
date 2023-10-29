@@ -60,6 +60,7 @@ public class TouristService {
     }
 
 
+
     public List<Tourist> getAllTourists() {
         return touristRepository.findAll();
     }

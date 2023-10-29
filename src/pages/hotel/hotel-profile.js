@@ -1,12 +1,107 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 import "./../../styles/guide/guide-profile.css";
 import DQ from "./../../assets/img/DQ.jpeg";
 import * as Icon from "react-bootstrap-icons";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import axios from "axios";
+import { useSession } from '../../Context/SessionContext';
 
 const HotelProfile = () => {
+  const { sessionData , setSessionData  } = useSession();
+  const ownerId = sessionData.userId;
+
+  const [user, setUser] = useState([]);
+
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 10000,
+  });
+
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: "",
+    newPassword: "",
+
+  })
+  const [userData, setUserData] = useState({
+    userFullname: "",
+  });
+
+  const inputPasswordData = (name, value) => {
+    // console.log(name, value);
+    setPasswordData((prev) => ({ ...prev, [name]: value }));
+    // console.log(hotelData);
+  };
+
+  const inputUserData = (name, value) => {
+    // console.log(name, value);
+    setUserData((prev) => ({ ...prev, [name]: value }));
+    // console.log(hotelData);
+  };
+
+  const handleAddPassword = async (e) => {
+    e.preventDefault();
+    if (passwordData.newPassword == passwordData.confirmNewPassword) {
+      try {
+        const response = await axiosInstance.put(`/updatePassword/${ownerId}`, {
+          // Your data to be sent in the PUT request body
+          currentPassword: passwordData.currentPassword,
+          newPassword: passwordData.newPassword
+        });
+        if (response.status == 200) {
+          console.log("Password updated");
+          alert("Password updated");
+        }else{
+          console.log("Password not updated");
+          alert("Password not updated");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert("Password not matched");
+      console.log("Password not matched");
+    }
+  };
+
+  const handleUpdateUser = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axiosInstance.put(`/updateUser/${ownerId}`, {
+        // Your data to be sent in the PUT request body
+        userFullname: userData.userFullname,
+      });
+      if (response.status == 200) {
+        console.log("User updated");
+        alert("User updated");
+      }else{
+        console.log("User not updated");
+        alert("User not updated");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get(`/viewUser/${ownerId}`)
+      .then((response) => {
+        setUser(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
+  console.log(user);
+
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
@@ -15,6 +110,10 @@ const HotelProfile = () => {
 
   const handleRadioChange = (event) => {
     setSelectedOption(event.target.id);
+  };
+
+  const handleReload = () => {
+    window.location.reload();
   };
 
   return (
@@ -139,7 +238,7 @@ const HotelProfile = () => {
                         fontSize: "32px",
                       }}
                     >
-                      Manoharan Keethapriya
+                      {user.userFullname}
                     </p>
                     <button
                       className="my-2"
@@ -219,6 +318,11 @@ const HotelProfile = () => {
                           width: "90%",
                         }}
                         type="text"
+                        name="userFullname"
+                        value={userData.userFullname}
+                        onChange={(e) => {
+                          inputUserData(e.target.name, e.target.value);
+                        }}
                         placeholder="John"
                       ></input>
                     </div>
@@ -372,10 +476,14 @@ const HotelProfile = () => {
                         color: "#FFF",
                         fontSize: "15px",
                       }}
+                      onClick={handleReload}
                     >
-                      Update Profile
+                      Discard
                     </button>
                     <button
+                    method="PUT"
+                    type="submit"
+                    onClick={handleUpdateUser}
                       className="p-1"
                       style={{
                         backgroundColor: "#004577",
@@ -386,7 +494,7 @@ const HotelProfile = () => {
                         fontSize: "15px",
                       }}
                     >
-                      Edit Profile
+                      Change
                     </button>
                   </div>
                 </div>
@@ -510,7 +618,7 @@ const HotelProfile = () => {
                         fontSize: "32px",
                       }}
                     >
-                      Manoharan Keethapriya
+                      {user.userFullname}
                     </p>
                     <button
                       className="my-2"
@@ -590,6 +698,11 @@ const HotelProfile = () => {
                           width: "45%",
                         }}
                         type="text"
+                        name="currentPassword"
+                        value={passwordData.currentPassword}
+                        onChange={(e) => {
+                          inputPasswordData(e.target.name, e.target.value);
+                        }}
                         placeholder="Enter Password"
                       ></input>
                     </div>
@@ -614,6 +727,11 @@ const HotelProfile = () => {
                           width: "90%",
                         }}
                         type="text"
+                        name="newPassword"
+                        value={passwordData.newPassword}
+                        onChange={(e) => {
+                          inputPasswordData(e.target.name, e.target.value);
+                        }}
                         placeholder="Enter New Password"
                       ></input>
                     </div>
@@ -625,7 +743,7 @@ const HotelProfile = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        New Password
+                       Confirm New Password
                       </label>
                       <input
                         className="p-2 col-10"
@@ -636,6 +754,11 @@ const HotelProfile = () => {
                           width: "90%",
                         }}
                         type="text"
+                        name="confirmNewPassword"
+                        value={passwordData.confirmNewPassword}
+                        onChange={(e) => {
+                          inputPasswordData(e.target.name, e.target.value);
+                        }}
                         placeholder="Again Enter New Password"
                       ></input>
                     </div>
@@ -651,10 +774,14 @@ const HotelProfile = () => {
                         color: "#FFF",
                         fontSize: "15px",
                       }}
+                      onClick={handleReload} 
                     >
                       Discard
                     </button>
                     <button
+                    method="PUT"
+                    onClick={handleAddPassword}
+                    type="submit"
                       className="p-1"
                       style={{
                         backgroundColor: "#004577",
