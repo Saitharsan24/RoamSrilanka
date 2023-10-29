@@ -111,7 +111,7 @@ function HotelRequest() {
   }, []);
   
   const filteredData = mergedData.filter((item) => {
-    return item.ownerId === ownerId;
+    return item.hotelData["ownerId"] === ownerId;
   });
 
   const filteredRequests = filteredData.filter(

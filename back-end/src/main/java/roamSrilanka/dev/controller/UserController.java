@@ -141,20 +141,6 @@ public class UserController {
         }
     }
 
-
-    @PutMapping("/updateUser/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Integer id, @RequestBody User updatedUser) {
-        User existingUser = userService.getUserById(id);
-
-        if (existingUser == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        existingUser.setUserFullname(updatedUser.getUserFullname());
-        userService.updateUser(existingUser);
-        return ResponseEntity.ok(existingUser);
-    }
-
 }
 
 
