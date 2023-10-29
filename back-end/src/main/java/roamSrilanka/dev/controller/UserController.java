@@ -67,10 +67,10 @@ public class UserController {
 
     }
 
-    @GetMapping("/viewUser/{userId}")
-    public User getUserByID(@PathVariable Integer id){
-        return userService.getUserByID(id);
-    }
+//    @GetMapping("/viewUser/{userId}")
+//    public User getUserByID(@PathVariable Integer id){
+//        return userService.getUserByID(id);
+//    }
 
     private static class LoginRequest{
         private String userName;
@@ -139,20 +139,6 @@ public class UserController {
         public String getNewPassword() {
             return newPassword;
         }
-    }
-
-
-    @PutMapping("/updateUser/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Integer id, @RequestBody User updatedUser) {
-        User existingUser = userService.getUserById(id);
-
-        if (existingUser == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        existingUser.setUserFullname(updatedUser.getUserFullname());
-        userService.updateUser(existingUser);
-        return ResponseEntity.ok(existingUser);
     }
 
 }
