@@ -43,10 +43,10 @@ public class Driver {
     @Column(name = "license_image")
     private String licenseImage;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @OneToOne
+//    @MapsId
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     //    @OneToOne(mappedBy = "vehicle", cascade = CascadeType.ALL)
    //    private Vehicle vehicle;

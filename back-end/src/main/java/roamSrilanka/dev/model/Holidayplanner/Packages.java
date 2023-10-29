@@ -19,10 +19,12 @@ public class Packages {
 //    private List<String> places;
 @Column(name = "package_name" )
     private String package_name;
-@Column(name = "meals")
-    private Boolean meals;
 @Column(name = "trip_guide")
     private Boolean trip_guide;
+
+@Column(name = "vehicle")
+    private Boolean vehicle;
+
 @Column(name = "days")
     private int days;
 @Column(name = "hotel_rating")
@@ -31,33 +33,41 @@ public class Packages {
     private String places;
 
 @Column(name = "status")
-private int status;
+private Integer status;
+
+@Column(name = "Discription")
+private String Discription;
+
+@Column(name = "no_of_people")
+private int no_of_people;
 
 
     public Packages() {
     }
 
-    public Packages(int packageID, BigDecimal price, String package_name, Boolean meals, Boolean trip_guide, int days, int hotel_rating, String places, int status ) {
+    public Packages(int packageID, BigDecimal price, String package_name, Boolean trip_guide, int days, int hotel_rating, String places, int status, String discription, int no_of_people) {
         this.packageID = packageID;
         this.price = price;
         this.package_name = package_name;
-        this.meals = meals;
         this.trip_guide = trip_guide;
         this.days = days;
         this.hotel_rating = hotel_rating;
         this.places = places;
         this.status = status;
+        this.Discription = discription;
+        this.no_of_people = no_of_people;
     }
 
-    public Packages(BigDecimal price, String package_name, Boolean meals, Boolean trip_guide, int days, int hotel_rating, String places, int status) {
+    public Packages(BigDecimal price, String package_name, Boolean meals, Boolean trip_guide, int days, int hotel_rating, String places, int status, String discription, int no_of_people) {
         this.price = price;
         this.package_name = package_name;
-        this.meals = meals;
         this.trip_guide = trip_guide;
         this.days = days;
         this.hotel_rating = hotel_rating;
         this.places = places;
         this.status = status;
+        this.Discription = discription;
+        this.no_of_people = no_of_people;
     }
 
     public int getStatus() {
@@ -85,13 +95,6 @@ private int status;
         this.price = price;
     }
 
-    public Boolean getMeals() {
-        return meals;
-    }
-
-    public void setMeals(Boolean meals) {
-        this.meals = meals;
-    }
 
     public int getPackageID() {
         return packageID;
@@ -135,5 +138,21 @@ private int status;
 
     public void setPlaces(String places) {
         this.places = places;
+    }
+
+    public String getDiscription() {
+        return Discription;
+    }
+
+    public void setDiscription(String discription) {
+        Discription = discription;
+    }
+
+    public int getNo_of_people() {
+        return no_of_people;
+    }
+
+    public void setNo_of_people(int no_of_people) {
+        this.no_of_people = no_of_people;
     }
 }

@@ -29,8 +29,6 @@ public class TouristController {
     }
 
 
-
-
     @GetMapping("/tourist")
     @ResponseBody
     public Iterable<Object> getAllTourist(){
@@ -47,9 +45,11 @@ public class TouristController {
         }
     }
 
-    @GetMapping("/viewTourists")
-    public Iterable<Tourist> getAllTourists(){
+    @GetMapping("/viewTourist")
+    public List<Tourist> getAllTourists(){
         return touristService.getAllTourists();
     }
+
+
 
 }
