@@ -237,8 +237,8 @@ function AdminVehicleDetail_1() {
                             borderRadius: "5px",
                           }}
                         >
-                           {vehicledetail.model}
-
+                          {vehicledetail.model}
+                           
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td

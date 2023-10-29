@@ -4,6 +4,7 @@ import profile from "../../assets/images/profile.jpg";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Driver from "../driver/dashboard";
+import Modal_Driver from "../admin/admin_modal_driver";
 
 function AdminDrivertDetails() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -32,7 +33,7 @@ function AdminDrivertDetails() {
   }, [userId]);
 
   useEffect(() => {
-    axiosInstance.get(`/viewUser/${userId}`).then((response) => {
+    axiosInstance.get(`/users/${userId}`).then((response) => {
       console.log(response.data);
       setdriveruserdetail(response.data);
     })
@@ -43,7 +44,20 @@ function AdminDrivertDetails() {
   }
   , [userId]);
 
+  const [openModal, setOpenModal] = useState(false);  // This is the state variable to control the model(Eable/Disable)
+  const [blurBackground, setBlurBackground] = useState(false); // State to control background blur
 
+  // Function to open the modal and blur the background
+  const openModalWithBlur = () => {
+    setOpenModal(true);
+    setBlurBackground(true);
+  };
+
+   // Function to close the modal and remove the background blur
+   const closeModal = () => {
+    setOpenModal(false);
+    setBlurBackground(false);
+  };
   
 
 
@@ -318,10 +332,39 @@ function AdminDrivertDetails() {
                       </tr>
 
                       <tr style={{ height: "20px" }}></tr>
-                      <tr >
+                      <td colSpan={3} style={{textAlign:"right"}} >
+                      
+                      {driverdetail.status === null ? (
+                          <button
+                            style={{
+                              backgroundColor: "#d03b3b",
+                              color: "#ffff",
+                              borderRadius: "10px",
+                              borderColor: "#ffff",
+                              width: "7rem"
+                            }}
+                             onClick={openModalWithBlur}
+                          >
+                            Disable
+                          </button>
+                        ) : (
+                          <button
+                            style={{
+                              backgroundColor: "#66d03b",
+                             color: "#ffff",
+                              borderColor: "#ffff",
+                              borderRadius: "10px",
+                              width: "7rem"
+                            }}
+                            onClick={openModalWithBlur}
+                          >
+                            Enable
+                          </button>
+)}
 
-                          <td colSpan={3} style={{textAlign:"right"}} ><button style={{backgroundColor:"#004577",color:"#ffff",borderRadius:"10px",width:"7rem"}}>Disable</button> </td>
-                          </tr>
+
+
+                    </td>
                           <tr style={{ height: "20px" }}></tr>
                     </tbody>
                   </table>
