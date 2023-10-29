@@ -39,6 +39,8 @@ public class Tourist {
     @Column(name = "emrgcy_contact")
     private String emergencyContact;
 
+
+
     @OneToOne
     @MapsId
     @JoinColumn(name = "user_id")

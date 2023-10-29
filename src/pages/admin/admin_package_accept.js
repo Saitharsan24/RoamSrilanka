@@ -1,9 +1,113 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles/admin/admin_package.css";
 import { MDBDataTable } from "mdbreact";
-
+import { useState } from "react";
+import axios from "axios";
 
 function AdminPackageAccept() {
+     
+   const urlParams = new URLSearchParams(window.location.search);
+    const packageID = urlParams.get("packageId");
+
+    console.log(packageID);
+
+    const [packages, setPackage] = useState([]);
+
+    const apiBaseUrl = "http://localhost:8080";
+
+   const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 5000,
+   });
+
+   useEffect(() => {
+      // Make an HTTP GET request to fetch data from the API
+      axiosInstance.get(`/packages/${packageID}`).then((response) => {
+        //handle success
+        setPackage(response.data);
+       
+      })
+      .catch((error) => {
+        //handle error
+        console.log(error);
+       
+      })  
+    }, [packageID]);
+
+
+    function getStatusText(status) {
+      if (status == null) {
+        return <div style={{color:"#d0c96e",fontWeight:"bolder"}}>Pending</div>;
+      } else if (status== 0) {
+        return <div style={{color:"#d03b3b",fontWeight:"bolder"}}>Rejected</div>;
+      } else if (status == 1) {
+        return <div style={{color:"#66d03b",fontWeight:"bolder"}}>Accepted</div>;
+      } else {
+        return "Unknown";
+      }
+    }  // function of status
+
+    function getButtonTr(status){
+      if(status==null){
+        return(
+          <tr>
+          
+          <td style={{ width: "200px", textAlign: "center" }}>
+          <button 
+          //  onClick={openModalWithBlurReject}
+                  style={{
+                    backgroundColor: "#d03b3b",
+                  color: "#ffff",
+                    borderColor: "#ffff",
+                    borderRadius: "10px",
+                    borderColor: "#ffff",
+                    width: "7rem"
+                  }}
+                  
+                >
+                  Reject
+          </button>
+          </td>
+          <td style={{ width: "50px" }}></td>
+          <td style={{ width: "200px", textAlign: "center" }}>
+          <button 
+          // onClick={openModalWithBlurAccept}
+                  style={{
+                    backgroundColor: "#66d03b",
+                  color: "#ffff",
+                    borderColor: "#ffff",
+                    borderRadius: "10px",
+                    borderColor: "#ffff",
+                    width: "7rem"
+                  }}
+                  
+                >
+                  Accept
+          </button>
+          </td>
+          </tr>
+        );
+    }  else if(status==0||status==1){
+      return (
+      <tr>
+                          <td >
+                          </td>
+                          <td style={{ width: "50px" }}></td>
+                          <td style={{ width: "200px", textAlign: "right" }}>
+                          Vehicle Status
+                          </td>
+                          <td style={{ width: "50px" }}></td>
+                          <td style={{ width: "200px", textAlign: "left" }}>
+                            {getStatusText(packages.status)}
+                          {/* {getStatusText(vehicledetail.status)} */}
+                          </td>
+      </tr>)
+    } else{
+      return "Unknown"
+    }
+  }  //function to get button tr
+  
+
   return (
     <React.Fragment>
           <div className="w-100 d-flex justify-content-center  align-items-center">
@@ -29,7 +133,7 @@ function AdminPackageAccept() {
                               
                             }}
                           >
-                            001
+                            {packages.packageid}
                           </td>
                           
                             </tr>
@@ -45,7 +149,7 @@ function AdminPackageAccept() {
                               
                             }}
                           >
-                            Robert Johnson
+                            {packages.package_name}
                           </td>
                             </tr>
                             <tr style={{ height: "10px" }}></tr>
@@ -78,7 +182,7 @@ function AdminPackageAccept() {
                         // fontSize: "25px",
                       }}
                     >
-                    7 000/=
+                    {packages.price}
                     </p>
                   </div>
                 </div>
@@ -96,7 +200,7 @@ function AdminPackageAccept() {
                       <tr style={{ height: "10px" }}></tr>
                       <tr>
                         <td style={{ width: "200px", textAlign: "left" }}>
-                        District
+                        Places
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td style={{ width: "200px" }}>Hotel Type </td>
@@ -114,7 +218,7 @@ function AdminPackageAccept() {
                             borderRadius: "5px",
                           }}
                         >
-                          Kandy,Nuwara Eliya,Padula
+                          {packages.places}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -124,7 +228,7 @@ function AdminPackageAccept() {
                             borderRadius: "5px",
                           }}
                         >
-                           3 star 
+                           {packages.hotel_rating}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -134,7 +238,7 @@ function AdminPackageAccept() {
                             borderRadius: "5px",
                           }}
                         >
-                         3 days
+                         {packages.days}
                         </td>
                       </tr>
 
@@ -145,9 +249,9 @@ function AdminPackageAccept() {
                         Number of members
                         </td>
                         <td style={{ width: "50px" }}></td>
-                        <td style={{ width: "200px" }}>Vehicle Type </td>
+                        <td style={{ width: "200px" }}>Vehicle facility </td>
                         <td style={{ width: "50px" }}></td>
-                        <td style={{ width: "200px" }}>Seating Capacity</td>
+                        <td style={{ width: "200px" }}>Guide facility</td>
                       </tr>
 
                       <tr style={{ height: "10px" }}></tr>
@@ -160,7 +264,7 @@ function AdminPackageAccept() {
                             borderRadius: "5px",
                           }}
                         >
-                          04
+                          {packages.no_of_people}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -170,7 +274,7 @@ function AdminPackageAccept() {
                             borderRadius: "5px",
                           }}
                         >
-                            Car
+                          {packages.vehicle}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -180,7 +284,7 @@ function AdminPackageAccept() {
                             borderRadius: "5px",
                           }}
                         >
-                          05
+                          {packages.trip_guide}
                         </td>
                       </tr>
  
@@ -196,7 +300,7 @@ function AdminPackageAccept() {
                       <tr style={{ height: "10px" }}></tr>
                       <tr>
                         <td style={{ width: "200px", textAlign: "left" }}>
-                        Discription
+                        Description
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td style={{ width: "200px" }}> </td>
@@ -215,7 +319,7 @@ function AdminPackageAccept() {
                             
                           }}
                         >
-                          
+                          {packages.Discription}
                         </td>
                       </tr>
 
@@ -223,10 +327,15 @@ function AdminPackageAccept() {
                       </tbody>
 
 </table>
-                 <div className="d-flex flex justify-content-end gap-4 w-75 mb-5">   
+
+<table className=" d-flex flex-column justify-content-center align-items-center w-100  ">
+            {getButtonTr(packages.status)}
+            </table>
+
+                 {/* <div className="d-flex flex justify-content-end gap-4 w-75 mb-5">   
                  <button style={{backgroundColor:"#004577",color:"#ffff",borderRadius:"10px",width:"7rem"}}>Reject</button>  
                  <button style={{backgroundColor:"#004577",color:"#ffff",borderRadius:"10px",width:"7rem"}}>Publish</button>  
-                 </div> 
+                 </div>  */}
                   </div>
 
                  

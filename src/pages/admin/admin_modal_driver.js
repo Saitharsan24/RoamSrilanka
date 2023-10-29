@@ -1,12 +1,13 @@
 import React from "react";
-import './../styles/admin/admin_modal.css';
+//import './../styles/admin/admin_modal.css';
 import { useState } from "react";
 import axios from "axios";
+import Driver from "../driver/dashboard";
 
     
 
 
-function Modal({closeModal,userId}){
+function Modal_Driver({closeModal,userId}){
   const apiBaseUrl = "http://localhost:8080";
 
   const axiosInstance = axios.create({
@@ -14,7 +15,7 @@ function Modal({closeModal,userId}){
     timeout: 5000,
    });
    
-   const [holidayPlannerdetailstatus, setHolidayPlannerstatus] = useState([]);
+   const [driverdetailstatus, setdriverstatus] = useState([]);
    const handleUpdate = () => {
     // Fetch the current status 
     axiosInstance
@@ -33,7 +34,7 @@ function Modal({closeModal,userId}){
           .then((response) => {
             // Handle success, close the modal
             closeModal();
-            setHolidayPlannerstatus(response.data.status);
+          //  setHolidayPlannerstatus(response.data.status);
             
           })
           .catch((error) => {
@@ -50,13 +51,13 @@ function Modal({closeModal,userId}){
   //console.log(holidayPlannerdetailstatus);
       
     return(
-        <div className="modalBackground-planner">
-            <div className="modalContainer-planner">
-               <div className="title-modalCloseBtn-planner w-75 mt-1 "> <button onClick={()=>closeModal(false)} >X</button></div>
-                <div className="title-modal-planner "><h3>Are You sure</h3></div>
-                <div className="body-modal-planner "><p>Do you want to {holidayPlannerdetailstatus===null?("Enable"):("Disable")}  Account?</p></div>
-                <div className="footer-modal-planner">
-                    <button onClick={()=>closeModal(false)} id="cancelBtn-planner">Cancel</button>
+        <div className="modalBackground-driver">
+            <div className="modalContainer-driver">
+               <div className="title-modalCloseBtn-driver w-75 mt-1 "> <button onClick={()=>closeModal(false)} >X</button></div>
+                <div className="title-modal-driver "><h3>Are You sure</h3></div>
+                {/* <div className="body-modal-driver "><p>Do you want to {holidayPlannerdetailstatus===null?("Enable"):("Disable")}  Account?</p></div> */}
+                <div className="footer-modal-driver">
+                    <button onClick={()=>closeModal(false)} id="cancelBtn-driver">Cancel</button>
                     <button onClick={handleUpdate }>Yes</button>
                 </div>
             </div>
@@ -64,4 +65,4 @@ function Modal({closeModal,userId}){
     )
 }
 
-export default Modal;
+export default Modal_Driver;

@@ -15,6 +15,7 @@ function Users() {
   const [holidayPlanners, setHolidayPlanners] = useState([]);
   const [tourists, setTourists] = useState([]);
   const [drivers, setDrivers] = useState([]);
+  const [hotels, setHotels] = useState([]);
   const [userdetail, setuserdetail] = useState([]);
 
   
@@ -48,6 +49,11 @@ function Users() {
   axiosInstance.get("http://localhost:8080/viewDriver").then((response) => {
     setDrivers(response.data);
     // console.log(response.data)
+
+  axiosInstance.get("http://localhost:8080/viewHotels").then((response) => {
+    setHotels(response.data);
+    // console.log(response.data)
+  });
 });
 
 
@@ -67,8 +73,8 @@ function Users() {
         width: 150,
       },
       {
-        label: "Nationality",
-        field: "national",
+        label: "status",
+        field: "status",
         sort: "asc",
         width: 200,
       },
@@ -90,7 +96,7 @@ function Users() {
       return {
       id: tourist.userId, //  API response has a field named 'id' for Tourist ID
       name: UserDetail ? UserDetail.userFullname : "N/A", //  API response has a field named 'touristName' for Tourist Name
-      national: tourist.country, //  API response has a field named 'nationality' for Nationality
+      status: tourist.status === null ?<div style={{color:"#66d03b",fontWeight:"bolder"}}>active</div>  : <div style={{color:"#d03b3b",fontWeight:"bolder"}}>passive</div>, // Set status based on the condition
       btn: [
         <>
          <Link to={`/admin/admintouristdetail?userId=${tourist.userId}`}>
@@ -351,8 +357,8 @@ function Users() {
       },
 
       {
-        label: "Rating",
-        field: "rate",
+        label: "status",
+        field: "status",
         sort: "asc",
         width: 100,
         
@@ -365,153 +371,24 @@ function Users() {
         btn: "view-button",
       },
     ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail" >View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "002",
-        name: "Jane Smith",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail" >View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "003",
-        name: "Ella Brown",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "004",
-        name: "William Davis",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "005",
-        name: "Sophia Wilson",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "006",
-        name: "Sarah Martinez",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "007",
-        name: "Oliver Taylor",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "008",
-        name: "Ava Martinez",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "009",
-        name: "Ethan Thompson",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "010",
-        name: "Ava Martinez",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "011",
-        name: "Sophia Wilson",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "012",
-        name: "Matthew Taylor",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "013",
-        name: "Christopher Davis",
-        address: "Annasliyady,Karavanavai,Karaveddy",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
     
-    ],
+    rows: hotels.map((hotel) => ({
+      id: hotel.hotelId, //  API response has a field named 'id' for Hotel ID
+      name: hotel.hotelName, //  API response has a field named 'hotelName' for Hotel Name
+      address: hotel.address, //  API response has a field named 'address' for Address
+      status: hotel.status === null ?<div style={{color:"#66d03b",fontWeight:"bolder"}}>active</div>  : <div style={{color:"#d03b3b",fontWeight:"bolder"}}>passive</div>, // Set status based on the condition
+      btn: [
+        <>
+          <Link to={`/admin/adminhoteldetail?hotelId=${hotel.hotelId}`}>
+          <button className="view-detail">View detail</button>
+          </Link>
+        </>,
+      ],
+    })),
+
   };
+
+  
 
 
   const data_holidayplanner = {
