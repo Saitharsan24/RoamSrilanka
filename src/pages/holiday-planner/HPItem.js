@@ -100,7 +100,7 @@ function HPItem() {
     ],
     rows: events.map((event) => ({
       fairId: event.fairId,
-      name: event.name,
+      name: event.fairname,
       rent: event.rent,
       button1: (
         <button

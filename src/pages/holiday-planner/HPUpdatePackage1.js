@@ -29,6 +29,7 @@ const HPUpdatePackage1 = () => {
 
   const [placesInput, setPlacesInput] = useState("");
   const [places, setPlaceSuggestions] = useState([]);
+  const [selectedPlaces, setSelectedPlaces] = useState([]);
   const fetchPlaceSuggestions = async (query) => {
     try {
       const response = await axiosInstance.get(`https://nominatim.openstreetmap.org/search?q=${query}&countrycodes=LK&format=json`);
@@ -263,16 +264,6 @@ const HPUpdatePackage1 = () => {
                    ))}
                  </ul>
                 )}
-
-                {/* <label>
-                  {" "}
-                  <br />
-                  <input
-                    className="p-2"
-                    type="text"
-                    placeholder="Added Places"
-                  ></input>
-                </label> */}
               </div>
             </div>
             <div className="d-flex flex-lg-row flex-md-column flex-column gap-sm-3 justify-content-between mx-2">
