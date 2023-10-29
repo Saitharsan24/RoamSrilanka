@@ -63,10 +63,10 @@ function Vehicle() {
     // ]
 
     const images = [
-        {id:0, value:img1},
-        {id:1, value:img2},
-        {id:2, value:img3},
-        {id:3, value:img4}
+        {id:0, value:vehicle.length === 1 ? vehicle[0]['image1'] : img1},
+        {id:1, value:vehicle.length === 1 ? vehicle[0]['image2'] : img1},
+        {id:2, value:vehicle.length === 1 ? vehicle[0]['image3'] : img1},
+        {id:3, value:vehicle.length === 1 ? vehicle[0]['image4'] : img1}
     ]
 
     setTimeout(() => { 
@@ -169,7 +169,7 @@ function Vehicle() {
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="card border-danger">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">sp CAR 3111</h6>
+                                                    <h6 class="card-title">{vehicle.length === 1 ? vehicle[0]['vehicle_number'] : 'WP SP 2233'}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -185,7 +185,7 @@ function Vehicle() {
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="card border-danger">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">White</h6>
+                                                    <h6 class="card-title">{vehicle.length === 1 ? vehicle[0]['color'] : 'White'}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -201,7 +201,7 @@ function Vehicle() {
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="card border-danger">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">Toyota</h6>
+                                                    <h6 class="card-title">{vehicle.length === 1 ? vehicle[0]['company'] : 'TOYOTA'}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -217,7 +217,7 @@ function Vehicle() {
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="card border-danger">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">4</h6>
+                                                    <h6 class="card-title">{vehicle.length === 1 ? vehicle[0]['seats'] : '4'}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -233,7 +233,7 @@ function Vehicle() {
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="card border-danger">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">2018</h6>
+                                                    <h6 class="card-title">{vehicle.length === 1 ? vehicle[0]['year'] : '2019'}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -249,7 +249,7 @@ function Vehicle() {
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="card border-danger">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">Premio</h6>
+                                                    <h6 class="card-title">{vehicle.length === 1 ? vehicle[0]['model'] : 'Premio'}</h6>
                                                 </div>
                                             </div>
                                         </div>
