@@ -276,6 +276,7 @@ const HPUpdatePackage1 = () => {
                    ))}
                  </ul>
                 )}
+
               </div>
 
               <div className="d-flex flex-column justify-content-center m-2">
@@ -292,6 +293,7 @@ const HPUpdatePackage1 = () => {
                     style={{ minHeight: "50px" }}
                   ></textarea>
                 </label>
+
               </div>
             </div>
             <div className="d-flex flex-lg-row flex-md-column flex-column gap-sm-3 justify-content-between mx-2">
