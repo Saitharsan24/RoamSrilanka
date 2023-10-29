@@ -4,6 +4,7 @@ import "./../../styles/hotel/hotel-dashboard.css";
 import * as Icon from "react-bootstrap-icons";
 import { Calendar } from "react-modern-calendar-datepicker";
 import axios from "axios";
+import { useSession } from '../../Context/SessionContext';
 import {
   ComposedChart,
   Line,
@@ -21,6 +22,7 @@ import {
   Cell,
   ResponsiveContainer,
 } from "recharts";
+
 
 export const data = {
   labels: ["Occuoancy", "Vacancy"],
@@ -118,11 +120,15 @@ const data02 = [
 ];
 
 const HotelDashboard = () => {
+  const { sessionData , setSessionData  } = useSession();
+  const ownerId = sessionData.userId;
+
   const [selectedDayRange, setSelectedDayRange] = useState({
     from: null,
     to: null,
   });
   const [requests, setRequests] = useState([]);
+  console.log(requests);
   //Sending data to backend
   const apiBaseUrl = "http://localhost:8080";
 
@@ -131,22 +137,85 @@ const HotelDashboard = () => {
     timeout: 10000,
   });
 
-  useEffect(() => {
-    // Fetch data from your backend API
-    axiosInstance
-      .get("/viewRequest")
-      .then((response) => {
-        setRequests(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log("Error fetching data:", error);
+  const [mergedData, setMergedData] = useState([]);
+
+  const mergeData = async () => {
+    try {
+      // Fetch data from your backend API for viewRequest
+      const requestResponse = await axiosInstance.get("/viewRequest");
+      const requestArray = requestResponse.data;
+  
+      // Fetch data from your backend API for viewTourists
+      const touristsResponse = await axiosInstance.get("/viewTourists");
+      const touristsArray = touristsResponse.data;
+  
+      // Fetch data from your backend API for viewHotels
+      const hotelsResponse = await axiosInstance.get("/viewHotels");
+      const hotelsArray = hotelsResponse.data;
+  
+      // Fetch data from your backend API for users
+      const usersResponse = await axiosInstance.get("/users");
+      const usersArray = usersResponse.data;
+  
+      // Create a mapping of userId to user data
+      const userDataMap = {};
+      usersArray.forEach((user) => {
+        userDataMap[user.userId] = user;
       });
+  
+      // Create a mapping of hotelId to hotel data
+      const hotelDataMap = {};
+      hotelsArray.forEach((hotel) => {
+        hotelDataMap[hotel.hotelId] = hotel;
+      });
+  
+      // Merge the data based on userId
+      const mergedData = requestArray.map((request) => {
+        const userId = request.userId;
+        // Find the corresponding user data
+        const user = userDataMap[userId];
+        // Initialize the merged object with the user data
+        const mergedObject = { ...user, ...request };
+  
+        // Find the corresponding tourist data, if available
+        const tourist = touristsArray.find((tourist) => tourist.userId === userId);
+        if (tourist) {
+          mergedObject.touristData = tourist;
+        }
+  
+        return mergedObject;
+      });
+  
+      // Merge the data based on hotelId
+      mergedData.forEach((item) => {
+        const hotelId = item.hotelId;
+        // Find the corresponding hotel data, if available
+        const hotel = hotelDataMap[hotelId];
+        if (hotel) {
+          item.hotelData = hotel;
+        }
+      });
+  
+      // Set the merged data in your state variable
+      setMergedData(mergedData);
+    } catch (error) {
+      console.log("Error fetching data:", error);
+    }
+  };
+  
+  useEffect(() => {
+    mergeData();
   }, []);
 
-  const filteredRequests = requests.filter((request) => request.status == null);
+  const filteredData = mergedData.filter((item) => {
+    return item.ownerId === ownerId;
+  });
 
-  const currentOccupants = requests.filter((request) => request.status == 1);
+  console.log("mergedData", mergedData);
+
+  const filteredRequests = filteredData.filter((request) => request.status == null);
+
+  const currentOccupants = filteredData.filter((request) => request.status == 1);
 
   return (
     <div className="d-flex flex-column gap-2 w-100">
@@ -177,16 +246,16 @@ const HotelDashboard = () => {
               </div>
               <div
                 style={{ color: "" }}
-                className="d-flex flex-column col-12 col-md-8 col-lg-7 align-items-center justify-content-center "
+                className="d-flex flex-column col-12 col-md-8 col-lg-7 gap-2 align-items-center justify-content-center "
               >
-                <p className="m-0" style={{ fontSize: "1rem" }}>
-                  <b>{request.touristName}</b>
-                </p>
                 <p className="m-0" style={{ fontSize: "0.75rem" }}>
-                  {request.hotelName}
+                  <b>{request.hotelData["hotelName"]}</b>
                 </p>
                 <p className="m-0" style={{ fontSize: "0.75rem" }}>
                   {request.date}
+                </p>
+                <p className="m-0" style={{ fontSize: "0.75rem" }}>
+                  {request.userFullname}
                 </p>
               </div>
             </div>
@@ -215,12 +284,15 @@ const HotelDashboard = () => {
                   }}
                 ></img>
               </div>
-              <div className="d-flex flex-column align-items-center justify-content-center">
+              <div className="d-flex flex-column gap-2 align-items-center justify-content-center">
                 <p className="m-0" style={{ fontSize: "0.75rem" }}>
-                  {request.hotelName}
+                  <b>{request.hotelData["hotelName"]}</b>
                 </p>
                 <p className="m-0" style={{ fontSize: "0.75rem" }}>
                   {request.date}
+                </p>
+                <p className="m-0" style={{ fontSize: "0.75rem" }}>
+                  {request.userFullname}
                 </p>
               </div>
             </div>

@@ -4,7 +4,6 @@ import { MDBDataTable } from "mdbreact";
 import "../../styles/admin/admin_user.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import axios from "axios";
@@ -14,22 +13,45 @@ import axios from "axios";
 function Users() {
 
   const [holidayPlanners, setHolidayPlanners] = useState([]);
-  
-  // const apiBaseUrl = "http://localhost:8080";
+  const [tourists, setTourists] = useState([]);
+  const [drivers, setDrivers] = useState([]);
+  const [userdetail, setuserdetail] = useState([]);
 
-  //  const axiosInstance = axios.create({
-  //   baseURL: apiBaseUrl,
-  //   timeout: 5000,
-  //  });
   
+  const apiBaseUrl = "http://localhost:8080";
+
+   const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 5000,
+   });
+ 
+   
+   
   useEffect(() => {
     // Make an HTTP GET request to fetch data from the API
-    axios.get("http://localhost:8080/viewHolidayplanner").then((response) => {
+    axiosInstance.get("http://localhost:8080/viewHolidayplanner").then((response) => {
       setHolidayPlanners(response.data);
+      // console.log(response.data)
     });
+
+    axiosInstance.get("http://localhost:8080/viewTourist").then((response) => {
+      setTourists(response.data);
+      // console.log(response.data)
+  });
+   
+  axiosInstance.get("http://localhost:8080/users").then((response) => {
+    setuserdetail(response.data);
+    console.log(response.data)
+     });
   }, []);
 
+  axiosInstance.get("http://localhost:8080/viewDriver").then((response) => {
+    setDrivers(response.data);
+    // console.log(response.data)
+});
 
+
+  
   const data_tourist = {
     columns: [
       {
@@ -58,139 +80,27 @@ function Users() {
         btn: "view-button",
       },
     ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        national: "Sri Lanka",
-        btn: [
-          <>
-           <a href="/admin/admintouristdetail"> <button className="view-detail" >View detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "002",
-        name: "Jane Smith",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail ">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "003",
-        name: "Ella Brown",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "004",
-        name: "William Davis",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "005",
-        name: "Sophia Wilson",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "006",
-        name: "Sarah Martinez",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "007",
-        name: "Oliver Taylor",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "008",
-        name: "Ava Martinez",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "009",
-        name: "Ethan Thompson",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "010",
-        name: "Ava Martinez",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "011",
-        name: "Sophia Wilson",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "012",
-        name: "Matthew Taylor",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "013",
-        name: "Christopher Davis",
-        national: "Sri Lanka",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
+
+    rows :tourists.map((tourist) => {
     
-    ],
+      const UserDetail = userdetail.find(
+        (detail) => detail.userId === tourist.userId
+      );
+
+      return {
+      id: tourist.userId, //  API response has a field named 'id' for Tourist ID
+      name: UserDetail ? UserDetail.userFullname : "N/A", //  API response has a field named 'touristName' for Tourist Name
+      national: tourist.country, //  API response has a field named 'nationality' for Nationality
+      btn: [
+        <>
+         <Link to={`/admin/admintouristdetail?userId=${tourist.userId}`}>
+         <button className="view-detail">View detail</button>
+          </Link>
+                </>,
+      ],
+    };
+  }),
+
   };
 
   const data_driver = {
@@ -208,14 +118,14 @@ function Users() {
         width: 150,
       },
       {
-        label: "Seat Capacity",
-        field: "seat",
+        label: "Phone Number",
+        field: "phone",
         sort: "asc",
         width: 200,
       },
       {
-        label: "Rating",
-        field: "rate",
+        label: "Status",
+        field: "status",
         sort: "asc",
         width: 150,
       },
@@ -228,153 +138,32 @@ function Users() {
         btn: "view-button",
       },
     ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        seat: "12",
-        rate: "4.5",
-        btn: [
-          <>
-              <a href="/admin/admindriverdetail"> <button className="view-detail" >View detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "002",
-        name: "Jane Smith",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "003",
-        name: "Ella Brown",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "004",
-        name: "William Davis",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "005",
-        name: "Sophia Wilson",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "006",
-        name: "Sarah Martinez",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "007",
-        name: "Oliver Taylor",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "008",
-        name: "Ava Martinez",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "009",
-        name: "Ethan Thompson",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "010",
-        name: "Ava Martinez",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "011",
-        name: "Sophia Wilson",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "012",
-        name: "Matthew Taylor",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "013",
-        name: "Christopher Davis",
-        seat: "6",
-        rate: "4.5",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-    
-    ],
-  };
+     
+    rows :drivers.map((driver) => {
+
+
+      const UserDetail = userdetail.find(
+        (detail) => detail.userId === driver.userId
+      );
+
+      return {
+      id: driver.userId, //  API response has a field named 'id' for Driver ID
+      name: UserDetail ? UserDetail.userFullname : "N/A", //  API response has a field named 'driverName' for Driver Name
+      phone: driver.phoneNo, //  API response has a field named 'seatCapacity' for Seat Capacity
+      status: driver.status === null ?<div style={{color:"#66d03b",fontWeight:"bolder"}}>active</div>  : <div style={{color:"#d03b3b",fontWeight:"bolder"}}>passive</div>, // Set status based on the condition
+      btn: [
+        <>
+          <Link to={`/admin/admindriverdetail?userId=${driver.userId}`}>
+          <button className="view-detail">View detail</button>
+          </Link>
+        </>,
+      ],
+    };
+  }),
+  
+      };
+        
+  
 
   const data_guide = {
     columns: [
@@ -757,25 +546,29 @@ function Users() {
       },
     ],
 
-     // Map your API data to the rows
-       rows :holidayPlanners.map((planner) => ({
-       id: planner.userId, //  API response has a field named 'id' for Planner ID
-       name: planner.plannerName, //  API response has a field named 'plannerName' for Planner Name
-       status: planner.contactNo, //  API response has a field named 'userId' for User ID
-       btn: [
-        <>
-         <Link to={`/admin/adminholidayplannrdetail?userId=${planner.userId}`}>
-         <button className="view-detail">View detail</button>
-          </Link>
-         {/* <a href="/admin/adminholidayplannrdetail"> <button className="view-detail" >View detail</button></a> */}
-        </>,
-      ],
-  })),
 
 
+  rows :holidayPlanners.map((planner) => {
+
+    const UserDetail = userdetail.find(
+      (detail) => detail.userId === planner.userId
+    );
+
+    return {
+    id: planner.userId, //  API response has a field named 'id' for Planner ID
+    name: UserDetail ? UserDetail.userFullname : "N/A", //  API response has a field named 'plannerName' for Planner Name
+    status: planner.status === null ?<div style={{color:"#66d03b",fontWeight:"bolder"}}>active</div>  : <div style={{color:"#d03b3b",fontWeight:"bolder"}}>passive</div>, // Set status based on the condition
+    btn: [
+      <>
+       <Link to={`/admin/adminholidayplannrdetail?userId=${planner.userId}`}>
+       <button className="view-detail">View detail</button>
+        </Link>
+      </>,
+    ],
   };
-
-
+}
+),
+  };
 
 
   return (

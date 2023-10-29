@@ -13,7 +13,9 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
 
 
 
+
     @Query(value = "SELECT COUNT(*) FROM vehicle", nativeQuery = true)
     Long getVehicleCount();
+
 
 }

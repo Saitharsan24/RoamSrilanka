@@ -53,12 +53,12 @@ function SideNavbar() {
         cName: 'nav-text',
       },
 
-      // {
-      //   title:'Ride',
-      //   path:'touristDriver',
-      //   icon:<BiIcons.BiSolidCar />,
-      //   cName: 'nav-text',
-      // },
+      {
+        title:'Ride',
+        path:'touristDriver',
+        icon:<BiIcons.BiSolidCar />,
+        cName: 'nav-text',
+      },
 
       {
         title:'Accessories',

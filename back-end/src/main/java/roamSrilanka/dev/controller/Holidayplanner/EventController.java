@@ -34,6 +34,11 @@ public class EventController {
         return this.eventService.getEvent(identity);
     }
 
+    @GetMapping("/event/count")
+    public Long countEvents() {
+        return eventService.countEvents();
+    }
+
 //    @PutMapping("/updateEvent/{id}")
 //    public Event updateEvent(@PathVariable(value = "id") Integer identity, @RequestBody Event eventRequest) {
 //        return this.eventService.updateEvent(identity, eventRequest);

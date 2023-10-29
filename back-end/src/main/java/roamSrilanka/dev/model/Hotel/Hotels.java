@@ -15,6 +15,9 @@ public class Hotels {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer hotelId;
 
+    @Column(name = "owner_id")
+    private Integer ownerId;
+
     @Column(name = "hotel_name")
     private String hotelName;
 
@@ -39,25 +42,12 @@ public class Hotels {
     @Column(name = "price")
     private Double price;
 
-//    @ElementCollection
-//    @Column(name = "hotel_images")
-//    private List<File> hotelImages;
-//
-//    @ElementCollection
-//    @Column(name = "hotel_amenities")
-//    private ArrayList<String> hAmenities = new ArrayList<>();
-
-//    @OneToMany(mappedBy = "hotels", cascade = CascadeType.ALL)
-//    private List<HotelAmenities> hotelAmenities = new ArrayList<>();
-
-//    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<HotelRooms> rooms;  // One-to-Many relationship with HotelRooms
-
     //Constructors
     public Hotels() {
     }
 
-    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price) {
+    public Hotels(Integer ownerId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city) {
+        this.ownerId = ownerId;
         this.hotelName = hotelName;
         this.starRating = starRating;
         this.userRating = userRating;
@@ -65,11 +55,11 @@ public class Hotels {
         this.hotelType = hotelType;
         this.address = address;
         this.city = city;
-        this.price = price;
     }
 
-    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price) {
+    public Hotels(Integer hotelId, Integer ownerId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city) {
         this.hotelId = hotelId;
+        this.ownerId = ownerId;
         this.hotelName = hotelName;
         this.starRating = starRating;
         this.userRating = userRating;
@@ -77,51 +67,9 @@ public class Hotels {
         this.hotelType = hotelType;
         this.address = address;
         this.city = city;
-        this.price = price;
     }
-
-    //    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, List<File> hotelImages, List<HotelAmenities> hotelAmenities) {
-//        this.hotelId = hotelId;
-//        this.hotelName = hotelName;
-//        this.starRating = starRating;
-//        this.userRating = userRating;
-//        this.description = description;
-//        this.hotelType = hotelType;
-//        this.address = address;
-//        this.city = city;
-//        this.hotelImages = hotelImages;
-//        this.hotelAmenities = hotelAmenities;
-//    }
-//
-//    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, List<File> hotelImages, List<HotelAmenities> hotelAmenities) {
-//        this.hotelName = hotelName;
-//        this.starRating = starRating;
-//        this.userRating = userRating;
-//        this.description = description;
-//        this.hotelType = hotelType;
-//        this.address = address;
-//        this.city = city;
-//        this.hotelImages = hotelImages;
-//        this.hotelAmenities = hotelAmenities;
-//    }
-
 
     //Getters and Setters
-//    public List<HotelRooms> getRooms() {
-//        return rooms;
-//    }
-//
-//    public void setRooms(List<HotelRooms> rooms) {
-//        this.rooms = rooms;
-//    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
 
     public Integer getHotelId() {
         return hotelId;
@@ -129,6 +77,14 @@ public class Hotels {
 
     public void setHotelId(Integer hotelId) {
         this.hotelId = hotelId;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 
     public String getHotelName() {
@@ -187,21 +143,13 @@ public class Hotels {
         this.city = city;
     }
 
-//    public List<String> getHotelImages() {
-//        return hotelImages;
-//    }
-//
-//    public void setHotelImages(List<String> hotelImages) {
-//        this.hotelImages = hotelImages;
-//    }
+    public Double getPrice() {
+        return price;
+    }
 
-   // public List<HotelAmenities> getHotelAmenities() {
-      //  return hotelAmenities;
-  //  }
-
-    //public void setHotelAmenities(List<HotelAmenities> hotelAmenities) {
-     //   this.hotelAmenities = hotelAmenities;
-   // }
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 }
 
 

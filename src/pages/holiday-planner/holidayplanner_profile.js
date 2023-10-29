@@ -14,7 +14,9 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { useSession } from "../../Context/SessionContext";
+import axios from "axios";
 
 const data = [
   {
@@ -95,6 +97,29 @@ const CustomizedDot = (props) => {
 
 
 function Holidayprofile() {
+  const apiBaseUrl = "http://localhost:8080";
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout:5000,
+  });
+
+  const sessionItem = useSession();
+  const [userData, setUserData] = useState({});
+  const userID = sessionItem.sessionData.userId;
+
+  useEffect(() => {
+    axiosInstance
+      .get("/users/" + userID )
+      .then((res) => {
+        setUserData(res.data);
+        console.log("user data",res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+      
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     // Add your form submission logic here

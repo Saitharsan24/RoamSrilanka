@@ -3,6 +3,9 @@ package roamSrilanka.dev.model;
 import jakarta.persistence.*;
 import org.hibernate.annotations.ValueGenerationType;
 
+import javax.xml.crypto.Data;
+import java.util.Date;
+
 @Entity
 @Table(name = "vehicle")
 
@@ -43,10 +46,36 @@ public class Vehicle {
     @Column(name = "image4")
     private String image4;
 
+    @Column(name = "status")
+    private String status;
+
+    @Column(name="feedback")
+    private String feedback;
+
+    @Column(name="insurance_no")
+    private String insurance_no;
+
+    @Column(name="insurance_company")
+    private String insurance_company;
+
+    @Column(name="insurance_sdate")
+    private  Date insurance_sdate;
+
+    @Column(name="insurance_edate")
+    private Date insurance_edate;
+
+    @Column(name="insurance_img")
+    private String insurance_img;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "vehicleID")
+    private Driver driver;
+
     public Vehicle() {
     }
 
-    public Vehicle(Long vehicleID, String vehicle_number, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4) {
+    public Vehicle(Long vehicleID, String vehicle_number, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4,String status,String feedback,String insurance_no,String insurance_company,Data insurance_sdate,Date insurance_edate,String insurance_img) {
         this.vehicle_number = vehicle_number;
         this.vehicleID = vehicleID;
         this.color = color;
@@ -58,9 +87,16 @@ public class Vehicle {
         this.image2 = image2;
         this.image3 = image3;
         this.image4 = image4;
+        this.status = status;
+        this.feedback = feedback;
+        this.insurance_no = insurance_no;
+        this.insurance_company = insurance_company;
+        this.insurance_sdate = (Date) insurance_sdate;
+        this.insurance_edate = insurance_edate;
+        this.insurance_img = insurance_img;
     }
 
-    public Vehicle(String vehicle_number, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4) {
+    public Vehicle(String vehicle_number, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4,String status,String feedback,String insurance_no,String insurance_company,Data insurance_sdate,Date insurance_edate) {
         this.vehicle_number = vehicle_number;
         this.color = color;
         this.model = model;
@@ -71,6 +107,13 @@ public class Vehicle {
         this.image2 = image2;
         this.image3 = image3;
         this.image4 = image4;
+        this.status = status;
+        this.feedback = feedback;
+        this.insurance_no = insurance_no;
+        this.insurance_company = insurance_company;
+        this.insurance_sdate = (Date) insurance_sdate;
+        this.insurance_edate = insurance_edate;
+        this.insurance_img = insurance_img;
     }
 
     public Long getVehicleID() {
@@ -160,4 +203,63 @@ public class Vehicle {
     public void setImage4(String image4) {
         this.image4 = image4;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+
+    }
+
+    public String getInsurance_no() {
+        return insurance_no;
+    }
+
+    public void setInsurance_no(String insurance_no) {
+        this.insurance_no = insurance_no;
+    }
+
+    public String getInsurance_company() {
+        return insurance_company;
+    }
+
+    public void setInsurance_company(String insurance_company) {
+        this.insurance_company = insurance_company;
+    }
+
+    public Date getInsurance_sdate() {
+        return insurance_sdate;
+    }
+
+    public void setInsurance_sdate(Date insurance_sdate) {
+        this.insurance_sdate = insurance_sdate;
+    }
+
+    public Date getInsurance_edate() {
+        return insurance_edate;
+    }
+
+    public void setInsurance_edate(Date insurance_edate) {
+        this.insurance_edate = insurance_edate;
+    }
+
+    public String getInsurance_img() {
+        return insurance_img;
+    }
+
+    public void setInsurance_img(String insurance_img) {
+        this.insurance_img = insurance_img;
+    }
+
+
 }
