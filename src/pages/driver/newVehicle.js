@@ -20,8 +20,8 @@ function DrivernewVehicle () {
 
     // const [imageUrl3, setImageUrl3] = useState("");
 
-    const upload_preset = "moz2vspi";
-    const cloud_name = "dg3y629pc";
+    // const upload_preset = "moz2vspi";
+    // const cloud_name = "dg3y629pc";
 
     const onInputChange = (e) => {
         const file = e.target.files[0];
