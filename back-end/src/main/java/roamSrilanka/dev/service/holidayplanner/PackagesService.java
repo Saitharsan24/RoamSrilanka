@@ -27,4 +27,8 @@ public class PackagesService {
     public Packages getPackage(Integer id) {
         return packagesRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid package Id:" + id));
     }
+
+    public Long countPackages() {
+        return packagesRepository.count();
+    }
 }

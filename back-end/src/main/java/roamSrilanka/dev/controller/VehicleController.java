@@ -1,12 +1,16 @@
 package roamSrilanka.dev.controller;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import roamSrilanka.dev.model.Vehicle;
+import roamSrilanka.dev.repository.VehicleRepository;
+
+
 
 import org.springframework.data.rest.webmvc.support.RepositoryEntityLinks;
 import org.springframework.stereotype.Repository;
 
-import org.springframework.web.bind.annotation.*;
-
-import roamSrilanka.dev.model.Vehicle;
 import roamSrilanka.dev.service.VehicleService;
 
 import java.util.List;
@@ -18,27 +22,45 @@ public class VehicleController {
 
     private final VehicleService vehicleService;
 
+    private VehicleRepository vehicleRepository;
+
     public VehicleController(VehicleService vehicleService) {
         this.vehicleService = vehicleService;
     }
 
     // working in insomnia
     @GetMapping("/vehicle")
-     public List<Vehicle> findAllVehicle() {
+    public List<Vehicle> findAllVehicle() {
         return vehicleService.findAllVehicle();
-     }
+    }
 
     // working in insomnia
-     @GetMapping("vehicle/{vehicleID}")
-     public Optional<Vehicle> findVehicleById(@PathVariable("vehicleID") Long vehicleID) {
+    @GetMapping("vehicle/{vehicleID}")
+    public Optional<Vehicle> findVehicleById(@PathVariable("vehicleID") Long vehicleID) {
         return vehicleService.findbyId(vehicleID);
-     }
+    }
 
-    // add working in insomnia
-     @PostMapping("/addVehicle")
-     public Vehicle saveVehicle(@RequestBody Vehicle vehicle) {
+    @GetMapping("/count")
+    public ResponseEntity<Long> getRowCount() {
+        long rowCount = vehicleService.getVehicleCount();
+        return ResponseEntity.ok(rowCount);
+    }
+
+
+    @PostMapping("/addVehicle")
+    public Vehicle saveVehicle(@RequestBody Vehicle vehicle) {
         return vehicleService.saveVehicle(vehicle);
-     }
+    }
+
+    @PutMapping
+    public Vehicle updateVehicle(@RequestBody Vehicle vehicle) {
+        return vehicleService.updateVehicle(vehicle);
+    }
+
+    @DeleteMapping("deleteVehicle/{vehicleID}")
+    public void deleteVehicle(@PathVariable("vehicleID") Long vehicleID) {
+        vehicleService.deleteVehicle(vehicleID);
+    }
 
     @PutMapping("/updateVehicle/{vehicleID}")
     public Repository updateVehicle(@PathVariable("vehicleID") Long vehicleID, @RequestBody Vehicle vehicle) {
@@ -60,10 +82,6 @@ public class VehicleController {
         }
     }
 
-    @DeleteMapping("/{vehicleID}")
-    public void deleteVehicle(@PathVariable("vehicleID") Long vehicleID) {
-        vehicleService.deleteVehicle(vehicleID);
-    }
 
     // get the specific vehicle by vehicleID and and feedback
     @GetMapping("/vehicle/{vehicleID}/{feedback}")
@@ -83,3 +101,4 @@ public class VehicleController {
         }
     }
 }
+

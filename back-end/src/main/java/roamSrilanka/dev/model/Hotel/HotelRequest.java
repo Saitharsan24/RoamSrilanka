@@ -13,8 +13,14 @@ public class HotelRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer requestId;
 
+    @Column(name="user_id")
+    private Integer userId;
+
+    @Column(name="owner_id")
+    private Integer ownerId;
+
     @Column(name="hotel_id")
-    private String hotelId;
+    private Integer hotelId;
 
     @Column(name="room_id")
     private Integer roomId;
@@ -33,7 +39,10 @@ public class HotelRequest {
     public HotelRequest() {
     }
 
-    public HotelRequest(String hotelId, Integer roomId, Date date, Date fromDate, Date toDate, String status) {
+    public HotelRequest(Integer requestId, Integer userId, Integer ownerId, Integer hotelId, Integer roomId, Date date, Date fromDate, Date toDate, String status) {
+        this.requestId = requestId;
+        this.userId = userId;
+        this.ownerId = ownerId;
         this.hotelId = hotelId;
         this.roomId = roomId;
         this.date = date;
@@ -42,8 +51,9 @@ public class HotelRequest {
         this.status = status;
     }
 
-    public HotelRequest(Integer requestId, String hotelId, Integer roomId, Date date, Date fromDate, Date toDate, String status) {
-        this.requestId = requestId;
+    public HotelRequest(Integer userId, Integer ownerId, Integer hotelId, Integer roomId, Date date, Date fromDate, Date toDate, String status) {
+        this.userId = userId;
+        this.ownerId = ownerId;
         this.hotelId = hotelId;
         this.roomId = roomId;
         this.date = date;
@@ -60,11 +70,19 @@ public class HotelRequest {
         this.requestId = requestId;
     }
 
-    public String gethotelId() {
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public Integer getHotelId() {
         return hotelId;
     }
 
-    public void sethotelId(String hotelId) {
+    public void setHotelId(Integer hotelId) {
         this.hotelId = hotelId;
     }
 
@@ -98,6 +116,14 @@ public class HotelRequest {
 
     public void setToDate(Date toDate) {
         this.toDate = toDate;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getStatus() {

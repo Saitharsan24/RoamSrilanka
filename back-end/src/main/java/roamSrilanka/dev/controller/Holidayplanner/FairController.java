@@ -30,6 +30,10 @@ public class FairController {
         return this.fairService.getFair(identity);
     }
 
+    @GetMapping("/fair/count")
+    public Long countFairs() {
+        return fairService.countFairs();
+    }
     @DeleteMapping("/deleteFair/{id}")
     public String deleteFair (@PathVariable(value = "id") Integer identity) {
         return this.fairService.deleteFair(identity);

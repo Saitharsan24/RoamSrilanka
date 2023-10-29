@@ -1,14 +1,18 @@
 import React, { useState,useEffect } from 'react';
 import "./../styles/data-table.css";
-import { MDBDataTable } from 'mdbreact';
-import { useNavigate } from 'react-router-dom';
+import { MDBDataTable } from "mdbreact";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
 
 const HPDatatablePage = () => {
   const navigate = useNavigate();
   const [rowData, setRowData] = useState([]);
   const [packages, setPackage] = useState([]);
   const [tourist, setTourist] = useState([]);
+  const [fairrequest, setFairrequest] = useState([]);
+  const [fair, setFair] = useState([]);
   const apiBaseUrl = "http://localhost:8080";
 
   const axiosInstance = axios.create({
@@ -85,10 +89,65 @@ const HPDatatablePage = () => {
       });
   }, []);
 
+  useEffect(() => {
+    axiosInstance
+      .get("/getAllFairrequest")
+      .then((res) => {
+        setFairrequest(res.data);
+         console.log("fair request details",res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/getAllFairs")
+      .then((res) => {
+        setFair(res.data);
+         console.log("fair details",res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   
   
   const mergedData = mergeData(rowData, packages,tourist);
   console.log("mergeData", mergedData);
+
+  const mergeData2 = (fairrequest, fair,tourist) => {
+    const mergedData2 = fairrequest.map(
+      (requestItem2) => {
+      const matchingfair = fair.find(
+        (fairItem) =>  fairItem.fairId === requestItem2.fair_no
+      );
+
+      const matchingTourist2 = tourist.find(
+        
+        (touristItem2) => touristItem2.userID === requestItem2.touristID
+      );
+      console.log(tourist);
+  
+      if (matchingfair && matchingTourist2) {
+        // Merge the data from both sources
+        return {
+          ...requestItem2,
+          ...matchingfair,
+          ...matchingTourist2,
+        };
+      } else {
+        return requestItem2;
+      }
+    });
+  
+    return mergedData2;
+  };
+
+  const mergedData_fair = mergeData2(fairrequest, fair,tourist);
+  console.log("mergeData_fair", mergedData_fair);
+  console.log("fair", fair);
   
 
   const data = {
@@ -118,8 +177,8 @@ const HPDatatablePage = () => {
         width: 150
       },
       {
-        label: 'Show Details',
-        field: 'button1',
+        label: "Show Details",
+        field: "button1",
         width: 50,
         btn: 'hp-accept-button',
       }
@@ -136,14 +195,89 @@ const HPDatatablePage = () => {
     })),
   };
 
+  const data_fair = {
+    columns: [
+      {
+        label: "Tourist Name",
+        field: "name",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "Fair Name",
+        field: "fair_name",
+        sort: "asc",
+        width: 200,
+      },
+      {
+        label: "From Date",
+        field: "from",
+        sort: "asc",
+        width: 200,
+      },
+      {
+        label: "To Date",
+        field: "date",
+        sort: "asc",
+        width: 150,
+      },
+      {
+        label: "Show Details",
+        field: "button1",
+        width: 50,
+        btn: "hp-accept-button",
+      },
+    ],
+    rows: mergedData_fair.map((item) => ({
+      name: item.name,
+      fair_name: item.fairname,
+      from: item.fromdate,
+      date: item.todate,
+      button1: (
+        <button
+          className="hp-accept"
+          onClick={() =>
+            handleRowClick(item.fair_no) &
+            console.log("Clicked View for fair ID:", item.fair_no)
+          }
+        >
+          View
+        </button>
+      ),
+    })),
+  }
+
   return (
-    <MDBDataTable
-      striped
-      bordered
-    //   small
-      data={data}
-    />
+    <div className="user-1 d-flex w-100">
+      <div className="d-flex flex-column col-lg-11 ms-lg-5">
+        <div className="d-flex flex-column gap-4 my-3">
+          <Tabs>
+            <Tab eventKey="package" title="Package">
+              <MDBDataTable
+                striped
+                bordered
+                paging={true}
+                searching={true}
+                data={data}
+                exportToCSV={true}
+              />
+            </Tab>
+
+            <Tab eventKey="fair" title="Fair">
+              <MDBDataTable
+                striped
+                bordered
+                paging={true}
+                searching={true}
+                data={data_fair}
+                exportToCSV={true}
+              />
+            </Tab>
+          </Tabs>
+        </div>
+      </div>
+    </div>
   );
-}
+};
 
 export default HPDatatablePage;
