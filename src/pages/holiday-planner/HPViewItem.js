@@ -115,7 +115,7 @@ function HPViewItem({ fairId, onBack }) {
                       <input
                         className="p-2"
                         type="text"
-                        value={selectedEvent.name}
+                        value={selectedEvent.fairname}
                         readOnly
                       ></input>
                     </label>

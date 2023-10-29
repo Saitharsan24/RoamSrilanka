@@ -11,35 +11,36 @@ public class Packages {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="packageid")
+    @Column(name = "packageid")
     private int packageID;
 
     @Column(name = "price")
     private BigDecimal price;
-//    private List<String> places;
-@Column(name = "package_name" )
+    //    private List<String> places;
+    @Column(name = "package_name")
     private String package_name;
-@Column(name = "trip_guide")
+    @Column(name = "trip_guide")
     private Boolean trip_guide;
 
-@Column(name = "vehicle")
+    @Column(name = "vehicle")
     private Boolean vehicle;
 
-@Column(name = "days")
+    @Column(name = "days")
     private int days;
-@Column(name = "hotel_rating")
+    @Column(name = "hotel_rating")
     private int hotel_rating;
-@Column(name = "places")
+    @Column(name = "places")
     private String places;
 
-@Column(name = "status")
-private String status;
+    @Column(name = "status")
+    private Integer status;
 
-@Column(name = "Discription")
-private String Discription;
 
-@Column(name = "no_of_people")
-private int no_of_people;
+    @Column(name = "discription", columnDefinition = "VARCHAR(2000)")
+    private String discription;
+
+    @Column(name = "no_of_people")
+    private int no_of_people;
 
 
     public Packages() {
@@ -54,7 +55,7 @@ private int no_of_people;
         this.hotel_rating = hotel_rating;
         this.places = places;
         this.status = status;
-        this.Discription = discription;
+        this.discription = discription;
         this.no_of_people = no_of_people;
     }
 
@@ -66,22 +67,15 @@ private int no_of_people;
         this.hotel_rating = hotel_rating;
         this.places = places;
         this.status = status;
-        this.Discription = discription;
+        this.discription = discription;
         this.no_of_people = no_of_people;
     }
 
-    public String getStatus() {
-        return status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    public int getPackageID() {
+        return packageID;
 
-    public void setDays(int days) {
-        this.days = days;
     }
-
 
     public void setPackageID(int packageID) {
         this.packageID = packageID;
@@ -93,11 +87,6 @@ private int no_of_people;
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-    }
-
-
-    public int getPackageID() {
-        return packageID;
     }
 
     public String getPackage_name() {
@@ -116,11 +105,19 @@ private int no_of_people;
         this.trip_guide = trip_guide;
     }
 
+    public Boolean getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Boolean vehicle) {
+        this.vehicle = vehicle;
+    }
+
     public int getDays() {
         return days;
     }
 
-    public void setDays(Integer days) {
+    public void setDays(int days) {
         this.days = days;
     }
 
@@ -140,12 +137,20 @@ private int no_of_people;
         this.places = places;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     public String getDiscription() {
-        return Discription;
+        return discription;
     }
 
     public void setDiscription(String discription) {
-        Discription = discription;
+        this.discription = discription;
     }
 
     public int getNo_of_people() {
