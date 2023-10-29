@@ -7,9 +7,16 @@ import img4 from "./../../assets/images/side2-car.png";
 import "./../../styles/vehicle.css";
 import * as Icon from "react-bootstrap-icons";
 import { Link } from 'react-router-dom';
+import { useSession } from '../../Context/SessionContext';
 // import ReactStars from "react-rating-stars-component";
 
 function Vehicle() {
+
+    //Initiating sessoin data
+    const { sessionData , setSessionData  } = useSession();
+
+    const userId = sessionData.userId;
+    console.log('user: ' + userId);
 
     const ratingExample = {
         size: 50,
@@ -33,17 +40,21 @@ function Vehicle() {
             .catch((error) => console.error('Error fetching data:', error));
     }, []);
 
-    const [vehicle, setVehicle] = useState(null);
+    const [vehicle, setVehicle] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/vehicle')
+        fetch('http://localhost:8080/vehiclebyUser/'+userId)
             .then((response) => response.json())
             .then((data) => setVehicle(data))
             .catch((error) => console.error('Error fetching data:', error));
     }, []);
 
-    // console.log(vehicle[0]['image1'])
+    // const totalValues = vehicle ? vehicle.length : 0;
+    console.log(vehicle)
+    console.log('vehicle length : ' + vehicle.length)
+    // const totalVehicle = vehicle ? vehicle.length : 0;
 
+    // console.log('totalVehicle ' + totalVehicle)
     // const images = [
     //     {id:0, value:rowCount === 3 ? vehicle[0]['image1'] : img1},
     //     {id:1, value:rowCount === 3 ? vehicle[0]['image2'] : img2},
@@ -82,7 +93,8 @@ function Vehicle() {
                         <div class="position-absolute top-0 end-0">h</div>
                     </div> */}
                     <div class="row">
-                        {rowCount === 0 ? (
+                        
+                        {(vehicle.length === 0) &&
                         <div className="col-sm-12 w-100">
                             <div>
                                 <div class="card">
@@ -95,8 +107,15 @@ function Vehicle() {
                                 </div>
                             </div>
                         </div>
-                        ) : (
+                        }  
+                        {(vehicle.length !==0) &&
                         <div class="row">
+                            {vehicle[0]['status'] == 1 ? (
+                                <div style={{color:"green"}}>Status</div>
+                            ):(
+                                <div style={{color:"red"}}>Status</div>
+                            )}
+
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <div class="card">
                                 <div class="card-body">
@@ -240,7 +259,7 @@ function Vehicle() {
                                 </div>
                             </div>
                         </div>
-                        )}
+                        }
                     </div>
                 </div>
                 

@@ -51,5 +51,7 @@ public class VehicleServiceImpl implements VehicleService {
         return null;
     }
 
-
+    public List<Vehicle> findVehicleUserById(Long userId) {
+        return vehicleRepository.findVehicleByUserId(userId);
+    }
 }
