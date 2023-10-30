@@ -21,21 +21,20 @@ public class Fair {
     @Column(name = "description" ,columnDefinition = "VARCHAR(2000)")
     private String description;
 
+    @Column(name = "status", columnDefinition = "int default 0")
+    private int status;
+
     public Fair() {
     }
 
-    public Fair(int fairId, String fairname, float rent, String description) {
+    public Fair(int fairId, String fairname, float rent, String description, int status) {
         this.fairId = fairId;
         this.fairname = fairname;
         this.rent = rent;
         this.description = description;
+        this.status = status;
     }
 
-    public Fair(String fairname, float rent, String description) {
-        this.fairname = fairname;
-        this.rent = rent;
-        this.description = description;
-    }
 
     public int getFairId() {
         return fairId;
@@ -67,5 +66,12 @@ public class Fair {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

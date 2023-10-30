@@ -28,6 +28,12 @@ public class FairController {
         return this.fairService.getAllFairs();
     }
 
+    @GetMapping("/viewFairImages")
+    public List<FairImage> getAllHotelsImages() {
+        return fairService.getAllHotelsImages();
+    }
+
+
     @PostMapping("/addFair")
     public ResponseEntity<Fair> createFair(@RequestBody Fair newFair) {
         Fair fair = fairService.createFair(newFair);

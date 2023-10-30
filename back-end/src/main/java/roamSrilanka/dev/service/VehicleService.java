@@ -13,8 +13,10 @@ public interface VehicleService {
     void deleteVehicle(Long vehicleID);
 
 
-  long getVehicleCount();
+    long getVehicleCount();
 
+    List<Vehicle> findVehicleUserById(Long userId);
     Vehicle saveFeedback(Vehicle vehicle);
 
+    void deleteVehicleByUserId(Long userId);
 }

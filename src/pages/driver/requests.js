@@ -445,7 +445,7 @@ function HotelRequest() {
         </Link>
       ),
     };
-});
+  });
 
   const requestAcceptProcess = async(e) => {
     e.preventDefault();

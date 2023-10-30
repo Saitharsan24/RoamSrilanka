@@ -3,13 +3,15 @@ import "../../styles/admin/admin_package.css";
 import { MDBDataTable } from "mdbreact";
 import { useState } from "react";
 import axios from "axios";
+import PackageAcceptModal from "../../components/admin-package-accept-modal";
+import PackageRejectModal from "../../components/admin-package-reject-modal";
+
 
 function AdminPackageAccept() {
      
    const urlParams = new URLSearchParams(window.location.search);
     const packageID = urlParams.get("packageId");
-
-    console.log(packageID);
+    console.log(packageID)
 
     const [packages, setPackage] = useState([]);
 
@@ -25,6 +27,7 @@ function AdminPackageAccept() {
       axiosInstance.get(`/packages/${packageID}`).then((response) => {
         //handle success
         setPackage(response.data);
+        console.log(response.data);
        
       })
       .catch((error) => {
@@ -54,7 +57,7 @@ function AdminPackageAccept() {
           
           <td style={{ width: "200px", textAlign: "center" }}>
           <button 
-          //  onClick={openModalWithBlurReject}
+           onClick={openModalpackageReject}
                   style={{
                     backgroundColor: "#d03b3b",
                   color: "#ffff",
@@ -71,7 +74,7 @@ function AdminPackageAccept() {
           <td style={{ width: "50px" }}></td>
           <td style={{ width: "200px", textAlign: "center" }}>
           <button 
-          // onClick={openModalWithBlurAccept}
+          onClick={openModalpackageAccept}
                   style={{
                     backgroundColor: "#66d03b",
                   color: "#ffff",
@@ -106,11 +109,48 @@ function AdminPackageAccept() {
       return "Unknown"
     }
   }  //function to get button tr
+
+
+  
+  const [modalpackageAccept,setOpenModalAccept] = useState(false);  //modal for accept
+  const [blurBackground,setBlurBackground]=useState(false);
+
+  const openModalpackageAccept =() =>{
+    setOpenModalAccept(true);
+    setBlurBackground(true);
+  }            //open modal to accept
+
+  const closeModalpackageAccept = () =>{
+    setOpenModalAccept(false);
+    setBlurBackground(false);
+  }  //close modal to reject
+
+
+  const [modalpackageReject,setOpenModalReject] = useState(false);  //modal for reject
+  
+
+  const openModalpackageReject =() =>{
+    setOpenModalReject(true);
+    setBlurBackground(true);
+  }         //open modal to reject
+
+  const closeModalpackageReject = () =>{
+    setOpenModalReject(false);
+    setBlurBackground(false);
+  }
+
   
 
   return (
     <React.Fragment>
-          <div className="w-100 d-flex justify-content-center  align-items-center">
+      {modalpackageAccept && <PackageAcceptModal closeModal={closeModalpackageAccept} packageID={packageID}/>}
+      {modalpackageReject && <PackageRejectModal closeModal={closeModalpackageReject} packageID={packageID}/>}
+      {/* <PackageAcceptModal/> */}
+      <div  className={`w-100 d-flex justify-content-center align-items-center 
+          ${
+          blurBackground ? 'blur-background' : '' // Apply blur class conditionally
+          }`
+        }>
             <div
               className="  d-flex justify-content-center  align-items-center col-10 mt-5 mb-5 "  style={{ backgroundColor: "#ffff" }} >
               <div className="d-flex flex-column align-items-center col-10">
@@ -119,6 +159,7 @@ function AdminPackageAccept() {
                     <p>
                       <span style={{ fontWeight: "bold" }}>
                       Basic Information About Package
+                      
                       </span>
                     </p>
                     <table style={{ textAlign: "center", boxShadow: "none" }}>
@@ -133,7 +174,7 @@ function AdminPackageAccept() {
                               
                             }}
                           >
-                            {packages.packageid}
+                            {packages.packageID}
                           </td>
                           
                             </tr>
@@ -284,7 +325,8 @@ function AdminPackageAccept() {
                             borderRadius: "5px",
                           }}
                         >
-                          {packages.trip_guide}
+                          {packages["trip_guide"]}
+                          
                         </td>
                       </tr>
  
@@ -319,7 +361,7 @@ function AdminPackageAccept() {
                             
                           }}
                         >
-                          {packages.Discription}
+                          {packages.discription}
                         </td>
                       </tr>
 
@@ -332,10 +374,7 @@ function AdminPackageAccept() {
             {getButtonTr(packages.status)}
             </table>
 
-                 {/* <div className="d-flex flex justify-content-end gap-4 w-75 mb-5">   
-                 <button style={{backgroundColor:"#004577",color:"#ffff",borderRadius:"10px",width:"7rem"}}>Reject</button>  
-                 <button style={{backgroundColor:"#004577",color:"#ffff",borderRadius:"10px",width:"7rem"}}>Publish</button>  
-                 </div>  */}
+                
                   </div>
 
                  

@@ -42,22 +42,14 @@ public class Hotels {
     @Column(name = "price")
     private Double price;
 
+    @Column(name = "hotel_availability")
+    private Boolean hotelAvailability;
+
     //Constructors
     public Hotels() {
     }
 
-    public Hotels(Integer ownerId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city) {
-        this.ownerId = ownerId;
-        this.hotelName = hotelName;
-        this.starRating = starRating;
-        this.userRating = userRating;
-        this.description = description;
-        this.hotelType = hotelType;
-        this.address = address;
-        this.city = city;
-    }
-
-    public Hotels(Integer hotelId, Integer ownerId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city) {
+    public Hotels(Integer hotelId, Integer ownerId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price, Boolean hotelAvailability) {
         this.hotelId = hotelId;
         this.ownerId = ownerId;
         this.hotelName = hotelName;
@@ -67,9 +59,22 @@ public class Hotels {
         this.hotelType = hotelType;
         this.address = address;
         this.city = city;
+        this.price = price;
+        this.hotelAvailability = hotelAvailability;
     }
 
-    //Getters and Setters
+    public Hotels(Integer ownerId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price, Boolean hotelAvailability) {
+        this.ownerId = ownerId;
+        this.hotelName = hotelName;
+        this.starRating = starRating;
+        this.userRating = userRating;
+        this.description = description;
+        this.hotelType = hotelType;
+        this.address = address;
+        this.city = city;
+        this.price = price;
+        this.hotelAvailability = hotelAvailability;
+    }
 
     public Integer getHotelId() {
         return hotelId;
@@ -149,6 +154,14 @@ public class Hotels {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Boolean getHotelAvailability() {
+        return hotelAvailability;
+    }
+
+    public void setHotelAvailability(Boolean hotelAvailability) {
+        this.hotelAvailability = hotelAvailability;
     }
 }
 
