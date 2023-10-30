@@ -15,8 +15,14 @@ public class GuideService {
         return guideRepository.findAll();
     }
 
+
     public Guide getGuideById(Integer userId) {
         return guideRepository.findById(userId).orElse(null);
+
+
+
+    public void addGuide(Guide existingGuide) {
+        guideRepository.save(existingGuide);
 
     }
 }

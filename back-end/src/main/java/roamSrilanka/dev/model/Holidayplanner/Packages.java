@@ -163,4 +163,14 @@ public class Packages {
         this.no_of_people = no_of_people;
     }
 
+
+//    public Boolean getVehicle() {
+//        return vehicle;
+//    }
+//
+//    public void setVehicle(Boolean vehicle) {
+//        this.vehicle = vehicle;
+//    }
+
+
 }
