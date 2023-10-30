@@ -11,6 +11,8 @@ public class PackagesService {
     @Autowired
     private PackagesRepository packagesRepository;
 
+
+
     public  Iterable<Packages> getAllPackages(){ return packagesRepository.findAll();}
 
     public void addPackage(Packages newPackage) {
@@ -30,5 +32,13 @@ public class PackagesService {
 
     public Long countPackages() {
         return packagesRepository.count();
+    }
+
+    public Packages findbyId(Integer id) {
+        return packagesRepository.findById(id).orElse(null);
+    }
+
+    public void savestatus(Packages exitingPackage) {
+        packagesRepository.save(exitingPackage);
     }
 }
