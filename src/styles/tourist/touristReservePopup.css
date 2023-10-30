@@ -1,0 +1,50 @@
+.reserveModelBackground{
+    width: 600px;
+    height: 400px;
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    position: fixed;  
+    transform: translate(40%,15%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding:0px 15px 0px 25px;
+}
+
+.reserveName h3{
+    margin-top: -25px !important;
+}
+
+.reserve-details{
+    display: flex;
+    flex-direction:column;
+    margin-top: 20px;
+    gap:20px;
+    width: 100%;
+   
+}
+
+.reserve-items{
+    display: flex;
+    flex-direction: row;    
+    width: 100%;
+    gap: 10px;
+    justify-content: flex-end; 
+}
+
+.reserve-items input{
+    width: 50%;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    padding: 0px 10px 0px 10px;
+    font-size: 20px;
+    margin-right: 120px;
+}
+
+.reserve-items p{
+    font-size: 20px;
+}
+

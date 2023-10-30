@@ -68,7 +68,9 @@ public class Vehicle {
     private String insurance_img;
 
     @Column(name = "user_id")
+
     private Integer userId;
+
 
 //    @OneToOne
 //    @MapsId
@@ -264,6 +266,7 @@ public class Vehicle {
     public void setInsurance_img(String insurance_img) {
         this.insurance_img = insurance_img;
     }
+
 
     public Integer getUserId() {
         return userId;

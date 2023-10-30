@@ -13,6 +13,7 @@ const HotelProfile = () => {
   const ownerId = sessionData.userId;
 
   const [user, setUser] = useState([]);
+  const [owner, setOwner] = useState([]);
 
   const apiBaseUrl = "http://localhost:8080";
 
@@ -26,8 +27,12 @@ const HotelProfile = () => {
     newPassword: "",
 
   })
-  const [userData, setUserData] = useState({
-    userFullname: "",
+  const [ownerData, setOwnerData] = useState({
+    ownerName: "",
+    nic: "",
+    ownerAddress: "",
+    ownerEmail: "",
+    ownerContact: "",
   });
 
   const inputPasswordData = (name, value) => {
@@ -36,9 +41,9 @@ const HotelProfile = () => {
     // console.log(hotelData);
   };
 
-  const inputUserData = (name, value) => {
+  const inputOwnerData = (name, value) => {
     // console.log(name, value);
-    setUserData((prev) => ({ ...prev, [name]: value }));
+    setOwnerData((prev) => ({ ...prev, [name]: value }));
     // console.log(hotelData);
   };
 
@@ -67,16 +72,20 @@ const HotelProfile = () => {
     }
   };
 
-  const handleUpdateUser = async (e) => {
+  const handleUpdateOwner = async (e) => {
     e.preventDefault();
     try {
-      const response = await axiosInstance.put(`/updateUser/${ownerId}`, {
+      const response = await axiosInstance.put(`/updateOwner/${ownerId}`, {
         // Your data to be sent in the PUT request body
-        userFullname: userData.userFullname,
+        ownerName: ownerData.ownerName,
+        nic: ownerData.nic,
+        ownerAddress: ownerData.ownerAddress,
+        ownerEmail: ownerData.ownerEmail,
+        ownerContact: ownerData.ownerContact,
       });
       if (response.status == 200) {
         console.log("User updated");
-        alert("User updated");
+        window.location.reload();
       }else{
         console.log("User not updated");
         alert("User not updated");
@@ -93,6 +102,19 @@ const HotelProfile = () => {
       .get(`/viewUser/${ownerId}`)
       .then((response) => {
         setUser(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get(`/viewHotelOwner/${ownerId}`)
+      .then((response) => {
+        setOwner(response.data);
         console.log(response.data);
       })
       .catch((error) => {
@@ -162,7 +184,7 @@ const HotelProfile = () => {
               </a>
             }
           >
-            <div className="d-flex flex-column col-lg-12 col-md-12 gap-4">
+            {/* <div className="d-flex flex-column col-lg-12 col-md-12 gap-4">
               <div
                 style={{
                   backgroundColor: "#FFF",
@@ -182,28 +204,6 @@ const HotelProfile = () => {
                     src={DQ}
                   ></img>
                   <div className="d-flex flex-column align-items-center">
-                    <p
-                      className="m-0"
-                      style={{
-                        color: "#DB163A",
-                        fontFamily: "Barlow",
-                        fontSize: "24px",
-                        fontWeight: "600",
-                      }}
-                    >
-                      Rating
-                    </p>
-                    <p
-                      className="m-0"
-                      style={{
-                        color: "#004577",
-                        fontFamily: "Cabin",
-                        fontSize: "30px",
-                        fontWeight: "700",
-                      }}
-                    >
-                      4.9
-                    </p>
                     <ReactStars
                       count={5}
                       onChange={ratingChanged}
@@ -238,7 +238,7 @@ const HotelProfile = () => {
                         fontSize: "32px",
                       }}
                     >
-                      {user.userFullname}
+                      {owner.ownerName}
                     </p>
                     <button
                       className="my-2"
@@ -281,7 +281,7 @@ const HotelProfile = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div
               style={{ backgroundColor: "#FFF", borderRadius: "10px" }}
               className="d-flex flex-column my-lg-3 shadow-lg gap-3 p-3"
@@ -307,7 +307,7 @@ const HotelProfile = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        Name
+                        Full Name
                       </label>
                       <input
                         className="p-2"
@@ -318,12 +318,12 @@ const HotelProfile = () => {
                           width: "90%",
                         }}
                         type="text"
-                        name="userFullname"
-                        value={userData.userFullname}
+                        name="ownerName"
+                        value={ownerData.ownerName}
                         onChange={(e) => {
-                          inputUserData(e.target.name, e.target.value);
+                          inputOwnerData(e.target.name, e.target.value);
                         }}
-                        placeholder="John"
+                        placeholder={owner.ownerName}
                       ></input>
                     </div>
                     <div className="d-flex flex-column gap-1 col-6">
@@ -334,7 +334,7 @@ const HotelProfile = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        Name
+                        NIC
                       </label>
                       <input
                         className="p-2 col-10"
@@ -345,7 +345,12 @@ const HotelProfile = () => {
                           width: "90%",
                         }}
                         type="text"
-                        placeholder="John"
+                        name="nic"
+                        value={ownerData.nic}
+                        onChange={(e) => {
+                          inputOwnerData(e.target.name, e.target.value);
+                        }}
+                        placeholder={owner.nic}
                       ></input>
                     </div>
                   </div>
@@ -358,7 +363,7 @@ const HotelProfile = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        Name
+                        Address
                       </label>
                       <input
                         className="p-2 col-10"
@@ -368,8 +373,13 @@ const HotelProfile = () => {
                           border: "none",
                           width: "95%",
                         }}
+                        name="ownerAddress"
                         type="text"
-                        placeholder="John"
+                        value={ownerData.ownerAddress}
+                        onChange={(e) => {
+                          inputOwnerData(e.target.name, e.target.value);
+                        }}
+                        placeholder={owner.ownerAddress}
                       ></input>
                     </div>
                   </div>
@@ -382,7 +392,7 @@ const HotelProfile = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        Name
+                        Email Address
                       </label>
                       <input
                         className="p-2"
@@ -393,7 +403,12 @@ const HotelProfile = () => {
                           width: "90%",
                         }}
                         type="text"
-                        placeholder="John"
+                        name="ownerEmail"
+                        value={ownerData.ownerEmail}
+                        onChange={(e) => {
+                          inputOwnerData(e.target.name, e.target.value);
+                        }}
+                        placeholder={owner.ownerEmail}
                       ></input>
                     </div>
                     <div className="d-flex flex-column gap-1 col-6">
@@ -404,7 +419,7 @@ const HotelProfile = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        Name
+                        Contact Number
                       </label>
                       <input
                         className="p-2 col-10"
@@ -415,53 +430,12 @@ const HotelProfile = () => {
                           width: "90%",
                         }}
                         type="text"
-                        placeholder="John"
-                      ></input>
-                    </div>
-                  </div>
-                  <div className="d-flex flex-row col-12 ms-3 ">
-                    <div className="d-flex flex-column gap-1 col-6">
-                      <label
-                        style={{
-                          fontSize: "14px",
-                          fontFamily: "Barlow",
-                          fontWeight: "bold",
+                        name="ownerContact"
+                        value={ownerData.ownerContact}
+                        onChange={(e) => {
+                          inputOwnerData(e.target.name, e.target.value);
                         }}
-                      >
-                        Name
-                      </label>
-                      <input
-                        className="p-2"
-                        style={{
-                          borderRadius: "5px",
-                          backgroundColor: "#F1F1F2",
-                          border: "none",
-                          width: "90%",
-                        }}
-                        type="text"
-                        placeholder="John"
-                      ></input>
-                    </div>
-                    <div className="d-flex flex-column gap-1 col-6">
-                      <label
-                        style={{
-                          fontSize: "14px",
-                          fontFamily: "Barlow",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Name
-                      </label>
-                      <input
-                        className="p-2 col-10"
-                        style={{
-                          borderRadius: "5px",
-                          backgroundColor: "#F1F1F2",
-                          border: "none",
-                          width: "90%",
-                        }}
-                        type="text"
-                        placeholder="John"
+                        placeholder={owner.ownerContact}
                       ></input>
                     </div>
                   </div>
@@ -483,7 +457,7 @@ const HotelProfile = () => {
                     <button
                     method="PUT"
                     type="submit"
-                    onClick={handleUpdateUser}
+                    onClick={handleUpdateOwner}
                       className="p-1"
                       style={{
                         backgroundColor: "#004577",
@@ -542,7 +516,7 @@ const HotelProfile = () => {
               </a>
             }
           >
-            <div className="d-flex flex-column col-lg-12 col-md-12  gap-4 my-md-3">
+            {/* <div className="d-flex flex-column col-lg-12 col-md-12  gap-4 my-md-3">
               <div
                 style={{
                   backgroundColor: "#FFF",
@@ -661,7 +635,7 @@ const HotelProfile = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div
               style={{ backgroundColor: "#FFF", borderRadius: "10px" }}
               className="d-flex flex-column shadow-lg gap-3 p-3"
