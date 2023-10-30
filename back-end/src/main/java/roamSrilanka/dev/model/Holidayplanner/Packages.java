@@ -168,4 +168,14 @@ public class Packages {
     }
 
 
+//    public Boolean getVehicle() {
+//        return vehicle;
+//    }
+//
+//    public void setVehicle(Boolean vehicle) {
+//        this.vehicle = vehicle;
+//    }
+
+
+
 }
