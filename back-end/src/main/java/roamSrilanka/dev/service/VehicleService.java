@@ -18,4 +18,5 @@ public interface VehicleService {
     List<Vehicle> findVehicleUserById(Long userId);
     Vehicle saveFeedback(Vehicle vehicle);
 
+    void deleteVehicleByUserId(Long userId);
 }
