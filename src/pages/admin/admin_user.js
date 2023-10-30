@@ -484,7 +484,7 @@ function Users() {
 
                 <Tab eventKey="guide" title="Guide">
                 <div className="d-flex flex justify-content-end align-items-center">
-                <a href="#">  <button className="mt-3 " style={{background:"#004577",border:"none",color:"#ffffff",borderRadius:"10px",height:"35px",width:"150px"}}>Add Driver</button></a>
+                <a href="/admin/adminholidayplannrreg">  <button className="mt-3 " style={{background:"#004577",border:"none",color:"#ffffff",borderRadius:"10px",height:"35px",width:"150px"}}>Add Guide</button></a>
                 </div>
                 <MDBDataTable
               striped
