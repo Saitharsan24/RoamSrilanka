@@ -150,7 +150,7 @@ function DriverTrips() {
                     style={{ fontFamily: "Poppins", fontSize: "1.5rem" }}
                     className="ms-1 m-0">
                     
-                    <b>My All Trips</b>
+                    <b>View My All Trips</b>
                 </p>
                 </div>
                 <div className="d-flex flex-row gap-4 my-3 ">
