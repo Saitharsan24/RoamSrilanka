@@ -35,25 +35,6 @@ public class Fair {
         this.status = status;
     }
 
-    public Fair(int fairId, String fairname, float rent, String description) {
-        this.fairId = fairId;
-        this.fairname = fairname;
-        this.rent = rent;
-        this.description = description;
-    }
-
-    public Fair(String fairname, float rent, String description, int status) {
-        this.fairname = fairname;
-        this.rent = rent;
-        this.description = description;
-        this.status = status;
-    }
-
-    public Fair(String fairname, float rent, String description) {
-        this.fairname = fairname;
-        this.rent = rent;
-        this.description = description;
-    }
 
     public int getFairId() {
         return fairId;
@@ -85,5 +66,12 @@ public class Fair {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+    public void setStatus(int status) {
+        this.status = status;
     }
 }
