@@ -23,5 +23,4 @@ public class FairRequestController {
         fairrequestService.addFairrequest(fairrequest);
         return ResponseEntity.ok("Fairrequest added successfully");
     }
-
 }

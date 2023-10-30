@@ -140,7 +140,7 @@ const route = createBrowserRouter(
         <Route path="touristChat" element={<TouristChat />}></Route>
         <Route path="touristProfile" element={<TouristProfile />}></Route>
         <Route path="touristAccessoriesView" element={<ToursitAccessoriesView />}></Route>
-        <Route path="rentItem" element={<ToursitAccessoriesRent />}></Route>
+        {/* <Route path="rentItem" element={<ToursitAccessoriesRent />}></Route> */}
         <Route path="touristHotelSearchList" element={<ToursitHotelSearchList />}></Route>
         <Route path="toursitHotelViewRoom" element={<ToursitHotelViewRoom />}></Route>
         <Route path="touristBlogList" element={<TouristBlogList />}></Route>
