@@ -1,8 +1,6 @@
 import React from "react";
 import "../../styles/admin/admin_tourist_view_detail.css";
 import profile from "../../assets/images/profile.jpg";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { Link } from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -41,7 +39,7 @@ function AdminTouristDetails() {
 //console.log(touristdetail);
 
 useEffect(() => {
-  axiosInstance.get(`/viewUser/${userId}`)
+  axiosInstance.get(`/users/${userId}`)
     .then((response) => {
       // Handle the response and set the state with the details 
       setTouristuserdetail(response.data);

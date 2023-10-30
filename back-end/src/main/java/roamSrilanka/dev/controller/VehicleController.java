@@ -3,6 +3,7 @@ package roamSrilanka.dev.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import roamSrilanka.dev.model.DriverReview;
 import roamSrilanka.dev.model.Vehicle;
 import roamSrilanka.dev.repository.VehicleRepository;
 
@@ -62,6 +63,10 @@ public class VehicleController {
         vehicleService.deleteVehicle(vehicleID);
     }
 
+    @GetMapping("vehiclebyUser/{user_id}")
+    public List<Vehicle> findVehicleByUserId(@PathVariable("user_id") Long user_id) {
+        return vehicleService.findVehicleUserById(user_id);
+    }
     @PutMapping("/updateVehicle/{vehicleID}")
     public Repository updateVehicle(@PathVariable("vehicleID") Long vehicleID, @RequestBody Vehicle vehicle) {
         Vehicle exitingVehicle = vehicleService.findbyId(vehicleID).orElse(null);
@@ -83,7 +88,7 @@ public class VehicleController {
     }
 
 
-    // get the specific vehicle by vehicleID and and feedback
+//     get the specific vehicle by vehicleID and and feedback
     @GetMapping("/vehicle/{vehicleID}/{feedback}")
     public Vehicle saveFeedback(@PathVariable("vehicleID") Long vehicleID, @PathVariable("feedback") String feedback) {
         Vehicle exitingVehicle = vehicleService.findbyId(vehicleID).orElse(null);

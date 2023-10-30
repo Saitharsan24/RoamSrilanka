@@ -107,15 +107,16 @@ function HotelBooking() {
     }
   };
   
+  
   useEffect(() => {
     mergeData();
   }, []);
   
   const filteredData = mergedData.filter((item) => {
-    return item.ownerId === ownerId;
+    return item.hotelData["ownerId"] === ownerId;
   });
 
-//console.log("filteredData:",filteredData); 
+console.log("filteredData:",filteredData); 
 
   const rows = filteredData.map((request) => {
     return {
@@ -139,8 +140,6 @@ function HotelBooking() {
       return "Pending";
     } else if (status == 1) {
       return "Accepted";
-    } else if (status == 2) {
-      return "Completed";
     } else {
       return "Rejected";
     }

@@ -25,7 +25,7 @@ function AdminVehicle() {
     // Make an HTTP GET request to fetch data from the API
     axiosInstance.get("http://localhost:8080/vehicle").then((response) => {
       setVehicle(response.data);
-      console.log(response.data);
+   //   console.log(response.data);
       
     });
   }, []);
