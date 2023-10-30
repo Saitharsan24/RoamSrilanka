@@ -14,4 +14,12 @@ public class GuideService {
     public Iterable<Guide> getAllGuides() {
         return guideRepository.findAll();
     }
+
+    public Guide getGuideById(Integer id) {
+        return guideRepository.findById(id).orElse(null);
+    }
+
+    public void addGuide(Guide existingGuide) {
+        guideRepository.save(existingGuide);
+    }
 }

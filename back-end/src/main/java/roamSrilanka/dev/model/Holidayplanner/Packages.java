@@ -33,7 +33,7 @@ public class Packages {
     private String places;
 
     @Column(name = "status")
-    private Integer status;
+    private String status;
 
     @Column(name = "discription", columnDefinition = "VARCHAR(2000)")
     private String discription;
@@ -134,11 +134,11 @@ public class Packages {
         this.places = places;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -157,4 +157,12 @@ public class Packages {
     public void setNo_of_people(int no_of_people) {
         this.no_of_people = no_of_people;
     }
+
+//    public Boolean getVehicle() {
+//        return vehicle;
+//    }
+//
+//    public void setVehicle(Boolean vehicle) {
+//        this.vehicle = vehicle;
+//    }
 }

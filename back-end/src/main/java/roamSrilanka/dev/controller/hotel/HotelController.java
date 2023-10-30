@@ -167,4 +167,20 @@ public class HotelController {
             return null;
         }
     }
+
+    @PutMapping("/hotelAvailability/{id}")
+    public ResponseEntity<Hotels> hotelAvailability(@PathVariable Integer id) {
+        Hotels existingHotel = hotelService.getHotelById(id);
+
+        if (existingHotel == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        if (existingHotel.getHotelAvailability() != null) {
+            existingHotel.setHotelAvailability(false);
+        }
+
+        hotelService.saveHotel(existingHotel);
+        return ResponseEntity.ok(existingHotel);
+    }
 }
