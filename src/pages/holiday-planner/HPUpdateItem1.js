@@ -16,7 +16,7 @@ const HPUpdateItem1 = () => {
 
   const [showPopup, setShowPopup] = useState(false);
   const [fairData, setFormData] = useState({
-    name: "",
+    name: "", 
     rent: "",
     description: "",
     fairImage: null,
