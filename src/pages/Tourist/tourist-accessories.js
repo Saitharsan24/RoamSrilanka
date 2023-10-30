@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styles/tourist/touristaccessories.css';
 import {Button} from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.css";
+import axios from "axios";
 
 function ToursitAccessories() {
+
+  const [accessories, setAccessories] = useState([]);
+  console.log(accessories);
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 10000,
+  });
+
+  useEffect(() => {
+    axiosInstance
+      .get("/getAllFairs")
+      .then((res) => {
+        console.log(res.data);
+        setAccessories(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   const cardData = [
     {
       name: 'Travel Bag',
