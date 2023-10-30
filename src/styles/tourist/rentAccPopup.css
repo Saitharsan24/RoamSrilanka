@@ -1,0 +1,8 @@
+.rent-acc-popup{
+    background-color: #ffffff;
+    width: 600px !important;
+    height: 300px;
+    border-radius: 15px;
+    transform: translate(100%,30%);
+    z-index: 1000;
+}

@@ -25,7 +25,14 @@ function ToursitAccessories() {
     while (copied.length > 0) {
       chunked_arr.push(copied.splice(0, size));
     }
+
     return chunked_arr;
+  }
+
+  //handle rent button press
+  const handleRent = (accDetails) => {
+    localStorage.setItem("accDetails", JSON.stringify(accDetails));
+    window.location.href = '/tourist/touristAccessoriesView';
   }
 
   //retrieving data from database
@@ -88,6 +95,7 @@ function ToursitAccessories() {
                 paddingRight: "25px",
                 fontSize: "15px",
               }}
+              onClick={() => handleRent(item)}
             >
               Rent
             </Button>
