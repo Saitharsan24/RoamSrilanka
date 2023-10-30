@@ -190,6 +190,7 @@ const route = createBrowserRouter(
         <Route path="adminpackage" element={<AdminPackage/>}></Route>
         <Route path="adminpackageaccept" element={<AdminPackageAccept/>}></Route>
         <Route path="adminholidayplannrreg" element={<AdminPlannerReg/>}></Route>
+        <Route path="adminguidereg" element={<AdminGuideReg/>}></Route>
         <Route path="adminholidayplannrdetail" element={<AdminPlannertDetails/>}></Route>
         <Route path="adminvehicle" element={<AdminVehicle/>}></Route>
         <Route path="adminvehicledetail_1" element={<AdminVehicleDetail_1/>}></Route>
