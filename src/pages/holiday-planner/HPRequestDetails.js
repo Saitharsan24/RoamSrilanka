@@ -21,6 +21,9 @@ const HPRequestDetails = () => {
   const [userData, setUserData] = useState({});
   const [packageData, setPackageData] = useState({});
 
+  const [hotelData, setHotelData] = useState([]);
+  const [filteredHotelData, setFilteredHotelData] = useState([]);
+
   useEffect(() => {
     axiosInstance
       .get("/request/" + paraData.p_bookingID)
@@ -46,7 +49,81 @@ const HPRequestDetails = () => {
       .catch((err) => {
         console.log(err);
       });
+
+
   }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/viewHotels")
+      .then((res) => {
+        setHotelData(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    const filteredHotels = hotelData.filter((hotel) => {
+      return hotel.starRating === packageData.hotel_rating && hotel.hotelAvailability === true;
+    });
+    setFilteredHotelData(filteredHotels);
+  }, [hotelData, packageData.hotel_rating]);
+
+  
+  const [guideData, setGuideData] = useState([]);
+  const [ guideUser, setGuideUser] = useState([]);
+
+  useEffect(() => {
+    // Define an async function to fetch both sets of data
+    async function fetchData() {
+      try {
+        const [guideDataResponse, guideUserResponse] = await Promise.all([
+          axiosInstance.get("/viewGuides"),
+          axiosInstance.get("/users"),
+        ]);
+
+        setGuideData(guideDataResponse.data);
+        setGuideUser(guideUserResponse.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    // Call the async function to fetch the data
+    fetchData();
+  }, []);
+
+  // Merge the data when both guideData and guideUser are set
+  useEffect(() => {
+    if (guideData.length > 0 && guideUser.length > 0) {
+      const mergedData = mergeGuideData(guideData, guideUser);
+      console.log(mergedData);
+      // Do something with the merged data
+    }
+  }, [guideData, guideUser]);
+
+  // Function to merge the data
+  function mergeGuideData(guideData, guideUser) {
+    const mergedData = [];
+
+    guideData.forEach((guide) => {
+      const matchingGuideUser = guideUser.find((user) => user.userId === guide.userId);
+
+      if (matchingGuideUser) {
+        mergedData.push({
+          userId: guide.userId,
+          guideName: matchingGuideUser.name,
+          // Add more fields from guide and guideUser as needed
+        });
+      }
+    });
+
+    return mergedData;
+  }
+
 
   const handleRowClick = (packageID) => {
     navigate(`/holidayPlanner/plannerViewPackage/${packageID}`);
@@ -67,6 +144,8 @@ const HPRequestDetails = () => {
   const handleHotelChange = (event) => {
     setSelectedHotel(event.target.value);
   };
+
+
 
   return (
     <div className="d-flex flex-column">
@@ -164,33 +243,42 @@ const HPRequestDetails = () => {
                   value={selectedHotel}
                   onChange={handleHotelChange}
                 >
-                  <option value="Hilton">Hilton</option>
-                  <option value="Marriot">Marriot</option>
-                  <option value="Cinnamon Grand">Cinnamon Grand</option>
+                  {filteredHotelData.map((hotel, index) => (
+                    <option key={index} value={hotel.hotelName}>
+                      {hotel.hotelName}
+                    </option>
+                  ))}
                   {/* Add other hotel options as needed */}
                 </select>
               </div>
             </div>
             <div className="d-flex flex-column flex-lg-row justify-content-left m-2 gap-3">
-              <div className="col-4">
-                <p>Vehicle :</p>
-              </div>
-              <div className="col-4 hp-req">
-                <select
-                  name="vehicleSelect"
-                  value={selectedVehicle}
-                  onChange={handleVehicleChange}
-                >
-                  <option value="Car">Car</option>
-                  <option value="Van">Van</option>
-                  <option value="Bus">Bus</option>
-                  {/* Add other vehicle options as needed */}
-                </select>
-              </div>
+              {packageData.vehicle && (
+                <div className="d-flex flex-column flex-lg-row justify-content-left col-12  gap-3">
+                  <div className="col-4">
+                    <p>Vehicle :</p>
+                  </div>
+                  <div className="col-4 hp-req">
+                    <select
+                      name="vehicleSelect"
+                      value={selectedVehicle}
+                      onChange={handleVehicleChange}
+                    >
+                      {/* {filteredVehicleData.map((vehicle, index) => (
+                        <option key={index} value={vehicle.vehicleInfo["vehicleName"]}>
+                          {vehicle.vehicleInfo["vehicleName"]}
+                        </option>
+                      ))} */}
+                      {/* Add other vehicle options as needed */}
+                    </select>
+                  </div>
+                </div>
+              )}
             </div>
+
             <div className="d-flex flex-column flex-lg-row justify-content-left m-2 gap-3">
               {packageData.trip_guide && (
-                <div className="d-flex flex-column flex-lg-row justify-content-left  gap-2">
+                <div className="d-flex flex-column flex-lg-row justify-content-left  gap-3">
                   <div className="col-8">
                     <p>Tour guide:</p>
                   </div>

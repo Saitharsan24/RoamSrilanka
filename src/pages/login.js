@@ -44,7 +44,7 @@ import { useSession } from '../Context/SessionContext';
                         navigate("/admin/admindashboard");
                     }
                     else if (userType === "tourist") {
-                        navigate("/tourist");
+                        navigate("/tourist/touristDashboard");
                     }
                     else if (userType === "hotel") {
                         navigate("/hotel/hotelDashboard");

@@ -4,7 +4,7 @@ import * as IoIcon from 'react-icons/io5';
 import { Button } from 'react-bootstrap';
 import { forEach } from "lodash";
 
-function Modal({closeModal,room}){
+function Modal({closeModal,room,hotel}){
     
     const policyBathroom = room.policyBathroom.split(",");
     const policyBedroom = room.policyBedroom.split(",");
