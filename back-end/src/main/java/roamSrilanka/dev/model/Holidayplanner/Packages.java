@@ -33,7 +33,7 @@ public class Packages {
     private String places;
 
     @Column(name = "status")
-    private Integer status;
+    private String status;
 
 
     @Column(name = "discription", columnDefinition = "VARCHAR(2000)")
@@ -46,11 +46,14 @@ public class Packages {
     public Packages() {
     }
 
-    public Packages(int packageID, BigDecimal price, String package_name, Boolean trip_guide, int days, int hotel_rating, String places, int status, String discription, int no_of_people) {
+
+    public Packages(int packageID, BigDecimal price, String package_name, Boolean trip_guide,Boolean vehicle,int days, int hotel_rating, String places, String status, String discription, int no_of_people) {
+
         this.packageID = packageID;
         this.price = price;
         this.package_name = package_name;
         this.trip_guide = trip_guide;
+        this.vehicle = vehicle;
         this.days = days;
         this.hotel_rating = hotel_rating;
         this.places = places;
@@ -59,10 +62,13 @@ public class Packages {
         this.no_of_people = no_of_people;
     }
 
-    public Packages(BigDecimal price, String package_name, Boolean meals, Boolean trip_guide, int days, int hotel_rating, String places, int status, String discription, int no_of_people) {
+
+    public Packages(BigDecimal price, String package_name, Boolean meals, Boolean trip_guide,Boolean vehicle, int days, int hotel_rating, String places, String status, String discription, int no_of_people) {
+
         this.price = price;
         this.package_name = package_name;
         this.trip_guide = trip_guide;
+        this.vehicle = vehicle;
         this.days = days;
         this.hotel_rating = hotel_rating;
         this.places = places;
@@ -137,11 +143,11 @@ public class Packages {
         this.places = places;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -160,5 +166,6 @@ public class Packages {
     public void setNo_of_people(int no_of_people) {
         this.no_of_people = no_of_people;
     }
+
 
 }
