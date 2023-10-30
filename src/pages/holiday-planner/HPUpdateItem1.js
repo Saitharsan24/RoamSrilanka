@@ -15,14 +15,28 @@ const HPUpdateItem1 = () => {
   });
 
   const [showPopup, setShowPopup] = useState(false);
-  const [formData, setFormData] = useState({
+  const [fairData, setFormData] = useState({
     name: "",
     rent: "",
     description: "",
+    fairImage: null,
   });
 
   const inputFormdata = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleImageChange = (e) => {
+    const selectedFiles = e.target.files; // Get an array of selected image files
+    const imageFiles = [];
+
+    // Iterate through the selected files and add them to the imageFiles array
+    for (let i = 0; i < selectedFiles.length; i++) {
+      imageFiles.push(selectedFiles[i]);
+    }
+
+    inputFormdata("fairImage", imageFiles); // Update productDetails state with the selected images
+    // console.log(imageFiles)
   };
 
   const handlePost = async (e) => {
@@ -30,13 +44,35 @@ const HPUpdateItem1 = () => {
 
     try {
       const response = await axiosInstance.post("/addFair", {
-        name: formData.name,
-        rent: formData.rent,
-        description: formData.description,
+        fairname: fairData.name,
+        rent: fairData.rent,
+        description: fairData.description,
       });
 
       if (response.status === 200) {
-        console.log("ok");
+        console.log(fairData.fairImage.length);
+        try {
+          for (let i = 0; i < fairData.fairImage.length; i++) {
+            const formData = new FormData();
+            formData.append("imageFile", fairData.fairImage[i]);
+            const imageResponse = await axiosInstance.post(
+              `/addFairImage/${response.data.fairId}`,
+              formData,
+              {
+                headers: {
+                  "Content-Type": `multipart/form-data`,
+                },
+              }
+            );
+            if (imageResponse.status === 200) {
+              console.log("image uploaded");
+              alert("Item added successfully");
+            }
+          }
+          window.location.reload();
+        } catch (error) {
+          console.log(error);
+        }
       }
     } catch (error) {
       console.log("error");
@@ -76,7 +112,7 @@ const HPUpdateItem1 = () => {
                     type="text"
                     placeholder="Enter fair name"
                     name="name"
-                    value={formData.name}
+                    value={fairData.name}
                     onChange={(e) => {
                       inputFormdata(e.target.name, e.target.value);
                     }}
@@ -89,7 +125,7 @@ const HPUpdateItem1 = () => {
                     type="number"
                     placeholder="Enter Rent"
                     name="rent"
-                    value={formData.rent}
+                    value={fairData.rent}
                     onChange={(e) => {
                       inputFormdata(e.target.name, e.target.value);
                     }}
@@ -103,7 +139,7 @@ const HPUpdateItem1 = () => {
                     className="p-2"
                     placeholder="Description"
                     name="description"
-                    value={formData.description}
+                    value={fairData.description}
                     onChange={(e) => {
                       inputFormdata(e.target.name, e.target.value);
                     }}
@@ -113,7 +149,13 @@ const HPUpdateItem1 = () => {
                 <label>
                   Image:
                   <div className="d-flex justify-content-center col-12">
-                    <DragDropFile />
+                    {/* <DragDropFile /> */}
+                    <input
+                      type="file"
+                      name="fairImage"
+                      multiple // Allow multiple file selection
+                      onChange={(e) => handleImageChange(e)}
+                    />
                   </div>
                 </label>
               </div>
@@ -138,9 +180,9 @@ const HPUpdateItem1 = () => {
           </div>
         </form>
       </div>
-      <Link to="/holidayPlanner/plannerItem">
+      {/* <Link to="/holidayPlanner/plannerItem">
         {showPopup && <HpPopup2 onClose={() => setShowPopup(false)} />}
-      </Link>
+      </Link> */}
     </div>
   );
 };

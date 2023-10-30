@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import roamSrilanka.dev.model.Tourist.Tourist;
 import roamSrilanka.dev.model.User;
@@ -20,6 +21,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+     
 
     @GetMapping("/users")
     @ResponseBody
@@ -65,10 +67,10 @@ public class UserController {
 
     }
 
-    @GetMapping("/viewUser/{userId}")
-    public User getUserByID(@PathVariable Integer id){
-        return userService.getUserByID(id);
-    }
+//    @GetMapping("/viewUser/{userId}")
+//    public User getUserByID(@PathVariable Integer id){
+//        return userService.getUserByID(id);
+//    }
 
     private static class LoginRequest{
         private String userName;
@@ -91,6 +93,52 @@ public class UserController {
         }
 
 
+    }
+
+
+    @PutMapping("/updatePassword/{id}")
+    public ResponseEntity<User> updatePassword(@PathVariable Integer id, @RequestBody UpdatePasswordRequest updatePasswordRequest) {
+        User existingUser = userService.getUserById(id);
+
+        final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        if (existingUser == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        System.out.println(updatePasswordRequest.getCurrentPassword());
+        System.out.println(updatePasswordRequest.getNewPassword());
+
+        if (!passwordEncoder.matches(updatePasswordRequest.getCurrentPassword(), existingUser.getPassword())) {
+            System.out.println("Password not matched");
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        } else {
+            // Hash the new password before updating
+            String hashedNewPassword = passwordEncoder.encode(updatePasswordRequest.getNewPassword());
+            existingUser.setPassword(hashedNewPassword);
+            userService.updateUser(existingUser);
+            return ResponseEntity.ok(existingUser);
+        }
+    }
+
+    private static class UpdatePasswordRequest {
+        private String currentPassword;
+        private String newPassword;
+
+        public UpdatePasswordRequest() {
+        }
+
+        public UpdatePasswordRequest(String currentPassword, String newPassword) {
+            this.currentPassword = currentPassword;
+            this.newPassword = newPassword;
+        }
+
+        public String getCurrentPassword() {
+            return currentPassword;
+        }
+
+        public String getNewPassword() {
+            return newPassword;
+        }
     }
 
 }

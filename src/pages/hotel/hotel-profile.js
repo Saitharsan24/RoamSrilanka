@@ -1,12 +1,129 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 import "./../../styles/guide/guide-profile.css";
 import DQ from "./../../assets/img/DQ.jpeg";
 import * as Icon from "react-bootstrap-icons";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import axios from "axios";
+import { useSession } from '../../Context/SessionContext';
 
 const HotelProfile = () => {
+  const { sessionData , setSessionData  } = useSession();
+  const ownerId = sessionData.userId;
+
+  const [user, setUser] = useState([]);
+  const [owner, setOwner] = useState([]);
+
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 10000,
+  });
+
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: "",
+    newPassword: "",
+
+  })
+  const [ownerData, setOwnerData] = useState({
+    ownerName: "",
+    nic: "",
+    ownerAddress: "",
+    ownerEmail: "",
+    ownerContact: "",
+  });
+
+  const inputPasswordData = (name, value) => {
+    // console.log(name, value);
+    setPasswordData((prev) => ({ ...prev, [name]: value }));
+    // console.log(hotelData);
+  };
+
+  const inputOwnerData = (name, value) => {
+    // console.log(name, value);
+    setOwnerData((prev) => ({ ...prev, [name]: value }));
+    // console.log(hotelData);
+  };
+
+  const handleAddPassword = async (e) => {
+    e.preventDefault();
+    if (passwordData.newPassword == passwordData.confirmNewPassword) {
+      try {
+        const response = await axiosInstance.put(`/updatePassword/${ownerId}`, {
+          // Your data to be sent in the PUT request body
+          currentPassword: passwordData.currentPassword,
+          newPassword: passwordData.newPassword
+        });
+        if (response.status == 200) {
+          console.log("Password updated");
+          alert("Password updated");
+        }else{
+          console.log("Password not updated");
+          alert("Password not updated");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert("Password not matched");
+      console.log("Password not matched");
+    }
+  };
+
+  const handleUpdateOwner = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axiosInstance.put(`/updateOwner/${ownerId}`, {
+        // Your data to be sent in the PUT request body
+        ownerName: ownerData.ownerName,
+        nic: ownerData.nic,
+        ownerAddress: ownerData.ownerAddress,
+        ownerEmail: ownerData.ownerEmail,
+        ownerContact: ownerData.ownerContact,
+      });
+      if (response.status == 200) {
+        console.log("User updated");
+        window.location.reload();
+      }else{
+        console.log("User not updated");
+        alert("User not updated");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get(`/viewUser/${ownerId}`)
+      .then((response) => {
+        setUser(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get(`/viewHotelOwner/${ownerId}`)
+      .then((response) => {
+        setOwner(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
+  console.log(user);
+
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
@@ -15,6 +132,10 @@ const HotelProfile = () => {
 
   const handleRadioChange = (event) => {
     setSelectedOption(event.target.id);
+  };
+
+  const handleReload = () => {
+    window.location.reload();
   };
 
   return (
@@ -63,7 +184,7 @@ const HotelProfile = () => {
               </a>
             }
           >
-            <div className="d-flex flex-column col-lg-12 col-md-12 gap-4">
+            {/* <div className="d-flex flex-column col-lg-12 col-md-12 gap-4">
               <div
                 style={{
                   backgroundColor: "#FFF",
@@ -83,28 +204,6 @@ const HotelProfile = () => {
                     src={DQ}
                   ></img>
                   <div className="d-flex flex-column align-items-center">
-                    <p
-                      className="m-0"
-                      style={{
-                        color: "#DB163A",
-                        fontFamily: "Barlow",
-                        fontSize: "24px",
-                        fontWeight: "600",
-                      }}
-                    >
-                      Rating
-                    </p>
-                    <p
-                      className="m-0"
-                      style={{
-                        color: "#004577",
-                        fontFamily: "Cabin",
-                        fontSize: "30px",
-                        fontWeight: "700",
-                      }}
-                    >
-                      4.9
-                    </p>
                     <ReactStars
                       count={5}
                       onChange={ratingChanged}
@@ -139,7 +238,7 @@ const HotelProfile = () => {
                         fontSize: "32px",
                       }}
                     >
-                      Manoharan Keethapriya
+                      {owner.ownerName}
                     </p>
                     <button
                       className="my-2"
@@ -182,7 +281,7 @@ const HotelProfile = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div
               style={{ backgroundColor: "#FFF", borderRadius: "10px" }}
               className="d-flex flex-column my-lg-3 shadow-lg gap-3 p-3"
@@ -208,7 +307,7 @@ const HotelProfile = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        Name
+                        Full Name
                       </label>
                       <input
                         className="p-2"
@@ -219,7 +318,12 @@ const HotelProfile = () => {
                           width: "90%",
                         }}
                         type="text"
-                        placeholder="John"
+                        name="ownerName"
+                        value={ownerData.ownerName}
+                        onChange={(e) => {
+                          inputOwnerData(e.target.name, e.target.value);
+                        }}
+                        placeholder={owner.ownerName}
                       ></input>
                     </div>
                     <div className="d-flex flex-column gap-1 col-6">
@@ -230,7 +334,7 @@ const HotelProfile = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        Name
+                        NIC
                       </label>
                       <input
                         className="p-2 col-10"
@@ -241,7 +345,12 @@ const HotelProfile = () => {
                           width: "90%",
                         }}
                         type="text"
-                        placeholder="John"
+                        name="nic"
+                        value={ownerData.nic}
+                        onChange={(e) => {
+                          inputOwnerData(e.target.name, e.target.value);
+                        }}
+                        placeholder={owner.nic}
                       ></input>
                     </div>
                   </div>
@@ -254,7 +363,7 @@ const HotelProfile = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        Name
+                        Address
                       </label>
                       <input
                         className="p-2 col-10"
@@ -264,8 +373,13 @@ const HotelProfile = () => {
                           border: "none",
                           width: "95%",
                         }}
+                        name="ownerAddress"
                         type="text"
-                        placeholder="John"
+                        value={ownerData.ownerAddress}
+                        onChange={(e) => {
+                          inputOwnerData(e.target.name, e.target.value);
+                        }}
+                        placeholder={owner.ownerAddress}
                       ></input>
                     </div>
                   </div>
@@ -278,7 +392,7 @@ const HotelProfile = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        Name
+                        Email Address
                       </label>
                       <input
                         className="p-2"
@@ -289,7 +403,12 @@ const HotelProfile = () => {
                           width: "90%",
                         }}
                         type="text"
-                        placeholder="John"
+                        name="ownerEmail"
+                        value={ownerData.ownerEmail}
+                        onChange={(e) => {
+                          inputOwnerData(e.target.name, e.target.value);
+                        }}
+                        placeholder={owner.ownerEmail}
                       ></input>
                     </div>
                     <div className="d-flex flex-column gap-1 col-6">
@@ -300,7 +419,7 @@ const HotelProfile = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        Name
+                        Contact Number
                       </label>
                       <input
                         className="p-2 col-10"
@@ -311,53 +430,12 @@ const HotelProfile = () => {
                           width: "90%",
                         }}
                         type="text"
-                        placeholder="John"
-                      ></input>
-                    </div>
-                  </div>
-                  <div className="d-flex flex-row col-12 ms-3 ">
-                    <div className="d-flex flex-column gap-1 col-6">
-                      <label
-                        style={{
-                          fontSize: "14px",
-                          fontFamily: "Barlow",
-                          fontWeight: "bold",
+                        name="ownerContact"
+                        value={ownerData.ownerContact}
+                        onChange={(e) => {
+                          inputOwnerData(e.target.name, e.target.value);
                         }}
-                      >
-                        Name
-                      </label>
-                      <input
-                        className="p-2"
-                        style={{
-                          borderRadius: "5px",
-                          backgroundColor: "#F1F1F2",
-                          border: "none",
-                          width: "90%",
-                        }}
-                        type="text"
-                        placeholder="John"
-                      ></input>
-                    </div>
-                    <div className="d-flex flex-column gap-1 col-6">
-                      <label
-                        style={{
-                          fontSize: "14px",
-                          fontFamily: "Barlow",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Name
-                      </label>
-                      <input
-                        className="p-2 col-10"
-                        style={{
-                          borderRadius: "5px",
-                          backgroundColor: "#F1F1F2",
-                          border: "none",
-                          width: "90%",
-                        }}
-                        type="text"
-                        placeholder="John"
+                        placeholder={owner.ownerContact}
                       ></input>
                     </div>
                   </div>
@@ -372,10 +450,14 @@ const HotelProfile = () => {
                         color: "#FFF",
                         fontSize: "15px",
                       }}
+                      onClick={handleReload}
                     >
-                      Update Profile
+                      Discard
                     </button>
                     <button
+                    method="PUT"
+                    type="submit"
+                    onClick={handleUpdateOwner}
                       className="p-1"
                       style={{
                         backgroundColor: "#004577",
@@ -386,7 +468,7 @@ const HotelProfile = () => {
                         fontSize: "15px",
                       }}
                     >
-                      Edit Profile
+                      Change
                     </button>
                   </div>
                 </div>
@@ -434,7 +516,7 @@ const HotelProfile = () => {
               </a>
             }
           >
-            <div className="d-flex flex-column col-lg-12 col-md-12  gap-4 my-md-3">
+            {/* <div className="d-flex flex-column col-lg-12 col-md-12  gap-4 my-md-3">
               <div
                 style={{
                   backgroundColor: "#FFF",
@@ -510,7 +592,7 @@ const HotelProfile = () => {
                         fontSize: "32px",
                       }}
                     >
-                      Manoharan Keethapriya
+                      {user.userFullname}
                     </p>
                     <button
                       className="my-2"
@@ -553,7 +635,7 @@ const HotelProfile = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div
               style={{ backgroundColor: "#FFF", borderRadius: "10px" }}
               className="d-flex flex-column shadow-lg gap-3 p-3"
@@ -590,6 +672,11 @@ const HotelProfile = () => {
                           width: "45%",
                         }}
                         type="text"
+                        name="currentPassword"
+                        value={passwordData.currentPassword}
+                        onChange={(e) => {
+                          inputPasswordData(e.target.name, e.target.value);
+                        }}
                         placeholder="Enter Password"
                       ></input>
                     </div>
@@ -614,6 +701,11 @@ const HotelProfile = () => {
                           width: "90%",
                         }}
                         type="text"
+                        name="newPassword"
+                        value={passwordData.newPassword}
+                        onChange={(e) => {
+                          inputPasswordData(e.target.name, e.target.value);
+                        }}
                         placeholder="Enter New Password"
                       ></input>
                     </div>
@@ -625,7 +717,7 @@ const HotelProfile = () => {
                           fontWeight: "bold",
                         }}
                       >
-                        New Password
+                       Confirm New Password
                       </label>
                       <input
                         className="p-2 col-10"
@@ -636,6 +728,11 @@ const HotelProfile = () => {
                           width: "90%",
                         }}
                         type="text"
+                        name="confirmNewPassword"
+                        value={passwordData.confirmNewPassword}
+                        onChange={(e) => {
+                          inputPasswordData(e.target.name, e.target.value);
+                        }}
                         placeholder="Again Enter New Password"
                       ></input>
                     </div>
@@ -651,10 +748,14 @@ const HotelProfile = () => {
                         color: "#FFF",
                         fontSize: "15px",
                       }}
+                      onClick={handleReload} 
                     >
                       Discard
                     </button>
                     <button
+                    method="PUT"
+                    onClick={handleAddPassword}
+                    type="submit"
                       className="p-1"
                       style={{
                         backgroundColor: "#004577",

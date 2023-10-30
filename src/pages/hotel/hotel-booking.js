@@ -8,13 +8,17 @@ import { MDBDataTable } from "mdbreact";
 import "./../../styles/data-table.css";
 import "./../../styles/hotel/popup.css";
 import axios from "axios";
+import { useSession } from '../../Context/SessionContext';
 
 function HotelBooking() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRequest, setSelectedRowData] = useState([]);
-  const [requests, setRequests] = useState([]);
+  const [mergedData, setMergedData] = useState([]);
   const [requestId, setRequestId] = useState("");
   const [inputValue, setInputValue] = useState("");
+
+  const { sessionData , setSessionData  } = useSession();
+  const ownerId = sessionData.userId;
 
   //Sending data to backend
   const apiBaseUrl = "http://localhost:8080";
@@ -28,7 +32,7 @@ function HotelBooking() {
     setIsModalOpen(true);
     setRequestId(requestId);
     setSelectedRowData(
-      requests.find((request) => request.requestId === requestId)
+      mergedData.find((request) => request.requestId === requestId)
     );
     console.log("requestId: ", requestId);
     console.log("selectedRequest: ", selectedRequest);
@@ -38,24 +42,86 @@ function HotelBooking() {
     setIsModalOpen(false);
   };
 
-  useEffect(() => {
-    // Fetch data from your backend API
-    axiosInstance
-      .get("/viewRequest")
-      .then((response) => {
-        setRequests(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log("Error fetching data:", error);
-      });
-  }, []);
 
-  const rows = requests.map((request) => {
+  const mergeData = async () => {
+    try {
+      // Fetch data from your backend API for viewRequest
+      const requestResponse = await axiosInstance.get("/viewRequest");
+      const requestArray = requestResponse.data;
+  
+      // Fetch data from your backend API for viewTourists
+      const touristsResponse = await axiosInstance.get("/viewTourists");
+      const touristsArray = touristsResponse.data;
+  
+      // Fetch data from your backend API for viewHotels
+      const hotelsResponse = await axiosInstance.get("/viewHotels");
+      const hotelsArray = hotelsResponse.data;
+  
+      // Fetch data from your backend API for users
+      const usersResponse = await axiosInstance.get("/users");
+      const usersArray = usersResponse.data;
+  
+      // Create a mapping of userId to user data
+      const userDataMap = {};
+      usersArray.forEach((user) => {
+        userDataMap[user.userId] = user;
+      });
+  
+      // Create a mapping of hotelId to hotel data
+      const hotelDataMap = {};
+      hotelsArray.forEach((hotel) => {
+        hotelDataMap[hotel.hotelId] = hotel;
+      });
+  
+      // Merge the data based on userId
+      const mergedData = requestArray.map((request) => {
+        const userId = request.userId;
+        // Find the corresponding user data
+        const user = userDataMap[userId];
+        // Initialize the merged object with the user data
+        const mergedObject = { ...user, ...request };
+  
+        // Find the corresponding tourist data, if available
+        const tourist = touristsArray.find((tourist) => tourist.userId === userId);
+        if (tourist) {
+          mergedObject.touristData = tourist;
+        }
+  
+        return mergedObject;
+      });
+  
+      // Merge the data based on hotelId
+      mergedData.forEach((item) => {
+        const hotelId = item.hotelId;
+        // Find the corresponding hotel data, if available
+        const hotel = hotelDataMap[hotelId];
+        if (hotel) {
+          item.hotelData = hotel;
+        }
+      });
+  
+      // Set the merged data in your state variable
+      setMergedData(mergedData);
+    } catch (error) {
+      console.log("Error fetching data:", error);
+    }
+  };
+  
+  
+  useEffect(() => {
+    mergeData();
+  }, []);
+  
+  const filteredData = mergedData.filter((item) => {
+    return item.hotelData["ownerId"] === ownerId;
+  });
+
+console.log("filteredData:",filteredData); 
+
+  const rows = filteredData.map((request) => {
     return {
-      name: request.hotelName,
+      name: request.userFullname,
       date: request.date,
-      noOfRooms: request.noOfRooms,
       status: determineStatus(request.status),
       btn: (
         <Link
@@ -74,8 +140,6 @@ function HotelBooking() {
       return "Pending";
     } else if (status == 1) {
       return "Accepted";
-    } else if (status == 2) {
-      return "Completed";
     } else {
       return "Rejected";
     }
@@ -85,7 +149,7 @@ function HotelBooking() {
     setRequestId(e.target.value);
   };
 
-  const filteredRequests = requests.filter((request) => request.status == null);
+  const filteredRequests = filteredData.filter((request) => request.status == null);
 
   return (
     <div className="d-flex w-100">
@@ -135,12 +199,6 @@ function HotelBooking() {
                 width: 150,
               },
               {
-                label: "No of rooms",
-                field: "noOfRooms",
-                sort: "asc",
-                width: 200,
-              },
-              {
                 label: "Status",
                 field: "status",
                 sort: "asc",
@@ -163,7 +221,7 @@ function HotelBooking() {
             <Modal.Title>Hotel Booking</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {requests.find((request) => request.requestId === requestId) ? (
+            {filteredData.find((request) => request.requestId === requestId) ? (
               <form method="POST" style={{ fontFamily: "Poppins" }}>
                 <input
                   type="hidden"
@@ -180,7 +238,7 @@ function HotelBooking() {
                         style={{ width: "210px" }}
                         className="hotel-popup-input"
                       >
-                        {selectedRequest.hotelName}
+                        {selectedRequest.hotelData["hotelName"]}
                       </div>
                     </div>
                     <div>
@@ -218,23 +276,23 @@ function HotelBooking() {
                   </div>
                   <div className="d-flex flex-row justify-content-between">
                     <div>
-                      <label className="hotel-popup-label">Status</label>
+                      <label className="hotel-popup-label">Gender</label>
                       <br />
                       <div
                         style={{ width: "170px" }}
                         className="hotel-popup-input"
                       >
-                        {determineStatus(selectedRequest.status)}
+                        {selectedRequest.touristData["touristGender"]}
                       </div>
                     </div>
                     <div>
-                      <label className="hotel-popup-label">No of Rooms</label>
+                      <label className="hotel-popup-label">Country</label>
                       <br />
                       <div
                         style={{ width: "170px" }}
                         className="hotel-popup-input"
                       >
-                        {selectedRequest.noOfRooms}
+                        {selectedRequest.touristData["country"]}
                       </div>
                     </div>
                   </div>

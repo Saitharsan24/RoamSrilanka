@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 // import Headeruser from "../components/headerusers";
 // import Sidebar from "../components/holidayplanner-sidebar";
 //import * as Icon from "react-bootstrap-icons";
@@ -29,36 +29,44 @@ const HPRequestDetails = () => {
         console.log(res.data);
 
         axiosInstance
-        .get("/users/" + res.data.touristID)
-        .then((res2) => {
-          setUserData(res2.data);
-          console.log(res2.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+          .get("/users/" + res.data.touristID)
+          .then((res2) => {
+            setUserData(res2.data);
+            console.log(res2.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
 
-        axiosInstance
-        .get("/packages/" + res.data.packageID)
-        .then((res3) => {
+        axiosInstance.get("/packages/" + res.data.packageID).then((res3) => {
           setPackageData(res3.data);
           console.log(res3.data);
-        })
+        });
       })
       .catch((err) => {
         console.log(err);
       });
-      
-
-
-
-      
   }, []);
 
   const handleRowClick = (packageID) => {
     navigate(`/holidayPlanner/plannerViewPackage/${packageID}`);
-  }
+  };
 
+  const [selectedTourGuide, setSelectedTourGuide] = useState([]);
+
+  const handleTourGuideChange = (event) => {
+    setSelectedTourGuide(event.target.value);
+  };
+
+  const [selectedVehicle, setSelectedVehicle] = useState([]);
+  const handleVehicleChange = (event) => {
+    setSelectedVehicle(event.target.value);
+  };
+
+  const [selectedHotel, setSelectedHotel] = useState([]);
+  const handleHotelChange = (event) => {
+    setSelectedHotel(event.target.value);
+  };
 
   return (
     <div className="d-flex flex-column">
@@ -89,7 +97,7 @@ const HPRequestDetails = () => {
                 className="change_pic col-4"
                 style={{ height: "3rem", width: "Auto" }}
               >
-                Message to Manoharan
+                Message to {userData.userFullname}
               </button>
             </div>
 
@@ -119,8 +127,13 @@ const HPRequestDetails = () => {
               <button
                 className=" change_pic col-4 flex-fill"
                 style={{ height: "2rem" }}
-                onClick={() => handleRowClick(packageData.packageID) & console.log("Clicked View for package ID:", packageData.packageID)}
-               
+                onClick={() =>
+                  handleRowClick(packageData.packageID) &
+                  console.log(
+                    "Clicked View for package ID:",
+                    packageData.packageID
+                  )
+                }
               >
                 View package
               </button>
@@ -141,6 +154,62 @@ const HPRequestDetails = () => {
                 <p>{requestData.todate}</p>
               </div>
             </div>
+            <div className="d-flex flex-column flex-lg-row justify-content-left m-2 gap-3">
+              <div className="col-4">
+                <p>Hotel :</p>
+              </div>
+              <div className="col-4 hp-req">
+                <select
+                  name="hotelSelect"
+                  value={selectedHotel}
+                  onChange={handleHotelChange}
+                >
+                  <option value="Hilton">Hilton</option>
+                  <option value="Marriot">Marriot</option>
+                  <option value="Cinnamon Grand">Cinnamon Grand</option>
+                  {/* Add other hotel options as needed */}
+                </select>
+              </div>
+            </div>
+            <div className="d-flex flex-column flex-lg-row justify-content-left m-2 gap-3">
+              <div className="col-4">
+                <p>Vehicle :</p>
+              </div>
+              <div className="col-4 hp-req">
+                <select
+                  name="vehicleSelect"
+                  value={selectedVehicle}
+                  onChange={handleVehicleChange}
+                >
+                  <option value="Car">Car</option>
+                  <option value="Van">Van</option>
+                  <option value="Bus">Bus</option>
+                  {/* Add other vehicle options as needed */}
+                </select>
+              </div>
+            </div>
+            <div className="d-flex flex-column flex-lg-row justify-content-left m-2 gap-3">
+              {packageData.trip_guide && (
+                <div className="d-flex flex-column flex-lg-row justify-content-left  gap-2">
+                  <div className="col-8">
+                    <p>Tour guide:</p>
+                  </div>
+                  <div className="col-4 hp-req">
+                    <select
+                      name="tourGuideSelect"
+                      value={selectedTourGuide}
+                      onChange={handleTourGuideChange}
+                    >
+                      <option value="Mr Abeywikrama">Mr Abeywikrama</option>
+                      <option value="Mr Smith">Mr Smith</option>
+                      <option value="Ms Johnson">Ms Johnson</option>
+                      {/* Add other tour guide options as needed */}
+                    </select>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <div className="d-flex flex-row justify-content-between mx-2">
               <button className="btn-cancel" type="submit">
                 Reject
