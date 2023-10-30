@@ -12,6 +12,8 @@ import roamSrilanka.dev.model.Tourist.Tourist;
 import roamSrilanka.dev.model.User;
 import roamSrilanka.dev.service.UserService;
 
+import java.net.PasswordAuthentication;
+import java.util.Arrays;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -48,9 +50,10 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) throws JSONException {
+    public ResponseEntity<String> login(@RequestBody LoginRequest logillnRequest) throws JSONException {
 
-       User user = userService.authenticateUser(loginRequest.getUserName(), loginRequest.getPassword());
+        PasswordAuthentication loginRequest = null;
+        User user = userService.authenticateUser(loginRequest.getUserName(), Arrays.toString(loginRequest.getPassword()));
 
          if(user != null) {
 
