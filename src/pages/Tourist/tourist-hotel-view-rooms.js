@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap'
 import * as BiIcons from 'react-icons/bi'
 import axios from "axios";
 import RoomPopup from '../../components/touristRoomPopup'
+import ReservePopup from '../../pages/Tourist/touristReservePopup'
 import { set } from 'lodash'
 
 
@@ -14,7 +15,10 @@ function ToursitHotelViewRoom() {
   const [showPopup, setShowPopup] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [showBlur, setShowBlur] = useState(false);
+  const [showReserve, setShowReserve] = useState(false);
   //console.log(showPopup);
+
+  const [roomIdToReserve, setRoomIdToReserve] = useState(null);
 
   //function for show popup
   const openPopup = (room) => {
@@ -23,9 +27,20 @@ function ToursitHotelViewRoom() {
     setShowBlur(!showBlur);
   }
 
+  const openPopupReserve = (roomId) => {
+    setRoomIdToReserve(roomId);
+    setShowReserve(!showReserve);
+    setShowBlur(!showBlur);
+  }
+
   //function for close popup
   const closeModal = () => {
     setShowPopup(false);
+    setShowBlur(false);
+  }
+
+  const closeModalReserve = () => {
+    setShowReserve(false);
     setShowBlur(false);
   }
 
@@ -87,6 +102,7 @@ function ToursitHotelViewRoom() {
 
   return (
     <>
+    {showReserve && <ReservePopup hotel={hotels} room={roomIdToReserve} closeModal={closeModalReserve} />}
     {showPopup && <RoomPopup closeModal={closeModal} room={selectedRoom} />}
     <div  className={`tourist-main d-flex flex-column gap-2 mb-2 
           ${
@@ -169,7 +185,7 @@ function ToursitHotelViewRoom() {
                     <p onClick={() => openPopup(room)} className='roomMoreDetailHover' style={{fontWeight:"600", fontSize:"18px", color:"#004577"}}>
                       More datails <BsIcons.BsArrowRight/>
                     </p>
-                    <Button>
+                    <Button onClick={()=>openPopupReserve({id:room.roomId,price:room.price})}>
                       Reserve
                     </Button>
                   </div>

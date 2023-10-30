@@ -67,6 +67,9 @@ public class Vehicle {
     @Column(name="insurance_img")
     private String insurance_img;
 
+    @Column(name = "user_id")
+    private Long userId;
+
 //    @OneToOne
 //    @MapsId
 //    @JoinColumn(name = "vehicleID")
@@ -261,5 +264,11 @@ public class Vehicle {
         this.insurance_img = insurance_img;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
 
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 }

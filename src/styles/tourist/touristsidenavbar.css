@@ -8,7 +8,7 @@
     position: realtive;
     top: 0;
     width: inherit;
-    height: inherit;
+    height: 100% !important;
     transition: 850ms;
     font-family: 'Barlow', sans-serif !important;
     font-weight: 400;

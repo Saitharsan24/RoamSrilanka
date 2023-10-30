@@ -10,23 +10,20 @@ import galle_tower from "./../../assets/images/galle_tower.jpeg";
 function TouristDashboard() {
   const dashboardCard = [
     {
-      name: 'Galle',
-      imagePath: '../../assets/images/galle_tower.jpeg'  
+      name: 'galle',
+      
     },
 
     {
-      name: 'Colombo',
-      imagePath: '../../assets/images/Colombo.jpg'
+      name: 'colombo'
     },
 
     {
-      name: 'Kandy',
-      imagePath: '../../assets/images/kandy.jpg'
+      name: 'kandy',
     },
 
     {
-      name: 'Jaffna',
-      imagePath: '../../assets/images/jaffna.jpg'
+      name: 'jaffna'
     },
 
   ]
@@ -44,7 +41,7 @@ function TouristDashboard() {
             return (
             <a key={index} href="touristPackages">
               <div className="place-01">
-                <div className="place-image d-flex flex-column align-items-start justify-content-end p-4">
+                <div className={`${item.name} place-image d-flex flex-column align-items-start justify-content-end p-4`}>
                   <p>{item.name}</p>
                 </div>
               </div>

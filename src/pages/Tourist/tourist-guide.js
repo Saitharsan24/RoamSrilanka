@@ -147,25 +147,6 @@ function ToursitGuide() {
               Book tour
             </Button>
           </div>
-
-          <div className="place-01">
-            <div className="place-image"></div>
-            <p>Galle</p>
-            <Button
-              className="book-tour-btn"
-              variant="primary"
-              style={{
-                backgroundColor: "#004577",
-                border: "none",
-                marginTop: "3px",
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                fontSize: "12px",
-              }}
-            >
-              Book tour
-            </Button>
-          </div>
         </div>  
       </div>
       

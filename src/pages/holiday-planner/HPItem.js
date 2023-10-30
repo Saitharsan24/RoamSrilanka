@@ -137,7 +137,7 @@ function HPItem() {
               <Link to="/holidayPlanner/plannerItem1">
                 <button
                   className=""
-                  style={{
+                  style={{ 
                     width: "15rem",
                     borderRadius: "11px",
                     border: "1px solid #004577",

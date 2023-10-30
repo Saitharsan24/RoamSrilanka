@@ -163,5 +163,4 @@ public class Packages {
         this.no_of_people = no_of_people;
     }
 
-
 }
