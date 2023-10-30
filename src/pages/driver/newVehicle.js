@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useSession } from '../../Context/SessionContext';
 
-function DrivernewVehicle () {
+// function DrivernewVehicle () {
 
     //Initiating sessoin data
     const { sessionData , setSessionData  } = useSession();
@@ -46,97 +46,97 @@ function DrivernewVehicle () {
         navigate("/driver/driverVehicle");
     };
 
-    const upload_preset = "moz2vspi";
-    const cloud_name = "dg3y629pc";
+//     const upload_preset = "moz2vspi";
+//     const cloud_name = "dg3y629pc";
 
-  const handleFileChange1 = (e) => {
+//   const handleFileChange1 = (e) => {
 
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", upload_preset);
-    const options = {
-      method: "POST",
-      body: formData,
-    };
+//     const file = e.target.files[0];
+//     const formData = new FormData();
+//     formData.append("file", file);
+//     formData.append("upload_preset", upload_preset);
+//     const options = {
+//       method: "POST",
+//       body: formData,
+//     };
 
-    fetch(`https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`, options)
-      .then((res) => res.json())
-      .then((res) => {
-        setImageUrl1(res.secure_url); // Update the state with the uploaded image URL
-        console.log(res.secure_url); //equal to image1Url1
-        setVehicle({ ...vehicle, [e.target.name]: res.secure_url })
-        console.log(vehicle); //
-      })
-      .catch((err) => console.log(err));
-  };
+//     fetch(`https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`, options)
+//       .then((res) => res.json())
+//       .then((res) => {
+//         setImageUrl1(res.secure_url); // Update the state with the uploaded image URL
+//         console.log(res.secure_url); //equal to image1Url1
+//         setVehicle({ ...vehicle, [e.target.name]: res.secure_url })
+//         console.log(vehicle); //
+//       })
+//       .catch((err) => console.log(err));
+//   };
 
-    const handleFileChange2 = (e) => {
+//     const handleFileChange2 = (e) => {
 
-        const file = e.target.files[0];
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("upload_preset", upload_preset);
-        const options = {
-        method: "POST",
-        body: formData,
-        };
+//         const file = e.target.files[0];
+//         const formData = new FormData();
+//         formData.append("file", file);
+//         formData.append("upload_preset", upload_preset);
+//         const options = {
+//         method: "POST",
+//         body: formData,
+//         };
 
-        fetch(`https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`, options)
-        .then((res) => res.json())
-        .then((res) => {
-            setImageUrl2(res.secure_url); // Update the state with the uploaded image URL
-            console.log(res.secure_url); //
-            setVehicle({ ...vehicle, [e.target.name]: res.secure_url })
-        })
-        .catch((err) => console.log(err));  
-    };
+//         fetch(`https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`, options)
+//         .then((res) => res.json())
+//         .then((res) => {
+//             setImageUrl2(res.secure_url); // Update the state with the uploaded image URL
+//             console.log(res.secure_url); //
+//             setVehicle({ ...vehicle, [e.target.name]: res.secure_url })
+//         })
+//         .catch((err) => console.log(err));  
+//     };
 
-    const handleFileChange3 = (e) => {
+//     const handleFileChange3 = (e) => {
 
-        const file = e.target.files[0];
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("upload_preset", upload_preset);
-        const options = {
-        method: "POST",
-        body: formData,
-        };
+//         const file = e.target.files[0];
+//         const formData = new FormData();
+//         formData.append("file", file);
+//         formData.append("upload_preset", upload_preset);
+//         const options = {
+//         method: "POST",
+//         body: formData,
+//         };
 
-        fetch(`https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`, options)
-        .then((res) => res.json())
-        .then((res) => {
-            setImageUrl3(res.secure_url); // Update the state with the uploaded image URL
-            console.log(res.secure_url); //
-            setVehicle({ ...vehicle, [e.target.name]: res.secure_url })
-        })
-        .catch((err) => console.log(err));
+//         fetch(`https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`, options)
+//         .then((res) => res.json())
+//         .then((res) => {
+//             setImageUrl3(res.secure_url); // Update the state with the uploaded image URL
+//             console.log(res.secure_url); //
+//             setVehicle({ ...vehicle, [e.target.name]: res.secure_url })
+//         })
+//         .catch((err) => console.log(err));
         
-        // console.log(imageUrl3);  
-    };
+//         // console.log(imageUrl3);  
+//     };
 
-    const handleFileChange4 = (e) => {
+//     const handleFileChange4 = (e) => {
 
-        const file = e.target.files[0];
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("upload_preset", upload_preset);
-        const options = {
-        method: "POST",
-        body: formData,
-        };
+//         const file = e.target.files[0];
+//         const formData = new FormData();
+//         formData.append("file", file);
+//         formData.append("upload_preset", upload_preset);
+//         const options = {
+//         method: "POST",
+//         body: formData,
+//         };
 
-        fetch(`https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`, options)
-        .then((res) => res.json())
-        .then((res) => {
-            setImageUrl4(res.secure_url); // Update the state with the uploaded image URL
-            console.log(res.secure_url); //
-            setVehicle({ ...vehicle, [e.target.name]: res.secure_url })
-        })
-        .catch((err) => console.log(err));
+//         fetch(`https://api.Cloudinary.com/v1_1/${cloud_name}/image/upload`, options)
+//         .then((res) => res.json())
+//         .then((res) => {
+//             setImageUrl4(res.secure_url); // Update the state with the uploaded image URL
+//             console.log(res.secure_url); //
+//             setVehicle({ ...vehicle, [e.target.name]: res.secure_url })
+//         })
+//         .catch((err) => console.log(err));
         
-        // console.log(imageUrl4);  
-    };
+//         // console.log(imageUrl4);  
+//     };
 
     return (
         <div className="d-flex w-100">
@@ -204,8 +204,8 @@ function DrivernewVehicle () {
                 </div>
             </div>
 
-        </div>
-    );
-}
+//         </div>
+//     );
+// }
 
-export default DrivernewVehicle;
+// export default DrivernewVehicle;
