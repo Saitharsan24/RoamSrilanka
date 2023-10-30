@@ -34,6 +34,7 @@ import AdminPackageAccept from "./pages/admin/admin_package_accept";
 import AdminPlannerReg from "./pages/admin/admin_holidayplanner_reg";
 import AdminGuideReg from "./pages/admin/admin_guide_reg";
 import AdminPlannertDetails from "./pages/admin/admin_holidayplanner_view_detail";
+import AdminGuideDetails from "./pages/admin/admin_guide_detail";
 import AdminVehicle from "./pages/admin/admin_vehicle";
 import AdminVehicleDetail_1 from "./pages/admin/admin_vehice_detail";
 
@@ -192,6 +193,7 @@ const route = createBrowserRouter(
         <Route path="adminholidayplannrreg" element={<AdminPlannerReg/>}></Route>
         <Route path="adminguidereg" element={<AdminGuideReg/>}></Route>
         <Route path="adminholidayplannrdetail" element={<AdminPlannertDetails/>}></Route>
+        <Route path="adminguidedetail" element={<AdminGuideDetails/>}></Route>
         <Route path="adminvehicle" element={<AdminVehicle/>}></Route>
         <Route path="adminvehicledetail_1" element={<AdminVehicleDetail_1/>}></Route>
 

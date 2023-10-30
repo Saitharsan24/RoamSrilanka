@@ -19,7 +19,7 @@ function AdminGuideReg() {
 
                     <form  method='POST'>
                     <div className="holi-content-container d-flex flex-column">
-                    <h4 className='mb-3'>Register <span> HolidayPlanner</span></h4>
+                    <h4 className='mb-3'>Register <span> Tour guide</span></h4>
                     <div className='holi-content-inputs d-flex flex-column w-100 gap-2'>
                             <div className="holi-input-row d-flex flex-row w-100 gap-4">
                             <div className='w-50'>
@@ -36,14 +36,8 @@ function AdminGuideReg() {
 
                             <div className="holi-input-row d-flex flex-row w-100 gap-4">
                             <div className='w-50'>
-                                <p>Gender</p>
-                                {/* <input className='w-100' type="text" /> */}
-                                <select className='w-100' name='gender' >
-                                <option disabled selected>Choose gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="other">Preferred not to say</option>
-                                </select>
+                                <p>SLTDA Number</p>
+                                <input className='w-100' name='sltda' type="text" placeholder='eg: SL 123'   />
                                 <p className="holi-error-text"></p>
                             </div>
                             <div className='w-50'>

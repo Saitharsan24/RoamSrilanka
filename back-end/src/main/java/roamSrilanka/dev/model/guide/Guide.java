@@ -27,6 +27,7 @@ public class Guide {
     @Column(name = "address")
     private String address;
 
+
     public Guide() {
     }
 

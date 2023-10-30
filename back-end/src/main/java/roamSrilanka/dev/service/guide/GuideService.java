@@ -14,4 +14,9 @@ public class GuideService {
     public Iterable<Guide> getAllGuides() {
         return guideRepository.findAll();
     }
+
+    public Guide getGuideById(Integer userId) {
+        return guideRepository.findById(userId).orElse(null);
+
+    }
 }
