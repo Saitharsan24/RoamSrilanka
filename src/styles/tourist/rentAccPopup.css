@@ -1,8 +1,14 @@
-.rent-acc-popup{
+.popup-for-acc-reserve{
+    width: 600px;
+    height: 400px;
     background-color: #ffffff;
-    width: 600px !important;
-    height: 300px;
-    border-radius: 15px;
-    transform: translate(100%,30%);
-    z-index: 1000;
-}
+    z-index: 1000 !important;
+    position: fixed;    
+    border-radius: 20px;
+    transform: translate(50%,15%);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding:0px 15px 0px 25px;
+}   

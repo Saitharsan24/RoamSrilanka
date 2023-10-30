@@ -18,10 +18,15 @@ function ToursitAccessories() {
     setShowBlur(!showBlur);
   }
 
+  const closePopUpHandler = () => {
+    setShowRentPopUp(!showRentPopUp);
+    setShowBlur(!showBlur);
+  }
+
   return (
     <>
     {
-      showRentPopUp && <RentAccPopup />
+      showRentPopUp && <RentAccPopup className="rent-acc-popup" closeModal={closePopUpHandler} item={rentDetails}/>
     }
     <div className={`tourist-main 
         ${
