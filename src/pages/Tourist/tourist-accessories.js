@@ -7,8 +7,9 @@ import axios from "axios";
 function ToursitAccessories() {
 
   const [accessories, setAccessories] = useState([]);
-  const [accImgages, setAccImages] = useState([]);
-  
+  const [accImages, setAccImages] = useState([]);
+
+  console.log(accImages);
   console.log(accessories);
 
   const apiBaseUrl = "http://localhost:8080";
@@ -27,17 +28,33 @@ function ToursitAccessories() {
     return chunked_arr;
   }
 
+  //retrieving data from database
   useEffect(() => {
-    axiosInstance
-      .get("/getAllFairs")
-      .then((res) => {
-        console.log(res.data);
-        setAccessories(res.data.filter(item => item.status === 0));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    Promise.all([
+      axiosInstance.get("/getAllFairs"),
+      axiosInstance.get("/viewFairImages")
+    ])
+    .then((responses) => {
+      const allFairsResponse = responses[0];
+      const viewFairImagesResponse = responses[1];
+
+      setAccessories(allFairsResponse.data.filter(item => item.status === 0));
+      setAccImages(viewFairImagesResponse.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   }, []);
+
+  //meging data from two arrays
+  const mergedData = accessories.map(accessory => {
+    const image = accImages.find(img => img.fairId === accessory.fairId);
+    return {
+      ...accessory,
+      image: image ? image : null
+    };
+  });
+  console.log(mergedData);
 
 
   return (
@@ -54,11 +71,11 @@ function ToursitAccessories() {
       </div>
 
       <div className="all-accessories mt-4 mb-4 d-flex justify-content-center gap-5">
-    {chunkArray(accessories, 4).map((chunk, chunkIndex) => (
+    {chunkArray(mergedData, 4).map((chunk, chunkIndex) => (
       <div key={chunkIndex} className="accessories-row">
         {chunk.map((item, index) => (
           <div key={index} className="accessories-card mb-4">
-            <div className="accessories-card-image"></div>
+            <div className="accessories-card-image"><img className='acc-images' src={require(`../../assets/images/${item.image.fairImage}.jpg`)} alt="" /></div>
             <p className='pt-1' style={{fontWeight:'600', fontSize:'18px',color:'#004577',margin:'0px'}}>{item.fairname}</p>
             <Button
               className="rent-btn"

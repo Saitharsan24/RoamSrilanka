@@ -25,6 +25,10 @@ public class FairService {
         return this.fairRepository.findAll();
     }
 
+    public List<FairImage> getAllHotelsImages() {
+        return fairImageRepository.findAll();
+    }
+
     public Fair createFair (Fair newFair) {
         return this.fairRepository.save(newFair);
     }
