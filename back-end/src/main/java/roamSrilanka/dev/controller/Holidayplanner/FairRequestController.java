@@ -23,4 +23,11 @@ public class FairRequestController {
         fairrequestService.addFairrequest(fairrequest);
         return ResponseEntity.ok("Fairrequest added successfully");
     }
+
+    @GetMapping("/getAllFairrequest/{id}")
+    @ResponseBody
+    public ResponseEntity<FairRequest> getFairrequest(@PathVariable Integer id) {
+        return ResponseEntity.ok(fairrequestService.getFairrequest(id));
+    }
+
 }

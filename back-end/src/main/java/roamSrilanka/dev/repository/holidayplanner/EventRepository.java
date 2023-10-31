@@ -1,4 +1,4 @@
-package roamSrilanka.dev.repository;
+package roamSrilanka.dev.repository.holidayplanner;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -9,7 +9,6 @@ import roamSrilanka.dev.model.Holidayplanner.Event;
 import roamSrilanka.dev.model.Holidayplanner.EventImage;
 import roamSrilanka.dev.model.Holidayplanner.FairImage;
 import roamSrilanka.dev.service.EventService;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
