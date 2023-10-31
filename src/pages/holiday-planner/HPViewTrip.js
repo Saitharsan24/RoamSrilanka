@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import * as Icon from "react-bootstrap-icons";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+
+import { useEffect,useState } from "react";
+
 import axios from "axios";
 
 function getStatusText(status) {
@@ -21,9 +23,11 @@ function getStatusText(status) {
   }
 }
 
+
 const HPViewTrip = () => {
   const paraData = useParams();
   console.log("booking id", paraData);
+
 
   const navigate = useNavigate();
   const apiBaseUrl = "http://localhost:8080";
@@ -135,6 +139,7 @@ const HPViewTrip = () => {
         className="d-flex flex-column gap-3 col-6 p-5 mt-5 mb-5"
       >
         <div className="d-lg-flex d-md-flex d-flex flex-lg-row justify-content-between pack">
+
           <h2 className="m-2 justify-content-center">Trips Information</h2>
           <button
             className="change_pic col-4"
