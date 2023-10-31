@@ -131,13 +131,16 @@ function Vehicle() {
                         }  
                         {(vehicle.length !==0) &&
                         <div class="row">
-                            {vehicle[0]['status'] == 1 ? (
-                                <div style={{color:"green"}}>Status</div>
-                            ):(
-                                <div style={{color:"red"}}>Status</div>
-                            )}
-
-                            <button onClick={deleteVehicle}>Delete My vehicle</button>
+                            
+                            <div class="d-flex justify-content-between mb-2">
+                                {vehicle[0]['status'] == 1 ? (
+                                    <div style={{color:"green"}}>Status : Approved</div>
+                                ):(
+                                    <div style={{color:"red"}}>Status : Approval Pending</div>
+                                )}
+                                <button onClick={deleteVehicle}>Delete My vehicle</button>
+                            </div>
+                            
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <div class="card">
                                 <div class="card-body">
@@ -166,12 +169,12 @@ function Vehicle() {
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="card mb-2">
+                                {/* <div class="card mb-2">
                                     <div class="card-body">
                                         <h5 class="card-title">Vehicle Rate</h5>
-                                        {/* <ReactStars {...ratingExample} /> */}
+                                        <ReactStars {...ratingExample} />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div class="card">
                                 <div class="card-body">
                                     <div class="position-relative">
