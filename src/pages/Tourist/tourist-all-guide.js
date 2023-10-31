@@ -36,11 +36,11 @@ function TouristAllGuide() {
     axiosInstance
       .get("/viewGuides")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setTourGuide(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err); 
       });
   });
 

@@ -13,9 +13,10 @@ function RentAccPopup({closeModal, item}) {
         const [fromDate, setFromDate] = useState(new Date().toISOString().split('T')[0]);
         const [toDate, setToDate] = useState(new Date().toISOString().split('T')[0]);
         const [checkAvailability, setCheckAvailability] = useState(false);
+        const [placesToVisit, setPlacesToVisit] = useState('');
         const [guideTrips, setGuideTrips] = useState([]);
 
-        console.log(item);
+        // console.log(item);
     const fromDateFunction = (event) => {
         setFromDate(event.target.value);
         setToDate(event.target.value);
@@ -83,28 +84,29 @@ function RentAccPopup({closeModal, item}) {
 
     const handleRent = () => { 
         const hireDetails = {
-            touristID: sessionData.userId,
-            fair_no: item.userId,
-            fromdate: fromDate,
-            todate: toDate,
-            amount: rentAmount,
-            status: 0
+            userId: sessionData.userId,
+            guideId: item.userId,
+            fromDate: fromDate,
+            toDate: toDate,
+            charge: rentAmount,
+            status: 0,
+            places: placesToVisit
         }
 
         console.log(hireDetails);
 
-        // axiosInstance
-        // .post("/addFairrequest", rentDetails) // <-- Include reserveDetails here
-        // .then((response) => {
-        //   if (response.status === 200) {
-        //     console.log("Successfully added");
-        //     alert("Successfully added");
-        //     window.location.href = "/tourist/touristGadgets";
-        //   }
-        // })
-        // .catch((error) => {
-        //   console.log("Error fetching data:", error);
-        // });
+        axiosInstance
+        .post("/addTrip", hireDetails) // <-- Include reserveDetails here
+        .then((response) => {
+          if (response.status === 200) {
+            console.log("Successfully Sent request ! Wait for the response.");
+            alert("Successfully Sent request ! Wait for the response.");
+            window.location.href = "/tourist/touristGuide";
+          }
+        })
+        .catch((error) => {
+          console.log("Error fetching data:", error);
+        });
 
     }
     
@@ -127,6 +129,10 @@ function RentAccPopup({closeModal, item}) {
                 <input value={toDate} type="date" onChange={(e)=>toDateFunction(e)} />
             </div>
             <div className='reserve-items'>
+                <p>Places to visit:</p>
+                <input type="text" onChange={(e)=>setPlacesToVisit(e.target.value)} />
+            </div>
+            <div className='reserve-items'>
                 <p>Total amount:</p>
                 <input value={`$ ${rentAmount}`} type="text" disabled style={{color:"#000000"}}/>
             </div>
@@ -135,7 +141,7 @@ function RentAccPopup({closeModal, item}) {
                 <Button onClick={handleCheckAvailability}  style={{marginRight:"30px"}}>Check availability</Button>
             }
             {checkAvailability &&
-                <Button  style={{marginRight:"30px"}}>Pay and rent</Button>
+                <Button onClick={handleRent}  style={{marginRight:"30px"}}>Send Request</Button>
             }
             </div>
         </div>
