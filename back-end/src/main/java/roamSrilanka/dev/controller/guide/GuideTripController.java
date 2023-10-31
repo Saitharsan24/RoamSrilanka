@@ -37,4 +37,11 @@ public class GuideTripController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping("/addTrip")
+    public ResponseEntity<GuideTrip> addTrip(@RequestBody GuideTrip guideTrip){
+        GuideTrip trip = tripsService.addTrip(guideTrip);
+        System.out.println(trip);
+        return ResponseEntity.ok(trip);
+    }
 }
