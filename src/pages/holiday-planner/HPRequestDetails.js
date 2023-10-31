@@ -22,7 +22,9 @@ const HPRequestDetails = () => {
   const [packageData, setPackageData] = useState({});
 
   const [hotelData, setHotelData] = useState([]);
+  const [hotelRequestData, setHotelRequestData] = useState([]);
   const [filteredHotelData, setFilteredHotelData] = useState([]);
+  const [mergedAndFilteredData, setMergedAndFilteredData] = useState([]);
 
   useEffect(() => {
     axiosInstance
@@ -54,31 +56,71 @@ const HPRequestDetails = () => {
   }, []);
 
   console.log("package data : ", packageData);
+
   useEffect(() => {
-    axiosInstance
-      .get("/viewHotels")
-      .then((res) => {
-        setHotelData(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const fetchData = async () => {
+      try {
+        const hotelsResponse = await axiosInstance.get("/viewHotels");
+        setHotelData(hotelsResponse.data);
+      } catch (error) {
+        console.error("Error fetching hotels:", error);
+      }
+    };
+  
+    fetchData();
   }, []);
 
   useEffect(() => {
-    const filteredHotels = hotelData.filter((hotel) => {
-      return hotel.starRating === packageData.hotel_rating && hotel.hotelAvailability === true;
-    });
-    setFilteredHotelData(filteredHotels);
-    if (filteredHotels.length < 1) {
-      setSelectedHotel(filteredHotels.hotelId);
-    }
-  }, [hotelData, packageData.hotel_rating]);
-
+    const fetchData = async () => {
+      try {
+        const requestsResponse = await axiosInstance.get("/viewRequest");
+        setHotelRequestData(requestsResponse.data);
+      } catch (error) {
+        console.error("Error fetching requests:", error);
+      }
+    };
+    fetchData();
+  }, []);
   
+  useEffect(() => {
+    if (hotelData.length > 0 && hotelRequestData.length > 0) {
+      // Merge hotel data based on hotelId
+      const mergedData = hotelData.map(hotel => {
+        const request = hotelRequestData.find(request => request.hotelId === hotel.hotelId);
+        return { ...hotel, ...(request ? request : {}) };
+      });
+  
+      // Filter the merged data by rating (assuming packageData.hotel_rating is defined)
+      const filteredByRating = mergedData.filter(hotel => hotel.starRating >= packageData.hotel_rating);
+  
+      // Set the state with the filtered data
+      setMergedAndFilteredData(filteredByRating);
+    }
+  }, [hotelData, hotelRequestData, packageData.hotel_rating]);
+
+
+  const filteredHotels = mergedAndFilteredData.filter(hotel => {
+    const requestFromDate = new Date(hotel.fromDate);
+    const requestToDate = new Date(hotel.toDate);
+    const userInputFromDate = new Date(requestData.fromdate);
+    const userInputToDate = new Date(requestData.todate);
+  
+    const hasDateConflict = userInputFromDate <= requestToDate && userInputToDate >= requestFromDate;
+
+  // Apply additional conditions for status and seats
+  return (
+    hotel.status !== "1" &&
+    hotel.starRating === packageData.hotel_rating && !hasDateConflict
+  );
+  });
+  
+  // availableHotels will contain the hotels that do not have date conflicts
+  const availableHotels = filteredHotels;
+  
+
   const [guideData, setGuideData] = useState([]);
   const [ guideUser, setGuideUser] = useState([]);
+  const [guideRequestData, setGuideRequestData] = useState([]);
 
   useEffect(() => {
     axiosInstance
@@ -104,27 +146,72 @@ const HPRequestDetails = () => {
       });
   }, []);
 
-  const mergeGuideData = (guideData, guideUser) => {
+  useEffect(() => {
+    axiosInstance
+    .get("/viewTrips")
+    .then((res) => {
+      setGuideRequestData(res.data);
+      console.log("guide request data : ",res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }, []);
+
+
+  const mergeGuideData = (guideData, guideUser, guideRequestData) => {
     const mergedData = guideData.map((dataItem) => {
-      const matchingUser = guideUser.find((userItem) => userItem.userId === dataItem.userId);
+      const matchingUser = Array.isArray(guideUser) ? guideUser.find((userItem) => userItem && userItem.userId === dataItem.userId) : undefined;
+      const matchingRequest = Array.isArray(guideRequestData) ? guideRequestData.find((requestData) => requestData && requestData.userId === dataItem.userId) : undefined;
   
-      if (matchingUser && dataItem.guideAvailability === true) {
-        // Merge the data based on the conditions guideData.userId = guideUser.userId and guideData.guideAvailability = true
-        return {
+      if (matchingUser) {
+        const mergedItem = {
           ...dataItem,
           ...matchingUser,
         };
+  
+        if (matchingRequest) {
+          mergedItem.requestData = matchingRequest;
+        }
+  
+        return mergedItem;
       } else {
         return dataItem;
       }
-    });
+    }).filter(Boolean);
   
     return mergedData;
   };
+  
+  const fullyMergedGuideData = mergeGuideData(guideData, guideUser, guideRequestData);
+  
+  const filteredGuides = fullyMergedGuideData.filter(guide => {
+    const requestFromDate = new Date(guide.requestData.fromDate);
+    const requestToDate = new Date(guide.requestData.toDate);
+    const userInputFromDate = new Date(requestData.fromdate);
+    const userInputToDate = new Date(requestData.todate);
+  
+    const hasDateConflict = userInputFromDate <= requestToDate && userInputToDate >= requestFromDate;
 
-  console.log("merged guide data : ",mergeGuideData(guideData, guideUser));
+  // Apply additional conditions for status and seats
+  return (
+    guide.requestData["status"] !== "1" && !hasDateConflict
+  );
+
+  });
+
+  const availableGuides = filteredGuides;
+
+  console.log("available guides : ",availableGuides);
+
 
 const [vehicleData, setVehicleData] = useState([]);
+const [driverData, setDriverData] = useState([]);
+const [driverTripData, setDriverTripData] = useState([]);
+const [usersData, setUsersData] = useState([]);
+const seats = packageData.no_of_people;
+console.log("seats",seats);
+
 useEffect(() => {
   axiosInstance
     .get("/vehicle")
@@ -137,7 +224,6 @@ useEffect(() => {
     });
 }, []);
 
-const[driverData, setDriverData] = useState([]);
 useEffect(() => {
   axiosInstance
     .get("/viewDriver")
@@ -150,39 +236,84 @@ useEffect(() => {
     });
 }, []);
 
-const seats = packageData.no_of_people;
-console.log("seats",seats);
+useEffect(() => {
+  axiosInstance
+    .get("/allTripRequests")
+    .then((res) => {
+      setDriverTripData(res.data);
+      console.log("driver trip data",res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}, []);
 
-const mergeVehicleData = (vehicleData, guideUser, driverData) => {
-  const mergedData = vehicleData.map((dataItem) => {
-    const matchingUser = guideUser.find((userItem) => userItem.userId === dataItem.userId);
-    const matchingDriver = driverData.find((driverItem) => driverItem.userId === dataItem.userId);
+useEffect(() => {
+  axiosInstance
+  .get("/users")
+  .then((res) => {
+    setUsersData(res.data);
+    console.log("driver user data",res.data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+}, []);
 
-    if (matchingUser) {
+
+const mergeDriverData = (driverTripData, vehicleData, driverData, usersData) => {
+  const mergedData = driverTripData.map((tripItem) => {
+    const newstatus = tripItem.status;
+    const matchingVehicle = Array.isArray(vehicleData) ? vehicleData.find((vehicleItem) => vehicleItem && vehicleItem.userId === tripItem.userId) : undefined;
+    const matchingDriver = Array.isArray(driverData) ? driverData.find((driverItem) => driverItem && driverItem.userId === tripItem.userId) : undefined;
+    const matchingUser = Array.isArray(usersData) ? usersData.find((userData) => userData && userData.userId === tripItem.userId) : undefined;
+    
+    if (matchingVehicle) {
       const mergedItem = {
-        ...dataItem,
-        ...matchingUser,
+        ...tripItem,
+        ...matchingVehicle,
+        newstatus: newstatus,
       };
 
       if (matchingDriver) {
-        // Merge driverData if there's a match
-        Object.assign(mergedItem, matchingDriver);
+        mergedItem.driverData = matchingDriver;
+      }
+
+      if (matchingUser) {
+        mergedItem.userData = matchingUser;
       }
 
       return mergedItem;
     } else {
-      return dataItem;
+      return tripItem;
     }
-  }).filter((mergedItem) => mergedItem.driverAvailability === true && mergedItem.seats === seats);
+  }).filter(Boolean);
 
   return mergedData;
 };
 
-const mergedVehicle = mergeVehicleData(vehicleData, guideUser, driverData)
+const fullyMergedDriverData = mergeDriverData(driverTripData, vehicleData, driverData, usersData);
 
 
 
-console.log("mergeVehicleData : ",mergedVehicle);
+const filteredDrivers = fullyMergedDriverData.filter(driver => {
+  const requestFromDate = new Date(driver.start_date);
+  const requestToDate = new Date(driver.end_date);
+  const userInputFromDate = new Date(requestData.fromdate);
+  const userInputToDate = new Date(requestData.todate);
+
+  // Check for date conflicts
+  const hasDateConflict = userInputFromDate <= requestToDate && userInputToDate >= requestFromDate;
+
+  // Apply additional conditions for status and seats
+  return (
+    driver.newstatus !== 1 &&
+    driver.seats === seats && !hasDateConflict
+  );
+});
+
+const availableDrivers = filteredDrivers;
+
 
   const handleRowClick = (packageID) => {
     navigate(`/holidayPlanner/plannerViewPackage/${packageID}`);
@@ -210,22 +341,35 @@ console.log("mergeVehicleData : ",mergedVehicle);
   };
 
   console.log("selected hotel : ",selectedHotel);
+  const currentDate = new Date();
 
+console.log("day",currentDate);
   const handleRequestData = async(e) => {
     e.preventDefault();
     try{
-      const response1 = await axiosInstance.put(`/guideAvailability/${selectedTourGuide}`,{
-        guideAvailability: false,
+      const response1 = await axiosInstance.post("/addTrip",{
+        date:currentDate,
+        fromDate:requestData.fromdate,
+        toDate:requestData.todate,
+        userId:selectedTourGuide,
+        status:"1",
       });
-      const response2 = await axiosInstance.put(`/driverAvailability/${selectedVehicle}`,{
-        driverAvailability: false,
+      const response2 = await axiosInstance.post("/addRequest",{
+        date:currentDate,
+        fromDate:requestData.fromdate,
+        toDate:requestData.todate,
+        hotelId:selectedHotel,
+        status:"1",
       });
-      const response3 = await axiosInstance.put(`/hotelAvailability/${selectedHotel}`,{
-        hotelAvailability: false,
+      const response3 = await axiosInstance.post("/addTripRequest",{
+        start_date:requestData.fromdate,
+        end_date:requestData.todate,
+        userId:selectedVehicle,
+        status:1,
       });
       const response4 = await axiosInstance.put(`/updateHpStatus/${paraData.p_bookingID}`,{
-        requestStatus: 1,
-      });
+          requestStatus: 1,
+        });
 
       if(response1.status && response2.status && response3.status && response4.status == 200){
         alert("Request accepted successfully");
@@ -336,7 +480,7 @@ console.log("mergeVehicleData : ",mergedVehicle);
                   value={selectedHotel}
                   onChange={handleHotelChange}
                 >
-                  {filteredHotelData.map((hotel, index) => (
+                  {availableHotels.map((hotel, index) => (
                     <option key={index} value={hotel.hotelId}>
                       {hotel.hotelName}
                     </option>
@@ -357,9 +501,9 @@ console.log("mergeVehicleData : ",mergedVehicle);
                       value={selectedVehicle}
                       onChange={handleVehicleChange}
                     >
-                      {mergeVehicleData(vehicleData, guideUser, driverData).map((vehicle, index) => (
-                        <option key={index} value={vehicle.userId}>
-                          {vehicle.userFullname}
+                      {availableDrivers.map((vehicle, index) => (
+                        <option key={index} value={vehicle.userData["userId"]}>
+                          {vehicle.userData["userFullname"]}
                         </option>
                       ))}
                       {/* Add other vehicle options as needed */}
@@ -381,7 +525,7 @@ console.log("mergeVehicleData : ",mergedVehicle);
                       value={selectedTourGuide}
                       onChange={handleTourGuideChange}
                     >
-                      {mergeGuideData(guideData, guideUser).map((guide, index) => (
+                      {availableGuides.map((guide, index) => (
                         <option key={index} value={guide.userId}>
                           {guide.userFullname}
                         </option>
