@@ -1,6 +1,7 @@
 package roamSrilanka.dev.controller.guide;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import roamSrilanka.dev.model.Hotel.Hotels;
@@ -17,6 +18,14 @@ public class GuideTripController {
     @GetMapping("/viewTrips")
     @ResponseBody
     public Iterable<GuideTrip> getAllTrips(){return tripsService.getAllTrips();}
+
+
+    @PostMapping("/addTrip")
+    public ResponseEntity<GuideTrip> addGuideTrip(@RequestBody GuideTrip guideTrip){
+
+        GuideTrip guidetrip = tripsService.addTrip(guideTrip);
+        return new ResponseEntity<>(guidetrip, HttpStatus.OK);
+    }
 
     @GetMapping("/viewTrip/{id}")
     @ResponseBody

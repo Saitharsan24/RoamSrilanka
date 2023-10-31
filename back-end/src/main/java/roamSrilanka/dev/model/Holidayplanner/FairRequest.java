@@ -24,15 +24,23 @@ public class FairRequest {
     @Column(name = "todate")
     private LocalDate todate;
 
+    @Column(name = "status", columnDefinition = "int default 0")
+    private int status;
+
+    @Column(name = "amount")
+    private int amount;
+
     public FairRequest() {
     }
 
-    public FairRequest(int fairrequestID, int touristID, int fair_no, LocalDate fromdate, LocalDate todate) {
+    public FairRequest(int fairrequestID, int touristID, int fair_no, LocalDate fromdate, LocalDate todate, int status, int amount) {
         this.fairrequestID = fairrequestID;
         this.touristID = touristID;
         this.fair_no = fair_no;
         this.fromdate = fromdate;
         this.todate = todate;
+        this.status = status;
+        this.amount = amount;
     }
 
     public int getFairrequestID() {
@@ -73,5 +81,21 @@ public class FairRequest {
 
     public void setTodate(LocalDate todate) {
         this.todate = todate;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }

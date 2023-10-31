@@ -9,7 +9,6 @@ import roamSrilanka.dev.model.Holidayplanner.Event;
 import roamSrilanka.dev.model.Holidayplanner.Fair;
 import roamSrilanka.dev.model.Holidayplanner.FairImage;
 import roamSrilanka.dev.model.Hotel.HotelImage;
-import roamSrilanka.dev.service.EventService;
 import roamSrilanka.dev.service.holidayplanner.FairService;
 
 import java.io.File;
@@ -102,7 +101,7 @@ public class FairController {
     }
 
     @GetMapping("/getParticularFair/{id}")
-    public Optional<Fair> getEvent (@PathVariable(value = "id") Integer identity ) {
+    public Optional<Fair> getFair (@PathVariable(value = "id") Integer identity ) {
         return this.fairService.getFair(identity);
     }
 
@@ -113,5 +112,10 @@ public class FairController {
     @DeleteMapping("/deleteFair/{id}")
     public String deleteFair (@PathVariable(value = "id") Integer identity) {
         return this.fairService.deleteFair(identity);
+    }
+
+    @GetMapping("/getFairImage/{fairId}")
+    public ResponseEntity<FairImage> getFairImage(@PathVariable Integer fairId){
+        return ResponseEntity.ok(fairService.getFairImage(fairId));
     }
 }

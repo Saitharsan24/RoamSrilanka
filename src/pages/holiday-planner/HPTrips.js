@@ -1,12 +1,95 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, Table } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import { MDBDataTable } from "mdbreact";
 import "./../../styles/data-table.css";
 import * as Icon from "react-bootstrap-icons";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
+
+function getStatusText(status) {
+  switch (status) {
+    case 0:
+      return { text: "Pending", color: "orange" };
+    case 1:
+      return { text: "Ongoing", color: "blue" };
+    case 2:
+      return { text: "Completed", color: "green" };
+    case 3:
+      return { text: "Rejected", color: "red" };
+    default:
+      return { text: "Unknown", color: "black" };
+  }
+}
 function HPTrip() {
+  const navigate = useNavigate();
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 5000,
+  });
+
+  const handleRowClick = (p_bookingID) => {
+    console.log("p_bookingID", p_bookingID);
+    navigate(`/holidayPlanner/hpviewtrip/${p_bookingID}`);
+  }
+
+  const [user, setUser] = useState([]);
+  const [request, setRequest] = useState([]);
+  
+  useEffect(() => {
+    axiosInstance
+      .get("/request")
+      .then((res) => {
+        setRequest(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/users")
+      .then((res) => {
+        setUser(res.data);
+         console.log("user details",res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const mergeData2 = (request, user) => {
+    const mergedData2 = request.map(
+      (requestitem) => {
+      const matchingUser = user.find(
+        (userItem) =>  userItem.userId === requestitem.touristID
+      );
+      
+      if (matchingUser) {
+        // Merge the data from both sources
+        return {
+          ...requestitem,
+          ...matchingUser,
+        };
+      } else {
+        return requestitem;
+      }
+    });
+  
+    return mergedData2;
+  };
+
+  const mergedUserRequest = mergeData2(request, user);
+  console.log("mergeData", mergedUserRequest);
+
+  
+
   const data = {
     columns: [
       {
@@ -16,23 +99,24 @@ function HPTrip() {
         width: 150,
       },
       {
-        label: "Date",
-        field: "date",
+        label: "From Date",
+        field: "fromdate",
         sort: "asc",
         width: 150,
       },
       {
-        label: "Location",
-        field: "location",
+        label: "To Date",
+        field: "todate",
         sort: "asc",
         width: 200,
       },
       {
-        label: "Status",
-        field: "status",
-        sort: "asc",
-        width: 100,
-      },
+      label: "Status",
+      field: "status",
+      sort: "asc",
+      width: 100,
+    },
+      
       {
         label: "",
         field: "btn",
@@ -40,153 +124,34 @@ function HPTrip() {
         btn: "view-button",
       },
     ],
-    rows: [
-      {
-        name: "John Doe",
-        date: "2023-07-01",
-        location: "Jaffna",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#04F21C" }} size={30} />
-              Completed
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-      {
-        name: "Robert Johnson",
-        date: "2023-07-02",
-        location: "Colombo",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#E0163B" }} size={30} />
-              Rejected
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-      {
-        name: "Jane Smith",
-        date: "2023-07-03",
-        location: "Vavuniya",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#DFE32A" }} size={30} />
-              On Going
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-      {
-        name: "Ella Brown",
-        date: "2023-07-04",
-        location: "Trincomalee",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#E0163B" }} size={30} />
-              Rejected
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-      {
-        name: "William Davis",
-        date: "2023-07-05",
-        location: "Anuradhapura",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#DFE32A" }} size={30} />
-              On Going
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-      {
-        name: "Sophia Wilson",
-        date: "2023-07-06",
-        location: "Mannar",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#04F21C" }} size={30} />
-              Completed
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-      {
-        name: "Oliver Taylor",
-        date: "2023-07-07",
-        location: "Nuwareliya",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#04F21C" }} size={30} />
-              Completed
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-      {
-        name: "Ava Martinez",
-        date: "2023-07-08",
-        location: "Kandy",
-        status: [
-          <>
-            <div className="">
-              <Icon.Dot style={{ color: "#E0163B" }} size={30} />
-              Rejected
-            </div>
-          </>,
-        ],
-        btn: [
-          <>
-            <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
-          </>,
-        ],
-      },
-    ],
+    rows: mergedUserRequest.map((item) => ({
+      name: item.userFullname,
+      fromdate: item.fromdate,
+      todate: item.todate,
+      status: (
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div
+            style={{
+              width: "10px",
+              height: "10px",
+              borderRadius: "50%",
+              backgroundColor: getStatusText(item.status).color,
+              marginRight: "8px",
+            }}
+          ></div>
+          {getStatusText(item.status).text}
+        </div>
+      ),
+      btn: [
+        <>
+          <div className="view-trip" onClick={() => handleRowClick(item.p_bookingID) & console.log("Clicked View for booking ID:", item.p_bookingID)}><a style={{color:"inherit"}} >View Trip</a></div>
+        </>,
+      ],
+    })),
   };
+
+  
+
 
   return (
     <div className="d-flex w-100">
@@ -212,5 +177,6 @@ function HPTrip() {
     </div>
   );
 }
+
 
 export default HPTrip;

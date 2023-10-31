@@ -7,7 +7,6 @@ import roamSrilanka.dev.model.Holidayplanner.Event;
 import roamSrilanka.dev.model.Holidayplanner.Fair;
 import roamSrilanka.dev.model.Holidayplanner.FairImage;
 import roamSrilanka.dev.model.Hotel.HotelImage;
-import roamSrilanka.dev.repository.EventRepository;
 import roamSrilanka.dev.repository.holidayplanner.FairImageRepository;
 import roamSrilanka.dev.repository.holidayplanner.FairRepository;
 
@@ -49,5 +48,9 @@ public class FairService {
     @Transactional
     public void addFairImage(FairImage fairImage) {
         fairImageRepository.save(fairImage);
+    }
+
+    public FairImage getFairImage(Integer fairId) {
+        return fairImageRepository.findById(fairId).orElse(null);
     }
 }

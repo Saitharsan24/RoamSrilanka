@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "../../styles/updatepack.css";
 import axios from "axios";
 
-function HPViewItem({ fairId, onBack }) {
+function HPViewItem({onBack }) {
+  const paraData = useParams();
+  console.log("kkkk", paraData.fairId);
   const apiBaseUrl = "http://localhost:8080";
 
   const axiosInstance = axios.create({
@@ -10,52 +13,39 @@ function HPViewItem({ fairId, onBack }) {
     timeout: 5000,
   });
 
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  const [events, setEvents] = useState([]);
+  const [fairData, setFairData] = useState({});
 
   useEffect(() => {
-    const fetchEventById = async () => {
-      try {
-        const response = await axiosInstance.get(
-          `/getParticularFair/${fairId}`
-        );
-        if (response.status === 200) {
-          setSelectedEvent(response.data);
-        } else {
-          console.error("Failed to fetch data:", response.status);
-        }
-      } catch (error) {
-        console.error("An error occurred:", error);
-      }
-    };
-
-    fetchEventById();
+    axiosInstance
+      .get("/getParticularFair/" + paraData.fairId)
+      .then((res) => {
+        setFairData(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
-
-  if (!selectedEvent) {
-    return <div>No Record</div>;
-  }
 
   const handleDeleteEvent = async () => {
     const confirmed = window.confirm(
       "Are you sure you want to delete this event?"
     );
     if (confirmed) {
-      try {
-        const response = await axiosInstance.delete(`/deleteFair/${fairId}`);
-        if (response.status === 200) {
-          const updatedEvents = events.filter(
-            (event) => event.fairId !== fairId
-          );
-          setEvents(updatedEvents);
-          window.location.reload();
-        } else {
-          console.error("Failed to delete event:", response.status);
-        }
-      } catch (error) {
-        console.error("An error occurred:", error);
-      }
+      axiosInstance
+      .delete("/deleteFair/" + paraData.fairId)
+      .then((res) => {
+        console.log(res.data);
+        window.history.back();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     }
+  };
+
+  const handleCancelButton = () => {
+    window.history.back(); // Redirect to the previous page
   };
 
   return (
@@ -79,7 +69,7 @@ function HPViewItem({ fairId, onBack }) {
           }}
           className="d-flex m-5"
         >
-          Item Name: {selectedEvent.name}
+          Item Name: {fairData.name}
         </h1>
         <div className="d-flex align-items-center justify-content-around flex-column flex-md-row flex-lg-row col-12">
           <div
@@ -115,7 +105,7 @@ function HPViewItem({ fairId, onBack }) {
                       <input
                         className="p-2"
                         type="text"
-                        value={selectedEvent.fairname}
+                        value={fairData.fairname}
                         readOnly
                       ></input>
                     </label>
@@ -124,7 +114,7 @@ function HPViewItem({ fairId, onBack }) {
                       <input
                         className="p-2"
                         type="number"
-                        value={selectedEvent.rent}
+                        value={fairData.rent}
                         readOnly
                       ></input>
                     </label>
@@ -133,7 +123,7 @@ function HPViewItem({ fairId, onBack }) {
                       <textarea
                         className="p-2"
                         type="text"
-                        value={selectedEvent.description}
+                        value={fairData.description}
                         readOnly
                         style={{ minHeight: "50px" }}
                       ></textarea>
@@ -148,7 +138,7 @@ function HPViewItem({ fairId, onBack }) {
           <button className="btn-cancel p-2" onClick={handleDeleteEvent}>
             Delete
           </button>
-          <button className="btn-next p-2" onClick={onBack}>
+          <button className="btn-next p-2" onClick={handleCancelButton}>
             Cancel
           </button>
         </div>

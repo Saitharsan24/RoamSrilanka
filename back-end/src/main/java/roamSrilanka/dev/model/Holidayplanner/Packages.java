@@ -46,9 +46,7 @@ public class Packages {
     public Packages() {
     }
 
-
     public Packages(int packageID, BigDecimal price, String package_name, Boolean trip_guide,Boolean vehicle,int days, int hotel_rating, String places, String status, String discription, int no_of_people) {
-
         this.packageID = packageID;
         this.price = price;
         this.package_name = package_name;
@@ -62,9 +60,7 @@ public class Packages {
         this.no_of_people = no_of_people;
     }
 
-
     public Packages(BigDecimal price, String package_name, Boolean meals, Boolean trip_guide,Boolean vehicle, int days, int hotel_rating, String places, String status, String discription, int no_of_people) {
-
         this.price = price;
         this.package_name = package_name;
         this.trip_guide = trip_guide;
@@ -175,7 +171,6 @@ public class Packages {
 //    public void setVehicle(Boolean vehicle) {
 //        this.vehicle = vehicle;
 //    }
-
 
 
 }

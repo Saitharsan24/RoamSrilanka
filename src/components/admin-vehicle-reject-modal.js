@@ -42,26 +42,24 @@ function VehicleRejecttModal({closeModal,vehicleID}){
 }
 }
 
-    const handleUpdateReject =async (e)  => {
-    
+
+    const handleUpdateReject =async (e)  => {    
         
             e.preventDefault();
 
             try {
-                const response = await axiosInstance.post('/addFeedback/${vehicleID}', {
+                const response = await axiosInstance.put(`/vehicleFeedback/${vehicleID}`, {
                 feedback:vehiclefeedback.feedback,
                 });
 
                 if (response.status === 200) {
+                    window.location.reload();
                     console.log("ok");
                     }
 
             } catch (error) {
             console.log(error);
             }
-        
-        
-
 
 
         
@@ -75,8 +73,7 @@ function VehicleRejecttModal({closeModal,vehicleID}){
                 }else{
                     var newStatus = null;
                 }
-                // window.location.reload();
-
+                
 
                 
                 // Make an HTTP PUT request to update the status
@@ -110,14 +107,15 @@ function VehicleRejecttModal({closeModal,vehicleID}){
                 <div className="body-modal"><p>Give the feedback</p></div>
                 <div className="feedbackform ">
                 {/* <input className='w-100' name='dob' type="date" value={formData.dob} onChange={(e)=> {inputFormdata(e.target.name, e.target.value); validateField(e.target.name, e.target.value); }} /> */}
-                <form >  
-                         <label for="fname " style={{fontWeight:"bold"}}></label>
-                    <input type="text" name="feedback" value={vehiclefeedback.feedback}  id="fname" className="form-control" placeholder="Give Your Feedback..." onChange={(e)=> {inputFormdata(e.target.name, e.target.value);}}/>
+                <form>                         <label for="fname " style={{fontWeight:"bold"}}></label>
+                    <input type="text" name="feedback" value={vehiclefeedback.feedback} 
+                    onChange={(e)=> {inputFormdata(e.target.name, e.target.value)}}  id="fname" className="form-control" placeholder="Give Your Feedback..." />
                     <div className="footer-modal">
                     <button  id="cancelBtnReject" onClick={()=>closeModal(false)}>Cancel</button>
-                    <button  type="submit" onClick={handleUpdateReject}>Send</button>
+                    <button  type="submit" method="PUT"  onClick={handleUpdateReject} >Send</button>
                 </div>
                 </form>
+
                 </div>      
             </div>
         </div>
