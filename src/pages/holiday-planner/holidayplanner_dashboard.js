@@ -248,7 +248,7 @@ function Holiday_dashboard() {
           </div>
           <div className="d-flex flex-column col-3 gap-3 p-2">
             <a
-              href=""
+              href="plannerRequest"
               className=" box d-flex col-lg-12 col-sm-8  flex-row align-items-center gap-3 p-2 justify-content-around"
               style={{
                 backgroundColor: "#FFFFFF",
