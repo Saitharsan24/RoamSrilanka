@@ -98,6 +98,21 @@ function DriverTrips() {
     };
   });
 
+  // for ongoing trips
+  const filteredRequests3 = requests.filter((request) => request.status == 3);
+  console.log(filteredRequests3)
+
+  const rows3 = filteredRequests3.map((request) => {
+    return {
+      id: request.request_id,
+      name: request.tourist_name,
+      Fromdate: request.start_date,
+      Todate: request.end_date,
+      Pickup: request.pickup,
+      Destination: request.destination,
+      Status: 'Completed',
+    };
+  });
 
   const requestStartProcess = async(e) => {
     e.preventDefault();
@@ -150,7 +165,7 @@ function DriverTrips() {
                     style={{ fontFamily: "Poppins", fontSize: "1.5rem" }}
                     className="ms-1 m-0">
                     
-                    <b>View My All Trips</b>
+                    <b>My All Trips</b>
                 </p>
                 </div>
                 <div className="d-flex flex-row gap-4 my-3 ">
@@ -331,7 +346,7 @@ function DriverTrips() {
                               </div>
                             </form>
                             ) : (
-                              <p>No room found for Tourist ID: {request_id}</p>
+                              <p>No records found for Tourist ID: {request_id}</p>
                             )}
                           </Modal.Body>
                         </Modal>
@@ -406,7 +421,7 @@ function DriverTrips() {
                               name="hotelId"
                               value={request_id}
                               onChange={handleRequestlId}
-                            />
+                              />
                               <div className="d-flex flex-column gap-3">
                                 <div className="d-flex flex-row justify-content-between ">
                                   <div>
@@ -498,13 +513,67 @@ function DriverTrips() {
                               </div>
                             </form>
                             ) : (
-                              <p>No room found for Tourist ID: {request_id}</p>
+                              <p>No records found for Tourist ID: {request_id}</p>
                             )}
                           </Modal.Body>
                         </Modal>
                     </div>
                     <div className={showtab === 3 ? "tab-pane fade show active": "tab-pane fade show"}>
                         <p>Finished</p>
+                        <MDBDataTable
+                          striped
+                          bordered
+                          paging={true}
+                          searching={true}
+                          data={{
+                            columns : [
+                              {
+                                label: "ID",
+                                field: "id",
+                                sort: "asc",
+                                width: 150,
+                              },
+                              {
+                                label: "Tourist Name",
+                                field: "name",
+                                sort: "asc",
+                                width: 150,
+                              },
+                              {
+                                label: "From Date",
+                                field: "Fromdate",
+                                sort: "asc",
+                                width: 150,
+                              },
+                              {
+                                label: "To Date",
+                                field: "Todate",
+                                sort: "asc",
+                                width: 150,
+                              },
+                              {
+                                label: "Pickup",
+                                field: "Pickup",
+                                sort: "asc",
+                                width: 250,
+                              },
+                              {
+                                label: "Destination",
+                                field: "Destination",
+                                sort: "asc",
+                                width: 250,
+                              },
+                              {
+                                label: "Status",
+                                field: "Status",
+                                sort: "asc",
+                                width: 100,
+                              },
+                            ],
+                            rows: rows3, // Use the rows you generated
+                          }}
+                          exportToCSV={true}
+                        />
                     </div>
                 </div>
             </div>

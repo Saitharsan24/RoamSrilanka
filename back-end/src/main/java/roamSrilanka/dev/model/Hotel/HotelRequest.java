@@ -1,5 +1,6 @@
 package roamSrilanka.dev.model.Hotel;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
 import jakarta.persistence.*;
 
@@ -23,12 +24,15 @@ public class HotelRequest {
     private Integer roomId;
 
     @Column(name="date")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date date;
 
     @Column(name="from_date")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date fromDate;
 
     @Column(name="to_date")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date toDate;
 
     @Column(name="status")

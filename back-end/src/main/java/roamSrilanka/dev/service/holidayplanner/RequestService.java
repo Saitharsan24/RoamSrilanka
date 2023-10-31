@@ -23,4 +23,8 @@ public class RequestService {
     public Request getRequest(Integer id) {
         return requestRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid request Id:" + id));
     }
+
+    public Long countRequests() {
+        return requestRepository.count();
+    }
 }

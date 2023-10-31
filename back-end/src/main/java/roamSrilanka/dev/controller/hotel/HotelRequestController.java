@@ -20,7 +20,7 @@ public class HotelRequestController {
     @PostMapping("/addRequest")
     public ResponseEntity<HotelRequest> createRequest(@RequestBody HotelRequest hotelRequest){
         HotelRequest saveRequest = hotelRequestService.addRequest(hotelRequest);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(saveRequest,HttpStatus.OK);
     }
 
     @GetMapping ("/viewRequest")

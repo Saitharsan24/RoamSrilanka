@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import { MDBDataTable } from "mdbreact";
@@ -7,6 +7,7 @@ import DeleteConfirm from "../../components/DeleteConfirm";
 import HPViewItem from "./HPViewItem";
 
 function HPItem() {
+  const navigate = useNavigate();
   const apiBaseUrl = "http://localhost:8080";
 
   const axiosInstance = axios.create({
@@ -14,10 +15,14 @@ function HPItem() {
     timeout: 5000,
   });
 
-  const [selectedEventId, setSelectedEventId] = useState(null);
   const [events, setEvents] = useState([]);
   const [isDialogVisible, setDialogVisible] = useState(false);
   const [eventToDelete, setEventToDelete] = useState(null);
+  const [rowData, setRowData] = useState([]);
+
+  const handleRowClick = (fairId) => {
+    navigate(`/holidayPlanner/plannerViewItem/${fairId}`);
+  }
 
   const handleDeleteEvent = (eventId) => {
     setEventToDelete(eventId);
@@ -39,7 +44,7 @@ function HPItem() {
         );
         setEvents(updatedEvents);
         setDialogVisible(false);
-        window.location.reload();
+        window.location.reload(false);
       } else {
         console.error("Failed to delete event:", response.status);
       }
@@ -49,20 +54,15 @@ function HPItem() {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosInstance.get("/getAllFairs");
-        if (response.status === 200) {
-          setEvents(response.data);
-        } else {
-          console.error("Failed to fetch data:", response.status);
-        }
-      } catch (error) {
-        console.error("An error occurred:", error);
-      }
-    };
-
-    fetchData();
+    axiosInstance
+      .get("/getAllFairs")
+      .then((res) => {
+        setRowData(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const data = {
@@ -98,7 +98,7 @@ function HPItem() {
         btn: "reject-button",
       },
     ],
-    rows: events.map((event) => ({
+    rows: rowData.map((event) => ({
       fairId: event.fairId,
       name: event.fairname,
       rent: event.rent,
@@ -106,7 +106,7 @@ function HPItem() {
         <button
           style={{ border: "inherit", width: "50%" }}
           className="hp-accept"
-          onClick={() => setSelectedEventId(event.fairId)}
+          onClick={() => handleRowClick(event.fairId) & console.log("Clicked View for fair ID:", event.fairId)}
         >
           View
         </button>
@@ -126,18 +126,18 @@ function HPItem() {
   return (
     <div className="d-flex w-100">
       <div className="d-flex flex-column col-lg-12 p-4 ">
-        {selectedEventId ? (
+        {/* {selectedEventId ? (
           <HPViewItem
             fairId={selectedEventId}
             onBack={() => setSelectedEventId(null)}
           />
-        ) : (
+        ) : ( */}
           <div>
             <div className="d-grid d-md-flex justify-content-md-end">
               <Link to="/holidayPlanner/plannerItem1">
                 <button
                   className=""
-                  style={{
+                  style={{ 
                     width: "15rem",
                     borderRadius: "11px",
                     border: "1px solid #004577",
@@ -180,9 +180,9 @@ function HPItem() {
               />
             )}
           </div>
-        )}
+        {/* )} */}
       </div>
-    </div>
+    // </div>
   );
 }
 

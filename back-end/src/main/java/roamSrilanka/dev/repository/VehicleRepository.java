@@ -18,4 +18,6 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
     Long getVehicleCount();
 
     List<Vehicle> findVehicleByUserId(Long userId);
+
+    void deleteVehicleByUserId(Long userId);
 }

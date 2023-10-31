@@ -9,7 +9,6 @@ import roamSrilanka.dev.model.Holidayplanner.Event;
 import roamSrilanka.dev.model.Holidayplanner.Fair;
 import roamSrilanka.dev.model.Holidayplanner.FairImage;
 import roamSrilanka.dev.model.Hotel.HotelImage;
-import roamSrilanka.dev.service.EventService;
 import roamSrilanka.dev.service.holidayplanner.FairService;
 
 import java.io.File;
@@ -27,6 +26,12 @@ public class FairController {
     public List<Fair> getAllFairs() {
         return this.fairService.getAllFairs();
     }
+
+    @GetMapping("/viewFairImages")
+    public List<FairImage> getAllHotelsImages() {
+        return fairService.getAllHotelsImages();
+    }
+
 
     @PostMapping("/addFair")
     public ResponseEntity<Fair> createFair(@RequestBody Fair newFair) {
@@ -96,7 +101,7 @@ public class FairController {
     }
 
     @GetMapping("/getParticularFair/{id}")
-    public Optional<Fair> getEvent (@PathVariable(value = "id") Integer identity ) {
+    public Optional<Fair> getFair (@PathVariable(value = "id") Integer identity ) {
         return this.fairService.getFair(identity);
     }
 

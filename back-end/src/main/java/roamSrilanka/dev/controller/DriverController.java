@@ -51,4 +51,20 @@ public class DriverController {
 
 
     }
+
+    @PutMapping("/driverAvailability/{id}")
+    public ResponseEntity<Driver> driverAvailability(@PathVariable Long id) {
+        Driver existingDriver = driverService.getDriverById(id);
+
+        if (existingDriver == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        if (existingDriver.getDriverAvailability() != null) {
+            existingDriver.setDriverAvailability(false);
+        }
+
+        driverService.addDriver(existingDriver);
+        return ResponseEntity.ok(existingDriver);
+    }
 }

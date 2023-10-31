@@ -31,4 +31,26 @@ public class RequestController {
     public ResponseEntity<Request> getRequest(@PathVariable Integer id) {
         return ResponseEntity.ok(requestService.getRequest(id));
     }
+
+    @PutMapping("updateHpStatus/{id}")
+    public ResponseEntity<Request> updateStatus(@PathVariable Integer id) {
+        Request existingRequest = requestService.getRequest(id);
+
+        if (existingRequest == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        if (existingRequest.getStatus() == 0) {
+            existingRequest.setStatus(1);
+        }
+
+        requestService.addRequest(existingRequest);
+        return ResponseEntity.ok(existingRequest);
+    }
+
+    @GetMapping("/request/count")
+    @ResponseBody
+    public ResponseEntity<Long> countRequests() {
+        return ResponseEntity.ok(requestService.countRequests());
+    }
 }

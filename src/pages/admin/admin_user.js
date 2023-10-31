@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import axios from "axios";
+import GuideChat from "../tour-guide/guide-chat";
 
 
 
@@ -16,6 +17,7 @@ function Users() {
   const [tourists, setTourists] = useState([]);
   const [drivers, setDrivers] = useState([]);
   const [hotels, setHotels] = useState([]);
+  const [guide, setGuides ] =useState([]);
   const [userdetail, setuserdetail] = useState([]);
 
   
@@ -39,6 +41,12 @@ function Users() {
       setTourists(response.data);
       // console.log(response.data)
   });
+
+  axiosInstance.get("http://localhost:8080/viewGuides").then((response) => {
+    setGuides(response.data);
+    // console.log(response.data)
+});
+
    
   axiosInstance.get("http://localhost:8080/users").then((response) => {
     setuserdetail(response.data);
@@ -146,8 +154,6 @@ function Users() {
     ],
      
     rows :drivers.map((driver) => {
-
-
       const UserDetail = userdetail.find(
         (detail) => detail.userId === driver.userId
       );
@@ -186,8 +192,8 @@ function Users() {
         width: 150,
       },
       {
-        label: "Rating",
-        field: "rate",
+        label: "status",
+        field: "status",
         sort: "asc",
         width: 200,
       },
@@ -199,139 +205,47 @@ function Users() {
         btn: "view-button",
       },
     ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail" >View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "002",
-        name: "Jane Smith",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "003",
-        name: "Ella Brown",
-        rate: "4.7",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "004",
-        name: "William Davis",
-        rate: "4.2",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "005",
-        name: "Sophia Wilson",
-        rate: "4.0",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "006",
-        name: "Sarah Martinez",
-        rate: "4.9",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "007",
-        name: "Oliver Taylor",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "008",
-        name: "Ava Martinez",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "009",
-        name: "Ethan Thompson",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "010",
-        name: "Ava Martinez",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "011",
-        name: "Sophia Wilson",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "012",
-        name: "Matthew Taylor",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-      {
-        id: "013",
-        name: "Christopher Davis",
-        rate: "4.6",
-        btn: [
-          <>
-            <div className="view-detail">View detail</div>
-          </>,
-        ],
-      },
-    
-    ],
+
+    rows :guide.map((guide) => {
+      const UserDetail = userdetail.find(
+        (detail) => detail.userId === guide.userId
+      );
+
+      return {
+      id: guide.userId, //  API response has a field named 'id' for Driver ID
+      name: UserDetail ? UserDetail.userFullname : "N/A", //  API response has a field named 'driverName' for Driver Name
+      status: guide.status === null ?<div style={{color:"#66d03b",fontWeight:"bolder"}}>active</div>  : <div style={{color:"#d03b3b",fontWeight:"bolder"}}>passive</div>, // Set status based on the condition
+      btn: [
+        <>
+          <Link to={`/admin/adminguidedetail?userId=${guide.userId}`}>
+          <button className="view-detail">View detail</button>
+          </Link>
+        </>,
+      ],
+    };
+  }),
+
+
+
+//    rows: guide.map((guide))=>{
+//     const UserDetail=userdetail.find(
+//       (detail)=>detail.userId=== guide.userId
+//     );
+//     return{
+//     id:guide.userId,
+//     name: UserDetail ? UserDetail.userFullname : "N/A", //  API response has a field named 'driverName' for Driver Name
+//     status: driver.status === null ?<div style={{color:"#66d03b",fontWeight:"bolder"}}>active</div>  : <div style={{color:"#d03b3b",fontWeight:"bolder"}}>passive</div>, // Set status based on the condition
+//     btn: [
+//       <>
+//         <Link to={`/admin/admindriverdetail?userId=${guide.userId}`}>
+//         <button className="view-detail">View detail</button>
+//         </Link>
+//    </>
+//     ],
+//   };
+// }),
+
+
   };
 
 
@@ -484,7 +398,7 @@ function Users() {
 
                 <Tab eventKey="guide" title="Guide">
                 <div className="d-flex flex justify-content-end align-items-center">
-                <a href="#">  <button className="mt-3 " style={{background:"#004577",border:"none",color:"#ffffff",borderRadius:"10px",height:"35px",width:"150px"}}>Add Driver</button></a>
+                <a href="/admin/adminguidereg">  <button className="mt-3 " style={{background:"#004577",border:"none",color:"#ffffff",borderRadius:"10px",height:"35px",width:"150px"}}>Add Guide</button></a>
                 </div>
                 <MDBDataTable
               striped

@@ -21,6 +21,33 @@ function ToursitHotelSearchList() {
   'Gal Oya National Park', 'Kitulgala', 'Matara', 'Bundala National Park', 'Sinharaja Rain Forest', 'Ratnapura', 'Badulla', 'Kadugannawa',
   'Kataragama', 'Mannar', 'Negombo', 'Tangalle', 'Ahangama', 'Weligama', 'Kurunegala'];
 
+  // Filter hotels based on the state
+  const filterAvailableHotels = (searchDetails) => {
+    const { city, checkIn, checkOut } = searchDetails;
+    console.log("Hotels:", hotels);
+    // Filter hotels based on the city
+    let filteredHotels = hotels.filter(hotel => hotel.city === city);
+    // For each hotel, check if there's any booking in the specified date range
+    filteredHotels = filteredHotels.filter(hotel => {
+      const hotelBookings = bookings.filter(booking => booking.hotel_id === hotel.hotelId);
+      
+      // Check if there's any booking that falls between checkIn and checkOut dates
+      for (let booking of hotelBookings) {
+        if (
+          (new Date(booking.from_date) >= new Date(checkIn) && new Date(booking.from_date) <= new Date(checkOut)) ||
+          (new Date(booking.to_date) >= new Date(checkIn) && new Date(booking.to_date) <= new Date(checkOut)) ||
+          (new Date(booking.from_date) <= new Date(checkIn) && new Date(booking.to_date) >= new Date(checkOut))
+        ) {
+          return false;
+        }
+      } 
+      return true;
+    });
+  
+    return filteredHotels;
+  };
+
+
   //Sending data to backend
   const apiBaseUrl = "http://localhost:8080";
 
@@ -29,22 +56,42 @@ function ToursitHotelSearchList() {
     timeout: 10000,
   });
   
-  //data from backend will directly store in this state  
+   // Filter hotels based on the state
   const [hotels, setHotels] = useState([]);
+  const [filteredHotels,setFilteredHotels] = useState([]);
+  const [prevFilteredHotels,setPrevFilteredHotels] = useState([]);
+  const [bookings, setBookings] = useState([]);
+  const [searchDetails,setSearchDetails] = useState([]);
+  const [renderConst, setRenderConst] = useState(0);
 
   useEffect(() => {
+    
     // Fetch hotel data from your backend API
     axiosInstance
       .get("/viewHotels")
       .then((response) => {
-        console.log(response.data);
+        setSearchDetails(JSON.parse(localStorage.getItem('searchDetails')));
         setHotels(response.data);
-        setFilteredHotels(response.data);
+        return axiosInstance.get("/viewRequest");
+      })
+      .then((response) => {
+        setBookings(response.data);
+      })
+      .then(() => {
+        // Ensure that this only runs after both hotels and bookings are set
+        searchHotels();  // Call searchHotels() here
+        setRenderConst(1);
       })
       .catch((error) => {
         console.log("Error fetching data:", error);
       });
-  }, []);
+  },[renderConst]);
+  
+  // Search hotels based on the state
+  const searchHotels = () => {
+    const filteredHotels = filterAvailableHotels(searchDetails);
+    setFilteredHotels(filteredHotels);
+  };
 
       // State for filters
       const [minPrice, setMinPrice] = useState(null);
@@ -53,9 +100,39 @@ function ToursitHotelSearchList() {
       const [propertyType, setPropertyType] = useState([]);
       const [facilities, setFacilities] = useState([]);
       const [mealPreferences, setMealPreferences] = useState([]);
-  
-      const [filteredHotels, setFilteredHotels] = useState(hotels);
-      const countHotel = filteredHotels.length;
+
+      const clearFilters = () => {
+        setMinPrice(null);
+        setMaxPrice(null);
+        setStarRating(null);
+        setPropertyType([]);
+        setFacilities([]);
+        setMealPreferences([]);
+        setFilteredHotels(prevFilteredHotels);
+        // Do not clear filteredHotels here as you want to keep the search results
+      };
+
+     // Filter hotels when any of the filter state changes
+     useEffect(() => {
+      // Copy all hotels to filteredHotels
+      let filtered = filteredHotels;
+      setPrevFilteredHotels(filteredHotels);
+      console.log("Filtered hotels:", filteredHotels);
+      // Price Filter
+      if (minPrice) filtered = filtered.filter(hotel => hotel.price >= minPrice);
+      if (maxPrice) filtered = filtered.filter(hotel => hotel.price <= maxPrice);
+
+      // Star Rating Filter
+      if (starRating) filtered = filtered.filter(hotel => hotel.starRating === starRating);
+
+      // Property Type Filter
+      if (propertyType.length > 0) filtered = filtered.filter(hotel => propertyType.includes(hotel.hotelType));
+
+      // Update the filtered hotels state
+      
+      setFilteredHotels(filtered);
+    }, [minPrice, maxPrice, starRating, propertyType, facilities, mealPreferences]); // Watch for chang
+
       // Handle checkbox change
       const handleCheckboxChange = (event) => {
         const value = event.target.value;
@@ -67,30 +144,6 @@ function ToursitHotelSearchList() {
           setPropertyType(prevState => prevState.filter(type => type !== value));
         }
       };
-  
-      // Filter hotels when any of the filter state changes
-      useEffect(() => {
-          // Copy all hotels to filteredHotels
-          let filtered = hotels;
-
-          // Price Filter
-          if (minPrice) filtered = filtered.filter(hotel => hotel.price >= minPrice);
-          if (maxPrice) filtered = filtered.filter(hotel => hotel.price <= maxPrice);
-  
-          // Star Rating Filter
-          if (starRating) filtered = filtered.filter(hotel => hotel.starRating === starRating);
-  
-          // Property Type Filter
-          if (propertyType.length > 0) filtered = filtered.filter(hotel => propertyType.includes(hotel.hotelType));
-  
-          // Update the filtered hotels state
-          setFilteredHotels(filtered);
-      }, [minPrice, maxPrice, starRating, propertyType, facilities, mealPreferences]); // Watch for changes in these states
-  
-      // Clear all filters
-      const clearFilter = () =>{
-        setFilteredHotels(hotels);
-      }
 
   return (
     <div className="tourist-main d-flex flex-column gap-2 mb-2" style={{ width: "inherit" }}>
@@ -107,7 +160,7 @@ function ToursitHotelSearchList() {
             <input 
               type="text" 
               list="places" 
-              value={destination}
+              value={searchDetails.city}
               onChange={(e) => setDestination(e.target.value)}
             />
             <datalist id="places">
@@ -119,7 +172,7 @@ function ToursitHotelSearchList() {
             <h6>Check in date</h6>
               <input 
                 type="date" 
-                value={checkInDate}
+                value={searchDetails.checkIn}
                 min={new Date().toISOString().split('T')[0]}
                 onChange={(e) => setCheckInDate(e.target.value)}
               />
@@ -129,7 +182,7 @@ function ToursitHotelSearchList() {
             <h6>Check out date</h6>
             <input 
               type="date" 
-              value={checkOutDate}
+              value={searchDetails.checkOut}
               min={checkInDate}
               onChange={(e) => setCheckOutDate(e.target.value)}
             />
@@ -153,7 +206,7 @@ function ToursitHotelSearchList() {
         <div className="hotel-searchlist w-100 d-flex flex gap-3  ">
 
           <div className='hotel-search-filter d-flex flex-column gap-3'>
-            <h5>Filter by <span onClick={clearFilter} style={{fontSize:"15px", color:"#DB163A", marginLeft:"60px", fontWeight:"700", cursor:"pointer"}}>X Clear filter</span></h5>
+            <h5>Filter by <span onClick={clearFilters} style={{fontSize:"15px", color:"#DB163A", marginLeft:"60px", fontWeight:"700", cursor:"pointer"}}>X Clear filter</span></h5>
             <div className='hotel-filter-01'>
               <h6>Price</h6>
               <div className='d-flex flex-row gap-2' style={{marginLeft:"10px"}}>
@@ -202,28 +255,29 @@ function ToursitHotelSearchList() {
                 <div><input type="checkbox" /> Spa</div>
                 <div><input type="checkbox" /> Washing machine</div>
               </div>
-              
+
             </div>
 
             <div className='hotel-filter-05'>
               <h6>Meal prferences</h6>
+
               <div className='d-flex flex-column justify-content-center gap-2' style={{paddingLeft:'15px'}}>
                 <div><input type="checkbox" /> Breakfast included</div>
                 <div><input type="checkbox" /> Dinner included</div>
                 <div><input type="checkbox" /> Lunched included</div>
                 <div><input type="checkbox" /> All inclusive</div>
               </div>
-              
+
             </div>
           </div>
 
           <div className='hotel-search-hotellist'>
-            <h5>Search results &nbsp;&nbsp;&nbsp;<span className='searchResultFilter'>{countHotel} Found</span></h5>
+            <h5>Search results &nbsp;&nbsp;&nbsp;<span className='searchResultFilter'> Found</span></h5>
             <div className='hotel-all-search-list d-flex flex-column gap-3'>
            
-            {filteredHotels.map((hotel) => (
+            {filteredHotels.map((hotel,index) => (
               <div className="search-list-01 d-flex flex-row gap-3" key={hotel}>
-                <div className='search-hotel-img'></div>
+                <div className={`search-hotel-img${index}`}></div>
                 <div className='search-hotel-text'>
                   <h4>{hotel.hotelName}</h4>
                   <div className='search-hotel-list d-flex flex-column gap-2'>
