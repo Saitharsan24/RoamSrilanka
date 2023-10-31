@@ -24,6 +24,7 @@ function ToursitGuide() {
     }
 
     const [guideId,setGuideId] = useState(JSON.parse(localStorage.getItem("guideId")));
+    const [guideImage, setGuideImage] = useState(JSON.parse(localStorage.getItem("guideImage")));
 
     const apiBaseUrl = "http://localhost:8080";
 
@@ -67,7 +68,7 @@ function ToursitGuide() {
 
       <div className="view-guide-card">
         <div className="guide-view-image">
-            <div className={`guide-view-image-1 guide-image-count${tourGuide.userId-1}`}></div>
+            <div className={`guide-view-image-1 ${guideImage}`}></div>
             <div className="guide-detail-row">
               <p>Pricing and Fees (per day):</p>
               <input value={`$ ${tourGuide.fee}`} className="special-guide-input" type="text" disabled/>
