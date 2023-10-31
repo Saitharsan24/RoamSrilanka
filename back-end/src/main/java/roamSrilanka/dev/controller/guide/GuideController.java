@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
+import roamSrilanka.dev.model.Holidayplanner.Holidayplanner;
 import roamSrilanka.dev.model.guide.Guide;
 import roamSrilanka.dev.service.guide.GuideService;
 
@@ -20,6 +21,14 @@ public class GuideController {
         return guideService.getAllGuides();
     }
 
+
+    @GetMapping("/viewGuide/{userId}")
+    public Guide getGuideById(@PathVariable Integer userId){
+        return  guideService.getGuideById(userId);
+    }
+
+
+
     @PutMapping("/guideAvailability/{id}")
     public ResponseEntity<Guide> guideAvailability(@PathVariable Integer id) {
         Guide existingGuide = guideService.getGuideById(id);
@@ -28,8 +37,8 @@ public class GuideController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        if (existingGuide.getGuideAvailability() != null) {
-            existingGuide.setGuideAvailability(false);
+        if (existingGuide.getGuideAvailability() != 0) {
+            existingGuide.setGuideAvailability(0);
         }
 
         guideService.addGuide(existingGuide);

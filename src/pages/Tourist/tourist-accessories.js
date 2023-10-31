@@ -45,7 +45,7 @@ function ToursitAccessories() {
       const allFairsResponse = responses[0];
       const viewFairImagesResponse = responses[1];
 
-      setAccessories(allFairsResponse.data.filter(item => item.status === 0));
+      setAccessories(allFairsResponse.data);
       setAccImages(viewFairImagesResponse.data);
     })
     .catch((err) => {

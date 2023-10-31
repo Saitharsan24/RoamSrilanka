@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import roamSrilanka.dev.model.Holidayplanner.Event;
 import roamSrilanka.dev.model.Holidayplanner.EventImage;
 import roamSrilanka.dev.model.Holidayplanner.FairImage;
-import roamSrilanka.dev.service.EventService;
+import roamSrilanka.dev.service.holidayplanner.EventService;
 
 import java.io.File;
 import java.io.IOException;
@@ -115,5 +115,10 @@ public class EventController {
     @DeleteMapping("/deleteEvent/{id}")
     public String deleteEvent (@PathVariable(value = "id") Integer identity) {
         return this.eventService.deleteEvent(identity);
+    }
+
+    @GetMapping("/eventImages/{eventId}")
+    public ResponseEntity<EventImage> getEventImage(@PathVariable Integer eventId) {
+        return ResponseEntity.ok(eventService.getEventImage(eventId));
     }
 }
