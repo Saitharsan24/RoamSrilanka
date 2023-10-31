@@ -117,7 +117,8 @@ function Vehicle() {
                         
                         {(vehicle.length === 0) &&
                         <div className="col-sm-12 w-100">
-                            <div>
+                            <div class="row">
+                                
                                 <div class="card">
                                     <div class="card-body">
                                         <h4>Add Your Vehicle Informations</h4>
@@ -145,9 +146,9 @@ function Vehicle() {
                                 <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">Vehicle</h5>
-                                    <div class="position-relative">
+                                    {/* <div class="position-relative">
                                         <div class="position-absolute top-0 end-0"><Icon.Pencil color="black" /></div>
-                                    </div>
+                                    </div> */}
                                     <p class="card-text text-muted">you can edit the pictures of your vehicle</p>
                                     <div class="card">
                                         <div class="card-body">
@@ -177,9 +178,9 @@ function Vehicle() {
                                 </div> */}
                                 <div class="card">
                                 <div class="card-body">
-                                    <div class="position-relative">
+                                    {/* <div class="position-relative">
                                         <div class="position-absolute top-0 end-0"><Icon.Pencil color="black" /></div>
-                                    </div>
+                                    </div> */}
                                     <h5 class="card-title">Info</h5>
                                     <p class="card-text  text-muted">With supporting text below as a natural lead-in to additional content.</p>
                                     
@@ -279,7 +280,38 @@ function Vehicle() {
                                             </div>
                                         </div>
                                     </div>
-                                    
+                                    <div class="row mt-2">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">Insuarance Company</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <div class="card border-danger">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">{vehicle.length === 1 ? vehicle[0]['insurance_company'] : 'Ceylinco'}</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">Insuarance No</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <div class="card border-danger">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">{vehicle.length === 1 ? vehicle[0]['insurance_no'] : 'C-123'}</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 </div>
                             </div>

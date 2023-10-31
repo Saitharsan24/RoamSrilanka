@@ -88,13 +88,13 @@ function Profile() {
                         <div className="col-sm-6 p-2">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="position-relative">
+                                    {/* <div class="position-relative">
                                         <div class="position-absolute top-0 end-0"><Icon.Pencil color="black" /></div>
-                                    </div>
+                                    </div> */}
                                     <h5>Personal Informations</h5><hr></hr>
                                     <div style={{marginTop:"5px"}}>
                                         <h6>Full Name</h6>
-                                        <span className="p-1">Nisaf Ahamed</span><hr></hr>
+                                        <span className="p-1">{Username}</span><hr></hr>
                                     </div>
                                     <div style={{marginTop:"5px"}}>
                                         <h6>About Me</h6>

@@ -28,10 +28,14 @@ function DrivernewVehicle () {
         image2: "",
         image3: "",
         image4: "",
+        insurance_company: "",
+        insurance_edate: "",
+        insurance_no: "",
+        insurance_sdate: "",
         userId: userId,
     })
 
-    const {vehicle_number, color, model, company, seats, year} = vehicle;
+    const {vehicle_number, color, model, company, seats, year, insurance_company, insurance_edate, insurance_no, insurance_sdate} = vehicle;
 
     const onInputChange = (e) => {
         
@@ -197,6 +201,30 @@ function DrivernewVehicle () {
                                         <input type="file" class="form-control" id="inputEmail4" name="image4" onChange={handleFileChange4}/>
                                     </div>
                                 </div>
+                                {/* <div class="d-flex flex-row justify-content-between">
+                                    <div class="form-group col-md-6 p-2">
+                                        <label for="inputEmail4">Insuarance Company</label>
+                                        <input type={"text"} class="form-control" id="inputEmail4" placeholder="Enter Insuarance Company" name="insurance_company" value={insurance_company} onChange={(e)=>onInputChange(e)}/>
+                                    </div>
+                                    <div class="form-group col-md-6 p-2">
+                                        <label for="inputPassword4">Insuarance Number</label>
+                                        <input type={"text"} class="form-control" id="inputPassword4" placeholder="Enter Insuarance Number" name="insurance_no" value={insurance_no} onChange={(e)=>onInputChange(e)}/>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row justify-content-between">
+                                    <div class="form-group col-md-6 p-2">
+                                        <label for="inputEmail4">Insuarance Start Date</label>
+                                        <input type={"date"} class="form-control" id="inputEmail4" name="insurance_sdate" value={insurance_sdate} onChange={(e)=>onInputChange(e)}/>
+                                    </div>
+                                    <div class="form-group col-md-6 p-2">
+                                        <label for="inputPassword4">Insuarance End Date</label>
+                                        <input type={"date"} class="form-control" id="inputPassword4" name="insurance_edate" value={insurance_edate} onChange={(e)=>onInputChange(e)}/>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6 p-2">
+                                    <label for="inputEmail4">Insuarance Copy</label>
+                                    <input type="file" class="form-control" id="inputEmail4" name="insurance_img" onChange={handleFileChange4}/>
+                                </div> */}
                                 <button type="submit" class="btn btn-primary mt-3 ml-2" >Submit</button>
                             </form>
                         </div>

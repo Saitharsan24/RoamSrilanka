@@ -215,7 +215,7 @@ function Driver() {
                     <Icon.ChevronRight />
                 </div>
                 </div>
-                <div
+                {/* <div
                 className="box d-flex col-lg-6 col-md-6 col-sm-12 flex-row align-items-center gap-3 p-2 justify-content-around"
                 style={{ backgroundColor: "#FFFFF", borderRadius: "12px" }}
                 >
@@ -227,7 +227,7 @@ function Driver() {
                 <div className="d-flex">
                     <Icon.ChevronRight />
                 </div>
-                </div>
+                </div> */}
             </div>
             <div
                 style={{
@@ -288,12 +288,12 @@ function Driver() {
           </div>
           <div className="d-flex col-lg-5 col-md-12 col-sm-12 gap-3 flex-lg-row flex-md-row flex-row">
             <div className="right" style={{ display: "flex", flexDirection: "column" }}>
-              <div class="card mb-2">
+              {/* <div class="card mb-2">
                 <div class="card-body">
                     <h5 class="card-title">Vehicle Rate</h5>
-                    {/* <ReactStars {...ratingExample} /> */}
+                    <ReactStars {...ratingExample} />
                 </div>
-              </div>
+              </div> */}
               <div class="card mb-2">
                 <div class="card-body">
                     <h5 class="card-title">Next Trip</h5>

@@ -64,9 +64,9 @@ public class VehicleController {
     }
 
 
-    @DeleteMapping("deleteVehicleByUser/{user_id}")
-    public void deleteVehicleByUserId(@PathVariable("user_id") Long user_id) {
-        vehicleService.deleteVehicleByUserId(user_id);
+    @DeleteMapping("deleteVehicleByUser/{userId}")
+    public void deleteVehicleByUserId(@PathVariable("userId") Long userId) {
+        vehicleService.deleteVehicleByUserId(userId);
     }
 
     @GetMapping("vehiclebyUser/{user_id}")
