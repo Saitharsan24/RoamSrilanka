@@ -54,4 +54,8 @@ public class VehicleServiceImpl implements VehicleService {
     public List<Vehicle> findVehicleUserById(Long userId) {
         return vehicleRepository.findVehicleByUserId(userId);
     }
+
+    public void deleteVehicleByUserId(Long userId) {
+        vehicleRepository.deleteVehicleByUserId(userId);
+    }
 }

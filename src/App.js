@@ -14,7 +14,7 @@ import Login from "./pages/login";
 import Services from "./pages/services";
 import Blog from "./pages/blog";
 import Explore from "./pages/explore";
-import Signup from "./pages/signup";
+import Signup from "./pages/signup"; 
 
 import TouristLayout from "./layouts/tourist/tourist-layout";
 import AdminLayout  from "./layouts/admin/adminLayout";

@@ -28,6 +28,8 @@ public class Guide {
     private String address;
 
 
+
+
     public Guide() {
     }
 

@@ -12,7 +12,7 @@ function VehicleRejecttModal({closeModal,vehicleID}){
    });
 
 
-   console.log(vehicleID);
+   
    const [vehiclestatus, setVehiclestatus] = useState([]);
    const [vehiclefeedback, setVehiclefeedback] = useState({
     feedback: '',

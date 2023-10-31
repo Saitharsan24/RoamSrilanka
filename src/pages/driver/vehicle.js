@@ -8,6 +8,7 @@ import "./../../styles/vehicle.css";
 import * as Icon from "react-bootstrap-icons";
 import { Link } from 'react-router-dom';
 import { useSession } from '../../Context/SessionContext';
+import axios from "axios";
 // import ReactStars from "react-rating-stars-component";
 
 function Vehicle() {
@@ -17,6 +18,26 @@ function Vehicle() {
 
     const userId = sessionData.userId;
     console.log('user: ' + userId);
+
+    const apiBaseUrl = "http://localhost:8080";
+    const axiosInstance = axios.create({
+        baseURL: apiBaseUrl,
+        timeout: 10000,
+      });
+
+    const deleteVehicle = async(e) => {
+        e.preventDefault();
+        try {
+          const response = await axiosInstance.delete(`/deleteVehicleByUser/${userId}`);
+    
+          if (response.status === 200) {
+            window.location.reload();
+            console.log("okkkk");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+    };
 
     const ratingExample = {
         size: 50,
@@ -116,6 +137,7 @@ function Vehicle() {
                                 <div style={{color:"red"}}>Status</div>
                             )}
 
+                            <button onClick={deleteVehicle}>Delete My vehicle</button>
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <div class="card">
                                 <div class="card-body">

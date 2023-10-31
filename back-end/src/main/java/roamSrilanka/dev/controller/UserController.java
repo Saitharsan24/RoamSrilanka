@@ -50,10 +50,10 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest logillnRequest) throws JSONException {
+    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) throws JSONException {
 
-        PasswordAuthentication loginRequest = null;
-        User user = userService.authenticateUser(loginRequest.getUserName(), Arrays.toString(loginRequest.getPassword()));
+        //PasswordAuthentication loginRequest = null;
+        User user = userService.authenticateUser(loginRequest.getUserName(), loginRequest.getPassword());
 
          if(user != null) {
 

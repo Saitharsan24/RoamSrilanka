@@ -64,6 +64,12 @@ public class VehicleController {
         vehicleService.deleteVehicle(vehicleID);
     }
 
+
+    @DeleteMapping("deleteVehicleByUser/{user_id}")
+    public void deleteVehicleByUserId(@PathVariable("user_id") Long user_id) {
+        vehicleService.deleteVehicleByUserId(user_id);
+    }
+
     @GetMapping("vehiclebyUser/{user_id}")
     public List<Vehicle> findVehicleByUserId(@PathVariable("user_id") Long user_id) {
         return vehicleService.findVehicleUserById(user_id);
@@ -105,5 +111,7 @@ public class VehicleController {
 
         }
     }
+
+
 }
 
