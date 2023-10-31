@@ -66,6 +66,13 @@ function SideNavbarHolidayPlanner() {
       },
 
       {
+        title:'Feedback',
+        path:'plannerFeedback',
+        icon:<BiIcons.BiChat />,
+        cName: 'nav-text',
+      },
+
+      {
         title:'Profile',
         path:'plannerProfile',
         icon:<MdIcons.MdAccountCircle />,

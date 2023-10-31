@@ -99,6 +99,7 @@ import HPChat from "./pages/holiday-planner/HPChat";
 import HPTrip from "./pages/holiday-planner/HPTrips";
 import HPFairDetails from "./pages/holiday-planner/HPFairDetails";
 import HPViewTrip from "./pages/holiday-planner/HPViewTrip";
+import HPFeedback from "./pages/holiday-planner/HPFeedback";
 
 
 import DriverLayout from "./layouts/driver/driver-layout";
@@ -224,6 +225,7 @@ const route = createBrowserRouter(
         <Route path="hprequestdetail/:p_bookingID" element={<HPRequestDetails/>}></Route>
         <Route path="hpfairdetail/:fairrequestID" element={<HPFairDetails/>}></Route>
         <Route path="hpviewtrip/:p_bookingID" element={<HPViewTrip/>}></Route>
+        <Route path="plannerFeedback" element={<HPFeedback/>}></Route>
       
       </Route>
 
