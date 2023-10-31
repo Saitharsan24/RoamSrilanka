@@ -6,6 +6,8 @@ import { MDBDataTable } from "mdbreact";
 import "./../../styles/data-table.css";
 import * as Icon from "react-bootstrap-icons";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 function getStatusText(status) {
   switch (status) {
@@ -22,12 +24,18 @@ function getStatusText(status) {
   }
 }
 function HPTrip() {
+  const navigate = useNavigate();
   const apiBaseUrl = "http://localhost:8080";
 
   const axiosInstance = axios.create({
     baseURL: apiBaseUrl,
     timeout: 5000,
   });
+
+  const handleRowClick = (p_bookingID) => {
+    console.log("p_bookingID", p_bookingID);
+    navigate(`/holidayPlanner/hpviewtrip/${p_bookingID}`);
+  }
 
   const [user, setUser] = useState([]);
   const [request, setRequest] = useState([]);
@@ -136,7 +144,7 @@ function HPTrip() {
       ),
       btn: [
         <>
-          <div className="view-trip"><a style={{color:"inherit"}} href="guideTripForm">View Trip</a></div>
+          <div className="view-trip" onClick={() => handleRowClick(item.p_bookingID) & console.log("Clicked View for booking ID:", item.p_bookingID)}><a style={{color:"inherit"}} >View Trip</a></div>
         </>,
       ],
     })),

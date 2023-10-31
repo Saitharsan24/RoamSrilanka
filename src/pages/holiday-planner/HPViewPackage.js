@@ -37,19 +37,39 @@ function HPViewpackage() {
     setMeals(meals);
   }, []);
 
-  const deletePackage = (id) => {
-    console.log("id", id);
-    axiosInstance
-      .delete(`/packages/${id}`)
+  // const deletePackage = (id) => {
+  //   console.log("id", id);
+  //   axiosInstance
+  //     .delete(`/packages/${id}`)
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       alert("Package deleted successfully");
+  //       window.location.href = "/holidayPlanner/plannerPackage";
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
+  const handleDeleteEvent = async () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this event?"
+    );
+    if (confirmed) {
+      axiosInstance
+      .delete("/packages/" + paraData.packageID)
       .then((res) => {
         console.log(res.data);
-        alert("Package deleted successfully");
-        window.location.href = "/holidayPlanner/plannerPackage";
+        window.history.back();
       })
       .catch((err) => {
         console.log(err);
       });
-  }
+    }
+  };
+
+  const handleCancelButton = () => {
+    window.history.back(); // Redirect to the previous page
+  };
 
   return (
     <div className="d-flex gap-3 w-100 m align-items-center justify-content-around">
@@ -152,14 +172,17 @@ function HPViewpackage() {
           </form>
         </div>
         <div className="d-flex flex-column flex-lg-row justify-content-between gap-3 mx-5 mb-5">
-          <button className="btn-cancel p-2"  onClick={() => {
-              console.log("Clicked Remove for package ID:", paraData.packageID); // Check this line
+          <button className="btn-cancel p-2"  
+          // onClick={() => {
+          //     console.log("Clicked Remove for package ID:", paraData.packageID); // Check this line
 
-              deletePackage(paraData.packageID);
-            }}>
+          //     deletePackage(paraData.packageID);
+          //   }}
+          onClick={handleDeleteEvent}
+            >
             Delete
           </button>
-          <button className="btn-next p-2" type="submit">
+          <button className="btn-next p-2" type="submit" onClick={handleCancelButton}>
             Cancel
           </button>
         </div>
