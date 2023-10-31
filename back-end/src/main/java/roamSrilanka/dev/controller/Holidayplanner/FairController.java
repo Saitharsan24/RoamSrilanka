@@ -102,7 +102,7 @@ public class FairController {
     }
 
     @GetMapping("/getParticularFair/{id}")
-    public Optional<Fair> getEvent (@PathVariable(value = "id") Integer identity ) {
+    public Optional<Fair> getFair (@PathVariable(value = "id") Integer identity ) {
         return this.fairService.getFair(identity);
     }
 

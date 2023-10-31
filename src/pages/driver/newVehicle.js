@@ -46,8 +46,8 @@ function DrivernewVehicle () {
         navigate("/driver/driverVehicle");
     };
 
-    const upload_preset = "moz2vspi";
-    const cloud_name = "dg3y629pc";
+    // const upload_preset = "moz2vspi";
+    // const cloud_name = "dg3y629pc";
 
   const handleFileChange1 = (e) => {
 

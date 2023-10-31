@@ -25,6 +25,11 @@ const HPDatatablePage = () => {
     navigate(`/holidayPlanner/hprequestdetail/${p_bookingID}`)
   }
 
+  const handleRowClick1 = (fairrequestID) => {
+    console.log("fairrequestID", fairrequestID);
+    navigate(`/holidayPlanner/hpfairdetail/${fairrequestID}`)
+  }
+
   const mergeData = (rowData, packages,tourist) => {
     const mergedData = rowData.map(
       (requestItem) => {
@@ -236,10 +241,7 @@ const HPDatatablePage = () => {
       button1: (
         <button
           className="hp-accept"
-          onClick={() =>
-            handleRowClick(item.fair_no) &
-            console.log("Clicked View for fair ID:", item.fair_no)
-          }
+          onClick={() => handleRowClick1(item.fairrequestID) & console.log("Clicked View for booking ID:", item.fairrequestID)}
         >
           View
         </button>
