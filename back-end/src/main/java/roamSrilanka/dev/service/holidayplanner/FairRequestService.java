@@ -24,5 +24,7 @@ public class FairRequestService {
         return fairrequestRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid fairrequest Id:" + id));
     }
 
-
+    public Long countFRequests() {
+        return fairrequestRepository.count();
+    }
 }
