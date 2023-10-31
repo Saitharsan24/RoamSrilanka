@@ -188,6 +188,9 @@ console.log("mergeVehicleData : ",mergedVehicle);
     navigate(`/holidayPlanner/plannerViewPackage/${packageID}`);
   };
 
+  const handleChatClick = () => {
+    navigate(`/holidayPlanner/hpchat`);
+  };
   const [selectedTourGuide, setSelectedTourGuide] = useState([]);
   const handleTourGuideChange = (event) => {
     setSelectedTourGuide(event.target.value);
@@ -259,19 +262,20 @@ console.log("mergeVehicleData : ",mergedVehicle);
             className="d-flex flex-column gap-3 col-6 p-5"
           >
             <form>
-            <div className="d-lg-flex d-md-flex d-flex flex-lg-row justify-content-between">
-              <img
-                src={profile}
-                className="object-fit-cover img-fluid col-3"
-                style={{ borderRadius: "50%" }}
-              ></img>
-              <button
-                className="change_pic col-4"
-                style={{ height: "3rem", width: "Auto" }}
-              >
-                Message to {userData.userFullname}
-              </button>
-            </div>
+              <div className="d-lg-flex d-md-flex d-flex flex-lg-row justify-content-between">
+                <img
+                  src={profile}
+                  className="object-fit-cover img-fluid col-3"
+                  style={{ borderRadius: "50%" }}
+                ></img>
+                <button
+                  onClick={() => handleChatClick()}
+                  className="change_pic col-4"
+                  style={{ height: "3rem", width: "Auto" }}
+                >
+                  Message to {userData.userFullname}
+                </button>
+              </div>
 
             <div>
               <p className="name px-2 justify-content-center">

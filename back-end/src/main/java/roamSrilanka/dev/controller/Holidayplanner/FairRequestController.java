@@ -30,4 +30,9 @@ public class FairRequestController {
         return ResponseEntity.ok(fairrequestService.getFairrequest(id));
     }
 
+    @GetMapping("/frequest/count")
+    @ResponseBody
+    public ResponseEntity<Long> countFRequests() {
+        return ResponseEntity.ok(fairrequestService.countFRequests());
+    }
 }

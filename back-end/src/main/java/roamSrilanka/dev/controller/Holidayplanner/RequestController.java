@@ -47,4 +47,10 @@ public class RequestController {
         requestService.addRequest(existingRequest);
         return ResponseEntity.ok(existingRequest);
     }
+
+    @GetMapping("/request/count")
+    @ResponseBody
+    public ResponseEntity<Long> countRequests() {
+        return ResponseEntity.ok(requestService.countRequests());
+    }
 }

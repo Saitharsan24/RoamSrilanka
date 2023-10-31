@@ -29,21 +29,21 @@ const HPFairDetails = () => {
         console.log(res.data);
 
         axiosInstance
-        .get("/users/" + res.data.touristID)
-        .then((res2) => {
-          setUserData(res2.data);
-          console.log(res2.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+          .get("/users/" + res.data.touristID)
+          .then((res2) => {
+            setUserData(res2.data);
+            console.log(res2.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
 
         axiosInstance
-        .get("/getParticularFair/" + res.data.fair_no)
-        .then((res3) => {
-          setFairData(res3.data);
-          console.log(res3.data);
-        })
+          .get("/getParticularFair/" + res.data.fair_no)
+          .then((res3) => {
+            setFairData(res3.data);
+            console.log(res3.data);
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -52,7 +52,11 @@ const HPFairDetails = () => {
 
   const handleRowClick = (fairId) => {
     navigate(`/holidayPlanner/plannerViewItem/${fairId}`);
-  }
+  };
+
+  const handleChatClick = () => {
+    navigate(`/holidayPlanner/hpchat`);
+  };
 
   return (
     <div className="d-flex flex-column">
@@ -80,6 +84,7 @@ const HPFairDetails = () => {
                 style={{ borderRadius: "50%" }}
               ></img>
               <button
+                onClick={() => handleChatClick()}
                 className="change_pic col-4"
                 style={{ height: "3rem", width: "Auto" }}
               >
@@ -113,8 +118,10 @@ const HPFairDetails = () => {
               <button
                 className=" change_pic col-4 flex-fill"
                 style={{ height: "2rem" }}
-                onClick={() => handleRowClick(fairData.fairId) & console.log("Clicked View for Fair ID:", fairData.fairId)}
-               
+                onClick={() =>
+                  handleRowClick(fairData.fairId) &
+                  console.log("Clicked View for Fair ID:", fairData.fairId)
+                }
               >
                 View fair
               </button>
