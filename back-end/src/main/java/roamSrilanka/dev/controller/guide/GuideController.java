@@ -37,8 +37,8 @@ public class GuideController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        if (existingGuide.getGuideAvailability() != null) {
-            existingGuide.setGuideAvailability(false);
+        if (existingGuide.getGuideAvailability() != 0) {
+            existingGuide.setGuideAvailability(0);
         }
 
         guideService.addGuide(existingGuide);

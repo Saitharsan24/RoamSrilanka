@@ -127,6 +127,8 @@ function Holiday_dashboard() {
   const [packages, setPackages] = useState();
   const [eventCount, setEventCount] = useState();
   const [fairCount, setFairCount] = useState();
+  const [requestCount, setRequestCount] = useState();
+  const [frequestCount, setFRequestCount] = useState();
 
   useEffect(() => {
     axiosInstance
@@ -157,6 +159,30 @@ function Holiday_dashboard() {
       .get("/fair/count")
       .then((res) => {
         setFairCount(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err); 
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/request/count")
+      .then((res) => {
+        setRequestCount(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err); 
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/frequest/count")
+      .then((res) => {
+        setFRequestCount(res.data);
         console.log(res.data);
       })
       .catch((err) => {
@@ -222,7 +248,7 @@ function Holiday_dashboard() {
           </div>
           <div className="d-flex flex-column col-3 gap-3 p-2">
             <a
-              href=""
+              href="plannerRequest"
               className=" box d-flex col-lg-12 col-sm-8  flex-row align-items-center gap-3 p-2 justify-content-around"
               style={{
                 backgroundColor: "#FFFFFF",
@@ -232,10 +258,16 @@ function Holiday_dashboard() {
               }}
             >
               <div className=" d-flex flex-column ">
-                <p style={{ color: "#98A3B2", fontSize: "30px" }}>Reviews</p>
+                <p style={{ color: "#98A3B2", fontSize: "30px" }}>Requests</p>
+                <div style={{ display: 'flex', justifyContent: 'space-between'}}>
                 <p style={{ fontSize: "15px", fontWeight: "bold" }}>
-                  New Reviews - 20
+                  Packages - {requestCount}
                 </p>
+                <div style={{ width: '48px' }}></div>
+                <p style={{ fontSize: "15px", fontWeight: "bold"}}>
+                  Fairs - {frequestCount}
+                </p>
+                </div>
               </div>
               <div className="d-flex">
                 <Icon.ChevronRight />

@@ -59,11 +59,19 @@ function SideNavbarHolidayPlanner() {
       },
 
       {
+        title:'Fairs',
+        path:'plannerItem',
+        icon:<BsIcons.BsBagFill />,
+        cName: 'nav-text',
+      },
+
+      {
         title:'Profile',
         path:'plannerProfile',
         icon:<MdIcons.MdAccountCircle />,
         cName: 'nav-text',
       },
+
     ]
 
   return (
