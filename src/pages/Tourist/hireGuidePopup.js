@@ -7,12 +7,16 @@ import { useSession } from '../../Context/SessionContext';
 
 function RentAccPopup({closeModal, item}) {
 
-    const apiBaseUrl = "http://localhost:8080";
-    console.log(item);
+        //getting data from session variable
+        const { sessionData , setSessionData  } = useSession();
+        const [rentAmount, setRentAmount] = useState(item.fee);
+        const [fromDate, setFromDate] = useState(new Date().toISOString().split('T')[0]);
+        const [toDate, setToDate] = useState(new Date().toISOString().split('T')[0]);
+        const [checkAvailability, setCheckAvailability] = useState(false);
+        const [placesToVisit, setPlacesToVisit] = useState('');
+        const [guideTrips, setGuideTrips] = useState([]);
 
-    const [rentAmount, setRentAmount] = useState(item.fee);
-
-
+        // console.log(item);
     const fromDateFunction = (event) => {
         setFromDate(event.target.value);
         setToDate(event.target.value);
@@ -33,23 +37,82 @@ function RentAccPopup({closeModal, item}) {
         }
     }
 
-
+    const apiBaseUrl = "http://localhost:8080";
     const axiosInstance = axios.create({
         baseURL: apiBaseUrl,
         timeout: 10000,
     });
 
-    //getting data from session variable
-    const { sessionData , setSessionData  } = useSession();
+    useEffect(() => {
+        axiosInstance.get("/viewTrips")
+        .then((response) => {
+          // Handle the response data
+          // For example:
+          console.log(response.data);
+          setGuideTrips(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }, []);
 
-    const [fromDate, setFromDate] = useState(new Date().toISOString().split('T')[0]);
-    const [toDate, setToDate] = useState(new Date().toISOString().split('T')[0]);
+      const handleCheckAvailability = () => {
+        // Loop through all fair requests
+        for (const guideTrip of guideTrips) {
+            // Convert strings to Date objects for comparison
+            const requestFromDate = new Date(guideTrip.fromDate);
+            const requestToDate = new Date(guideTrip.toDate);
+            const userInputFromDate = new Date(fromDate);
+            const userInputToDate = new Date(toDate);
+    
+            // Check if dates conflict
+            if (
+                (userInputFromDate >= requestFromDate && userInputFromDate <= requestToDate) ||
+                (userInputToDate >= requestFromDate && userInputToDate <= requestToDate) ||
+                (userInputFromDate <= requestFromDate && userInputToDate >= requestToDate)
+            ) {
+                setCheckAvailability(false);
+                alert("Sorry, guide is not available on the given date. Please check on another date.");
+                return; // Exit after finding a single conflict
+            }
+        }
 
-    const [checkAvailability, setCheckAvailability] = useState(false);
+            // If loop completes without returning, no conflicts were found
+            setCheckAvailability(true);
+            alert("Guide is available ! You can hire.");
+    };
+
+    const handleRent = () => { 
+        const hireDetails = {
+            userId: sessionData.userId,
+            guideId: item.userId,
+            fromDate: fromDate,
+            toDate: toDate,
+            charge: rentAmount,
+            status: 0,
+            places: placesToVisit
+        }
+
+        console.log(hireDetails);
+
+        axiosInstance
+        .post("/addTrip", hireDetails) // <-- Include reserveDetails here
+        .then((response) => {
+          if (response.status === 200) {
+            console.log("Successfully Sent request ! Wait for the response.");
+            alert("Successfully Sent request ! Wait for the response.");
+            window.location.href = "/tourist/touristGuide";
+          }
+        })
+        .catch((error) => {
+          console.log("Error fetching data:", error);
+        });
+
+    }
     
   return (
     <div>
-    <div className='popup-for-acc-reserve'>
+    <div className='popup-for-acc-reserve special-guide-reserve'>
         <div className="roomDetailClosebtn w-100 mt-1"><IoIcon.IoCloseCircle onClick={closeModal} className="roomDetailClosebtnicon" style={{fontSize:"30px", cursor:"pointer", }}/></div>
         <div className="reserveName"><h3 style={{fontWeight:"600", marginTop:"20px"}} >Reserve Room</h3></div>
         <div className='reserve-details'>
@@ -66,15 +129,19 @@ function RentAccPopup({closeModal, item}) {
                 <input value={toDate} type="date" onChange={(e)=>toDateFunction(e)} />
             </div>
             <div className='reserve-items'>
+                <p>Places to visit:</p>
+                <input type="text" onChange={(e)=>setPlacesToVisit(e.target.value)} />
+            </div>
+            <div className='reserve-items'>
                 <p>Total amount:</p>
                 <input value={`$ ${rentAmount}`} type="text" disabled style={{color:"#000000"}}/>
             </div>
             <div className='reserve-items'>
             {!checkAvailability &&
-                <Button  style={{marginRight:"30px"}}>Check availability</Button>
+                <Button onClick={handleCheckAvailability}  style={{marginRight:"30px"}}>Check availability</Button>
             }
             {checkAvailability &&
-                <Button  style={{marginRight:"30px"}}>Pay and rent</Button>
+                <Button onClick={handleRent}  style={{marginRight:"30px"}}>Send Request</Button>
             }
             </div>
         </div>
