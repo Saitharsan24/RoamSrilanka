@@ -68,7 +68,9 @@ public class Vehicle {
     private String insurance_img;
 
     @Column(name = "user_id")
-    private Long userId;
+
+    private Integer userId;
+
 
 //    @OneToOne
 //    @MapsId
@@ -78,9 +80,9 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle(Long vehicleID, String vehicle_number, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4,String status,String feedback,String insurance_no,String insurance_company,Data insurance_sdate,Date insurance_edate,String insurance_img) {
-        this.vehicle_number = vehicle_number;
+    public Vehicle(Long vehicleID, String vehicle_number, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4, String status, String feedback, String insurance_no, String insurance_company, Date insurance_sdate, Date insurance_edate, String insurance_img, Integer userId) {
         this.vehicleID = vehicleID;
+        this.vehicle_number = vehicle_number;
         this.color = color;
         this.model = model;
         this.company = company;
@@ -94,12 +96,13 @@ public class Vehicle {
         this.feedback = feedback;
         this.insurance_no = insurance_no;
         this.insurance_company = insurance_company;
-        this.insurance_sdate = (Date) insurance_sdate;
+        this.insurance_sdate = insurance_sdate;
         this.insurance_edate = insurance_edate;
         this.insurance_img = insurance_img;
+        this.userId = userId;
     }
 
-    public Vehicle(String vehicle_number, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4,String status,String feedback,String insurance_no,String insurance_company,Data insurance_sdate,Date insurance_edate) {
+    public Vehicle(String vehicle_number, String color, String model, String company, int seats, int year, String image1, String image2, String image3, String image4, String status, String feedback, String insurance_no, String insurance_company, Date insurance_sdate, Date insurance_edate, String insurance_img, Integer userId) {
         this.vehicle_number = vehicle_number;
         this.color = color;
         this.model = model;
@@ -114,9 +117,10 @@ public class Vehicle {
         this.feedback = feedback;
         this.insurance_no = insurance_no;
         this.insurance_company = insurance_company;
-        this.insurance_sdate = (Date) insurance_sdate;
+        this.insurance_sdate = insurance_sdate;
         this.insurance_edate = insurance_edate;
         this.insurance_img = insurance_img;
+        this.userId = userId;
     }
 
     public Long getVehicleID() {
@@ -221,7 +225,6 @@ public class Vehicle {
 
     public void setFeedback(String feedback) {
         this.feedback = feedback;
-
     }
 
     public String getInsurance_no() {
@@ -264,11 +267,12 @@ public class Vehicle {
         this.insurance_img = insurance_img;
     }
 
-    public Long getUserId() {
+
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 }
