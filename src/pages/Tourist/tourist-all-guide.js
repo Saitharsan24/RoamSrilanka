@@ -18,8 +18,9 @@ function TouristAllGuide() {
     tourGuideRows.push(tourGuide.slice(i, i + 5));
     }
 
-    const hireGuideHandler = (guideId) => 
+    const hireGuideHandler = (guideId, imageName) => 
     {
+        localStorage.setItem("guideImage", JSON.stringify(imageName));
         localStorage.setItem("guideId", JSON.stringify(guideId));
         window.location.href = '/tourist/touristGuideView';
     }
@@ -110,7 +111,7 @@ function TouristAllGuide() {
                                     paddingRight: "20px",
                                     fontSize: "12px",
                                 }}
-                                onClick={()=>hireGuideHandler(guide.userId)}
+                                onClick={()=>hireGuideHandler(guide.userId,`guide-image-count${rowIndex}-${index}`)}
                                 >
                                 Hire guide
                                 </Button>

@@ -25,9 +25,8 @@ public class GuideTrip {
     @Column (name = "to_date")
     private LocalDate toDate;
 
-    @ElementCollection
     @Column (name = "places")
-    private List<String> places;
+    private String places;
 
     @Column (name = "charge")
     private String charge;
@@ -38,7 +37,7 @@ public class GuideTrip {
     public GuideTrip() {
     }
 
-    public GuideTrip(int tripId, LocalDate date, Integer userId, LocalDate fromDate, LocalDate toDate, List<String> places, String charge, String status) {
+    public GuideTrip(int tripId, LocalDate date, Integer userId, LocalDate fromDate, LocalDate toDate, String places, String charge, String status) {
         this.tripId = tripId;
         this.date = date;
         this.userId = userId;
@@ -49,7 +48,7 @@ public class GuideTrip {
         this.status = status;
     }
 
-    public GuideTrip(LocalDate date, Integer userId, LocalDate fromDate, LocalDate toDate, List<String> places, String charge, String status) {
+    public GuideTrip(LocalDate date, Integer userId, LocalDate fromDate, LocalDate toDate, String places, String charge, String status) {
         this.date = date;
         this.userId = userId;
         this.fromDate = fromDate;
@@ -99,11 +98,11 @@ public class GuideTrip {
         this.toDate = toDate;
     }
 
-    public List<String> getPlaces() {
+    public String getPlaces() {
         return places;
     }
 
-    public void setPlaces(List<String> places) {
+    public void setPlaces(String places) {
         this.places = places;
     }
 
