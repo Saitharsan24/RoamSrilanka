@@ -1,11 +1,50 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles/admin/admin_package.css";
 import { MDBDataTable } from "mdbreact";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
+import axios from "axios";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 function AdminPackage() {
+
+  const [packages, setPackage] = useState([]);
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+   baseURL: apiBaseUrl,
+   timeout: 5000,
+  });
+
+  const filterpackages = (status) => packages.filter((packages) => packages.status === status);
+
+  useEffect(() => {
+    // Make an HTTP GET request to fetch data from the API\
+    axiosInstance.get("http://localhost:8080/packages").then((response) => {
+      setPackage(response.data);
+      console.log(response.data);
+    });
+  }, []);
+
+  function getStatusText(status) {
+    if (status == null) {
+      return <div style={{color:"#d0c96e",fontWeight:"bolder"}}>Pending</div>;
+    } else if (status== 0) {
+      return <div style={{color:"#d03b3b",fontWeight:"bolder"}}>Rejected</div>;
+    } else if (status == 1) {
+      return <div style={{color:"#66d03b",fontWeight:"bolder"}}>Accepted</div>;
+    } else {
+      return "Unknown";
+    }
+  }
+
+  
+
+
+
+
   const data_all = {
     columns: [
       {
@@ -21,8 +60,8 @@ function AdminPackage() {
         width: 150,
       },
       {
-        label: "Package Type",
-        field: "type",
+        label: "Number of Tourist",
+        field: "no_tourist",
         sort: "asc",
         width: 200,
       },
@@ -40,152 +79,24 @@ function AdminPackage() {
         btn: "view-button",
       },
     ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="request ">Request</div></>],
-        btn: [
-          <>
-           <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "002",
-        name: "Jane Smith",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "003",
-        name: "Ella Brown",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="reject">Rejected</div></>],
-        btn: [
-          <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "004",
-        name: "William Davis",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "005",
-        name: "Sophia Wilson",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "006",
-        name: "Sarah Martinez",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
- <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "007",
-        name: "Oliver Taylor",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-             <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "008",
-        name: "Ava Martinez",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="reject">Rejected</div></>],
-        btn: [
-          <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>          </>,
-        ],
-      },
-      {
-        id: "009",
-        name: "Ethan Thompson",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="reject">Rejected</div></>],
-        btn: [
-          <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "010",
-        name: "Ava Martinez",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "011",
-        name: "Sophia Wilson",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "012",
-        name: "Matthew Taylor",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-           <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "013",
-        name: "Christopher Davis",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-                   <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-    
-    ],
+    rows: packages.map((packages) => ({
+      id: packages.packageID, //  API response has a field named 'id' for Tourist ID
+      name: packages.package_name, //  API response has a field named 'touristName' for Tourist Name
+      no_tourist: packages.no_of_people,
+      status: getStatusText(packages.status),
+
+      btn: [
+        <>
+          <Link to={`/admin/adminpackageaccept?packageId=${packages.packageID}`}>
+            <button className="view-detail">View detail</button>
+          </Link>
+        </>,
+      ],
+    })),
   };
+
+ 
+  
 
 
   const data_request = {
@@ -203,8 +114,8 @@ function AdminPackage() {
         width: 150,
       },
       {
-        label: "Package Type",
-        field: "type",
+        label: "Number of Tourist",
+        field: "no_tourist",
         sort: "asc",
         width: 200,
       },
@@ -222,66 +133,23 @@ function AdminPackage() {
         btn: "view-button",
       },
     ],
-    rows: [
-      {
-        id: "001",
-        name: "Robert Johnson",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      
-      {
-        id: "004",
-        name: "William Davis",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "005",
-        name: "Sophia Wilson",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-     
-      {
-        id: "010",
-        name: "Ava Martinez",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "011",
-        name: "Sophia Wilson",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="request">Request</div></>],
-        btn: [
-          <>
-             <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
+   
+    rows: packages.filter((packages) => packages.status === null).map((packages) => ({
+      id: packages.packageID, //  API response has a field named 'id' for Tourist ID
+      name: packages.package_name, //  API response has a field named 'touristName' for Tourist Name
+      no_tourist: packages.no_of_people,
+      status: getStatusText(packages.status),
+
+      btn: [
+        <>
+          <Link to={`/admin/adminpackageaccept?packageId=${packages.packageID}`}>
+            <button className="view-detail">View detail</button>
+          </Link>
+        </>,
+      ],
+    })),
+
     
-    ],
   };
 
 
@@ -300,8 +168,8 @@ function AdminPackage() {
         width: 150,
       },
       {
-        label: "Package Type",
-        field: "type",
+        label: "Number of Tourist",
+        field: "no_tourist",
         sort: "asc",
         width: 200,
       },
@@ -319,68 +187,22 @@ function AdminPackage() {
         btn: "view-button",
       },
     ],
-    rows: [
-  
-      {
-        id: "002",
-        name: "Jane Smith",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
     
-      
-      {
-        id: "006",
-        name: "Sarah Martinez",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-             <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "007",
-        name: "Oliver Taylor",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      
-            {
-        id: "012",
-        name: "Matthew Taylor",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-        <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "013",
-        name: "Christopher Davis",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="confirm">Confirmed</div></>],
-        btn: [
-          <>
-           <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-    
-    ],
+    rows: packages.filter((packages) => packages.status === "1").map((packages) => ({
+      id: packages.packageID, //  API response has a field named 'id' for Tourist ID
+      name: packages.package_name, //  API response has a field named 'touristName' for Tourist Name
+      no_tourist: packages.no_of_people,
+      status: getStatusText(packages.status),
+
+      btn: [
+        <>
+          <Link to={`/admin/adminpackageaccept?packageId=${packages.packageID}`}>
+            <button className="view-detail">View detail</button>
+          </Link>
+        </>,
+      ],
+    })),
+
   };
 
   const data_rejected = {
@@ -398,8 +220,8 @@ function AdminPackage() {
         width: 150,
       },
       {
-        label: "Package Type",
-        field: "type",
+        label: "Number of Tourist",
+        field: "no_tourist",
         sort: "asc",
         width: 200,
       },
@@ -417,44 +239,21 @@ function AdminPackage() {
         btn: "view-button",
       },
     ],
-    rows: [
-     
-  
-      {
-        id: "003",
-        name: "Ella Brown",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="reject">Rejected</div></>],
-        btn: [
-          <>
-           <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-     
-      {
-        id: "008",
-        name: "Ava Martinez",
-        type: [<><div className="amount fw-bold">Amount Base</div></>],
-        status:[<><div className="reject">Rejected</div></>],
-        btn: [
-          <>
-            <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>
-          </>,
-        ],
-      },
-      {
-        id: "009",
-        name: "Ethan Thompson",
-        type: [<><div className="day fw-bold">Day Base</div></>],
-        status:[<><div className="reject">Rejected</div></>],
-        btn: [
-          <>
-          <a href="/admin/adminpackageaccept"> <button className="view-package " >Package detail</button></a>          </>,
-        ],
-      },
-     
-    ],
+    rows: packages.filter((packages) => packages.status === "0").map((packages) => ({
+      id: packages.packageID, //  API response has a field named 'id' for Tourist ID
+      name: packages.package_name, //  API response has a field named 'touristName' for Tourist Name
+      no_tourist: packages.no_of_people,
+      status: getStatusText(packages.status),
+
+      btn: [
+        <>
+          <Link to={`/admin/adminpackageaccept?packageId=${packages.packageID}`}>
+            <button className="view-detail">View detail</button>
+          </Link>
+        </>,
+      ],
+    })),
+
   };
 
   return (

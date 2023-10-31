@@ -1,5 +1,6 @@
 package roamSrilanka.dev.model.Hotel;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
 import jakarta.persistence.*;
 
@@ -16,9 +17,6 @@ public class HotelRequest {
     @Column(name="user_id")
     private Integer userId;
 
-    @Column(name="owner_id")
-    private Integer ownerId;
-
     @Column(name="hotel_id")
     private Integer hotelId;
 
@@ -26,23 +24,26 @@ public class HotelRequest {
     private Integer roomId;
 
     @Column(name="date")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date date;
 
     @Column(name="from_date")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date fromDate;
 
     @Column(name="to_date")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date toDate;
 
     @Column(name="status")
     private String status;
+
     public HotelRequest() {
     }
 
-    public HotelRequest(Integer requestId, Integer userId, Integer ownerId, Integer hotelId, Integer roomId, Date date, Date fromDate, Date toDate, String status) {
+    public HotelRequest(Integer requestId, Integer userId, Integer hotelId, Integer roomId, Date date, Date fromDate, Date toDate, String status) {
         this.requestId = requestId;
         this.userId = userId;
-        this.ownerId = ownerId;
         this.hotelId = hotelId;
         this.roomId = roomId;
         this.date = date;
@@ -51,9 +52,8 @@ public class HotelRequest {
         this.status = status;
     }
 
-    public HotelRequest(Integer userId, Integer ownerId, Integer hotelId, Integer roomId, Date date, Date fromDate, Date toDate, String status) {
+    public HotelRequest(Integer userId, Integer hotelId, Integer roomId, Date date, Date fromDate, Date toDate, String status) {
         this.userId = userId;
-        this.ownerId = ownerId;
         this.hotelId = hotelId;
         this.roomId = roomId;
         this.date = date;
@@ -68,14 +68,6 @@ public class HotelRequest {
 
     public void setRequestId(Integer requestId) {
         this.requestId = requestId;
-    }
-
-    public Integer getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(Integer ownerId) {
-        this.ownerId = ownerId;
     }
 
     public Integer getHotelId() {

@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import * as AiIcons from "react-icons/ai";
 import "../../styles/tourist/tourist_guide.css";
+import { Link } from 'react-router-dom';
 
 function ToursitGuide() {
   return (
@@ -45,126 +46,35 @@ function ToursitGuide() {
 
       <div className="dashboard-left-top guide-top">
         <div className="d-flex flex-row align-items-center justify-content-between" style={{paddingRight:'35px'}} >  
-          <h4>Our tour guides</h4>
+          <h4 className="our-guide-class" style={{marginLeft:"20px"}}>Our tour guides</h4>
+          <Link to={"/tourist/touristAllGuide"}>
           <p style={{margin:'0px', color:'#DB163A', fontSize:'15px',fontWeight:'500'}}>View all</p>
+          </Link>
         </div>
         <div className="dashboard-left-top-places d-flex flex-row gap-3 justify-content-center align-items-center">
-          <div className="place-01">
-            <div className="place-image"></div>
-            <p>Galle</p>
+          <div className="place-01 guide-tile">
+            <div className="guide-image"></div>
+            <div className="guide-tile-details">
+                <p>Galle</p>
 
-            <p style={{ color: "#DB163A" }}>
-              <AiIcons.AiFillStar /> 3.8
-            </p>
-            <Button
-              className="book-tour-btn"
-              variant="primary"
-              style={{
-                backgroundColor: "#004577",
-                border: "none",
-                marginTop: "3px",
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                fontSize: "12px",
-              }}
-            >
-              Book tour
-            </Button>
-          </div>
-
-          <div className="place-01">
-            <div className="place-image"></div>
-            <p>Galle</p>
-            <Button
-              className="book-tour-btn"
-              variant="primary"
-              style={{
-                backgroundColor: "#004577",
-                border: "none",
-                marginTop: "3px",
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                fontSize: "12px",
-              }}
-            >
-              Book tour
-            </Button>
-          </div>
-
-          <div className="place-01">
-            <div className="place-image"></div>
-            <p>Galle</p>
-            <Button
-              className="book-tour-btn"
-              variant="primary"
-              style={{
-                backgroundColor: "#004577",
-                border: "none",
-                marginTop: "3px",
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                fontSize: "12px",
-              }}
-            >
-              Book tour
-            </Button>
-          </div>
-
-          <div className="place-01">
-            <div className="place-image"></div>
-            <p>Galle</p>
-            <Button
-              className="book-tour-btn"
-              variant="primary"
-              style={{
-                backgroundColor: "#004577",
-                border: "none",
-                marginTop: "3px",
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                fontSize: "12px",
-              }}
-            >
-              Book tour
-            </Button>
-          </div>
-
-          <div className="place-01">
-            <div className="place-image"></div>
-            <p>Galle</p>
-            <Button
-              className="book-tour-btn"
-              variant="primary"
-              style={{
-                backgroundColor: "#004577",
-                border: "none",
-                marginTop: "3px",
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                fontSize: "12px",
-              }}
-            >
-              Book tour
-            </Button>
-          </div>
-
-          <div className="place-01">
-            <div className="place-image"></div>
-            <p>Galle</p>
-            <Button
-              className="book-tour-btn"
-              variant="primary"
-              style={{
-                backgroundColor: "#004577",
-                border: "none",
-                marginTop: "3px",
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                fontSize: "12px",
-              }}
-            >
-              Book tour
-            </Button>
+                <p style={{ color: "#DB163A" }}>
+                  <AiIcons.AiFillStar /> 3.8
+                </p>
+                <Button
+                  className="book-tour-btn"
+                  variant="primary"
+                  style={{
+                    backgroundColor: "#004577",
+                    border: "none",
+                    marginTop: "3px",
+                    paddingLeft: "20px",
+                    paddingRight: "20px",
+                    fontSize: "12px",
+                  }}
+                >
+                  Hire guide
+                </Button>
+              </div>
           </div>
         </div>  
       </div>
@@ -172,15 +82,15 @@ function ToursitGuide() {
       <div className="guide-bottom d-flex flex-row justify-content-center gap-2">
         <div className="guide-bottom-left">
           <div className="guide-bottom-left-heading dashboard-left-top d-flex flex-row justify-content-between">
-            <h4>Top rated tour guides</h4>
-            <p style={{margin:'0px'}}>View all</p>
+            <h4 className="our-guide-class">Top rated tour guides</h4>
+            <p className="margin-right-view" style={{margin:'0px'}}>View all</p>
           </div>
         </div>
 
         <div className="guide-bottom-right">
           <div className="guide-bottom-left-heading dashboard-left-top d-flex flex-row justify-content-between">
-              <h4>My requests</h4>
-              <p style={{margin:'0px'}}>View all</p>
+              <h4 className="our-guide-class">My requests</h4>
+              <p className="margin-right-view" style={{margin:'0px'}}>View all</p>
           </div>
 
           <div className="new-message d-flex flex-column align-items-start gap-2">

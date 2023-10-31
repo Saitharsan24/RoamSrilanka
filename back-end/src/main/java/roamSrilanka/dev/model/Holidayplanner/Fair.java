@@ -21,20 +21,20 @@ public class Fair {
     @Column(name = "description" ,columnDefinition = "VARCHAR(2000)")
     private String description;
 
-    @ElementCollection
-    @Column(name = "fair_images")
-    private List<String> fairImages;
+    @Column(name = "status", columnDefinition = "int default 0")
+    private int status;
 
     public Fair() {
     }
 
-    public Fair(int fairId, String fairname, float rent, String description, List<String> fairImages) {
+    public Fair(int fairId, String fairname, float rent, String description, int status) {
         this.fairId = fairId;
         this.fairname = fairname;
         this.rent = rent;
         this.description = description;
-        this.fairImages = fairImages;
+        this.status = status;
     }
+
 
     public int getFairId() {
         return fairId;
@@ -48,7 +48,7 @@ public class Fair {
         return fairname;
     }
 
-    public void setName(String fairname) {
+    public void setFairname(String fairname) {
         this.fairname = fairname;
     }
 
@@ -68,11 +68,10 @@ public class Fair {
         this.description = description;
     }
 
-    public List<String> getFairImages() {
-        return fairImages;
+    public int getStatus() {
+        return status;
     }
-
-    public void setFairImages(List<String> fairImages) {
-        this.fairImages = fairImages;
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

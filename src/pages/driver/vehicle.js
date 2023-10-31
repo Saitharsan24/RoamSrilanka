@@ -7,9 +7,37 @@ import img4 from "./../../assets/images/side2-car.png";
 import "./../../styles/vehicle.css";
 import * as Icon from "react-bootstrap-icons";
 import { Link } from 'react-router-dom';
+import { useSession } from '../../Context/SessionContext';
+import axios from "axios";
 // import ReactStars from "react-rating-stars-component";
 
 function Vehicle() {
+
+    //Initiating sessoin data
+    const { sessionData , setSessionData  } = useSession();
+
+    const userId = sessionData.userId;
+    console.log('user: ' + userId);
+
+    const apiBaseUrl = "http://localhost:8080";
+    const axiosInstance = axios.create({
+        baseURL: apiBaseUrl,
+        timeout: 10000,
+      });
+
+    const deleteVehicle = async(e) => {
+        e.preventDefault();
+        try {
+          const response = await axiosInstance.delete(`/deleteVehicleByUser/${userId}`);
+    
+          if (response.status === 200) {
+            window.location.reload();
+            console.log("okkkk");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+    };
 
     const ratingExample = {
         size: 50,
@@ -33,17 +61,21 @@ function Vehicle() {
             .catch((error) => console.error('Error fetching data:', error));
     }, []);
 
-    const [vehicle, setVehicle] = useState(null);
+    const [vehicle, setVehicle] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/vehicle')
+        fetch('http://localhost:8080/vehiclebyUser/'+userId)
             .then((response) => response.json())
             .then((data) => setVehicle(data))
             .catch((error) => console.error('Error fetching data:', error));
     }, []);
 
-    // console.log(vehicle[0]['image1'])
+    // const totalValues = vehicle ? vehicle.length : 0;
+    console.log(vehicle)
+    console.log('vehicle length : ' + vehicle.length)
+    // const totalVehicle = vehicle ? vehicle.length : 0;
 
+    // console.log('totalVehicle ' + totalVehicle)
     // const images = [
     //     {id:0, value:rowCount === 3 ? vehicle[0]['image1'] : img1},
     //     {id:1, value:rowCount === 3 ? vehicle[0]['image2'] : img2},
@@ -52,10 +84,10 @@ function Vehicle() {
     // ]
 
     const images = [
-        {id:0, value:img1},
-        {id:1, value:img2},
-        {id:2, value:img3},
-        {id:3, value:img4}
+        {id:0, value:vehicle.length === 1 ? vehicle[0]['image1'] : img1},
+        {id:1, value:vehicle.length === 1 ? vehicle[0]['image2'] : img1},
+        {id:2, value:vehicle.length === 1 ? vehicle[0]['image3'] : img1},
+        {id:3, value:vehicle.length === 1 ? vehicle[0]['image4'] : img1}
     ]
 
     setTimeout(() => { 
@@ -82,7 +114,8 @@ function Vehicle() {
                         <div class="position-absolute top-0 end-0">h</div>
                     </div> */}
                     <div class="row">
-                        {rowCount === 0 ? (
+                        
+                        {(vehicle.length === 0) &&
                         <div className="col-sm-12 w-100">
                             <div>
                                 <div class="card">
@@ -95,8 +128,16 @@ function Vehicle() {
                                 </div>
                             </div>
                         </div>
-                        ) : (
+                        }  
+                        {(vehicle.length !==0) &&
                         <div class="row">
+                            {vehicle[0]['status'] == 1 ? (
+                                <div style={{color:"green"}}>Status</div>
+                            ):(
+                                <div style={{color:"red"}}>Status</div>
+                            )}
+
+                            <button onClick={deleteVehicle}>Delete My vehicle</button>
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <div class="card">
                                 <div class="card-body">
@@ -150,7 +191,7 @@ function Vehicle() {
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="card border-danger">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">sp CAR 3111</h6>
+                                                    <h6 class="card-title">{vehicle.length === 1 ? vehicle[0]['vehicle_number'] : 'WP SP 2233'}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -166,7 +207,7 @@ function Vehicle() {
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="card border-danger">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">White</h6>
+                                                    <h6 class="card-title">{vehicle.length === 1 ? vehicle[0]['color'] : 'White'}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -182,7 +223,7 @@ function Vehicle() {
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="card border-danger">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">Toyota</h6>
+                                                    <h6 class="card-title">{vehicle.length === 1 ? vehicle[0]['company'] : 'TOYOTA'}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -198,7 +239,7 @@ function Vehicle() {
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="card border-danger">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">4</h6>
+                                                    <h6 class="card-title">{vehicle.length === 1 ? vehicle[0]['seats'] : '4'}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -214,7 +255,7 @@ function Vehicle() {
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="card border-danger">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">2018</h6>
+                                                    <h6 class="card-title">{vehicle.length === 1 ? vehicle[0]['year'] : '2019'}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -230,7 +271,7 @@ function Vehicle() {
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <div class="card border-danger">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">Premio</h6>
+                                                    <h6 class="card-title">{vehicle.length === 1 ? vehicle[0]['model'] : 'Premio'}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -240,7 +281,7 @@ function Vehicle() {
                                 </div>
                             </div>
                         </div>
-                        )}
+                        }
                     </div>
                 </div>
                 

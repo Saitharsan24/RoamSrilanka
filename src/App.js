@@ -14,7 +14,7 @@ import Login from "./pages/login";
 import Services from "./pages/services";
 import Blog from "./pages/blog";
 import Explore from "./pages/explore";
-import Signup from "./pages/signup";
+import Signup from "./pages/signup"; 
 
 import TouristLayout from "./layouts/tourist/tourist-layout";
 import AdminLayout  from "./layouts/admin/adminLayout";
@@ -32,7 +32,9 @@ import AdminBlogAccept from "./pages/admin/admin_blog_accept";
 import AdminPackage from "./pages/admin/admin_package";
 import AdminPackageAccept from "./pages/admin/admin_package_accept";
 import AdminPlannerReg from "./pages/admin/admin_holidayplanner_reg";
+import AdminGuideReg from "./pages/admin/admin_guide_reg";
 import AdminPlannertDetails from "./pages/admin/admin_holidayplanner_view_detail";
+import AdminGuideDetails from "./pages/admin/admin_guide_detail";
 import AdminVehicle from "./pages/admin/admin_vehicle";
 import AdminVehicleDetail_1 from "./pages/admin/admin_vehice_detail";
 
@@ -55,6 +57,7 @@ import TouristBookings from "./pages/Tourist/tourist-bookings";
 import TouristAccessories from "./pages/Tourist/tourist-accessories";
 import ToursitAccessoriesView from "./pages/Tourist/tourist-accessories-view";
 import ToursitHotelViewRoom from "./pages/Tourist/tourist-hotel-view-rooms";
+import TouristAllGuide from "./pages/Tourist/tourist-all-guide";
 
 import HotelLayout from "./layouts/hotel/hotel-layout";
 import HotelDashboard from "./pages/hotel/hotel-dashboard";
@@ -143,12 +146,12 @@ const route = createBrowserRouter(
         <Route path="touristChat" element={<TouristChat />}></Route>
         <Route path="touristProfile" element={<TouristProfile />}></Route>
         <Route path="touristAccessoriesView" element={<ToursitAccessoriesView />}></Route>
-        <Route path="rentItem" element={<ToursitAccessoriesRent />}></Route>
+        {/* <Route path="rentItem" element={<ToursitAccessoriesRent />}></Route> */}
         <Route path="touristHotelSearchList" element={<ToursitHotelSearchList />}></Route>
         <Route path="toursitHotelViewRoom" element={<ToursitHotelViewRoom />}></Route>
         <Route path="touristBlogList" element={<TouristBlogList />}></Route>
         <Route path="touristPackageView" element={<ToursitPackageView />}></Route>
-
+        <Route path="touristAllGuide" element={<TouristAllGuide />}></Route>
       </Route>
 
       <Route path="/hotel/" element={<HotelLayout />} errorElement={<SystemError />}>
@@ -192,7 +195,9 @@ const route = createBrowserRouter(
         <Route path="adminpackage" element={<AdminPackage/>}></Route>
         <Route path="adminpackageaccept" element={<AdminPackageAccept/>}></Route>
         <Route path="adminholidayplannrreg" element={<AdminPlannerReg/>}></Route>
+        <Route path="adminguidereg" element={<AdminGuideReg/>}></Route>
         <Route path="adminholidayplannrdetail" element={<AdminPlannertDetails/>}></Route>
+        <Route path="adminguidedetail" element={<AdminGuideDetails/>}></Route>
         <Route path="adminvehicle" element={<AdminVehicle/>}></Route>
         <Route path="adminvehicledetail_1" element={<AdminVehicleDetail_1/>}></Route>
 
@@ -208,7 +213,7 @@ const route = createBrowserRouter(
         <Route path="plannerEvent1" element={<HPUpdateEvent1 />}></Route>
         <Route path="plannerPackage1" element={<HPUpdatePackage1 />}></Route>
         <Route path="plannerPackage2" element={<HPUpdatePackage2 />}></Route>
-        <Route path="plannerPackage3" element={<HPUpdatePackage3 />}></Route>
+        <Route path="plannerPackage3" element={<HPUpdatePackage3 />}></Route> 
         <Route path="plannerViewPackage/:packageID" element={<HPViewpackage />}></Route>
         <Route path="plannerItem1" element={<HPUpdateItem1 />}></Route>
         <Route path="plannerViewEvent" element={<HPViewEvent />}></Route>

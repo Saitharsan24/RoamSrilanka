@@ -75,7 +75,7 @@ const HPDatatablePage = () => {
       .get("/packages")
       .then((res) => {
         setPackage(res.data);
-        // console.log(res.data);
+         console.log("package",res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -87,7 +87,7 @@ const HPDatatablePage = () => {
       .get("/tourist")
       .then((res) => {
         setTourist(res.data);
-        // console.log("tourist details",res.data);
+         console.log("tourist details",res.data);
       })
       .catch((err) => {
         console.log(err);

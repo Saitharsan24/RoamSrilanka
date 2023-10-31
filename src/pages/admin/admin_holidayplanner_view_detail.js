@@ -15,6 +15,7 @@ function AdminPlannertDetails() {
              //usestate hook to set the state of the holiday planner details
   const [holidayPlanneruserdetail, setHolidayPlanneruserdetail] = useState([]);
               //usestate hook to set the state of the holiday planner user details
+  
 
 
   const apiBaseUrl = "http://localhost:8080";
@@ -40,7 +41,7 @@ function AdminPlannertDetails() {
 
   // Make an HTTP GET request to fetch the details of the holiday planner user using userId
   useEffect(() => {
-    axiosInstance.get(`/viewHolidayplanneruser/${userId}`)
+    axiosInstance.get(`/users/${userId}`)
       .then((response) => {
         // Handle the response and set the state with the details
         setHolidayPlanneruserdetail(response.data);
@@ -197,7 +198,7 @@ function AdminPlannertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          {holidayPlannerdetail.plannerName}
+                          {holidayPlanneruserdetail.userFullname}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -241,7 +242,7 @@ function AdminPlannertDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          {holidayPlannerdetail.email}
+                          {holidayPlanneruserdetail.userName}
                         </td>
                       </tr>
 

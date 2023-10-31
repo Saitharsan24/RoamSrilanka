@@ -5,6 +5,7 @@ h4{
 .tourist-main{
     padding: 15px 15px 0px 15px;
     width: inherit;
+    height: 90vh;
 }
 
 .tourist-headings{
@@ -23,7 +24,7 @@ hr{
 }
 
 .all-accessories{
-    background-color: #ffffff;
+    background-color: #f1f1f1;
     border-radius: 10px;
     padding: 10px 0px 0px 15px;
 }
@@ -128,4 +129,14 @@ hr{
     flex-direction: row;
     justify-content: end;
     padding: 40px 0px 0px 0px;
+}
+
+.accessories-row {
+    margin-bottom: 20px !important; /* Adjust this value as needed */
+  }
+
+.acc-images{
+    height: 100% !important;
+    width: 100% !important;
+    border-radius: 15px;
 }

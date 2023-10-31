@@ -1,8 +1,10 @@
 package roamSrilanka.dev.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import roamSrilanka.dev.model.DriverReview;
 import roamSrilanka.dev.model.Vehicle;
 import roamSrilanka.dev.repository.VehicleRepository;
 
@@ -62,6 +64,16 @@ public class VehicleController {
         vehicleService.deleteVehicle(vehicleID);
     }
 
+
+    @DeleteMapping("deleteVehicleByUser/{user_id}")
+    public void deleteVehicleByUserId(@PathVariable("user_id") Long user_id) {
+        vehicleService.deleteVehicleByUserId(user_id);
+    }
+
+    @GetMapping("vehiclebyUser/{user_id}")
+    public List<Vehicle> findVehicleByUserId(@PathVariable("user_id") Long user_id) {
+        return vehicleService.findVehicleUserById(user_id);
+    }
     @PutMapping("/updateVehicle/{vehicleID}")
     public Repository updateVehicle(@PathVariable("vehicleID") Long vehicleID, @RequestBody Vehicle vehicle) {
         Vehicle exitingVehicle = vehicleService.findbyId(vehicleID).orElse(null);
@@ -83,20 +95,19 @@ public class VehicleController {
     }
 
 
-    // get the specific vehicle by vehicleID and and feedback
-    @GetMapping("/vehicle/{vehicleID}/{feedback}")
-    public Vehicle saveFeedback(@PathVariable("vehicleID") Long vehicleID, @PathVariable("feedback") String feedback) {
+//     get the specific vehicle by vehicleID and and feedback
+    @PutMapping("/vehicleFeedback/{vehicleID}")
+    public ResponseEntity<Vehicle> saveFeedback(@PathVariable("vehicleID") Long vehicleID, @RequestBody Vehicle updatedVehicle) {
         Vehicle exitingVehicle = vehicleService.findbyId(vehicleID).orElse(null);
 
-        if (exitingVehicle==null) {
-            return null;
+        if (exitingVehicle == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         else {
-            exitingVehicle.setFeedback(feedback);
 
-            //save the changes made to the existing vehicle
+            exitingVehicle.setFeedback(updatedVehicle.getFeedback());
             vehicleService.saveVehicle(exitingVehicle);
-            return null;
+            return new ResponseEntity<>(exitingVehicle, HttpStatus.OK);
 
         }
     }
