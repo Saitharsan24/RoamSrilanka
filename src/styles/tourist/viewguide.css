@@ -3,4 +3,103 @@
     border-radius: 15px;
     padding: 15px;
     background-color: #ffffff !important;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.guide-view-image{
+    width: 400px;
+    height: auto;
+    border-radius:10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+}
+
+.guide-view-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.guide-view-details h2{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.guide-main-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.guide-detail-row{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.guide-detail-row p{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0px;
+    color: #004577;
+    font-weight: 600;
+}
+
+.guide-detail-row input{
+    width: 500px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    padding: 10px 15px 10px 15px;
+    font-size: 18px;
+    color: #000000 !important;
+    font-weight: 500;
+}
+
+.guide-detail-row input:focus{
+    outline: none;
+}
+
+.guide-detail-row textarea{
+    width: 500px;
+    height: 150px;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    padding: 10px 15px 10px 15px;
+    resize: none;
+    font-size: 18px;
+    color: #000000 !important;
+    font-weight: 500;
+    text-align: justify;
+}
+
+.guide-detail-row textarea:focus{
+    outline: none;
+}
+
+.special-guide-input{
+    width: 400px !important;  
+    height: 55px !important;     
+    margin-bottom: 70px;
+}
+
+.guide-view-image-1{
+    background-color: rgb(136, 127, 255);
+    width: 350px;
+    height: 350px;
+    border-radius:10px;
+    margin-bottom: 30px;
+}
+
+.special-guide-btn{
+    font-size: 18px !important;
+} 
+
+.sltb-column{
+    display: flex;
+    flex-direction: column !important;
 }

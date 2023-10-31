@@ -3,8 +3,34 @@ import { Button } from "react-bootstrap";
 import * as AiIcons from "react-icons/ai";
 import "../../styles/tourist/tourist_guide.css";
 import { Link } from 'react-router-dom';
+import axios from "axios";
+import { useSession } from '../../Context/SessionContext';
+import { useEffect } from "react";
+import { useState } from "react";
 
 function ToursitGuide() {
+
+  const [tourGuide, setTourGuide] = useState([]);
+
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 10000,
+  });
+
+  useEffect(() => {
+    axiosInstance
+      .get("/viewGuides")
+      .then((res) => {
+        console.log(res.data);
+        setTourGuide(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
   return (
     <div
       className="tourist-main d-flex flex-column gap-2 mb-2"
@@ -52,16 +78,20 @@ function ToursitGuide() {
           </Link>
         </div>
         <div className="dashboard-left-top-places d-flex flex-row gap-3 justify-content-center align-items-center">
-          <div className="place-01 guide-tile">
-            <div className="guide-image"></div>
+
+
+        {tourGuide.slice(0, 5).map((guide, index) => (
+          <div key={index} className="place-01 guide-tile">
+            <div className={`guide-image guide-image-count${index}`}></div>
             <div className="guide-tile-details">
-                <p>Galle</p>
+                <p>{guide.guideName}</p>
 
                 <p style={{ color: "#DB163A" }}>
-                  <AiIcons.AiFillStar /> 3.8
+                  <AiIcons.AiFillStar />{guide.rating}
                 </p>
+                <Link to={"/tourist/touristGuideView"}>
                 <Button
-                  className="book-tour-btn"
+                  className="book-tour-btn" 
                   variant="primary"
                   style={{
                     backgroundColor: "#004577",
@@ -74,8 +104,11 @@ function ToursitGuide() {
                 >
                   Hire guide
                 </Button>
+                </Link>
               </div>
           </div>
+            ))}
+
         </div>  
       </div>
       
