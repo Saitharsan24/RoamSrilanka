@@ -12,6 +12,22 @@ function HPViewEvent({ eventId, onBack }) {
 
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [events, setEvents] = useState([]);
+  const [eventImage, setEventImage] = useState(null);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/eventImages/${eventId}`)
+      .then((res) => {
+        setEventImage(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  , []);
+  
+  console.log("eventImage",eventImage);
 
   useEffect(() => {
     const fetchEventById = async () => {
@@ -31,6 +47,8 @@ function HPViewEvent({ eventId, onBack }) {
 
     fetchEventById();
   }, []);
+
+  console.log("selectedEvent", selectedEvent);
 
   if (!selectedEvent) {
     return <div>No Record</div>;
@@ -93,14 +111,24 @@ function HPViewEvent({ eventId, onBack }) {
           >
             <div className="d-flex flex-column col-12">
               <div className="d-none d-sm-flex d-md-flex d-lg-flex flex-row justify-content-evenly">
+                {eventImage.eventImage ? (
                 <img
                   className="img-fluid"
                   style={{
                     filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
                     borderRadius: "11px",
                   }}
-                  src={require("../../assets/images/Event1.png")}
+                  src={require(`../../assets/images/planner/${eventImage.eventImage}`)}
+                            alt={eventImage.eventImage}
                 ></img>
+                ):(<img
+                  className="img-fluid"
+                  style={{
+                    borderRadius: "10px",
+                  }}
+                  src={require("./../../assets/images/room-image1.png")}
+                  alt="Default Alt Text"
+                />)}
               </div>
             </div>
           </div>

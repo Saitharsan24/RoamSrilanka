@@ -49,4 +49,8 @@ public class FairService {
     public void addFairImage(FairImage fairImage) {
         fairImageRepository.save(fairImage);
     }
+
+    public FairImage getFairImage(Integer fairId) {
+        return fairImageRepository.findById(fairId).orElse(null);
+    }
 }
