@@ -64,7 +64,6 @@ function ToursitHotel() {
 
    //data from backend will directly store in this state  
    const [hotels, setHotels] = useState([]);
-
    useEffect(() => {
      // Fetch hotel data from your backend API
      axiosInstance

@@ -125,6 +125,10 @@ const HPUpdatePackage1 = () => {
     }
   };
 
+  const handleCancelButton = () => {
+    window.history.back(); // Redirect to the previous page
+  };
+
   return (
     // <div className="d-flex flex-column">
     //   <Headeruser />
@@ -297,7 +301,7 @@ const HPUpdatePackage1 = () => {
               </div>
             </div>
             <div className="d-flex flex-lg-row flex-md-column flex-column gap-sm-3 justify-content-between mx-2">
-              <button className="btn-cancel" type="submit">
+              <button className="btn-cancel" onClick={handleCancelButton} type="submit">
                 Cancel
               </button>
 

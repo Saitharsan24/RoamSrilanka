@@ -13,6 +13,8 @@ public class TripRequest {
     @Column(name = "request_id")
     private Long request_id;
 
+    @Column(name = "user_id")
+    private Integer userId;
     @Column(name = "tourist_name")
     private String tourist_name;
 
@@ -33,6 +35,40 @@ public class TripRequest {
 
     @Column(name = "status")
     private Long status;
+
+    public TripRequest() {
+    }
+
+    public TripRequest(Long request_id, Integer userId, String tourist_name, Date start_date, Date end_date, String pickup, String destination, Long contact, Long status) {
+        this.request_id = request_id;
+        this.userId = userId;
+        this.tourist_name = tourist_name;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.pickup = pickup;
+        this.destination = destination;
+        this.contact = contact;
+        this.status = status;
+    }
+
+    public TripRequest(Integer userId, String tourist_name, Date start_date, Date end_date, String pickup, String destination, Long contact, Long status) {
+        this.userId = userId;
+        this.tourist_name = tourist_name;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.pickup = pickup;
+        this.destination = destination;
+        this.contact = contact;
+        this.status = status;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public Long getRequest_id() {
         return request_id;

@@ -116,4 +116,9 @@ public class EventController {
     public String deleteEvent (@PathVariable(value = "id") Integer identity) {
         return this.eventService.deleteEvent(identity);
     }
+
+    @GetMapping("/eventImages/{eventId}")
+    public ResponseEntity<EventImage> getEventImage(@PathVariable Integer eventId) {
+        return ResponseEntity.ok(eventService.getEventImage(eventId));
+    }
 }
