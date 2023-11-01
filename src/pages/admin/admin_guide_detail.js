@@ -53,20 +53,6 @@ function AdminGuideDetails() {
   }, [userId]);
 
 
-//   const [openModal, setOpenModal] = useState(false);  // This is the state variable to control the model(Eable/Disable)
-//   const [blurBackground, setBlurBackground] = useState(false); // State to control background blur
-
-//   // Function to open the modal and blur the background
-//   const openModalWithBlur = () => {
-//     setOpenModal(true);
-//     setBlurBackground(true);
-//   };
-
-//    // Function to close the modal and remove the background blur
-//    const closeModal = () => {
-//     setOpenModal(false);
-//     setBlurBackground(false);
-//   };
   
   return (
     <React.Fragment>
@@ -97,7 +83,7 @@ function AdminGuideDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            {guidedetail.nic}
+                            {guideuserdetail.userName}
                           </td>
                         </tr>
 
@@ -112,7 +98,7 @@ function AdminGuideDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                           rggr
+                           {guideuserdetail.userId}
 
                           </td>
                         </tr>
@@ -128,8 +114,8 @@ function AdminGuideDetails() {
                               borderRadius: "5px",
                             }}
                           >
-                            xjn
-                          </td>
+                            {guideuserdetail.userType}
+                         </td>
                         </tr>
 
                         <tr style={{ height: "20px" }}></tr>
@@ -193,7 +179,7 @@ function AdminGuideDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          bbb
+                          {guideuserdetail.userFullname}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -203,7 +189,7 @@ function AdminGuideDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                        nin
+                        {guidedetail.phoneNo}
                         </td>
                       </tr>
 
@@ -227,7 +213,7 @@ function AdminGuideDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          ojoj
+                          {guidedetail.nic}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -237,7 +223,7 @@ function AdminGuideDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                         ug
+                         {guideuserdetail.userName}
                         </td>
                       </tr>
 
@@ -249,11 +235,11 @@ function AdminGuideDetails() {
 
                       <tr>
                         <td style={{ width: "200px", textAlign: "left" }}>
-                       Gender{" "}
+                        sltda Number
                        
                         </td>
                         <td style={{ width: "50px" }}></td>
-                        <td style={{ width: "200px",textAlign: "left" }}>Date of Birth </td>
+                        <td style={{ width: "200px",textAlign: "left" }}>Address </td>
                       </tr>
 
                       <tr style={{ height: "10px" }}></tr>
@@ -266,7 +252,7 @@ function AdminGuideDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                         ugig
+                         {guidedetail.sltdaNo}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -276,36 +262,13 @@ function AdminGuideDetails() {
                             borderRadius: "5px",
                           }}
                         >
-                          jiji
+                          {guidedetail.address}
                         </td>
                       </tr>
 
                       <tr style={{ height: "10px" }}></tr>
 
-                      <tr>
-                        <td
-                          colSpan="3"
-                          style={{ width: "200px", textAlign: "left" }}
-                        >
-                          Address{" "}
-                        </td>
-                      </tr>
-
-                      <tr style={{ height: "10px" }}></tr>
-
-                      <tr>
-                        <td
-                          colSpan="3"
-                          style={{
-                            width: "200px",
-                            backgroundColor: "#FFFFFF",
-                            borderRadius: "5px",
-                          }}
-                        >
-                          huu
-                        </td>
-                      </tr>
-
+                     
                       <tr style={{ height: "20px" }}></tr>
                       <tr >
 {/*                         

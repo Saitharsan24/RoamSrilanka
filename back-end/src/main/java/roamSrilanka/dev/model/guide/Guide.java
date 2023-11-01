@@ -43,6 +43,8 @@ public class Guide {
     @Column(name = "rating")
         private float rating;
 
+
+
     public Guide() {
     }
 
