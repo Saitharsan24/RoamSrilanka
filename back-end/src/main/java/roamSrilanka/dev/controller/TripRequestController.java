@@ -29,7 +29,6 @@ public class TripRequestController {
         return this.tripRequestService.findAllTrips();
     }
 
-
     @PutMapping("/updateStatus/{request_id}")
     public ResponseEntity<TripRequest> updateStatus(@PathVariable Long request_id, @RequestBody TripRequest updatedRequest) {
 

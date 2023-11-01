@@ -1,8 +1,10 @@
 package roamSrilanka.dev.model.guide;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Table(name = "guide_trip")
@@ -13,16 +15,18 @@ public class GuideTrip {
     @Column(name = "trip_id")
     private int tripId;
 
-    @Column(name = "date")
-    private LocalDate date;
+    @Column(name = "guide_id")
+    private Integer guideId;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    @Column(name = "tourist_id")
+    private Integer touristId;
 
     @Column (name = "from_date")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate fromDate;
 
     @Column (name = "to_date")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate toDate;
 
     @Column (name = "places")
@@ -37,10 +41,10 @@ public class GuideTrip {
     public GuideTrip() {
     }
 
-    public GuideTrip(int tripId, LocalDate date, Integer userId, LocalDate fromDate, LocalDate toDate, String places, String charge, String status) {
+    public GuideTrip(int tripId, Integer touristId, LocalDate fromDate, LocalDate toDate, String places, String charge, String status , Integer guideId) {
         this.tripId = tripId;
-        this.date = date;
-        this.userId = userId;
+        this.touristId = touristId;
+        this.guideId = guideId;
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.places = places;
@@ -48,9 +52,8 @@ public class GuideTrip {
         this.status = status;
     }
 
-    public GuideTrip(LocalDate date, Integer userId, LocalDate fromDate, LocalDate toDate, String places, String charge, String status) {
-        this.date = date;
-        this.userId = userId;
+    public GuideTrip(Integer touristId, LocalDate fromDate, LocalDate toDate, String places, String charge, String status , Integer guideId) {
+        this.touristId = touristId;
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.places = places;
@@ -66,20 +69,20 @@ public class GuideTrip {
         this.tripId = tripId;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
     public Integer getUserId() {
-        return userId;
+        return touristId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(Integer touristId) {
+        this.touristId = touristId;
+    }
+
+    public Integer getGuideId() {
+        return guideId;
+    }
+
+    public void setGuideId(Integer guideId) {
+        this.guideId = guideId;
     }
 
     public LocalDate getFromDate() {

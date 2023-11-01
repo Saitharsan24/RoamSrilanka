@@ -55,4 +55,12 @@ public class EventService {
     public void addEventImage(EventImage eventImage) {
         eventImageRepository.save(eventImage);
     }
+
+    public EventImage getEventImage(Integer eventId) {
+        return eventImageRepository.findById(eventId).orElse(null);
+    }
+
+    public List<EventImage> getEventImages() {
+        return eventImageRepository.findAll();
+    }
 }

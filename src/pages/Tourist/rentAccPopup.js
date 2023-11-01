@@ -116,7 +116,7 @@ function RentAccPopup({closeModal, item}) {
     <div>
     <div className='popup-for-acc-reserve'>
         <div className="roomDetailClosebtn w-100 mt-1"><IoIcon.IoCloseCircle onClick={closeModal} className="roomDetailClosebtnicon" style={{fontSize:"30px", cursor:"pointer", }}/></div>
-        <div className="reserveName"><h3 style={{fontWeight:"600", marginTop:"20px"}} >Reserve Room</h3></div>
+        <div className="reserveName"><h3 style={{fontWeight:"600", marginTop:"20px"}} >Rent Accessories</h3></div>
         <div className='reserve-details'>
             <div className='reserve-items'> 
                 <p>Accessory:</p>

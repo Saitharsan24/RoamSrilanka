@@ -37,6 +37,7 @@ import AdminPlannertDetails from "./pages/admin/admin_holidayplanner_view_detail
 import AdminGuideDetails from "./pages/admin/admin_guide_detail";
 import AdminVehicle from "./pages/admin/admin_vehicle";
 import AdminVehicleDetail_1 from "./pages/admin/admin_vehice_detail";
+import AdminSystemSetting from "./pages/admin/admin_system_setting";
 
 
 import SystemError from "./pages/error";
@@ -58,6 +59,7 @@ import TouristAccessories from "./pages/Tourist/tourist-accessories";
 import ToursitAccessoriesView from "./pages/Tourist/tourist-accessories-view";
 import ToursitHotelViewRoom from "./pages/Tourist/tourist-hotel-view-rooms";
 import TouristAllGuide from "./pages/Tourist/tourist-all-guide";
+import TouristDriver from "./pages/Tourist/tourist-driver";
 
 import HotelLayout from "./layouts/hotel/hotel-layout";
 import HotelDashboard from "./pages/hotel/hotel-dashboard";
@@ -99,6 +101,7 @@ import HPChat from "./pages/holiday-planner/HPChat";
 import HPTrip from "./pages/holiday-planner/HPTrips";
 import HPFairDetails from "./pages/holiday-planner/HPFairDetails";
 import HPViewTrip from "./pages/holiday-planner/HPViewTrip";
+import HPFeedback from "./pages/holiday-planner/HPFeedback";
 
 
 import DriverLayout from "./layouts/driver/driver-layout";
@@ -139,7 +142,7 @@ const route = createBrowserRouter(
         <Route path="touristHotel" element={<TouristHotel />}></Route>
         <Route path="touristGuide" element={<ToursitGuide />}></Route>
         <Route path="touristGuideView" element={<ToursitGuideView />}></Route>
-        <Route path="touristDriver" element={<TouristBookings />}></Route>
+        <Route path="touristDriver" element={<TouristDriver />}></Route>
         <Route path="touristGadgets" element={<TouristAccessories />}></Route>
         <Route path="touristBlog" element={<TouristBlog />}></Route>
         <Route path="touristBlogView" element={<TouristBlogView />}></Route>
@@ -200,9 +203,9 @@ const route = createBrowserRouter(
         <Route path="adminguidedetail" element={<AdminGuideDetails/>}></Route>
         <Route path="adminvehicle" element={<AdminVehicle/>}></Route>
         <Route path="adminvehicledetail_1" element={<AdminVehicleDetail_1/>}></Route>
-
+        <Route path="adminSystemSetting" element={<AdminSystemSetting/>}></Route>
       </Route>
-          
+      
       <Route path="/holidayPlanner/" element={<HolidayPlannerLayout />} errorElement={<SystemError />}>
         <Route index element={<Holiday_dashboard />}></Route>
         <Route path="plannerDashboard" element={<Holiday_dashboard />}></Route>
@@ -216,7 +219,7 @@ const route = createBrowserRouter(
         <Route path="plannerPackage3" element={<HPUpdatePackage3 />}></Route> 
         <Route path="plannerViewPackage/:packageID" element={<HPViewpackage />}></Route>
         <Route path="plannerItem1" element={<HPUpdateItem1 />}></Route>
-        <Route path="plannerViewEvent" element={<HPViewEvent />}></Route>
+        <Route path="plannerViewEvent/:eventId" element={<HPViewEvent />}></Route>
         <Route path="plannerViewItem/:fairId" element={<HPViewItem />}></Route>
         <Route path="plannerRequest" element={<HPRequest />}></Route>
         <Route path="hpchat" element={<HPChat/>}></Route>
@@ -224,6 +227,10 @@ const route = createBrowserRouter(
         <Route path="hprequestdetail/:p_bookingID" element={<HPRequestDetails/>}></Route>
         <Route path="hpfairdetail/:fairrequestID" element={<HPFairDetails/>}></Route>
         <Route path="hpviewtrip/:p_bookingID" element={<HPViewTrip/>}></Route>
+
+
+        <Route path="plannerFeedback" element={<HPFeedback/>}></Route>
+
       
       </Route>
 

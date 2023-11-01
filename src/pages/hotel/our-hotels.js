@@ -9,6 +9,12 @@ import ImageUpload from "../../components/imageUpload";
 import axios from "axios";
 import StarRating from "../../components/Rating";
 import { set } from "lodash";
+import * as MdIcons from "react-icons/md";
+import * as BiIcons from "react-icons/bi";
+import * as ImIcons from "react-icons/im";
+import * as GiIcons from "react-icons/gi";
+import * as AiIcons from "react-icons/ai";
+import * as BsIcons from "react-icons/bs";
 
 const OurHotel = () => {
   const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
@@ -230,10 +236,9 @@ const OurHotel = () => {
     // Create a new object containing both hotel and image data
     return {
       ...hotel,
-      image: image ? image.hotelImage : null, 
+      image: image ? image.hotelImage : null,
     };
   });
-
 
   const handleEditHotel = async (e) => {
     e.preventDefault();
@@ -364,7 +369,7 @@ const OurHotel = () => {
                                 fullIcon={<i className="fa fa-star"></i>}
                                 color="#ffd700"
                               />
-                              {hotel.starRating}-star hotel with 2 restaurants
+                              {hotel.starRating}-star hotel
                             </p>
                             <p
                               style={{
@@ -375,7 +380,7 @@ const OurHotel = () => {
                               <span
                                 style={{ fontWeight: "600", fontSize: "16px" }}
                               >
-                                7.2/10 Good
+                                {hotel.userRating}/10 Good
                               </span>
                               <br />
                             </p>
@@ -404,6 +409,15 @@ const OurHotel = () => {
                                 <p className="m-0" style={{ fontSize: "13px" }}>
                                   <Icon.PSquareFill size={15} /> Parking
                                   included
+                                </p>
+                                <p className="m-0" style={{ fontSize: "13px" }}>
+                                  <MdIcons.MdPool size={15} /> Pool
+                                </p>
+                                <p className="m-0" style={{ fontSize: "13px" }}>
+                                  <BiIcons.BiSolidDrink size={15} /> Bar
+                                </p>
+                                <p className="m-0" style={{ fontSize: "13px" }}>
+                                  <ImIcons.ImSpoonKnife size={15} /> Restaurants
                                 </p>
                               </div>
                             </div>

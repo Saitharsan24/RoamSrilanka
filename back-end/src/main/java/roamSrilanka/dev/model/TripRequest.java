@@ -13,6 +13,8 @@ public class TripRequest {
     @Column(name = "request_id")
     private Long request_id;
 
+    @Column(name = "user_id")
+    private Integer userId;
     @Column(name = "tourist_name")
     private String tourist_name;
 
@@ -33,6 +35,50 @@ public class TripRequest {
 
     @Column(name = "status")
     private Long status;
+
+    @Column(name = "tourist_id")
+    private Integer tourist_id;
+
+    @Column(name = "no_of_days")
+    private Integer no_of_days;
+
+    public TripRequest() {
+    }
+
+    public TripRequest(Long request_id, Integer userId, String tourist_name, Date start_date, Date end_date, String pickup, String destination, Long contact, Long status, Integer tourist_id, Integer no_of_days) {
+        this.request_id = request_id;
+        this.userId = userId;
+        this.tourist_name = tourist_name;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.pickup = pickup;
+        this.destination = destination;
+        this.contact = contact;
+        this.status = status;
+        this.tourist_id = tourist_id;
+        this.no_of_days = no_of_days;
+    }
+
+    public TripRequest(Integer userId, String tourist_name, Date start_date, Date end_date, String pickup, String destination, Long contact, Long status, Integer tourist_id, Integer no_of_days) {
+        this.userId = userId;
+        this.tourist_name = tourist_name;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.pickup = pickup;
+        this.destination = destination;
+        this.contact = contact;
+        this.status = status;
+        this.tourist_id = tourist_id;
+        this.no_of_days = no_of_days;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public Long getRequest_id() {
         return request_id;
@@ -97,4 +143,21 @@ public class TripRequest {
     public void setStatus(Long status) {
         this.status = status;
     }
+
+    public Integer getTourist_id() {
+        return tourist_id;
+    }
+
+    public void setTourist_id(Integer tourist_id) {
+        this.tourist_id = tourist_id;
+    }
+
+    public Integer getNo_of_days() {
+        return no_of_days;
+    }
+
+    public void setNo_of_days(Integer no_of_days) {
+        this.no_of_days = no_of_days;
+    }
+
 }

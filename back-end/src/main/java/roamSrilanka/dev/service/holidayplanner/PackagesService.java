@@ -3,6 +3,7 @@ package roamSrilanka.dev.service.holidayplanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import roamSrilanka.dev.model.Holidayplanner.Packages;
+import roamSrilanka.dev.model.Vehicle;
 import roamSrilanka.dev.repository.holidayplanner.PackagesRepository;
 
 @Service
@@ -41,4 +42,11 @@ public class PackagesService {
     public void savestatus(Packages exitingPackage) {
         packagesRepository.save(exitingPackage);
     }
+
+    public void savePackage(Packages exitingPackage) {
+        packagesRepository.save(exitingPackage);
+
+    }
+
+
 }

@@ -113,4 +113,9 @@ public class FairController {
     public String deleteFair (@PathVariable(value = "id") Integer identity) {
         return this.fairService.deleteFair(identity);
     }
+
+    @GetMapping("/getFairImage/{fairId}")
+    public ResponseEntity<FairImage> getFairImage(@PathVariable Integer fairId){
+        return ResponseEntity.ok(fairService.getFairImage(fairId));
+    }
 }

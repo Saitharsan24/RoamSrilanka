@@ -14,6 +14,8 @@ function HPViewItem({onBack }) {
   });
 
   const [fairData, setFairData] = useState({});
+  const [fairImageData,setFairImageData] = useState({});
+  const [filteredData,setFilteredFairImages] = useState({});
 
   useEffect(() => {
     axiosInstance
@@ -26,6 +28,34 @@ function HPViewItem({onBack }) {
         console.log(err);
       });
   }, []);
+
+  useEffect(()=>{
+    axiosInstance
+    .get("viewFairImages")
+    .then((res)=> {
+      setFairImageData(res.data);
+      console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }, []);
+
+    useEffect(() => {
+      if (fairImageData !== null && Array.isArray(fairImageData)) {
+        const foundImage = fairImageData.find(image => image.fairId == paraData.fairId);
+        if (foundImage) {
+          setFilteredFairImages([foundImage]);
+        } else {
+          setFilteredFairImages([]);
+        }
+      } else {
+        setFilteredFairImages([]);
+      }
+    }, [fairImageData, paraData.fairId]);
+    
+    console.log("fairImages",fairImageData)
+    console.log("filteredData",filteredData)
 
   const handleDeleteEvent = async () => {
     const confirmed = window.confirm(
@@ -83,14 +113,26 @@ function HPViewItem({onBack }) {
           >
             <div className="d-flex flex-column col-12">
               <div className="d-none d-sm-flex d-md-flex d-lg-flex flex-row justify-content-evenly">
-                <img
-                  className="img-fluid"
-                  style={{
-                    filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
-                    borderRadius: "11px",
-                  }}
-                  src={require("../../assets/images/Item1.png")}
-                ></img>
+              {filteredData[0] ? (
+                  <img
+                    className="img-fluid"
+                    style={{
+                      filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+                      borderRadius: "11px",
+                    }}
+                    src={require(`../../assets/images/planner/${filteredData[0].fairImage}`)}
+                    alt={filteredData.fairImage}
+                  ></img>
+                ) : (
+                  <img
+                    className="img-fluid"
+                    style={{
+                      borderRadius: "10px",
+                    }}
+                    src={require("./../../assets/images/room-image1.png")}
+                    alt="Default Alt Text"
+                  />
+                )}
               </div>
             </div>
           </div>

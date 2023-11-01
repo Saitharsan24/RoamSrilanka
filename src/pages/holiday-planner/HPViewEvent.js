@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../styles/updatepack.css";
+import { useParams } from "react-router-dom";
 
-function HPViewEvent({ eventId, onBack }) {
+function HPViewEvent() {
   const apiBaseUrl = "http://localhost:8080";
 
   const axiosInstance = axios.create({
@@ -10,8 +11,48 @@ function HPViewEvent({ eventId, onBack }) {
     timeout: 5000,
   });
 
+  const paraData = useParams();
+  const eventId = paraData.eventId;
+
+  console.log(eventId);
+
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [events, setEvents] = useState([]);
+  const [eventImages, setEventImages] = useState(null);
+  const [filteredEventImage, setFilteredEventImages] = useState(null);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/getEventImages")
+      .then((res) => {
+        setEventImages(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    console.log("Event Images:", eventImages);
+    console.log("Event ID:", eventId);
+  
+    if (eventImages !== null) {
+      const foundImage = eventImages.find(image => image.eventId == eventId);
+      if (foundImage) {
+        setFilteredEventImages([foundImage]);
+      } else {
+        setFilteredEventImages([]);
+      }
+    } else {
+      setFilteredEventImages([]);
+    }
+  }, [eventImages, eventId]);
+  
+  
+
+
+  console.log("filteredEventImage", filteredEventImage);
 
   useEffect(() => {
     const fetchEventById = async () => {
@@ -31,6 +72,8 @@ function HPViewEvent({ eventId, onBack }) {
 
     fetchEventById();
   }, []);
+
+  //console.log("selectedEvent", selectedEvent);
 
   if (!selectedEvent) {
     return <div>No Record</div>;
@@ -93,14 +136,26 @@ function HPViewEvent({ eventId, onBack }) {
           >
             <div className="d-flex flex-column col-12">
               <div className="d-none d-sm-flex d-md-flex d-lg-flex flex-row justify-content-evenly">
-                <img
-                  className="img-fluid"
-                  style={{
-                    filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
-                    borderRadius: "11px",
-                  }}
-                  src={require("../../assets/images/Event1.png")}
-                ></img>
+                {filteredEventImage[0] ? (
+                  <img
+                    className="img-fluid"
+                    style={{
+                      filter: "drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
+                      borderRadius: "11px",
+                    }}
+                    src={require(`../../assets/images/planner/${filteredEventImage[0].eventImage}`)}
+                    alt={filteredEventImage.eventImage}
+                  ></img>
+                ) : (
+                  <img
+                    className="img-fluid"
+                    style={{
+                      borderRadius: "10px",
+                    }}
+                    src={require("./../../assets/images/room-image1.png")}
+                    alt="Default Alt Text"
+                  />
+                )}
               </div>
             </div>
           </div>
@@ -167,7 +222,7 @@ function HPViewEvent({ eventId, onBack }) {
           <button className="btn-cancel" onClick={handleDeleteEvent}>
             Delete
           </button>
-          <button className="btn-next" onClick={onBack}>
+          <button className="btn-next" >
             Cancel
           </button>
         </div>

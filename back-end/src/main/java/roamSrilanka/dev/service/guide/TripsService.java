@@ -15,4 +15,8 @@ public class TripsService {
     public GuideTrip getTripById(Integer id) {
         return tripsRepository.findById(id).get();
     }
+
+    public GuideTrip addTrip(GuideTrip guideTrip) {
+        return tripsRepository.save(guideTrip);
+    }
 }

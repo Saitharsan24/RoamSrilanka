@@ -43,6 +43,10 @@ public class Driver {
     @Column(name = "license_image")
     private String licenseImage;
 
+    @Column(name = "payment")
+    private Long payment;
+
+    
     @Column(name = "driver_availability")
     private Boolean driverAvailability;
 
@@ -50,6 +54,7 @@ public class Driver {
 //    @MapsId
 //    @JoinColumn(name = "user_id")
 //    private User user;
+
 
     //    @OneToOne(mappedBy = "vehicle", cascade = CascadeType.ALL)
    //    private Vehicle vehicle;

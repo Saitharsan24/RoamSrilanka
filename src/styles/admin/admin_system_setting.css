@@ -1,0 +1,48 @@
+.admin-s-s-main{
+    background-color: #ffffff;
+    width: 80%;
+    padding: 30px;
+    margin: 15px ;
+    height: 110vh;
+    border-radius: 20px;
+}
+.admin-s-s-main h3{
+    font-weight: 700;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.admin-s-s-main h4{
+    font-weight: 700;
+}
+
+.specialforadmin{
+    width: 300px !important;
+}
+
+.specialforadmin input{
+    width: 200px !important;
+    height: 60px !important;
+    text-align:center;
+    font-weight: 700; 
+    font-size: 40px !important;
+}
+
+.specialforadmin p{
+    font-weight: 600;
+}
+
+.hotel-ss{
+    display: flex;
+    margin-top: 20px;
+    margin-left: 30px;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.specialadminbtn{
+    background-color: #004577 !important;
+    color: #ffffff;
+    width: 150px;
+    height: 50px;
+}
