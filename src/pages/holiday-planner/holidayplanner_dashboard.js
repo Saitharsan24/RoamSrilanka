@@ -1,4 +1,5 @@
-import React, { PureComponent, useState } from "react";
+import React, { PureComponent, useState, useEffect } from "react";
+import axios from "axios";
 import {
   RadialBarChart,
   RadialBar,
@@ -118,6 +119,77 @@ const style = {
 };
 
 function Holiday_dashboard() {
+  const apiBaseUrl ="http://localhost:8080";
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 5000,
+  });
+  const [packages, setPackages] = useState();
+  const [eventCount, setEventCount] = useState();
+  const [fairCount, setFairCount] = useState();
+  const [requestCount, setRequestCount] = useState();
+  const [frequestCount, setFRequestCount] = useState();
+
+  useEffect(() => {
+    axiosInstance
+      .get("/packages/count")
+      .then((res) => {
+        setPackages(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/event/count")
+      .then((res) => {
+        setEventCount(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/fair/count")
+      .then((res) => {
+        setFairCount(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err); 
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/request/count")
+      .then((res) => {
+        setRequestCount(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err); 
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/frequest/count")
+      .then((res) => {
+        setFRequestCount(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err); 
+      });
+  }, []);
+
   const [selectedDayRange, setSelectedDayRange] = useState({
     from: null,
     to: null,
@@ -146,7 +218,7 @@ function Holiday_dashboard() {
               <div className=" d-flex flex-column ">
                 <p style={{ color: "#98A3B2", fontSize: "30px" }}>Packages</p>
                 <p style={{ fontSize: "15px", fontWeight: "bold" }}>
-                  Total Packages - 25
+                  Total Packages - {packages}
                 </p>
               </div>
               <div className="d-flex">
@@ -166,7 +238,7 @@ function Holiday_dashboard() {
               <div className=" d-flex flex-column justify-content-between ">
                 <p style={{ color: "#98A3B2", fontSize: "28px" }}>Events</p>
                 <p style={{ fontSize: "15px", fontWeight: "bold" }}>
-                  Total Events - 7
+                  Total Events - {eventCount}
                 </p>
               </div>
               <div className=" d-flex">
@@ -176,7 +248,7 @@ function Holiday_dashboard() {
           </div>
           <div className="d-flex flex-column col-3 gap-3 p-2">
             <a
-              href=""
+              href="plannerRequest"
               className=" box d-flex col-lg-12 col-sm-8  flex-row align-items-center gap-3 p-2 justify-content-around"
               style={{
                 backgroundColor: "#FFFFFF",
@@ -186,10 +258,16 @@ function Holiday_dashboard() {
               }}
             >
               <div className=" d-flex flex-column ">
-                <p style={{ color: "#98A3B2", fontSize: "30px" }}>Reviews</p>
+                <p style={{ color: "#98A3B2", fontSize: "30px" }}>Requests</p>
+                <div style={{ display: 'flex', justifyContent: 'space-between'}}>
                 <p style={{ fontSize: "15px", fontWeight: "bold" }}>
-                  New Reviews - 20
+                  Packages - {requestCount}
                 </p>
+                <div style={{ width: '48px' }}></div>
+                <p style={{ fontSize: "15px", fontWeight: "bold"}}>
+                  Fairs - {frequestCount}
+                </p>
+                </div>
               </div>
               <div className="d-flex">
                 <Icon.ChevronRight />
@@ -208,7 +286,7 @@ function Holiday_dashboard() {
               <div className=" d-flex flex-column justify-content-between ">
                 <p style={{ color: "#98A3B2", fontSize: "28px" }}>Fairs</p>
                 <p style={{ fontSize: "15px", fontWeight: "bold" }}>
-                  Total Fairs - 20
+                  Total Fairs - {fairCount}
                 </p>
               </div>
               <div className="d-flex">

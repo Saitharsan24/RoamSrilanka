@@ -12,29 +12,29 @@ public class Fair {
     @Column(name = "fair_no")
     private int fairId;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "fairname")
+    private String fairname;
 
     @Column(name = "rent")
     private float rent;
 
-    @Column(name = "description")
+    @Column(name = "description" ,columnDefinition = "VARCHAR(2000)")
     private String description;
 
-    @ElementCollection
-    @Column(name = "fair_images")
-    private List<String> fairImages;
+    @Column(name = "status", columnDefinition = "int default 0")
+    private int status;
 
     public Fair() {
     }
 
-    public Fair(int fairId, String name, float rent, String description, List<String> fairImages) {
+    public Fair(int fairId, String fairname, float rent, String description, int status) {
         this.fairId = fairId;
-        this.name = name;
+        this.fairname = fairname;
         this.rent = rent;
         this.description = description;
-        this.fairImages = fairImages;
+        this.status = status;
     }
+
 
     public int getFairId() {
         return fairId;
@@ -44,12 +44,12 @@ public class Fair {
         this.fairId = fairId;
     }
 
-    public String getName() {
-        return name;
+    public String getFairname() {
+        return fairname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFairname(String fairname) {
+        this.fairname = fairname;
     }
 
     public float getRent() {
@@ -68,11 +68,10 @@ public class Fair {
         this.description = description;
     }
 
-    public List<String> getFairImages() {
-        return fairImages;
+    public int getStatus() {
+        return status;
     }
-
-    public void setFairImages(List<String> fairImages) {
-        this.fairImages = fairImages;
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

@@ -1,10 +1,13 @@
-package roamSrilanka.dev.service;
+package roamSrilanka.dev.service.holidayplanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import roamSrilanka.dev.model.Holidayplanner.Event;
-import roamSrilanka.dev.repository.EventRepository;
+import roamSrilanka.dev.repository.holidayplanner.EventRepository;
 
+import roamSrilanka.dev.model.Holidayplanner.EventImage;
+
+import roamSrilanka.dev.repository.holidayplanner.EventImageRepository;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +15,9 @@ import java.util.Optional;
 public class EventService {
     @Autowired
     private EventRepository eventRepository;
+
+    @Autowired
+    private EventImageRepository eventImageRepository;
 
     public List<Event> getAllEvents() {
         return this.eventRepository.findAll();
@@ -42,4 +48,15 @@ public class EventService {
         return "Successfully Deleted";
     }
 
+    public Long countEvents() {
+        return eventRepository.count();
+    }
+
+    public void addEventImage(EventImage eventImage) {
+        eventImageRepository.save(eventImage);
+    }
+
+    public EventImage getEventImage(Integer eventId) {
+        return eventImageRepository.findById(eventId).orElse(null);
+    }
 }

@@ -39,10 +39,10 @@ public class Holidayplanner {
     @Column(name = "status")
     private String status;
 
-     @OneToOne
-     @MapsId
-     @JoinColumn(name = "user_id")
-     private User user;
+//     @OneToOne
+//     @MapsId
+//     @JoinColumn(name = "user_id")
+//     private User user;
 
     public Holidayplanner(){
     }

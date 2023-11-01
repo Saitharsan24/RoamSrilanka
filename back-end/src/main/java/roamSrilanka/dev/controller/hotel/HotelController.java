@@ -9,8 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import roamSrilanka.dev.model.Hotel.HotelImage;
+import roamSrilanka.dev.model.Hotel.HotelOwner;
 import roamSrilanka.dev.model.Hotel.HotelRooms;
 import roamSrilanka.dev.model.Hotel.Hotels;
+import roamSrilanka.dev.model.User;
 import roamSrilanka.dev.service.hotel.HotelService;
 
 import java.io.File;
@@ -75,6 +77,43 @@ public class HotelController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/viewHotelOwner/{id}")
+    public ResponseEntity<HotelOwner> getHotelOwnerById(@PathVariable Integer id) {
+        HotelOwner viewHotelOwner = hotelService.getHotelOwnerById(id);
+        if(viewHotelOwner != null) {
+            return ResponseEntity.ok(viewHotelOwner);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/updateOwner/{ownerId}")
+    public ResponseEntity<HotelOwner> updateOwner(@PathVariable Integer ownerId, @RequestBody HotelOwner updatedOwner) {
+        HotelOwner existingOwner = hotelService.getOwnerById(ownerId);
+
+        if (existingOwner == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        if (updatedOwner.getOwnerName() != null && !updatedOwner.getOwnerName().isEmpty()) {
+            existingOwner.setOwnerName(updatedOwner.getOwnerName());
+        }
+        if (updatedOwner.getOwnerEmail() != null && !updatedOwner.getOwnerEmail().isEmpty()) {
+            existingOwner.setOwnerEmail(updatedOwner.getOwnerEmail());
+        }
+        if (updatedOwner.getOwnerContact() != null && !updatedOwner.getOwnerContact().isEmpty()) {
+            existingOwner.setOwnerContact(updatedOwner.getOwnerContact());
+        }
+        if (updatedOwner.getOwnerAddress() != null && !updatedOwner.getOwnerAddress().isEmpty()) {
+            existingOwner.setOwnerAddress(updatedOwner.getOwnerAddress());
+        }
+        if (updatedOwner.getNic() != null && !updatedOwner.getNic().isEmpty()) {
+            existingOwner.setNic(updatedOwner.getNic());
+        }
+        hotelService.updatedOwner(existingOwner);
+        return ResponseEntity.ok(existingOwner);
     }
 
     @GetMapping("/viewHotelImage/{id}")
@@ -166,5 +205,21 @@ public class HotelController {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @PutMapping("/hotelAvailability/{id}")
+    public ResponseEntity<Hotels> hotelAvailability(@PathVariable Integer id) {
+        Hotels existingHotel = hotelService.getHotelById(id);
+
+        if (existingHotel == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        if (existingHotel.getHotelAvailability() != null) {
+            existingHotel.setHotelAvailability(false);
+        }
+
+        hotelService.saveHotel(existingHotel);
+        return ResponseEntity.ok(existingHotel);
     }
 }

@@ -46,17 +46,22 @@ public class Driver {
     @Column(name = "payment")
     private Long payment;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "user_id")
-    private User user;
+    
+    @Column(name = "driver_availability")
+    private Boolean driverAvailability;
+
+//    @OneToOne
+//    @MapsId
+//    @JoinColumn(name = "user_id")
+//    private User user;
+
 
     //    @OneToOne(mappedBy = "vehicle", cascade = CascadeType.ALL)
    //    private Vehicle vehicle;
     public Driver() {
     }
 
-    public Driver(int userId, String nic, String phoneNo, String bankAccNo, String SLTDANo, Date dateOfBirth, String address, String licenseNo, Date licenseExpDate, String status, String licenseImage) {
+    public Driver(int userId, String nic, String phoneNo, String bankAccNo, String SLTDANo, Date dateOfBirth, String address, String licenseNo, Date licenseExpDate, String status, String licenseImage, Boolean driverAvailability) {
         this.userId = userId;
         this.nic = nic;
         this.phoneNo = phoneNo;
@@ -68,10 +73,10 @@ public class Driver {
         this.licenseExpDate = licenseExpDate;
         this.status = status;
         this.licenseImage = licenseImage;
+        this.driverAvailability = driverAvailability;
     }
 
-    public Driver(int userId, String nic, String phoneNo, String bankAccNo, String SLTDANo, Date dateOfBirth, String address, String licenseNo, Date licenseExpDate, String status) {
-        this.userId = userId;
+    public Driver(String nic, String phoneNo, String bankAccNo, String SLTDANo, Date dateOfBirth, String address, String licenseNo, Date licenseExpDate, String status, String licenseImage, Boolean driverAvailability) {
         this.nic = nic;
         this.phoneNo = phoneNo;
         this.bankAccNo = bankAccNo;
@@ -81,8 +86,21 @@ public class Driver {
         this.licenseNo = licenseNo;
         this.licenseExpDate = licenseExpDate;
         this.status = status;
+        this.licenseImage = licenseImage;
+        this.driverAvailability = driverAvailability;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public Boolean getDriverAvailability() {
+        return driverAvailability;
+    }
+
+    public void setDriverAvailability(Boolean driverAvailability) {
+        this.driverAvailability = driverAvailability;
+    }
 
     public void setUserId(int userId) {
         this.userId = userId;

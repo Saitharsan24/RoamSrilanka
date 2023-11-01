@@ -28,8 +28,8 @@ public class User {
 //    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 //    private Tourist tourist;
 
-   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Driver driver;
+//   @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+//    private Driver driver;
 
 
     public User() {

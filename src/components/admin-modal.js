@@ -50,13 +50,13 @@ function Modal({closeModal,userId}){
   //console.log(holidayPlannerdetailstatus);
       
     return(
-        <div className="modalBackground">
-            <div className="modalContainer">
-               <div className="title-modalCloseBtn w-75 mt-1 "> <button onClick={()=>closeModal(false)} >X</button></div>
-                <div className="title-modal "><h3>Are You sure</h3></div>
-                <div className="body-modal "><p>Do you want to {holidayPlannerdetailstatus===null?("Enable"):("Disable")}  Account?</p></div>
-                <div className="footer-modal">
-                    <button onClick={()=>closeModal(false)} id="cancelBtn">Cancel</button>
+        <div className="modalBackground-planner">
+            <div className="modalContainer-planner">
+               <div className="title-modalCloseBtn-planner w-75 mt-1 "> <button onClick={()=>closeModal(false)} >X</button></div>
+                <div className="title-modal-planner "><h3>Are You sure</h3></div>
+                <div className="body-modal-planner "><p>Do you want to {holidayPlannerdetailstatus===null?("Enable"):("Disable")}  Account?</p></div>
+                <div className="footer-modal-planner">
+                    <button onClick={()=>closeModal(false)} id="cancelBtn-planner">Cancel</button>
                     <button onClick={handleUpdate }>Yes</button>
                 </div>
             </div>

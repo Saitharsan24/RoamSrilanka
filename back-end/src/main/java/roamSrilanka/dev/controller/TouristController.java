@@ -29,8 +29,6 @@ public class TouristController {
     }
 
 
-
-
     @GetMapping("/tourist")
     @ResponseBody
     public Iterable<Object> getAllTourist(){
@@ -46,5 +44,12 @@ public class TouristController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/viewTourist")
+    public List<Tourist> getAllTourists(){
+        return touristService.getAllTourists();
+    }
+
+
 
 }

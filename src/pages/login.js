@@ -41,25 +41,26 @@ import { useSession } from '../Context/SessionContext';
                     const userType = response.data.userType;
 
                     if (userType === "admin") {
-                        navigate("/admin");
+                        navigate("/admin/admindashboard");
                     }
                     else if (userType === "tourist") {
-                        navigate("/tourist");
+                        navigate("/tourist/touristDashboard");
                     }
                     else if (userType === "hotel") {
-                        navigate("/hotel");
+                        navigate("/hotel/hotelDashboard");
                     }
                     else if (userType === "guide") {
                         navigate("/guide");
                     }
                     else if (userType === "driver") {
                         navigate("/driver");
-
+                    }else if(userType === "holidayPlanner"){
+                        navigate("/holidayPlanner/plannerDashboard");
                     }
                     
                 }
 
-
+                
                 // console.log(response.data);
             } catch (error) {
                 console.log(error);

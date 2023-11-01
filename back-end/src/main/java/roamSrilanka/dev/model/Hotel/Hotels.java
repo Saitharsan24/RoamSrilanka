@@ -15,6 +15,9 @@ public class Hotels {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer hotelId;
 
+    @Column(name = "owner_id")
+    private Integer ownerId;
+
     @Column(name = "hotel_name")
     private String hotelName;
 
@@ -39,23 +42,16 @@ public class Hotels {
     @Column(name = "price")
     private Double price;
 
+    @Column(name = "hotel_availability")
+    private Boolean hotelAvailability;
+
     //Constructors
     public Hotels() {
     }
 
-    public Hotels(String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price) {
-        this.hotelName = hotelName;
-        this.starRating = starRating;
-        this.userRating = userRating;
-        this.description = description;
-        this.hotelType = hotelType;
-        this.address = address;
-        this.city = city;
-        this.price = price;
-    }
-
-    public Hotels(Integer hotelId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price) {
+    public Hotels(Integer hotelId, Integer ownerId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price, Boolean hotelAvailability) {
         this.hotelId = hotelId;
+        this.ownerId = ownerId;
         this.hotelName = hotelName;
         this.starRating = starRating;
         this.userRating = userRating;
@@ -64,14 +60,20 @@ public class Hotels {
         this.address = address;
         this.city = city;
         this.price = price;
+        this.hotelAvailability = hotelAvailability;
     }
 
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
+    public Hotels(Integer ownerId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price, Boolean hotelAvailability) {
+        this.ownerId = ownerId;
+        this.hotelName = hotelName;
+        this.starRating = starRating;
+        this.userRating = userRating;
+        this.description = description;
+        this.hotelType = hotelType;
+        this.address = address;
+        this.city = city;
         this.price = price;
+        this.hotelAvailability = hotelAvailability;
     }
 
     public Integer getHotelId() {
@@ -80,6 +82,14 @@ public class Hotels {
 
     public void setHotelId(Integer hotelId) {
         this.hotelId = hotelId;
+    }
+
+    public Integer getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Integer ownerId) {
+        this.ownerId = ownerId;
     }
 
     public String getHotelName() {
@@ -136,6 +146,22 @@ public class Hotels {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Boolean getHotelAvailability() {
+        return hotelAvailability;
+    }
+
+    public void setHotelAvailability(Boolean hotelAvailability) {
+        this.hotelAvailability = hotelAvailability;
     }
 }
 

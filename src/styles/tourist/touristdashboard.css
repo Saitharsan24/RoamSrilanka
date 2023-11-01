@@ -4,7 +4,6 @@ h5 {
 }
 
 .place-01{
-    background-color: #f1f1f1;
     width: 13rem;
     height: 19rem;
     border-radius: 15px;
@@ -21,15 +20,8 @@ h5 {
 
 }
 
-.place-image {
-  background-image: url("../../assets/images/galle_tower.jpeg");
-  width: 13rem;
-  height: 14rem;
-  border-radius: 15px;
-}
 
 .dashboard-left .place-image {
-  background-image: url("../../assets/images/galle_tower.jpeg");
   width: 10rem;
   height: 12rem;
   border-radius: 15px;
@@ -193,3 +185,28 @@ h5 {
 .dashboard-my-trips{
     border-radius: 15px;
 }
+
+.colombo{
+  background-image: url("../../assets/images/tdashc.jpg") !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.jaffna{
+  background-image: url("../../assets/images/tdashj.jpg") !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.kandy{
+  background-image: url("../../assets/images/tdashk.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.galle{
+  background-image: url("../../assets/images/galle_tower.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+

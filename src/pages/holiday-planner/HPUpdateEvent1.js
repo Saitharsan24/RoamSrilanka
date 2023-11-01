@@ -8,13 +8,58 @@ import axios from "axios";
 
 const HPUpdateEvent1 = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [formData, setFormData] = useState({
+  const [eventData, setFormData] = useState({
     name: "",
     date: "",
     days: "",
     places: "",
     description: "",
+    eventImage: null,
   });
+
+  const [placesInput, setPlacesInput] = useState("");
+  const [places, setPlaceSuggestions] = useState("");
+  const fetchPlaceSuggestions = async (query) => {
+    try {
+      const response = await axiosInstance.get(`https://nominatim.openstreetmap.org/search?q=${query}&countrycodes=LK&format=json`);
+      if (response.status === 200) {
+        const suggestions = response.data.map((item) => ({
+          name: item.display_name,
+        }));
+        setPlaceSuggestions(suggestions);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+    }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    console.log("handleSuggestionClick called with suggestion:", suggestion.name);
+    setPlacesInput(suggestion.name);
+    eventData.places = suggestion.name;
+    setPlaceSuggestions([]);
+  };
+
+  const handlePlacesInputChange = (e) => {
+    const inputvalue = e.target.value;
+    setPlacesInput(inputvalue);
+    if (inputvalue.length >= 3) {
+      fetchPlaceSuggestions(inputvalue);
+    } else {
+      setPlaceSuggestions([]);
+    }
+  };
+
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === "checkbox" ? checked : value;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: newValue,
+    }));
+  };
 
   const inputFormdata = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -27,20 +72,56 @@ const HPUpdateEvent1 = () => {
     timeout: 5000,
   });
 
+  const handleImageChange = (e) => {
+    const selectedFiles = e.target.files; // Get an array of selected image files
+    const imageFiles = [];
+
+    // Iterate through the selected files and add them to the imageFiles array
+    for (let i = 0; i < selectedFiles.length; i++) {
+      imageFiles.push(selectedFiles[i]);
+    }
+
+    inputFormdata("eventImage", imageFiles); // Update productDetails state with the selected images
+    // console.log(imageFiles)
+  };
+
   const handlePost = async (e) => {
     e.preventDefault();
+    console.log("eventData",eventData);
 
     try {
       const response = await axiosInstance.post("/addEvent", {
-        name: formData.name,
-        date: formData.date,
-        days: formData.days,
-        places: formData.places,
-        description: formData.description,
+        name: eventData.name,
+        date: eventData.date,
+        days: eventData.days,
+        places: eventData.places,
+        description: eventData.description,
       });
 
       if (response.status === 200) {
-        console.log("ok");
+        console.log(eventData.eventImage.length);
+        try {
+          for (let i = 0; i < eventData.eventImage.length; i++) {
+            const formData = new FormData();
+            formData.append("imageFile", eventData.eventImage[i]);
+            const imageResponse = await axiosInstance.post(
+              `/addEventImage/${response.data.eventId}`,
+              formData,
+              {
+                headers: {
+                  "Content-Type": `multipart/form-data`,
+                },
+              }
+            );
+            if (imageResponse.status === 200) {
+              console.log("image uploaded");
+              alert("Item added successfully");
+            }
+          }
+          window.location.reload();
+        } catch (error) {
+          console.log(error);
+        }
       }
     } catch (error) {
       console.log("error");
@@ -81,7 +162,7 @@ const HPUpdateEvent1 = () => {
                     type="text"
                     placeholder="write the event name"
                     name="name"
-                    value={formData.name}
+                    value={eventData.name}
                     onChange={(e) => {
                       inputFormdata(e.target.name, e.target.value);
                     }}
@@ -96,7 +177,7 @@ const HPUpdateEvent1 = () => {
                     type="date"
                     placeholder="Date of the Event"
                     name="date"
-                    value={formData.date}
+                    value={eventData.date}
                     onChange={(e) => {
                       inputFormdata(e.target.name, e.target.value);
                     }}
@@ -109,7 +190,7 @@ const HPUpdateEvent1 = () => {
                     type="number"
                     placeholder="Number of the Days"
                     name="days"
-                    value={formData.days}
+                    value={eventData.days}
                     onChange={(e) => {
                       inputFormdata(e.target.name, e.target.value);
                     }}
@@ -125,12 +206,17 @@ const HPUpdateEvent1 = () => {
                     type="text"
                     placeholder="Places of the Event"
                     name="places"
-                    value={formData.places}
-                    onChange={(e) => {
-                      inputFormdata(e.target.name, e.target.value);
-                    }}
+                    value={placesInput}
+                    onChange={handlePlacesInputChange}
                   ></input>
                 </label>
+                {places.length > 0 && (
+                   <ul className="suggestions">
+                   {places.map((suggestion, index) => (
+                     <li onClick={() => handleSuggestionClick(suggestion)} key={index}>{suggestion.name}</li>
+                   ))}
+                 </ul>
+                )}
                 <label>
                   Description <br />
                   <textarea
@@ -138,7 +224,7 @@ const HPUpdateEvent1 = () => {
                     type="text"
                     placeholder="Description"
                     name="description"
-                    value={formData.description}
+                    value={eventData.description}
                     onChange={(e) => {
                       inputFormdata(e.target.name, e.target.value);
                     }}
@@ -148,7 +234,13 @@ const HPUpdateEvent1 = () => {
                 <label>
                   Image:
                   <div className="d-flex justify-content-center w-100">
-                    <DragDropFile />
+                    {/* <DragDropFile /> */}
+                    <input
+                      type="file"
+                      name="eventImage"
+                      multiple // Allow multiple file selection
+                      onChange={(e) => handleImageChange(e)}
+                    />
                   </div>
                 </label>
               </div>
@@ -163,7 +255,6 @@ const HPUpdateEvent1 = () => {
               <button
                 className="btn-next"
                 type="submit"
-                onClick={() => setShowPopup(true)}
               >
                 Post{" "}
                 <Icon.ChevronRight

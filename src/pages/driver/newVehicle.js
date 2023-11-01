@@ -232,8 +232,8 @@ function DrivernewVehicle () {
                 </div>
             </div>
 
-        </div>
-    );
+        </div>)
+
 }
 
 export default DrivernewVehicle;

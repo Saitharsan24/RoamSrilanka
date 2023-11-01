@@ -9,10 +9,28 @@ import { Link } from 'react-router-dom';
 
 function ToursitHotel() {
 
+  const [hotelimageCount, setHotelimageCount] = useState(0);
+
   const [destination, setDestination] = useState('');
   const [checkInDate, setCheckInDate] = useState(new Date().toISOString().split('T')[0]);
   const [checkOutDate, setCheckOutDate] = useState(new Date().toISOString().split('T')[0]);
   const [travelers, setTravelers] = useState(1);
+
+  const handleCheckInChange = (e) => {
+    const selectedDate = e.target.value;
+    setCheckInDate(selectedDate);
+    
+    // If selected check-in date is after current check-out date, 
+    // set check-out date to the same as the check-in date
+    if (new Date(selectedDate) > new Date(checkOutDate)) {
+      setCheckOutDate(selectedDate);
+    }
+  };
+  
+  const handleCheckOutChange = (e) => {
+    setCheckOutDate(e.target.value);
+  };
+
 
   const placesInSriLanka = ['Colombo', 'Kandy', 'Galle', 'Anuradhapura', 'Jaffna',
   'Sigiriya', 'Dambulla Cave Temple', 'Polonnaruwa', 'Nuwara Eliya', 'Adams Peak', 'Yala National Park', 'Uda Walawe National Park',
@@ -32,25 +50,20 @@ function ToursitHotel() {
    //Initiating sessoin data
    const { sessionData , setSessionData  } = useSession();
 
-  //adding search details to session variable
-   const updateSessionData ={
-        ...sessionData,
-       city: destination,
-       checkIn: checkInDate,
-       checkOut: checkOutDate,
-       travellers: travelers
-    };
-    console.log(updateSessionData);
-
-    //updating session data
+    // updating session data
     const updateSession = () => {
-      setSessionData(updateSessionData);
-      window.location.href = "/tourist/touristHotelSearchList";
+      const searchDetails = {
+        city: destination,
+        checkIn: checkInDate,
+        checkOut: checkOutDate,
+        travellers: travelers
+       }
+       localStorage.setItem('searchDetails', JSON.stringify(searchDetails));
+       window.location.href = '/tourist/touristHotelSearchList';
     };
 
    //data from backend will directly store in this state  
    const [hotels, setHotels] = useState([]);
-
    useEffect(() => {
      // Fetch hotel data from your backend API
      axiosInstance
@@ -90,13 +103,13 @@ function ToursitHotel() {
           
           <div className='hotel-checkin'>
             <h6>Check in date</h6>
-              <input 
-                type="date" 
-                name='checkIn'
-                value={checkInDate}
-                min={new Date().toISOString().split('T')[0]}
-                onChange={(e) => setCheckInDate(e.target.value)}
-              />
+            <input 
+              type="date" 
+              name='checkIn'
+              value={checkInDate}
+              min={new Date().toISOString().split('T')[0]}
+              onChange={handleCheckInChange}
+            />
           </div>
 
           <div className='hotel-checkout'>
@@ -106,7 +119,7 @@ function ToursitHotel() {
               name='checkOut'
               value={checkOutDate}
               min={checkInDate}
-              onChange={(e) => setCheckOutDate(e.target.value)}
+              onChange={handleCheckOutChange}
             />
           </div>
            
@@ -138,9 +151,9 @@ function ToursitHotel() {
           {hotels
             .sort((a, b) => b.rating - a.rating) // This sorts the hotels in descending order based on their ratings
             .slice(0, 5)
-            .map((hotel) => (
-              <div className="place-01" key={hotel}>
-                <div className="place-image"></div>
+            .map((hotel,index) => (
+              <div className="place-01" key={index}>
+                <div className={`place-image-hotel${index}`}></div>
                 <div className='hotel-btn-name d-flex flex-column gap-2'>
                   <p>{hotel.hotelName}</p>
                   <Button
