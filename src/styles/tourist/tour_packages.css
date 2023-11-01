@@ -68,7 +68,7 @@
 
 .tourist-packages-view .package-view-image{
     background-color: aqua;
-    width: 70%;
+    width: 100%;
     height: 20rem;
     border-radius: 20px;
 }
@@ -82,8 +82,14 @@
 }
 
 .row-2-description{
-    width:65%;
+    width:100%;
+    text-align: justify;    
+    margin-top: 15px;
+}
+
+.row-2-description p{
     text-align: justify;
+    font-size: 16px !important;
 }
 
 .row-2-itinerary{
@@ -100,3 +106,130 @@
     font-size: 20px;
 }
 
+.package-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* To distribute the divs evenly in the container */
+    margin: -10px; /* Adjust this margin to create space between the columns */
+  }
+  
+  .package-card {
+    flex: 0 0 calc(33.33% - 20px); /* 33.33% width for each column */
+    margin: 10px; /* Margin to create space between columns */
+    /* Other styles for package-card */
+  }
+
+  .package-row-editing{
+        width: 65%;
+  }
+
+  .pk0{
+    background-image: url(../../assets/images/pk0.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .pk1{
+    background-image: url(../../assets/images/pk1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .pk2{
+    background-image: url(../../assets/images/pk2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .pk3{
+    background-image: url(../../assets/images/pk3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .pk4{
+    background-image: url(../../assets/images/pk4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .pk5{
+    background-image: url(../../assets/images/pk5.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .pk6{
+    background-image: url(../../assets/images/pk6.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .pk7{
+    background-image: url(../../assets/images/pk7.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .pk8{
+    background-image: url(../../assets/images/pk8.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .pk9{
+    background-image: url(../../assets/images/pk9.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .pk10{
+    background-image: url(../../assets/images/pk10.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .pk11{
+    background-image: url(../../assets/images/pk11.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .pk12{
+    background-image: url(../../assets/images/pk12.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .pk13{
+    background-image: url(../../assets/images/pk13.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .pk14{
+    background-image: url(../../assets/images/pk14.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .pk15{
+    background-image: url(../../assets/images/pk15.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .pk16{
+    background-image: url(../../assets/images/pk16.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .pk17{
+    background-image: url(../../assets/images/pk17.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .pk18{
+    background-image: url(../../assets/images/pk18.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .pk19{
+    background-image: url(../../assets/images/pk19.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

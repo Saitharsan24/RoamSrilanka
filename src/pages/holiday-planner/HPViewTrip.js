@@ -27,6 +27,7 @@ function getStatusText(status) {
 const HPViewTrip = () => {
   const paraData = useParams();
   console.log("booking id", paraData);
+ 
 
 
   const navigate = useNavigate();
@@ -119,7 +120,7 @@ const HPViewTrip = () => {
   console.log("hotel details", hotelDetails);
 
   const handleCancelButton = () => {
-    window.history.back();
+    navigate(`/holidayPlanner/hptrip`);
   };
 
   const handleChatClick = () => {
@@ -261,9 +262,9 @@ const HPViewTrip = () => {
               <button
                 className="btn-cancel"
                 onClick={handleCancelButton}
-                type="submit"
+                
               >
-                Cancel
+                Back
               </button>
             </div>
           </form>

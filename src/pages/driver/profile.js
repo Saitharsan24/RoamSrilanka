@@ -8,11 +8,37 @@ import axios from "axios";
 
 function Profile() {
    
+    const [requests, setRequests] = useState([]);
+    //Sending data to backend
+    const apiBaseUrl = "http://localhost:8080";
+
+    const axiosInstance = axios.create({
+        baseURL: apiBaseUrl,
+        timeout: 10000,
+    });
+
+    useEffect(() => {
+        // Fetch data from your backend API
+        axiosInstance
+          .get("/allTripRequests")
+          .then((response) => {
+            setRequests(response.data);
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log("Error fetching data:", error);
+          });
+    }, []);
+    
+    const filteredRequests = requests.filter((request) => request.status == 3);
+    console.log("My requests : " + filteredRequests.length);
     //Initiating sessoin data
     const { sessionData , setSessionData  } = useSession();
 
     const userId = sessionData.userId;
     console.log(userId);
+    const Username = sessionData.userFullName;
+    console.log(Username);
 
     const [Review, setReview] = useState([]);
 
@@ -39,11 +65,11 @@ function Profile() {
                                 <div className="d-flex align-items-center justify-content-around">
                                     <img src={img2} alt="profile"  width="150px" height="150px" />
                                     <div>
-                                        <h3>Nisaf Ahamed</h3>
+                                        <h3>{Username}</h3>
                                         <h4 style={{fontWeight:"300"}}>Colombo, Sri Lanka</h4>
                                     </div>
                                     <div >
-                                        <h3 >239</h3>
+                                        <h3 >{filteredRequests.length}</h3>
                                         <h4 style={{fontWeight:"300"}}>Trips</h4>
                                     </div>
                                     <div>
@@ -62,13 +88,13 @@ function Profile() {
                         <div className="col-sm-6 p-2">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="position-relative">
+                                    {/* <div class="position-relative">
                                         <div class="position-absolute top-0 end-0"><Icon.Pencil color="black" /></div>
-                                    </div>
+                                    </div> */}
                                     <h5>Personal Informations</h5><hr></hr>
                                     <div style={{marginTop:"5px"}}>
                                         <h6>Full Name</h6>
-                                        <span className="p-1">Nisaf Ahamed</span><hr></hr>
+                                        <span className="p-1">{Username}</span><hr></hr>
                                     </div>
                                     <div style={{marginTop:"5px"}}>
                                         <h6>About Me</h6>
