@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import { MDBDataTable } from "mdbreact";
+import { useState, useEffect } from "react";
 
 function HPFeedback() {
   const apiBaseUrl = "http://localhost:8080";
@@ -10,6 +11,27 @@ function HPFeedback() {
     baseURL: apiBaseUrl,
     timeout: 5000,
   });
+
+  const [packageDetails, setPackageDetails] = useState([]);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/packages")
+      .then((res) => {
+        const filteredPackage = res.data.filter(
+          (packages) => packages.status === "0"
+        );
+        setPackageDetails(filteredPackage);
+        console.log(filteredPackage);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  , []);
+
+  
+
 
   const data = {
     columns: [
@@ -26,6 +48,12 @@ function HPFeedback() {
         width: 300,
       },
     ],
+    rows: packageDetails.map((item) => {
+      return {
+        Package_name: item.package_name,
+        feedback: item.feedback,
+      };
+    }),
   };
 
   // Custom CSS for column label size
