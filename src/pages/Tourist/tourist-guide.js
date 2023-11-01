@@ -11,6 +11,14 @@ import { useState } from "react";
 function ToursitGuide() {
 
   const [tourGuide, setTourGuide] = useState([]);
+  const [topGuide,setTopGuide] = useState([]);
+
+  const hireGuideHandler = (guideId, imageName) => 
+    {
+        localStorage.setItem("guideImage", JSON.stringify(imageName));
+        localStorage.setItem("guideId", JSON.stringify(guideId));
+        window.location.href = '/tourist/touristGuideView';
+    }
 
   const apiBaseUrl = "http://localhost:8080";
 
@@ -23,7 +31,6 @@ function ToursitGuide() {
     axiosInstance
       .get("/viewGuides")
       .then((res) => {
-        console.log(res.data);
         setTourGuide(res.data);
       })
       .catch((err) => {
@@ -34,7 +41,7 @@ function ToursitGuide() {
   return (
     <div
       className="tourist-main d-flex flex-column gap-2 mb-2"
-      style={{ width: "inherit" }}
+      style={{ width: "inherit", height: "100%" }}
     >
       <div className="tourist-headings w-100">
         <h2 className="mb-1" style={{ margin: "0px", fontWeight: "600" }}>
@@ -89,7 +96,6 @@ function ToursitGuide() {
                 <p style={{ color: "#DB163A" }}>
                   <AiIcons.AiFillStar />{guide.rating}
                 </p>
-                <Link to={"/tourist/touristGuideView"}>
                 <Button
                   className="book-tour-btn" 
                   variant="primary"
@@ -101,10 +107,10 @@ function ToursitGuide() {
                     paddingRight: "20px",
                     fontSize: "12px",
                   }}
+                  onClick={()=>hireGuideHandler(guide.userId,`guide-image-count${index}`)}
                 >
                   Hire guide
                 </Button>
-                </Link>
               </div>
           </div>
             ))}
@@ -113,18 +119,21 @@ function ToursitGuide() {
       </div>
       
       <div className="guide-bottom d-flex flex-row justify-content-center gap-2">
-        <div className="guide-bottom-left">
+        <div className="guide-bottom-left d-flex flex-column">
           <div className="guide-bottom-left-heading dashboard-left-top d-flex flex-row justify-content-between">
-            <h4 className="our-guide-class">Top rated tour guides</h4>
+            <h4 className="our-guide-class">My reviews</h4>
             <p className="margin-right-view" style={{margin:'0px'}}>View all</p>
           </div>
+
         </div>
 
         <div className="guide-bottom-right">
           <div className="guide-bottom-left-heading dashboard-left-top d-flex flex-row justify-content-between">
               <h4 className="our-guide-class">My requests</h4>
               <p className="margin-right-view" style={{margin:'0px'}}>View all</p>
+              
           </div>
+
 
           <div className="new-message d-flex flex-column align-items-start gap-2">
               
