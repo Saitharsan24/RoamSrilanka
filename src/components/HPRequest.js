@@ -33,6 +33,7 @@ const HPDatatablePage = () => {
   const mergeData = (rowData, packages,tourist) => {
     const mergedData = rowData.map(
       (requestItem) => {
+        const newstatus2 = requestItem.status;
       const matchingPackage = packages.find(
         (packageItem) => packageItem.packageID === requestItem.packageID
       );
@@ -49,6 +50,7 @@ const HPDatatablePage = () => {
           ...requestItem,
           ...matchingPackage,
           ...matchingTourist,
+          newstatus2:newstatus2,
         };
       } else {
         return requestItem;
@@ -120,6 +122,9 @@ const HPDatatablePage = () => {
   
   
   const mergedData = mergeData(rowData, packages,tourist);
+  console.log("rowData", rowData);
+  console.log("packages", packages);
+  console.log("tourist", tourist);
   console.log("mergeData", mergedData);
 
   const mergeData2 = (fairrequest, fair,tourist) => {
