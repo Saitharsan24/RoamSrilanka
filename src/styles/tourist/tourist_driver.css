@@ -24,7 +24,7 @@
     height:75%;
     background-color: #ffffff;
     border-radius: 25px;
-    margin: 50px 70px 0px 0px;
+    margin: 70px 70px 0px 0px;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -33,12 +33,26 @@
 .t-d-makebooking h1{
     /* font-size: 30px; */
     font-weight: 700;
-    color: #004577;
-    margin-bottom: 20px;
+    color: #000000;
+    margin-bottom: 40px;
 }
 
 .t-d-makebooking p{
-    margin: 0;
+    margin: 0 !important;
     font-size: 20px;
     font-weight: 600;
+    margin-bottom: -7px !important;
+}
+
+.special-driver-class{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 15px;
+}
+
+.d-t-d{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }

@@ -37,9 +37,6 @@ public class TripRequest {
     private Long status;
 
 
-//    @Column(name = "user_id")
-//    private Long userId;
-
     public TripRequest() {
     }
 
