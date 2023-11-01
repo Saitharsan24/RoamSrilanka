@@ -43,6 +43,9 @@ public class Driver {
     @Column(name = "license_image")
     private String licenseImage;
 
+    @Column(name = "payment")
+    private Long payment;
+
     @OneToOne
     @MapsId
     @JoinColumn(name = "user_id")

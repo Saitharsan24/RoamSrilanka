@@ -84,10 +84,10 @@ function Vehicle() {
     // ]
 
     const images = [
-        {id:0, value:vehicle.length === 1 ? vehicle[0]['image1'] : img1},
-        {id:1, value:vehicle.length === 1 ? vehicle[0]['image2'] : img1},
-        {id:2, value:vehicle.length === 1 ? vehicle[0]['image3'] : img1},
-        {id:3, value:vehicle.length === 1 ? vehicle[0]['image4'] : img1}
+        {id:0, value:vehicle.length === 1 && vehicle[0]['image1'] !== null ? vehicle[0]['image1'] : img1},
+        {id:1, value:vehicle.length === 1 && vehicle[0]['image2'] !== null ? vehicle[0]['image2'] : img2},
+        {id:2, value:vehicle.length === 1 && vehicle[0]['image3'] !== null ? vehicle[0]['image3'] : img3},
+        {id:3, value:vehicle.length === 1 && vehicle[0]['image4'] !== null ? vehicle[0]['image4'] : img4}
     ]
 
     setTimeout(() => { 
