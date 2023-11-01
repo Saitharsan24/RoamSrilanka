@@ -21,16 +21,16 @@
 
 .t-d-makebooking{
     width: 45%;
-    height:75%;
+    height:90%;
     background-color: #ffffff;
     border-radius: 25px;
-    margin: 70px 70px 0px 0px;
+    margin: 40px 70px 0px 0px;
     display: flex;
     flex-direction: column;
     padding: 20px;
 }
 
-.t-d-makebooking h1{
+.t-d-makebooking h2{
     /* font-size: 30px; */
     font-weight: 700;
     color: #000000;
@@ -38,7 +38,7 @@
 }
 
 .t-d-makebooking p{
-    margin: 0 !important;
+    margin: 0;
     font-size: 20px;
     font-weight: 600;
     margin-bottom: -7px !important;
@@ -51,8 +51,25 @@
     margin-left: 15px;
 }
 
+.special-driver-class div{
+    margin-left: 40px !important;
+    margin-right: 160px;
+}
+
 .d-t-d{
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.note-d-b{
+    margin-left: 180px !important;
+}
+
+.note-details{
+    margin: 5px 0px 20px 0px;
+}
+
+.special-btn-css button{
+    background-color: #004577 !important;
 }
