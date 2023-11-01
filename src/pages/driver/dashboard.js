@@ -2,10 +2,12 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import * as Icon from "react-bootstrap-icons";
 import Calendar from "react-calendar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Row, Col, Form } from "react-bootstrap";
 import { hover } from "@testing-library/user-event/dist/hover";
 import { PureComponent } from "react";
+import { useSession } from '../../Context/SessionContext';
+import axios from "axios";
 
 import {
     LineChart,
@@ -124,6 +126,37 @@ export const data1 = [
 
 function Driver() {
 
+  const [requests, setRequests] = useState([]);
+  //Sending data to backend
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 10000,
+  });
+
+  useEffect(() => {
+    // Fetch data from your backend API
+    axiosInstance
+      .get("/allTripRequests")
+      .then((response) => {
+        setRequests(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching data:", error);
+      });
+  }, []);
+
+  const filteredRequests = requests.filter((request) => request.status == 1);
+  console.log("My requests : " + filteredRequests.length);
+  //Initiating sessoin data
+  const { sessionData , setSessionData  } = useSession();
+
+  const Username = sessionData.userFullName;
+  console.log(Username);
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // Add your form submission logic here
@@ -147,7 +180,7 @@ function Driver() {
           <div className="d-flex col-lg-7 col-md-12 gap-3 flex-lg-column flex-md-column flex-column">
             <div class="card mb-2" >
               <div class="card-body" style={{backgroundColor:"76AACF"}}>
-                  <h5 class="card-title">Welcome Back Nisaf !</h5>
+                  <h5 class="card-title">Welcome Back {Username}!</h5>
                   {/* <div class="row mt-4">
                     <div class="col-sm-6 mb-3 mb-sm-0">
                         <div class="card">
@@ -182,7 +215,7 @@ function Driver() {
                     <Icon.ChevronRight />
                 </div>
                 </div>
-                <div
+                {/* <div
                 className="box d-flex col-lg-6 col-md-6 col-sm-12 flex-row align-items-center gap-3 p-2 justify-content-around"
                 style={{ backgroundColor: "#FFFFF", borderRadius: "12px" }}
                 >
@@ -194,7 +227,7 @@ function Driver() {
                 <div className="d-flex">
                     <Icon.ChevronRight />
                 </div>
-                </div>
+                </div> */}
             </div>
             <div
                 style={{
@@ -255,16 +288,16 @@ function Driver() {
           </div>
           <div className="d-flex col-lg-5 col-md-12 col-sm-12 gap-3 flex-lg-row flex-md-row flex-row">
             <div className="right" style={{ display: "flex", flexDirection: "column" }}>
-              <div class="card mb-2">
+              {/* <div class="card mb-2">
                 <div class="card-body">
                     <h5 class="card-title">Vehicle Rate</h5>
-                    {/* <ReactStars {...ratingExample} /> */}
+                    <ReactStars {...ratingExample} />
                 </div>
-              </div>
+              </div> */}
               <div class="card mb-2">
                 <div class="card-body">
                     <h5 class="card-title">Next Trip</h5>
-                    <h4 style={{color:"red"}}>25/08/2023</h4>
+                    <h4 style={{color:"red"}}>23/05/2023</h4>
                 </div>
               </div>
               <div class="card mb-2">
