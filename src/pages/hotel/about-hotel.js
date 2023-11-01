@@ -289,7 +289,7 @@ const AboutHotel = () => {
             className="m-0 mx-2"
           >
             <span style={{ fontWeight: "600", fontSize: "16px" }}>
-              7.2/10 Good
+              {hotel.userRating}/10 Good
             </span>
             <br />
           </p>
@@ -481,13 +481,13 @@ const AboutHotel = () => {
                                   <Icon.PSquareFill size={15} /> Parking
                                   included
                                 </p>
-                                <p
+                                {/* <p
                                   className="m-0 mx-2"
                                   style={{ fontSize: "13px" }}
                                 >
                                   <Icon.Textarea size={15} /> {room.roomSize} sq
                                   ft
-                                </p>
+                                </p> */}
                                 <p
                                   className="m-0 mx-2"
                                   style={{ fontSize: "13px" }}
@@ -502,7 +502,7 @@ const AboutHotel = () => {
                                   <MdIcons.MdHorizontalSplit size={15} />{" "}
                                   {room.noOfBeds} Queen bed
                                 </p>
-                                <p
+                                {/* <p
                                   style={{
                                     fontFamily: "Poppins",
                                   }}
@@ -517,7 +517,7 @@ const AboutHotel = () => {
                                     7.2/10 Good
                                   </span>
                                   <br />
-                                </p>
+                                </p> */}
                                 <Link
                                   to={`/hotel/hotelReviews?id=${room.roomId}`}
                                   className="mx-2"
@@ -859,6 +859,18 @@ const AboutHotel = () => {
                         </option>
                         <option value="Deluxe Single Room">
                           Deluxe Single Room
+                        </option>
+                        <option value="Deluxe Twin Room">
+                          Deluxe Twin Room
+                        </option>
+                        <option value="Oceanfront Deluxe Room">
+                        Oceanfront Deluxe Room
+                        </option>
+                        <option value="Deluxe Quadruple Room">
+                          Deluxe Quadruple Room
+                        </option>
+                        <option value="Deluxe Family Room">
+                          Deluxe Family Room
                         </option>
                       </select>
                     </label>
