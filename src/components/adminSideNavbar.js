@@ -6,6 +6,7 @@ import * as AiIcons from 'react-icons/ai'
 import * as BiIcons from 'react-icons/bi'
 import * as FiIcons from 'react-icons/fi'
 import * as RiIcons from  'react-icons/ri'
+import * as IoIcons from 'react-icons/io'
 
 import '../styles/tourist/touristsidenavbar.css'
 
@@ -55,6 +56,14 @@ function AdminSideNavbar() {
         icon:<AiIcons.AiFillCar />,
         cName: 'nav-text',
       },
+
+      {
+        title:'System setting',
+        path:'adminSystemSetting',
+        icon:<AiIcons.AiFillSetting />,
+        cName: 'nav-text',
+      },
+
       {
         title:'Profile',
         path:'adminprofile',

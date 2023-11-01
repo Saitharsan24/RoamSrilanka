@@ -37,6 +37,7 @@ import AdminPlannertDetails from "./pages/admin/admin_holidayplanner_view_detail
 import AdminGuideDetails from "./pages/admin/admin_guide_detail";
 import AdminVehicle from "./pages/admin/admin_vehicle";
 import AdminVehicleDetail_1 from "./pages/admin/admin_vehice_detail";
+import AdminSystemSetting from "./pages/admin/admin_system_setting";
 
 
 import SystemError from "./pages/error";
@@ -202,9 +203,9 @@ const route = createBrowserRouter(
         <Route path="adminguidedetail" element={<AdminGuideDetails/>}></Route>
         <Route path="adminvehicle" element={<AdminVehicle/>}></Route>
         <Route path="adminvehicledetail_1" element={<AdminVehicleDetail_1/>}></Route>
-
+        <Route path="adminSystemSetting" element={<AdminSystemSetting/>}></Route>
       </Route>
-          
+      
       <Route path="/holidayPlanner/" element={<HolidayPlannerLayout />} errorElement={<SystemError />}>
         <Route index element={<Holiday_dashboard />}></Route>
         <Route path="plannerDashboard" element={<Holiday_dashboard />}></Route>
