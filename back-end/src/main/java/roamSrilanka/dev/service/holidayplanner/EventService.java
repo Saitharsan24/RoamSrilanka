@@ -59,4 +59,8 @@ public class EventService {
     public EventImage getEventImage(Integer eventId) {
         return eventImageRepository.findById(eventId).orElse(null);
     }
+
+    public List<EventImage> getEventImages() {
+        return eventImageRepository.findAll();
+    }
 }

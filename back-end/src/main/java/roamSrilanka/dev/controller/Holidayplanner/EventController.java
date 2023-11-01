@@ -121,4 +121,9 @@ public class EventController {
     public ResponseEntity<EventImage> getEventImage(@PathVariable Integer eventId) {
         return ResponseEntity.ok(eventService.getEventImage(eventId));
     }
+
+    @GetMapping("/getEventImages")
+    public List<EventImage> getEventImages() {
+        return eventService.getEventImages();
+    }
 }
