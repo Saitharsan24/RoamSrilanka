@@ -23,8 +23,8 @@ public class Request {
     @Column(name = "fromdate")
     private LocalDate fromdate;
 
-    @Column(name = "todate")
-    private LocalDate todate;
+//    @Column(name = "todate")
+//    private LocalDate todate;
 
     @Column(name = "hotel_id")
     private int hotel_id;
@@ -41,23 +41,23 @@ public class Request {
     public Request() {
     }
 
-    public Request(int p_bookingID, int touristID, int packageID, LocalDate fromdate, LocalDate todate, int hotel_id, int guide_id, int driver_id, int status) {
+    public Request(int p_bookingID, int touristID, int packageID, LocalDate fromdate, int hotel_id, int guide_id, int driver_id, int status) {
         this.p_bookingID = p_bookingID;
         this.touristID = touristID;
         this.packageID = packageID;
         this.fromdate = fromdate;
-        this.todate = todate;
+//        this.todate = todate;
         this.hotel_id = hotel_id;
         this.guide_id = guide_id;
         this.driver_id = driver_id;
         this.status = status;
     }
 
-    public Request(int touristID, int packageID, LocalDate fromdate, LocalDate todate, int hotel_id, int guide_id, int driver_id, int status) {
+    public Request(int touristID, int packageID, LocalDate fromdate, int hotel_id, int guide_id, int driver_id, int status) {
         this.touristID = touristID;
         this.packageID = packageID;
         this.fromdate = fromdate;
-        this.todate = todate;
+//        this.todate = todate;
         this.hotel_id = hotel_id;
         this.guide_id = guide_id;
         this.driver_id = driver_id;
@@ -80,13 +80,13 @@ public class Request {
         this.packageID = packageID;
     }
 
-    public LocalDate getTodate() {
-        return todate;
-    }
-
-    public void setTodate(LocalDate todate) {
-        this.todate = todate;
-    }
+//    public LocalDate getTodate() {
+//        return todate;
+//    }
+//
+//    public void setTodate(LocalDate todate) {
+//        this.todate = todate;
+//    }
 
     public int getGuide_id() {
         return guide_id;

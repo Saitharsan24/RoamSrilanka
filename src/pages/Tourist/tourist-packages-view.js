@@ -87,6 +87,7 @@ function ToursitGuide() {
               <p><span>$ {Math.floor(tourPackage.price)}</span></p>
               <div className="package-details-list">
                 <p className="mt-2"><span>Accomodation:</span> {tourPackage.hotel_rating} Star hotel</p>
+                <p><span>No of Days:</span> {tourPackage.days}</p>
                 <p><span>Tour guide:</span> {tourPackage.trip_guide && 'Included'}{!(tourPackage.trip_guide) && 'Not included'}</p>
                 <p><span>Transportation:</span> {tourPackage.vehicle && 'Included'}{!(tourPackage.vehicle) && 'Not included'}</p>
                 <p><span>No of Pax:</span> {tourPackage.no_of_people}</p>
