@@ -58,6 +58,7 @@ import TouristAccessories from "./pages/Tourist/tourist-accessories";
 import ToursitAccessoriesView from "./pages/Tourist/tourist-accessories-view";
 import ToursitHotelViewRoom from "./pages/Tourist/tourist-hotel-view-rooms";
 import TouristAllGuide from "./pages/Tourist/tourist-all-guide";
+import TouristDriver from "./pages/Tourist/tourist-driver";
 
 import HotelLayout from "./layouts/hotel/hotel-layout";
 import HotelDashboard from "./pages/hotel/hotel-dashboard";
@@ -140,7 +141,7 @@ const route = createBrowserRouter(
         <Route path="touristHotel" element={<TouristHotel />}></Route>
         <Route path="touristGuide" element={<ToursitGuide />}></Route>
         <Route path="touristGuideView" element={<ToursitGuideView />}></Route>
-        <Route path="touristDriver" element={<TouristBookings />}></Route>
+        <Route path="touristDriver" element={<TouristDriver />}></Route>
         <Route path="touristGadgets" element={<TouristAccessories />}></Route>
         <Route path="touristBlog" element={<TouristBlog />}></Route>
         <Route path="touristBlogView" element={<TouristBlogView />}></Route>

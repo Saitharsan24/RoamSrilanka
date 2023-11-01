@@ -16,3 +16,7 @@
 .special-guide-reserve{
     height: 500px;
 }
+
+.special-package{
+    height: 300px !important;
+}

@@ -29,6 +29,8 @@ function PackageRequestPopup({closeModal, item}) {
           // Handle the response data
           // For example:
           console.log(response.data);
+          alert("Successfully Sent request ! Wait for the response.");
+          window.location.href = "/tourist/touristPackages";
         })
         .catch((err) => {
           console.log(err);
@@ -40,7 +42,7 @@ function PackageRequestPopup({closeModal, item}) {
     
   return (
     <div>
-    <div className='popup-for-acc-reserve'>
+    <div className='popup-for-acc-reserve special-package'>
         <div className="roomDetailClosebtn w-100 mt-1"><IoIcon.IoCloseCircle onClick={closeModal} className="roomDetailClosebtnicon" style={{fontSize:"30px", cursor:"pointer", }}/></div>
         <div className="reserveName"><h3 style={{fontWeight:"600", marginTop:"20px"}} >{item.package_name}</h3></div>
         <div className='reserve-details'>
