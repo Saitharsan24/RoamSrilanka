@@ -50,9 +50,15 @@ function AdminSystemSetting() {
     setEditStatus(!editStatus)
   }
 
+
+  const apiBaseUrl = "http://localhost:8080";
+  const axiosInstance = axios.create({
+      baseURL: apiBaseUrl,
+      timeout: 10000,
+  });
+
   const updateHandler = () => { 
-    
-    axios.post("http://localhost:8080/updateSetting", {
+    const detailsToStore = {
       driverCancellationFee: driverCancellationFee,
       driverCompanyCommission: driverCompanyCommission,
       driverPerDayCharge: driverPerDayCharge,
@@ -62,16 +68,21 @@ function AdminSystemSetting() {
       hotelSeasonalValueAdded: hotelSeasonalValueAdded,
       hotelCancellationFee: hotelCancellationFee,
       hotelCompanyCommission: hotelCompanyCommission
-    }).then((response) => {
+    }
+    
+    axiosInstance.put("/updateSetting", detailsToStore)
+    .then((response) => {
       if(response.status === 200){
         alert("Values are successfully updated !");
       }
       else{
         alert("Error occured while updating values !");
       }
-    }).error((err) => {
-      console.log(err);
+      setEditStatus(!editStatus);
     })
+    .catch((err) => {
+      console.log(err);
+    });
   }
 
   return (
@@ -105,15 +116,15 @@ function AdminSystemSetting() {
 
       <div className='hotel-ss'>
           <div className='reserve-items special-driver-class specialforadmin'>
-            <p>Per day charge:</p>
+            <p>Per day charge ($):</p>
             <input type="text" value={driverPerDayCharge} disabled={!editStatus} onChange={(e=>{setDriverPerDayCharge(e.target.value)})}/>
           </div>
           <div className='reserve-items special-driver-class specialforadmin'>
-            <p>Per day distance:</p>
+            <p>Per day distance (km):</p>
             <input type="text" value={driverPerDayDistance} disabled={!editStatus} onChange={(e)=>{setDriverPerDayDistance(e.target.value)}}/>
           </div>
           <div className='reserve-items special-driver-class specialforadmin'>
-            <p>Extra Km charge:</p>
+            <p>Extra Km charge ($):</p>
             <input type="text" value={driverExtraKmCharge} disabled={!editStatus} onChange={(e)=>{setDriverExtraKmCharge(e.target.value)}}/>
           </div>
               
@@ -130,7 +141,7 @@ function AdminSystemSetting() {
       </div>
       <div className='hotel-ss'>
         <div className='reserve-items'>
-          {editStatus && <div><Button onClick={()=>setEditStatus(!editStatus)} className='specialadminbtn'  style={{marginRight:"30px"}}>Cancel</Button><Button onClick={setEditStatusChange} className='specialadminbtn'  style={{marginRight:"30px"}}>Update</Button></div>}
+          {editStatus && <div><Button onClick={()=>setEditStatus(!editStatus)} className='specialadminbtn'  style={{marginRight:"30px"}}>Cancel</Button><Button onClick={updateHandler} className='specialadminbtn'  style={{marginRight:"30px"}}>Update</Button></div>}
           {!editStatus && <Button onClick={()=>setEditStatus(!editStatus)}   className='specialadminbtn'  style={{marginRight:"30px"}}>Edit value</Button>}
         </div>
       </div>
