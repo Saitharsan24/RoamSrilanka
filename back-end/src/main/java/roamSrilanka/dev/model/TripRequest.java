@@ -36,11 +36,13 @@ public class TripRequest {
     @Column(name = "status")
     private Long status;
 
+
     @Column(name = "tourist_id")
     private Integer tourist_id;
 
     @Column(name = "no_of_days")
     private Integer no_of_days;
+
 
     public TripRequest() {
     }

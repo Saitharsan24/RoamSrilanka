@@ -114,7 +114,7 @@ const HPRequestDetails = () => {
   );
   });
   
-  // availableHotels will contain the hotels that do not have date conflicts
+  
   const availableHotels = filteredHotels;
   
 
@@ -161,9 +161,8 @@ const HPRequestDetails = () => {
 
   const mergeGuideData = (guideData, guideUser, guideRequestData) => {
     const mergedData = guideData.map((dataItem) => {
-      const matchingUser = Array.isArray(guideUser) ? guideUser.find((userItem) => userItem && userItem.userId === dataItem.userId) : undefined;
-      const matchingRequest = Array.isArray(guideRequestData) ? guideRequestData.find((requestData) => requestData && requestData.userId === dataItem.userId) : undefined;
-  
+      const matchingRequest = Array.isArray(guideRequestData) ? guideRequestData.find((requestData) => requestData && requestData.guideId === dataItem.userId) : undefined;
+      const matchingUser = Array.isArray(guideUser) ? guideUser.find((userItem) => userItem && userItem.userId === dataItem.userId) : undefined;  
       if (matchingUser) {
         const mergedItem = {
           ...dataItem,
@@ -184,6 +183,11 @@ const HPRequestDetails = () => {
   };
   
   const fullyMergedGuideData = mergeGuideData(guideData, guideUser, guideRequestData);
+  
+  console.log("guide data : ",guideData);
+  console.log("guide user : ",guideUser);
+  console.log("guide request data : ",guideRequestData);
+  console.log("fully merged guide data : ",fullyMergedGuideData);
   
   const filteredGuides = fullyMergedGuideData.filter(guide => {
     const requestFromDate = new Date(guide.requestData.fromDate);
@@ -307,12 +311,14 @@ const filteredDrivers = fullyMergedDriverData.filter(driver => {
 
   // Apply additional conditions for status and seats
   return (
-    driver.newstatus !== 1 &&
+    driver.newstatus != 1 &&
     driver.seats === seats && !hasDateConflict
   );
 });
 
 const availableDrivers = filteredDrivers;
+
+console.log("available drivers : ",availableDrivers);
 
 
   const handleRowClick = (packageID) => {
@@ -376,6 +382,7 @@ console.log("day",currentDate);
 
       if(response1.status && response2.status && response3.status && response4.status == 200){
         alert("Request accepted successfully");
+        navigate("/holidayPlanner/plannerRequest");
       }else{
         alert("Request not accepted");
       }
@@ -518,7 +525,7 @@ console.log("day",currentDate);
             </div>
 
             <div className="d-flex flex-column flex-lg-row justify-content-left m-2 gap-3">
-              {packageData.trip_guide && (
+              
                 <div className="d-flex flex-column flex-lg-row justify-content-left col-6 gap-3">
                   <div className="col-8">
                     <p>Tour guide:</p>
@@ -538,7 +545,6 @@ console.log("day",currentDate);
                     </select>
                   </div>
                 </div>
-              )}
             </div>
 
             <div className="d-flex flex-row justify-content-between mx-2">
