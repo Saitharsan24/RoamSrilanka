@@ -217,7 +217,7 @@ const route = createBrowserRouter(
         <Route path="plannerPackage3" element={<HPUpdatePackage3 />}></Route> 
         <Route path="plannerViewPackage/:packageID" element={<HPViewpackage />}></Route>
         <Route path="plannerItem1" element={<HPUpdateItem1 />}></Route>
-        <Route path="plannerViewEvent" element={<HPViewEvent />}></Route>
+        <Route path="plannerViewEvent/:eventId" element={<HPViewEvent />}></Route>
         <Route path="plannerViewItem/:fairId" element={<HPViewItem />}></Route>
         <Route path="plannerRequest" element={<HPRequest />}></Route>
         <Route path="hpchat" element={<HPChat/>}></Route>

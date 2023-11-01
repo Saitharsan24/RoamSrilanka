@@ -38,10 +38,10 @@ public class GuideTripController {
         }
     }
 
-    @PostMapping("/addTrip")
-    public ResponseEntity<GuideTrip> addTrip(@RequestBody GuideTrip guideTrip){
-        GuideTrip trip = tripsService.addTrip(guideTrip);
-        System.out.println(trip);
-        return ResponseEntity.ok(trip);
-    }
+//    @PostMapping("/addTrip")
+//    public ResponseEntity<GuideTrip> addTrip(@RequestBody GuideTrip guideTrip){
+//        GuideTrip trip = tripsService.addTrip(guideTrip);
+//        System.out.println(trip);
+//        return ResponseEntity.ok(trip);
+//    }
 }
