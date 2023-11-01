@@ -54,6 +54,7 @@
 .special-driver-class div{
     margin-left: 40px !important;
     margin-right: 160px;
+    
 }
 
 .d-t-d{
@@ -63,13 +64,22 @@
 }
 
 .note-d-b{
-    margin-left: 180px !important;
+    margin-left: 150px !important;
+    margin-top: 15px !important;
 }
 
 .note-details{
     margin: 5px 0px 20px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .special-btn-css button{
     background-color: #004577 !important;
+}
+
+.amount-d-c span{
+    color: #DB163A;
+    font-weight: 600;
 }

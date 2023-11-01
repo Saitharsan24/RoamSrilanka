@@ -10,6 +10,10 @@ function ToursitDriver() {
 
   const [systemSetting, setSystemSetting] = useState({});
   const { sessionData , setSessionData  } = useSession();
+  const [tripStartDate, setTripStartDate] = useState(new Date().toISOString().split('T')[0]);
+  const [noOfDays, setNoOfDays] = useState(1);
+  const [pickupLocation, setPickupLocation] = useState("");
+  const [amount, setAmount] = useState();
 
   const apiBaseUrl = "http://localhost:8080";
   const axiosInstance = axios.create({
@@ -24,7 +28,8 @@ function ToursitDriver() {
       // Handle the response data
       // For example:
       console.log(response.data);
-      setSystemSetting(response.data);
+      setSystemSetting(response.data[0]);
+      setAmount(response.data[0].driverPerDayFee)
     })
     .catch((err) => {
       console.log(err);
@@ -34,11 +39,11 @@ function ToursitDriver() {
   const requestHandler = () => {
 
     const data = {
-      start_date: "2021-09-01",
-      pickup: "Colombo",
-      amount: 1000,
-      tourist_id: 1,
-      no_of_days: 3,
+      start_date: tripStartDate,
+      pickup: pickupLocation,
+      amount: amount,
+      tourist_id: sessionData.userId,
+      no_of_days: noOfDays,
     }
 
     axiosInstance.post("/addTripRequest", data)
@@ -47,7 +52,15 @@ function ToursitDriver() {
       // For example:
       console.log(response.data);
       alert("Request sent successfully");
+      window.location.href = "/tourist";
+      
     })
+  }
+
+  const amountCalculation = (e) => {
+    setNoOfDays(e.target.value);
+    console.log(systemSetting.driverPerDayFee);
+    setAmount(e.target.value * systemSetting.driverPerDayFee);
   }
 
 
@@ -59,23 +72,23 @@ function ToursitDriver() {
         <div className='d-t-d'>
           <div className='reserve-items special-driver-class'>
             <p>Trip start date:</p>
-            <input type="date" />
+            <input type="date" value={tripStartDate} onChange={(e)=>setTripStartDate(e.target.value)}/>
           </div>
           <div className='reserve-items special-driver-class'>
             <p>No of days:</p>
-            <input type="number" min={1} />
+            <input type="number" value={noOfDays} onChange={(e)=>amountCalculation(e)} min={1} />
           </div>
           <div className='reserve-items special-driver-class'>
             <p>Pickup location:</p>
-            <input type="text" />
+            <input type="text" value={pickupLocation} onChange={(e)=>setPickupLocation(e.target.value)}/>
           </div>
           <div className='reserve-items special-driver-class'>
             <p>Amount:</p>
-            <input type="text" />
+            <input type="text" value={"$ "+amount} onChange={amountCalculation}/>
           </div>
           <div className='reserve-items special-driver-class'>
           <p className='note-d-b' style={{color:"#004577",fontWeight:"700"}}>**Note**</p>
-            <div className='note-details d-flex flex-column align-items-end'>
+            <div className='note-details d-flex flex-column align-items-start'>
             <p className='amount-d-c'>Amount per day: <span>{"$ "+systemSetting.driverPerDayFee}</span></p>
             <p className='amount-d-c'>Maximum distance per day: <span>{systemSetting.driverPerDayKm+"km"}</span> </p>
             <p className='amount-d-c'>Charge per extra km: <span>{"$ "+systemSetting.driverExtraKmFee}</span></p>

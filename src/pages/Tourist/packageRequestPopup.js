@@ -19,6 +19,15 @@ function PackageRequestPopup({closeModal, item}) {
     const { sessionData , setSessionData  } = useSession();
     
     const handleRequest = () => {
+
+        const data = {
+            "fromdate": fromDate,
+            "to"
+            "touristId": sessionData.userId,
+            "packageid": item.packageID,
+            "status": 0
+        }
+
         axiosInstance.post("/request", {
             "fromdate": fromDate,
             "touristId": sessionData.userId,
