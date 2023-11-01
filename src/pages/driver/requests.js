@@ -382,6 +382,7 @@ import Headeruser from "../../components/headerusers";
 import { MDBDataTable } from "mdbreact";
 import "./../../styles/data-table.css";
 import axios from "axios";
+import { useSession } from '../../Context/SessionContext';
 
 function HotelRequest() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -398,6 +399,11 @@ function HotelRequest() {
     timeout: 10000,
   });
 
+
+  const { sessionData , setSessionData  } = useSession();
+
+  const userId = sessionData.userId;
+  console.log(userId);
 
   const openModal = (request_id) => {
     setIsModalOpen(true);
@@ -452,6 +458,7 @@ function HotelRequest() {
     try {
       const response = await axiosInstance.put(`/updateStatus/${request_id}`, {
         status: 1,
+        userId: userId,
       });
 
       if (response.status === 200) {

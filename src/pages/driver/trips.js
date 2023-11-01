@@ -171,13 +171,13 @@ function DriverTrips() {
                 <div className="d-flex flex-row gap-4 my-3 ">
                     <ul className="nav nav-pills mb-3 mt-1" id="pillstab" role="tablist">
                         <li className="nav-item" role="presentation">
-                            <button className={showtab === 1 ? "nav-link active": "nav-link"} onClick={() => handletab(1)}>Upcoming Trips</button>
+                            <button className={showtab === 1 ? "nav-link active": "nav-link"} onClick={() => handletab(1)}>Payment Pending</button>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button className={showtab === 2 ? "nav-link active": "nav-link"} onClick={() => handletab(2)}>Ongoing Trips</button>
+                            <button className={showtab === 2 ? "nav-link active": "nav-link"} onClick={() => handletab(2)}>Confirm Trips</button>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button className={showtab === 3 ? "nav-link active": "nav-link"} onClick={() => handletab(3)}>Finished Trips</button>
+                            <button className={showtab === 3 ? "nav-link active": "nav-link"} onClick={() => handletab(3)}>Completed Trips</button>
                         </li>
                     </ul>
                 </div>
@@ -185,7 +185,7 @@ function DriverTrips() {
                 <div className="tab-content text-dark" id="pills-tabContent">
                     <div className={showtab === 1 ? "tab-pane fade show active": "tab-pane fade show"}>
                         
-                        <p>Upcoming</p>
+                        {/* <p>Upcoming</p> */}
 
                         <MDBDataTable
                           striped
@@ -230,19 +230,19 @@ function DriverTrips() {
                                 sort: "asc",
                                 width: 250,
                               },
-                              {
-                                label: "More Info",
-                                field: "btn",
-                                width: 100,
-                                btn: "view-button",
-                              },
+                              // {
+                              //   label: "More Info",
+                              //   field: "btn",
+                              //   width: 100,
+                              //   btn: "view-button",
+                              // },
                             ],
                             rows: rows1, // Use the rows you generated
                           }}
                           exportToCSV={true}
                         />
 
-                        <Modal show={isModalOpen} onHide={closeModal}>
+                        {/* <Modal show={isModalOpen} onHide={closeModal}>
                           <Modal.Header closeButton>
                             <Modal.Title>Trip Request</Modal.Title>
                           </Modal.Header>
@@ -349,10 +349,10 @@ function DriverTrips() {
                               <p>No records found for Tourist ID: {request_id}</p>
                             )}
                           </Modal.Body>
-                        </Modal>
+                        </Modal> */}
                     </div>
                     <div className={showtab === 2 ? "tab-pane fade show active": "tab-pane fade show"}>
-                        <p>Ongoing</p>
+                        {/* <p>Ongoing</p> */}
 
                         <MDBDataTable
                           striped
@@ -519,7 +519,7 @@ function DriverTrips() {
                         </Modal>
                     </div>
                     <div className={showtab === 3 ? "tab-pane fade show active": "tab-pane fade show"}>
-                        <p>Finished</p>
+                        {/* <p>Finished</p> */}
                         <MDBDataTable
                           striped
                           bordered
