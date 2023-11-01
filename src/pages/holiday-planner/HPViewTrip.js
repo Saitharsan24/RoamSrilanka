@@ -263,7 +263,7 @@ const HPViewTrip = () => {
                 onClick={handleCancelButton}
                 type="submit"
               >
-                Cancel
+                Back
               </button>
             </div>
           </form>

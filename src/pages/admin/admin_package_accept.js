@@ -315,7 +315,7 @@ function AdminPackageAccept() {
                             borderRadius: "5px",
                           }}
                         >
-                          {packages.vehicle}
+                          {packages.vehicle ? "Available" : "Not Available"}
                         </td>
                         <td style={{ width: "50px" }}></td>
                         <td
@@ -325,7 +325,7 @@ function AdminPackageAccept() {
                             borderRadius: "5px",
                           }}
                         >
-                          {packages["trip_guide"]}
+                          {packages.trip_guide ? "Available" : "Not Available"}
                           
                         </td>
                       </tr>
