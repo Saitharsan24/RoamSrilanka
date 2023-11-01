@@ -120,6 +120,17 @@ function HotelBooking() {
     return item.hotelData["ownerId"] === ownerId;
   });
 
+  function determineStatus(status) {
+    switch (status) {
+      case "0":
+        return {text : "Confirmed", color:"green"};
+      case "1":
+        return {text : "Rejected", color:"red"};
+        default:
+      return { text: "Unknown", color: "black" };  
+    }
+  }
+
   console.log("mergedData:",mergedData);
 console.log("filteredData:",filteredData); 
 
@@ -127,7 +138,18 @@ console.log("filteredData:",filteredData);
     return {
       name: request.userFullname,
       date: request.date,
-      status: determineStatus(request.status),
+      status: <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          borderRadius: "50%",
+          backgroundColor: determineStatus(request.status).color,
+          marginRight: "8px",
+        }}
+      ></div>
+      {determineStatus(request.status).text}
+    </div>,
       btn: (
         <Link
           key={`view-${request.requestId}`}
@@ -139,16 +161,6 @@ console.log("filteredData:",filteredData);
       ),
     };
   });
-
-  function determineStatus(status) {
-    if (status == null) {
-      return "Pending";
-    } else if (status == 1) {
-      return "Accepted";
-    } else {
-      return "Rejected";
-    }
-  }
 
   const handleRequestlId = (e) => {
     setRequestId(e.target.value);

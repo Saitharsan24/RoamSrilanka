@@ -36,6 +36,7 @@ public class TripRequest {
     @Column(name = "status")
     private Long status;
 
+
     public TripRequest() {
     }
 
