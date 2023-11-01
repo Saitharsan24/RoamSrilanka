@@ -84,10 +84,10 @@ function RentAccPopup({closeModal, item}) {
 
     const handleRent = () => { 
         const hireDetails = {
-            userId: sessionData.userId,
+            touristID: sessionData.userId,
             guideId: item.userId,
-            fromDate: fromDate,
-            toDate: toDate,
+            fromdate: fromDate,
+            todate: toDate,
             charge: rentAmount,
             status: 0,
             places: placesToVisit
