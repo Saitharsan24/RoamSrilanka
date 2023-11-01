@@ -48,18 +48,22 @@ function HotelBooking() {
       // Fetch data from your backend API for viewRequest
       const requestResponse = await axiosInstance.get("/viewRequest");
       const requestArray = requestResponse.data;
+      console.log("requestArray:",requestArray);
   
       // Fetch data from your backend API for viewTourists
-      const touristsResponse = await axiosInstance.get("/viewTourists");
+      const touristsResponse = await axiosInstance.get("/viewTourist");
       const touristsArray = touristsResponse.data;
+      console.log("touristsArray:",touristsArray);
   
       // Fetch data from your backend API for viewHotels
       const hotelsResponse = await axiosInstance.get("/viewHotels");
       const hotelsArray = hotelsResponse.data;
+      console.log("hotelsArray:",hotelsArray);
   
       // Fetch data from your backend API for users
       const usersResponse = await axiosInstance.get("/users");
       const usersArray = usersResponse.data;
+      console.log("usersArray:",usersArray);
   
       // Create a mapping of userId to user data
       const userDataMap = {};
@@ -116,6 +120,7 @@ function HotelBooking() {
     return item.hotelData["ownerId"] === ownerId;
   });
 
+  console.log("mergedData:",mergedData);
 console.log("filteredData:",filteredData); 
 
   const rows = filteredData.map((request) => {
@@ -161,7 +166,7 @@ console.log("filteredData:",filteredData);
           >
             <b>All Bookings</b>
           </p>
-          <a style={{ color: "inherit" }} href="hotelRequest">
+          {/* <a style={{ color: "inherit" }} href="hotelRequest">
             <button
               type="button"
               style={{
@@ -177,7 +182,7 @@ console.log("filteredData:",filteredData);
                 </span>
               )}
             </button>
-          </a>
+          </a> */}
         </div>
         <MDBDataTable
           striped
