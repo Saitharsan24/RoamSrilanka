@@ -2,8 +2,32 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import "../../styles/tourist/tour_packages.css";
 import * as BsIcons from 'react-icons/bs'
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
 
 function ToursitGuide() {
+
+  const [tourPackages, setTourPackages] = useState([]);
+
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 10000,
+  });
+
+  // useEffect(() => {
+  //   axiosInstance
+  //     .get("/viewTourPackages")
+  //     .then((res) => {
+  //       setTourPackages(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // });
+
   return (
     <div
       className="tourist-main d-flex flex-column gap-2 mb-2"
@@ -48,6 +72,7 @@ function ToursitGuide() {
 
       <div className="all-tourist-packages d-flex flex-column guide-top mt-2">
         <div className="package-row d-flex flex-row gap-4 justify-content-around">
+         
           <div className="package-card">
             <div className="package-card-image">
               <img src="" alt="" />
@@ -73,8 +98,7 @@ function ToursitGuide() {
               </a>
             </div>
           </div>
-          <div className="package-card">x</div>
-          <div className="package-card">x</div>
+
         </div>
       </div>
         

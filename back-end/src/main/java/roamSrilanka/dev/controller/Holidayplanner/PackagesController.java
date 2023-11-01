@@ -1,6 +1,7 @@
 package roamSrilanka.dev.controller.Holidayplanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
@@ -63,27 +64,41 @@ public class PackagesController {
     }
 
 
+    //     get the specific package by packageID and add feedback
+   @PutMapping("/packageFeedback/{packageID}")
+    public ResponseEntity<Packages> saveFeedback(@PathVariable("packageID") Integer packageID, @RequestBody Packages updatedPackage) {
+        Packages exitingPackage = packagesService.findbyId(packageID);
 
+        if (exitingPackage == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        else {
 
-//            @PutMapping("/updateVehicle/{vehicleID}")
-//    public Repository updateVehicle(@PathVariable("vehicleID") Long vehicleID, @RequestBody Vehicle vehicle) {
+            exitingPackage.setFeedback(updatedPackage.getFeedback());
+            packagesService.savePackage(exitingPackage);
+            return new ResponseEntity<>(exitingPackage, HttpStatus.OK);
+
+        }
+    }
+
+//    @PutMapping("/vehicleFeedback/{vehicleID}")
+//    public ResponseEntity<Vehicle> saveFeedback(@PathVariable("vehicleID") Long vehicleID, @RequestBody Vehicle updatedVehicle) {
 //        Vehicle exitingVehicle = vehicleService.findbyId(vehicleID).orElse(null);
 //
-//        if (exitingVehicle==null) {
-//            return null;
+//        if (exitingVehicle == null) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 //        }
 //        else {
-//            exitingVehicle.setVehicle_number(vehicle.getVehicle_number());
-//            exitingVehicle.setColor(vehicle.getColor());
-//            exitingVehicle.setModel(vehicle.getModel());
-//            exitingVehicle.setStatus(vehicle.getStatus());
 //
-//            //save the changes made to the existing vehicle
+//            exitingVehicle.setFeedback(updatedVehicle.getFeedback());
 //            vehicleService.saveVehicle(exitingVehicle);
-//            return null;
+//            return new ResponseEntity<>(exitingVehicle, HttpStatus.OK);
 //
 //        }
 //    }
+//
+//
+
 
 
 }
