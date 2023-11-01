@@ -168,7 +168,6 @@ public class Packages {
         this.no_of_people = no_of_people;
     }
 
-<<<<<<< HEAD
     public String getFeedback() {
         return feedback;
     }
@@ -180,7 +179,7 @@ public class Packages {
 //    public Packages orElse(Object o) {
 //        return null;
 //    }
-=======
+
 
 //    public Boolean getVehicle() {
 //        return vehicle;
@@ -191,5 +190,4 @@ public class Packages {
 //    }
 
 
->>>>>>> 04112d3f0e2086a27c69e901644d29e3ae153b95
 }
