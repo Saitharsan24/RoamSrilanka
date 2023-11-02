@@ -710,20 +710,20 @@ function HotelRequest() {
                 </div>
                 <div className="d-flex flex-row justify-content-between ">
                   <div>
-                    <label className="hotel-popup-label">From Date</label>
+                    <label className="hotel-popup-label">Start Date</label>
                     <br />
                     <div
                     style={{width: "210px"}}
                       className="hotel-popup-input"
-                    >{selectedRequest.start_date}</div>
+                    >{selectedRequest.start_date.slice(0, 10)}</div>
                   </div>
                   <div>
-                    <label className="hotel-popup-label">To Date</label>
+                    <label className="hotel-popup-label">Duration (In days)</label>
                     <br />
                     <div
                     style={{width: "210px"}}
                       className="hotel-popup-input"
-                    >{selectedRequest.end_date}</div>
+                    >{selectedRequest.no_of_days}</div>
                   </div>
                 </div>
                 <div className="d-flex flex-row justify-content-between">
@@ -775,7 +775,7 @@ function HotelRequest() {
                   </div>
                 </div>
                 <dic className="d-flex flex-row justify-content-center gap-5">
-                  <button /*onClick={requestRejectProcess}*/ className="hotel-popup-reject p-2">Reject</button>
+                  <button onClick={requestRejectProcess} className="hotel-popup-reject p-2">Reject</button>
                   <button onClick={requestAcceptProcess} className="hotel-popup-accept p-2">Accept</button>
                 </dic>
               </div>

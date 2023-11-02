@@ -14,7 +14,7 @@ function TouristBookings() {
 
   const { sessionData , setSessionData  } = useSession();
   const touristId = sessionData.userId;
-  console.log(touristId);
+  // console.log(touristId);
 
   const apiBaseUrl = "http://localhost:8080";
   const axiosInstance = axios.create({
@@ -25,12 +25,12 @@ function TouristBookings() {
 const [packageRequest, setPackageRequest] = useState([]);
 const [packages, setPackage] = useState([]);
 const [mergedPackageData, setMergedPackageData] = useState([]);
-
+// console.log(mergedPackageData); 
   useEffect(() => {
     axiosInstance
       .get("/request")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setPackageRequest(res.data);
       })
       .catch((err) => {
@@ -42,7 +42,7 @@ const [mergedPackageData, setMergedPackageData] = useState([]);
     axiosInstance
       .get("/packages")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setPackage(res.data);
       })
       .catch((err) => {
@@ -70,7 +70,8 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
   ? mergedPackageData.map(data => ({
       id: data.packageID,
       name: data.package_name,
-      national: data.discription      ,
+      fromdate: data.fromdate,
+      status: data.status,
       btn: (
         <button
           className="btn btn-sm btn-outline-success"
@@ -88,12 +89,13 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
   const [hotelRequest, setHotelRequest] = useState([]);
   const [hotels, setHotel] = useState([]);
   const [mergedHotelData, setMergedHotelData] = useState([]);
+  console.log(mergedHotelData);
 
   useEffect(() => {
     axiosInstance
       .get("/viewRequest")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setHotelRequest(res.data);
       })
       .catch((err) => {
@@ -105,7 +107,7 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
     axiosInstance
       .get("/viewHotels")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setHotel(res.data);
       })
       .catch((err) => {
@@ -131,9 +133,10 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
 
   const hotelRows = mergedHotelData && Array.isArray(mergedHotelData)
   ? mergedHotelData.map(data => ({
-      id: data.hotelId,
+      id: data.requestId,
       name: data.hotelName,
-      date: data.date,
+      checkin: data.fromDate,
+      checkout: data.toDate,
       btn: (
         <button
           className="btn btn-sm btn-outline-success"
@@ -155,7 +158,7 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
     axiosInstance
       .get("/viewTrips")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setGuideRequest(res.data);
       })
       .catch((err) => {
@@ -167,7 +170,7 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
     axiosInstance
       .get("/viewGuides")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setGuide(res.data);
       })
       .catch((err) => {
@@ -217,7 +220,7 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
     axiosInstance
       .get("/getAllFairrequest")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setFairRequest(res.data);
       })
       .catch((err) => {
@@ -229,7 +232,7 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
     axiosInstance
       .get("/getAllFairs")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setFair(res.data);
       })
       .catch((err) => {
@@ -339,15 +342,20 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
                       label: "Package Name",
                       field: "name",
                       sort: "asc",
+                      width: 100,
+                    },
+                    {
+                      label: "Date",
+                      field: "fromdate",
+                      sort: "asc",
                       width: 150,
                     },
                     {
-                      label: "Description",
-                      field: "national",
+                      label: "Status",
+                      field: "status",
                       sort: "asc",
-                      width: 200,
+                      width: 150,
                     },
-                   
                     {
                       label: "Details",
                       field: "btn",
@@ -375,7 +383,7 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
                 {
                   columns: [
                     {
-                      label: "Hotel ID",
+                      label: "Booking ID",
                       field: "id",
                       sort: "asc",
                       width: 100,
@@ -387,8 +395,14 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
                       width: 150,
                     },
                     {
-                      label: "Date",
-                      field: "date",
+                      label: "Check-in",
+                      field: "checkin",
+                      sort: "asc",
+                      width: 150,
+                    },
+                    {
+                      label: "Check-out",
+                      field: "checkout",
                       sort: "asc",
                       width: 150,
                     },
