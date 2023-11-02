@@ -23,46 +23,75 @@ import "../../styles/holidayplanner_dashboard.css";
 
 const data = [
   {
-    name: "Page A",
-    uv: 4000,
+    name: "Jan",
     pv: 2400,
     amt: 2400,
   },
   {
-    name: "Page B",
-    uv: 3000,
+    name: "Feb",
+    
     pv: 1398,
     amt: 2210,
   },
   {
-    name: "Page C",
-    uv: 2000,
+    name: "Mar",
+    
     pv: 9800,
     amt: 2290,
   },
   {
-    name: "Page D",
-    uv: 2780,
+    name: "Apr",
+    
     pv: 3908,
     amt: 2000,
   },
   {
-    name: "Page E",
-    uv: 1890,
+    name: "May",
+    
     pv: 4800,
     amt: 2181,
   },
   {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
+    name: "June",
+   
+    pv: 2900,
     amt: 2500,
   },
   {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
+    name: "July",
+   
+    pv: 3000,
     amt: 2100,
+  },
+  {
+    name: "Aug",
+   
+    pv: 3500,
+    amt: 2100,
+  },
+  {
+    name: "Sept",
+   
+    pv: 3800,
+    amt: 2100,
+  },
+  {
+    name: "Oct",
+   
+    pv: 4000,
+    amt: 2100,
+  },
+  {
+    name: "Nov",
+   
+    pv: 1500,
+    amt: 1500,
+  },
+  {
+    name: "Dec",
+   
+    pv: 1000,
+    amt: 1000,
   },
 ];
 
@@ -347,7 +376,7 @@ function Holiday_dashboard() {
               style={{ color: "#98A3B2", fontSize: "28px" }}
               className="d-flex fw-semibold"
             >
-              Anual Statistics
+              Annual Statistics
             </p>
             {/* <ResponsiveContainer width="100%" height="100%"> */}
             <BarChart
@@ -367,7 +396,7 @@ function Holiday_dashboard() {
               <Tooltip />
               <Legend />
               <Bar dataKey="pv" fill="#8884d8" />
-              <Bar dataKey="uv" fill="#82ca9d" />
+              
             </BarChart>
             {/* </ResponsiveContainer> */}
           </div>
