@@ -3,8 +3,7 @@ import "../../styles/admin/admin_tourist_view_detail.css";
 import profile from "../../assets/images/profile.jpg";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Driver from "../driver/dashboard";
-import Modal_Driver from "../admin/admin_modal_driver";
+import Modal_driver from "../../components/admin_driver_modal";
 
 function AdminDrivertDetails() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -65,7 +64,12 @@ function AdminDrivertDetails() {
 
   return (
     <React.Fragment>
-          <div className="w-100 d-flex justify-content-center  align-items-center">
+      {openModal && <Modal_driver closeModal={closeModal} userId={userId} />}
+      <div  className={`w-100 d-flex justify-content-center align-items-center 
+          ${
+          blurBackground ? 'blur-background' : '' // Apply blur class conditionally
+          }`
+        }>
             <div
               className="  d-flex justify-content-center  align-items-center col-11 mt-5 mb-5 "
               style={{ backgroundColor: "#ffff" }}

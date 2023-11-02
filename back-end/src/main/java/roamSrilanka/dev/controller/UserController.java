@@ -141,5 +141,12 @@ public class UserController {
         }
     }
 
+    //add the user details in the database(user table)
+    @PostMapping("/addUser")
+    public ResponseEntity<User> addUser(@RequestBody User user) {
+        User newUser =  userService.addUser(user);
+        return ResponseEntity.ok(newUser);
+    }
+
 }
 

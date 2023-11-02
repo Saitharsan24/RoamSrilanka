@@ -5,13 +5,15 @@ import org.springframework.stereotype.Service;
 import roamSrilanka.dev.model.guide.Guide;
 import roamSrilanka.dev.repository.guide.GuideRepository;
 
+import java.util.List;
+
 @Service
 public class GuideService {
 
     @Autowired
     private GuideRepository guideRepository;
 
-    public Iterable<Guide> getAllGuides() {
+    public List<Guide> getAllGuides() {
         return guideRepository.findAll();
     }
 
@@ -21,7 +23,8 @@ public class GuideService {
     }
 
 
-    public void addGuide(Guide existingGuide) {
+    public Guide addGuide(Guide existingGuide) {
         guideRepository.save(existingGuide);
+        return existingGuide;
     }
 }

@@ -39,6 +39,9 @@ public class Tourist {
     @Column(name = "emrgcy_contact")
     private String emergencyContact;
 
+    @Column(name ="status")
+    private String status;
+
 
 
     @OneToOne
@@ -46,7 +49,7 @@ public class Tourist {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Tourist(int userId, Date touristDob, String touristGender, String touristContact, String touristPassport, String country, String emergencyPerson, String emergencyRelation, String emergencyContact) {
+    public Tourist(int userId, Date touristDob, String touristGender, String touristContact, String touristPassport, String country, String emergencyPerson, String emergencyRelation, String emergencyContact,String status) {
         this.userId = userId;
         this.touristDob = touristDob;
         this.touristGender = touristGender;
@@ -56,10 +59,11 @@ public class Tourist {
         this.emergencyPerson = emergencyPerson;
         this.emergencyRelation = emergencyRelation;
         this.emergencyContact = emergencyContact;
+        this.status = status;
     }
 
 
-    public Tourist(int userId, String touristGender, String touristContact, String touristPassport, String country, String emergencyPerson, String emergencyRelation, String emergencyContact) {
+    public Tourist(int userId, String touristGender, String touristContact, String touristPassport, String country, String emergencyPerson, String emergencyRelation, String emergencyContact,String status) {
         this.userId = userId;
         this.touristGender = touristGender;
         this.touristContact = touristContact;
@@ -68,14 +72,16 @@ public class Tourist {
         this.emergencyPerson = emergencyPerson;
         this.emergencyRelation = emergencyRelation;
         this.emergencyContact = emergencyContact;
+        this.status = status;
     }
 
-    public Tourist(int userId, String touristGender, String touristContact, String touristPassport, String country) {
+    public Tourist(int userId, String touristGender, String touristContact, String touristPassport, String country,String status) {
         this.userId = userId;
         this.touristGender = touristGender;
         this.touristContact = touristContact;
         this.touristPassport = touristPassport;
         this.country = country;
+        this.status = status;
     }
 
     public Tourist( Date touristDob, String touristGender, String touristPassport, String country) {
@@ -181,6 +187,14 @@ public class Tourist {
 
     public void setUser(User savedUser) {
         this.user = savedUser;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
 

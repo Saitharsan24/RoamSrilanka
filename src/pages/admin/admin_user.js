@@ -32,37 +32,51 @@ function Users() {
    
   useEffect(() => {
     // Make an HTTP GET request to fetch data from the API
-    axiosInstance.get("http://localhost:8080/viewHolidayplanner").then((response) => {
+    axiosInstance.get("/viewHolidayplanner").then((response) => {
       setHolidayPlanners(response.data);
-      // console.log(response.data)
+      console.log("setHolidayPlanners",response.data)
     });
+  }, []);
 
-    axiosInstance.get("http://localhost:8080/viewTourist").then((response) => {
+  useEffect(() => {
+
+    axiosInstance.get("/viewTourist").then((response) => {
       setTourists(response.data);
-      // console.log(response.data)
+      console.log("setTourists",response.data)
   });
+},[]);
 
-  axiosInstance.get("http://localhost:8080/viewGuides").then((response) => {
+useEffect(() => {
+
+  axiosInstance.get("/viewGuides").then((response) => {
     setGuides(response.data);
-    // console.log(response.data)
+    console.log("setGuides",response.data)
 });
+},[]);
 
+useEffect(() => {
    
-  axiosInstance.get("http://localhost:8080/users").then((response) => {
+  axiosInstance.get("/users").then((response) => {
     setuserdetail(response.data);
-    console.log(response.data)
+    console.log("setuserdetail",response.data)
      });
   }, []);
 
-  axiosInstance.get("http://localhost:8080/viewDriver").then((response) => {
+useEffect(() => {
+  axiosInstance.get("/viewDriver").then((response) => {
     setDrivers(response.data);
-    // console.log(response.data)
-
-  axiosInstance.get("http://localhost:8080/viewHotels").then((response) => {
-    setHotels(response.data);
-    // console.log(response.data)
+    console.log("setDrivers",response.data)
   });
-});
+
+},[]);
+
+
+useEffect(() => {
+  axiosInstance.get("/viewHotels").then((response) => {
+    setHotels(response.data);
+    console.log("setHotels",response.data)
+  });
+},[]);
 
 
   

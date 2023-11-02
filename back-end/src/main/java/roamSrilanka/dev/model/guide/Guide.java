@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Guide {
     @Id
     @Column(name = "user_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
     @Column(name = "nic")
@@ -43,12 +43,15 @@ public class Guide {
     @Column(name = "rating")
         private float rating;
 
+    @Column(name =" status")
+    private String status;
+
 
 
     public Guide() {
     }
 
-    public Guide(Integer userId, String nic, String phoneNo, int guideAvailability, String sltdaNo, String address, String guideName, String specialization, String experience, String description, int fee, float rating) {
+    public Guide(Integer userId, String nic, String phoneNo, int guideAvailability, String sltdaNo, String address, String guideName, String specialization, String experience, String description, int fee, float rating,String status) {
         this.userId = userId;
         this.nic = nic;
         this.phoneNo = phoneNo;
@@ -61,9 +64,10 @@ public class Guide {
         this.Description = description;
         this.fee = fee;
         this.rating = rating;
+        this.status = status;
     }
 
-    public Guide(String nic, String phoneNo, int guideAvailability, String sltdaNo, String address, String guideName, String specialization, String experience, String description, int fee, float rating) {
+    public Guide(String nic, String phoneNo, int guideAvailability, String sltdaNo, String address, String guideName, String specialization, String experience, String description, int fee, float rating, String status) {
         this.nic = nic;
         this.phoneNo = phoneNo;
         this.guideAvailability = guideAvailability;
@@ -75,6 +79,7 @@ public class Guide {
         this.Description = description;
         this.fee = fee;
         this.rating = rating;
+        this.status = status;
 
     }
 
@@ -173,6 +178,14 @@ public class Guide {
 
         public void setRating(float rating) {
             this.rating = rating;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
         }
 
 }

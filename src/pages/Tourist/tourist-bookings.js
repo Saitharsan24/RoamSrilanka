@@ -66,12 +66,39 @@ const [mergedPackageData, setMergedPackageData] = useState([]);
     setMergedPackageData(filteredPackages);
   }, [packageRequest, packages, touristId]); 
 
+  function determineStatus(status) {
+    switch (status) {
+      case "0":
+        return {text : "Pending", color:"green"};
+      case "1":
+        return {text : "On going", color:"red"};
+        case "2":
+      return { text: "Finished", color: "black" };  
+      case "3":
+        return {text : "Cancelled", color:"red"};
+      default:
+        return {text : "Pending", color:"green"};
+
+    }
+  }
+
 const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
   ? mergedPackageData.map(data => ({
       id: data.packageID,
       name: data.package_name,
       fromdate: data.fromdate,
-      status: data.status,
+      status: <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          borderRadius: "50%",
+          backgroundColor: determineStatus(data.status).color,
+          marginRight: "8px",
+        }}
+      ></div>
+      {determineStatus(data.status).text}
+    </div>,
       btn: (
         <button
           className="btn btn-sm btn-outline-success"
@@ -256,11 +283,42 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
     setMergedFairData(filteredFairs);
   }, [fairRequest, fairs, touristId]);
 
+  function determinedStatus(status) {
+    switch (status) {
+      case 0:
+        return {text : "New Request", color:"green"};
+      case 1:
+        return {text : "Payment Pending", color:"red"};
+        case -1:
+      return { text: "Cancelled", color: "black" };  
+      case 2:
+        return {text : "Confirmed", color:"red"};
+        case 3:
+        return {text : "Completed", color:"red"};
+      default:
+        return {text : "On going", color:"green"};
+
+    }
+  }
+
+
   const fairRows = mergedFairData && Array.isArray(mergedFairData)
   ? mergedFairData.map(data => ({
       id: data.fairId,
       name: data.fairname,
       rate: data.rent,
+      status: <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          borderRadius: "50%",
+          backgroundColor: determineStatus(data.status).color,
+          marginRight: "8px",
+        }}
+      ></div>
+      {determineStatus(data.status).text}
+    </div>,
       btn: (
         <button
           className="btn btn-sm btn-outline-success"
@@ -274,43 +332,80 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
     }))
   : [];
 
+  const [driverRequest, setDriverRequest] = useState([]);
+  const [drivers, setDriver] = useState([]);
+  const [mergedDriverData, setMergedDriverData] = useState([]);
 
-  const data_driver = {
-    columns: [
-      {
-        label: "Driver ID",
-        field: "id",
-        sort: "asc",
-        width: 150,
-      },
-      {
-        label: "Driver Name",
-        field: "name",
-        sort: "asc",
-        width: 150,
-      },
-      {
-        label: "Seat Capacity",
-        field: "seat",
-        sort: "asc",
-        width: 200,
-      },
-      {
-        label: "Rating",
-        field: "rate",
-        sort: "asc",
-        width: 150,
-      },
-      
-     
-      {
-        label: "Details",
-        field: "btn",
-        width: 100,
-        btn: "view-button",
-      },
-    ],
-  };
+  useEffect(() => {
+    axiosInstance
+      .get("/allTripRequests")
+      .then((res) => {
+        // console.log(res.data);
+        setDriverRequest(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    axiosInstance
+      .get("/viewDriver")
+      .then((res) => {
+        // console.log(res.data);
+        setDriver(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    const mergedData = driverRequest.map(request => {
+      const correspondingDriver = drivers.find(driverItem => driverItem.userId === request.userId);
+      if (correspondingDriver) {
+        return {
+          ...correspondingDriver,
+          ...request
+        };
+      }
+      return null; // Or handle if no corresponding package is found
+    }).filter(Boolean); // Remove any potential null entries
+    const filteredDrivers = mergedData.filter(request => request.tourist_id === touristId);
+
+    setMergedDriverData(filteredDrivers);
+  }, [driverRequest, drivers, touristId]);
+
+
+  const driverRows = mergedDriverData && Array.isArray(mergedDriverData)
+  ? mergedDriverData.map(data => ({
+      id: data.userId,
+      startdate: data.start_date,
+      enddate: data.end_date,
+      status: <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          borderRadius: "50%",
+          backgroundColor: determinedStatus(data.status).color,
+          marginRight: "8px",
+        }}
+      ></div>
+      {determinedStatus(data.status).text}
+    </div>,
+      btn: (
+        <button
+          className="btn btn-sm btn-outline-success"
+          onClick={() => {
+            // handleView(data);
+          }}
+        >
+          View
+        </button>
+      ),
+    }))
+  : [];
 
   return (
   <>    
@@ -467,7 +562,40 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
               bordered
               paging={true}
               searching={true}
-              data={data_driver}
+              data={{
+                columns: [
+                  {
+                    label: "Driver ID",
+                    field: "id",
+                    sort: "asc",
+                    width: 150,
+                  },
+                  {
+                    label: "Start Date",
+                    field: "startdate",
+                    sort: "asc",
+                    width: 150,
+                  },
+                  {
+                    label: "End Date",
+                    field: "enddate",
+                    sort: "asc",
+                    width: 150,
+                  },
+                  {
+                    label: "Status",
+                    field: "status",
+                    sort: "asc",
+                    width: 150,
+                  },
+                  {
+                    label: "Details",
+                    field: "btn",
+                    width: 100,
+                    btn: "view-button",
+                  },
+                ],rows: driverRows,
+              }}
               exportToCSV={true}
               //table for tourist
             />
@@ -493,8 +621,6 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
                     sort: "asc",
                     width: 150,
                   },
-                  
-            
                   {
                     label: "Rent Price",
                     field: "rate",
@@ -502,7 +628,13 @@ const packageRows = mergedPackageData && Array.isArray(mergedPackageData)
                     width: 100,
                     
                   },
-                 
+                  {
+                    label: "Status",
+                    field: "status",
+                    sort: "asc",
+                    width: 100,
+                    
+                  },
                   {
                     label: "Details",
                     field: "btn",

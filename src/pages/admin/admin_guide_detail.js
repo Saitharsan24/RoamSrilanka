@@ -3,7 +3,7 @@ import "../../styles/admin/admin_tourist_view_detail.css";
 import profile from "../../assets/images/profile.jpg";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Modal from "../../components/admin-modal";
+import Modal_guide from "../../components/admin_guide_modal";
 
 
 
@@ -52,13 +52,32 @@ function AdminGuideDetails() {
       });
   }, [userId]);
 
+  const [openModal, setOpenModal] = useState(false);  // This is the state variable to control the model(Eable/Disable)
+  const [blurBackground, setBlurBackground] = useState(false); // State to control background blur
+
+ // Function to open the modal and blur the background
+ const openModalWithBlur = () => {
+  setOpenModal(true);
+  setBlurBackground(true);
+};
+
+// Function to close the modal and remove the background blur
+const closeModal = () => {
+  setOpenModal(false);
+  setBlurBackground(false);
+};
+
 
   
   return (
     <React.Fragment>
       
-               
-          <div  className="w-100 d-flex justify-content-center align-items-center">
+      {openModal && <Modal_guide closeModal={closeModal} userId={userId} />}
+      <div  className={`w-100 d-flex justify-content-center align-items-center 
+          ${
+          blurBackground ? 'blur-background' : '' // Apply blur class conditionally
+          }`
+        }>
             <div
               className=" d-flex justify-content-center  align-items-center col-11 mt-5 mb-5" style={{ backgroundColor: "#ffff" }}    >
               <div className="d-flex flex-column  col-lg-10 col-md-10 ">
@@ -69,7 +88,7 @@ function AdminGuideDetails() {
                         Basic Information About
                       </span>
                       <span style={{ color: "#004577", fontWeight: "bold" }}>
-                        Brad Simmons
+                      {guideuserdetail.userFullname}
                       </span>
                     </p>
                     <table className=" " style={{ textAlign: "center" }}>
@@ -134,7 +153,7 @@ function AdminGuideDetails() {
                         fontSize: "35px",
                       }}
                     >
-                      04
+                       {guidedetail.rating}
                     </p>
                   </div>
                 </div>
@@ -271,10 +290,10 @@ function AdminGuideDetails() {
                      
                       <tr style={{ height: "20px" }}></tr>
                       <tr >
-{/*                         
+                        
                        <td colSpan={3} style={{textAlign:"right"}} >
                       
-                          {holidayPlannerdetail.status === null ? (
+                          {guidedetail.status === null ? (
                               <button
                                 style={{
                                   backgroundColor: "#d03b3b",
@@ -283,7 +302,7 @@ function AdminGuideDetails() {
                                   borderColor: "#ffff",
                                   width: "7rem"
                                 }}
-                                // onClick={openModalWithBlur}
+                                 onClick={openModalWithBlur}
                               >
                                 Disable
                               </button>
@@ -296,7 +315,7 @@ function AdminGuideDetails() {
                                   borderRadius: "10px",
                                   width: "7rem"
                                 }}
-                                // onClick={openModalWithBlur}
+                                onClick={openModalWithBlur}
                               >
                                 Enable
                               </button>
@@ -305,7 +324,7 @@ function AdminGuideDetails() {
 
 
                         </td>
-                        */}
+                       
                        </tr>
                        <tr style={{ height: "20px" }}></tr>
                     </tbody>
