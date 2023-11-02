@@ -3,6 +3,7 @@ import "../../styles/admin/admin_tourist_view_detail.css";
 import profile from "../../assets/images/profile.jpg";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Modal_tourist from "../../components/admin-tourist-modal";
 
 
 function AdminTouristDetails() {
@@ -50,13 +51,31 @@ useEffect(() => {
     });
 }, [userId]);
 
+const [openModal, setOpenModal] = useState(false);  // This is the state variable to control the model(Eable/Disable)
+const [blurBackground, setBlurBackground] = useState(false); // State to control background blur
+
+ // Function to open the modal and blur the background
+ const openModalWithBlur = () => {
+  setOpenModal(true);
+  setBlurBackground(true);
+};
+
+// Function to close the modal and remove the background blur
+const closeModal = () => {
+  setOpenModal(false);
+  setBlurBackground(false);
+};
 
  
   return (
     <React.Fragment>
       
-    
-          <div className="w-100 d-flex justify-content-center  align-items-center">
+      {openModal && <Modal_tourist closeModal={closeModal} userId={userId} />}
+      <div  className={`w-100 d-flex justify-content-center align-items-center 
+          ${
+          blurBackground ? 'blur-background' : '' // Apply blur class conditionally
+          }`
+        }>
             <div
               className=" d-flex justify-content-center  align-items-center col-11 mt-5 mb-5" style={{ backgroundColor: "#ffff" }}    >
               <div className="d-flex flex-column  col-lg-10 col-md-10 ">
@@ -64,10 +83,10 @@ useEffect(() => {
                   <div className="box-2 box-large d-flex flex-column justify-content-center align-items-center col-lg-8 col-md-8 col-sm-12   ">
                     <p>
                       <span style={{ fontWeight: "bold" }}>
-                        Basic Information About
+                        Basic Information About 
                       </span>
                       <span style={{ color: "#004577", fontWeight: "bold" }}>
-                        Brad Simmons
+                      {touristuserdetail.userFullname}
                       </span>
                     </p>
                     <table className=" " style={{ textAlign: "center" }}>
@@ -323,10 +342,40 @@ useEffect(() => {
                       </tr>
 
                       <tr style={{ height: "20px" }}></tr>
-                      <tr >
+                      <td colSpan={3} style={{textAlign:"right"}} >
+                      
+                      {touristdetail.status === null ? (
+                          <button
+                            style={{
+                              backgroundColor: "#d03b3b",
+                              color: "#ffff",
+                              borderRadius: "10px",
+                              borderColor: "#ffff",
+                              width: "7rem"
+                            }}
+                            onClick={openModalWithBlur}
+                          >
+                            Disable
+                          </button>
+                        ) : (
+                          <button
+                            style={{
+                              backgroundColor: "#66d03b",
+                             color: "#ffff",
+                              borderColor: "#ffff",
+                              borderRadius: "10px",
+                              width: "7rem"
+                            }}
+                            onClick={openModalWithBlur}
+                          >
+                            Enable
+                          </button>
+)}
 
-                       <td colSpan={3} style={{textAlign:"right"}} ><button style={{backgroundColor:"#004577",color:"#ffff",borderRadius:"10px",width:"7rem"}}>Disable</button> </td>
-                       </tr>
+
+
+                    </td>
+                   
                        <tr style={{ height: "20px" }}></tr>
                     </tbody>
                   </table>

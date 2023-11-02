@@ -45,11 +45,14 @@ public class Hotels {
     @Column(name = "hotel_availability")
     private Boolean hotelAvailability;
 
+    @Column(name = "status")
+    private String status;
+
     //Constructors
     public Hotels() {
     }
 
-    public Hotels(Integer hotelId, Integer ownerId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price, Boolean hotelAvailability) {
+    public Hotels(Integer hotelId, Integer ownerId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price, Boolean hotelAvailability, String status) {
         this.hotelId = hotelId;
         this.ownerId = ownerId;
         this.hotelName = hotelName;
@@ -61,9 +64,10 @@ public class Hotels {
         this.city = city;
         this.price = price;
         this.hotelAvailability = hotelAvailability;
+        this.status = status;
     }
 
-    public Hotels(Integer ownerId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price, Boolean hotelAvailability) {
+    public Hotels(Integer ownerId, String hotelName, Integer starRating, Double userRating, String description, String hotelType, String address, String city, Double price, Boolean hotelAvailability,String status) {
         this.ownerId = ownerId;
         this.hotelName = hotelName;
         this.starRating = starRating;
@@ -74,6 +78,7 @@ public class Hotels {
         this.city = city;
         this.price = price;
         this.hotelAvailability = hotelAvailability;
+        this.status = status;
     }
 
     public Integer getHotelId() {
@@ -162,6 +167,14 @@ public class Hotels {
 
     public void setHotelAvailability(Boolean hotelAvailability) {
         this.hotelAvailability = hotelAvailability;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
 

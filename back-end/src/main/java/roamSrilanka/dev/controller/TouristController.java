@@ -2,15 +2,12 @@ package roamSrilanka.dev.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import roamSrilanka.dev.model.Holidayplanner.Holidayplanner;
 import roamSrilanka.dev.model.Tourist.Tourist;
 import roamSrilanka.dev.model.User;
-import org.springframework.web.bind.annotation.ResponseBody;
 import roamSrilanka.dev.model.Hotel.Hotels;
 import roamSrilanka.dev.service.TouristService;
 import java.util.List;
@@ -23,10 +20,10 @@ public class TouristController {
     @Autowired
     private TouristService touristService;
 
-    @GetMapping("/viewTourist/{userId}")
-    public Tourist getTouristById(@PathVariable Integer userId){
-        return touristService.getTouristById(userId);
-    }
+//    @GetMapping("/viewTourist/{userId}")
+//    public Tourist getTouristById(@PathVariable Integer userId){
+//        return touristService.getTouristById(userId);
+//    }
 
 
     @GetMapping("/tourist")
@@ -48,6 +45,23 @@ public class TouristController {
     @GetMapping("/viewTourist")
     public List<Tourist> getAllTourists(){
         return touristService.getAllTourists();
+    }
+
+
+    @PutMapping("/updateTourist/{id}")
+    public ResponseEntity<Tourist> updateTourist(@PathVariable Integer id, @RequestBody Tourist updatedTourist) {
+        Tourist existingTourist = touristService.getTouristById(id);
+
+        if (existingTourist == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            // Update the existing tourist's information with the data from the request body
+            existingTourist.setStatus(updatedTourist.getStatus());
+
+            //save the changes made to the existing tourist
+            touristService.addTourist(existingTourist);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
 
 
