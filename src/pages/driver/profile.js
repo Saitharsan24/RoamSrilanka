@@ -175,7 +175,7 @@ function Profile() {
                                     {/* <div class="position-relative">
                                         <div class="position-absolute top-0 end-0"><Icon.Pencil color="black" /></div>
                                     </div> */}
-                                    <h5>Personal Informations</h5><hr></hr>
+                                    {/* <h5>Personal Informations</h5><hr></hr>
                                     <div style={{marginTop:"5px"}}>
                                         <h6>Full Name</h6>
                                         <span className="p-1">{Username}</span><hr></hr>
@@ -187,7 +187,28 @@ function Profile() {
                                     <div style={{marginTop:"5px"}}>
                                         <h6>Language Spoken</h6>
                                         <span className="p-1">English, Tamil, Sinhala</span>
+                                    </div> */}
+                                    <h5>Personal Informations</h5><hr></hr>
+                                    <div style={{marginTop:"5px"}}>
+                                        <h6>Full Name</h6>
+                                        <span className="p-1">{Username}</span><hr></hr>
                                     </div>
+                                    <div style={{marginTop:"5px"}}>
+                                        <h6>About Me</h6>
+                                        <span className="p-1">This aspect is crucial, and I commend the driver for prioritizing safety</span><hr></hr>	
+                                    </div>
+                                    <div style={{marginTop:"5px"}}>
+                                        <h6>NIC Number</h6>
+                                        <span className="p-1">{filterDriver.length === 1 ? filterDriver[0]['nic'] : '200040004455'}</span><hr></hr>
+                                    </div>
+                                    <div style={{marginTop:"5px"}}>
+                                        <h6>Address</h6>
+                                        <span className="p-1">{filterDriver.length === 1 ? filterDriver[0]['address'] : 'Colombo,Sri Lanka'}</span><hr></hr>
+                                    </div>
+                                    <div style={{marginTop:"5px"}}>
+                                        <h6>Phone Number</h6>
+                                        <span className="p-1">{filterDriver.length === 1 ? filterDriver[0]['phone_no'] : '0769877667'}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div> 
