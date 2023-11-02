@@ -58,6 +58,19 @@ const HPFairDetails = () => {
     navigate(`/holidayPlanner/hpchat`);
   };
 
+  const editFairRequestStatus = () => {
+    axiosInstance
+      .put("/updateFairRequestStatus/" + paraData.fairrequestID)
+      .then((res) => {
+        console.log(res.data);
+        navigate("/holidayPlanner/plannerRequest");
+        window.location.reload(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <div className="d-flex flex-column">
       {/* <Headeruser /> */}
@@ -142,12 +155,11 @@ const HPFairDetails = () => {
                 <p>{requestData.todate}</p>
               </div>
             </div>
-            <div className="d-flex flex-row justify-content-between mx-2">
-              <button className="btn-cancel" type="submit">
-                Reject
-              </button>
-              <button className="btn-next" type="submit">
-                Accept
+            <div className="d-flex flex-row justify-content-end mx-2">
+              <button className="btn-cancel" type="submit"
+              method = " PUT"
+              onClick={editFairRequestStatus}>
+                Cancel
               </button>
             </div>
           </div>

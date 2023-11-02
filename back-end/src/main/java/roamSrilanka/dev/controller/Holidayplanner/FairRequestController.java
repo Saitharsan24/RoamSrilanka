@@ -35,4 +35,20 @@ public class FairRequestController {
     public ResponseEntity<Long> countFRequests() {
         return ResponseEntity.ok(fairrequestService.countFRequests());
     }
+
+    @PutMapping("updateFairRequestStatus/{id}")
+    @ResponseBody
+    public ResponseEntity updateFairRequestStatus(@PathVariable("id") Integer id) {
+        FairRequest existingFairRequest = fairrequestService.findbyId(id);
+
+        if (existingFairRequest == null) {
+            return null;
+        } else {
+            existingFairRequest.setStatus(1);
+
+            //save the changes made to the existing package
+            fairrequestService.savestatus(existingFairRequest);
+            return ResponseEntity.ok("Fair Request Updated Successfully");
+        }
+    }
 }

@@ -57,8 +57,11 @@ function HPItem() {
     axiosInstance
       .get("/getAllFairs")
       .then((res) => {
-        setRowData(res.data);
-        console.log(res.data);
+        const filteredFairs = res.data.filter(
+          (fairs) => fairs.status === 0
+        );
+        setRowData(filteredFairs);
+        console.log(filteredFairs);
       })
       .catch((err) => {
         console.log(err);

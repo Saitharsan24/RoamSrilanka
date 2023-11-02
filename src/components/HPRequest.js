@@ -130,8 +130,9 @@ const HPDatatablePage = () => {
   const mergeData2 = (fairrequest, fair,tourist) => {
     const mergedData2 = fairrequest.map(
       (requestItem2) => {
+        const newStatus = requestItem2.status;
       const matchingfair = fair.find(
-        (fairItem) =>  fairItem.fairId === requestItem2.fair_no
+        (fairItem) =>  fairItem.fairId === requestItem2.fair_no 
       );
 
       const matchingTourist2 = tourist.find(
@@ -146,6 +147,7 @@ const HPDatatablePage = () => {
           ...requestItem2,
           ...matchingfair,
           ...matchingTourist2,
+          newStatus:newStatus,
         };
       } else {
         return requestItem2;
@@ -156,8 +158,8 @@ const HPDatatablePage = () => {
   };
 
   const mergedData_fair = mergeData2(fairrequest, fair,tourist);
-  console.log("mergeData_fair", mergedData_fair);
-  console.log("fair", fair);
+
+  const filteredFairData = mergedData_fair.filter((item) => item.newStatus == 0);
   
 
   const data = {
@@ -180,12 +182,12 @@ const HPDatatablePage = () => {
         sort: 'asc',
         width: 200
       },
-      {
-        label: 'To Date',
-        field: 'date',
-        sort: 'asc',
-        width: 150
-      },
+      // {
+      //   label: 'To Date',
+      //   field: 'date',
+      //   sort: 'asc',
+      //   width: 150
+      // },
       {
         label: "Show Details",
         field: "button1",
@@ -197,7 +199,7 @@ const HPDatatablePage = () => {
       name: item.name,
       package_name: item.package_name,
       from: item.fromdate,
-      date: item.todate,
+      // date: item.todate,
       button1: <button
       className="hp-accept"
       onClick={() => handleRowClick(item.p_bookingID) & console.log("Clicked View for booking ID:", item.p_bookingID)}
@@ -238,7 +240,7 @@ const HPDatatablePage = () => {
         btn: "hp-accept-button",
       },
     ],
-    rows: mergedData_fair.map((item) => ({
+    rows: filteredFairData.map((item) => ({
       name: item.name,
       fair_name: item.fairname,
       from: item.fromdate,
