@@ -724,12 +724,6 @@ const requestFinishProcess = async(e) => {
                                 width: 250,
                               },
                               {
-                                label: "Destination",
-                                field: "Destination",
-                                sort: "asc",
-                                width: 250,
-                              },
-                              {
                                 label: "Status",
                                 field: "Status",
                                 sort: "asc",

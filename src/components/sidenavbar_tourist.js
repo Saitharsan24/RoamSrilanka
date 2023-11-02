@@ -67,12 +67,12 @@ function SideNavbar() {
         cName: 'nav-text',
       },
 
-      {
-        title:'Blogs',
-        path:'touristBlogList',
-        icon:<BiIcons.BiSolidBook />,
-        cName: 'nav-text',
-      },
+      // {
+      //   title:'Blogs',
+      //   path:'touristBlogList',
+      //   icon:<BiIcons.BiSolidBook />,
+      //   cName: 'nav-text',
+      // },
 
       {
         title:'Chat',

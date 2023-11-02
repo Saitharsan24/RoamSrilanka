@@ -659,12 +659,6 @@ function HotelRequest() {
                 width: 250,
               },
               {
-                label: "Destination",
-                field: "Destination",
-                sort: "asc",
-                width: 250,
-              },
-              {
                 label: "More Info",
                 field: "btn",
                 width: 100,
@@ -734,14 +728,6 @@ function HotelRequest() {
                     style={{width: "210px"}}
                       className="hotel-popup-input"
                     >{selectedRequest.pickup}</div>
-                  </div>
-                  <div>
-                    <label className="hotel-popup-label">Destination</label>
-                    <br />
-                    <div
-                    style={{width: "210px"}}
-                      className="hotel-popup-input"
-                    >{selectedRequest.destination}</div>
                   </div>
                 </div>
                <div className="d-flex flex-row justify-content-between ms-4">

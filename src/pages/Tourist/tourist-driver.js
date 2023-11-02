@@ -44,6 +44,7 @@ function ToursitDriver() {
       amount: amount,
       tourist_id: sessionData.userId,
       no_of_days: noOfDays,
+      tourist_name: sessionData.userName
     }
 
     axiosInstance.post("/addTripRequest", data)

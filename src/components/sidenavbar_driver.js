@@ -39,19 +39,19 @@ function SideNavbar() {
         cName: 'nav-text',
       },
 
-      {
-        title:'Chat',
-        path:'driverChat',
-        icon:<BsIcons.BsChatSquareDotsFill />,
-        cName: 'nav-text',
-      },
+      // {
+      //   title:'Chat',
+      //   path:'driverChat',
+      //   icon:<BsIcons.BsChatSquareDotsFill />,
+      //   cName: 'nav-text',
+      // },
 
-      {
-        title:'Reports',
-        path:'driverReport',
-        icon:<MdIcons.MdTour />,
-        cName: 'nav-text',
-      },
+      // {
+      //   title:'Reports',
+      //   path:'driverReport',
+      //   icon:<MdIcons.MdTour />,
+      //   cName: 'nav-text',
+      // },
 
       {
         title:'Profile',

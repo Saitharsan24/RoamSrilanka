@@ -8,6 +8,7 @@ import { hover } from "@testing-library/user-event/dist/hover";
 import { PureComponent } from "react";
 import { useSession } from '../../Context/SessionContext';
 import axios from "axios";
+// import vehicleimg from './../../assets/img/vehicle.png';
 
 import {
     LineChart,
@@ -25,45 +26,45 @@ import {
 
 const data = [
   {
-    name: "Jan",
-    
-    km: 2400,
-    
-  },
-  {
-    name: "Feb",
-   
-    km: 1398,
-    
-  },
-  {
-    name: "Mar",
-   
-    km: 9800,
-    
-  },
-  {
-    name: "Apr",
-    
-    km: 3908,
-    
-  },
-  {
     name: "May",
-   
-    km: 4800,
-   
-  },
-  {
-    name: "Jun",
     
-    km: 3800,
+    Trips: 0,
     
   },
   {
-    name: "Jul",
+    name: "June",
+   
+    Trips: 0,
     
-    km: 4300,
+  },
+  {
+    name: "July",
+   
+    Trips: 0,
+    
+  },
+  {
+    name: "August",
+    
+    Trips: 0,
+    
+  },
+  {
+    name: "September",
+   
+    Trips: 0,
+   
+  },
+  {
+    name: "October",
+    
+    Trips: 5,
+    
+  },
+  {
+    name: "November",
+    
+    Trips: 0,
     
   },
 ];
@@ -100,28 +101,39 @@ const CustomizedDot = (props) => {
   );
 };
 
-export const data1 = [
-    {
-        name: "JAN",
-        income: 4000
-    },
-    {
-        name: "FEB",
-        income: 2000
-    },
-    {
-        name: "MAR",
-        income: 3000
-    },
-    {
-        name: "APR",
-        income: 1000
-    },
-    {
-        name: "MAY",
-        income: 6000
-    }
-];
+
+// export const data1 = [
+//   {
+//     name: "July",
+   
+//     Trips: 0,
+    
+//   },
+//   {
+//     name: "August",
+    
+//     Trips: 2,
+    
+//   },
+//   {
+//     name: "September",
+   
+//     Trips: 1,
+   
+//   },
+//   {
+//     name: "October",
+    
+//     Trips: 5,
+    
+//   },
+//   {
+//     name: "November",
+    
+//     Trips: 11,
+    
+//   },
+// ];
 
 
 function Driver() {
@@ -148,13 +160,67 @@ function Driver() {
       });
   }, []);
 
-  const filteredRequests = requests.filter((request) => request.status == 1);
+  const tripsByMonth = {};
+
+  requests.forEach((item) => {
+  const startDate = new Date(item.start_date);
+  const month = startDate.getMonth();
+  
+  if (!tripsByMonth[month]) {
+    tripsByMonth[month] = 0;
+  }
+  
+  tripsByMonth[month]++;
+});
+
+console.log('Total trips by month:', tripsByMonth);
+
+// Map the "tripsByMonth" format to the "data1" format
+const data1 = [
+  {
+    name: "July",
+    Trips: tripsByMonth[6] || 0, // Month is 0-based, so July is 6
+  },
+  {
+    name: "August",
+    Trips: tripsByMonth[7] || 0,
+  },
+  {
+    name: "September",
+    Trips: tripsByMonth[8] || 0,
+  },
+  {
+    name: "October",
+    Trips: tripsByMonth[9] || 0,
+  },
+  {
+    name: "November",
+    Trips: tripsByMonth[10] || 0,
+  },
+];
+
+console.log('Formatted data:', data1);
+
+  const finishRequests = requests.filter((request) => request.status == 3);
+  console.log("Finished requests : " + finishRequests.length);
+
+  const filteredRequests = requests.filter((request) => request.status == 2);
   console.log("My requests : " + filteredRequests.length);
   //Initiating sessoin data
+
+  console.log(filteredRequests);
   const { sessionData , setSessionData  } = useSession();
 
   const Username = sessionData.userFullName;
   console.log(Username);
+  
+  filteredRequests.sort((a, b) => new Date(a.start_date) - new Date(b.start_date));
+  const firstObject = filteredRequests[0];
+
+  // console.log('First object with the minimum start_date:', firstObject.start_date);
+  // console.log();
+
+  
 
 
   const handleSubmit = (event) => {
@@ -181,27 +247,12 @@ function Driver() {
             <div class="card mb-2" >
               <div class="card-body" style={{backgroundColor:"76AACF"}}>
                   <h5 class="card-title">Welcome Back {Username}!</h5>
-                  {/* <div class="row mt-4">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">Total Km's</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                        <div class="card border-danger">
-                            <div class="card-body">
-                                <h6 class="card-title">Trips</h6>
-                            </div>
-                        </div>
-                    </div>
-                  </div> */}
+                  
               </div>
             </div>
             <div className="d-flex col-lg-10 col-md-12 gap-3 flex-lg-row flex-md-column flex-column">
                 
-                <div
+                {/* <div
                     className="box d-flex col-lg-6 col-md-6 col-sm-12 flex-row align-items-center gap-3 p-2 justify-content-around"
                     style={{ backgroundColor: "#76AACF", borderRadius: "12px" }}
                 >
@@ -214,7 +265,7 @@ function Driver() {
                 <div className="d-flex">
                     <Icon.ChevronRight />
                 </div>
-                </div>
+                </div> */}
                 {/* <div
                 className="box d-flex col-lg-6 col-md-6 col-sm-12 flex-row align-items-center gap-3 p-2 justify-content-around"
                 style={{ backgroundColor: "#FFFFF", borderRadius: "12px" }}
@@ -229,7 +280,7 @@ function Driver() {
                 </div>
                 </div> */}
             </div>
-            <div
+            {/* <div
                 style={{
                   backgroundColor: "#FFFFFF",
                   borderRadius: "12px",
@@ -261,24 +312,24 @@ function Driver() {
                     />
               
                   </LineChart>
-            </div>
+            </div> */}
             <div className="box d-flex col-lg-6 col-md-6 col-sm-12 flex-row align-items-center gap-3 p-2 justify-content-around"
                 style={{ backgroundColor: "#FFFFF", borderRadius: "12px" }}>
                 <p style={{ fontSize: "15px", fontWeight: "bold", marginTop: "5px" }}>
-                    Monthly Income
+                    Trips Completed
                 </p>
             </div>
             <div
                 style={{
                   backgroundColor: "#FFFFFF",
-                  borderRadius: "12px",
-                  height: "12rem",
+                  borderRadius: "10px",
+                  height: "20rem",
                 }}
                 className="d-flex gap-3 col-lg-10 col-sm-12 col-md-7 p-2 ms-2 chart"
               >
                 <ResponsiveContainer>
                   <BarChart data={data1}>
-                    <Bar dataKey="income" fill="#004577" barSize={35}/>
+                    <Bar dataKey="Trips" fill="#004577" barSize={35}/>
                     <XAxis dataKey="name" />
                     <YAxis/>
                     
@@ -294,10 +345,12 @@ function Driver() {
                     <ReactStars {...ratingExample} />
                 </div>
               </div> */}
+              {/* <img src={vehicleimg} style={{width: "250px", heght:"250px"}}></img> */}
               <div class="card mb-2">
                 <div class="card-body">
                     <h5 class="card-title">Next Trip</h5>
-                    <h4 style={{color:"red"}}>23/05/2023</h4>
+                    {/* <h4 style={{color:"red"}}>{firstObject.start_date !== null ? firstObject.start_date : '2023-11-02'}</h4> */}
+                    <h4 style={{color:"red"}}>2023-11-02</h4>
                 </div>
               </div>
               <div class="card mb-2">
@@ -318,4 +371,4 @@ function Driver() {
   );
 }
 
-export default Driver;
+export default Driver;

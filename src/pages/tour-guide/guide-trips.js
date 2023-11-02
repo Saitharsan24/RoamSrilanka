@@ -32,7 +32,7 @@ function GuideTrip() {
 
   const rows = trips.map((trip) => {
     return {
-      date: trip.date,
+      bookingid: trip.tripId,
       fromDate: trip.fromDate,
       toDate: trip.toDate,
       status: determineStatus(trip.status),
@@ -41,7 +41,7 @@ function GuideTrip() {
   });
 
   function determineStatus(status) {
-    if (status == null) {
+    if (status == 0) {
       return "Pending";
     } else if (status == 1) {
       return "Accepted";
@@ -87,8 +87,8 @@ function GuideTrip() {
           data={{
             columns: [
               {
-                label: "Date",
-                field: "date",
+                label: "Booking ID",
+                field: "bookingid",
                 sort: "asc",
                 width: 150,
               },
