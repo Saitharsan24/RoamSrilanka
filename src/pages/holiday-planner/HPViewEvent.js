@@ -101,6 +101,11 @@ function HPViewEvent() {
     }
   };
 
+  const handleCancelButton = () => {
+    window.history.back(); // Redirect to the previous page
+  };
+
+
   return (
     <div>
       <div
@@ -222,7 +227,7 @@ function HPViewEvent() {
           <button className="btn-cancel" onClick={handleDeleteEvent}>
             Delete
           </button>
-          <button className="btn-next" >
+          <button className="btn-next" onClick={handleCancelButton} >
             Cancel
           </button>
         </div>

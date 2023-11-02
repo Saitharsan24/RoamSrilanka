@@ -135,9 +135,15 @@ function Vehicle() {
                             
                             <div class="d-flex justify-content-between mb-2">
                                 {vehicle[0]['status'] == 1 ? (
-                                    <div style={{color:"green"}}>Status : Approved</div>
+                                    <div className="d-flex" style={{width: "fitContent", padding: "0.3rem", backgroundColor: "#CDFFCD", borderRadius:"8px", color:"#007F00"}}>
+                                    <i className="bi bi-circle-fill tag-icon"></i>
+                                    <p className="m-0">Accepted</p>
+                                </div>
                                 ):(
-                                    <div style={{color:"red"}}>Status : Approval Pending</div>
+                                    <div className="d-flex" style={{width: "fitContent", padding: "0.3rem", backgroundColor: "#ffcccb", borderRadius:"8px", color:"red"}}>
+                                        <i className="bi bi-circle-fill tag-icon"></i>
+                                        <p className="m-0">Approval Pending</p>
+                                    </div>
                                 )}
                                 <button onClick={deleteVehicle}>Delete My vehicle</button>
                             </div>

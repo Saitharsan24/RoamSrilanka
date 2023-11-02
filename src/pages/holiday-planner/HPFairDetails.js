@@ -63,8 +63,9 @@ const HPFairDetails = () => {
       .put("/updateFairRequestStatus/" + paraData.fairrequestID)
       .then((res) => {
         console.log(res.data);
-        navigate("/holidayPlanner/plannerRequest");
-        window.location.reload(false);
+        // navigate("/holidayPlanner/plannerRequest");
+        // window.location.reload(false);
+        window.history.back();
       })
       .catch((err) => {
         console.log(err);
