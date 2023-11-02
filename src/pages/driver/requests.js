@@ -641,13 +641,13 @@ function HotelRequest() {
                 width: 150,
               },
               {
-                label: "From Date",
+                label: "Start Date",
                 field: "Fromdate",
                 sort: "asc",
                 width: 150,
               },
               {
-                label: "To Date",
+                label: "Duration",
                 field: "Todate",
                 sort: "asc",
                 width: 150,
