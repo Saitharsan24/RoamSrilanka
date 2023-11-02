@@ -31,10 +31,10 @@ function HPTrip() {
     baseURL: apiBaseUrl,
     timeout: 5000,
   });
-
+  
   const handleRowClick = (p_bookingID) => {
     console.log("p_bookingID", p_bookingID);
-    navigate(`/holidayPlanner/hpviewtrip/${p_bookingID}`);
+    navigate(`/holidayPlanner/hprequestdetail/${p_bookingID}`);
   }
 
   const [user, setUser] = useState([]);

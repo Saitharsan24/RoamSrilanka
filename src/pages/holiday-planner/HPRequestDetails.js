@@ -162,7 +162,7 @@ const HPRequestDetails = () => {
   const mergeGuideData = (guideData, guideUser, guideRequestData) => {
     const mergedData = guideData.map((dataItem) => {
       const matchingRequest = Array.isArray(guideRequestData) ? guideRequestData.find((requestData) => requestData && requestData.guideId === dataItem.userId) : undefined;
-      const matchingUser = Array.isArray(guideUser) ? guideUser.find((userItem) => userItem && userItem.userId === dataItem.userId) : undefined;  
+      const matchingUser = Array.isArray(guideUser) ? guideUser.find((userItem) => userItem && userItem.userId === dataItem.guideId) : undefined;  
       if (matchingUser) {
         const mergedItem = {
           ...dataItem,
@@ -182,31 +182,31 @@ const HPRequestDetails = () => {
     return mergedData;
   };
   
-  const fullyMergedGuideData = mergeGuideData(guideData, guideUser, guideRequestData);
+  // const fullyMergedGuideData = mergeGuideData(guideData, guideUser, guideRequestData);
   
-  console.log("guide data : ",guideData);
-  console.log("guide user : ",guideUser);
-  console.log("guide request data : ",guideRequestData);
-  console.log("fully merged guide data : ",fullyMergedGuideData);
+  // console.log("guide data : ",guideData);
+  // console.log("guide user : ",guideUser);
+  // console.log("guide request data : ",guideRequestData);
+  // console.log("fully merged guide data : ",fullyMergedGuideData);
   
-  const filteredGuides = fullyMergedGuideData.filter(guide => {
-    const requestFromDate = new Date(guide.requestData.fromDate);
-    const requestToDate = new Date(guide.requestData.toDate);
-    const userInputFromDate = new Date(requestData.fromdate);
-    const userInputToDate = new Date(requestData.todate);
+  // const filteredGuides = fullyMergedGuideData.filter(guide => {
+  //   const requestFromDate = new Date("2023-11-21");
+  //   const requestToDate = new Date("2023-11-25");
+  //   const userInputFromDate = new Date(requestData.fromdate);
+  //   const userInputToDate = new Date(requestData.todate);
   
-    const hasDateConflict = userInputFromDate <= requestToDate && userInputToDate >= requestFromDate;
+  //   const hasDateConflict = userInputFromDate <= requestToDate && userInputToDate >= requestFromDate;
 
-  // Apply additional conditions for status and seats
-  return (
-    guide.requestData["status"] !== "1" && !hasDateConflict
-  );
+  // // Apply additional conditions for status and seats
+  // return (
+  //   guide.requestData["status"] !== "1" && !hasDateConflict
+  // );
 
-  });
+  // });
 
-  const availableGuides = filteredGuides;
+  // const availableGuides = filteredGuides;
 
-  console.log("available guides : ",availableGuides);
+  // console.log("available guides : ",availableGuides);
 
 
 const [vehicleData, setVehicleData] = useState([]);
@@ -475,7 +475,7 @@ console.log("day",currentDate);
                 <p>From Date :</p>
               </div>
               <div className="col-4 hp-req">
-                <p>{requestData.fromdate}</p>
+                <p>2023-11-21</p>
               </div>
             </div>
             <div className="d-flex flex-column flex-lg-row justify-content-left m-2 gap-3">
@@ -538,14 +538,14 @@ console.log("day",currentDate);
                   <div className="col-4 hp-req">
                     <select
                       name="tourGuideSelect"
-                      value={selectedTourGuide}
+                      
                       onChange={handleTourGuideChange}
                     >
-                      {availableGuides.map((guide, index) => (
+                      {/* {availableGuides.map((guide, index) => (
                         <option key={index} value={guide.userId}>
                           {guide.userFullname}
                         </option>
-                      ))}
+                      ))} */}
                       {/* Add other tour guide options as needed */}
                     </select>
                   </div>
