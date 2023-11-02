@@ -8,7 +8,51 @@ import axios from "axios";
 
 function Profile() {
    
+    // const [requests, setRequests] = useState([]);
+    // //Sending data to backend
+    // const apiBaseUrl = "http://localhost:8080";
+
+    // const axiosInstance = axios.create({
+    //     baseURL: apiBaseUrl,
+    //     timeout: 10000,
+    // });
+
+    // useEffect(() => {
+    //     // Fetch data from your backend API
+    //     axiosInstance
+    //       .get("/allTripRequests")
+    //       .then((response) => {
+    //         setRequests(response.data);
+    //         console.log(response.data);
+    //       })
+    //       .catch((error) => {
+    //         console.log("Error fetching data:", error);
+    //       });
+    // }, []);
+    
+    // const filteredRequests = requests.filter((request) => request.status == 3);
+    // console.log("My requests : " + filteredRequests.length);
+    // //Initiating sessoin data
+    // const { sessionData , setSessionData  } = useSession();
+
+    // const userId = sessionData.userId;
+    // console.log(userId);
+    // const Username = sessionData.userFullName;
+    // console.log(Username);
+
+    // const [Review, setReview] = useState([]);
+
+    // useEffect(() => {
+    //     fetch('http://localhost:8080/driverReview/'+userId)
+    //         .then((response) => response.json())
+    //         .then((data) => setReview(data))
+    //         .catch((error) => console.error('Error fetching data:', error));
+    // }, []);
+
+    // console.log(Review);
+
     const [requests, setRequests] = useState([]);
+    const [driver, setDriver] = useState([]);
     //Sending data to backend
     const apiBaseUrl = "http://localhost:8080";
 
@@ -29,14 +73,37 @@ function Profile() {
             console.log("Error fetching data:", error);
           });
     }, []);
+
+    useEffect(() => {
+        // Fetch data from your backend API
+        axiosInstance
+          .get("/viewDriver")
+          .then((response) => {
+            setDriver(response.data);
+            // console.log(response.data);
+          })
+          .catch((error) => {
+            console.log("Error fetching data:", error);
+          });
+    }, []);
+    console.log('hello from driver');
+    console.log(driver);
     
-    const filteredRequests = requests.filter((request) => request.status == 3);
-    console.log("My requests : " + filteredRequests.length);
-    //Initiating sessoin data
     const { sessionData , setSessionData  } = useSession();
 
     const userId = sessionData.userId;
     console.log(userId);
+
+    const filterDriver = driver.filter((mydriver) => mydriver.userId == userId);
+    console.log(filterDriver);
+
+    const filteredRequests = requests.filter((request) => request.status == 3);
+    console.log("My requests : " + filteredRequests.length);
+    //Initiating sessoin data
+    
+    const filteredToBe = requests.filter((request) => request.status == 2);
+    console.log("To Be Completed : " + filteredToBe.length);
+
     const Username = sessionData.userFullName;
     console.log(Username);
 
@@ -50,6 +117,10 @@ function Profile() {
     }, []);
 
     console.log(Review);
+
+    const date = new Date(); // Your date object
+    const formattedDate = date.toISOString().split('T')[0];
+    console.log(formattedDate);
 
     return (
         <div>

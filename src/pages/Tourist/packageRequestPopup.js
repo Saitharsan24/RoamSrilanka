@@ -7,7 +7,10 @@ import { useSession } from '../../Context/SessionContext';
 
 function PackageRequestPopup({closeModal, item}) {
 
-    console.log(item);
+    const { sessionData , setSessionData  } = useSession();
+    const [toDate, setToDate] = useState();
+    const [fromDate, setFromDate] = useState();
+
     const apiBaseUrl = "http://localhost:8080";
 
     const axiosInstance = axios.create({
@@ -15,25 +18,30 @@ function PackageRequestPopup({closeModal, item}) {
         timeout: 10000,
     });
 
-    //getting data from session variable
-    const { sessionData , setSessionData  } = useSession();
     
     const handleRequest = () => {
 
+        const calcToDate = (fromDate) => {
+            // console.log(fromDate);
+            let date = new Date(fromDate);
+            date.setDate(date.getDate() + item.days);
+            date = date.toISOString().split('T')[0];
+            console.log(date);
+            return date;
+        }
+
+        setToDate(calcToDate(fromDate));
         const data = {
             "fromdate": fromDate,
-            "to"
-            "touristId": sessionData.userId,
-            "packageid": item.packageID,
+            "todate" : calcToDate(fromDate),
+            "touristID": sessionData.userId,
+            "packageID": item.packageID,
             "status": 0
         }
 
-        axiosInstance.post("/request", {
-            "fromdate": fromDate,
-            "touristId": sessionData.userId,
-            "packageid": item.packageID,
-            "status": 0
-        })
+        console.log(data);
+
+        axiosInstance.post("/request", data)
         .then((response) => {
           // Handle the response data
           // For example:
@@ -44,10 +52,9 @@ function PackageRequestPopup({closeModal, item}) {
         .catch((err) => {
           console.log(err);
         });
-        // closeModal();
     }
 
-    const [fromDate, setFromDate] = useState("");
+    
     
   return (
     <div>
