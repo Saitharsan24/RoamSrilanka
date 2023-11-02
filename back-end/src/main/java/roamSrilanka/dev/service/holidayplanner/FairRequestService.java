@@ -27,4 +27,12 @@ public class FairRequestService {
     public Long countFRequests() {
         return fairrequestRepository.count();
     }
+
+    public FairRequest findbyId(Integer id) {
+        return fairrequestRepository.findById(id).orElse(null);
+    }
+
+    public void savestatus(FairRequest existingFairRequest) {
+        fairrequestRepository.save(existingFairRequest);
+    }
 }
