@@ -6,6 +6,7 @@ import { MDBDataTable } from "mdbreact";
 import "./../../styles/data-table.css";
 import * as Icon from "react-bootstrap-icons";
 import axios from "axios";
+import { useSession } from '../../Context/SessionContext';
 
 function GuideTrip() {
   const [trips, setTrips] = useState([]);
@@ -16,6 +17,10 @@ function GuideTrip() {
     baseURL: apiBaseUrl,
     timeout: 10000,
   });
+
+  const { sessionData , setSessionData  } = useSession();
+  const userId = sessionData.userId;
+
 
   useEffect(() => {
     // Fetch data from your backend API
@@ -30,7 +35,18 @@ function GuideTrip() {
       });
   }, []);
 
-  const rows = trips.map((trip) => {
+  console.log("userId", userId);
+
+  const filteredGrideTrips = trips.filter((trip) => {
+    return trip.guideId == userId;
+  });
+
+  const filteredTripsStatus = filteredGrideTrips.filter((trip) => {
+    return trip.status != "0";
+  });
+
+
+  const rows = filteredTripsStatus.map((trip) => {
     return {
       date: trip.date,
       fromDate: trip.fromDate,
