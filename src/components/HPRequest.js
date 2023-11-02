@@ -122,6 +122,9 @@ const HPDatatablePage = () => {
   
   
   const mergedData = mergeData(rowData, packages,tourist);
+
+  const filteredPackageData = mergedData.filter((item)=>item.newstatus2 == 0)
+
   console.log("rowData", rowData);
   console.log("packages", packages);
   console.log("tourist", tourist);
@@ -193,7 +196,7 @@ const HPDatatablePage = () => {
         btn: 'hp-accept-button',
       }
     ],
-    rows: mergedData.map((item) => ({
+    rows: filteredPackageData.map((item) => ({
       name: item.name,
       package_name: item.package_name,
       from: item.fromdate,

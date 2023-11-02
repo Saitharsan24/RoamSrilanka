@@ -311,7 +311,7 @@ const filteredDrivers = fullyMergedDriverData.filter(driver => {
 
   // Apply additional conditions for status and seats
   return (
-    driver.newstatus != 1 &&
+    driver.newstatus !== 1 &&
     driver.seats === seats && !hasDateConflict
   );
 });
@@ -319,6 +319,8 @@ const filteredDrivers = fullyMergedDriverData.filter(driver => {
 const availableDrivers = filteredDrivers;
 
 console.log("available drivers : ",availableDrivers);
+
+console.log("request data : ",requestData);
 
 
   const handleRowClick = (packageID) => {
@@ -360,7 +362,8 @@ console.log("day",currentDate);
         date:currentDate,
         fromDate:requestData.fromdate,
         toDate:requestData.todate,
-        userId:selectedTourGuide,
+        guideId:selectedTourGuide,
+        touristId:requestData.touristID,
         status:"1",
       });
       const response2 = await axiosInstance.post("/addRequest",{
@@ -368,12 +371,14 @@ console.log("day",currentDate);
         fromDate:requestData.fromdate,
         toDate:requestData.todate,
         hotelId:selectedHotel,
+        userId:requestData.touristID,
         status:"1",
       });
       const response3 = await axiosInstance.post("/addTripRequest",{
         start_date:requestData.fromdate,
         end_date:requestData.todate,
         userId:selectedVehicle,
+        tourist_id:requestData.touristID,
         status:1,
       });
       const response4 = await axiosInstance.put(`/updateHpStatus/${paraData.p_bookingID}`,{
