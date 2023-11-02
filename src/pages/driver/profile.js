@@ -220,7 +220,7 @@ function Profile() {
                                     <div class="card mt-1">
                                         <div class="card-body">
                                             <div class="position-relative">
-                                                <div class="position-absolute top-0 end-0"><span style={{color:"blue"}}>{item.date}</span></div>
+                                                <div class="position-absolute top-0 end-0"><span style={{color:"blue"}}>{item.date.slice(0, 10)}</span></div>
                                             </div>
                                             <div className="d-flex">
                                                 <img src={img2} alt="profile"  className="rounded" width="50px" height="50px" />
