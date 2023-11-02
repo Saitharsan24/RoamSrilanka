@@ -144,9 +144,22 @@ function Profile() {
                                         <h4 style={{fontWeight:"300"}}>Trips</h4>
                                     </div>
                                     <div>
+                                        <h3>{filteredToBe.length}</h3>
+                                        <h4 style={{fontWeight:"300"}}>To Be Completed</h4>
+                                    </div>
+                                    {/* <img src={img2} alt="profile"  width="150px" height="150px" />
+                                    <div>
+                                        <h3>{Username}</h3>
+                                        <h4 style={{fontWeight:"300"}}>Colombo, Sri Lanka</h4>
+                                    </div>
+                                    <div >
+                                        <h3 >{filteredRequests.length}</h3>
+                                        <h4 style={{fontWeight:"300"}}>Trips</h4>
+                                    </div>
+                                    <div>
                                         <h3>4.8</h3>
                                         <h4 style={{fontWeight:"300"}}>Rating</h4>
-                                    </div>
+                                    </div> */}
                                     {/* <div>
                                         <h3>$12 / hr</h3>
                                         <h4 style={{fontWeight:"300"}}>Rate</h4>
