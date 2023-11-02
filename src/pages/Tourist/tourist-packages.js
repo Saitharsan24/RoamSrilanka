@@ -17,16 +17,22 @@ function ToursitGuide() {
     timeout: 10000,
   });
 
-  // useEffect(() => {
-  //   axiosInstance
-  //     .get("/viewTourPackages")
-  //     .then((res) => {
-  //       setTourPackages(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // });
+  const pkgBookHandler = (pkgId) => {
+    localStorage.setItem("pkgId", JSON.stringify(pkgId));
+    window.location.href = '/tourist/touristPackageView';
+  }
+
+  useEffect(() => {
+    axiosInstance
+      .get("/packages")
+      .then((res) => {
+        console.log(res.data);
+        setTourPackages(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
 
   return (
     <div
@@ -71,33 +77,37 @@ function ToursitGuide() {
       </div>
 
       <div className="all-tourist-packages d-flex flex-column guide-top mt-2">
-        <div className="package-row d-flex flex-row gap-4 justify-content-around">
+        <div className="package-row d-flex gap-4 justify-content-around">
          
-          <div className="package-card">
-            <div className="package-card-image">
-              <img src="" alt="" />
+            <div className="package-container">
+              {tourPackages.map((pkge, index) => (
+                <div className="package-card" key={index}>
+                  <div className={`package-card-image pk${index}`}>
+                  </div>
+                  <h5>{pkge.package_name}</h5>
+                  <div className="package-name-price">
+                    <p>Amount: <span>$ {Math.floor(pkge.price)}</span></p>
+                 
+                      <Button
+                        style={{
+                          backgroundColor: "#004577",
+                          border: "none",
+                          marginTop: "3px",
+                          paddingLeft: "20px",
+                          paddingRight: "20px",
+                          fontSize: "17px",
+                          fontWeight: "500"
+                        }}
+                        onClick={()=>pkgBookHandler(pkge.packageID)}
+                      >
+                        Book
+                      </Button>
+              
+                  </div>
+                </div>
+              ))}
             </div>
-            <h5>
-              Luxury Escape to Sri Lanka 5 Nights
-            </h5>
-            <div className="package-name-price">
-              <p><span>$500</span> per adult</p>
-              <a href="./touristPackageView">
-              <Button
-              style={{
-                backgroundColor: "#004577",
-                border: "none",
-                marginTop: "3px",
-                paddingLeft: "20px",
-                paddingRight: "20px",
-                fontSize: "17px",
-                fontWeight: "500"
-                }}>
-                  Book
-              </Button>
-              </a>
-            </div>
-          </div>
+
 
         </div>
       </div>

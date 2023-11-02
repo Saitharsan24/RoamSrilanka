@@ -8,11 +8,104 @@ import axios from "axios";
 
 function Profile() {
    
-    //Initiating sessoin data
+    // const [requests, setRequests] = useState([]);
+    // //Sending data to backend
+    // const apiBaseUrl = "http://localhost:8080";
+
+    // const axiosInstance = axios.create({
+    //     baseURL: apiBaseUrl,
+    //     timeout: 10000,
+    // });
+
+    // useEffect(() => {
+    //     // Fetch data from your backend API
+    //     axiosInstance
+    //       .get("/allTripRequests")
+    //       .then((response) => {
+    //         setRequests(response.data);
+    //         console.log(response.data);
+    //       })
+    //       .catch((error) => {
+    //         console.log("Error fetching data:", error);
+    //       });
+    // }, []);
+    
+    // const filteredRequests = requests.filter((request) => request.status == 3);
+    // console.log("My requests : " + filteredRequests.length);
+    // //Initiating sessoin data
+    // const { sessionData , setSessionData  } = useSession();
+
+    // const userId = sessionData.userId;
+    // console.log(userId);
+    // const Username = sessionData.userFullName;
+    // console.log(Username);
+
+    // const [Review, setReview] = useState([]);
+
+    // useEffect(() => {
+    //     fetch('http://localhost:8080/driverReview/'+userId)
+    //         .then((response) => response.json())
+    //         .then((data) => setReview(data))
+    //         .catch((error) => console.error('Error fetching data:', error));
+    // }, []);
+
+    // console.log(Review);
+
+    const [requests, setRequests] = useState([]);
+    const [driver, setDriver] = useState([]);
+    //Sending data to backend
+    const apiBaseUrl = "http://localhost:8080";
+
+    const axiosInstance = axios.create({
+        baseURL: apiBaseUrl,
+        timeout: 10000,
+    });
+
+    useEffect(() => {
+        // Fetch data from your backend API
+        axiosInstance
+          .get("/allTripRequests")
+          .then((response) => {
+            setRequests(response.data);
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log("Error fetching data:", error);
+          });
+    }, []);
+
+    useEffect(() => {
+        // Fetch data from your backend API
+        axiosInstance
+          .get("/viewDriver")
+          .then((response) => {
+            setDriver(response.data);
+            // console.log(response.data);
+          })
+          .catch((error) => {
+            console.log("Error fetching data:", error);
+          });
+    }, []);
+    console.log('hello from driver');
+    console.log(driver);
+    
     const { sessionData , setSessionData  } = useSession();
 
     const userId = sessionData.userId;
     console.log(userId);
+
+    const filterDriver = driver.filter((mydriver) => mydriver.userId == userId);
+    console.log(filterDriver);
+
+    const filteredRequests = requests.filter((request) => request.status == 3);
+    console.log("My requests : " + filteredRequests.length);
+    //Initiating sessoin data
+    
+    const filteredToBe = requests.filter((request) => request.status == 2);
+    console.log("To Be Completed : " + filteredToBe.length);
+
+    const Username = sessionData.userFullName;
+    console.log(Username);
 
     const [Review, setReview] = useState([]);
 
@@ -24,6 +117,10 @@ function Profile() {
     }, []);
 
     console.log(Review);
+
+    const date = new Date(); // Your date object
+    const formattedDate = date.toISOString().split('T')[0];
+    console.log(formattedDate);
 
     return (
         <div>
@@ -39,17 +136,30 @@ function Profile() {
                                 <div className="d-flex align-items-center justify-content-around">
                                     <img src={img2} alt="profile"  width="150px" height="150px" />
                                     <div>
-                                        <h3>Nisaf Ahamed</h3>
+                                        <h3>{Username}</h3>
                                         <h4 style={{fontWeight:"300"}}>Colombo, Sri Lanka</h4>
                                     </div>
                                     <div >
-                                        <h3 >239</h3>
+                                        <h3 >{filteredRequests.length}</h3>
+                                        <h4 style={{fontWeight:"300"}}>Trips</h4>
+                                    </div>
+                                    <div>
+                                        <h3>{filteredToBe.length}</h3>
+                                        <h4 style={{fontWeight:"300"}}>To Be Completed</h4>
+                                    </div>
+                                    {/* <img src={img2} alt="profile"  width="150px" height="150px" />
+                                    <div>
+                                        <h3>{Username}</h3>
+                                        <h4 style={{fontWeight:"300"}}>Colombo, Sri Lanka</h4>
+                                    </div>
+                                    <div >
+                                        <h3 >{filteredRequests.length}</h3>
                                         <h4 style={{fontWeight:"300"}}>Trips</h4>
                                     </div>
                                     <div>
                                         <h3>4.8</h3>
                                         <h4 style={{fontWeight:"300"}}>Rating</h4>
-                                    </div>
+                                    </div> */}
                                     {/* <div>
                                         <h3>$12 / hr</h3>
                                         <h4 style={{fontWeight:"300"}}>Rate</h4>
@@ -62,13 +172,13 @@ function Profile() {
                         <div className="col-sm-6 p-2">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="position-relative">
+                                    {/* <div class="position-relative">
                                         <div class="position-absolute top-0 end-0"><Icon.Pencil color="black" /></div>
-                                    </div>
-                                    <h5>Personal Informations</h5><hr></hr>
+                                    </div> */}
+                                    {/* <h5>Personal Informations</h5><hr></hr>
                                     <div style={{marginTop:"5px"}}>
                                         <h6>Full Name</h6>
-                                        <span className="p-1">Nisaf Ahamed</span><hr></hr>
+                                        <span className="p-1">{Username}</span><hr></hr>
                                     </div>
                                     <div style={{marginTop:"5px"}}>
                                         <h6>About Me</h6>
@@ -77,7 +187,28 @@ function Profile() {
                                     <div style={{marginTop:"5px"}}>
                                         <h6>Language Spoken</h6>
                                         <span className="p-1">English, Tamil, Sinhala</span>
+                                    </div> */}
+                                    <h5>Personal Informations</h5><hr></hr>
+                                    <div style={{marginTop:"5px"}}>
+                                        <h6>Full Name</h6>
+                                        <span className="p-1">{Username}</span><hr></hr>
                                     </div>
+                                    <div style={{marginTop:"5px"}}>
+                                        <h6>About Me</h6>
+                                        <span className="p-1">This aspect is crucial, and I commend the driver for prioritizing safety</span><hr></hr>	
+                                    </div>
+                                    <div style={{marginTop:"5px"}}>
+                                        <h6>NIC Number</h6>
+                                        <span className="p-1">{filterDriver.length === 1 ? filterDriver[0]['nic'] : '200040004455'}</span><hr></hr>
+                                    </div>
+                                    <div style={{marginTop:"5px"}}>
+                                        <h6>Address</h6>
+                                        <span className="p-1">{filterDriver.length === 1 ? filterDriver[0]['address'] : 'Colombo,Sri Lanka'}</span><hr></hr>
+                                    </div>
+                                    <div style={{marginTop:"5px"}}>
+                                        <h6>Phone Number</h6>
+                                        <span className="p-1">{filterDriver.length === 1 ? filterDriver[0]['phone_no'] : '0769877667'}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div> 
@@ -89,7 +220,7 @@ function Profile() {
                                     <div class="card mt-1">
                                         <div class="card-body">
                                             <div class="position-relative">
-                                                <div class="position-absolute top-0 end-0"><span style={{color:"blue"}}>{item.date}</span></div>
+                                                <div class="position-absolute top-0 end-0"><span style={{color:"blue"}}>{item.date.slice(0, 10)}</span></div>
                                             </div>
                                             <div className="d-flex">
                                                 <img src={img2} alt="profile"  className="rounded" width="50px" height="50px" />

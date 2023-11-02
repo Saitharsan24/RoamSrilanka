@@ -382,8 +382,116 @@ import Headeruser from "../../components/headerusers";
 import { MDBDataTable } from "mdbreact";
 import "./../../styles/data-table.css";
 import axios from "axios";
+import { useSession } from '../../Context/SessionContext';
 
 function HotelRequest() {
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [selectedRequest, setSelectedRowData] = useState([]);
+  // const [requests, setRequests] = useState([]);
+  // const [request_id, setRequestId] = useState("");
+  // const [inputValue, setInputValue] = useState("");
+
+  // //Sending data to backend
+  // const apiBaseUrl = "http://localhost:8080";
+
+  // const axiosInstance = axios.create({
+  //   baseURL: apiBaseUrl,
+  //   timeout: 10000,
+  // });
+
+
+  // const { sessionData , setSessionData  } = useSession();
+
+  // const userId = sessionData.userId;
+  // console.log(userId);
+
+  // const openModal = (request_id) => {
+  //   setIsModalOpen(true);
+  //   setRequestId(request_id);
+  //   setSelectedRowData(requests.find((request) => request.request_id === request_id));
+  //   console.log("requestId: ", request_id);
+  //   console.log("selectedRequest: ", selectedRequest);
+  // };
+
+  // const closeModal = () => {
+  //   setIsModalOpen(false);
+  // };
+
+  // useEffect(() => {
+  //   // Fetch data from your backend API
+  //   axiosInstance
+  //     .get("/allTripRequests")
+  //     .then((response) => {
+  //       setRequests(response.data);
+  //       console.log(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log("Error fetching data:", error);
+  //     });
+  // }, []);
+
+  // const filteredRequests = requests.filter((request) => request.status == null);
+
+  // const rows = filteredRequests.map((request) => {
+  //   return {
+  //     id: request.request_id,
+  //     name: request.tourist_name,
+  //     Fromdate: request.start_date,
+  //     Todate: request.end_date,
+  //     Pickup: request.pickup,
+  //     Destination: request.destination,
+  //     // number: request.noOfRooms,
+  //     btn: (
+  //       <Link
+  //         key={`view-${request.request_id}`}
+  //         className="view"
+  //         onClick={() => openModal(request.request_id)}
+  //       >
+  //         View More
+  //       </Link>
+  //     ),
+  //   };
+  // });
+
+  // const requestAcceptProcess = async(e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axiosInstance.put(`/updateStatus/${request_id}`, {
+  //       status: 1,
+  //       userId: userId,
+  //     });
+
+  //     if (response.status === 200) {
+  //       closeModal();
+  //       window.location.reload();
+  //       console.log("okkkk");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // const requestRejectProcess = async(e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axiosInstance.put(`/addStatus/${requestId}`, {
+  //       status: 1,
+  //     });
+
+  //     if (response.status === 200) {
+  //       closeModal();
+  //       window.location.reload();
+  //       console.log("okkkk");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // const handleRequestlId = (e) => {
+  //   setRequestId(e.target.value);
+  // };
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRequest, setSelectedRowData] = useState([]);
   const [requests, setRequests] = useState([]);
@@ -398,6 +506,11 @@ function HotelRequest() {
     timeout: 10000,
   });
 
+
+  const { sessionData , setSessionData  } = useSession();
+
+  const userId = sessionData.userId;
+  console.log(userId);
 
   const openModal = (request_id) => {
     setIsModalOpen(true);
@@ -430,28 +543,27 @@ function HotelRequest() {
     return {
       id: request.request_id,
       name: request.tourist_name,
-      Fromdate: request.start_date,
-      Todate: request.end_date,
+      Fromdate: request.start_date.slice(0, 10),
+      Todate: request.no_of_days,
       Pickup: request.pickup,
       Destination: request.destination,
       // number: request.noOfRooms,
       btn: (
-        <Link
-          key={`view-${request.request_id}`}
-          className="view"
-          onClick={() => openModal(request.request_id)}
-        >
+        <Link key={`view-${request.request_id}`} className="view" onClick={() => openModal(request.request_id)}>
           View More
         </Link>
-      ),
-    };
-  });
+      ),
+    }
+  });
+
+
 
   const requestAcceptProcess = async(e) => {
     e.preventDefault();
     try {
       const response = await axiosInstance.put(`/updateStatus/${request_id}`, {
         status: 1,
+        userId: userId,
       });
 
       if (response.status === 200) {
@@ -464,26 +576,26 @@ function HotelRequest() {
     }
   };
 
-  // const requestRejectProcess = async(e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axiosInstance.put(`/addStatus/${requestId}`, {
-  //       status: 1,
-  //     });
+  const requestRejectProcess = async(e) => {
+    e.preventDefault();
+    try {
+      const response = await axiosInstance.put(`/addStatus/${request_id}`, {
+        status: -1,
+      });
 
-  //     if (response.status === 200) {
-  //       closeModal();
-  //       window.location.reload();
-  //       console.log("okkkk");
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+      if (response.status === 200) {
+        closeModal();
+        window.location.reload();
+        console.log("okkkk");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleRequestlId = (e) => {
     setRequestId(e.target.value);
-  };
+  };
 
   return (
     <div className="d-flex w-100">
@@ -529,13 +641,13 @@ function HotelRequest() {
                 width: 150,
               },
               {
-                label: "From Date",
+                label: "Start Date",
                 field: "Fromdate",
                 sort: "asc",
                 width: 150,
               },
               {
-                label: "To Date",
+                label: "Duration",
                 field: "Todate",
                 sort: "asc",
                 width: 150,
@@ -598,20 +710,20 @@ function HotelRequest() {
                 </div>
                 <div className="d-flex flex-row justify-content-between ">
                   <div>
-                    <label className="hotel-popup-label">From Date</label>
+                    <label className="hotel-popup-label">Start Date</label>
                     <br />
                     <div
                     style={{width: "210px"}}
                       className="hotel-popup-input"
-                    >{selectedRequest.start_date}</div>
+                    >{selectedRequest.start_date.slice(0, 10)}</div>
                   </div>
                   <div>
-                    <label className="hotel-popup-label">To Date</label>
+                    <label className="hotel-popup-label">Duration (In days)</label>
                     <br />
                     <div
                     style={{width: "210px"}}
                       className="hotel-popup-input"
-                    >{selectedRequest.end_date}</div>
+                    >{selectedRequest.no_of_days}</div>
                   </div>
                 </div>
                 <div className="d-flex flex-row justify-content-between">
@@ -663,7 +775,7 @@ function HotelRequest() {
                   </div>
                 </div>
                 <dic className="d-flex flex-row justify-content-center gap-5">
-                  <button /*onClick={requestRejectProcess}*/ className="hotel-popup-reject p-2">Reject</button>
+                  <button onClick={requestRejectProcess} className="hotel-popup-reject p-2">Reject</button>
                   <button onClick={requestAcceptProcess} className="hotel-popup-accept p-2">Accept</button>
                 </dic>
               </div>

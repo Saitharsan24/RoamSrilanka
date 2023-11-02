@@ -8,154 +8,314 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function DriverTrips() {
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedRequest, setSelectedRowData] = useState([]);
-  const [requests, setRequests] = useState([]);
-  const [request_id, setRequestId] = useState("");
-  //Sending data to backend
-  const apiBaseUrl = "http://localhost:8080";
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [selectedRequest, setSelectedRowData] = useState([]);
+//   const [requests, setRequests] = useState([]);
+//   const [request_id, setRequestId] = useState("");
+//   //Sending data to backend
+//   const apiBaseUrl = "http://localhost:8080";
 
 
-  const openModal = (request_id) => {
-    setIsModalOpen(true);
-    setRequestId(request_id);
-    setSelectedRowData(requests.find((request) => request.request_id === request_id));
-    console.log("requestId: ", request_id);
-    console.log("selectedRequest: ", selectedRequest);
-  };
+//   const openModal = (request_id) => {
+//     setIsModalOpen(true);
+//     setRequestId(request_id);
+//     setSelectedRowData(requests.find((request) => request.request_id === request_id));
+//     console.log("requestId: ", request_id);
+//     console.log("selectedRequest: ", selectedRequest);
+//   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+//   const closeModal = () => {
+//     setIsModalOpen(false);
+//   };
 
-  const axiosInstance = axios.create({
-    baseURL: apiBaseUrl,
-    timeout: 10000,
-  });
+//   const axiosInstance = axios.create({
+//     baseURL: apiBaseUrl,
+//     timeout: 10000,
+//   });
 
 
-  useEffect(() => {
-    // Fetch data from your backend API
-    axiosInstance
-      .get("/allTripRequests")
-      .then((response) => {
-        setRequests(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log("Error fetching data:", error);
-      });
-  }, []);
+//   useEffect(() => {
+//     // Fetch data from your backend API
+//     axiosInstance
+//       .get("/allTripRequests")
+//       .then((response) => {
+//         setRequests(response.data);
+//         console.log(response.data);
+//       })
+//       .catch((error) => {
+//         console.log("Error fetching data:", error);
+//       });
+//   }, []);
 
-  console.log(requests)
+//   console.log(requests)
+// // for upcoming trips
+//   const filteredRequests1 = requests.filter((request) => request.status == 1);
+//   console.log(filteredRequests1)
+
+//   const rows1 = filteredRequests1.map((request) => {
+//     return {
+//       id: request.request_id,
+//       name: request.tourist_name,
+//       Fromdate: request.start_date,
+//       Todate: request.end_date,
+//       Pickup: request.pickup,
+//       Destination: request.destination,
+//       // number: request.noOfRooms,
+//       btn: (
+//         <Link
+//           key={`view-${request.request_id}`}
+//           className="view"
+//           onClick={() => openModal(request.request_id)}
+//         >
+//           View More
+//         </Link>
+//       ),
+//     };
+//   });
+
+// // for ongoing trips
+//   const filteredRequests2 = requests.filter((request) => request.status == 2);
+//   console.log(filteredRequests2)
+
+//   const rows2 = filteredRequests2.map((request) => {
+//     return {
+//       id: request.request_id,
+//       name: request.tourist_name,
+//       Fromdate: request.start_date,
+//       Todate: request.end_date,
+//       Pickup: request.pickup,
+//       Destination: request.destination,
+//       // number: request.noOfRooms,
+//       btn: (
+//         <Link
+//           key={`view-${request.request_id}`}
+//           className="view"
+//           onClick={() => openModal(request.request_id)}
+//         >
+//           View More
+//         </Link>
+//       ),
+//     };
+//   });
+
+//   // for ongoing trips
+//   const filteredRequests3 = requests.filter((request) => request.status == 3);
+//   console.log(filteredRequests3)
+
+//   const rows3 = filteredRequests3.map((request) => {
+//     return {
+//       id: request.request_id,
+//       name: request.tourist_name,
+//       Fromdate: request.start_date,
+//       Todate: request.end_date,
+//       Pickup: request.pickup,
+//       Destination: request.destination,
+//       Status: 'Completed',
+//     };
+//   });
+
+//   const requestStartProcess = async(e) => {
+//     e.preventDefault();
+//     try {
+//       const response = await axiosInstance.put(`/updateStatus/${request_id}`, {
+//         status: 2,
+//       });
+
+//       if (response.status === 200) {
+//         closeModal();
+//         window.location.reload();
+//         console.log("okkkk");
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//   const requestFinishProcess = async(e) => {
+//     e.preventDefault();
+//     try {
+//       const response = await axiosInstance.put(`/updateStatus/${request_id}`, {
+//         status: 3,
+//       });
+
+//       if (response.status === 200) {
+//         closeModal();
+//         window.location.reload();
+//         console.log("okkkk");
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+
+//     const handleRequestlId = (e) => {
+//       setRequestId(e.target.value);
+//     };
+
+//     const [showtab , setShowTab] = useState(1);
+//     const handletab = (e) => {
+//         setShowTab(e);
+//     }
+
+const [isModalOpen, setIsModalOpen] = useState(false);
+const [selectedRequest, setSelectedRowData] = useState([]);
+const [requests, setRequests] = useState([]);
+const [request_id, setRequestId] = useState("");
+//Sending data to backend
+const apiBaseUrl = "http://localhost:8080";
+
+
+const openModal = (request_id) => {
+  setIsModalOpen(true);
+  setRequestId(request_id);
+  setSelectedRowData(requests.find((request) => request.request_id === request_id));
+  console.log("requestId: ", request_id);
+  console.log("selectedRequest: ", selectedRequest);
+};
+
+const closeModal = () => {
+  setIsModalOpen(false);
+};
+
+const axiosInstance = axios.create({
+  baseURL: apiBaseUrl,
+  timeout: 10000,
+});
+
+
+useEffect(() => {
+  // Fetch data from your backend API
+  axiosInstance
+    .get("/allTripRequests")
+    .then((response) => {
+      setRequests(response.data);
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log("Error fetching data:", error);
+    });
+}, []);
+
+console.log(requests)
 // for upcoming trips
-  const filteredRequests1 = requests.filter((request) => request.status == 1);
-  console.log(filteredRequests1)
+const filteredRequests1 = requests.filter((request) => request.status == 1);
+console.log(filteredRequests1)
 
-  const rows1 = filteredRequests1.map((request) => {
-    return {
-      id: request.request_id,
-      name: request.tourist_name,
-      Fromdate: request.start_date,
-      Todate: request.end_date,
-      Pickup: request.pickup,
-      Destination: request.destination,
-      // number: request.noOfRooms,
-      btn: (
-        <Link
-          key={`view-${request.request_id}`}
-          className="view"
-          onClick={() => openModal(request.request_id)}
-        >
-          View More
-        </Link>
-      ),
-    };
-  });
+const rows1 = filteredRequests1.map((request) => {
+  return {
+    id: request.request_id,
+    name: request.tourist_name,
+    Fromdate: request.start_date.slice(0, 10),
+    Todate: request.no_of_days,
+    Pickup: request.pickup,
+    Destination: request.destination,
+    // number: request.noOfRooms,
+    btn: (
+      <Link
+        key={`view-${request.request_id}`}
+        className="view"
+        onClick={() => openModal(request.request_id)}
+      >
+        View More
+      </Link>
+    ),
+    Status: (
+      <div style={{width: "fitContent", padding: "0.1rem", backgroundColor: "#ffcccb", borderRadius:"8px", color:"red"}}>
+          {/* <i className="bi bi-circle-fill tag-icon"></i> */}
+          <p className="m-0">Pending</p>
+      </div>
+    ),
+  };
+});
 
 // for ongoing trips
-  const filteredRequests2 = requests.filter((request) => request.status == 2);
-  console.log(filteredRequests2)
+const filteredRequests2 = requests.filter((request) => request.status == 2);
+console.log(filteredRequests2)
 
-  const rows2 = filteredRequests2.map((request) => {
-    return {
-      id: request.request_id,
-      name: request.tourist_name,
-      Fromdate: request.start_date,
-      Todate: request.end_date,
-      Pickup: request.pickup,
-      Destination: request.destination,
-      // number: request.noOfRooms,
-      btn: (
-        <Link
-          key={`view-${request.request_id}`}
-          className="view"
-          onClick={() => openModal(request.request_id)}
-        >
-          View More
-        </Link>
-      ),
-    };
-  });
+const rows2 = filteredRequests2.map((request) => {
+  return {
+    id: request.request_id,
+    name: request.tourist_name,
+    Fromdate: request.start_date.slice(0, 10),
+    Todate: request.no_of_days,
+    Pickup: request.pickup,
+    Destination: request.destination,
+    // number: request.noOfRooms,
+    btn: (
+      <Link
+        key={`view-${request.request_id}`}
+        className="view"
+        onClick={() => openModal(request.request_id)}
+      >
+        View More
+      </Link>
+    ),
+  };
+});
 
-  // for ongoing trips
-  const filteredRequests3 = requests.filter((request) => request.status == 3);
-  console.log(filteredRequests3)
+// for ongoing trips
+const filteredRequests3 = requests.filter((request) => request.status == 3);
+console.log(filteredRequests3)
 
-  const rows3 = filteredRequests3.map((request) => {
-    return {
-      id: request.request_id,
-      name: request.tourist_name,
-      Fromdate: request.start_date,
-      Todate: request.end_date,
-      Pickup: request.pickup,
-      Destination: request.destination,
-      Status: 'Completed',
-    };
-  });
+const rows3 = filteredRequests3.map((request) => {
+  return {
+    id: request.request_id,
+    name: request.tourist_name,
+    Fromdate: request.start_date.slice(0, 10),
+    Todate: request.no_of_days,
+    Pickup: request.pickup,
+    Destination: request.destination,
+    Status: (
+      <div  style={{width: "fitContent", padding: "0.1rem", backgroundColor: "#CDFFCD", borderRadius:"8px", color:"#007F00"}}>
+          {/* <i className="bi bi-circle-fill tag-icon"></i> */}
+          <p className="m-0">Completed</p>
+      </div>
+    ),
+  };
+});
 
-  const requestStartProcess = async(e) => {
-    e.preventDefault();
-    try {
-      const response = await axiosInstance.put(`/updateStatus/${request_id}`, {
-        status: 2,
-      });
+const requestStartProcess = async(e) => {
+  e.preventDefault();
+  try {
+    const response = await axiosInstance.put(`/updateStatus/${request_id}`, {
+      status: 2,
+    });
 
-      if (response.status === 200) {
-        closeModal();
-        window.location.reload();
-        console.log("okkkk");
-      }
-    } catch (error) {
-      console.log(error);
+    if (response.status === 200) {
+      closeModal();
+      window.location.reload();
+      console.log("okkkk");
     }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const requestFinishProcess = async(e) => {
+  e.preventDefault();
+  try {
+    const response = await axiosInstance.put(`/updateStatus/${request_id}`, {
+      status: 3,
+    });
+
+    if (response.status === 200) {
+      closeModal();
+      window.location.reload();
+      console.log("okkkk");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+  const handleRequestlId = (e) => {
+    setRequestId(e.target.value);
   };
 
-  const requestFinishProcess = async(e) => {
-    e.preventDefault();
-    try {
-      const response = await axiosInstance.put(`/updateStatus/${request_id}`, {
-        status: 3,
-      });
-
-      if (response.status === 200) {
-        closeModal();
-        window.location.reload();
-        console.log("okkkk");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-    const handleRequestlId = (e) => {
-      setRequestId(e.target.value);
-    };
-
-    const [showtab , setShowTab] = useState(1);
-    const handletab = (e) => {
-        setShowTab(e);
-    }
+  const [showtab , setShowTab] = useState(1);
+  const handletab = (e) => {
+      setShowTab(e);
+    }
 
     return (
         <div className="d-flex w-100">
@@ -171,13 +331,13 @@ function DriverTrips() {
                 <div className="d-flex flex-row gap-4 my-3 ">
                     <ul className="nav nav-pills mb-3 mt-1" id="pillstab" role="tablist">
                         <li className="nav-item" role="presentation">
-                            <button className={showtab === 1 ? "nav-link active": "nav-link"} onClick={() => handletab(1)}>Upcoming Trips</button>
+                            <button className={showtab === 1 ? "nav-link active": "nav-link"} onClick={() => handletab(1)}>Payment Pending</button>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button className={showtab === 2 ? "nav-link active": "nav-link"} onClick={() => handletab(2)}>Ongoing Trips</button>
+                            <button className={showtab === 2 ? "nav-link active": "nav-link"} onClick={() => handletab(2)}>Confirm Trips</button>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button className={showtab === 3 ? "nav-link active": "nav-link"} onClick={() => handletab(3)}>Finished Trips</button>
+                            <button className={showtab === 3 ? "nav-link active": "nav-link"} onClick={() => handletab(3)}>Completed Trips</button>
                         </li>
                     </ul>
                 </div>
@@ -185,7 +345,7 @@ function DriverTrips() {
                 <div className="tab-content text-dark" id="pills-tabContent">
                     <div className={showtab === 1 ? "tab-pane fade show active": "tab-pane fade show"}>
                         
-                        <p>Upcoming</p>
+                        {/* <p>Upcoming</p> */}
 
                         <MDBDataTable
                           striped
@@ -207,13 +367,13 @@ function DriverTrips() {
                                 width: 150,
                               },
                               {
-                                label: "From Date",
+                                label: "Start Date",
                                 field: "Fromdate",
                                 sort: "asc",
                                 width: 150,
                               },
                               {
-                                label: "To Date",
+                                label: "Duration in days",
                                 field: "Todate",
                                 sort: "asc",
                                 width: 150,
@@ -231,18 +391,24 @@ function DriverTrips() {
                                 width: 250,
                               },
                               {
-                                label: "More Info",
-                                field: "btn",
+                                label: "Status",
+                                field: "Status",
                                 width: 100,
-                                btn: "view-button",
-                              },
+                                btn: "asc",
+                              },
+                              // {
+                              //   label: "More Info",
+                              //   field: "btn",
+                              //   width: 100,
+                              //   btn: "view-button",
+                              // },
                             ],
                             rows: rows1, // Use the rows you generated
                           }}
                           exportToCSV={true}
                         />
 
-                        <Modal show={isModalOpen} onHide={closeModal}>
+                        {/* <Modal show={isModalOpen} onHide={closeModal}>
                           <Modal.Header closeButton>
                             <Modal.Title>Trip Request</Modal.Title>
                           </Modal.Header>
@@ -349,10 +515,10 @@ function DriverTrips() {
                               <p>No records found for Tourist ID: {request_id}</p>
                             )}
                           </Modal.Body>
-                        </Modal>
+                        </Modal> */}
                     </div>
                     <div className={showtab === 2 ? "tab-pane fade show active": "tab-pane fade show"}>
-                        <p>Ongoing</p>
+                        {/* <p>Ongoing</p> */}
 
                         <MDBDataTable
                           striped
@@ -374,13 +540,13 @@ function DriverTrips() {
                                 width: 150,
                               },
                               {
-                                label: "From Date",
+                                label: "Start Date",
                                 field: "Fromdate",
                                 sort: "asc",
                                 width: 150,
                               },
                               {
-                                label: "To Date",
+                                label: "Duration",
                                 field: "Todate",
                                 sort: "asc",
                                 width: 150,
@@ -519,7 +685,7 @@ function DriverTrips() {
                         </Modal>
                     </div>
                     <div className={showtab === 3 ? "tab-pane fade show active": "tab-pane fade show"}>
-                        <p>Finished</p>
+                        {/* <p>Finished</p> */}
                         <MDBDataTable
                           striped
                           bordered

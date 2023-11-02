@@ -48,18 +48,22 @@ function HotelBooking() {
       // Fetch data from your backend API for viewRequest
       const requestResponse = await axiosInstance.get("/viewRequest");
       const requestArray = requestResponse.data;
+      console.log("requestArray:",requestArray);
   
       // Fetch data from your backend API for viewTourists
-      const touristsResponse = await axiosInstance.get("/viewTourists");
+      const touristsResponse = await axiosInstance.get("/viewTourist");
       const touristsArray = touristsResponse.data;
+      console.log("touristsArray:",touristsArray);
   
       // Fetch data from your backend API for viewHotels
       const hotelsResponse = await axiosInstance.get("/viewHotels");
       const hotelsArray = hotelsResponse.data;
+      console.log("hotelsArray:",hotelsArray);
   
       // Fetch data from your backend API for users
       const usersResponse = await axiosInstance.get("/users");
       const usersArray = usersResponse.data;
+      console.log("usersArray:",usersArray);
   
       // Create a mapping of userId to user data
       const userDataMap = {};
@@ -116,13 +120,36 @@ function HotelBooking() {
     return item.hotelData["ownerId"] === ownerId;
   });
 
+  function determineStatus(status) {
+    switch (status) {
+      case "0":
+        return {text : "Confirmed", color:"green"};
+      case "1":
+        return {text : "Rejected", color:"red"};
+        default:
+      return { text: "Unknown", color: "black" };  
+    }
+  }
+
+  console.log("mergedData:",mergedData);
 console.log("filteredData:",filteredData); 
 
   const rows = filteredData.map((request) => {
     return {
       name: request.userFullname,
       date: request.date,
-      status: determineStatus(request.status),
+      status: <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          borderRadius: "50%",
+          backgroundColor: determineStatus(request.status).color,
+          marginRight: "8px",
+        }}
+      ></div>
+      {determineStatus(request.status).text}
+    </div>,
       btn: (
         <Link
           key={`view-${request.requestId}`}
@@ -134,16 +161,6 @@ console.log("filteredData:",filteredData);
       ),
     };
   });
-
-  function determineStatus(status) {
-    if (status == null) {
-      return "Pending";
-    } else if (status == 1) {
-      return "Accepted";
-    } else {
-      return "Rejected";
-    }
-  }
 
   const handleRequestlId = (e) => {
     setRequestId(e.target.value);
@@ -161,7 +178,7 @@ console.log("filteredData:",filteredData);
           >
             <b>All Bookings</b>
           </p>
-          <a style={{ color: "inherit" }} href="hotelRequest">
+          {/* <a style={{ color: "inherit" }} href="hotelRequest">
             <button
               type="button"
               style={{
@@ -177,7 +194,7 @@ console.log("filteredData:",filteredData);
                 </span>
               )}
             </button>
-          </a>
+          </a> */}
         </div>
         <MDBDataTable
           striped

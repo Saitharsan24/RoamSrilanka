@@ -5,6 +5,9 @@ import '../../styles/tourist/touristdashboard.css'
 import ResponsiveCalendar from "../../components/calender.js";
 import profile_pic from "./../../assets/images/profile_pic.png";
 import galle_tower from "./../../assets/images/galle_tower.jpeg";
+import axios from "axios";
+import { useSession } from "../../Context/SessionContext";
+import { useState, useEffect } from "react";
 
 
 function TouristDashboard() {
@@ -27,6 +30,58 @@ function TouristDashboard() {
     },
 
   ]
+
+  const [allDriverRequests, setAllDriverRequests] = useState([]);
+  const [allTourGuideRequests, setAllTourGuideRequests] = useState([]);
+  const [allPackageRequest, setAllPackages] = useState([]);
+  const { sessionData, setSessionData } = useSession();
+
+  const apiBaseUrl = "http://localhost:8080";
+
+  const axiosInstance = axios.create({
+    baseURL: apiBaseUrl,
+    timeout: 10000,
+  });
+
+  // Define your request URLs
+  
+
+
+  useEffect(() => {
+
+      const requestURL = "/request";
+      const tripRequestControllerURL = "/allTripRequests";
+      const viewTripsURL = "/viewTrips";
+
+    async function fetchData() {  
+    try {
+      const [driverRequestsResponse, packageRequestResponse, tourGuideRequestsResponse] = await Promise.all([
+        axiosInstance.get(tripRequestControllerURL),
+        axiosInstance.get(requestURL),
+        axiosInstance.get(viewTripsURL),
+      ]);
+
+      setAllDriverRequests(driverRequestsResponse.data);
+      setAllPackages(packageRequestResponse.data);
+      setAllTourGuideRequests(tourGuideRequestsResponse.data);
+  
+      // You can now use allDriverRequests, allPackageRequest, and allTourGuideRequests in your code.
+    } catch (error) {
+      // Handle errors here
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  // Call the fetchData function to initiate the requests
+  fetchData();
+      console.log(allDriverRequests);
+      console.log(allPackageRequest);
+      console.log(allTourGuideRequests);
+
+  }
+  ,[])
+
+
 
   return (
     <div className='tourist-main d-flex flex-row gap-2 mb-2' style={{width:"100"}}>

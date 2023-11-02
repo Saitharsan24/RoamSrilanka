@@ -5,6 +5,7 @@ import { MDBDataTable } from "mdbreact";
 import axios from "axios";
 import HPViewEvent from "./HPViewEvent";
 import DeleteConfirm from "../../components/DeleteConfirm";
+import { useNavigate } from "react-router-dom";
 
 function HPEvent() {
   const apiBaseUrl = "http://localhost:8080";
@@ -13,6 +14,8 @@ function HPEvent() {
     baseURL: apiBaseUrl,
     timeout: 5000,
   });
+
+  const navigate = useNavigate();
 
   const [selectedEventId, setSelectedEventId] = useState(null);
   const [events, setEvents] = useState([]);
@@ -115,7 +118,7 @@ function HPEvent() {
         <button
           style={{ border: "inherit", width: "50%" }}
           className="hp-accept"
-          onClick={() => setSelectedEventId(event.eventId)}
+          onClick={() =>navigate(`/holidayPlanner/plannerViewEvent/${event.eventId}`) }
         >
           View
         </button>

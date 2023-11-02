@@ -118,6 +118,9 @@ function HotelRequest() {
     (request) => request.status == null
   );
 
+  console.log("filteredRequests: ", filteredRequests);
+
+  
   const rows = filteredRequests.map((request) => {
     return {
       name: request.userFullname,
