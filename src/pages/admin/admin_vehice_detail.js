@@ -8,7 +8,7 @@ import '../../styles/admin/admin_driver_vechicle_view_details.css';
 import axios from "axios";
 import VehicleAcceptModal from "../../components/admin-vehicle-accept-modal";
 import VehicleRejecttModal from "../../components/admin-vehicle-reject-modal";
-import profile from "../../assets/images/profile.jpg";
+import profile from "../../assets/images/insur.jpeg";
 
 
 function AdminVehicleDetail_1() {
